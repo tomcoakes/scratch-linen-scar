@@ -11,7 +11,7 @@ const multer = require('multer'); // ADD THIS LINE - require multer
 const pdf = require('html-pdf-node'); // ADD THIS LINE - require html-pdf-node
 const fabric = require('fabric');
 console.log("Fabric object:", fabric);
-const puppeteer = require('puppeteer');
+
 
 
 const app = express();
@@ -809,7 +809,7 @@ app.put("/api/customers/:customerId/generate-proof", async (req, res) => {
     const customerId = Number(req.params.customerId);
     const proofData = req.body;
 
-    console.log(`PUT /api/customers/${customerId}/generate-proof called (Puppeteer)`);
+    console.log(`PUT /api/customers/${customerId}/generate-proof called (html-pdf-node)`);
     console.log("Received proof data:", proofData);
 
     // 1. Read the HTML template file
@@ -848,35 +848,16 @@ app.put("/api/customers/:customerId/generate-proof", async (req, res) => {
 
 
     let pdfBuffer;
-    let browser = null; // Declare browser outside the try block to access it in finally
 
     try {
-        browser = await puppeteer.launch({ headless: "new" }); // Launch Chromium
-        const page = await browser.newPage();
-        await page.setContent(populatedHtml, { waitUntil: 'networkidle0' }); // Wait for content to load
-
-        pdfBuffer = await page.pdf({
-            format: 'A4',
-            orientation: 'landscape',
-            printBackground: true, // Ensure background colors and images are printed
-            margin: {
-                top: '20mm',    // CSS units
-                right: '25mm',
-                bottom: '20mm',
-                left: '25mm'
-            }
-        });
-        console.log('PDF generated successfully using Puppeteer.');
-
+        const options = { format: 'A4', orientation: 'landscape' };
+        const file = { content: populatedHtml };
+        pdfBuffer = await pdf.generatePdf(file, options);
+        console.log('PDF generated successfully using html-pdf-node.');
     } catch (pdfError) {
-        console.error('Error generating PDF with Puppeteer:', pdfError);
-        return res.status(500).json({ error: 'Failed to generate PDF using Puppeteer.' });
-    } finally {
-        if (browser) {
-            await browser.close(); // Close browser instance in finally block
-        }
+        console.error('Error generating PDF using html-pdf-node:', pdfError);
+        return res.status(500).json({ error: 'Failed to generate PDF using html-pdf-node.' });
     }
-
 
     // 4. Send PDF as response
     res.setHeader('Content-Type', 'application/pdf');
