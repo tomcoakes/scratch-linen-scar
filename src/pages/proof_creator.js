@@ -523,24 +523,7 @@ function deleteActiveObject() {
 }
 
   function submitProof() {
-    if (selectedCustomer) {
-        const customer = customerData.find(c => c.id === selectedCustomer);
-        if (customer) {
-            const garmentCode = document.getElementById('garment-code').value;
-            const description = document.getElementById('proof-description').value;
 
-            const proofData = {
-                customerName: customer.name,
-                garmentCode,
-                description,
-                views: views,
-            };
-
-            generateAndDownloadPDF(proofData);
-        }
-    } else {
-        alert('Please select a customer first.');
-    }
 }
 
 // Placeholder function to generate and download PDF (Integration with your PDF generation logic will go here)
