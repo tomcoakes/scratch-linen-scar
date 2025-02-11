@@ -805,65 +805,100 @@ app.delete("/api/customers/:customerId/proofs/:proofIndex", async (req, res) => 
     });
 });
 
-app.put("/api/customers/:customerId/generate-proof", async (req, res) => {
-    const customerId = Number(req.params.customerId);
-    const proofData = req.body;
-
-    console.log(`PUT /api/customers/${customerId}/generate-proof called (html-pdf-node)`);
-    console.log("Received proof data:", proofData);
-
-    // 1. Read the HTML template file
-    const templatePath = path.join(__dirname, 'src', 'pages', 'proof_template.html');
-    let templateHtml;
+app.post("/api/create-proof", async (req, res) => {
     try {
-        templateHtml = fs.readFileSync(templatePath, 'utf-8');
-        console.log('Successfully read proof_template.html');
-    } catch (readError) {
-        console.error("Error reading proof_template.html:", readError);
-        return res.status(500).json({ error: 'Failed to read proof template file.' });
-    }
+        console.log('POST /api/create-proof called with body:', req.body);
 
-    // 2. Populate Placeholders in HTML template
-    let populatedHtml = templateHtml;
-    populatedHtml = populatedHtml.replace(/\[GARMENT_CODE\]/g, proofData.garmentCode || 'N/A');
-    populatedHtml = populatedHtml.replace(/\[PROOF_DESCRIPTION\]/g, proofData.proofDescription || 'N/A');
+        const { customerId, garmentCode, proofDescription, views, logoUrls } = req.body;
 
-    // --- 2.1. Embed Canvas Data URLs as <img> tags ---
-    const canvasImageTags = [];
-    if (proofData.canvasDataURLs && proofData.canvasDataURLs.length > 0) {
-        for (let i = 0; i < proofData.canvasDataURLs.length; i++) {
-            const dataURL = proofData.canvasDataURLs[i];
-            if (dataURL) {
-                canvasImageTags.push(`<img src="${dataURL}" alt="Proof Image ${i + 1}" style="max-width: 100%; height: auto;">`); // Inline style for image sizing
-            } else {
-                canvasImageTags.push(`<p>No Proof Image ${i + 1}.</p>`);
-            }
+
+        // --- Basic Validation ---
+        if (!customerId || !garmentCode || !views || !Array.isArray(views) || !logoUrls || !Array.isArray(logoUrls)) {
+            return res.status(400).json({ error: "Missing required data: customerId, garmentCode, views (array), logoUrls (array) are required." });
         }
+        if (views.length === 0) {
+            return res.status(400).json({ error: "At least one canvas view is required." });
+        }
+        if (logoUrls.length === 0) {
+              return res.status(400).json({ error: "At least one logo is required." });
+        }
+
+        // --- 1. Read Customer Data ---
+        const customersData = readJSON(CUSTOMERS_FILE);
+        const customer = customersData.find(c => c.id === Number(customerId));
+        if (!customer) {
+            return res.status(404).json({ error: `Customer with ID ${customerId} not found.` });
+        }
+        const customerName = customer.name;
+
+        // --- 2. Read Template File ---
+        const templateHtml = fs.readFileSync(TEMPLATE_FILE, 'utf-8'); // You already have TEMPLATE_FILE defined
+
+        // --- 3. Replace Placeholders ---
+        let pageHtml = templateHtml
+            .replace(/\[CUSTOMER_NAME\]/g, customerName)
+            .replace(/\[GARMENT_CODE\]/g, garmentCode)
+            .replace(/\[PROOF_DESCRIPTION\]/g, proofDescription || 'N/A');  // Optional description
+
+
+
+          // --- 4. Create <img> Tags for Canvases ---
+        let canvasImagesHtml = '';
+        views.forEach((view, index) => {
+          const viewNumber = index +1
+            canvasImagesHtml += `<div class="image-box" id="proof-image-${viewNumber}"><img src="${view}" alt="Proof Image ${index + 1}"></div>`;
+        });
+        pageHtml = pageHtml.replace(
+        /<div class="image-grid">[\s\S]*?<\/div>/, // Match the entire image-grid div and its content
+            `<div class="image-grid">
+                  <div class="image-box" id="proof-image-1">
+                    <img src="${views[0]}" alt="Proof View 1">
+                  </div>
+                  <div class="image-box-stack">
+                    ${views.length > 1 ? `<div class="image-box" id="proof-image-2"><img src="${views[1]}" alt="Proof View 2"></div>` : ''}
+                    ${views.length > 2 ? `<div class="image-box" id="proof-image-3"><img src="${views[2]}" alt="Proof View 3"></div>` : ''}
+                  </div>
+                </div>`);
+
+        // --- 5. Create <img> Tags for Logos ---
+        let logoImagesHtml = '';
+        logoUrls.forEach((logoUrl, index) => {
+            logoImagesHtml += `<img src="${logoUrl}" alt="Logo ${index + 1}" class="proof-logo">`;
+        });
+        pageHtml = pageHtml.replace(
+            `<div class="logo-area">
+            <!-- Company Logo -->
+            <img src="images/company_logo.png" alt="Company Logo">
+        </div>`,
+            `<div class="logo-area">${logoImagesHtml}</div>`
+            );
+
+
+        // --- 6. Save the HTML ---
+        const timestamp = Date.now();
+        const proofFilename = `proof-${customerId}-${timestamp}.html`;
+        const proofFilePath = path.join(__dirname, 'src', 'pages', 'customer_proofs', proofFilename);  // Corrected path
+
+        // Ensure the customer_proofs directory exists
+        const proofDir = path.join(__dirname, 'src', 'pages', 'customer_proofs');
+        if (!fs.existsSync(proofDir)) {
+            fs.mkdirSync(proofDir, { recursive: true }); // Create directory recursively
+            console.log('Created proof directory', proofDir)
+        }
+
+        fs.writeFileSync(proofFilePath, pageHtml, 'utf-8');
+        console.log(`Proof saved to: ${proofFilePath}`);
+
+        // --- 7. Return the URL ---
+        const proofUrl = `/customer_proofs/${proofFilename}`; // Construct relative URL.
+        res.status(201).json({ message: "Proof created successfully", url: proofUrl });
+
+    } catch (error) {
+        console.error("Error creating proof:", error);
+        res.status(500).json({ error: `Failed to create proof: ${error.message}` });
     }
-
-    // 2.2. Replace Placeholders with Canvas Images (Data URLs)
-    populatedHtml = populatedHtml.replace(/<!-- Proof Image 1 Placeholder -->/, canvasImageTags[0] || '<p>No Proof Image 1</p>');
-    populatedHtml = populatedHtml.replace(/<!-- Proof Image 2 Placeholder -->/, canvasImageTags[1] || '<p>No Proof Image 2</p>');
-    populatedHtml = populatedHtml.replace(/<!-- Proof Image 3 Placeholder -->/, canvasImageTags[2] || '<p>No Proof Image 3</p>');
-
-
-    let pdfBuffer;
-
-    try {
-        const options = { format: 'A4', orientation: 'landscape' };
-        const file = { content: populatedHtml };
-        pdfBuffer = await pdf.generatePdf(file, options);
-        console.log('PDF generated successfully using html-pdf-node.');
-    } catch (pdfError) {
-        console.error('Error generating PDF using html-pdf-node:', pdfError);
-        return res.status(500).json({ error: 'Failed to generate PDF using html-pdf-node.' });
-    }
-
-    // 4. Send PDF as response
-    res.setHeader('Content-Type', 'application/pdf');
-    res.setHeader('Content-Disposition', `attachment; filename="customer_proof_${customerId}.pdf"`);
-    res.send(pdfBuffer);
 });
+
 
 
 // Start server
