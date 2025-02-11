@@ -11,7 +11,7 @@ const multer = require('multer'); // ADD THIS LINE - require multer
 const pdf = require('html-pdf-node'); // ADD THIS LINE - require html-pdf-node
 const fabric = require('fabric');
 console.log("Fabric object:", fabric);
-
+const puppeteer = require('puppeteer');
 
 
 const app = express();
@@ -805,65 +805,84 @@ app.delete("/api/customers/:customerId/proofs/:proofIndex", async (req, res) => 
     });
 });
 
- app.put("/api/customers/:customerId/generate-proof", async (req, res) => {
-     const customerId = Number(req.params.customerId);
-     const proofData = req.body;
+app.put("/api/customers/:customerId/generate-proof", async (req, res) => {
+    const customerId = Number(req.params.customerId);
+    const proofData = req.body;
 
-     console.log(`PUT /api/customers/${customerId}/generate-proof called`);
-     console.log("Received proof data:", proofData);
+    console.log(`PUT /api/customers/${customerId}/generate-proof called (Puppeteer)`);
+    console.log("Received proof data:", proofData);
 
-     // 1. Read the HTML template file (already done)
-     const templatePath = path.join(__dirname, 'src', 'pages', 'proof_template.html');
-     let templateHtml;
-     try {
-         templateHtml = fs.readFileSync(templatePath, 'utf-8');
-         console.log('Successfully read proof_template.html');
-     } catch (readError) {
-         console.error("Error reading proof_template.html:", readError);
-         return res.status(500).json({ error: 'Failed to read proof template file.' });
-     }
+    // 1. Read the HTML template file
+    const templatePath = path.join(__dirname, 'src', 'pages', 'proof_template.html');
+    let templateHtml;
+    try {
+        templateHtml = fs.readFileSync(templatePath, 'utf-8');
+        console.log('Successfully read proof_template.html');
+    } catch (readError) {
+        console.error("Error reading proof_template.html:", readError);
+        return res.status(500).json({ error: 'Failed to read proof template file.' });
+    }
 
-     // 2. Populate Placeholders
-     let populatedHtml = templateHtml;
-     populatedHtml = populatedHtml.replace(/\[GARMENT_CODE\]/g, proofData.garmentCode || 'N/A');
-     populatedHtml = populatedHtml.replace(/\[PROOF_DESCRIPTION\]/g, proofData.proofDescription || 'N/A');
+    // 2. Populate Placeholders in HTML template
+    let populatedHtml = templateHtml;
+    populatedHtml = populatedHtml.replace(/\[GARMENT_CODE\]/g, proofData.garmentCode || 'N/A');
+    populatedHtml = populatedHtml.replace(/\[PROOF_DESCRIPTION\]/g, proofData.proofDescription || 'N/A');
 
-     // --- 2.1. Embed Data URLs as <img> tags (NEW - Option 2) ---
-     const canvasImageTags = [];
-     if (proofData.canvasDataURLs && proofData.canvasDataURLs.length > 0) {
-         for (let i = 0; i < proofData.canvasDataURLs.length; i++) {
-             const dataURL = proofData.canvasDataURLs[i];
-             if (dataURL) {
-                 canvasImageTags.push(`<img src="${dataURL}" alt="Proof Image ${i + 1}">`); // Create <img> tag with Data URL
-             } else {
-                 canvasImageTags.push(`<p>No Proof Image ${i + 1}.</p>`); // Placeholder if no Data URL
-             }
-         }
-     }
+    // --- 2.1. Embed Canvas Data URLs as <img> tags ---
+    const canvasImageTags = [];
+    if (proofData.canvasDataURLs && proofData.canvasDataURLs.length > 0) {
+        for (let i = 0; i < proofData.canvasDataURLs.length; i++) {
+            const dataURL = proofData.canvasDataURLs[i];
+            if (dataURL) {
+                canvasImageTags.push(`<img src="${dataURL}" alt="Proof Image ${i + 1}" style="max-width: 100%; height: auto;">`); // Inline style for image sizing
+            } else {
+                canvasImageTags.push(`<p>No Proof Image ${i + 1}.</p>`);
+            }
+        }
+    }
 
-     // 2.2. Replace Placeholders with Canvas Images (Data URLs)
-     populatedHtml = populatedHtml.replace(/<!-- Proof Image 1 Placeholder -->/, canvasImageTags[0] || '<p>No Proof Image 1</p>');
-     populatedHtml = populatedHtml.replace(/<!-- Proof Image 2 Placeholder -->/, canvasImageTags[1] || '<p>No Proof Image 2</p>');
-     populatedHtml = populatedHtml.replace(/<!-- Proof Image 3 Placeholder -->/, canvasImageTags[2] || '<p>No Proof Image 3</p>');
+    // 2.2. Replace Placeholders with Canvas Images (Data URLs)
+    populatedHtml = populatedHtml.replace(/<!-- Proof Image 1 Placeholder -->/, canvasImageTags[0] || '<p>No Proof Image 1</p>');
+    populatedHtml = populatedHtml.replace(/<!-- Proof Image 2 Placeholder -->/, canvasImageTags[1] || '<p>No Proof Image 2</p>');
+    populatedHtml = populatedHtml.replace(/<!-- Proof Image 3 Placeholder -->/, canvasImageTags[2] || '<p>No Proof Image 3</p>');
 
 
-     // 3. Generate PDF from populated HTML using html-pdf-node (as before)
-     let pdfBuffer;
-     try {
-         const options = { format: 'A4', orientation: 'landscape' };
-         const file = { content: populatedHtml };
-         pdfBuffer = await pdf.generatePdf(file, options);
-         console.log('PDF generated successfully.');
-     } catch (pdfError) {
-         console.error('Error generating PDF:', pdfError);
-         return res.status(500).json({ error: 'Failed to generate PDF.' });
-     }
+    let pdfBuffer;
+    let browser = null; // Declare browser outside the try block to access it in finally
 
-     // 4. Send PDF as response (as before)
-     res.setHeader('Content-Type', 'application/pdf');
-     res.setHeader('Content-Disposition', `attachment; filename="customer_proof_${customerId}.pdf"`);
-     res.send(pdfBuffer);
- });
+    try {
+        browser = await puppeteer.launch({ headless: "new" }); // Launch Chromium
+        const page = await browser.newPage();
+        await page.setContent(populatedHtml, { waitUntil: 'networkidle0' }); // Wait for content to load
+
+        pdfBuffer = await page.pdf({
+            format: 'A4',
+            orientation: 'landscape',
+            printBackground: true, // Ensure background colors and images are printed
+            margin: {
+                top: '20mm',    // CSS units
+                right: '25mm',
+                bottom: '20mm',
+                left: '25mm'
+            }
+        });
+        console.log('PDF generated successfully using Puppeteer.');
+
+    } catch (pdfError) {
+        console.error('Error generating PDF with Puppeteer:', pdfError);
+        return res.status(500).json({ error: 'Failed to generate PDF using Puppeteer.' });
+    } finally {
+        if (browser) {
+            await browser.close(); // Close browser instance in finally block
+        }
+    }
+
+
+    // 4. Send PDF as response
+    res.setHeader('Content-Type', 'application/pdf');
+    res.setHeader('Content-Disposition', `attachment; filename="customer_proof_${customerId}.pdf"`);
+    res.send(pdfBuffer);
+});
 
 
 // Start server

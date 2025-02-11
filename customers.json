@@ -2,184 +2,26 @@
   {
     "name": "Ikea",
     "contactPerson": "Mr Ikea",
-    "email": "mrikea@ikea.com",
-    "id": 2,
+    "email": "Mr@Ikea.com",
+    "id": 1,
     "logos": [
       {
-        "logoUrl": "/customer_logos/logo-upload-input-1738774584163-896364568.jpg",
-        "logoName": "Ikea",
+        "logoUrl": "/customer_logos/logo-upload-input-1739267170498-560998333.svg",
+        "logoName": "Falcon",
         "logoPosition": "Left Chest",
         "logoType": "Embroidery",
         "threadNumbers": [
-          "1147"
-        ]
-      },
-      {
-        "logoUrl": "/customer_logos/logo-upload-input-1738932962984-873596359.JPG",
-        "logoName": "St Josephs",
-        "logoPosition": "Left Chest",
-        "logoType": "Embroidery",
-        "threadNumbers": []
-      },
-      {
-        "logoUrl": "/customer_logos/logo-upload-input-1738932984562-6512458.jpg",
-        "logoName": "NELFT",
-        "logoPosition": "Left Chest",
-        "logoType": "Embroidery",
-        "threadNumbers": []
-      },
-      {
-        "logoUrl": "/customer_logos/logo-upload-input-1738932996229-142511961.svg",
-        "logoName": "NELFT - heart",
-        "logoPosition": "Left Chest",
-        "logoType": "Embroidery",
-        "threadNumbers": []
-      },
-      {
-        "logoUrl": "/customer_logos/logo-upload-input-1738933008996-39138101.png",
-        "logoName": "whitefox",
-        "logoPosition": "Right Chest",
-        "logoType": "Embroidery",
-        "threadNumbers": []
-      },
-      {
-        "logoUrl": "/customer_logos/logo-upload-input-1738947083249-849859072.svg",
-        "logoName": "falcon",
-        "logoPosition": "Right Chest",
-        "logoType": "",
-        "threadNumbers": []
-      },
-      {
-        "logoUrl": "/customer_logos/logo-upload-input-1738947181660-445604659.svg",
-        "logoName": "hrtsu",
-        "logoPosition": "Unspecified",
-        "logoType": "",
-        "threadNumbers": []
-      }
-    ],
-    "proofs": [
-      {
-        "url": "/customer_proofs/proof-upload-input-1738937888452-604813081.pdf",
-        "garmentCode": "gre",
-        "logo": "gre",
-        "logoPosition": "hgreq",
-        "description": "hrehrwegerwg"
-      },
-      {
-        "url": "/customer_proofs/proof-upload-input-1738937900513-228280540.pdf",
-        "garmentCode": "grewhgqe",
-        "logo": "hrehqrehw",
-        "logoPosition": "greqhgqerhqe",
-        "description": "hreqhqerherh"
-      },
-      {
-        "url": "/customer_proofs/proof-upload-input-1738937909447-982208295.pdf",
-        "garmentCode": "rgt",
-        "logo": "ert",
-        "logoPosition": "ret",
-        "description": "ret"
-      },
-      {
-        "url": "/customer_proofs/proof-upload-input-1738937917721-220734236.pdf",
-        "garmentCode": "tre3w",
-        "logo": "tre",
-        "logoPosition": "ertw",
-        "description": "ert"
-      }
-    ]
-  },
-  {
-    "name": "Microsoft",
-    "contactPerson": "Bill Gates",
-    "email": "bill@microsoft.com",
-    "id": 3,
-    "logos": [
-      {
-        "logoUrl": "/customer_logos/logo-upload-input-1738774648377-271043993.jpg",
-        "logoName": "Xbox",
-        "logoPosition": "Full Back",
-        "logoType": "DTF",
-        "threadNumbers": [
-          "1170"
-        ]
-      },
-      {
-        "logoUrl": "/customer_logos/logo-upload-input-1738941785734-180785426.svg",
-        "logoName": "bddd",
-        "logoPosition": "Left Chest",
-        "logoType": "",
-        "threadNumbers": []
-      },
-      {
-        "logoUrl": "/customer_logos/logo-upload-input-1739191682666-669520107.png",
-        "logoName": "fdfa",
-        "logoPosition": "Right Chest",
-        "logoType": "",
-        "threadNumbers": []
-      },
-      {
-        "logoUrl": "/customer_logos/logo-upload-input-1739206892596-168537487.png",
-        "logoName": "yeyt",
-        "logoPosition": "Right Chest",
-        "logoType": "",
-        "threadNumbers": []
-      }
-    ]
-  },
-  {
-    "name": "Mattel",
-    "contactPerson": "Will Ferrell",
-    "email": "will@matel.com",
-    "id": 4,
-    "logos": [
-      {
-        "logoUrl": "/customer_logos/logo-upload-input-1738774721271-861580430.jpg",
-        "logoName": "Barbie",
-        "logoPosition": "Left Chest",
-        "logoType": "Embroidery",
-        "threadNumbers": [
-          "1568"
-        ]
-      },
-      {
-        "logoUrl": "/customer_logos/logo-upload-input-1738941744869-313730849.svg",
-        "logoName": "bddd",
-        "logoPosition": "Left Chest",
-        "logoType": "",
-        "threadNumbers": []
-      },
-      {
-        "logoUrl": "/customer_logos/logo-upload-input-1739191758702-629606225.png",
-        "logoName": "fdfa",
-        "logoPosition": "Right Chest",
-        "logoType": "",
-        "threadNumbers": []
-      }
-    ]
-  },
-  {
-    "name": "NHS",
-    "contactPerson": "Mrs NHS",
-    "email": "Mrs@NHS.com",
-    "id": 5,
-    "logos": [
-      {
-        "logoUrl": "/customer_logos/logo-upload-input-1738845887041-668492808.jpg",
-        "logoName": "NHS",
-        "logoPosition": "Full Back",
-        "logoType": "Embroidery",
-        "threadNumbers": [
-          "1177"
+          "1018"
         ]
       }
     ],
     "proofs": [
       {
-        "url": "/customer_proofs/proof-upload-input-1738930825282-286125921.pdf",
-        "garmentCode": "PR456",
-        "logo": "fdskalf",
-        "logoPosition": "fdmskalf",
-        "description": "mkfdla"
+        "url": "/customer_proofs/proof-upload-input-1739267325679-635122888.pdf",
+        "garmentCode": "RS232M",
+        "logo": "Falcon",
+        "logoPosition": "Left Breast",
+        "description": "Description"
       }
     ]
   }
