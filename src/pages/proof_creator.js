@@ -483,84 +483,108 @@ function updateSelectedLogosDisplay() {
 
 // proof_creator.js
 
-// --- Submit Proof (Implementation) ---
-// ... (Existing functions in proof_creator.js) ...
-async function submitProof() {
-    console.log('submitProof() called');
-
+function submitProof() {
     if (!selectedCustomer) {
         alert("Please select a customer first.");
         return;
     }
 
-    // Gather garment code and description
-    const garmentCode = document.getElementById('garment-code').value.trim();
-    const proofDescription = document.getElementById('proof-description').value.trim();
+    const canvasDataURLs = [];
 
-    if (!garmentCode) {
-        alert('Please enter a garment code.');
-        return;
-    }
+    console.log("Views array before DataURL generation:", views);
 
-    saveCurrentView(); // VERY IMPORTANT: Save the current canvas before generating the proof
+    const dataURLPromises = views.map((viewState, index) => {
+        return new Promise(resolve => {
+            console.log(`Generating DataURL for view index: ${index}`);
 
-    // Prepare the 'views' array by converting canvas states to Data URLs
-    const views = views.map(view => {
-      proofCreatorCanvas.loadFromJSON(view, () => {
-            proofCreatorCanvas.renderAll();
+            const tempCanvasForView = new fabric.Canvas(null, {
+                width: proofCreatorCanvas.getWidth(),
+                height: proofCreatorCanvas.getHeight(),
+                backgroundColor: '#ffffff'
+            });
+
+            tempCanvasForView.loadFromJSON(viewState, () => { // loadFromJSON callback - IMPORTANT!
+                console.log(`loadFromJSON callback for view index: ${index} STARTED`); // ADDED LOGGING - Start of callback
+
+                tempCanvasForView.renderAll(); // Explicitly render all objects - ALREADY PRESENT
+
+                // --- MOVE toDataURL() call INSIDE the callback ---
+                const dataURL = tempCanvasForView.toDataURL('png');
+                console.log(`DataURL generated for view index: ${index} (TEMPORARY canvas): ${dataURL.substring(0, 50)}...`);
+
+                canvasDataURLs.push(dataURL); // Add Data URL to the array
+                resolve(); // Resolve the Promise AFTER Data URL is generated
+
+                tempCanvasForView.dispose();
+                console.log(`loadFromJSON callback for view index: ${index} ENDED`); // ADDED LOGGING - End of callback
+            }, null, function() { // Fabric.js callback context - No changes needed here, but added for clarity
+                // Optional callback context if needed, can leave null
+            });
         });
-        return proofCreatorCanvas.toDataURL({
-            format: 'png', // or 'jpeg'
-            quality: 1.0    // Adjust quality (0.0 to 1.0)
-          });
     });
 
-    // Gather selected logo URLs (assuming you have them stored somehow)
-    // Example:  (You might need to adjust this based on your exact implementation)
-    const logoListItems = document.querySelectorAll('#selected-logos-list li');
-     const logoUrls = Array.from(logoListItems).map(item => {
-        const logoImg = item.querySelector('img');
-        return logoImg ? logoImg.src : null; // Use actual src
-    }).filter(url => url !== null);
+    Promise.all(dataURLPromises).then(() => {
+        const garmentCode = document.getElementById('garment-code').value;
+        const proofDescription = document.getElementById('proof-description').value;
 
-    if (logoUrls.length === 0) {
-        alert('Please add at least one logo.'); // Requirement for at least one logo.
-        return;
-    }
-
-
-
-    try {
-        const response = await fetch('/api/create-proof', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-                customerId: selectedCustomer,
-                garmentCode,
-                proofDescription,
-                views: views,
-                logoUrls: logoUrls
-            })
-        });
-
-        if (!response.ok) {
-            const errorData = await response.json();
-            throw new Error(`Server error: ${response.status} - ${errorData.error}`);
+        if (!garmentCode) {
+            alert("Please enter a garment code.");
+            return;
         }
 
-        const result = await response.json();
-        console.log('Proof creation result:', result);
-        alert(`Proof created successfully. URL: ${result.url}`); // Show the URL
+        const proofData = {
+            customerId: selectedCustomer,
+            canvasDataURLs: canvasDataURLs,
+            garmentCode: garmentCode,
+            proofDescription: proofDescription
+        };
 
-        // Open the URL in a new tab/window:
-        window.open(result.url, '_blank'); // Open in new tab
+        console.log("Submitting proof data with Data URLs:", proofData);
 
-    } catch (error) {
-        console.error('Error creating proof:', error);
-        alert(`Failed to create proof: ${error.message}`);
-    }
+        fetch(`/api/customers/${selectedCustomer}/generate-proof`, {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(proofData),
+        })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+            return response.blob();
+        })
+        .then(blob => {
+            // Create a Blob URL
+            const pdfUrl = URL.createObjectURL(blob);
+
+            // Create a temporary link element
+            const downloadLink = document.createElement('a');
+            downloadLink.href = pdfUrl;
+            downloadLink.download = `customer_proof_${selectedCustomer}.pdf`; // Suggest filename
+            document.body.appendChild(downloadLink); // Append to body (required for FF)
+            downloadLink.click(); // Programmatically click the link to trigger download
+            downloadLink.remove(); // Clean up by removing the link
+
+            URL.revokeObjectURL(pdfUrl); // Revoke the Blob URL to free resources
+
+            alert("PDF Proof downloaded successfully!"); // Success alert
+
+            // --- Lines that could be temporarily commented out for Issue 1 debugging ---
+            proofCreatorCanvas.clear();
+            proofCreatorCanvas.setBackgroundImage(null, proofCreatorCanvas.renderAll.bind(proofCreatorCanvas));
+            views = [{}];
+            currentViewIndex = 0;
+            updateCarousel();
+            loadCurrentView();
+            // --- End of potentially commented out lines ---
+
+        })
+        .catch(error => {
+            console.error('Error submitting proof:', error);
+            alert(`Failed to submit proof: ${error.message}`);
+        });
+    });
 }
 
 // Zoom In function
