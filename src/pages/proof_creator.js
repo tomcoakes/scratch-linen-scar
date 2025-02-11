@@ -139,6 +139,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // const submitProofButton = document.getElementById('submit-proof-button');
     // submitProofButton.addEventListener('click', submitProof);
+  
+    const downloadPdfButton = document.getElementById('download-pdf-button'); // ADD THIS LINE - Get the download button
+    downloadPdfButton.addEventListener('click', downloadProofPdf); // ADD THIS LINE - Attach event listener
 
 
     updateCarousel(); // Initialize carousel indicators
@@ -531,7 +534,7 @@ async function downloadProofPdf() {
 
     // 2. Fetch the proof template HTML
     try {
-        const response = await fetch('/proof_template.html'); // Path to your proof_template.html
+        const response = await fetch('../proof_template.html'); // Path to your proof_template.html
         if (!response.ok) {
             throw new Error(`HTTP error! status: ${response.status}`);
         }
