@@ -137,8 +137,8 @@ document.addEventListener('DOMContentLoaded', () => {
     setupGarmentImageUpload();
     populateCustomerList();
 
-    const submitProofButton = document.getElementById('submit-proof-button');
-    submitProofButton.addEventListener('click', submitProof);
+    // const submitProofButton = document.getElementById('submit-proof-button');
+    // submitProofButton.addEventListener('click', submitProof);
 
 
     updateCarousel(); // Initialize carousel indicators
@@ -516,5 +516,56 @@ function deleteActiveObject() {
         console.log('Deleted selected object from canvas.');
     } else {
         console.log('No object selected to delete.');
+    }
+}
+
+
+
+async function downloadProofPdf() {
+    console.log("Download Proof PDF button clicked!");
+
+    // 1. Get data from the page
+    const garmentCode = document.getElementById('garment-code').value;
+    const proofDescription = document.getElementById('proof-description').value;
+    const canvas1 = proofCreatorCanvas.toDataURL('image/png'); // Get Data URL of canvas
+
+    // 2. Fetch the proof template HTML
+    try {
+        const response = await fetch('/proof_template.html'); // Path to your proof_template.html
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        let templateHtml = await response.text();
+
+        // 3. Fill the template with data
+        templateHtml = templateHtml.replace('[GARMENT_CODE]', garmentCode || 'N/A');
+        templateHtml = templateHtml.replace('[PROOF_DESCRIPTION]', proofDescription || 'N/A');
+
+        // --- Image Insertion (Simplified for now - assumes one canvas) ---
+        templateHtml = templateHtml.replace('<!-- Proof Image 1 Placeholder -->', `<img src="${canvas1}" style="max-width:100%; max-height:auto;"/>`);
+        templateHtml = templateHtml.replace('<!-- Proof Image 2 Placeholder -->', `<p>Second image would be here (Not Implemented)</p>`); // Placeholder for now
+        templateHtml = templateHtml.replace('<!-- Proof Image 3 Placeholder -->', `<p>Third image would be here (Not Implemented)</p>`);  // Placeholder for now
+
+
+        // 4. Generate PDF using html2pdf.js
+        const element = document.createElement('div'); // Create a temporary div
+        element.innerHTML = templateHtml; // Set the template HTML to the div
+
+        const opt = {
+          margin:       10,
+          filename:     'customer_proof.pdf',
+          image:        { type: 'jpeg', quality: 0.98 },
+          html2canvas:  { scale: 2 },
+          jsPDF:        { unit: 'mm', format: 'a4', orientation: 'landscape' }
+        };
+
+        html2pdf().from(element).set(opt).save(); // Generate and download PDF
+
+        console.log("PDF download initiated!");
+
+
+    } catch (error) {
+        console.error("Error generating PDF:", error);
+        alert("Failed to generate PDF. See console for details.");
     }
 }
