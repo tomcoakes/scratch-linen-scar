@@ -9,6 +9,7 @@ var fabric; // Declare fabric as a global variable
 let proofCreatorCanvas;
 let selectedCustomer = null;
 let selectedLogos = [];
+let logoFiles = []; // NEW: Array to store actual logo FILE objects
 let zoomLevel = 1;
 const ZOOM_INCREMENT = 0.2;
 let panning = false;
@@ -82,9 +83,7 @@ document.addEventListener('DOMContentLoaded', () => {
       prevViewButton.addEventListener('click', previousView);
     nextViewButton.addEventListener('click', nextView);
 
-  
-      const submitProofButton = document.getElementById('submit-proof-button');
-    submitProofButton.addEventListener('click', submitProof);
+
 
     // Add the Generate PDF button and event listener.  Place this *after* the DOMContentLoaded
     const generatePdfButton = document.createElement('button');

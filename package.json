@@ -15,7 +15,8 @@
     "fabric": "^6.5.4",
     "multer": "^1.4.5-lts.1",
     "node-fetch": "^2.6.7",
-    "uuid": "^9.0.0"
+    "uuid": "^9.0.0",
+    "pdf-lib": "^1.17.1"
   },
   "engines": {
     "node": "16.x"

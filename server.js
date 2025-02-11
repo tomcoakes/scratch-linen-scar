@@ -11,7 +11,8 @@ const multer = require('multer'); // ADD THIS LINE - require multer
 const fabric = require('fabric');
 
 
-
+// PDF Generation Library
+const { PDFDocument, rgb, StandardFonts } = require('pdf-lib');
 
 
 
@@ -806,7 +807,138 @@ app.delete("/api/customers/:customerId/proofs/:proofIndex", async (req, res) => 
     });
 });
 
+// --- NEW API Endpoint: Generate PDF (POST) ---
+app.post('/api/generate-pdf', async (req, res) => {
+    try {
+        console.log("Received request to generate PDF.");
+        const { customerId, garmentCode, proofDescription, canvasImages, logos } = req.body;
 
+        // --- 1. Input Validation ---
+        if (!customerId || !garmentCode || !canvasImages || canvasImages.length === 0) {
+            return res.status(400).json({ error: "Missing required data (customerId, garmentCode, or canvasImages)." });
+        }
+        console.log("Received data for PDF generation:", { customerId, garmentCode, numCanvasImages: canvasImages.length, numLogos: logos.length });
+
+        // --- 2. Load the Proof Template (proof_template.html) ---
+        const templatePath = path.join(__dirname, 'src', 'pages', 'proof_template.html');
+        let templateHtml = fs.readFileSync(templatePath, 'utf-8');
+
+        // --- 3.  Replace Placeholders ---
+        //  Customer Details (Fetch the customer details):
+        const customersData = JSON.parse(fs.readFileSync(path.join(__dirname, 'customers.json'), 'utf8'));
+        const customer = customersData.find(c => c.id === parseInt(customerId));
+
+        if (!customer) {
+            return res.status(404).json({ error: `Customer with ID ${customerId} not found.` });
+        }
+
+        templateHtml = templateHtml.replace(/\[CUSTOMER_NAME\]/g, customer.name || 'N/A');
+        templateHtml = templateHtml.replace(/\[CONTACT_PERSON\]/g, customer.contactPerson || 'N/A');
+        templateHtml = templateHtml.replace(/\[CUSTOMER_EMAIL\]/g, customer.email || 'N/A');
+
+        //   Garment Code & Description
+        templateHtml = templateHtml.replace(/\[GARMENT_CODE\]/g, garmentCode || 'N/A');
+        templateHtml = templateHtml.replace(/\[PROOF_DESCRIPTION\]/g, proofDescription || 'N/A');
+
+
+        // --- 4. Create a new PDF document ---
+       const pdfDoc = await PDFDocument.create();
+        const page = pdfDoc.addPage([842, 595]); // A4 Landscape dimensions in points
+
+        // --- 5. Embed the Company Logo ---
+         const logoResponse = await fetch('http://localhost:3000/images/TBL-Logo.png');  //use an absolute URL to the logo
+            const logoBuffer = await logoResponse.buffer();
+           const logoImage = await pdfDoc.embedPng(logoBuffer);
+           const logoDims = logoImage.scale(0.15);
+          page.drawImage(logoImage, {
+            x: 60,
+            y: 525, // Assuming top-left origin, adjust as needed for position
+            width: logoDims.width,
+            height: logoDims.height,
+          });
+
+        // --- 6. Embed Canvas Images ---
+        for (let i = 0; i < canvasImages.length; i++) {
+             const imageDataUrl = canvasImages[i];
+             const base64Data = imageDataUrl.replace(/^data:image\/jpeg;base64,/, ""); //remove prfix
+             const imageBuffer = Buffer.from(base64Data, 'base64');  //convert to a buffer
+              let image;  // Declare the image variable outside the if/else
+            try {
+                   image = await pdfDoc.embedJpg(imageBuffer); // Embed as JPEG
+             }
+            catch (error) {
+              console.error("Error embedding image:", error, "for image data URL:", imageDataUrl.substring(0, 100) + "...");
+                continue; // If there is an error with *this* image, skip to the next.
+             }
+              const imageDims = image.scale(0.3);  //scale for the largest canvas image
+
+               // Place images onto the page
+              if (i === 0) {
+                // First image: top-left of the main image area
+                page.drawImage(image, {
+                  x: 55,
+                  y: 370 - imageDims.height,  // Adjust based on your layout
+                  width: imageDims.width,
+                  height: imageDims.height,
+                });
+              } else if (i === 1) {
+                // Second Image: stack on top
+                page.drawImage(image, {
+                x: 550,   // Adjust position for stacking
+                y: 370 - imageDims.height,
+                  width: imageDims.width,
+                  height: imageDims.height,
+                  });
+            } else if(i === 2) {
+              //third image below
+                page.drawImage(image, {
+                  x: 550,   // adjust position to go below first box
+                  y: 370 - (imageDims.height*2) ,  // stack below image 1
+                  width: imageDims.width,
+                  height: imageDims.height
+              });
+            }
+        }
+
+
+  // --- 7. Embed the logo files. ---
+        for (const logoFile of logos) {
+          try {
+              // Read the logo file from the filesystem
+              const logoPath = path.join(__dirname, 'src', 'pages', 'customer_logos', logoFile.filename);
+
+              const logoBytes = fs.readFileSync(logoPath);
+              const logoImage = await pdfDoc.embedPng(logoBytes); // Determine image type
+                // Get the original dimensions of the logo image:
+              const logoDims = logoImage.scale(0.25);
+
+                  // Add the logo to the PDF page (adjust coordinates and dimensions as needed)
+               page.drawImage(logoImage, {
+              x: 60,
+               y: 525 - (logoDims.height + 20),
+               width: logoDims.width,
+               height: logoDims.height
+              });
+
+          } catch (error) {
+              console.error(`Error embedding logo ${logoFile.filename}:`, error);
+              // Handle errors (e.g., log them, skip the logo, or show a placeholder)
+          }
+      }
+
+        // --- 8. Serialize the PDF and Send the Response ---
+
+        const pdfBytes = await pdfDoc.save(); // Save as a Uint8Array
+
+        res.setHeader('Content-Type', 'application/pdf');
+        res.setHeader('Content-Disposition', 'attachment; filename="proof.pdf"'); // Suggest download
+        res.status(200).send(Buffer.from(pdfBytes)); // Send as a Buffer
+        console.log("PDF generation successful. Sent to client.");
+    } catch (error) {
+        console.error("Error in /api/generate-pdf:", error);
+        res.status(500).json({ error: "Failed to generate PDF.", details: error.message, stack: error.stack }); // More detail.
+    }
+});
 
 
 // Start server
