@@ -530,36 +530,42 @@ async function submitProof() {
         return;
     }
 
+    // 1. SAVE CURRENT VIEW *FIRST*!
     saveCurrentView();
 
-    // Collect canvas data as JSON strings, handling potential errors.
     const canvasData = [];
+
+    // 2. Loop through the views, load each one, and *then* get the data URL.
     for (let i = 0; i < views.length; i++) {
-        if (views[i] && views[i].objects && views[i].objects.length > 0) { // Check for a valid view
+        if (views[i] && views[i].objects && views[i].objects.length > 0) {
             try {
-                proofCreatorCanvas.clear(); //clear and load each view in turn
-                await new Promise((resolve) => {
+                // Use await with a Promise to ensure loadFromJSON completes.
+                const dataURL = await new Promise((resolve) => {
+                    // Clear the canvas *before* loading
+                    proofCreatorCanvas.clear();
+
                     proofCreatorCanvas.loadFromJSON(views[i], () => {
-                      proofCreatorCanvas.renderAll();
-                      const dataURL = proofCreatorCanvas.toDataURL({format: 'png'});
-                      canvasData.push(dataURL);
-                      resolve(); // Resolve the promise after the image is loaded
+                        // Render the canvas *after* loading.
+                        proofCreatorCanvas.renderAll();
+                        // *Now* it's safe to get the data URL.
+                      resolve(proofCreatorCanvas.toDataURL({ format: 'png' }));
                     });
-                  });
-                console.log(`Canvas data for view ${i}:`, canvasData[i].substring(0, 100) + "..."); // Log first 100 chars
+                });
+                canvasData.push(dataURL);
+                console.log(`Canvas data for view ${i}:`, dataURL.substring(0, 100) + "..."); // Log a portion
+
             } catch (error) {
                 console.error(`Error processing view ${i}:`, error);
-                canvasData.push(null); // Add a null placeholder for error handling
+                canvasData.push(null); // Add null as a placeholder
             }
         } else {
             console.log(`View ${i} is empty or invalid, skipping.`);
-            canvasData.push(null); // Push null for empty views
+            canvasData.push(null); // Add null for empty views.
         }
     }
 
-  // Remove null values. This happens when the view doesn't exist.
+    // Filter out any null values (from empty views or errors).
     const filteredCanvasData = canvasData.filter(data => data !== null);
-
 
     const garmentCode = document.getElementById('garment-code').value.trim();
     const proofDescription = document.getElementById('proof-description').value.trim();
@@ -569,53 +575,57 @@ async function submitProof() {
         return;
     }
 
-    if (filteredCanvasData.length === 0) { // Check for empty filtered array
-      alert('Please add at least one view to your proof.');
-      return;
-  }
+    if (filteredCanvasData.length === 0) {
+        alert('Please add at least one view to your proof.');
+        return;
+    }
 
-    console.log('submitProof() - Canvas Data:', filteredCanvasData); //log filtered array
+     console.log('submitProof() - Canvas Data:', filteredCanvasData); // Log the *filtered* array.
     console.log('submitProof() - Garment Code:', garmentCode);
     console.log('submitProof() - Proof Description:', proofDescription);
 
+
+    // 3. Send the data to the server.
     try {
         const response = await fetch('/api/create-proof', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
             },
-             body: JSON.stringify({
-                canvasData: filteredCanvasData,  // Use filtered data
+            body: JSON.stringify({
+                canvasData: filteredCanvasData,  // Send the array of data URLs.
                 garmentCode: garmentCode,
                 description: proofDescription,
-                customerId: selectedCustomer
+                customerId: selectedCustomer // Optionally send customer ID.
             })
         });
 
-        console.log('submitProof() - Server response:', response);
+         console.log('submitProof() - Server response:', response);
 
         if (!response.ok) {
-            const errorData = await response.json();
-            throw new Error(`Server error: ${response.status} ${response.statusText} - ${errorData.error}`);
+          const errorData = await response.json();
+          throw new Error(`Server error: ${response.status} ${response.statusText} - ${errorData.error}`);
+
         }
 
+        // 4. Handle the response (trigger download)
         const blob = await response.blob();
         const url = window.URL.createObjectURL(blob);
         const a = document.createElement('a');
         a.style.display = 'none';
         a.href = url;
-        a.download = `proof_${selectedCustomer}_${Date.now()}.pdf`;
+        a.download = `proof_${selectedCustomer}_${Date.now()}.pdf`; // Use a dynamic name
         document.body.appendChild(a);
         a.click();
-        window.URL.revokeObjectURL(url);
+        window.URL.revokeObjectURL(url); // Clean up
         alert('Proof generated and download started.');
+
 
     } catch (error) {
         console.error('Error creating proof:', error);
         alert('Failed to create proof: ' + error.message);
     }
 }
-
 // Placeholder function to generate and download PDF (Integration with your PDF generation logic will go here)
 async function generateAndDownloadPDF(proofData) {
     // For now, log the proof data. Later, you'll use a library like jsPDF or PDFMake
