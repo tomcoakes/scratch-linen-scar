@@ -530,33 +530,24 @@ async function submitProof() {
         return;
     }
 
-    // 1. SAVE CURRENT VIEW *FIRST*!
-    saveCurrentView();
+    saveCurrentView(); // Ensure current view is saved
 
     const canvasData = [];
-
-    // 2. Loop through the views, load each one, and *then* get the data URL.
     for (let i = 0; i < views.length; i++) {
-        if (views[i] && views[i].objects && views[i].objects.length > 0) {
+        if (views[i] && views[i].objects && views[i].objects.length > 0) { // Check for a valid view
             try {
-                // Use await with a Promise to ensure loadFromJSON completes.
                 const dataURL = await new Promise((resolve) => {
-                    // Clear the canvas *before* loading
-                    proofCreatorCanvas.clear();
-
+                    proofCreatorCanvas.clear(); //clear and load each view in turn
                     proofCreatorCanvas.loadFromJSON(views[i], () => {
-                        // Render the canvas *after* loading.
                         proofCreatorCanvas.renderAll();
-                        // *Now* it's safe to get the data URL.
-                      resolve(proofCreatorCanvas.toDataURL({ format: 'png' }));
+                        resolve(proofCreatorCanvas.toDataURL({ format: 'png' })); // Resolve with the data URL
                     });
                 });
                 canvasData.push(dataURL);
-                console.log(`Canvas data for view ${i}:`, dataURL.substring(0, 100) + "..."); // Log a portion
-
+                console.log(`Canvas data for view ${i}:`, dataURL.substring(0, 100) + "..."); // Log a portion.  KEEP THIS LOG FOR NOW
             } catch (error) {
                 console.error(`Error processing view ${i}:`, error);
-                canvasData.push(null); // Add null as a placeholder
+                canvasData.push(null); // Add a null placeholder for error handling
             }
         } else {
             console.log(`View ${i} is empty or invalid, skipping.`);
@@ -564,28 +555,27 @@ async function submitProof() {
         }
     }
 
-    // Filter out any null values (from empty views or errors).
-    const filteredCanvasData = canvasData.filter(data => data !== null);
+    const filteredCanvasData = canvasData.filter(data => data !== null); // Filter out null values
 
     const garmentCode = document.getElementById('garment-code').value.trim();
     const proofDescription = document.getElementById('proof-description').value.trim();
+
 
     if (!garmentCode) {
         alert('Please enter a Garment Code.');
         return;
     }
 
-    if (filteredCanvasData.length === 0) {
-        alert('Please add at least one view to your proof.');
-        return;
-    }
+    if (filteredCanvasData.length === 0) { // Check for empty filtered array
+      alert('Please add at least one view to your proof.');
+      return;
+  }
 
-     console.log('submitProof() - Canvas Data:', filteredCanvasData); // Log the *filtered* array.
+
+    console.log('submitProof() - Canvas Data:', filteredCanvasData); // KEEP THIS - but it will now show full URLs
     console.log('submitProof() - Garment Code:', garmentCode);
     console.log('submitProof() - Proof Description:', proofDescription);
 
-
-    // 3. Send the data to the server.
     try {
         const response = await fetch('/api/create-proof', {
             method: 'POST',
@@ -600,15 +590,13 @@ async function submitProof() {
             })
         });
 
-         console.log('submitProof() - Server response:', response);
+        console.log('submitProof() - Server response:', response);
 
         if (!response.ok) {
-          const errorData = await response.json();
-          throw new Error(`Server error: ${response.status} ${response.statusText} - ${errorData.error}`);
-
+            const errorData = await response.json();
+            throw new Error(`Server error: ${response.status} ${response.statusText} - ${errorData.error}`);
         }
 
-        // 4. Handle the response (trigger download)
         const blob = await response.blob();
         const url = window.URL.createObjectURL(blob);
         const a = document.createElement('a');
@@ -619,7 +607,6 @@ async function submitProof() {
         a.click();
         window.URL.revokeObjectURL(url); // Clean up
         alert('Proof generated and download started.');
-
 
     } catch (error) {
         console.error('Error creating proof:', error);

@@ -877,15 +877,20 @@ app.post("/api/create-proof", async (req, res) => {
     const file = { content: htmlTemplate };
 
     // 4. Generate PDF
-    debugLog("Generating PDF using html-pdf-node...");
-    const pdfBuffer = await pdf.generatePdf(file, options); //html,options
-    debugLog("PDF generated successfully.");
+    //debugLog("Generating PDF using html-pdf-node...");
+    //const pdfBuffer = await pdf.generatePdf(file, options); //html,options
+    //debugLog("PDF generated successfully.");
 
     // 5. Send PDF as response
-    res.setHeader('Content-Type', 'application/pdf');
-    res.setHeader('Content-Disposition', 'attachment; filename=proof.pdf'); // Suggest download
-    res.send(pdfBuffer);
-    debugLog("PDF sent in response.");
+    //res.setHeader('Content-Type', 'application/pdf');
+    //res.setHeader('Content-Disposition', 'attachment; filename=proof.pdf'); // Suggest download
+    //res.send(pdfBuffer);
+    //debugLog("PDF sent in response.");
+    
+      // TEMPORARY: Send back the HTML instead of the PDF for debugging:
+   res.setHeader('Content-Type', 'text/html');
+   res.send(htmlTemplate);
+   return; // IMPORTANT: Stop execution here.
 
 
   } catch (error) {
