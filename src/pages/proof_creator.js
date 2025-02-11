@@ -489,39 +489,40 @@ function submitProof() {
         return;
     }
 
-    const canvasDataURLs = []; // Initialize an array to store Data URLs
+    const canvasDataURLs = [];
 
-    console.log("Views array before DataURL generation:", views); // ADDED LOGGING - Inspect views array
+    console.log("Views array before DataURL generation:", views);
 
-    // Use map to create an array of Promises, one for each view
     const dataURLPromises = views.map((viewState, index) => {
-        return new Promise(resolve => { // Return a Promise for each view
-            console.log(`Generating DataURL for view index: ${index}`); // ADDED LOGGING - Start of DataURL generation
+        return new Promise(resolve => {
+            console.log(`Generating DataURL for view index: ${index}`);
 
-            // --- Create a TEMPORARY canvas instance for each view ---
-            const tempCanvasForView = new fabric.Canvas(null, { // Create a new canvas
-                width: proofCreatorCanvas.getWidth(),  // Match dimensions of your main canvas
+            const tempCanvasForView = new fabric.Canvas(null, {
+                width: proofCreatorCanvas.getWidth(),
                 height: proofCreatorCanvas.getHeight(),
-                backgroundColor: '#ffffff' // Ensure white background if needed
+                backgroundColor: '#ffffff'
             });
 
-            tempCanvasForView.loadFromJSON(viewState, () => { // Load state ASYNCHRONOUSLY
-                console.log(`loadFromJSON callback for view index: ${index} completed on TEMPORARY canvas`);
+            tempCanvasForView.loadFromJSON(viewState, () => { // loadFromJSON callback - IMPORTANT!
+                console.log(`loadFromJSON callback for view index: ${index} STARTED`); // ADDED LOGGING - Start of callback
 
-                tempCanvasForView.renderAll(); // **EXPLICITLY CALL RENDERALL HERE**
+                tempCanvasForView.renderAll(); // Explicitly render all objects - ALREADY PRESENT
 
+                // --- MOVE toDataURL() call INSIDE the callback ---
                 const dataURL = tempCanvasForView.toDataURL('png');
                 console.log(`DataURL generated for view index: ${index} (TEMPORARY canvas): ${dataURL.substring(0, 50)}...`);
 
                 canvasDataURLs.push(dataURL); // Add Data URL to the array
-                resolve(); // Resolve the Promise when Data URL is generated
+                resolve(); // Resolve the Promise AFTER Data URL is generated
 
-                tempCanvasForView.dispose(); // Dispose of the temporary canvas to free resources - IMPORTANT!
+                tempCanvasForView.dispose();
+                console.log(`loadFromJSON callback for view index: ${index} ENDED`); // ADDED LOGGING - End of callback
+            }, null, function() { // Fabric.js callback context - No changes needed here, but added for clarity
+                // Optional callback context if needed, can leave null
             });
         });
     });
 
-    // Wait for ALL Promises to resolve (all Data URLs to be generated)
     Promise.all(dataURLPromises).then(() => {
         const garmentCode = document.getElementById('garment-code').value;
         const proofDescription = document.getElementById('proof-description').value;
@@ -533,7 +534,7 @@ function submitProof() {
 
         const proofData = {
             customerId: selectedCustomer,
-            canvasDataURLs: canvasDataURLs, // Now contains valid Data URLs
+            canvasDataURLs: canvasDataURLs,
             garmentCode: garmentCode,
             proofDescription: proofDescription
         };
