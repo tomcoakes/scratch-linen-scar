@@ -826,7 +826,7 @@ app.put("/api/customers/:customerId/generate-proof", async (req, res) => {
                         {
                             image: path.join(__dirname, 'src', 'pages', 'images', 'company_logo.png'), // Path to your company logo - ADJUST PATH IF NEEDED
                             width: 90, // Adjusted logo width
-                            height: auto // Adjust height automatically
+                            // height: auto // Adjust height automatically
                         },
                         {
                             text: 'Approval of Company Logo',
@@ -959,13 +959,12 @@ app.put("/api/customers/:customerId/generate-proof", async (req, res) => {
     const pdfDocDefinition = {
         ...documentDefinition,
         defaultStyle: { font: 'Poppins' },
-        // --- Make sure to include the fonts property within pdfDocDefinition ---
         fonts: {
             Poppins: {
-                normal: new Buffer(require('pdfmake/build/vfs_fonts.js').pdfMake.vfs['Poppins-Regular.ttf'], 'base64'),
-                bold: new Buffer(require('pdfmake/build/vfs_fonts.js').pdfMake.vfs['Poppins-Bold.ttf'], 'base64'),
-                italics: new Buffer(require('pdfmake/build/vfs_fonts.js').pdfMake.vfs['Poppins-Italic.ttf'], 'base64'),
-                bolditalics: new Buffer(require('pdfmake/build/vfs_fonts.js').pdfMake.vfs['Poppins-BoldItalic.ttf'], 'base64'),
+                normal: vfsFonts.pdfMake.vfs['Poppins-Regular.ttf'], // Access vfs directly
+                bold: vfsFonts.pdfMake.vfs['Poppins-Bold.ttf'],
+                italics: vfsFonts.pdfMake.vfs['Poppins-Italic.ttf'],
+                bolditalics: vfsFonts.pdfMake.vfs['Poppins-BoldItalic.ttf'],
             }
         }
     };

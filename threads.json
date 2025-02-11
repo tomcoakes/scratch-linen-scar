@@ -3045,20 +3045,6 @@
         "Hex": "#008E8C"
     },
     {
-        "id": 192,
-        "Thread Number": "test",
-        "Thread No (thickness)": "",
-        "Type": "",
-        "Length (m)": "",
-        "Colours": {
-            "Colour": "Blue",
-            "Stock Quantity": "3",
-            "Quantity Needed": "",
-            "PreOrder Quanity": "",
-            "Logo Name used in": "Alliance Flooring"
-        }
-    },
-    {
         "Thread Number": "1527",
         "Thread No (thickness)": "145",
         "Type": "jko",
