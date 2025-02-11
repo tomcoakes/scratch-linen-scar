@@ -522,8 +522,71 @@ function deleteActiveObject() {
     }
 }
 
-  function submitProof() {
+async function submitProof() {
+    console.log('submitProof() called in proof_creator.js - START');
 
+    if (!selectedCustomer) {
+        alert("Please select a customer before submitting a proof.");
+        return;
+    }
+
+    // 1. Gather data (canvas images, garment code, description)
+    saveCurrentView();
+    const canvasData = views.map(view => view.objects ? JSON.stringify(view) : null).filter(v=>v); // Filter out empty
+    const garmentCode = document.getElementById('garment-code').value.trim();
+    const proofDescription = document.getElementById('proof-description').value.trim();
+
+    if (!garmentCode) {
+        alert('Please enter a Garment Code.');
+        return;
+    }
+    if (canvasData.length === 0) {
+      alert('Please add at least one view to your proof.');
+        return;
+    }
+
+    console.log('submitProof() - Canvas Data:', canvasData);
+    console.log('submitProof() - Garment Code:', garmentCode);
+    console.log('submitProof() - Proof Description:', proofDescription);
+
+    // 2. Send data to the server
+    try {
+        const response = await fetch('/api/create-proof', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+             body: JSON.stringify({
+                canvasData: canvasData,
+                garmentCode: garmentCode,
+                description: proofDescription,
+                customerId: selectedCustomer // Optionally send customer ID
+            })
+        });
+
+        console.log('submitProof() - Server response:', response);
+
+        if (!response.ok) {
+            const errorData = await response.json();
+            throw new Error(`Server error: ${response.status} ${response.statusText} - ${errorData.error}`);
+        }
+
+        // 3. Handle the response (trigger download)
+        const blob = await response.blob();
+        const url = window.URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.style.display = 'none';
+        a.href = url;
+        a.download = `proof_${selectedCustomer}_${Date.now()}.pdf`; // Name the file
+        document.body.appendChild(a);
+        a.click();
+        window.URL.revokeObjectURL(url);
+        alert('Proof generated and download started.');
+    } catch (error) {
+        console.error('Error creating proof:', error);
+        alert('Failed to create proof: ' + error.message);
+    }
+      console.log('submitProof() - END');
 }
 
 // Placeholder function to generate and download PDF (Integration with your PDF generation logic will go here)

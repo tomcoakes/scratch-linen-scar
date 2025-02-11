@@ -9,108 +9,51 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/fabric.js/5.3.0/fabric.min.js"></script>
 </head>
 <body>
-    <header>
-        <div class="header-container">
+<div class="proof-container">
+        <div class="logo-area">
+            <!-- Company Logo -->
+            <img src="images/company_logo.png" alt="Company Logo">
+        </div>
+              <div class="company-contact-info">
+              <p class="company-tel">Tel: 0333 456 1501</p>
+              <p class="company-email">Email: sales@tbsg.co.uk</p>
+            </div>
+
+        <div class="header">
             <h1>Ikea</h1>
-            <nav>
-                <ul class="nav-links">
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="threads.html">Thread Manager</a></li>
-                </ul>
-            </nav>
-        </div>
-    </header>
 
-    <main class="customer-page-container">
-        <!-- Left Side: Vertical Stack (Customer Info and Threads) -->
-        <div class="left-side-container">
-            <section class="customer-info">
-                <h3>Customer Information</h3>
-                <p><strong>Customer Name:</strong> Ikea</p>
-                <p><strong>Contact:</strong> Mr Ikea</p>
-                <p><strong>Email:</strong> Mr@Ikea.com</p>
-<!--                    <button id="delete-customer-button" class="delete-customer-button" onclick="deleteCustomer(1)">Delete Customer</button> -->
-                   <button id="delete-customer-button" class="delete-customer-button" onclick="deleteCustomer(1)">Delete Customer</button>
-            </section>
-
-            <section class="customer-threads">
-                <h2>Threads Used</h2>
-                <ul id="customer-threads-list">
-                    <!-- Threads will be inserted here by the script -->
-                    
-                        <li>
-                            <div class="thread-swatch" style="background-color: #ccc;"></div>
-                            Thread Number: 1018 (Stock: N/A - Not in Stock List)
-                        </li>
-                    
-                </ul>
-            </section>
         </div>
 
-        <!-- Right Side: Logos -->
-        <section class="customer-logos">
-            <h2>Logos</h2>
-            <div class="logo-grid" id="customer-logo-grid">
-                    <!-- Logo images will be inserted here by the script -->
-                    
-                <div class="logo-item">
-                    <img src="/customer_logos/logo-upload-input-1739267170498-560998333.svg" alt="Falcon">
-                    <p class="logo-name"><strong>Name:</strong> Falcon</p>
-                    <p class="logo-position"><strong>Position:</strong> Left Chest</p>
-                    <p class="logo-type"><strong>Type:</strong> Embroidery</p>
-                    <p class="logo-threads"><strong>Threads:</strong> 1018</p>
-                    <div class="logo-actions">
-                        <button class="delete-logo-button" onclick="deleteLogo(1, 0)" data-logo-index="0">Delete Logo</button>
-                    </div>
-                </div>
-            
-                </div>
-        </section>
+        <div class="horizontal-line-top"></div>  <!-- Top Horizontal Line -->
 
-        <!-- Proofs section moved below Logos, spanning full width -->
-        <section class="customer-proofs">
-            <h2>Proofs</h2>
-        <div class="button-container">
-         <button id="add-proof-button" onclick="openProofModal(1)">Add Proof</button>
 
-         </div>
-<!--               <button type="button" onclick="openProofUploadModal([CUSTOMER_ID])">Add Proof</button> -->
-            <!-- Proof form and table will be inserted here -->
-            <div id="proofs-container">
-        <table id="proofs-table">
-            <thead>
-                <tr>
-                    <th>Preview</th>
-                    <th>Garment Code</th>
-                    <th>Logo</th>
-                    <th>Position</th>
-                    <th>Description</th>
-                    <th>Actions</th>
-                </tr>
-            </thead>
-            <tbody>
-    
-                <tr data-proof-index="0">
-                  <td><a href="/customer_proofs/proof-upload-input-1739267325679-635122888.pdf" target="_blank">View Proof</a></td>
-                    <td>RS232M</td>
-                    <td>Falcon</td>
-                    <td>Left Breast</td>
-                    <td>Description</td>
-                    <td>
-                        <button class="delete-proof-button" onclick="handleProofDelete(1, 0)">Delete</button>
-                    </td>
-                </tr>
-            
-            </tbody>
-        </table>
+        <div class="garment-details">
+            <p>[GARMENT_CODE]</p>
+            <p>[PROOF_DESCRIPTION]</p>
+        </div>
+
+        <div class="image-grid">
+            <div class="image-box" id="proof-image-1">
+                <!-- Proof Image 1 Placeholder -->
+            </div>
+            <div class="image-box-stack">
+              <div class="image-box" id="proof-image-2">
+                  <!-- Proof Image 2 Placeholder -->
+              </div>
+              <div class="image-box" id="proof-image-3">
+                  <!-- Proof Image 3 Placeholder -->
+              </div>
+            </div>
+        </div>
+
+
+
+        <div class="footer">
+            <p>107 Longmead Road Emerald Park East Emersons Green Bristol BS16 7FG</p>
+            <p>tbsg.co.uk</p>
+             <p>Positional Guide only</p>
+        </div>
     </div>
-        </section>
-    </main>
-
-    <footer>
-        <p>© 2025 Colour Matcher</p>
-    </footer>
-
 
     <div id="upload-proof-modal-1" class="modal">
         <div class="modal-content">

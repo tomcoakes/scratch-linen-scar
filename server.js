@@ -11,6 +11,7 @@ const multer = require('multer'); // ADD THIS LINE - require multer
 
 const fabric = require('fabric');
 console.log("Fabric object:", fabric);
+const pdf = require('html-pdf-node');
 
 
 
@@ -70,6 +71,15 @@ const upload = multer({
 });
 
 const PORT = process.env.PORT || 3000;
+
+// --- Debug Logging Function (Add this) ---
+const DEBUG_MODE = true; // Set to false to disable debug logging
+
+function debugLog(...messages) {
+  if (DEBUG_MODE) {
+    console.log('[DEBUG]', new Date().toISOString(), ...messages);
+  }
+}
 
 // Middleware
 app.use(cors());
@@ -804,7 +814,78 @@ app.delete("/api/customers/:customerId/proofs/:proofIndex", async (req, res) => 
 
     });
 });
+app.post("/api/create-proof", async (req, res) => {
+  try {
+    debugLog("POST /api/create-proof called");
 
+    const { canvasData, garmentCode, description } = req.body;
+
+    // Basic Validation (add more as needed)
+    if (!canvasData || !garmentCode) {
+      return res.status(400).json({ error: "Missing required data (canvasData, garmentCode)." });
+    }
+
+    // 1. Read the HTML template
+    debugLog("Reading proof_template.html...");
+    const templatePath = path.join(__dirname, 'src', 'pages', 'proof_template.html');
+    let htmlTemplate = fs.readFileSync(templatePath, 'utf8');
+    debugLog("proof_template.html read successfully.");
+
+    // 2. Replace Placeholders
+    debugLog("Replacing placeholders in template...");
+    htmlTemplate = htmlTemplate.replace('[GARMENT_CODE]', garmentCode);
+    htmlTemplate = htmlTemplate.replace('[PROOF_DESCRIPTION]', description || 'No description provided.');
+    // Replace the image placeholders with actual image data
+       htmlTemplate = htmlTemplate.replace(
+        `<div class="image-box" id="proof-image-1"></div>`,
+        `<div class="image-box"><img src="${canvasData[0]}" alt="Proof Image 1"></div>`
+    );
+     htmlTemplate = htmlTemplate.replace(
+       `<div class="image-box" id="proof-image-2"></div>`,
+       canvasData[1]
+       ? `<div class="image-box"><img src="${canvasData[1]}" alt="Proof Image 2"></div>`
+       : `<div class="image-box"> </div>` //empty box
+    );
+     htmlTemplate = htmlTemplate.replace(
+       `<div class="image-box" id="proof-image-3"></div>`,
+        canvasData[2]
+        ? `<div class="image-box"><img src="${canvasData[2]}" alt="Proof Image 3"></div>`
+        : `<div class="image-box"> </div>` //empty box
+    );
+
+    debugLog("Placeholders replaced.");
+
+    // 3. Generate PDF Options
+      let options = {
+        format: 'A4',
+        landscape: true,
+        margin: {
+              top: "10mm",
+              bottom: "20mm",
+              left: "15mm",
+              right: "15mm"
+          }
+      }; // Use A4 Landscape, adjust margins if you need to
+
+    const file = { content: htmlTemplate };
+
+    // 4. Generate PDF
+    debugLog("Generating PDF using html-pdf-node...");
+    const pdfBuffer = await pdf.generatePdf(file, options);
+    debugLog("PDF generated successfully.");
+
+    // 5. Send PDF as response
+    res.setHeader('Content-Type', 'application/pdf');
+    res.setHeader('Content-Disposition', 'attachment; filename=proof.pdf'); // Suggest download
+    res.send(pdfBuffer);
+    debugLog("PDF sent in response.");
+
+
+  } catch (error) {
+    console.error("Error creating proof:", error);
+    res.status(500).json({ error: "Failed to create proof: " + error.message });
+  }
+});
 
 
 
