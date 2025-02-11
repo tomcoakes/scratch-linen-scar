@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Thread Stock Manager</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="threads.css">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet"> <!-- Google Fonts -->
+</head>
+<body>
+  <header>
+    <div class="header-container">
+      <h1>Thread Stock Manager</h1>
+      <nav>
+        <a href="index.html">Home</a>
+        <a href="threads.html" class="active">Thread Manager</a>
+        <li><button id="open-all-customers-modal-button" class="header-button">Customers</button></li> 
+        <!-- Add other navigation links if necessary -->
+      </nav>
+    </div>
+  </header>
+  
+  <main>
+    <section class="controls">
+      <div class="search-input-container">  
+        <input type="text" id="search-input" placeholder="Search">
+        <button type="button" id="clear-search-button" class="clear-search-button" style="display:none;">×</button>
+      </div>
+
+<!--       <select id="filter-type">
+        <option value="">All Types</option>
+        <option value="100% Polyester">100% Polyester</option>
+        <option value="Viscose">Viscose</option>
+  
+      </select> -->
+
+  <button id="add-thread-button" class="primary-btn">Add New Thread</button>
+</section>
+    
+    <div class="table-container">
+      <table id="threads-table">
+        <thead>
+          <tr>
+            <th>Image</th>
+            <th data-sort="threadNumber" class="sortable">Thread Number</th>
+            <th data-sort="type" class="sortable">Type</th>
+            <th data-sort="threadThickness" class="sortable">Thread Thickness</th>
+            <th data-sort="length" class="sortable">Length (m)</th>
+            <th data-sort="colour" class="sortable">Colour</th>
+            <th data-sort="stockQuantity" class="sortable">Stock Quantity</th>
+            <th>Company</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Dynamic Content -->
+        </tbody>
+      </table>
+    </div>
+    
+
+    
+  </main>
+
+  <!-- Edit Modal -->
+  <div id="edit-modal" class="modal">
+    <div class="modal-content">
+      <span class="close-button">&times;</span>
+      <h2>Edit Thread</h2>
+      <form id="edit-form">
+        <input type="hidden" id="edit-id" name="id">
+
+        <label for="threadNumber">Thread Number:</label>
+        <input type="text" id="threadNumber" name="threadNumber" required>
+
+        <label for="threadThickness">Thread Thickness:</label>
+        <input type="text" id="threadThickness" name="threadThickness">
+
+        <label for="type">Type:</label>
+        <input type="text" id="type" name="type">
+
+        <label for="length">Length (m):</label>
+        <input type="number" id="length" name="length">
+
+        <label for="colour">Colour:</label>
+        <input type="text" id="colour" name="colour" required>
+
+        <label for="stockQuantity">Stock Quantity:</label>
+        <input type="number" id="stockQuantity" name="stockQuantity">
+
+        <label for="logoName">Company:</label>
+        <input type="text" id="logoName" name="logoName" placeholder="Separate multiple companies with commas">
+
+        <button type="submit">Save Changes</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Add Modal -->
+  <div id="add-modal" class="modal">
+    <div class="modal-content">
+      <span class="close-button">&times;</span>
+      <h2>Add New Thread</h2>
+      <form id="add-form">
+        <label for="newThreadNumber">Thread Number:</label>
+        <input type="text" id="newThreadNumber" name="threadNumber" required>
+
+        <label for="newThreadThickness">Thread Thickness:</label>
+        <input type="text" id="newThreadThickness" name="threadThickness">
+
+        <label for="newType">Type:</label>
+        <input type="text" id="newType" name="type">
+
+        <label for="newLength">Length (m):</label>
+        <input type="number" id="newLength" name="length">
+
+        <label for="newColour">Colour:</label>
+        <input type="text" id="newColour" name="colour" required>
+
+        <label for="newStockQuantity">Stock Quantity:</label>
+        <input type="number" id="newStockQuantity" name="stockQuantity">
+
+        <label for="newLogoName">Company:</label>
+        <input type="text" id="newLogoName" name="logoName" placeholder="Separate multiple companies with commas">
+
+        <button type="submit">Add Thread</button>
+      </form>
+    </div>
+  </div>
+
+  <script src="threads.js"></script>
+</body>
+</html>

@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Pantone Colour Matcher</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="style.css">
+
+  <!-- PDF.js via CDN -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.7.107/pdf.min.js"></script>
+  <script>
+    pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.7.107/pdf.worker.min.js';
+  </script>
+  <style>
+    /* Initially hide the image container */
+
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="header-container">
+      <h1>Pantone Colour Matcher</h1>
+      <nav>
+        <ul class="nav-links">
+          <li><a href="index.html" class="active">Home</a></li>
+          <li><a href="threads.html">Thread Manager</a></li>
+          <li><a href="proof_creator.html">Proof Creator</a></li>
+          <li><button id="open-all-customers-modal-button" class="header-button">Customers</button></li> 
+          <!-- Add more navigation links here if needed -->
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <div class="main-container">
+    <!-- Left Column: Upload + Image -->
+    <div class="left-column">
+      <div id="dropArea" class="drop-area">
+        <p>Drag & Drop Your File Here</p>
+        <p>or</p>
+        <button id="fileButton" class="primary-btn">Choose File</button>
+        <input type="file" id="fileInput" accept=".eps,.pdf,.svg,image/*" style="display: none;">
+      </div>
+
+      <!-- Add this section for color search type selection -->
+<!-- HTML -->
+
+      
+      
+  <div class="search-type-selector">
+  <h2>Colour Search Type</h2>
+  <div class="colour-switch-wrapper">
+
+    <!-- Radio for RGB -->
+    <input
+      type="radio"
+      class="colour-switch-input"
+      name="colourSearchType"
+      id="colourSearchTypeRgb"
+      checked
+      onchange="setColourMode('rgb')"
+    />
+
+    <!-- Radio for CIELab -->
+    <input
+      type="radio"
+      class="colour-switch-input"
+      name="colourSearchType"
+      id="colourSearchTypeCielab"
+      onchange="setColourMode('cielab')"
+    />
+
+    <!-- Label on the left (RGB) -->
+    <label class="colour-switch-label left-label" for="colourSearchTypeRgb">
+      3D RGB
+    </label>
+
+    <!-- The 'track' (the grey pill) -->
+    <div class="colour-switch-container">
+      <!-- The 'thumb' that slides -->
+      <div class="colour-switch-toggle"></div>
+    </div>
+
+    <!-- Label on the right (CIELab) -->
+    <label class="colour-switch-label right-label" for="colourSearchTypeCielab">
+      CIELab
+    </label>
+            <div class="search-buttons">
+          <button id="add-existing-customer-button" class="tertiary-btn">Add to Existing Customer</button>
+          <button id="create-new-customer-button" class="tertiary-btn">Create New Customer</button>
+        </div>
+
+  </div>
+</div>
+
+
+
+      <div id="imageContainer" class="image-container">
+        <h2>Uploaded Image</h2>
+        <!-- Only one image preview -->
+        <img id="uploadedImage" src=""  />
+      </div>
+    </div>
+          <!-- Add Existing Customer Modal -->
+      <div id="add-existing-customer-modal" class="modal">
+        <div class="modal-content">
+          <span class="close-button">×</span>
+          <h2>Add to Existing Customer</h2>
+          
+                        <form id="add-logo-details-form">  <!-- Form to wrap the new logo details fields -->
+                <label for="logo-name">Logo Name:</label>
+                <input type="text" id="logo-name" name="logoName" required>
+
+                <label for="logo-position">Logo Position:</label>
+                <select id="logo-position" name="logoPosition" required>
+                    <option value="">Select Position</option>
+                    <option value="Left Chest">Left Chest</option>
+                    <option value="Right Chest">Right Chest</option>
+                    <option value="Right Chest">Right Chest</option>
+                    <option value="Full Back">Full Back</option>
+                    <option value="Sleeve">Sleeve</option>
+                    <option value="Hood">Hood</option>
+                    <option value="Other">Other</option>
+                </select>
+
+                <label>Logo Type(s):</label>
+                <div class="checkbox-group">
+                    <input type="checkbox" id="logo-type-embroidery" name="logoType" value="Embroidery">
+                    <label for="logo-type-embroidery">Embroidery</label>
+
+                    <input type="checkbox" id="logo-type-dtf" name="logoType" value="DTF">
+                    <label for="logo-type-dtf">DTF</label>
+
+                    <input type="checkbox" id="logo-type-both" name="logoType" value="Both">
+                    <label for="logo-type-both">Both</label>
+                </div>
+        
+                <div class="checkbox-group">
+                <label for="logo-threads">Add Threads? </label>
+                <input type="checkbox" id="add-threads-checkbox" name="addThreads">
+                <div id="thread-input-area" style="display:none;"> 
+                    <label for="thread-numbers">Thread Numbers (comma-separated):</label>
+                    <input type="text" id="thread-numbers" name="threadNumbers">
+                    <button type="button" id="add-thread-button-inline" class="quad-btn">Add Thread</button> 
+                    <ul id="logo-thread-list">
+                        <!-- Dynamically added thread list items -->
+                    </ul>
+                </div>
+                          </div>
+              </form>
+
+          <div class="search-input-container">  <!-- ADD THIS WHOLE BLOCK - SEARCH INPUT AREA -->
+            <input type="text" id="search-input" placeholder="Search Customers...">
+            <button type="button" id="clear-search-button" class="clear-search-button" style="display:none;">×</button>
+          </div>                                    <!-- END OF SEARCH INPUT AREA -->
+
+          <form id="add-existing-customer-form">
+              <input type="file" id="logo-upload-input" style="display:none;" accept="image/*,.svg,.pdf">   <!-- ADD THIS LINE - hidden file input -->
+              <div id="existing-customer-list">
+                  <ul id="customer-list"></ul>
+              </div>
+          </form>
+        </div>
+      </div>
+
+      <!-- Create New Customer Modal -->
+      <div id="create-new-customer-modal" class="modal">
+        <div class="modal-content">
+          <span class="close-button">×</span>
+          <h2>Create New Customer</h2>
+          <form id="create-customer-form">
+            <label for="new-customer-name">Customer Name:</label>
+            <input type="text" id="new-customer-name" name="name" required>
+
+            <label for="new-contact-person">Contact Person:</label>
+            <input type="text" id="new-contact-person" name="contactPerson">
+
+            <label for="new-customer-email">Email:</label>
+            <input type="email" id="new-customer-email" name="email">
+
+            <button type="submit">Create Customer</button>
+          </form>
+        </div>
+      </div>
+      <!-- All Customers Modal -->
+      <div id="all-customers-modal" class="modal">
+        <div class="modal-content">
+          <span class="close-button">×</span>
+          <h2>All Customers</h2>
+
+          <div class="search-input-container">
+            <input type="text" id="search-customers-input" placeholder="Search Customers...">
+            <button type="button" id="clear-customers-search-button" class="clear-search-button" style="display:none;">×</button>
+          </div>
+
+          <div id="all-customer-list">
+            <ul id="all-customer-list-ul">
+              <!-- Customer list will be populated here by JavaScript -->
+            </ul>
+          </div>
+        </div>
+      </div>
+    
+
+    <!-- Right Column: Results + Manual + Thread Matching + Madeira -->
+    <div class="right-column">
+
+      <div id="resultsPanel">
+        <h2>Analysed Colours</h2>
+        <div id="results"></div>
+      </div>
+
+      <!-- Manual Search Section -->
+      <div id="manualSearch" class="manual-search">
+        <h2>Manual Search (Click Image)</h2>
+        <div class="colour-list" id="manualColourList"></div>
+      </div>
+
+    <!-- Selected for Thread Matching -->
+    <div id="selectedForThread" class="thread-section">
+      <h2>Selected for Thread Matching</h2>
+      <div id="threadList" class="colour-list"></div>
+      <div class="search-type-selector-threads"> <!-- NEW SECTION -->
+        <h3>Madeira Hex Search Type</h3>
+        <div class="search-buttons-container">  <!-- Flex container to align buttons and switch -->
+          <div class="search-buttons">
+            <!-- Buttons -->
+            <button id="searchMadeiraThreadsPantone" class="primary-btn">Search Madeira Threads by Pantone</button>
+            <button id="searchMadeiraThreadsHex" class="primary-btn">Search Madeira Threads by Hex</button>
+          </div>
+          <div class="madeira-hex-search-switch"> <!-- Switch directly next to Hex button -->
+            <label class="switch-label switch-label-left" for="madeiraHexSearchTypeRgb">3D RGB</label>
+            <div class="switch-container">
+              <input type="radio" name="madeiraHexSearchType" id="madeiraHexSearchTypeRgb" value="rgb" checked class="switch-input">
+              <input type="radio" name="madeiraHexSearchType" id="madeiraHexSearchTypeCielab" value="cielab" class="switch-input">
+              <div class="switch-toggle"></div>
+            </div>
+            <label class="switch-label switch-label-right" for="madeiraHexSearchTypeCielab">CIELab</label>
+          </div>
+          <button id="clearMadeiraResults" class="secondary-btn primary-btn">Clear Results</button> <!-- On the far right -->
+        </div>
+      </div>
+    </div>
+
+
+      <!-- Madeira Search Results will be appended here by JavaScript -->
+      <!-- No need to have a pre-existing #madeiraResults div in HTML -->
+
+    </div>
+  </div>
+
+  <!-- Hidden canvas used for raster images & PDF rendering (entirely hidden) -->
+  <canvas id="hiddenCanvas" style="display: none;"></canvas>
+
+  <footer>
+    <p>© 2025 Colour Matcher</p>
+  </footer>
+
+  <!-- Your main script - now the combined script.js -->
+  <script src="script.js"></script>
+  <script src="customer-actions.js"></script>
+
+  <!-- Script to set global colour mode -->
+  <script>
+    function setColourMode(mode) {
+      colourMode = mode; // Sets the global variable in script.js
+      console.log(`Pantone Match Colour mode set to: ${colourMode}`);
+      reAnalyseColours(); // Call reAnalyseColours when mode changes
+    }
+    
+
+    
+  </script>
+
+  <!-- Madeira logic (ES module) -->
+  <script type="module">
+    import { searchMadeiraPantones } from './madeira.js';
+
+    // Button to search Madeira by Pantone
+    document.getElementById("searchMadeiraThreadsPantone").addEventListener("click", async () => {
+      try {
+        const pantoneSet = new Set();
+        const items = document.querySelectorAll("#threadList .colour-item");
+        items.forEach(it => {
+          const pant = it.dataset.pantone;
+          if (pant) {
+            pantoneSet.add(pant);
+          }
+        });
+
+        const pantoneArray = Array.from(pantoneSet)
+        if (pantoneArray.length === 0) {
+          alert("No Pantone codes found in the Thread Matching section.");
+          return;
+        }
+
+        // Disable the button to prevent multiple clicks
+        const searchButton = document.getElementById("searchMadeiraThreadsPantone");
+        searchButton.disabled = true;
+        searchButton.textContent = "Searching...";
+
+        // Run the searchMadeiraPantones function
+        const resultsMap = await searchMadeiraPantones(pantoneArray);
+
+        // Re-enable the button
+        searchButton.disabled = false;
+        searchButton.textContent = "Search Madeira Threads by Pantone";
+
+        // Display the results, using the new function in script.js
+        window.displayMadeiraResultsByPantone(resultsMap);
+
+      } catch (err) {
+        console.error("Error searching Madeira:", err);
+        alert("An error occurred while searching Madeira. Check the console for details.");
+        // Re-enable the button in case of error
+        const searchButton = document.getElementById("searchMadeiraThreadsPantone");
+        searchButton.disabled = false;
+        searchButton.textContent = "Search Madeira Threads by Pantone";
+      }
+    });
+
+    // Button to search Madeira by Hex
+    document.getElementById("searchMadeiraThreadsHex").addEventListener("click", async () => {
+      try {
+        const hexSet = new Set();
+        const items = document.querySelectorAll("#threadList .colour-item");
+        items.forEach(it => {
+          const swatch = it.querySelector('.colour-swatch');
+          if (swatch) {
+            const computedStyle = window.getComputedStyle(swatch);
+            const bgColor = computedStyle.getPropertyValue('background-color');
+            const hexCode = rgbToHexFromRGB(bgColor);
+            if (hexCode) {
+              hexSet.add(hexCode);
+            }
+          }
+        });
+
+        const hexArray = Array.from(hexSet);
+        if (hexArray.length === 0) {
+          alert("No hex codes found in the Thread Matching section.");
+          return;
+        }
+
+        // Disable the button to prevent multiple clicks
+        const searchButton = document.getElementById("searchMadeiraThreadsHex");
+        searchButton.disabled = true;
+        searchButton.textContent = "Searching...";
+
+        // Run the hex-based search
+        const resultsMap = await searchMadeiraThreadsByHex(hexArray);
+
+        // Re-enable the button
+        searchButton.disabled = false;
+        searchButton.textContent = "Search Madeira Threads by Hex";
+
+        // Display the results, using the new function in script.js
+        window.displayMadeiraResultsByHex(resultsMap);
+
+      } catch (err) {
+        console.error("Error searching Madeira by Hex:", err);
+        alert("An error occurred while searching Madeira by Hex. Check the console for details.");
+        // Re-enable the button in case of error
+        const searchButton = document.getElementById("searchMadeiraThreadsHex");
+        searchButton.disabled = false;
+        searchButton.textContent = "Search Madeira Threads by Hex";
+      }
+    });
+
+    /**
+     * Helper function to convert RGB string to Hex (Same as before)
+     */
+    function rgbToHexFromRGB(rgb) {
+      const result = /^rgb\((\d{1,3}),\s*(\d{1,3}),\s*(\d{1,3})\)$/.exec(rgb);
+      if (!result) return null;
+      const r = parseInt(result[1], 10);
+      const g = parseInt(result[2], 10);
+      const b = parseInt(result[3], 10);
+      if ([r, g, b].some(v => v < 0 || v > 255)) return null;
+      return rgbToHex(r, g, b);
+    }
+  </script>
+
+  <script>
+    // script.js content will be here, assuming it handles file upload and image display
+    // Placeholder for where you would handle file upload and image display in script.js
+
+    document.addEventListener('DOMContentLoaded', () => {
+      const fileInput = document.getElementById('fileInput');
+      const fileButton = document.getElementById('fileButton');
+      const dropArea = document.getElementById('dropArea');
+      const uploadedImage = document.getElementById('uploadedImage');
+      const imageContainer = document.getElementById('imageContainer');
+
+      fileButton.addEventListener('click', () => {
+        fileInput.click();
+      });
+
+      fileInput.addEventListener('change', handleFile);
+      dropArea.addEventListener('dragover', handleDragOver);
+      dropArea.addEventListener('drop', handleFileDrop);
+
+      function handleDragOver(evt) {
+        evt.preventDefault();
+        dropArea.classList.add('dragover');
+      }
+
+      function handleFileDrop(evt) {
+        evt.preventDefault();
+        dropArea.classList.remove('dragover');
+        const files = evt.dataTransfer.files;
+        handleFiles(files);
+      }
+
+      function handleFile(evt) {
+        const files = fileInput.files;
+        handleFiles(files);
+      }
+
+      function handleFiles(files) {
+        if (files.length > 0) {
+          const file = files[0];
+          const fileType = file.type;
+          const validImageTypes = ['image/gif', 'image/jpeg', 'image/png', 'image/svg+xml', 'image/webp'];
+          const validPdfTypes = ['application/pdf'];
+          const validEpsTypes = ['application/postscript', 'application/eps', 'image/x-eps', 'image/eps', 'text/eps', 'text/x-eps'];
+
+
+          if (validImageTypes.includes(fileType) || validPdfTypes.includes(fileType) || validEpsTypes.includes(fileType)) {
+            const reader = new FileReader();
+
+            reader.onload = function(e) {
+              uploadedImage.src = e.target.result;
+              // Show the image container after image is loaded
+              imageContainer.style.display = 'block';
+              // You would also process the image for color analysis here in script.js
+              console.log('File uploaded and image displayed');
+            }
+
+            reader.readAsDataURL(file);
+          } else {
+            alert('Invalid file type. Please upload an image, PDF, EPS or SVG.');
+          }
+        }
+      }
+    });
+  </script>
+</body>
+</html>

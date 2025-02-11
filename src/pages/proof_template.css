@@ -1,0 +1,164 @@
+/* proof_creator.css */
+
+/* Reset and Base Styles (ensure consistency) */
+body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background-color: #fff; /* Ensure PDF background is white */
+    color: #333; /* Default text color */
+}
+
+.proof-container {
+    width: 297mm; /* A4 Landscape Width */
+    height: 210mm; /* A4 Landscape Height */
+    padding: 20mm 25mm; /* Adjust padding for margins */
+    position: relative;
+    background-color: #fff; /* White background for PDF */
+    /* border: 1px solid red;  For debugging layout */
+}
+
+/* --- Header Section --- */
+.header {
+    text-align: left;
+    margin-bottom: 10px; /* Reduced margin */
+    color: #000; /* Black header text */
+}
+
+.header h1 {
+    font-size: 28px;
+    margin-bottom: 10px;
+    font-weight: bold;
+    margin-top: 100px;
+}
+
+.header p {
+    font-size: 11px; /* Smaller contact info text */
+    margin: 0;
+    color: #555; /* Slightly lighter contact info */
+}
+
+/* --- Logo Area (Top Left) --- */
+.logo-area {
+    position: absolute;
+    top: 20mm;
+    left: 25mm; /* Match container padding */
+    width: 90px; /* Adjusted logo width */
+    height: auto; /* Adjust height automatically */
+}
+
+.logo-area img {
+    max-width: 200%;
+    height: auto;
+    display: block;
+}
+
+/* --- Contact Info (Top Right) --- */
+.company-tel {
+    position: absolute;
+    top: 20mm;
+    right: 25mm; /* Match container padding */
+    text-align: right;
+    color: #000; /* Black contact info text */
+  margin-top: auto;
+}
+.company-email {
+    position: absolute;
+    top: 20mm;
+    right: 25mm; /* Match container padding */
+    text-align: right;
+    color: #000; /* Black contact info text */
+    
+}
+
+.contact-info p {
+    font-size: 12px; /* Slightly larger contact info text */
+    margin: 3px 0; /* Adjusted spacing */
+}
+
+/* --- Garment Details (Below Header) --- */
+.garment-details {
+    margin-top: 20px; /* Spacing below header */
+    margin-bottom: 20px;
+    color: #000; /* Black garment details text */
+}
+
+.garment-details p {
+    font-size: 16px; /* Slightly larger garment details text */
+    margin: 6px 0; /* Adjusted spacing */
+    font-weight: normal; /* Make garment details normal weight */
+}
+
+
+/* --- Image Grid --- */
+.image-grid {
+    display: grid;
+    grid-template-columns: 0.4fr 0.3fr; /* First column takes more width, second column (stack) takes less */
+    gap: 4mm; /* Gap between grid items */
+    margin-bottom: 15mm;
+}
+
+.image-box-stack {
+    display: grid; /* Enable grid layout for the stacked boxes */
+    grid-template-rows: 1fr 1fr; /* Stack them vertically, equal height */
+    gap: 4mm; /* Gap between stacked boxes */
+}
+
+
+.image-box {
+    border: 1px solid #ccc;
+    /* height: 130mm;  No fixed height anymore, adjust to content */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    border-radius: 5px;
+    min-height: 60mm; /* Minimum height for each image box */
+}
+
+.image-box img {
+    max-width: 95%; /* Slightly smaller image inside box */
+    max-height: 95%;
+    display: block;
+    object-fit: contain; /* Ensure image fits without cropping */
+}
+
+.horizontal-line-top {
+    position: absolute;
+    top: 165px; /* Adjust position under logo */
+    left: 25mm;
+    right: 25mm;
+    height: 2px;
+    background-color: #EC008D; /* Pink line colour */
+}
+
+.horizontal-line-bottom {
+    position: absolute;
+    bottom: 40mm; /* Adjust position above footer */
+    left: 25mm;
+    right: 25mm;
+    height: 1px; /* Thinner bottom line */
+    background-color: #ccc; /* Light grey bottom line */
+}
+
+/* --- Footer Section --- */
+.footer {
+    position: absolute;
+    bottom: 20mm;
+    left: 25mm; /* Match container padding */
+    right: 25mm; /* Match container padding */
+    text-align: left;
+    font-size: 9px; /* Even smaller footer text */
+    color: #777; /* Darker grey footer text */
+    border-top: 2px solid #EC008D; /* Lighter border */
+    padding-top: 8px; /* Reduced padding */
+}
+
+.footer p {
+    margin: 2px 0; /* Reduced spacing in footer */
+}
+
+.company-tel {
+  position: absolute;
+}

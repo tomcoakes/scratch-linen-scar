@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Proof Creator</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">  <!-- Reuse your existing styles, adjust as needed -->
+    <link rel="stylesheet" href="proof_creator.css"> <!-- NEW Stylesheet for the proof creator page -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fabric.js/5.3.0/fabric.min.js"></script>
+    <script src="proof_creator.js" defer></script>  <!-- Link to the proof creator JS file -->
+</head>
+<body id="proof-creator-page">
+    <header>
+        <div class="header-container">
+            <h1>Proof Creator</h1>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="threads.html">Thread Manager</a></li>
+                    <!-- Add other navigation links here if needed -->
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <main>
+        <div class="main-container">
+            <!-- Left Column: Logo selection and Canvas Controls -->
+            <div class="left-column">
+                <div class="search-input-container">
+                    <input type="text" id="search-customers-input" placeholder="Search Customers">
+                    <button type="button" id="clear-customers-search-button" class="clear-search-button" style="display:none;">×</button>
+                </div>
+                <ul id="customer-list">
+                    <!-- Customer list items will go here -->
+                </ul>
+                <h2>Selected Customer Logos</h2>
+                <ul id="selected-logos-list">
+                    <!-- Selected logo list will be here -->
+                </ul>
+
+                 <button id="add-view-button" class="primary-btn">Add Proof View</button>
+
+
+                <form id="proof-form">
+
+                  <label for="garment-image-input">Upload Garment Image:</label>
+                  <input type="file" id="garment-image-input" accept="image/*">
+
+                  <label for="garment-code">Garment Code:</label>
+                  <input type="text" id="garment-code" name="garmentCode" required>
+
+                   <label for="proof-description">Optional Description:</label>
+                  <textarea id="proof-description" name="proofDescription"></textarea>
+                </form>
+
+            </div>
+
+            <!-- Right Column: Canvas -->
+              <div class="right-column">
+                <div class="canvas-wrapper"> <!-- NEW canvas-wrapper div -->
+                    <div class="canvas-controls"> <!-- Controls INSIDE canvas wrapper -->
+                        <button id="zoom-in">+</button>
+                        <button id="zoom-out">-</button>
+                        <button id="reset-zoom">Reset Zoom</button>
+                    </div>
+
+                    <canvas id="proof-canvas" width="800" height="600"></canvas>
+                  
+
+                    <div id="canvas-carousel-controls" class="canvas-carousel-controls"> <!-- Carousel controls INSIDE wrapper -->
+                        <button id="prev-view-button" class="carousel-arrow"><i class="fas fa-chevron-left"></i></button>
+                        <div id="canvas-view-indicators" class="canvas-view-indicators">
+                            <!-- Indicators will be dynamically added here -->
+                        </div>
+                        <button id="next-view-button" class="carousel-arrow"><i class="fas fa-chevron-right"></i></button>
+                    </div>
+                </div>
+                <button id="submit-proof-button" class="primary-btn">Submit Proof (Placeholder)</button>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <p>© 2025 Colour Matcher</p>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,607 @@
+/* threads.css - CREATIVE REDESIGN, CUSTOMER PAGE THEME */
+
+/* ============================================
+   Table of Contents
+   ============================================
+   1.  Reset and Base Styles
+   2.  Header and Footer
+   3.  Main Content Area
+   4.  Controls (Search, Add Button)
+   5.  Threads Table (Enhanced)
+   6.  Modal Styles (Refined)
+   7.  Responsive Adjustments
+   8.  Animations (Subtle)
+*/
+
+/* ============================================
+   1. Reset and Base Styles
+   ============================================ */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    background-color: #f4f4f8;
+    color: #333;
+    line-height: 1.6;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    font-size: 14px;
+}
+
+/* ============================================
+   2. Header and Footer
+   ============================================ */
+
+header,
+footer {
+    background-color: #2c3e50;
+    color: #fff;
+    padding: 1rem 0;
+    text-align: center;
+    font-size: 1rem;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+footer {
+    margin-top: auto;
+    width: 100%;
+}
+
+header .header-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 1200px;
+    margin: 0 auto;
+    width: 90%;
+}
+
+header h1 {
+    font-size: 2.5rem;
+    font-weight: 600;
+}
+
+nav {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+
+nav a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 1rem;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    transition: color 0.3s ease, background-color 0.3s ease;
+    display: inline-block;
+}
+
+nav a:hover,
+nav a.active {
+    background-color: rgba(255, 255, 255, 0.1);
+    color: #1abc9c;
+}
+
+/* ============================================
+   3. Main Content Area
+   ============================================ */
+
+main {
+    padding: 1.5rem;
+    flex-grow: 1;
+}
+
+/* ============================================
+   4. Controls (Search, Add Button)
+   ============================================ */
+
+.controls {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+    align-items: center;
+    background-color: #fff;
+    padding: 1rem;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.search-input-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    flex: 1 1 250px;
+}
+
+.controls input[type="text"] {
+    padding: 0.75rem 1rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1rem;
+    flex-grow: 1;
+    min-width: 200px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.clear-search-button {
+    position: absolute;
+    right: 0.5rem;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    font-size: 1.2em;
+    color: #95a5a6;
+    cursor: pointer;
+    opacity: 0.6;
+    transition: opacity 0.3s;
+    padding: 0;
+    width: 20px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1;
+}
+
+.clear-search-button:hover {
+    opacity: 1;
+    color: #333;
+}
+
+/* Controls Section - Add New Thread Button */
+.controls button.primary-btn {
+    padding: 0.75rem 1.5rem;
+    background-color: #1abc9c;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.controls button.primary-btn:hover {
+    background-color: #16a085;
+}
+
+.header-button {
+    background: none;
+    color: #fff;
+    border: none;
+     padding: 0.5rem 1rem; /* Customer page padding */
+    border-radius: 5px;   /* Customer page border-radius */
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    font-family: 'Poppins', sans-serif; /* Match header font */
+}
+
+.header-button:hover,
+.header-button.active {
+     color: #1abc9c;
+    background-color: rgba(255,255,255, 0.1);
+}
+
+/* ============================================
+   5. Threads Table (Enhanced)
+   ============================================ */
+
+#threads-table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    overflow: hidden;
+    table-layout: fixed;
+}
+
+#threads-table th,
+#threads-table td {
+    padding: 0.6rem 0.8rem;
+    border-bottom: 1px solid #eee;
+    text-align: left;
+    vertical-align: middle;
+    font-size: 0.85rem;
+}
+
+#threads-table th {
+    background-color: #fafafa;
+    color: #2c3e50;
+    font-weight: 600;
+    position: sticky;
+    top: 0;
+    box-shadow: 0 2px 2px -2px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+    cursor: pointer;
+    padding: 0.6rem 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    border-bottom: none;
+    padding-bottom: 20px;
+    padding-top:20px;
+}
+
+#threads-table th.sortable:hover {
+    background-color: #f8f9fa;
+}
+
+#threads-table th.sortable .sort-indicator {
+    margin-left: 5px;
+    font-size: 0.8em;
+    visibility: hidden;
+    color: #6c757d;
+}
+
+#threads-table th.sortable:hover .sort-indicator,
+#threads-table th.sortable.sorted .sort-indicator {
+    visibility: visible;
+}
+
+
+#threads-table tbody tr:hover {
+    background-color: #f8f9fa;
+}
+
+/* --- Action Buttons within Table --- */
+#threads-table td {
+    position: relative; /* ADDED: Needed for dropdown positioning */
+}
+
+#threads-table .actions-cell {
+    /* display: flex;  REMOVE THIS */
+    /* flex-direction: column; REMOVE THIS*/
+    /* align-items: stretch; REMOVE THIS */
+    /* gap: 0.25rem;  REMOVE THIS */
+    text-align: center; /* Horizontally center inline-block elements */
+}
+
+#threads-table button {
+    /* width: 100%; REMOVE THIS */
+    display: inline-block; /*  Make buttons inline-block */
+    width: 50%;          /*  Each button takes 50% width */
+    margin-bottom: 5px;    /* No bottom margin */
+    padding: 0.3rem 0.5rem;
+    font-size: 0.75rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    color: #ffffff;
+    transition: background-color 0.3s;
+    box-shadow: none;
+    text-align: center; /* Ensure text is centered within the button */
+}
+
+#threads-table .edit-button {
+     background-color: #1abc9c; /* Customer page primary button color */
+}
+
+#threads-table .edit-button:hover {
+   background-color: #16a085; /* Darker shade on hover */
+}
+
+#threads-table .delete-button {
+    background-color: #1abc9c; /* Customer page primary button color */
+}
+
+#threads-table .delete-button:hover {
+     background-color: #16a085; /* Darker shade on hover */
+}
+
+/* --- Dropdown Styles (Optional, but Recommended) --- */
+
+.actions-cell {
+    position: relative; /* Needed for dropdown positioning */
+}
+
+.actions-dropdown {
+    position: absolute;
+    top: 100%; /* Position below the trigger button */
+    left: 0;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    display: none; /* Hidden by default */
+    z-index: 10;
+    min-width: 100%;
+}
+
+.actions-cell.open .actions-dropdown {
+    display: block; /* Show when the cell has the 'open' class */
+}
+
+.actions-dropdown button {
+    display: block;
+    width: 100%;
+    text-align: left;
+    padding: 0.5rem 1rem;
+    background: none;
+    border: none;
+    border-bottom: 1px solid #eee;
+    font-size: 0.85rem;
+    color: #333;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.actions-dropdown button:last-child {
+    border-bottom: none;
+}
+
+.actions-dropdown button:hover {
+    background-color: #f8f9fa;
+    color: #000;
+}
+
+.actions-trigger {
+     background-color: #1abc9c; /* Customer page primary button color */
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    font-size: 0.9rem;
+    width: 100%;
+    padding: 0.3rem 0.5rem;
+}
+.actions-trigger:hover{
+  background-color: #16a085;
+}
+/* Badge Styles for Company Names */
+.badge {
+    display: inline-block;
+    background-color: #1abc9c;
+    color: #fff;
+    padding: 5px 8px;
+    border-radius: 5px;
+    font-size: 0.7rem;
+    margin: 2px;
+}
+
+.badge:hover {
+    background-color: #16a085;
+}
+
+.thread-image {
+    width: 40px;
+    height: 40px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 1px solid #ddd;
+    background-color: #fff;
+    display: block;
+    margin: 0 auto;
+}
+
+.thread-image.placeholder {
+    background-color: #f8f9fa;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #aaa;
+    font-size: 0.7rem;
+}
+
+/* Column-Specific Styling */
+#threads-table th:nth-child(1),
+#threads-table td:nth-child(1) {
+    width: 100px;
+    text-align: center;
+}
+
+#threads-table th:nth-child(6),
+#threads-table td:nth-child(6) {
+    /* Other properties for column 6 if needed */
+}
+
+#threads-table th:nth-child(6) {
+    min-width: 200px;
+}
+
+/* ---  CSS FOR COMPANY COLUMN (Column 8) --- */
+#threads-table td:nth-child(8) {
+    width: 250px; /*  wider */
+    min-width: 250px; /*  wider */
+    max-height: 60px;
+    overflow-x: auto;
+    overflow-y: hidden;
+    white-space: nowrap;
+    padding: 8px;
+    box-sizing: border-box;
+    font-size: 0.85rem;
+    line-height: 1.4;
+    word-break: keep-all;
+    -webkit-overflow-scrolling: touch;
+}
+
+/* Scrollbar styling for column 8 */
+#threads-table td:nth-child(8)::-webkit-scrollbar {
+    height: 8px;
+}
+
+#threads-table td:nth-child(8)::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 4px;
+}
+
+#threads-table td:nth-child(8)::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 4px;
+}
+
+#threads-table td:nth-child(8)::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
+/* Styling for Column 9 */
+#threads-table th:nth-child(9),
+#threads-table td:nth-child(9) {
+    min-width: 120px;
+}
+/* Target table row elements within tbody to vertically align cells */
+#threads-table tbody tr {
+  vertical-align: middle; /* Vertically centre content in table rows */
+}
+
+/* ============================================
+   6. Modal Styles (Refined)
+   ============================================ */
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 2000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+.modal-content {
+    background-color: #fff;
+    margin: 5% auto;
+    padding: 2rem;
+    border-radius: 10px;
+    max-width: 550px;
+    position: relative;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transform: translateY(-20px);
+    transition: transform 0.4s ease-out, opacity 0.4s ease-out;
+    overflow-y: auto;
+    max-height: 80vh;
+}
+
+.close-button {
+    color: #aaa;
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: color 0.3s;
+}
+
+.close-button:hover,
+.close-button:focus {
+    color: #555;
+}
+
+.modal-content h2 {
+    font-size: 1.3rem;
+    margin-bottom: 0;
+    color: #2c3e50;
+    background-color: #fff;
+    padding: 1rem 2rem;
+    margin: -2rem;
+    margin-bottom: 0;
+    box-shadow: 0 2px 2px -2px rgba(0, 0, 0, 0.2);
+    width: calc(100% + 4rem);
+    margin-left: -2rem;
+    padding-left: 2rem;
+}
+
+
+.modal-content form {
+    display: grid;
+    gap: 0.5rem;
+}
+
+.modal-content form label {
+    margin: 5px 0 2px;
+    color: #2c3e50;
+    display: block;
+}
+
+.modal-content form input[type="text"],
+.modal-content form input[type="email"],
+.modal-content form select,
+.modal-content form textarea {
+    padding: 0.75rem 1rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1rem;
+    font-family: inherit;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.modal-content form select{
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background-image: url('data:image/svg+xml;utf8,<svg fill="%232c3e50" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/><path d="M0 0h24v24H0z" fill="none"/></svg>');
+    background-repeat: no-repeat;
+    background-position-x: calc(100% - 0.75rem);
+    background-position-y: center;
+    padding-right: 2rem;
+}
+
+.modal-content form select::-ms-expand {
+    display: none; /* Remove default arrow icon in IE 11 */
+}
+.modal-content form button {
+    width: 100%;
+    margin-top: 1rem;
+}
+
+/* ============================================
+   7. Responsive Adjustments
+   ============================================ */
+
+@media (max-width: 768px) {
+    .controls {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    #threads-table th,
+    #threads-table td {
+        padding: 8px 5px;
+        font-size: 0.8rem;
+    }
+
+    .modal-content {
+        width: 95%;
+        padding: 1.5rem; /* Reduced modal padding */
+    }
+       /* Adjust specific column widths on small screens */
+  #threads-table th:nth-child(8),
+  #threads-table td:nth-child(8) {
+     width: 150px; /* Adjust width for smaller screens if needed */
+  }
+}
+
+/* ============================================
+   8. Animations (Subtle)
+   ============================================ */
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.modal-content {
+    animation: fadeIn 0.4s ease-out forwards;
+}

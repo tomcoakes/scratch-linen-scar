@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>[CUSTOMER_NAME] - Customer Page</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="../customer_page_style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fabric.js/5.3.0/fabric.min.js"></script>
+</head>
+<body>
+    <header>
+        <div class="header-container">
+            <h1>[CUSTOMER_NAME]</h1>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="threads.html">Thread Manager</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="customer-page-container">
+        <!-- Left Side: Vertical Stack (Customer Info and Threads) -->
+        <div class="left-side-container">
+            <section class="customer-info">
+                <h3>Customer Information</h3>
+                <p><strong>Customer Name:</strong> [CUSTOMER_NAME]</p>
+                <p><strong>Contact:</strong> [CONTACT_PERSON]</p>
+                <p><strong>Email:</strong> [CUSTOMER_EMAIL]</p>
+<!--                    <button id="delete-customer-button" class="delete-customer-button" onclick="deleteCustomer(1)">Delete Customer</button> -->
+            </section>
+
+            <section class="customer-threads">
+                <h2>Threads Used</h2>
+                <ul id="customer-threads-list">
+                    <!-- Threads will be inserted here by the script -->
+                </ul>
+            </section>
+        </div>
+
+        <!-- Right Side: Logos -->
+        <section class="customer-logos">
+            <h2>Logos</h2>
+            <div class="logo-grid" id="customer-logo-grid"><!-- Logo images will be inserted here by the script --></div>
+        </section>
+
+        <!-- Proofs section moved below Logos, spanning full width -->
+        <section class="customer-proofs">
+            <h2>Proofs</h2>
+<!--               <button type="button" onclick="openProofUploadModal([CUSTOMER_ID])">Add Proof</button> -->
+            <!-- Proof form and table will be inserted here -->
+            <div id="proofs-container"></div>
+        </section>
+    </main>
+
+    <footer>
+        <p>© 2025 Colour Matcher</p>
+    </footer>
+
+</body>
+</html>

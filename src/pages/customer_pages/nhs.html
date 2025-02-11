@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>NHS - Customer Page</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="../customer_page_style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fabric.js/5.3.0/fabric.min.js"></script>
+</head>
+<body>
+    <header>
+        <div class="header-container">
+            <h1>NHS</h1>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="threads.html">Thread Manager</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="customer-page-container">
+        <!-- Left Side: Vertical Stack (Customer Info and Threads) -->
+        <div class="left-side-container">
+            <section class="customer-info">
+                <h3>Customer Information</h3>
+                <p><strong>Customer Name:</strong> NHS</p>
+                <p><strong>Contact:</strong> Mrs NHS</p>
+                <p><strong>Email:</strong> Mrs@NHS.com</p>
+<!--                    <button id="delete-customer-button" class="delete-customer-button" onclick="deleteCustomer(1)">Delete Customer</button> -->
+                   <button id="delete-customer-button" class="delete-customer-button" onclick="deleteCustomer(5)">Delete Customer</button>
+            </section>
+
+            <section class="customer-threads">
+                <h2>Threads Used</h2>
+                <ul id="customer-threads-list">
+                    <!-- Threads will be inserted here by the script -->
+                    
+                        <li>
+                            Thread Number: 1177
+                            <span class="thread-colour-circle" style="background-color: #006EAD;" title="Blue"></span>
+                            (Stock: 3)
+                        </li>
+                    
+                </ul>
+            </section>
+        </div>
+
+        <!-- Right Side: Logos -->
+        <section class="customer-logos">
+            <h2>Logos</h2>
+            <div class="logo-grid" id="customer-logo-grid">
+                    <!-- Logo images will be inserted here by the script -->
+                    
+                <div class="logo-item">
+                    <img src="/customer_logos/logo-upload-input-1738845887041-668492808.jpg" alt="NHS">
+                    <p class="logo-name"><strong>Name:</strong> NHS</p>
+                    <p class="logo-position"><strong>Position:</strong> Full Back</p>
+                    <p class="logo-type"><strong>Type:</strong> Embroidery</p>
+                    <p class="logo-threads"><strong>Threads:</strong> 1177</p>
+                    <div class="logo-actions">
+                        <button class="delete-logo-button" onclick="deleteLogo(5, 0)" data-logo-index="0">Delete Logo</button>
+                    </div>
+                </div>
+            
+                </div>
+        </section>
+
+        <!-- Proofs section moved below Logos, spanning full width -->
+        <section class="customer-proofs">
+            <h2>Proofs</h2>
+        <div class="button-container">
+         <button id="add-proof-button" onclick="openProofModal(5)">Add Proof</button>
+
+         </div>
+<!--               <button type="button" onclick="openProofUploadModal([CUSTOMER_ID])">Add Proof</button> -->
+            <!-- Proof form and table will be inserted here -->
+            <div id="proofs-container">
+        <table id="proofs-table">
+            <thead>
+                <tr>
+                    <th>Preview</th>
+                    <th>Garment Code</th>
+                    <th>Logo</th>
+                    <th>Position</th>
+                    <th>Description</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+    
+                <tr data-proof-index="0">
+                  <td><a href="/customer_proofs/proof-upload-input-1738930825282-286125921.pdf" target="_blank">View Proof</a></td>
+                    <td>PR456</td>
+                    <td>fdskalf</td>
+                    <td>fdmskalf</td>
+                    <td>mkfdla</td>
+                    <td>
+                        <button class="delete-proof-button" onclick="handleProofDelete(5, 0)">Delete</button>
+                    </td>
+                </tr>
+            
+            </tbody>
+        </table>
+    </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>© 2025 Colour Matcher</p>
+    </footer>
+
+
+    <div id="upload-proof-modal-5" class="modal">
+        <div class="modal-content">
+            <span class="close-button" onclick="closeProofModal(5)">×</span>
+            <h2>Upload Proof for NHS</h2>
+            <form id="upload-proof-form-5" onsubmit="return false;">
+                <input type="file" id="proof-upload-input" name="proof-upload-input" accept=".pdf" required>
+                <input type="text" id="proof-garment-code" name="garmentCode" placeholder="Garment Code" required>
+                <input type="text" id="proof-logo" name="logo" placeholder="Logo" required>
+                <input type="text" id="proof-logo-position" name="logoPosition" placeholder="Logo Position" required>
+                <textarea id="proof-description" name="proofDescription" placeholder="Optional Description"></textarea>
+                <button type="button" onclick="handleProofUpload(5)">Upload Proof</button>
+            </form>
+        </div>
+    </div>
+    <script>
+        async function deleteLogo(customerId, logoIndex) {
+             console.log(`Attempting to delete logo at index ${logoIndex} for customer ID ${customerId}`);
+
+            const confirmDelete = confirm("Are you sure you want to delete this logo?");
+            if (!confirmDelete) {
+                console.log('Delete logo cancelled by user.');
+                return; // Stop if user cancels
+            }
+
+            try {
+                const response = await fetch(`/api/customers/${customerId}/logos/${logoIndex}`, {
+                    method: 'DELETE',
+                });
+
+                if (!response.ok) {
+                    const message = await response.json();
+                    throw new Error(`HTTP error! status: ${response.status}, message: ${message.error}`);
+                }
+
+                const result = await response.json();
+                console.log('Logo deleted successfully:', result);
+
+                alert(result.message); // Show success message
+
+                // Remove the logo item from the DOM (customer page)
+                const logoItemToDelete = document.querySelector(`.logo-item button.delete-logo-button[data-logo-index="${logoIndex}"]`).closest('.logo-item');
+                if (logoItemToDelete) {
+                    logoItemToDelete.remove();
+                }
+            } catch (error) {
+                console.error('Error deleting logo:', error);
+                alert(`Failed to delete logo: ${error.message}`);
+            }
+        }
+    </script><script>
+    async function deleteCustomer(customerId) {
+            console.log(`Attempting to delete customer with ID: ${customerId}`);
+
+            const confirmDelete = confirm("Are you REALLY sure you want to delete this customer?\nThis action cannot be undone and will delete all customer data including logos and threads!");
+            if (!confirmDelete) {
+                console.log('Customer deletion cancelled by user.');
+                return; // Stop if user cancels
+            }
+
+            try {
+                const response = await fetch(`/api/customers/${customerId}`, {
+                    method: 'DELETE'
+                });
+
+                if (!response.ok) {
+                    const message = await response.json();
+                    throw new Error(`HTTP error! status: ${response.status}, message: ${message.error}`);
+                }
+
+                const result = await response.json();
+                console.log('Customer deleted successfully:', result);
+                alert(result.message); // Show success message
+
+                // Redirect back to the home page after successful deletion
+                window.location.href = '/index.html';
+
+
+            } catch (error) {
+                console.error('Error deleting customer:', error);
+                alert(`Failed to delete customer: ${error.message}`);
+            }
+        }
+    </script><script>
+function createProofTableRow(proof, index, customerId) { // Add customerId parameter
+        return `
+        <tr data-proof-index="${index}">
+        <td><a href="${proof.url}" target="_blank">View Proof</a></td>
+          <td>${proof.garmentCode}</td>
+          <td>${proof.logo}</td>
+          <td>${proof.logoPosition}</td>
+          <td>${proof.description || 'N/A'}</td>
+           <td>
+                <button class="delete-proof-button" onclick="handleProofDelete(${customerId}, ${index})">Delete</button>
+            </td>
+        </tr>
+      `;
+    }
+    </script><script>
+async function handleProofUpload(customerId) {
+    console.log(`handleProofUpload called for customer ID: ${customerId}`);
+    const fileInput = document.getElementById('proof-upload-input'); // NO customer-specific ID
+    const garmentCodeInput = document.getElementById('proof-garment-code');
+    const logoInput = document.getElementById('proof-logo');
+    const logoPositionInput = document.getElementById('proof-logo-position');
+    const descriptionInput = document.getElementById('proof-description');
+
+    const file = fileInput.files[0];
+    const garmentCode = garmentCodeInput.value.trim();
+    const logo = logoInput.value.trim();
+    const logoPosition = logoPositionInput.value.trim();
+    const proofDescription = descriptionInput.value.trim();
+
+    if (!file) {
+        alert('Please select a PDF file to upload.');
+        return;
+    }
+
+    if (!garmentCode || !logo || !logoPosition) {
+        alert('Please fill in Garment Code, Logo, and Logo Position.');
+        return;
+    }
+
+    const formData = new FormData();
+    formData.append('proof-upload-input', file);
+    formData.append('garmentCode', garmentCode);
+    formData.append('logo', logo);
+    formData.append('logoPosition', logoPosition);
+    formData.append('proofDescription', proofDescription);
+
+    const proofsTableBody = document.querySelector('#proofs-table tbody'); // Get tbody
+
+    try {
+        const response = await fetch(`/api/customers/${customerId}/proofs`, {
+            method: 'PUT',
+            body: formData,
+        });
+        const result = await response.json();
+        if (response.ok) {
+            alert(result.message);
+            fileInput.value = '';
+            garmentCodeInput.value = '';
+            logoInput.value = '';
+            logoPositionInput.value = '';
+            descriptionInput.value = '';
+            console.log("proof details", result.proof);
+
+            // Add the new proof to the table *on the current page*:
+            const newRow = createProofTableRow(result.proof, proofsTableBody.rows.length, customerId); // Corrected index
+            proofsTableBody.insertAdjacentHTML('beforeend', newRow); // Add to the end
+
+            closeProofModal(customerId); // Close the modal
+
+        } else {
+            const message = await response.json();
+            throw new Error(message.error || 'Failed to upload proof.');
+        }
+
+    }
+    catch (error) {
+        console.error('Error uploading proof:', error);
+        alert(error.message);
+    }
+}
+</script><script>
+        async function handleProofDelete(customerId, proofIndex) {
+          console.log(`handleProofDelete called for customer ID: ${customerId}, and proof index: ${proofIndex} `);
+          if (!confirm('Are you sure you want to delete this proof?')) {
+                return;
+            }
+
+            try {
+                const response = await fetch(`/api/customers/${customerId}/proofs/${proofIndex}`, {
+                    method: 'DELETE',
+                });
+
+                if (!response.ok) {
+                    const message = await response.json();
+                    throw new Error(`HTTP error! status: ${response.status}, message: ${message.error}`);
+                }
+                const result = await response.json();
+                console.log('Proof deleted successfully:', result);
+                alert(result.message);
+
+                // Find and remove the table row
+                const rowToDelete = document.querySelector(`#proofs-table tbody tr[data-proof-index="${proofIndex}"]`);
+                if (rowToDelete) {
+                    rowToDelete.remove();
+                }
+            } catch (error) {
+                    console.error('Error deleting proof:', error);
+                alert(`Failed to delete proof: ${error.message}`);
+           }
+        }
+    </script><script>
+       function openProofModal(customerId) {
+            const modal = document.getElementById(`upload-proof-modal-${customerId}`);
+             if (modal) {
+                modal.style.display = 'block';
+                console.log(`upload-proof-modal-${customerId} opened`)
+             } else {
+                console.error('Modal not found for customer ID:', customerId);
+             }
+
+        }
+
+        function closeProofModal(customerId) {
+            const modal = document.getElementById(`upload-proof-modal-${customerId}`);
+            if (modal) {
+            modal.style.display = 'none';
+           }
+        }
+    </script><script src="../proof_creator.js"></script></body>
+</html>

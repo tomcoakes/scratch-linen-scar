@@ -1,0 +1,1280 @@
+/* ============================================
+   Table of Contents (for easier navigation in a large CSS file)
+   ============================================
+   1.  Reset and Base Styles
+   2.  Header and Footer
+   3.  Main Container Layout
+   4.  Left Column
+   5.  Right Column
+   6.  Buttons (Primary, Secondary, Tertiary, Header)
+   7.  Drag and Drop Area
+   8.  Uploaded Image Container
+   9.  Results Panel
+   10. Manual Search
+   11. Thread Matching Section
+   12. Colour List & Items
+   13. Madeira Search Results
+   14. Tabbed Interface (Madeira Results)
+   15. Modals (General, Add/Create Customer, All Customers)
+   16. Customer List Items (within Modals)
+   17. Search Input (within Modals)
+   18. Checkbox Group
+   19. Colour Switch/Toggle
+   20. Responsive Adjustments
+   21. Animations
+*/
+
+
+/* ============================================
+   1. Reset and Base Styles
+   ============================================ */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif; /* Consistent font throughout */
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #f4f4f8;
+    color: #333;
+    line-height: 1.6;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    font-size: 14px; /* Base font size */
+}
+
+/* ============================================
+   2. Header and Footer
+   ============================================ */
+
+header, footer {
+    background-color: #2c3e50;
+    color: #fff;
+    padding: 1rem 0;
+    text-align: center;
+    font-size: 1rem;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+footer {
+    position: static;
+    margin-top: auto;
+    width: 100%;
+}
+
+header .header-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 1200px;
+    margin: 0 auto;
+    width: 90%;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 2.5rem;
+    font-weight: 600;
+}
+
+nav ul.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+
+nav ul.nav-links li a {
+    color: #ecf0f1;
+    text-decoration: none;
+    font-size: 1rem;
+    padding: 8px 12px;
+    border-radius: 4px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+nav ul.nav-links li a:hover,
+nav ul.nav-links li a.active {
+    background-color: #3a5a5e;
+    color: #ffffff;
+}
+
+/* ============================================
+   3. Main Container Layout
+   ============================================ */
+
+.main-container {
+    flex: 1;
+    display: flex;
+    gap: 2rem;
+    padding: 2rem;
+    overflow: hidden;
+    max-width: none;
+    margin: 0;
+    width: 100%;
+}
+
+/* ============================================
+   4. Left Column
+   ============================================ */
+
+.left-column {
+    flex: 0.5;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    overflow-y: auto;
+    max-height: calc(100vh - 160px);
+    background: #fff;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* .left-column:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+} */
+.left-column h2{
+    font-size: 1.3rem; /*Smaller font for left column titles*/
+   }
+
+/* ============================================
+    5. Right Column
+   ============================================ */
+
+.right-column {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    overflow-y: auto;
+    max-height: calc(100vh - 160px);
+    background: #fff;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* .right-column:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+} */
+.right-column h2{
+    font-size: 1.3rem; /*Smaller font for right column titles*/
+   }
+   .right-column h3 {
+     font-size: 1.3rem; /*Smaller font for right column titles*/
+   }
+
+/* ============================================
+   6. Buttons (Primary, Secondary, Tertiary, Header)
+   ============================================ */
+
+.primary-btn {
+    padding: 8px 16px;
+    background-color: #1abc9c;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s;
+    font-size: 0.9rem;
+}
+
+.primary-btn:hover {
+    background-color: #16a085;
+}
+
+.secondary-btn {
+    background-color: #e74c3c;
+    color: #ffffff;
+    transition: background-color 0.3s;
+    margin-left: auto;
+    padding: 8px 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 0.9rem;
+}
+
+.secondary-btn:hover {
+    background-color: #c0392b;
+}
+
+.tertiary-btn {
+    padding: 8px 12px;
+    background-color: #1abc9c;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    font-size: 0.8rem;
+}
+
+.tertiary-btn:hover {
+    background-color: #16a085;
+}
+
+.quad-btn {
+    padding: 8px 12px;
+    background-color: #1abc9c;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    font-size: 0.8rem;
+    margin: 8px 12px;
+}
+
+.quad-btn:hover {
+    background-color: #16a085;
+}
+
+.header-button {
+    background: none;
+    color: #ecf0f1;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    font-family: 'Poppins', sans-serif;
+}
+
+.header-button:hover,
+.header-button.active {
+   color: #1abc9c;
+    background-color: rgba(255,255,255, 0.1);
+}
+/* Specific button overrides (Madeira search buttons) */
+#searchMadeiraThreadsPantone {
+    background-color: #7d65a9; /* Customer page purple */
+    color: #fff;
+    padding: 8px 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    font-size: 0.9rem;
+}
+
+#searchMadeiraThreadsPantone:hover {
+    background-color: #6d5795;
+}
+
+#searchMadeiraThreadsHex {
+    background-color: #1abc9c;
+    color: #fff;
+    padding: 8px 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    font-size: 0.9rem;
+}
+
+#searchMadeiraThreadsHex:hover {
+    background-color: #16a085;
+}
+.search-buttons {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    justify-content: flex-start;
+    padding-left: 5px;
+}
+
+/* ============================================
+   7. Drag and Drop Area
+   ============================================ */
+
+.drop-area {
+    border: 2px dashed #1abc9c;
+    border-radius: 10px;
+    padding: 2rem;
+    text-align: center;
+    color: #666;
+    transition: background-color 0.3s, border-color 0.3s;
+    background: #fff;
+    font-size: 0.95rem;
+}
+
+.drop-area.dragover {
+    background-color: #f0f0f0;
+    border-color: #16a085;
+    color: #222;
+}
+
+/* ============================================
+   8. Uploaded Image Container
+   ============================================ */
+
+.image-container {
+    background: #fff;
+    border-radius: 10px;
+    padding: 2rem;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 800px;
+    display: none; /* Hidden initially */
+}
+
+.image-container h2 {
+    font-size: 1.3rem;
+    margin-bottom: 0;
+    color: #2c3e50;
+    background-color: #fff;
+    padding: 1rem 2rem;
+    margin: -2rem;
+    margin-bottom: 0;
+     box-shadow: 0 2px 2px -2px rgba(0, 0, 0, 0.2);
+}
+
+.image-container img {
+    display: block;
+    max-width: 100%;
+    max-height: 500px;
+    width: auto;
+    height: auto;
+    margin: 0 auto;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    cursor: crosshair;
+}
+
+/* ============================================
+   9. Results Panel
+   ============================================ */
+
+#resultsPanel {
+    background: #fff;
+    border-radius: 10px;
+    padding: 2rem;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+#resultsPanel h2,
+#selectedForThread h2,
+#selectedForThread h3 {
+    font-size: 1.3rem;
+    margin-bottom: 0;
+    color: #2c3e50;
+    background-color: #fff;
+    padding: 1rem 2rem;
+    margin: -2rem;
+    margin-bottom: 0;
+     box-shadow: 0 2px 2px -2px rgba(0, 0, 0, 0.2);
+}
+
+#results {
+    padding: 1.5rem;
+    background: #fafafa;
+    border-radius: 10px;
+    max-height: 250px;
+    overflow-y: auto;
+    font-size: 0.85rem;
+    transform-origin: top center;
+}
+
+/* ============================================
+   10. Manual Search
+   ============================================ */
+
+.manual-search {
+    background: #fff;
+    border-radius: 10px;
+    padding: 2rem;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.manual-search h2 {
+    font-size: 1.3rem;
+    margin-bottom: 0;
+    color: #2c3e50;
+    background-color: #fff;
+    padding: 1rem 2rem;
+    margin: -2rem;
+    margin-bottom: 0;
+     box-shadow: 0 2px 2px -2px rgba(0, 0, 0, 0.2);
+}
+
+#manualColourList {
+    padding: 1.5rem;
+    background: #fafafa;
+    border-radius: 10px;
+    min-height: 50px;
+    overflow-y: auto;
+    font-size: 0.85rem;
+}
+
+/* ============================================
+   11. Thread Matching Section
+   ============================================ */
+
+.thread-section {
+    background: #fff;
+    border-radius: 10px;
+    padding: 2rem;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.thread-section h2 {
+    font-size: 1.3rem;
+    margin-bottom: 0;
+    color: #2c3e50;
+    background-color: #fff;
+    padding: 1rem 2rem;
+    margin: -2rem;
+    margin-bottom: 0;
+     box-shadow: 0 2px 2px -2px rgba(0, 0, 0, 0.2);
+}
+
+#threadList {
+    padding: 1.5rem;
+    background: #fafafa;
+    border-radius: 10px;
+    min-height: 50px;
+    overflow-y: auto;
+    font-size: 0.85rem;
+}
+
+#searchMadeiraBtn {
+    margin-top: 10px;
+}
+
+
+/* ============================================
+   12. Colour List & Items
+   ============================================ */
+
+.colour-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 8px;
+    overflow-y: auto;
+}
+
+.colour-item {
+    border: 2px solid #ccc;
+    padding: 8px;
+    font-size: 0.7rem;
+    background: #fff;
+    border-radius: 8px;
+    position: relative;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.colour-swatch {
+    width: 35px;
+    height: 35px;
+    border: 1px solid #000;
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 6px;
+    border-radius: 3px;
+}
+
+.colour-percentage {
+    font-size: 0.7rem;
+    color: #555;
+}
+
+.colour-actions {
+    margin-top: 4px;
+    text-align: right;
+}
+
+.colour-actions button {
+    font-size: 0.65rem;
+    padding: 2px 3px;
+    border: none;
+    background: #3A81F1;
+    color: #fff;
+    border-radius: 3px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.colour-actions button:hover {
+    background: #345F9D;
+}
+
+/* Highlight for Coverage > 3% */
+.colour-item.highlight,
+.madeira-product.highlight {
+    border: 2px solid #1abc9c;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+    background: #fff;
+    border-radius: 10px;
+    padding: 8px;
+    transition: box-shadow 0.3s, transform 0.3s;
+}
+
+.colour-item.highlight:hover,
+.madeira-product.highlight:hover {
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* ============================================
+   13. Madeira Search Results (ACTUALLY FINAL)
+   ============================================ */
+
+/* --- Outer Container for EACH Result (Hex/Pantone) --- */
+
+#madeiraResults,
+#madeiraResultsHex {
+    background: #fff;
+    border-radius: 10px;
+    padding: 2rem;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-top: 15px;
+/*     display: flex; */
+    flex-direction: column;
+}
+.madeira-result {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 20px;
+    padding: 10px;
+    background-color: #ffffff;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+}
+
+#madeiraResults h2,
+#madeiraResultsHex h2 {
+    font-size: 1.3rem;
+    margin-bottom: 0;
+    color: #2c3e50;
+    background-color: #fff;
+    padding: 1rem 2rem;
+    margin: -2rem;
+    margin-bottom: 0;
+     box-shadow: 0 2px 2px -2px rgba(0, 0, 0, 0.2);
+    width: 100%;
+}
+
+#madeiraResults h3,
+#madeiraResultsHex h3 {
+    font-size: 1.3rem;
+    margin-bottom: 0;
+    color: #2c3e50;
+    background-color: #fff;
+    padding: 1rem 2rem;
+    margin: -2rem;
+    margin-bottom: 0;
+     box-shadow: 0 2px 2px -2px rgba(0, 0, 0, 0.2);
+    width: 100%;
+}
+
+/* --- Individual Madeira Product --- */
+
+.madeira-product {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 15px;
+    background: #f9f9f9;
+    padding: 8px;
+    border-radius: 6px;
+    transition: transform 0.2s, box-shadow 0.2s;
+    min-width: 400px;
+}
+
+.madeira-product:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transform: translateY(-2px);
+}
+
+/* --- Image and Initial Details --- */
+
+.madeira-thread-image {
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-right: 10px;
+    transition: transform 0.3s, box-shadow 0.3s;
+    flex-shrink: 0;
+}
+
+.madeira-thread-image:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.madeira-details {
+    flex: 1 1 auto;
+    font-size: 0.7rem;
+    margin-right: 20px;
+}
+
+.madeira-details p {
+    margin: 4px 0;
+    font-weight: bold;
+}
+
+.madeira-details ul {
+    margin: 4px 0 0 16px;
+    padding: 0;
+}
+
+.madeira-details li {
+    list-style-type: disc;
+    margin-bottom: 2px;
+}
+
+/* --- Thread Matches Container --- */
+
+.thread-matches {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    width: auto;
+}
+
+.thread-match-section {
+    flex: 1 1 150px;
+    margin-bottom: 10px;
+}
+
+.thread-match-section h4 {
+    margin-bottom: 5px;
+    font-size: 0.8rem;
+    font-weight: bold;
+}
+
+.thread-match-section h4.exact-match-header {
+    color: #337000;
+}
+
+.thread-match-section h4.similar-match-header {
+    color: #6b0070;
+}
+
+.closest-thread-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    font-size: 0.8rem;
+}
+
+.closest-thread-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 5px;
+    padding: 5px;
+    border-bottom: 1px solid #eee;
+}
+.closest-thread-item:last-child{
+  border-bottom: none;
+}
+.thread-hex {
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+    border: 1px solid #000;
+    flex-shrink: 0;
+}
+
+.thread-info {
+    line-height: 1.2;
+    flex-grow: 1;
+}
+/* ============================================
+    Thread image
+   ============================================ */
+    .thread-image {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+     width: 50px; /* Ensure the container is square */
+    height: 50px;
+    border-radius: 8px;
+     border: 1px solid #ccc;
+    margin-right: 8px;
+}
+
+.thread-image img {
+    max-width: 100%;
+    max-height: 100%;
+    border-radius: 6px;
+}
+
+/* ============================================
+   14. Tabbed Interface (Madeira Results) - KEEP AS IS
+   ============================================ */
+
+.madeira-results-container {
+    margin-top: 20px;
+}
+.madeira-results-container h2{
+ text-align: center;
+    margin-bottom: 10px;
+    font-size: 1.2rem;
+}
+.tabs {
+    display: flex;
+    border-bottom: 2px solid #ccc;
+}
+
+.tab-button {
+    background-color: #f1f1f1;
+    border: none;
+    outline: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    font-size: 1rem;
+    border-radius: 5px 5px 0 0;
+}
+
+.tab-button:hover {
+    background-color: #ddd;
+}
+
+.tab-button.active {
+    background-color: #fff;
+    border-bottom: 2px solid #fff;
+    font-weight: bold;
+}
+
+.tab-content {
+    border: 1px solid #ccc;
+    border-top: none;
+    padding: 15px;
+    background-color: #fff;
+    border-radius: 0 0 8px 8px;
+}
+
+.tab-pane {
+    display: none;
+}
+
+.tab-pane.active {
+    display: block;
+}
+
+
+/* ============================================
+   15. Modals (General, Add/Create Customer, All Customers)
+   ============================================ */
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+/* Base modal content styling */
+.modal-content {
+    background-color: #fff;
+    margin: 5% auto;
+    padding: 2rem;
+    border-radius: 10px;
+    max-width: 550px;
+    position: relative;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transform: translateY(-20px);
+    transition: transform 0.4s ease-out, opacity 0.4s ease-out;
+    overflow-y: auto;
+    max-height: 80vh;
+}
+
+/* Modal Headings - Consistent style */
+.modal-content h2 {
+    font-size: 1.3rem;
+    margin-bottom: 0;
+    color: #2c3e50;
+    background-color: #fff;
+    padding: 1rem 2rem;
+    margin: -2rem;
+    margin-bottom: 0;
+     box-shadow: 0 2px 2px -2px rgba(0, 0, 0, 0.2);
+      width: calc(100% + 4rem);
+          margin-left: -2rem;
+          padding-left: 2rem;
+}
+
+/* Close button (Consistent style) */
+.close-button {
+    color: #aaa;
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: color 0.3s;
+}
+
+.close-button:hover,
+.close-button:focus {
+    color: #555;
+}
+
+/* Form Styles (Consistent across modals) */
+.modal-content form {
+    display: grid;
+    gap: 0.5rem;
+}
+
+.modal-content form label {
+    margin: 5px 0 2px;
+    color: #2c3e50;
+    display: block;
+}
+
+.modal-content form input[type="text"],
+.modal-content form input[type="email"],
+.modal-content form select {
+    padding: 0.75rem 1rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1rem;
+    font-family: inherit;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* Specific style for select to make it look like the inputs*/
+.modal-content form select{
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background-image: url('data:image/svg+xml;utf8,<svg fill="%232c3e50" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/><path d="M0 0h24v24H0z" fill="none"/></svg>');
+    background-repeat: no-repeat;
+    background-position-x: calc(100% - 0.75rem);
+    background-position-y: center;
+    padding-right: 2rem;
+}
+
+/* Remove default arrow icon in IE 11 (if needed) */
+.modal-content form select::-ms-expand {
+    display: none;
+}
+
+/* Button styles (Using primary-btn class) */
+.modal-content button[type="submit"] {
+    width: 100%;
+    margin-top: 1rem;
+    padding: 8px 12px;
+  background-color: #1abc9c;
+  cursor: pointer;
+  border: none;
+  color: #fff;
+  border-radius: 5px;
+}
+
+/* ============================================
+   16. Customer List Items (within Modals)
+   ============================================ */
+
+#existing-customer-list,
+#all-customer-list {
+}
+
+#customer-list,
+#all-customer-list-ul {
+    list-style: none;
+    padding: 0;
+}
+
+.customer-list-item {
+    padding: 12px 15px;
+    border-bottom: 1px solid #eee;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.customer-list-item:last-child {
+    border-bottom: none;
+}
+
+.customer-list-item:hover {
+    background-color: #f8f9fa;
+}
+
+.customer-name-text {
+    flex-grow: 1;
+    margin-right: 15px;
+}
+
+.customer-actions-inline {
+    flex-shrink: 0;
+    display: flex;
+    gap: 10px;
+}
+
+/* Styling for customer list actions buttons */
+.customer-actions-inline button.add-logo-button,
+.customer-actions-inline a.view-customer-page-link,
+#all-customers-modal .modal-content .customer-actions-inline a.view-customer-page-link {
+    padding: 8px 15px;
+    border-radius: 5px;
+    font-size: 0.9rem;
+    text-decoration: none;
+    display: inline-block;
+}
+
+
+.customer-actions-inline button.add-logo-button {
+    background-color: #1abc9c;
+    color: white;
+    border: none;
+    transition: background-color 0.3s;
+    cursor: pointer;
+}
+
+.customer-actions-inline button.add-logo-button:hover {
+    background-color: #16a085;
+}
+
+.customer-actions-inline a.view-customer-page-link,
+#all-customers-modal .modal-content #all-customer-list-ul .customer-list-item a.view-customer-page-link {
+   background-color: #1abc9c;
+    color: white;
+    transition: background-color 0.3s;
+    padding: 8px 15px;
+    border-radius: 5px;
+    font-size: 0.9rem;
+    text-decoration: none;
+    display: inline-block;
+}
+
+/* Hover styles for view page links */
+.customer-actions-inline a.view-customer-page-link:hover,
+#all-customers-modal .modal-content #all-customer-list-ul .customer-list-item a.view-customer-page-link:hover {
+     background-color: #16a085;
+}
+
+.empty-list-item,
+.error-list-item {
+    padding: 10px 15px;
+    text-align: center;
+    color: #777;
+}
+
+.error-list-item {
+    color: #e74c3c;
+}
+
+
+/* ============================================
+   17. Search Input (within Modals)
+   ============================================ */
+
+.search-input-container {
+    display: flex;
+    align-items: center;
+    position: relative;
+    margin-bottom: 15px;
+    width: 100%;
+}
+
+.search-input-container input[type="text"] {
+    padding: 0.75rem 1rem;
+    padding-right: 2.5rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1rem;
+    flex-grow: 1;
+    min-width: 200px;
+    width: 100%;
+}
+
+.clear-search-button {
+    position: absolute;
+    right: 0.5rem;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    font-size: 1.2em;
+    color: #95a5a6;
+    cursor: pointer;
+    opacity: 0.6;
+    transition: opacity 0.3s;
+}
+
+.clear-search-button:hover {
+    opacity: 1;
+}
+
+/* ============================================
+  18. Checkbox Group
+   ============================================ */
+.checkbox-group {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+/* ============================================
+   19. Colour Switch/Toggle
+   ============================================ */
+
+ .search-type-selector, .search-type-selector-threads{
+  margin-top: 20px;
+ }
+.search-type-selector-threads h3 {
+     font-size: 1.3rem;
+          margin-bottom: 0;
+          color: #2c3e50;
+          background-color: #fff;
+          padding: 1rem 2rem;
+          margin: -2rem;
+          margin-bottom: 0;
+          margin-top: 1.5rem;
+          margin-bottom: 1rem;
+           box-shadow: 0 2px 2px -2px rgba(0, 0, 0, 0.2);
+            width: calc(100% + 4rem);
+                margin-left: -2rem;
+                padding-left: 2rem;
+}
+
+.search-buttons-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+     margin-top: 1rem;
+}
+
+.search-type-selector h2,
+.search-type-selector-threads h3 {
+    font-family: 'Poppins', Arial, sans-serif;
+    font-size: 18px;
+    font-weight: 600;
+    color: #333;
+    text-transform: uppercase;
+    letter-spacing: 1.2px;
+    margin-bottom: 15px;
+    padding-bottom: 5px;
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.colour-switch-wrapper {
+    display: inline-flex;
+    align-items: center;
+    position: relative;
+}
+
+/* Hide the actual radio buttons */
+.colour-switch-input,
+.switch-input {
+    display: none;
+}
+
+.colour-switch-container,
+.switch-container {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 30px;
+    background: linear-gradient(to bottom, #fafafa, #f5f5f5);
+    border-radius: 30px;
+    transition: background-color 0.3s ease;
+
+    /* Recessed Effect */
+    box-shadow: inset 0 1px 5px rgba(0, 0, 0, 0.3),
+                inset 0 -2px 4px rgba(255, 255, 255, 0.4);
+}
+
+.colour-switch-toggle,
+.switch-toggle {
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    background-color: #ffffff;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+/* When the RGB radio is checked */
+#colourSearchTypeRgb:checked ~ .colour-switch-label[for="colourSearchTypeRgb"],
+#madeiraHexSearchTypeRgb:checked ~  .switch-label.switch-label-left { /*added new selector*/
+  color: #555e63;
+}
+/* When the CIELAB radio is checked */
+#colourSearchTypeCielab:checked ~ .colour-switch-label[for="colourSearchTypeCielab"],
+#madeiraHexSearchTypeCielab:checked ~ .switch-label.switch-label-right { /*added new selector*/
+    color: #555e63;
+    
+}
+#colourSearchTypeRgb:checked ~ .colour-switch-container .colour-switch-toggle {
+    transform: translateX(0);
+    background-color: #2980b9;
+}
+
+#colourSearchTypeCielab:checked ~ .colour-switch-container .colour-switch-toggle {
+    transform: translateX(30px);
+    background-color: #C0392B;
+}
+
+.madeira-hex-search-switch {
+    display: flex;
+    align-items: center;
+    font-family: 'Poppins', sans-serif;
+    margin-left: 20px;
+}
+
+/* When RGB is checked, ensure the toggle is to the left and make it green */
+#madeiraHexSearchTypeRgb:checked ~ .switch-toggle {
+    transform: translateX(0);
+    background-color: #2980b9;
+}
+
+/* When CIELab is checked, move the toggle thumb across and make it red */
+#madeiraHexSearchTypeCielab:checked ~ .switch-toggle {
+    transform: translateX(30px);
+    background-color: #C0392B;
+}
+
+/* ============================================
+   20. Responsive Adjustments
+   ============================================ */
+
+@media (max-width: 768px) {
+   .main-container {
+        flex-direction: column;
+    }
+
+    .left-column,
+    .right-column {
+        flex: 1;
+    }
+
+    .madeira-product {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .madeira-thread-image {
+        margin-bottom: 10px;
+        margin-right: 0;
+        width: auto;
+    }
+
+    .madeira-details {
+        width: 100%;
+        margin-right: 0;
+    }
+
+    .thread-matches {
+        flex-direction: column;
+        width: 100%;
+    }
+    .header-container {
+        flex-direction: column;
+        text-align: center;
+    }
+    .nav-links {
+      margin-top: 1rem;
+    }
+    .nav-links li{
+      margin: 0.5rem 1rem;
+    }
+    .thread-match-section{
+      min-width: 0;/*remove min width*/
+    }
+    /* Adjust sections to prevent overflow */
+    .right-column {
+        max-height: none; /* Remove max-height on smaller screens */
+    }
+
+    /* Uploaded Image Container */
+    .image-container {
+        max-width: 100%; /* Allow full width on smaller screens */
+    }
+
+    /* Header Container Flex Direction */
+    header .header-container {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+
+    nav ul.nav-links {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    footer {
+        position: static;
+    }
+}
+
+/* ============================================
+    21. Animations - Keeping existing, as it doesn't conflict
+   ============================================ */
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* ============================================
+  Hide Hidden canvas
+   ============================================ */
+   #hiddenCanvas {
+    display: none !important;
+}
+/* ============================================
+  Remove divider from previous code
+   ============================================ */
+   .madeira-result hr.divider,
+#madeiraResults hr.divider {
+   display: none;
+}
+
+/* ============================================
+   List without numbering
+   ============================================ */
+.no-numbering {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+.no-numbering li::marker {
+    content: none;
+}
+/* ============================================
+    thread image
+   ============================================ */
+   .thread-image {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+     width: 50px; /* Ensure the container is square */
+    height: 50px;
+    border-radius: 8px;
+     border: 1px solid #ccc;
+    margin-right: 8px;
+}
+
+.thread-image img {
+    max-width: 100%;
+    max-height: 100%;
+    border-radius: 6px;
+}

@@ -1,0 +1,693 @@
+/* --- Reset and Base Styles --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    background-color: #f4f4f8;
+    color: #333;
+    line-height: 1.6;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* --- Header Styles --- */
+header {
+    background-color: #2c3e50;
+    color: #fff;
+    padding: 1rem 0;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.header-container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header-container h1 {
+    font-size: 2.5rem;
+    font-weight: 600;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+}
+
+.nav-links li {
+    margin-left: 2rem;
+}
+
+.nav-links a {
+    color: #fff;
+    text-decoration: none;
+    transition: color 0.3s ease;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    display: inline-block;
+}
+
+.nav-links a:hover {
+    color: #1abc9c;
+    background-color: rgba(255,255,255, 0.1);
+}
+
+/* --- Main Container Styles --- */
+main {
+  flex-grow: 1;
+  padding: 2rem;
+}
+
+.customer-page-container {
+    width: 100%;
+    max-width: none;
+    margin: 0;
+    /* Use grid layout for the main structure */
+    display: grid;
+    grid-template-columns: 1fr 2fr; /* Two columns: 1/3 and 2/3 width */
+    grid-template-rows: auto auto; /* Rows for logos and proofs */
+    gap: 2rem;
+}
+
+/* --- Section Styles (General) --- */
+section {
+    margin-bottom: 0;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 2rem;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+section:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+section h2, .customer-info h3 {
+    font-size: 2rem;
+    margin-bottom: 0;
+    color: #2c3e50;
+    background-color: #fff;
+    padding: 1rem 2rem;
+    margin: -2rem;
+    margin-bottom: 0;
+    position: sticky;
+    top: -2rem;
+    z-index: 10;
+    box-shadow: 0 2px 2px -2px rgba(0, 0, 0, 0.2);
+}
+/* --- Left Side Container --- */
+.left-side-container {
+    grid-column: 1 / 2; /* Span the first column */
+    grid-row: 1 / 3;  /* Span BOTH rows (important for vertical stacking) */
+    display: flex;        /* Use flexbox for vertical layout */
+    flex-direction: column;
+    gap: 2rem;
+}
+/* --- Customer Info --- */
+.customer-info {
+   /*  No specific grid properties needed, it's within left-side-container */
+}
+/* --- Customer Threads --- */
+
+.customer-threads {
+    max-height: 250px;
+    overflow-y: auto;
+    position: relative;
+}
+
+/* --- Logo Grid Styles --- */
+.customer-logos {
+    grid-column: 2 / 3; /* Span the second column */
+    grid-row: 1 / 2;    /* Occupy the first row */
+    max-height: 500px;
+    overflow-y: auto;
+    position: relative;
+}
+
+.logo-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 0.2fr)); /* Responsive columns */
+    gap: 1rem;
+    margin-top: 1.5rem;
+    padding-top: 1.5rem;
+    position: relative;
+}
+
+/* --- Customer Proofs --- */
+.customer-proofs {
+    grid-column: 2 / 3; /* Span the second column */
+    grid-row: 2 / 3;    /* Occupy the second row */
+    /* Remove max-height */
+    overflow-y: auto;
+    position: relative;
+}
+
+
+
+/* --- Gradient for Logos and Proofs Sections --- */
+/* Apply the gradient to both sections */
+.customer-logos::before,
+.customer-proofs::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 1.5rem;
+    background: linear-gradient(to bottom, rgba(255,255,255,1), rgba(255,255,255,0));
+    z-index: 5;
+    pointer-events: none;
+}
+
+.customer-logos::-webkit-scrollbar,
+.customer-proofs::-webkit-scrollbar {
+    width: 10px;
+}
+
+.customer-logos::-webkit-scrollbar-track,
+.customer-proofs::-webkit-scrollbar-track {
+    background: #f0f0f0;
+    border-radius: 5px;
+}
+
+.customer-logos::-webkit-scrollbar-thumb,
+.customer-proofs::-webkit-scrollbar-thumb {
+    background-color: #1abc9c;
+    border-radius: 5px;
+    border: 2px solid #f0f0f0;
+}
+.customer-logos:hover,
+.customer-proofs:hover {
+        transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+.logo-item {
+    background-color: #f8f9fa;
+    border: 1px solid #e9ecef;
+    border-radius: 8px;
+    padding: 0.8rem;
+    text-align: center;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    position: relative;
+    overflow: hidden;
+    max-width: 254px;
+    max-height: 350px;
+}
+
+.logo-item:hover {
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    transform: translateY(-3px);
+    border-color: #1abc9c;
+    background-color: #fff;
+}
+
+.logo-item img {
+    max-width: 100%;
+    max-height: 120px;
+    height: auto;
+    border-radius: 5px;
+    margin-bottom: 0.8rem;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.logo-name, .logo-position, .logo-type, .logo-threads  {
+    font-size: 0.8rem;
+    margin-bottom: 0.2rem;
+    color: #555;
+    text-align: left;
+  margin-top: 0.3rem;
+}
+.logo-item strong {
+    color: #2c3e50;
+    margin-right: 0.2rem;
+}
+
+.logo-actions {
+    margin-top: 10px;
+    text-align: center;
+
+}
+
+.delete-logo-button {
+    padding: 8px 16px;
+    background-color: #1abc9c;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s;
+    font-size: 0.9rem;
+}
+
+.delete-logo-button:hover {
+    background-color: #16a085;
+}
+
+.delete-customer-button {
+    padding: 8px 16px;
+    background-color: #bc1a1a;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s;
+    font-size: 0.9rem;
+    margin-top: 10px;
+}
+
+.delete-customer-button:hover {
+    background-color: #ad1818;
+}
+
+.customer-info p {
+    font-size: 0.9rem;
+    margin-bottom: 0.3rem;
+    color: #444;
+    margin-top: 1.5rem;
+}
+
+.customer-info strong {
+    color: #2c3e50;
+}
+
+.customer-threads ul,
+.proofs-content {  /* This was already correct, but I'm including it for completeness */
+    padding-top: 1.5rem;
+    position: relative;
+}
+
+.customer-threads ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+.customer-threads li {
+    padding: 0.3rem 0;
+    border-bottom: 1px solid #eee;
+    font-size: 0.9rem;
+    color: #444;
+}
+
+.customer-threads li:last-child {
+    border-bottom: none;
+}
+
+.proofs-grid { /*  This seems incorrect.  You're using a table, not a grid for proofs. */
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 0.8rem;
+}
+
+.proof-item {
+    background-color: #f8f9fa;
+    border: 1px solid #e9ecef;
+    border-radius: 5px;
+    padding: 0.8rem;
+    text-align: center;
+    transition: background-color 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.proof-item a {
+    color: #3498db;
+    text-decoration: none;
+    font-weight: 500;
+    display: block;
+    font-size: 0.8rem;
+}
+
+.proof-item:hover {
+    background-color: #e9ecef;
+}
+
+/* --- Footer Styles --- */
+footer {
+    background-color: #2c3e50;
+    color: #fff;
+    text-align: center;
+    padding: 1rem 0;
+    margin-top: auto;
+}
+
+/* --- Responsive Adjustments --- */
+@media (max-width: 768px) {
+    .header-container {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .nav-links {
+        margin-top: 1rem;
+    }
+
+    .nav-links li {
+        margin: 0.5rem 1rem;
+    }
+ .customer-page-container {
+        grid-template-columns: 1fr; /* Single column on smaller screens */
+     grid-template-rows: auto auto auto; /* Rows for customer info, logos, and proofs */
+    }
+
+    .left-side-container {
+        grid-column: 1 / -1; /* Span the full width */
+        grid-row: 1 / 2;      /* Occupy the first row */
+      /*  display: block; */
+    }
+      .customer-info{
+         /* Ensure customer info stacks correctly within left-side */
+    }
+    .customer-threads {
+      /* Ensure customer threads stacks correctly within left-side */
+    }
+
+    .customer-logos {
+        grid-column: 1 / -1; /* Span the full width */
+        grid-row: 2 / 3;     /* Occupy the second row */
+    }
+
+    .customer-proofs {
+        grid-column: 1 / -1; /* Span the full width */
+        grid-row: 3 / 4;     /* Occupy the third row */
+    }
+}
+/* --- Subtle Animations & Transitions --- */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.customer-page-container > * {
+    animation: fadeIn 0.8s ease forwards;
+    animation-delay: 0.2s;
+}
+
+.thread-colour-circle {
+    display: inline-block;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    border: 1px solid #ccc;
+    margin-left: 5px;
+    margin-right: 3px;
+    position: relative;
+    top: 1px;
+}
+
+/* --- Proof Upload Form Styles --- */
+
+#upload-proof-form {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+  align-items: start;
+}
+
+#upload-proof-form label {
+  font-weight: 500;
+  color: #333;
+  margin-bottom: 0.3rem;
+  display: block;
+}
+
+
+#upload-proof-form textarea {
+  resize: vertical;
+  min-height: 80px;
+}
+
+#upload-proof-form input[type="file"],
+#upload-proof-form input[type="text"],
+#upload-proof-form select,
+#upload-proof-form textarea {
+  width: 100%;
+  padding: 0.5rem 0.75rem;
+  border: 1px solid #ced4da;
+  border-radius: 0.25rem;
+  font-size: 0.9rem;
+  font-family: inherit;
+  transition: border-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+#upload-proof-form input[type="text"]:focus,
+#upload-proof-form select:focus,
+#upload-proof-form textarea:focus {
+  border-color: #1abc9c;
+  box-shadow: 0 0 0 0.2rem rgba(26, 188, 156, 0.25);
+  outline: none;
+}
+
+
+#upload-proof-form button[type="button"] {
+  padding: 0.6rem 1.2rem;
+  background-color: #1abc9c;
+  color: #fff;
+  border: none;
+  border-radius: 0.25rem;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 500;
+  transition: background-color 0.3s ease;
+  margin-top: 1.4rem;
+}
+
+#upload-proof-form button[type="button"]:hover {
+    background-color: #16a085;
+}
+#add-proof-button {
+      padding: 8px 16px;
+    background-color: #1abc9c;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s;
+    font-size: 0.9rem;
+    margin-top: 10px;
+}
+
+#add-proof-button:hover {
+    background-color: #16a085;
+}
+#create-proof-button {
+      padding: 8px 16px;
+    background-color: #1abc9c;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s;
+    font-size: 0.9rem;
+    margin-top: 10px;
+}
+
+#create-proof-button:hover {
+    background-color: #16a085;
+}
+
+
+/* --- Proofs Table Styles --- */
+
+#proofs-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1rem;
+}
+
+#proofs-table th,
+#proofs-table td {
+    padding: 0.75rem;
+    border-bottom: 1px solid #dee2e6;
+    text-align: left;
+}
+
+#proofs-table th {
+    background-color: #f8f9fa;
+    font-weight: 600;
+    color: #333;
+}
+
+#proofs-table td {
+    font-size: 0.9rem;
+}
+
+#proofs-table a {
+    color: #3498db;
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+#proofs-table a:hover {
+    color: #2980b9;
+    text-decoration: underline;
+}
+
+#proofs-table .delete-proof-button {
+  padding: 0.4rem 0.8rem;
+  font-size: 0.8rem;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+    background-color: #1abc9c;
+    color: #fff;
+    transition: background-color 0.3s;
+}
+
+#proofs-table .delete-proof-button:hover {
+    background-color: #c0392b;
+}
+
+/* Styling for when no proofs are present*/
+#proofs-table tr:first-child td[colspan="6"]{
+   text-align: center;
+}
+
+/* customer_page_style.css */
+/* MODAL STYLES*/
+
+/* --- Modal Styles --- */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed;
+    z-index: 1000; /* Ensure it's on top */
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 5% auto; /* 5% from the top and centered */
+    padding: 20px;
+    border: 1px solid #888;
+    border-radius: 10px;
+    width: 80%; /* Adjust as needed */
+    max-width: 600px; /* Max width on larger screens */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow */
+}
+
+.close-button {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close-button:hover,
+.close-button:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* Form inside modal */
+.modal-content form {
+    display: grid;
+    gap: 10px; /* Space between form elements */
+}
+
+.modal-content label {
+  font-weight: 500;
+  color: #333;
+  margin-bottom: 0.3rem;
+  display: block; /* Make labels block-level for consistent spacing */
+}
+
+.modal-content input[type="file"],
+.modal-content input[type="text"],
+.modal-content select,
+.modal-content textarea {
+  width: 100%;
+  padding: 0.5rem 0.75rem;
+  border: 1px solid #ced4da;
+  border-radius: 0.25rem;
+  font-size: 0.9rem;
+  font-family: inherit;
+  transition: border-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+.modal-content input[type="text"]:focus,
+.modal-content select:focus,
+.modal-content textarea:focus {
+  border-color: #1abc9c;
+  box-shadow: 0 0 0 0.2rem rgba(26, 188, 156, 0.25);
+  outline: none;
+}
+
+.modal-content textarea{
+  resize: vertical; /*Allow vertical resizing*/
+  min-height: 80px; /* Give it some initial height */
+}
+.modal-content form button {
+  padding: 0.6rem 1.2rem;
+  background-color: #1abc9c;
+  color: #fff;
+  border: none;
+  border-radius: 0.25rem;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 500;
+  transition: background-color 0.3s ease;
+  margin-top: 1.4rem;
+}
+.modal-content form button:hover {
+  background-color: #16a085;
+}
+
+/* Make file input a bit nicer looking */
+.modal-content input[type="file"] {
+    padding: 7px; /* Adjust padding as needed */
+}
+
+.modal-content input[type="file"]::-webkit-file-upload-button {
+    visibility: hidden; /* Hide the default button */
+}
+
+.modal-content input[type="file"]::before {
+   content: 'Choose File'; /*  Custom text */
+    display: inline-block;
+    background: #fff;
+   border: 2px solid #1abc9c;
+   border-radius: 5px;
+   padding: 5px 8px;
+    outline: none;
+    white-space: nowrap;
+   -webkit-user-select: none;
+   cursor: pointer;
+
+
+}
+
+
+.modal-content input[type="file"]:hover::before {
+    background: #1abc9c;
+  color: #fff;
+}
+.modal-content input[type="file"]:active::before {
+    background: -webkit-linear-gradient(top, #e3e3e3, #f9f9f9);
+}
+
+/* Style for selected logo list item */
+#proof-creator-modal .modal-content ul li.selected-logo {
+    background-color: #e0e0e0; /* Light grey background */
+    font-weight: bold;
+}
+
