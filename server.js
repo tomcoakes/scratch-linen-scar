@@ -846,7 +846,7 @@ app.post('/api/generate-pdf', async (req, res) => {
         const page = pdfDoc.addPage([842, 595]); // A4 Landscape dimensions in points
 
         // --- 5. Embed the Company Logo ---
-         const logoResponse = await fetch('http://localhost:3000/images/TBL-Logo.png');  //use an absolute URL to the logo
+         const logoResponse = await fetch('http://localhost:3000/images/company_logo.png');  //use an absolute URL to the logo
             const logoBuffer = await logoResponse.buffer();
            const logoImage = await pdfDoc.embedPng(logoBuffer);
            const logoDims = logoImage.scale(0.15);
@@ -857,48 +857,65 @@ app.post('/api/generate-pdf', async (req, res) => {
             height: logoDims.height,
           });
 
-        // --- 6. Embed Canvas Images ---
-        for (let i = 0; i < canvasImages.length; i++) {
-             const imageDataUrl = canvasImages[i];
-             const base64Data = imageDataUrl.replace(/^data:image\/jpeg;base64,/, ""); //remove prfix
-             const imageBuffer = Buffer.from(base64Data, 'base64');  //convert to a buffer
-              let image;  // Declare the image variable outside the if/else
-            try {
-                   image = await pdfDoc.embedJpg(imageBuffer); // Embed as JPEG
-             }
-            catch (error) {
-              console.error("Error embedding image:", error, "for image data URL:", imageDataUrl.substring(0, 100) + "...");
-                continue; // If there is an error with *this* image, skip to the next.
-             }
-              const imageDims = image.scale(0.3);  //scale for the largest canvas image
+      // --- 6. Embed Canvas Images ---
+      for (let i = 0; i < canvasImages.length; i++) {
+          const imageDataUrl = canvasImages[i];
 
-               // Place images onto the page
-              if (i === 0) {
-                // First image: top-left of the main image area
-                page.drawImage(image, {
-                  x: 55,
-                  y: 370 - imageDims.height,  // Adjust based on your layout
-                  width: imageDims.width,
-                  height: imageDims.height,
-                });
-              } else if (i === 1) {
-                // Second Image: stack on top
-                page.drawImage(image, {
-                x: 550,   // Adjust position for stacking
-                y: 370 - imageDims.height,
-                  width: imageDims.width,
-                  height: imageDims.height,
-                  });
-            } else if(i === 2) {
-              //third image below
-                page.drawImage(image, {
-                  x: 550,   // adjust position to go below first box
-                  y: 370 - (imageDims.height*2) ,  // stack below image 1
-                  width: imageDims.width,
-                  height: imageDims.height
+          try {
+              let image;
+              let imageDims;
+
+              if (imageDataUrl.startsWith('data:image/jpeg')) {
+                  // --- JPEG Handling ---
+                  const base64Data = imageDataUrl.replace(/^data:image\/jpeg;base64,/, "");
+                  const imageBuffer = Buffer.from(base64Data, 'base64');
+                  image = await pdfDoc.embedJpg(imageBuffer);
+                  imageDims = image.scale(0.3); // Keep original scaling logic
+
+              } else if (imageDataUrl.startsWith('data:image/png')) {
+                  // --- PNG Handling ---
+                  const base64Data = imageDataUrl.replace(/^data:image\/png;base64,/, "");
+                  const imageBuffer = Buffer.from(base64Data, 'base64');
+                  image = await pdfDoc.embedPng(imageBuffer);
+                  imageDims = image.scale(0.3);
+
+              } else {
+                  console.error("Unsupported image format:", imageDataUrl.substring(0, 30) + "..."); // Log the beginning
+                  continue; // Skip this image
+              }
+
+              // --- Image Placement (Same as before) ---
+             if (i === 0) {
+              // First image: top-left of the main image area
+              page.drawImage(image, {
+                x: 55,
+                y: 370 - imageDims.height,  // Adjust based on your layout
+                width: imageDims.width,
+                height: imageDims.height,
               });
-            }
-        }
+            } else if (i === 1) {
+              // Second Image: stack on top
+              page.drawImage(image, {
+              x: 550,   // Adjust position for stacking
+              y: 370 - imageDims.height,
+                width: imageDims.width,
+                height: imageDims.height,
+                });
+          } else if(i === 2) {
+            //third image below
+              page.drawImage(image, {
+                x: 550,   // adjust position to go below first box
+                y: 370 - (imageDims.height*2) ,  // stack below image 1
+                width: imageDims.width,
+                height: imageDims.height
+            });
+          }
+
+          } catch (error) {
+              console.error(`Error embedding image ${i}:`, error, "Data URL:", imageDataUrl.substring(0, 100) + "..."); // MOVED INSIDE CATCH
+              continue; // Continue to the next image even if one fails
+          }
+      }
 
 
   // --- 7. Embed the logo files. ---
