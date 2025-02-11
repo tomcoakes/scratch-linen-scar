@@ -9,9 +9,10 @@
     <link rel="stylesheet" href="style.css">  <!-- Reuse your existing styles, adjust as needed -->
     <link rel="stylesheet" href="proof_creator.css"> <!-- NEW Stylesheet for the proof creator page -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/fabric.js/5.3.0/fabric.min.js"></script>
-<!--     <script src="proof_creator.js" defer></script>  <!-- Link to the proof creator JS file --> 
     <script src="proof_creator.js" defer></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
+
 </head>
 <body id="proof-creator-page">
     <header>
@@ -79,8 +80,8 @@
                         <button id="next-view-button" class="carousel-arrow"><i class="fas fa-chevron-right"></i></button>
                     </div>
                 </div>
-                <button id="submit-proof-button" class="primary-btn">Submit Proof (Placeholder)</button>
-                <button id="download-pdf-button" class="primary-btn">Download Proof PDF</button>
+                <button id="download-pdf-button" class="primary-btn">Download PDF Proof</button>
+
             </div>
         </div>
     </main>
@@ -88,7 +89,6 @@
     <footer>
         <p>© 2025 Colour Matcher</p>
     </footer>
-<!--     <script src="proof_creator.js" defer></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script> -->
+
 </body>
 </html>

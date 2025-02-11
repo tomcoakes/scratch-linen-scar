@@ -1,4 +1,4 @@
-console.log("html2pdf object:", typeof html2pdf);
+
 
 // proof_creator.js
 /**
@@ -16,6 +16,7 @@ let lastPosX = 0;
 let lastPosY = 0;
 let views = []; // Array to store canvas states (each view is a canvas state as JSON)
 let currentViewIndex = 0;
+
 
 document.addEventListener('DOMContentLoaded', () => {
     proofCreatorCanvas = new fabric.Canvas('proof-canvas', {
@@ -80,7 +81,8 @@ document.addEventListener('DOMContentLoaded', () => {
     addViewButton.addEventListener('click', addView); // Add View button listener
       prevViewButton.addEventListener('click', previousView);
     nextViewButton.addEventListener('click', nextView);
-  
+      const downloadPdfButton = document.getElementById('download-pdf-button'); // ADD THIS LINE - Get the button
+    downloadPdfButton.addEventListener('click', generatePdfProof); // ADD THIS LINE - Add event listener
 
 
     // --- Mouse wheel zoom ---
@@ -142,8 +144,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // const submitProofButton = document.getElementById('submit-proof-button');
     // submitProofButton.addEventListener('click', submitProof);
   
-    const downloadPdfButton = document.getElementById('download-pdf-button'); // ADD THIS LINE - Get the download button
-    downloadPdfButton.addEventListener('click', downloadProofPdf); // ADD THIS LINE - Attach event listener
+
 
 
     updateCarousel(); // Initialize carousel indicators
@@ -525,71 +526,48 @@ function deleteActiveObject() {
 }
 
 
+async function generatePdfProof() {
+    console.log('generatePdfProof() called');
 
-async function downloadProofPdf() {
-    console.log("Download Proof PDF button clicked!");
-    console.log("Views array before PDF:", views); // Debug log - views array
-
-    // 1. Get data from the page
+    // 1. Get Garment Details
     const garmentCode = document.getElementById('garment-code').value;
     const proofDescription = document.getElementById('proof-description').value;
 
-    // 2. Get Data URLs for up to 3 canvas views
-    const canvasDataUrls = views.map(viewState => {
-        const tempCanvas = new fabric.Canvas(null, { width: proofCreatorCanvas.width, height: proofCreatorCanvas.height }); // Create temp canvas
-        tempCanvas.loadFromJSON(viewState); // Load view state onto temp canvas
-        return tempCanvas.toDataURL('image/png'); // Get Data URL from temp canvas
-    }).slice(0, 3); // Limit to first 3 views
+    // 2. Get Canvas Image as Data URL
+    const canvasDataURL = proofCreatorCanvas.toDataURL('png'); // Get canvas as PNG
 
-    // 3. Fetch the proof template HTML
+    // 3. Fetch Proof Template HTML
     try {
-        const response = await fetch('../proof_template.html'); // Path to your proof_template.html
+        const response = await fetch('./proof_template.html'); // Path to your template
         if (!response.ok) {
-            throw new Error(`HTTP error! status: ${response.status}`);
+            throw new Error(`Failed to load proof template: ${response.status} ${response.statusText}`);
         }
         let templateHtml = await response.text();
 
-        // 4. Fill the template with data AND insert up to 3 canvas images
-        templateHtml = templateHtml.replace('[GARMENT_CODE]', garmentCode || 'N/A');
-        templateHtml = templateHtml.replace('[PROOF_DESCRIPTION]', proofDescription || 'N/A');
+        // 4. Replace Placeholders in Template HTML
+        templateHtml = templateHtml.replace('[GARMENT_CODE]', garmentCode);
+        templateHtml = templateHtml.replace('[PROOF_DESCRIPTION]', proofDescription);
+        templateHtml = templateHtml.replace('[PROOF_IMAGE_1]', canvasDataURL); // Use canvas Data URL
 
-        // Insert canvas images into placeholders, up to 3 views
-        canvasDataUrls.forEach((dataUrl, index) => {
-            const placeholderId = `proof-image-${index + 1}`;
-            const placeholderComment = `<!-- Proof Image ${index + 1} Placeholder -->`;
-            const imageHtml = `<img src="${dataUrl}" style="max-width:100%; max-height:auto;"/>`;
-
-            console.log(`Replacing placeholder: ${placeholderComment}`); // *** ADDED DEBUG LOG ***
-            templateHtml = templateHtml.replace(placeholderComment, imageHtml);
-            console.log(`templateHtml after replacement ${index + 1}:\n`, templateHtml.substring(0, 1500)); // *** ADDED DEBUG LOG (first 1500 chars) *** - To avoid console overload
-
+        // 5. Generate PDF using jsPDF
+        const pdf = new jsPDF('landscape', 'mm', 'a4'); // Landscape A4 PDF
+        pdf.html(templateHtml, {
+            callback: function (pdf) {
+                pdf.save(`proof-${garmentCode || 'document'}.pdf`); // Save with garment code or default name
+                console.log('PDF generated and download started.');
+            },
+            margin: [20, 25, 20, 25], // Set margins [top, left, bottom, right] - match padding in proof_template.css
+             autoPaging: 'text', // or 'none' or 'number'
+            x: 0,
+            y: 0,
+            width: 297, // A4 - landscape
+            windowWidth: 1200, // Window width for html2canvas, adjust as needed
+            windowHeight: 800
         });
 
-        // Remove any remaining placeholders if fewer than 3 views
-        for (let i = canvasDataUrls.length; i < 3; i++) {
-            const placeholderComment = `<!-- Proof Image ${i + 1} Placeholder -->`;
-            templateHtml = templateHtml.replace(placeholderComment, `<p>No additional view</p>`); // Or replace with an empty div: ''
-        }
-
-
-        // 5. Generate PDF using html2pdf.js
-        const element = document.createElement('div');
-        element.innerHTML = templateHtml;
-
-        const opt = {
-          margin:       10,
-          filename:     'customer_proof.pdf',
-          image:        { type: 'jpeg', quality: 0.98 },
-          html2canvas:  { scale: 2 },
-          jsPDF:        { unit: 'mm', format: 'a4', orientation: 'landscape' }
-        };
-
-        html2pdf().from(element).set(opt).save();
-
-        console.log("PDF download initiated with multiple canvases!");
 
     } catch (error) {
-        console.error("Error generating PDF with multiple canvases:", error);
-        alert("Failed to generate PDF with multiple canvases. See console for details.");
+        console.error('Error generating PDF:', error);
+        alert(`Failed to generate PDF proof: ${error.message}`);
     }
 }
