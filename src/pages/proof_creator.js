@@ -81,9 +81,24 @@ document.addEventListener('DOMContentLoaded', () => {
     addViewButton.addEventListener('click', addView); // Add View button listener
       prevViewButton.addEventListener('click', previousView);
     nextViewButton.addEventListener('click', nextView);
-      const downloadPdfButton = document.getElementById('download-pdf-button'); // ADD THIS LINE - Get the button
-    downloadPdfButton.addEventListener('click', generatePdfProof); // ADD THIS LINE - Add event listener
 
+  
+      const submitProofButton = document.getElementById('submit-proof-button');
+    submitProofButton.addEventListener('click', submitProof);
+
+    // Add the Generate PDF button and event listener.  Place this *after* the DOMContentLoaded
+    const generatePdfButton = document.createElement('button');
+    generatePdfButton.textContent = "Generate PDF";
+    generatePdfButton.id = "generate-pdf-button";
+    generatePdfButton.addEventListener('click', generateProofPDF); // Call the generate function
+
+    const buttonContainer = document.createElement('div');
+    buttonContainer.className = 'button-container'; // Optional class for styling
+    buttonContainer.appendChild(generatePdfButton);
+    document.querySelector('.right-column').appendChild(buttonContainer); // Append *after* the canvas wrapper
+  
+  
+  
 
     // --- Mouse wheel zoom ---
     proofCreatorCanvas.on('mouse:wheel', function(opt) {
@@ -331,19 +346,20 @@ function fetchCustomerLogos(customerId) {
 }
 
 // --- Add Logo to Canvas ---
-function addLogoToCanvas(logoUrl, logoName) {
+function addLogoToCanvas(logoUrl, logoName, file) { // Add 'file' parameter
     console.log(`Adding logo to canvas: ${logoUrl} (${logoName})`);
 
     const canvasWidth = proofCreatorCanvas.getWidth();
     const canvasHeight = proofCreatorCanvas.getHeight();
 
+     if (file && !logoFiles.find(f => f.name === file.name)) { // Check if it's already stored.  Use filename for comparison.
+      logoFiles.push(file); // Store the actual File object
+    }
 
     if (logoUrl.toLowerCase().endsWith('.svg')) {
-        // Simplified SVG loading for testing
-        fabric.loadSVGFromURL(logoUrl, (objects, options) => {
-            const logoImg = fabric.util.groupSVGElements(objects, options);
-
-            logoImg.set({
+      fabric.loadSVGFromURL(logoUrl, (objects, options) => {
+        const logoImg = fabric.util.groupSVGElements(objects, options);
+          logoImg.set({
                 left: canvasWidth / 2,    // Center by default
                 top: canvasHeight / 2,
                 scaleX: 0.5, // Fixed scale for now - try 0.5
@@ -352,26 +368,131 @@ function addLogoToCanvas(logoUrl, logoName) {
                 originY: 'center',
                 selectable: true, // Make logos selectable so they can be deleted
             });
-            proofCreatorCanvas.add(logoImg);
-            proofCreatorCanvas.renderAll();
-        }, null, { crossOrigin: 'anonymous' });
+        proofCreatorCanvas.add(logoImg);
+        proofCreatorCanvas.renderAll();
+    }, null, { crossOrigin: 'anonymous' });
 
-    } else {
-        // (Keep raster image loading as is for now)
-        fabric.Image.fromURL(logoUrl, (logoImg) => {
-            const scale = Math.min(0.2, canvasWidth / logoImg.width, canvasHeight/logoImg.height);
-            logoImg.set({
-                left: canvasWidth / 2,
-                top: canvasHeight / 2,
-                scaleX: scale,
-                scaleY: scale,
-                originX: 'center',
-                originY: 'center',
-                selectable: true, // Make logos selectable so they can be deleted
-            });
-            proofCreatorCanvas.add(logoImg);
-            proofCreatorCanvas.renderAll();
-        }, { crossOrigin: 'anonymous' });
+    }
+    else
+    {
+      fabric.Image.fromURL(logoUrl, (logoImg) => {
+          const scale = Math.min(0.2, canvasWidth / logoImg.width, canvasHeight/logoImg.height);
+        logoImg.set({
+          left: canvasWidth / 2,
+          top: canvasHeight / 2,
+          scaleX: scale, // Use the calculated scale factor.
+          scaleY: scale,
+          originX: 'center',
+          originY: 'center',
+           selectable: true,
+        });
+        proofCreatorCanvas.add(logoImg);
+        proofCreatorCanvas.renderAll();
+
+      }, { crossOrigin: 'anonymous' });
+    }
+}
+
+function getCanvasImageData(canvas, quality = 0.9) { // Add quality parameter
+    return canvas.toDataURL({
+        format: 'jpeg', // Use JPEG for smaller size
+        quality: quality   // 0.9 is a good balance between quality and size (range 0.0 - 1.0)
+    });
+}
+
+
+// --- Function to Generate PDF (Client-Side) ---
+async function generateProofPDF() {
+    console.log("generateProofPDF called"); // Debug log
+
+    if (!selectedCustomer) {
+        alert("Please select a customer first.");
+        return;
+    }
+
+     // Get Customer Details
+      const customerResponse = await fetch('/api/customers');
+        if (!customerResponse.ok) {
+            console.error("Failed to fetch customer list for populating modal.");
+            return;
+        }
+        const customerData = await customerResponse.json();
+      const customer = customerData.find(c => c.id === selectedCustomer);
+
+        if (!customer) {
+            console.error(`Customer with ID ${selectedCustomer} not found!`);
+            return;
+        }
+
+      const customerName = customer.name;
+    const customerEmail = customer.email;
+    const contactPerson = customer.contactPerson;
+
+    // Collect Proof Details
+    const garmentCode = document.getElementById('garment-code').value.trim();
+    const proofDescription = document.getElementById('proof-description').value.trim();
+
+    if (!garmentCode) {
+        alert("Please enter a Garment Code.");
+        return;
+    }
+
+    // Get Canvas Data (all views)
+    saveCurrentView(); // Make sure the *current* view is saved
+    const canvasImages = views.map(view => {
+        // Create a temporary canvas to load the JSON onto
+        const tempCanvas = new fabric.Canvas();
+        tempCanvas.loadFromJSON(view, () => { // Use loadFromJSON's callback
+          tempCanvas.renderAll(); // Make *SURE* it's rendered before converting.
+        });
+
+        // Convert the temporary canvas to a data URL (image)
+        return getCanvasImageData(tempCanvas); // Use helper function, default JPEG 90% quality.
+    });
+
+    // Prepare the data for the server.  Include EVERYTHING.
+    const pdfData = {
+        customerId: selectedCustomer,
+        customerName: customerName,
+        customerEmail: customerEmail,
+        contactPerson: contactPerson,
+        garmentCode,
+        proofDescription,
+        canvasImages,  // Array of data URLs (images)
+        logos: logoFiles // Array of File objects
+    };
+
+    console.log("Sending PDF data to server:", pdfData); // Very important to check this.
+
+    try {
+        const response = await fetch('/api/generate-pdf', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                // DON'T set multipart/form-data here.  We're sending JSON.
+            },
+            body: JSON.stringify(pdfData) // Send ALL the data as JSON
+        });
+
+        if (!response.ok) {
+            const errorText = await response.text();
+            throw new Error(`Server error: ${response.status} ${response.statusText} - ${errorText}`);
+        }
+
+        // Handle PDF Download
+        const blob = await response.blob();
+        const downloadUrl = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = downloadUrl;
+        a.download = `proof_${selectedCustomer}_${Date.now()}.pdf`;
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        URL.revokeObjectURL(downloadUrl);
+
+    } catch (error) {
+        console.error('Error generating PDF:', error);
+        alert('Error generating PDF: ' + error.message);
     }
 }
 
@@ -526,48 +647,3 @@ function deleteActiveObject() {
 }
 
 
-async function generatePdfProof() {
-    console.log('generatePdfProof() called');
-
-    // 1. Get Garment Details
-    const garmentCode = document.getElementById('garment-code').value;
-    const proofDescription = document.getElementById('proof-description').value;
-
-    // 2. Get Canvas Image as Data URL
-    const canvasDataURL = proofCreatorCanvas.toDataURL('png'); // Get canvas as PNG
-
-    // 3. Fetch Proof Template HTML
-    try {
-        const response = await fetch('./proof_template.html'); // Path to your template
-        if (!response.ok) {
-            throw new Error(`Failed to load proof template: ${response.status} ${response.statusText}`);
-        }
-        let templateHtml = await response.text();
-
-        // 4. Replace Placeholders in Template HTML
-        templateHtml = templateHtml.replace('[GARMENT_CODE]', garmentCode);
-        templateHtml = templateHtml.replace('[PROOF_DESCRIPTION]', proofDescription);
-        templateHtml = templateHtml.replace('[PROOF_IMAGE_1]', canvasDataURL); // Use canvas Data URL
-
-        // 5. Generate PDF using jsPDF
-        const pdf = new jsPDF('landscape', 'mm', 'a4'); // Landscape A4 PDF
-        pdf.html(templateHtml, {
-            callback: function (pdf) {
-                pdf.save(`proof-${garmentCode || 'document'}.pdf`); // Save with garment code or default name
-                console.log('PDF generated and download started.');
-            },
-            margin: [20, 25, 20, 25], // Set margins [top, left, bottom, right] - match padding in proof_template.css
-             autoPaging: 'text', // or 'none' or 'number'
-            x: 0,
-            y: 0,
-            width: 297, // A4 - landscape
-            windowWidth: 1200, // Window width for html2canvas, adjust as needed
-            windowHeight: 800
-        });
-
-
-    } catch (error) {
-        console.error('Error generating PDF:', error);
-        alert(`Failed to generate PDF proof: ${error.message}`);
-    }
-}
