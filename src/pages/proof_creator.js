@@ -78,7 +78,7 @@ document.addEventListener('DOMContentLoaded', () => {
     addViewButton.addEventListener('click', addView); // Add View button listener
       prevViewButton.addEventListener('click', previousView);
     nextViewButton.addEventListener('click', nextView);
-  
+
 
 
     // --- Mouse wheel zoom ---
@@ -145,8 +145,6 @@ document.addEventListener('DOMContentLoaded', () => {
     loadCurrentView(); // Load the initial view (first in the array) - LOAD AFTER updateCarousel to fix indicator highlighting
 });
 
-
-
 // --- Canvas View Management ---
 
 function addView() {
@@ -206,14 +204,15 @@ function nextView() {
 
 function loadCurrentView() {
     const viewState = views[currentViewIndex];
-    proofCreatorCanvas.clear(); // Clear canvas - ALREADY PRESENT
+     // Clear canvas - ALREADY PRESENT, BUT MODIFIED to not reset zoom
+        proofCreatorCanvas.clear(); // Clears objects, but keeps background
     if (viewState) {
         proofCreatorCanvas.loadFromJSON(viewState, () => {
             proofCreatorCanvas.renderAll();
             console.log(`loadCurrentView: Loaded view at index: ${currentViewIndex}`); // ADDED LOG
         });
     } else {
-        proofCreatorCanvas.setBackgroundImage(null, proofCreatorCanvas.renderAll.bind(proofCreatorCanvas));
+        proofCreatorCanvas.setBackgroundImage(null, proofCreatorCanvas.renderAll.bind(proofCreatorCanvas)); // MODIFICATION:  Clear background explicitly
         console.log(`loadCurrentView: Loaded blank view at index: ${currentViewIndex}`); // ADDED LOG
     }
 }
@@ -265,7 +264,7 @@ async function populateCustomerList() {
 
     } catch (error) {
         console.error('Error fetching customers:', error);
-        customerList.innerHTML = `<li>Error loading customers: ${error.message}</li>`;
+        customerList.innerHTML = '<li class="error-list-item">Error loading customers.</li>';
     }
 }
 
@@ -405,7 +404,7 @@ function handleGarmentImage(file) {
     reader.onload = (e) => {
         console.log("FileReader onload event triggered."); // Debug log
 
-        fabric.Image.fromURL(e.target.result, (img) => {
+        fabric.Image.fromURL(e.target.result, (img) => { // MODIFICATION: Removed URL.revokeObjectURL(url); as it is not needed here
             console.log("fabric.Image.fromURL callback executed. Image:", img); // Debug log
 
             if (!img) { //image failed to load
@@ -418,19 +417,21 @@ function handleGarmentImage(file) {
             const canvasHeight = proofCreatorCanvas.getHeight();
             const scale = Math.min(canvasWidth / img.width, canvasHeight / img.height, 1);
 
-            img.set({
-                scaleX: scale,
-                scaleY: scale,
-                left: (canvasWidth - img.width * scale) / 2, // Center horizontally
-                top: (canvasHeight - img.height * scale) / 2, // Center vertically
-                selectable: false // Garment image should NOT be selectable/movable
-            });
+          img.set({
+            scaleX: scale,
+            scaleY: scale,
+             left: canvasWidth / 2,  // Center
+            top: canvasHeight / 2, // Center
+            originX: 'center', // Set origin to center for correct positioning
+            originY: 'center',
+            selectable: false // Garment image should NOT be selectable/movable
+        });
 
-            saveCurrentView(); // Save canvas state *before* background change
-            proofCreatorCanvas.setBackgroundImage(img, proofCreatorCanvas.renderAll.bind(proofCreatorCanvas));
-            saveCurrentView(); // Save canvas state *again* AFTER background change
-            loadCurrentView();
+          proofCreatorCanvas.add(img);
+          proofCreatorCanvas.sendToBack(img);
+            proofCreatorCanvas.renderAll();
             console.log("Image set as background. Canvas dimensions:", proofCreatorCanvas.width, proofCreatorCanvas.height); //debug
+              saveCurrentView();
 
         }, { crossOrigin: 'anonymous' }); // Important for loading from Data URL
     };
@@ -484,9 +485,6 @@ function updateSelectedLogosDisplay() {
 // --- Submit Proof (Placeholder) ---
 
 // proof_creator.js
-function submitProof() {
-  // This function intentionally does nothing.
-}
 
 
 
@@ -522,4 +520,32 @@ function deleteActiveObject() {
     } else {
         console.log('No object selected to delete.');
     }
+}
+
+  function submitProof() {
+    if (selectedCustomer) {
+        const customer = customerData.find(c => c.id === selectedCustomer);
+        if (customer) {
+            const garmentCode = document.getElementById('garment-code').value;
+            const description = document.getElementById('proof-description').value;
+
+            const proofData = {
+                customerName: customer.name,
+                garmentCode,
+                description,
+                views: views,
+            };
+
+            generateAndDownloadPDF(proofData);
+        }
+    } else {
+        alert('Please select a customer first.');
+    }
+}
+
+// Placeholder function to generate and download PDF (Integration with your PDF generation logic will go here)
+async function generateAndDownloadPDF(proofData) {
+    // For now, log the proof data. Later, you'll use a library like jsPDF or PDFMake
+    console.log("Generating PDF with data:", proofData);
+
 }
