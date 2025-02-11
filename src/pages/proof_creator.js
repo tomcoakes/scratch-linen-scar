@@ -530,9 +530,37 @@ async function submitProof() {
         return;
     }
 
-    // 1. Gather data (canvas images, garment code, description)
     saveCurrentView();
-    const canvasData = views.map(view => view.objects ? JSON.stringify(view) : null).filter(v=>v); // Filter out empty
+
+    // Collect canvas data as JSON strings, handling potential errors.
+    const canvasData = [];
+    for (let i = 0; i < views.length; i++) {
+        if (views[i] && views[i].objects && views[i].objects.length > 0) { // Check for a valid view
+            try {
+                proofCreatorCanvas.clear(); //clear and load each view in turn
+                await new Promise((resolve) => {
+                    proofCreatorCanvas.loadFromJSON(views[i], () => {
+                      proofCreatorCanvas.renderAll();
+                      const dataURL = proofCreatorCanvas.toDataURL({format: 'png'});
+                      canvasData.push(dataURL);
+                      resolve(); // Resolve the promise after the image is loaded
+                    });
+                  });
+                console.log(`Canvas data for view ${i}:`, canvasData[i].substring(0, 100) + "..."); // Log first 100 chars
+            } catch (error) {
+                console.error(`Error processing view ${i}:`, error);
+                canvasData.push(null); // Add a null placeholder for error handling
+            }
+        } else {
+            console.log(`View ${i} is empty or invalid, skipping.`);
+            canvasData.push(null); // Push null for empty views
+        }
+    }
+
+  // Remove null values. This happens when the view doesn't exist.
+    const filteredCanvasData = canvasData.filter(data => data !== null);
+
+
     const garmentCode = document.getElementById('garment-code').value.trim();
     const proofDescription = document.getElementById('proof-description').value.trim();
 
@@ -540,16 +568,16 @@ async function submitProof() {
         alert('Please enter a Garment Code.');
         return;
     }
-    if (canvasData.length === 0) {
-      alert('Please add at least one view to your proof.');
-        return;
-    }
 
-    console.log('submitProof() - Canvas Data:', canvasData);
+    if (filteredCanvasData.length === 0) { // Check for empty filtered array
+      alert('Please add at least one view to your proof.');
+      return;
+  }
+
+    console.log('submitProof() - Canvas Data:', filteredCanvasData); //log filtered array
     console.log('submitProof() - Garment Code:', garmentCode);
     console.log('submitProof() - Proof Description:', proofDescription);
 
-    // 2. Send data to the server
     try {
         const response = await fetch('/api/create-proof', {
             method: 'POST',
@@ -557,10 +585,10 @@ async function submitProof() {
                 'Content-Type': 'application/json'
             },
              body: JSON.stringify({
-                canvasData: canvasData,
+                canvasData: filteredCanvasData,  // Use filtered data
                 garmentCode: garmentCode,
                 description: proofDescription,
-                customerId: selectedCustomer // Optionally send customer ID
+                customerId: selectedCustomer
             })
         });
 
@@ -571,22 +599,21 @@ async function submitProof() {
             throw new Error(`Server error: ${response.status} ${response.statusText} - ${errorData.error}`);
         }
 
-        // 3. Handle the response (trigger download)
         const blob = await response.blob();
         const url = window.URL.createObjectURL(blob);
         const a = document.createElement('a');
         a.style.display = 'none';
         a.href = url;
-        a.download = `proof_${selectedCustomer}_${Date.now()}.pdf`; // Name the file
+        a.download = `proof_${selectedCustomer}_${Date.now()}.pdf`;
         document.body.appendChild(a);
         a.click();
         window.URL.revokeObjectURL(url);
         alert('Proof generated and download started.');
+
     } catch (error) {
         console.error('Error creating proof:', error);
         alert('Failed to create proof: ' + error.message);
     }
-      console.log('submitProof() - END');
 }
 
 // Placeholder function to generate and download PDF (Integration with your PDF generation logic will go here)

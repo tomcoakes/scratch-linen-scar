@@ -820,10 +820,16 @@ app.post("/api/create-proof", async (req, res) => {
 
     const { canvasData, garmentCode, description } = req.body;
 
-    // Basic Validation (add more as needed)
+    // --- Validation and Logging ---
     if (!canvasData || !garmentCode) {
       return res.status(400).json({ error: "Missing required data (canvasData, garmentCode)." });
     }
+    if (!Array.isArray(canvasData)) {
+      return res.status(400).json({ error: "canvasData must be an array." });
+    }
+    debugLog("Received canvasData:", canvasData.map(data => data ? data.substring(0, 100) + "..." : null)); // Log a portion of each data URL
+    debugLog("Received garmentCode:", garmentCode);
+    debugLog("Received description:", description);
 
     // 1. Read the HTML template
     debugLog("Reading proof_template.html...");
@@ -835,10 +841,10 @@ app.post("/api/create-proof", async (req, res) => {
     debugLog("Replacing placeholders in template...");
     htmlTemplate = htmlTemplate.replace('[GARMENT_CODE]', garmentCode);
     htmlTemplate = htmlTemplate.replace('[PROOF_DESCRIPTION]', description || 'No description provided.');
-    // Replace the image placeholders with actual image data
+
        htmlTemplate = htmlTemplate.replace(
         `<div class="image-box" id="proof-image-1"></div>`,
-        `<div class="image-box"><img src="${canvasData[0]}" alt="Proof Image 1"></div>`
+         canvasData[0] ? `<div class="image-box"><img src="${canvasData[0]}" alt="Proof Image 1"></div>` : `<div class="image-box"> </div>`
     );
      htmlTemplate = htmlTemplate.replace(
        `<div class="image-box" id="proof-image-2"></div>`,
@@ -854,6 +860,7 @@ app.post("/api/create-proof", async (req, res) => {
     );
 
     debugLog("Placeholders replaced.");
+
 
     // 3. Generate PDF Options
       let options = {
@@ -871,7 +878,7 @@ app.post("/api/create-proof", async (req, res) => {
 
     // 4. Generate PDF
     debugLog("Generating PDF using html-pdf-node...");
-    const pdfBuffer = await pdf.generatePdf(file, options);
+    const pdfBuffer = await pdf.generatePdf(file, options); //html,options
     debugLog("PDF generated successfully.");
 
     // 5. Send PDF as response
