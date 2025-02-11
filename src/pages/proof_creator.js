@@ -78,7 +78,7 @@ document.addEventListener('DOMContentLoaded', () => {
     addViewButton.addEventListener('click', addView); // Add View button listener
       prevViewButton.addEventListener('click', previousView);
     nextViewButton.addEventListener('click', nextView);
-
+  
 
 
     // --- Mouse wheel zoom ---
@@ -204,15 +204,14 @@ function nextView() {
 
 function loadCurrentView() {
     const viewState = views[currentViewIndex];
-     // Clear canvas - ALREADY PRESENT, BUT MODIFIED to not reset zoom
-        proofCreatorCanvas.clear(); // Clears objects, but keeps background
+    proofCreatorCanvas.clear(); // Clear canvas - ALREADY PRESENT
     if (viewState) {
         proofCreatorCanvas.loadFromJSON(viewState, () => {
             proofCreatorCanvas.renderAll();
             console.log(`loadCurrentView: Loaded view at index: ${currentViewIndex}`); // ADDED LOG
         });
     } else {
-        proofCreatorCanvas.setBackgroundImage(null, proofCreatorCanvas.renderAll.bind(proofCreatorCanvas)); // MODIFICATION:  Clear background explicitly
+        proofCreatorCanvas.setBackgroundImage(null, proofCreatorCanvas.renderAll.bind(proofCreatorCanvas));
         console.log(`loadCurrentView: Loaded blank view at index: ${currentViewIndex}`); // ADDED LOG
     }
 }
@@ -264,7 +263,7 @@ async function populateCustomerList() {
 
     } catch (error) {
         console.error('Error fetching customers:', error);
-        customerList.innerHTML = '<li class="error-list-item">Error loading customers.</li>';
+        customerList.innerHTML = `<li>Error loading customers: ${error.message}</li>`;
     }
 }
 
@@ -404,7 +403,7 @@ function handleGarmentImage(file) {
     reader.onload = (e) => {
         console.log("FileReader onload event triggered."); // Debug log
 
-        fabric.Image.fromURL(e.target.result, (img) => { // MODIFICATION: Removed URL.revokeObjectURL(url); as it is not needed here
+        fabric.Image.fromURL(e.target.result, (img) => {
             console.log("fabric.Image.fromURL callback executed. Image:", img); // Debug log
 
             if (!img) { //image failed to load
@@ -417,21 +416,19 @@ function handleGarmentImage(file) {
             const canvasHeight = proofCreatorCanvas.getHeight();
             const scale = Math.min(canvasWidth / img.width, canvasHeight / img.height, 1);
 
-          img.set({
-            scaleX: scale,
-            scaleY: scale,
-             left: canvasWidth / 2,  // Center
-            top: canvasHeight / 2, // Center
-            originX: 'center', // Set origin to center for correct positioning
-            originY: 'center',
-            selectable: false // Garment image should NOT be selectable/movable
-        });
+            img.set({
+                scaleX: scale,
+                scaleY: scale,
+                left: (canvasWidth - img.width * scale) / 2, // Center horizontally
+                top: (canvasHeight - img.height * scale) / 2, // Center vertically
+                selectable: false // Garment image should NOT be selectable/movable
+            });
 
-          proofCreatorCanvas.add(img);
-          proofCreatorCanvas.sendToBack(img);
-            proofCreatorCanvas.renderAll();
+            saveCurrentView(); // Save canvas state *before* background change
+            proofCreatorCanvas.setBackgroundImage(img, proofCreatorCanvas.renderAll.bind(proofCreatorCanvas));
+            saveCurrentView(); // Save canvas state *again* AFTER background change
+            loadCurrentView();
             console.log("Image set as background. Canvas dimensions:", proofCreatorCanvas.width, proofCreatorCanvas.height); //debug
-              saveCurrentView();
 
         }, { crossOrigin: 'anonymous' }); // Important for loading from Data URL
     };
@@ -486,7 +483,109 @@ function updateSelectedLogosDisplay() {
 
 // proof_creator.js
 
+function submitProof() {
+    if (!selectedCustomer) {
+        alert("Please select a customer first.");
+        return;
+    }
 
+    const canvasDataURLs = [];
+
+    console.log("Views array before DataURL generation:", views);
+
+    const dataURLPromises = views.map((viewState, index) => {
+        return new Promise(resolve => {
+            console.log(`Generating DataURL for view index: ${index}`);
+
+            const tempCanvasForView = new fabric.Canvas(null, {
+                width: proofCreatorCanvas.getWidth(),
+                height: proofCreatorCanvas.getHeight(),
+                backgroundColor: '#ffffff'
+            });
+
+            tempCanvasForView.loadFromJSON(viewState, () => { // loadFromJSON callback - IMPORTANT!
+                console.log(`loadFromJSON callback for view index: ${index} STARTED`); // ADDED LOGGING - Start of callback
+
+                tempCanvasForView.renderAll(); // Explicitly render all objects - ALREADY PRESENT
+
+                // --- MOVE toDataURL() call INSIDE the callback ---
+                const dataURL = tempCanvasForView.toDataURL('png');
+                console.log(`DataURL generated for view index: ${index} (TEMPORARY canvas): ${dataURL.substring(0, 50)}...`);
+
+                canvasDataURLs.push(dataURL); // Add Data URL to the array
+                resolve(); // Resolve the Promise AFTER Data URL is generated
+
+                tempCanvasForView.dispose();
+                console.log(`loadFromJSON callback for view index: ${index} ENDED`); // ADDED LOGGING - End of callback
+            }, null, function() { // Fabric.js callback context - No changes needed here, but added for clarity
+                // Optional callback context if needed, can leave null
+            });
+        });
+    });
+
+    Promise.all(dataURLPromises).then(() => {
+        const garmentCode = document.getElementById('garment-code').value;
+        const proofDescription = document.getElementById('proof-description').value;
+
+        if (!garmentCode) {
+            alert("Please enter a garment code.");
+            return;
+        }
+
+        const proofData = {
+            customerId: selectedCustomer,
+            canvasDataURLs: canvasDataURLs,
+            garmentCode: garmentCode,
+            proofDescription: proofDescription
+        };
+
+        console.log("Submitting proof data with Data URLs:", proofData);
+
+        fetch(`/api/customers/${selectedCustomer}/generate-proof`, {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(proofData),
+        })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+            return response.blob();
+        })
+        .then(blob => {
+            // Create a Blob URL
+            const pdfUrl = URL.createObjectURL(blob);
+
+            // Create a temporary link element
+            const downloadLink = document.createElement('a');
+            downloadLink.href = pdfUrl;
+            downloadLink.download = `customer_proof_${selectedCustomer}.pdf`; // Suggest filename
+            document.body.appendChild(downloadLink); // Append to body (required for FF)
+            downloadLink.click(); // Programmatically click the link to trigger download
+            downloadLink.remove(); // Clean up by removing the link
+
+            URL.revokeObjectURL(pdfUrl); // Revoke the Blob URL to free resources
+
+            alert("PDF Proof downloaded successfully!"); // Success alert
+
+            // --- Lines that could be temporarily commented out for Issue 1 debugging ---
+            proofCreatorCanvas.clear();
+            proofCreatorCanvas.setBackgroundImage(null, proofCreatorCanvas.renderAll.bind(proofCreatorCanvas));
+            views = [{}];
+            currentViewIndex = 0;
+            updateCarousel();
+            loadCurrentView();
+            // --- End of potentially commented out lines ---
+
+        })
+        .catch(error => {
+            console.error('Error submitting proof:', error);
+            alert(`Failed to submit proof: ${error.message}`);
+        });
+    });
+}
 
 // Zoom In function
 function zoomIn() {
@@ -520,102 +619,4 @@ function deleteActiveObject() {
     } else {
         console.log('No object selected to delete.');
     }
-}
-
-async function submitProof() {
-    console.log('submitProof() called in proof_creator.js - START');
-
-    if (!selectedCustomer) {
-        alert("Please select a customer before submitting a proof.");
-        return;
-    }
-
-    saveCurrentView(); // Ensure current view is saved
-
-    const canvasData = [];
-    for (let i = 0; i < views.length; i++) {
-        if (views[i] && views[i].objects && views[i].objects.length > 0) { // Check for a valid view
-            try {
-                const dataURL = await new Promise((resolve) => {
-                    proofCreatorCanvas.clear(); //clear and load each view in turn
-                    proofCreatorCanvas.loadFromJSON(views[i], () => {
-                        proofCreatorCanvas.renderAll();
-                        resolve(proofCreatorCanvas.toDataURL({ format: 'png' })); // Resolve with the data URL
-                    });
-                });
-                canvasData.push(dataURL);
-                console.log(`Canvas data for view ${i}:`, dataURL.substring(0, 100) + "..."); // Log a portion.  KEEP THIS LOG FOR NOW
-            } catch (error) {
-                console.error(`Error processing view ${i}:`, error);
-                canvasData.push(null); // Add a null placeholder for error handling
-            }
-        } else {
-            console.log(`View ${i} is empty or invalid, skipping.`);
-            canvasData.push(null); // Add null for empty views.
-        }
-    }
-
-    const filteredCanvasData = canvasData.filter(data => data !== null); // Filter out null values
-
-    const garmentCode = document.getElementById('garment-code').value.trim();
-    const proofDescription = document.getElementById('proof-description').value.trim();
-
-
-    if (!garmentCode) {
-        alert('Please enter a Garment Code.');
-        return;
-    }
-
-    if (filteredCanvasData.length === 0) { // Check for empty filtered array
-      alert('Please add at least one view to your proof.');
-      return;
-  }
-
-
-    console.log('submitProof() - Canvas Data:', filteredCanvasData); // KEEP THIS - but it will now show full URLs
-    console.log('submitProof() - Garment Code:', garmentCode);
-    console.log('submitProof() - Proof Description:', proofDescription);
-
-    try {
-        const response = await fetch('/api/create-proof', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-                canvasData: filteredCanvasData,  // Send the array of data URLs.
-                garmentCode: garmentCode,
-                description: proofDescription,
-                customerId: selectedCustomer // Optionally send customer ID.
-            })
-        });
-
-        console.log('submitProof() - Server response:', response);
-
-        if (!response.ok) {
-            const errorData = await response.json();
-            throw new Error(`Server error: ${response.status} ${response.statusText} - ${errorData.error}`);
-        }
-
-        const blob = await response.blob();
-        const url = window.URL.createObjectURL(blob);
-        const a = document.createElement('a');
-        a.style.display = 'none';
-        a.href = url;
-        a.download = `proof_${selectedCustomer}_${Date.now()}.pdf`; // Use a dynamic name
-        document.body.appendChild(a);
-        a.click();
-        window.URL.revokeObjectURL(url); // Clean up
-        alert('Proof generated and download started.');
-
-    } catch (error) {
-        console.error('Error creating proof:', error);
-        alert('Failed to create proof: ' + error.message);
-    }
-}
-// Placeholder function to generate and download PDF (Integration with your PDF generation logic will go here)
-async function generateAndDownloadPDF(proofData) {
-    // For now, log the proof data. Later, you'll use a library like jsPDF or PDFMake
-    console.log("Generating PDF with data:", proofData);
-
 }
