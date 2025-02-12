@@ -336,41 +336,34 @@ function addLogoToCanvas(logoUrl, logoName) {
     const canvasWidth = proofCreatorCanvas.getWidth();
     const canvasHeight = proofCreatorCanvas.getHeight();
 
+    // Function to add the logo to the canvas
+    function addImageToCanvas(img) {
+        console.log(`addImageToCanvas called.  Intrinsic image dimensions: width=${img.width}, height=${img.height}`);
+
+        img.set({
+            left: canvasWidth / 2, // Center horizontally
+            top: canvasHeight / 2,  // Center vertically
+            originX: 'center',
+            originY: 'center',
+            selectable: true,
+            // Set width/height to intrinsic dimensions - NO SCALING
+            width: img.width,  // Use intrinsic width
+            height: img.height, // Use intrinsic height
+        });
+        console.log(`Logo added to canvas.  Object properties: left=${img.left}, top=${img.top}, width=${img.width}, height=${img.height}, scaleX=${img.scaleX}, scaleY=${img.scaleY}`);
+
+        proofCreatorCanvas.add(img);
+        proofCreatorCanvas.renderAll();
+    }
+
 
     if (logoUrl.toLowerCase().endsWith('.svg')) {
-        // Simplified SVG loading for testing
         fabric.loadSVGFromURL(logoUrl, (objects, options) => {
             const logoImg = fabric.util.groupSVGElements(objects, options);
-
-            logoImg.set({
-                left: canvasWidth / 2,    // Center by default
-                top: canvasHeight / 2,
-                // scaleX: 0.5, // Fixed scale for now - try 0.5 REMOVED - No initial scaling
-                // scaleY: 0.5,
-                originX: 'center',
-                originY: 'center',
-                selectable: true, // Make logos selectable so they can be deleted
-            });
-            proofCreatorCanvas.add(logoImg);
-            proofCreatorCanvas.renderAll();
+            addImageToCanvas(logoImg);
         }, null, { crossOrigin: 'anonymous' });
-
     } else {
-        // (Keep raster image loading as is for now)
-        fabric.Image.fromURL(logoUrl, (logoImg) => {
-            //const scale = Math.min(0.2, canvasWidth / logoImg.width, canvasHeight/logoImg.height);  REMOVED - No initial scaling
-            logoImg.set({
-                left: canvasWidth / 2,
-                top: canvasHeight / 2,
-                // scaleX: scale,
-                // scaleY: scale,
-                originX: 'center',
-                originY: 'center',
-                selectable: true, // Make logos selectable so they can be deleted
-            });
-            proofCreatorCanvas.add(logoImg);
-            proofCreatorCanvas.renderAll();
-        }, { crossOrigin: 'anonymous' });
+        fabric.Image.fromURL(logoUrl, addImageToCanvas, { crossOrigin: 'anonymous' });
     }
 }
 
@@ -543,10 +536,9 @@ function submitProof() {
                     tempCanvas.backgroundImage.left = 0;
                     tempCanvas.backgroundImage.top = 0;
 
-                    // Set width/height to match the scaled background size
+                     // Set width/height to match the scaled background size
                     tempCanvas.setWidth(tempCanvas.backgroundImage.getScaledWidth());
                     tempCanvas.setHeight(tempCanvas.backgroundImage.getScaledHeight());
-
 
                     tempCanvas.backgroundImage.set({
                         originX: 'left',  // Ensure top-left origin
