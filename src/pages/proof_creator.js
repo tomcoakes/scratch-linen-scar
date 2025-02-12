@@ -1,8 +1,5 @@
 // proof_creator.js
-/**
- * @global
- * @type {object}
- */
+
 var fabric; // Declare fabric as a global variable
 let proofCreatorCanvas;
 let selectedCustomer = null;
@@ -78,7 +75,8 @@ document.addEventListener('DOMContentLoaded', () => {
     addViewButton.addEventListener('click', addView); // Add View button listener
       prevViewButton.addEventListener('click', previousView);
     nextViewButton.addEventListener('click', nextView);
-  
+
+
 
 
     // --- Mouse wheel zoom ---
@@ -329,35 +327,44 @@ function fetchCustomerLogos(customerId) {
 }
 
 // --- Add Logo to Canvas ---
-function addLogoToCanvas(logoUrl, logoName) {
+async function addLogoToCanvas(logoUrl, logoName) {
     console.log(`Adding logo to canvas: ${logoUrl} (${logoName})`);
 
     const canvasWidth = proofCreatorCanvas.getWidth();
     const canvasHeight = proofCreatorCanvas.getHeight();
 
-
     if (logoUrl.toLowerCase().endsWith('.svg')) {
-        // Simplified SVG loading for testing
-        fabric.loadSVGFromURL(logoUrl, (objects, options) => {
-            const logoImg = fabric.util.groupSVGElements(objects, options);
+        // --- SVG Handling ---
+        try {
+            const response = await fetch(logoUrl);
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+            const svgText = await response.text();
 
-            logoImg.set({
-                left: canvasWidth / 2,    // Center by default
-                top: canvasHeight / 2,
-                scaleX: 0.5, // Fixed scale for now - try 0.5
-                scaleY: 0.5,
-                originX: 'center',
-                originY: 'center',
-                selectable: true, // Make logos selectable so they can be deleted
+            // Load SVG to get dimensions, THEN add to canvas
+            fabric.loadSVGFromString(svgText, (objects, options) => {
+                const svgImage = fabric.util.groupSVGElements(objects, options);
+                 svgImage.set({
+                    left: canvasWidth / 2,
+                    top: canvasHeight / 2,
+                    originX: 'center',
+                    originY: 'center',
+                    selectable: true,
+                });
+
+                // Add to canvas and keep track of it
+                proofCreatorCanvas.add(svgImage);
+                 proofCreatorCanvas.renderAll();
             });
-            proofCreatorCanvas.add(logoImg);
-            proofCreatorCanvas.renderAll();
-        }, null, { crossOrigin: 'anonymous' });
-
+        } catch (error) {
+            console.error('Error loading SVG:', error);
+            alert('Failed to load SVG logo.');
+        }
     } else {
-        // (Keep raster image loading as is for now)
+        // --- Raster Image Handling (as before) ---
         fabric.Image.fromURL(logoUrl, (logoImg) => {
-            const scale = Math.min(0.2, canvasWidth / logoImg.width, canvasHeight/logoImg.height);
+            const scale = Math.min(0.2, canvasWidth / logoImg.width, canvasHeight / logoImg.height);
             logoImg.set({
                 left: canvasWidth / 2,
                 top: canvasHeight / 2,
@@ -365,13 +372,14 @@ function addLogoToCanvas(logoUrl, logoName) {
                 scaleY: scale,
                 originX: 'center',
                 originY: 'center',
-                selectable: true, // Make logos selectable so they can be deleted
+                selectable: true
             });
             proofCreatorCanvas.add(logoImg);
             proofCreatorCanvas.renderAll();
         }, { crossOrigin: 'anonymous' });
     }
 }
+
 
 
 // --- Garment Image Upload ---
@@ -487,8 +495,8 @@ function updateSelectedLogosDisplay() {
 
 // proof_creator.js
 
-function submitProof() {
-    saveCurrentView(); // <---- ADD THIS LINE at the VERY BEGINNING
+async function submitProof() {
+    saveCurrentView();
 
     if (!selectedCustomer) {
         alert("Please select a customer first.");
@@ -496,93 +504,131 @@ function submitProof() {
     }
 
     const canvasDataURLs = [];
+    const svgData = []; // Array to store SVG data and transformations
 
     console.log("Views array before DataURL generation:", views);
 
-    const dataURLPromises = views.map((viewState, index) => {
-        return new Promise(resolve => {
-            console.log(`Generating DataURL for view index: ${index}`);
+     const dataURLPromises = views.map(async (viewState, index) => { // Changed to async
+        console.log(`Generating DataURL for view index: ${index}`);
 
-            const tempCanvasForView = new fabric.Canvas(null, {
-                width: proofCreatorCanvas.getWidth(),
-                height: proofCreatorCanvas.getHeight(),
-                backgroundColor: '#ffffff'
-            });
+        // Create a temporary canvas for higher resolution
+        const tempCanvasForView = new fabric.Canvas(null, {
+            // --- CRITICAL: Multiply by zoom factor for resolution ---
+            width: proofCreatorCanvas.getWidth() * zoomLevel,
+            height: proofCreatorCanvas.getHeight() * zoomLevel,
+            backgroundColor: '#ffffff'
+        });
 
-            tempCanvasForView.loadFromJSON(viewState, () => { // loadFromJSON callback - IMPORTANT!
-                console.log(`loadFromJSON callback for view index: ${index} STARTED`); // ADDED LOGGING - Start of callback
+         return new Promise(resolve => { // Wrap in a promise
+            tempCanvasForView.loadFromJSON(viewState, async () => { // Make callback async
+                console.log(`loadFromJSON callback for view index: ${index} STARTED`);
+                 tempCanvasForView.renderAll();
 
-                tempCanvasForView.renderAll(); // Explicitly render all objects - ALREADY PRESENT
+                // --- Extract SVG Data ---
+                for (const obj of tempCanvasForView.getObjects()) {
+                    if (obj.toSVG) {
+                         // Get the SVG data *before* scaling for the temporary canvas
+                         const originalSVG = obj.toSVG();
+                        const transform = obj.calcTransformMatrix();  // Get object's transformation matrix
+                         svgData.push({
+                            svg: originalSVG,  // Use the original SVG from toSVG()
+                            transform: transform,  // Store transformation matrix
+                            type: 'svg'
+                         });
+                    }
+                }
 
-                // --- MOVE toDataURL() call INSIDE the callback ---
-                const dataURL = tempCanvasForView.toDataURL('png');
+                // --- CRITICAL:  Calculate cropping parameters based on viewportTransform ---
+                const vpt = proofCreatorCanvas.viewportTransform;
+                const scaledWidth = proofCreatorCanvas.getWidth();
+                const scaledHeight = proofCreatorCanvas.getHeight();
+                const left = -vpt[4] / vpt[0]; // vpt[4] is x offset, vpt[0] is zoom
+                const top = -vpt[5] / vpt[3];    // vpt[5] is y offset, vpt[3] is zoom (same as vpt[0])
+                const width = scaledWidth / vpt[0];
+                const height = scaledHeight / vpt[3];
+
+                 // --- NOW use toDataURL with cropping ---
+                const dataURL = tempCanvasForView.toDataURL({
+                    format: 'png',
+                    left: left * zoomLevel,   // Scale to temp canvas size
+                    top: top * zoomLevel,      // Scale to temp canvas size
+                    width: width * zoomLevel,  // Scale to temp canvas size
+                    height: height * zoomLevel // Scale to temp canvas size
+                });
+
                 console.log(`DataURL generated for view index: ${index} (TEMPORARY canvas): ${dataURL.substring(0, 50)}...`);
 
-                canvasDataURLs.push(dataURL); // Add Data URL to the array
-                resolve(); // Resolve the Promise AFTER Data URL is generated
+                // Push an object indicating it's a raster image
+                canvasDataURLs.push({ type: 'raster', data: dataURL });
+                resolve(); // Resolve AFTER Data URL is generated
 
-                tempCanvasForView.dispose();
-                console.log(`loadFromJSON callback for view index: ${index} ENDED`); // ADDED LOGGING - End of callback
-            }, null, function() { // Fabric.js callback context - No changes needed here, but added for clarity
+                tempCanvasForView.dispose(); // Clean up
+                console.log(`loadFromJSON callback for view index: ${index} ENDED`);
+             }, null, function () {
                 // Optional callback context if needed, can leave null
             });
-        });
+         });
+
     });
 
-    Promise.all(dataURLPromises).then(() => {
-        const garmentCode = document.getElementById('garment-code').value;
-        const proofDescription = document.getElementById('proof-description').value;
+    // Wait for all Data URLs and SVG extractions to complete
+    await Promise.all(dataURLPromises);
 
-        if (!garmentCode) {
-            alert("Please enter a garment code.");
-            return;
-        }
 
-        const proofData = {
-            customerId: selectedCustomer,
-            canvasDataURLs: canvasDataURLs, // Now sending array of DataURLs
-            garmentCode: garmentCode,
-            proofDescription: proofDescription
-        };
+            const garmentCode = document.getElementById('garment-code').value;
+            const proofDescription = document.getElementById('proof-description').value;
 
-        console.log("Submitting proof data with Data URLs:", proofData);
-
-        fetch(`/api/customers/${selectedCustomer}/generate-proof`, {
-            method: 'PUT',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(proofData),
-        })
-        .then(response => {
-            if (!response.ok) {
-                throw new Error(`HTTP error! status: ${response.status}`);
+            if (!garmentCode) {
+                alert("Please enter a garment code.");
+                return;
             }
-            return response.blob();
-        })
-        .then(blob => {
-            // Create a Blob URL
-            const pdfUrl = URL.createObjectURL(blob);
 
-            // Create a temporary link element
-            const downloadLink = document.createElement('a');
-            downloadLink.href = pdfUrl;
-            downloadLink.download = `customer_proof_${selectedCustomer}.pdf`; // Suggest filename
-            document.body.appendChild(downloadLink); // Append to body (required for FF)
-            downloadLink.click(); // Programmatically click the link to trigger download
-            downloadLink.remove(); // Clean up by removing the link
+            const proofData = {
+                customerId: selectedCustomer,
+                canvasDataURLs: canvasDataURLs, // Now sending array of DataURLs
+                svgData: svgData, // Include SVG data
+                garmentCode: garmentCode,
+                proofDescription: proofDescription
+            };
 
-            URL.revokeObjectURL(pdfUrl); // Revoke the Blob URL to free resources
+            console.log("Submitting proof data with Data URLs:", proofData);
 
-            alert("PDF Proof downloaded successfully!"); // Success alert
+           fetch(`/api/customers/${selectedCustomer}/generate-proof`, {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(proofData),
+            })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                return response.blob();
+            })
+            .then(blob => {
+                // Create a Blob URL
+                const pdfUrl = URL.createObjectURL(blob);
 
-        })
-        .catch(error => {
-            console.error('Error submitting proof:', error);
-            alert(`Failed to submit proof: ${error.message}`);
-        });
-    });
-}
+                // Create a temporary link element
+                const downloadLink = document.createElement('a');
+                downloadLink.href = pdfUrl;
+                downloadLink.download = `customer_proof_${selectedCustomer}.pdf`; // Suggest filename
+                document.body.appendChild(downloadLink); // Append to body (required for FF)
+                downloadLink.click(); // Programmatically click the link to trigger download
+                downloadLink.remove(); // Clean up by removing the link
+
+                URL.revokeObjectURL(pdfUrl); // Revoke the Blob URL to free resources
+
+                alert("PDF Proof downloaded successfully!"); // Success alert
+
+            })
+            .catch(error => {
+                console.error('Error submitting proof:', error);
+                alert(`Failed to submit proof: ${error.message}`);
+            });
+
+    }
 
 // Zoom In function
 function zoomIn() {

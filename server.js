@@ -809,63 +809,81 @@ app.delete("/api/customers/:customerId/proofs/:proofIndex", async (req, res) => 
 
 app.put("/api/customers/:customerId/generate-proof", async (req, res) => {
     const customerId = Number(req.params.customerId);
-    const proofData = req.body;
-
-    console.log(`PUT /api/customers/${customerId}/generate-proof called (html-pdf-node)`);
-    console.log("Received proof data:", proofData);
-
-    // 1. Read the HTML template file
-    const templatePath = path.join(__dirname, 'src', 'pages', 'proof_template.html');
-    let templateHtml;
-    try {
-        templateHtml = fs.readFileSync(templatePath, 'utf-8');
-        console.log('Successfully read proof_template.html');
-    } catch (readError) {
-        console.error("Error reading proof_template.html:", readError);
-        return res.status(500).json({ error: 'Failed to read proof template file.' });
-    }
-
-    // 2. Populate Placeholders in HTML template
-    let populatedHtml = templateHtml;
-    populatedHtml = populatedHtml.replace(/\[GARMENT_CODE\]/g, proofData.garmentCode || 'N/A');
-    populatedHtml = populatedHtml.replace(/\[PROOF_DESCRIPTION\]/g, proofData.proofDescription || 'N/A');
-
+     const proofData = req.body;
+ 
+     console.log(`PUT /api/customers/${customerId}/generate-proof called (html-pdf-node)`);
+     console.log("Received proof data:", proofData);
+ 
+     // 1. Read the HTML template file
+     const templatePath = path.join(__dirname, 'src', 'pages', 'proof_template.html');
+     let templateHtml;
+     try {
+         templateHtml = fs.readFileSync(templatePath, 'utf-8');
+         console.log('Successfully read proof_template.html');
+     } catch (readError) {
+         console.error("Error reading proof_template.html:", readError);
+         return res.status(500).json({ error: 'Failed to read proof template file.' });
+     }
+ 
+     // 2. Populate Placeholders in HTML template
+     let populatedHtml = templateHtml;
+     populatedHtml = populatedHtml.replace(/\[GARMENT_CODE\]/g, proofData.garmentCode || 'N/A');
+     populatedHtml = populatedHtml.replace(/\[PROOF_DESCRIPTION\]/g, proofData.proofDescription || 'N/A');
+ 
     // --- 2.1. Embed Canvas Data URLs as <img> tags ---
-    const canvasImageTags = [];
-    if (proofData.canvasDataURLs && proofData.canvasDataURLs.length > 0) {
+    //     Also, embed SVGs directly
+     const canvasImageTags = [];
+     if (proofData.canvasDataURLs && proofData.canvasDataURLs.length > 0) {
         for (let i = 0; i < proofData.canvasDataURLs.length; i++) {
-            const dataURL = proofData.canvasDataURLs[i];
-            if (dataURL) {
-                canvasImageTags.push(`<img src="${dataURL}" alt="Proof Image ${i + 1}" style="max-width: 100%; height: auto;">`); // Inline style for image sizing
+            const item = proofData.canvasDataURLs[i];
+            if (item.type === 'raster') {
+                // Raster image - use <img> tag with Data URL
+                canvasImageTags.push(`<img src="${item.data}" alt="Proof Image ${i + 1}" style="max-width: 100%; height: auto;">`);
             } else {
-                canvasImageTags.push(`<p>No Proof Image ${i + 1}.</p>`); // Placeholder if no image
+                canvasImageTags.push(`<p>No Proof Image ${i+1}.</p>`); // Placeholder if no image
             }
         }
     }
 
-    // 2.2. Replace Placeholders with Canvas Images (Data URLs)
-    populatedHtml = populatedHtml.replace(/<!-- Proof Image 1 Placeholder -->/, canvasImageTags[0] || '<p>No Proof Image 1</p>');
-    populatedHtml = populatedHtml.replace(/<!-- Proof Image 2 Placeholder -->/, canvasImageTags[1] || '<p>No Proof Image 2</p>');
-    populatedHtml = populatedHtml.replace(/<!-- Proof Image 3 Placeholder -->/, canvasImageTags[2] || '<p>No Proof Image 3</p>');
+     // Add SVGs *after* raster images
+    if (proofData.svgData && proofData.svgData.length > 0) {
+        proofData.svgData.forEach((svgItem) => {
+             if (svgItem.type === 'svg') {
+                // --- Apply transformation to the SVG ---
+                const matrix = svgItem.transform;
+                // Convert Fabric.js matrix to SVG transform string
+                const transformString = `matrix(${matrix[0]},${matrix[1]},${matrix[2]},${matrix[3]},${matrix[4]},${matrix[5]})`;
 
-
-    let pdfBuffer;
-
-    try {
-        const options = { format: 'A4', landscape: true };
-        const file = { content: populatedHtml };
-        pdfBuffer = await pdf.generatePdf(file, options);
-        console.log('PDF generated successfully using html-pdf-node.');
-    } catch (pdfError) {
-        console.error('Error generating PDF using html-pdf-node:', pdfError);
-        return res.status(500).json({ error: 'Failed to generate PDF using html-pdf-node.' });
+                // Wrap the SVG in a <g> tag with the transform
+                const transformedSvg = `<g transform="${transformString}">${svgItem.svg}</g>`;
+                 canvasImageTags.push(transformedSvg);
+            }
+        });
     }
-
-    // 4. Send PDF as response
-    res.setHeader('Content-Type', 'application/pdf');
-    res.setHeader('Content-Disposition', `attachment; filename="customer_proof_${customerId}.pdf"`);
-    res.send(pdfBuffer);
-});
+ 
+    // 2.2. Replace Placeholders with Canvas Images (Data URLs)
+     populatedHtml = populatedHtml.replace(/<!-- Proof Image 1 Placeholder -->/, canvasImageTags[0] || '<p>No Proof Image 1</p>');
+     populatedHtml = populatedHtml.replace(/<!-- Proof Image 2 Placeholder -->/, canvasImageTags[1] || '<p>No Proof Image 2</p>');
+     populatedHtml = populatedHtml.replace(/<!-- Proof Image 3 Placeholder -->/, canvasImageTags[2] || '<p>No Proof Image 3</p>');
+ 
+ 
+     let pdfBuffer;
+ 
+     try {
+         const options = { format: 'A4', landscape: true };
+         const file = { content: populatedHtml };
+         pdfBuffer = await pdf.generatePdf(file, options);
+         console.log('PDF generated successfully using html-pdf-node.');
+     } catch (pdfError) {
+         console.error('Error generating PDF using html-pdf-node:', pdfError);
+         return res.status(500).json({ error: 'Failed to generate PDF using html-pdf-node.' });
+     }
+ 
+     // 4. Send PDF as response
+     res.setHeader('Content-Type', 'application/pdf');
+      res.setHeader('Content-Disposition', `attachment; filename="customer_proof_${customerId}.pdf"`);
+      res.send(pdfBuffer);
+ });
 
 
 
