@@ -1,5 +1,8 @@
 // proof_creator.js
-
+/**
+ * @global
+ * @type {object}
+ */
 var fabric; // Declare fabric as a global variable
 let proofCreatorCanvas;
 let selectedCustomer = null;
@@ -12,32 +15,12 @@ let lastPosY = 0;
 let views = []; // Array to store canvas states (each view is a canvas state as JSON)
 let currentViewIndex = 0;
 
-// --- Canvas dimensions ---
-const CANVAS_WIDTH = 1800;  // High-resolution width
-const CANVAS_HEIGHT = 1800; // High-resolution height
-const DISPLAY_WIDTH = 600;   // Visual width on screen
-const DISPLAY_HEIGHT = 600;  // Visual height on screen
-const SCALE_FACTOR = CANVAS_WIDTH / DISPLAY_WIDTH; // Calculate scale factor
-
 document.addEventListener('DOMContentLoaded', () => {
     proofCreatorCanvas = new fabric.Canvas('proof-canvas', {
         backgroundColor: '#ffffff',
-        selection: true,
-        //  Set initial dimensions (high resolution)
-        width: CANVAS_WIDTH,
-        height: CANVAS_HEIGHT
+        selection: true // Enable object selection
     });
     views.push({}); // Initialize views array with one empty view
-
-      // --- Override Fabric.js's canvas sizing AFTER initialization ---
-    proofCreatorCanvas.setWidth(CANVAS_WIDTH);
-    proofCreatorCanvas.setHeight(CANVAS_HEIGHT);
-    proofCreatorCanvas.wrapperEl.style.width = `${DISPLAY_WIDTH}px`; // Set wrapper size (visual)
-    proofCreatorCanvas.wrapperEl.style.height = `${DISPLAY_HEIGHT}px`;
-    proofCreatorCanvas.lowerCanvasEl.style.width = `${DISPLAY_WIDTH}px`;  // Override inline styles!
-    proofCreatorCanvas.lowerCanvasEl.style.height = `${DISPLAY_HEIGHT}px`;
-    proofCreatorCanvas.upperCanvasEl.style.width = `${DISPLAY_WIDTH}px`;
-    proofCreatorCanvas.upperCanvasEl.style.height = `${DISPLAY_HEIGHT}px`;
 
     // Set default control appearance for all objects on the canvas
     fabric.Object.prototype.set({
@@ -95,30 +78,20 @@ document.addEventListener('DOMContentLoaded', () => {
     addViewButton.addEventListener('click', addView); // Add View button listener
       prevViewButton.addEventListener('click', previousView);
     nextViewButton.addEventListener('click', nextView);
-
-
+  
 
 
     // --- Mouse wheel zoom ---
-   proofCreatorCanvas.on('mouse:wheel', function(opt) {
-    var delta = opt.e.deltaY;
-    var zoom = proofCreatorCanvas.getZoom();
-    zoom *= 0.999 ** delta;
-
-    // Limit zoom levels
-    if (zoom > 5) zoom = 5;  // Max zoom level (adjust as needed)
-    if (zoom < 0.2) zoom = 0.2; // Min zoom level (adjust as needed)
-
-    // Get the mouse pointer position relative to the canvas
-    var pointer = proofCreatorCanvas.getPointer(opt.e);
-
-    // Zoom to the pointer position
-    proofCreatorCanvas.zoomToPoint({ x: opt.e.offsetX, y: opt.e.offsetY }, zoom);
-
-    // Prevent default scrolling behavior
-    opt.e.preventDefault();
-    opt.e.stopPropagation();
-});
+    proofCreatorCanvas.on('mouse:wheel', function(opt) {
+        var delta = opt.e.deltaY;
+        var zoom = proofCreatorCanvas.getZoom();
+        zoom *= 0.999 ** delta;
+        if (zoom > 20) zoom = 20;
+        if (zoom < 0.1) zoom = 0.1;
+        proofCreatorCanvas.zoomToPoint({ x: opt.e.offsetX, y: opt.e.offsetY }, zoom);
+        opt.e.preventDefault();
+        opt.e.stopPropagation();
+    });
 
     // --- Panning ---
     proofCreatorCanvas.on('mouse:down', function (opt) {
@@ -169,7 +142,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
     updateCarousel(); // Initialize carousel indicators
-    loadCurrentView(); // Load the initial view (first in the array)
+    loadCurrentView(); // Load the initial view (first in the array) - LOAD AFTER updateCarousel to fix indicator highlighting
 });
 
 // --- Canvas View Management ---
@@ -204,7 +177,7 @@ function updateCarousel() {
 
         indicatorsContainer.appendChild(indicator);
     });
-
+    // loadCurrentView(); // Removed this line as requested - loadCurrentView is called in switchToView
     console.log(`updateCarousel: Current view index: ${currentViewIndex}, Total views: ${views.length}`); // ADDED LOG
 }
 
@@ -231,11 +204,9 @@ function nextView() {
 
 function loadCurrentView() {
     const viewState = views[currentViewIndex];
-    proofCreatorCanvas.clear();
+    proofCreatorCanvas.clear(); // Clear canvas - ALREADY PRESENT
     if (viewState) {
         proofCreatorCanvas.loadFromJSON(viewState, () => {
-              proofCreatorCanvas.viewportTransform = [1, 0, 0, 1, 0, 0]; //reset the view port
-              proofCreatorCanvas.setZoom(1); //reset the zoom level
             proofCreatorCanvas.renderAll();
             console.log(`LOAD VIEW: Loaded view at index: ${currentViewIndex}`);
             console.log(`LOAD VIEW: Number of objects on canvas after load: ${proofCreatorCanvas.getObjects().length}`); // Log object count after load
@@ -361,22 +332,20 @@ function fetchCustomerLogos(customerId) {
 function addLogoToCanvas(logoUrl, logoName) {
     console.log(`Adding logo to canvas: ${logoUrl} (${logoName})`);
 
-    // Use the HIGH-RESOLUTION canvas dimensions
-    const canvasWidth = CANVAS_WIDTH;
-    const canvasHeight = CANVAS_HEIGHT;
+    const canvasWidth = proofCreatorCanvas.getWidth();
+    const canvasHeight = proofCreatorCanvas.getHeight();
+
 
     if (logoUrl.toLowerCase().endsWith('.svg')) {
+        // Simplified SVG loading for testing
         fabric.loadSVGFromURL(logoUrl, (objects, options) => {
             const logoImg = fabric.util.groupSVGElements(objects, options);
-
-            // Calculate scale to fit within, say, 20% of the canvas
-            const scale = Math.min(0.2, (canvasWidth * 0.2) / logoImg.width, (canvasHeight * 0.2) / logoImg.height);
 
             logoImg.set({
                 left: canvasWidth / 2,    // Center by default
                 top: canvasHeight / 2,
-                scaleX: scale,  // Use calculated scale
-                scaleY: scale,
+                scaleX: 0.5, // Fixed scale for now - try 0.5
+                scaleY: 0.5,
                 originX: 'center',
                 originY: 'center',
                 selectable: true, // Make logos selectable so they can be deleted
@@ -386,9 +355,9 @@ function addLogoToCanvas(logoUrl, logoName) {
         }, null, { crossOrigin: 'anonymous' });
 
     } else {
+        // (Keep raster image loading as is for now)
         fabric.Image.fromURL(logoUrl, (logoImg) => {
-            // Calculate scale to fit within a reasonable portion of the canvas
-             const scale = Math.min(0.2, canvasWidth * 0.2 / logoImg.width, canvasHeight * 0.2 / logoImg.height);
+            const scale = Math.min(0.2, canvasWidth / logoImg.width, canvasHeight/logoImg.height);
             logoImg.set({
                 left: canvasWidth / 2,
                 top: canvasHeight / 2,
@@ -412,6 +381,7 @@ function setupGarmentImageUpload() {
   garmentImageInput.addEventListener('change', (event) => {
     const files = event.target.files;
     if (files && files.length > 0) {
+      // You could handle multiple files here if you want
       handleGarmentImage(files[0]);
     }
   });
@@ -445,9 +415,9 @@ function handleGarmentImage(file) {
               return;
             }
 
-            // Calculate scaling.  Use the *high-resolution* dimensions.
-            const canvasWidth = proofCreatorCanvas.getWidth();  // This is CANVAS_WIDTH
-            const canvasHeight = proofCreatorCanvas.getHeight(); // This is CANVAS_HEIGHT
+            // Calculate scaling. We want to fit the image *within* the canvas
+            const canvasWidth = proofCreatorCanvas.getWidth();
+            const canvasHeight = proofCreatorCanvas.getHeight();
             const scale = Math.min(canvasWidth / img.width, canvasHeight / img.height, 1);
 
             img.set({
@@ -461,7 +431,7 @@ function handleGarmentImage(file) {
             saveCurrentView(); // Save canvas state *before* background change
             proofCreatorCanvas.setBackgroundImage(img, proofCreatorCanvas.renderAll.bind(proofCreatorCanvas));
             saveCurrentView(); // Save canvas state *again* AFTER background change
-            loadCurrentView(); // Load the updated view
+            loadCurrentView();
             console.log("Image set as background. Canvas dimensions:", proofCreatorCanvas.width, proofCreatorCanvas.height); //debug
 
         }, { crossOrigin: 'anonymous' }); // Important for loading from Data URL
@@ -513,11 +483,12 @@ function updateSelectedLogosDisplay() {
        logoList.appendChild(listItem); // Append the list item to the <ul>
     });
 }
+// --- Submit Proof (Placeholder) ---
 
-// --- Submit Proof (Corrected PDF Generation) ---
+// proof_creator.js
 
 function submitProof() {
-    saveCurrentView();
+    saveCurrentView(); // <---- ADD THIS LINE at the VERY BEGINNING
 
     if (!selectedCustomer) {
         alert("Please select a customer first.");
@@ -525,6 +496,7 @@ function submitProof() {
     }
 
     const canvasDataURLs = [];
+
     console.log("Views array before DataURL generation:", views);
 
     const dataURLPromises = views.map((viewState, index) => {
@@ -532,55 +504,31 @@ function submitProof() {
             console.log(`Generating DataURL for view index: ${index}`);
 
             const tempCanvasForView = new fabric.Canvas(null, {
-                width: CANVAS_WIDTH,
-                height: CANVAS_HEIGHT,
+                width: proofCreatorCanvas.getWidth(),
+                height: proofCreatorCanvas.getHeight(),
                 backgroundColor: '#ffffff'
             });
 
-            tempCanvasForView.loadFromJSON(viewState, () => {
-                console.log(`loadFromJSON callback for view index: ${index} STARTED`);
+            tempCanvasForView.loadFromJSON(viewState, () => { // loadFromJSON callback - IMPORTANT!
+                console.log(`loadFromJSON callback for view index: ${index} STARTED`); // ADDED LOGGING - Start of callback
 
-                // 1. Reset viewport (important for consistency)
-                tempCanvasForView.viewportTransform = [1, 0, 0, 1, 0, 0];
-                tempCanvasForView.setZoom(1);
+                tempCanvasForView.renderAll(); // Explicitly render all objects - ALREADY PRESENT
 
-                // 2. Scale up objects for PDF
-                tempCanvasForView.getObjects().forEach(obj => {
-                    obj.set({
-                        scaleX: obj.scaleX * SCALE_FACTOR,
-                        scaleY: obj.scaleY * SCALE_FACTOR,
-                        left: obj.left * SCALE_FACTOR,
-                        top: obj.top * SCALE_FACTOR
-                    });
-                    obj.setCoords(); // VERY IMPORTANT: Update object coordinates after scaling
-                });
-
-              // 3. Scale up background image (if any)
-                if (tempCanvasForView.backgroundImage) {
-                    tempCanvasForView.backgroundImage.set({
-                        scaleX: tempCanvasForView.backgroundImage.scaleX * SCALE_FACTOR,
-                        scaleY: tempCanvasForView.backgroundImage.scaleY * SCALE_FACTOR,
-                         width: tempCanvasForView.backgroundImage.width * SCALE_FACTOR, //scale width and height too
-                        height: tempCanvasForView.backgroundImage.height * SCALE_FACTOR,
-                        // No need to adjust left/top for background image if centered
-                    });
-                }
-
-                tempCanvasForView.renderAll(); // Render after scaling
-
-                // 4. NOW get the Data URL
+                // --- MOVE toDataURL() call INSIDE the callback ---
                 const dataURL = tempCanvasForView.toDataURL('png');
-                console.log(`DataURL generated for view index: ${index}: ${dataURL.substring(0, 50)}...`);
+                console.log(`DataURL generated for view index: ${index} (TEMPORARY canvas): ${dataURL.substring(0, 50)}...`);
 
-                canvasDataURLs.push(dataURL);
-                resolve();
+                canvasDataURLs.push(dataURL); // Add Data URL to the array
+                resolve(); // Resolve the Promise AFTER Data URL is generated
+
                 tempCanvasForView.dispose();
-                console.log(`loadFromJSON callback for view index: ${index} ENDED`);
+                console.log(`loadFromJSON callback for view index: ${index} ENDED`); // ADDED LOGGING - End of callback
+            }, null, function() { // Fabric.js callback context - No changes needed here, but added for clarity
+                // Optional callback context if needed, can leave null
             });
         });
     });
 
-    // ... (rest of your submitProof function remains the same) ...
     Promise.all(dataURLPromises).then(() => {
         const garmentCode = document.getElementById('garment-code').value;
         const proofDescription = document.getElementById('proof-description').value;
@@ -638,15 +586,15 @@ function submitProof() {
 
 // Zoom In function
 function zoomIn() {
-      zoomLevel = proofCreatorCanvas.getZoom();
-      zoomLevel += ZOOM_INCREMENT;
+     zoomLevel = proofCreatorCanvas.getZoom();
+    zoomLevel = Math.min(zoomLevel + ZOOM_INCREMENT, 5); // Limit zoom to 5x
     proofCreatorCanvas.zoomToPoint({ x: proofCreatorCanvas.getWidth() / 2, y: proofCreatorCanvas.getHeight() / 2 }, zoomLevel);
 }
 
 // Zoom Out function
 function zoomOut() {
-    zoomLevel = proofCreatorCanvas.getZoom();
-      zoomLevel -= ZOOM_INCREMENT;
+     zoomLevel = proofCreatorCanvas.getZoom();
+    zoomLevel = Math.max(zoomLevel - ZOOM_INCREMENT, 0.2); // Limit zoom out to 0.2x
     proofCreatorCanvas.zoomToPoint({ x: proofCreatorCanvas.getWidth() / 2, y: proofCreatorCanvas.getHeight() / 2 }, zoomLevel);
 }
 
