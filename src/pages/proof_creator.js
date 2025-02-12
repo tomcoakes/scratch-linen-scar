@@ -502,7 +502,8 @@ function submitProof() {
     const originalCanvasHeight = proofCreatorCanvas.getHeight();
     console.log(`Original Canvas Dimensions: ${originalCanvasWidth} x ${originalCanvasHeight}`);
 
-    const horizontalOffset = -122; //  Offset to the LEFT (negative value)
+    const horizontalOffset = -122; // Offset to the LEFT (negative value)
+    const verticalOffset = 2;    // Offset DOWN (positive value)
 
     Promise.all(views.map((viewState, index) => {
         return new Promise(resolve => {
@@ -519,10 +520,10 @@ function submitProof() {
                         // Scale and position ONLY non-background objects
                         obj.scaleX *= renderScale;
                         obj.scaleY *= renderScale;
-                        // Apply the manual horizontal offset:
-                        obj.left = (obj.left * renderScale) + horizontalOffset; // <--- KEY CHANGE
-                        obj.top *= renderScale;
-                        console.log(`Object scaled (non-background). New left: ${obj.left}, top: ${obj.top}, scaleX: ${obj.scaleX}, scaleY: ${obj.scaleY}`); // Debug log
+                        // Apply the manual horizontal and vertical offsets:
+                        obj.left = (obj.left * renderScale) + horizontalOffset;
+                        obj.top = (obj.top * renderScale) + verticalOffset;  // <--- KEY CHANGE (Vertical Offset)
+                        console.log(`Object scaled (non-background). New left: ${obj.left}, top: ${obj.top}, scaleX: ${obj.scaleX}, scaleY: ${obj.scaleY}`);
                     }
                 });
 
@@ -535,6 +536,7 @@ function submitProof() {
 
                     tempCanvas.setWidth(tempCanvas.backgroundImage.getScaledWidth());
                     tempCanvas.setHeight(tempCanvas.backgroundImage.getScaledHeight());
+
 
                     tempCanvas.backgroundImage.set({
                         originX: 'left',
@@ -550,7 +552,7 @@ function submitProof() {
             });
         });
     })).then(() => {
-        // ... rest of the submitProof function (sending data to server, etc.)
+         // ... rest of the submitProof function (sending data to server, etc.)
         const proofData = {
             customerId: selectedCustomer,
             canvasDataURLs: canvasDataURLs,
