@@ -4,8 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Customer Proof</title>
-
+  
     <style>
+
       /* proof_creator.css */
 
 /* Reset and Base Styles (ensure consistency) */
@@ -21,7 +22,7 @@ body {
 .proof-container {
     width: 297mm; /* A4 Landscape Width */
     height: 210mm; /* A4 Landscape Height */
-    padding: 20mm 25mm; /* Adjust padding for margins */
+    padding: 5mm 10mm; /* Adjust padding for margins */
     position: relative;
     background-color: #fff; /* White background for PDF */
     /* border: 1px solid red;  For debugging layout */
@@ -77,7 +78,7 @@ body {
     right: 25mm; /* Match container padding */
     text-align: right;
     color: #000; /* Black contact info text */
-
+    
 }
 
 .contact-info p {
@@ -120,20 +121,39 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    overflow: hidden;  /*  CRITICAL:  Hide content that overflows */
+    overflow: hidden;
     border-radius: 5px;
     min-height: 60mm; /* Minimum height for each image box */
-      width: 100mm;  /*  Example - Adjust as needed! */
-    height: 75mm; /* Example - Adjust as needed! */
+    width: 110mm;  /*  Example - Adjust as needed! */
+    height: 120mm; /* Example - Adjust as needed! */
+}
+.image-box-secondary {
+    border: 1px solid #ccc;
+    /* height: 130mm;  No fixed height anymore, adjust to content */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    border-radius: 5px;
+    min-height: 50mm; /* Minimum height for each image box */
+    width: 80mm;  /*  Example - Adjust as needed! */
+    height: 57mm; /* Example - Adjust as needed! */
 }
 
 .image-box img {
-    max-width: 100%; /*  Use 100% now, to fill the container */
-    max-height: 100%;
+    max-width: 95%; /* Slightly smaller image inside box */
+    max-height: 95%;
     display: block;
-    /* transform: scale(1.0);  Remove transform - not needed */
-    /* transform-origin: center center;  Remove transform-origin */
-    object-fit: contain; /* CRITICAL:  Maintain aspect ratio */
+    transform: scale(1.0); /* Default scale (no zoom) */
+    transform-origin: center center; /* Point around which to scale */
+}
+      
+.image-box-secondary img {
+    max-width: 95%; /* Slightly smaller image inside box */
+    max-height: 95%;
+    display: block;
+    transform: scale(1.0); /* Default scale (no zoom) */
+    transform-origin: center center; /* Point around which to scale */
 }
 
 .horizontal-line-top {
@@ -174,7 +194,7 @@ body {
 .company-tel {
   position: absolute;
 }
-
+      
     </style>
 </head>
 <body>
@@ -206,10 +226,10 @@ body {
                 <!-- Proof Image 1 Placeholder -->
             </div>
             <div class="image-box-stack">
-              <div class="image-box" id="proof-image-2">
+              <div class="image-box-secondary" id="proof-image-2">
                   <!-- Proof Image 2 Placeholder -->
               </div>
-              <div class="image-box" id="proof-image-3">
+              <div class="image-box-secondary" id="proof-image-3">
                   <!-- Proof Image 3 Placeholder -->
               </div>
             </div>
