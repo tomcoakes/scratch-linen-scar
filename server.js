@@ -868,6 +868,50 @@ app.put("/api/customers/:customerId/generate-proof", async (req, res) => {
 });
 
 
+
+// server.js (Add this new endpoint for landscape test)
+
+app.get("/api/test-landscape", async (req, res) => {
+    const simpleHtmlContent = `
+    <!DOCTYPE html>
+    <html>
+    <head>
+        <title>Simplest Landscape Test</title>
+        <style>
+            body {
+                font-family: sans-serif;
+                text-align: center;
+                padding: 50px;
+            }
+            h1 {
+                color: red; /* Make it obvious if it works */
+            }
+        </style>
+    </head>
+    <body>
+        <h1>SIMPLE LANDSCAPE TEST</h1>
+        <p>Is this REALLY Landscape?</p>
+    </body>
+    </html>
+    `;
+
+    let pdfBuffer;
+    try {
+        const options = { format: 'A4', orientation: 'landscape' }; // Landscape option is HERE
+        const file = { content: simpleHtmlContent }; // Use the HTML string directly
+        pdfBuffer = await pdf.generatePdf(file, options);
+        console.log('Simplest landscape PDF generated successfully.');
+    } catch (pdfError) {
+        console.error('Error generating simplest landscape PDF:', pdfError);
+        return res.status(500).json({ error: 'Failed to generate simplest landscape PDF using html-pdf-node.' });
+    }
+
+    // 4. Send PDF as response
+    res.setHeader('Content-Type', 'application/pdf');
+    res.setHeader('Content-Disposition', `attachment; filename="simplest_landscape.pdf"`);
+    res.send(pdfBuffer);
+});
+
 // Start server
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
