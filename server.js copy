@@ -852,7 +852,7 @@ app.put("/api/customers/:customerId/generate-proof", async (req, res) => {
     let pdfBuffer;
 
     try {
-        const options = { format: 'A4', orientation: 'landscape' };
+        const options = { format: 'A4', landscape: true };
         const file = { content: populatedHtml };
         pdfBuffer = await pdf.generatePdf(file, options);
         console.log('PDF generated successfully using html-pdf-node.');
