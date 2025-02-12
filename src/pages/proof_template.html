@@ -4,9 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Customer Proof</title>
-  
-    <style>
 
+    <style>
       /* proof_creator.css */
 
 /* Reset and Base Styles (ensure consistency) */
@@ -78,7 +77,7 @@ body {
     right: 25mm; /* Match container padding */
     text-align: right;
     color: #000; /* Black contact info text */
-    
+
 }
 
 .contact-info p {
@@ -110,7 +109,7 @@ body {
 
 .image-box-stack {
     display: grid; /* Enable grid layout for the stacked boxes */
-    grid-template-rows: 1fr 1fr; /* Stack them vertically, equal height */
+    grid-template-rows: 75mm 75mm; /* Stack them vertically, equal height */
     gap: 4mm; /* Gap between stacked boxes */
 }
 
@@ -121,17 +120,20 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    overflow: hidden;
+    overflow: hidden;  /*  CRITICAL:  Hide content that overflows */
     border-radius: 5px;
     min-height: 60mm; /* Minimum height for each image box */
+      width: 100mm;  /*  Example - Adjust as needed! */
+    height: 75mm; /* Example - Adjust as needed! */
 }
 
 .image-box img {
-    max-width: 95%; /* Slightly smaller image inside box */
-    max-height: 95%;
+    max-width: 100%; /*  Use 100% now, to fill the container */
+    max-height: 100%;
     display: block;
-    transform: scale(1.0); /* Default scale (no zoom) */
-    transform-origin: center center; /* Point around which to scale */
+    /* transform: scale(1.0);  Remove transform - not needed */
+    /* transform-origin: center center;  Remove transform-origin */
+    object-fit: contain; /* CRITICAL:  Maintain aspect ratio */
 }
 
 .horizontal-line-top {
@@ -172,7 +174,7 @@ body {
 .company-tel {
   position: absolute;
 }
-      
+
     </style>
 </head>
 <body>
