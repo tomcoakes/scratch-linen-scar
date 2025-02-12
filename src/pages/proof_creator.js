@@ -208,19 +208,23 @@ function loadCurrentView() {
     if (viewState) {
         proofCreatorCanvas.loadFromJSON(viewState, () => {
             proofCreatorCanvas.renderAll();
-            console.log(`loadCurrentView: Loaded view at index: ${currentViewIndex}`); // ADDED LOG
+            console.log(`LOAD VIEW: Loaded view at index: ${currentViewIndex}`);
+            console.log(`LOAD VIEW: Number of objects on canvas after load: ${proofCreatorCanvas.getObjects().length}`); // Log object count after load
+             console.log(`LOAD VIEW: Loaded canvas state (first 50 chars): ${JSON.stringify(viewState).substring(0, 50)}...`); // Log start of JSON
         });
     } else {
         proofCreatorCanvas.setBackgroundImage(null, proofCreatorCanvas.renderAll.bind(proofCreatorCanvas));
-        console.log(`loadCurrentView: Loaded blank view at index: ${currentViewIndex}`); // ADDED LOG
+        console.log(`LOAD VIEW: Loaded blank view at index: ${currentViewIndex}`);
+        console.log(`LOAD VIEW: No canvas state to load for index: ${currentViewIndex} (blank view)`); // Indicate blank load
     }
 }
 
 
 function saveCurrentView() {
     views[currentViewIndex] = proofCreatorCanvas.toJSON();
-    console.log(`saveCurrentView: Saved state of view index: ${currentViewIndex} - objects: ${proofCreatorCanvas.getObjects().length}`); // ADDED LOG - Log object count
-    console.log("saveCurrentView: views array after saveCurrentView:", views); // ADDED LOG - Inspect views array
+    console.log(`SAVE VIEW: Saved state of view index: ${currentViewIndex}`);
+    console.log(`SAVE VIEW: Number of objects on canvas when saved: ${proofCreatorCanvas.getObjects().length}`); // Log object count at save time
+    console.log(`SAVE VIEW: Saved canvas state (first 50 chars): ${JSON.stringify(views[currentViewIndex]).substring(0, 50)}...`); // Log start of JSON
 }
 
 
@@ -484,6 +488,8 @@ function updateSelectedLogosDisplay() {
 // proof_creator.js
 
 function submitProof() {
+    saveCurrentView(); // <---- ADD THIS LINE at the VERY BEGINNING
+
     if (!selectedCustomer) {
         alert("Please select a customer first.");
         return;

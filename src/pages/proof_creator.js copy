@@ -208,19 +208,23 @@ function loadCurrentView() {
     if (viewState) {
         proofCreatorCanvas.loadFromJSON(viewState, () => {
             proofCreatorCanvas.renderAll();
-            console.log(`loadCurrentView: Loaded view at index: ${currentViewIndex}`); // ADDED LOG
+            console.log(`LOAD VIEW: Loaded view at index: ${currentViewIndex}`);
+            console.log(`LOAD VIEW: Number of objects on canvas after load: ${proofCreatorCanvas.getObjects().length}`); // Log object count after load
+             console.log(`LOAD VIEW: Loaded canvas state (first 50 chars): ${JSON.stringify(viewState).substring(0, 50)}...`); // Log start of JSON
         });
     } else {
         proofCreatorCanvas.setBackgroundImage(null, proofCreatorCanvas.renderAll.bind(proofCreatorCanvas));
-        console.log(`loadCurrentView: Loaded blank view at index: ${currentViewIndex}`); // ADDED LOG
+        console.log(`LOAD VIEW: Loaded blank view at index: ${currentViewIndex}`);
+        console.log(`LOAD VIEW: No canvas state to load for index: ${currentViewIndex} (blank view)`); // Indicate blank load
     }
 }
 
 
 function saveCurrentView() {
     views[currentViewIndex] = proofCreatorCanvas.toJSON();
-    console.log(`saveCurrentView: Saved state of view index: ${currentViewIndex} - objects: ${proofCreatorCanvas.getObjects().length}`); // ADDED LOG - Log object count
-    console.log("saveCurrentView: views array after saveCurrentView:", views); // ADDED LOG - Inspect views array
+    console.log(`SAVE VIEW: Saved state of view index: ${currentViewIndex}`);
+    console.log(`SAVE VIEW: Number of objects on canvas when saved: ${proofCreatorCanvas.getObjects().length}`); // Log object count at save time
+    console.log(`SAVE VIEW: Saved canvas state (first 50 chars): ${JSON.stringify(views[currentViewIndex]).substring(0, 50)}...`); // Log start of JSON
 }
 
 
@@ -484,65 +488,99 @@ function updateSelectedLogosDisplay() {
 // proof_creator.js
 
 function submitProof() {
+    saveCurrentView(); // <---- ADD THIS LINE at the VERY BEGINNING
+
     if (!selectedCustomer) {
         alert("Please select a customer first.");
         return;
     }
 
-    // 1. Get Canvas Data as Data URL (PNG)
-    const canvasDataURL = proofCreatorCanvas.toDataURL('png');
-    console.log("Canvas Data URL (first 50 chars):", canvasDataURL.substring(0, 50) + "..."); // Log to check if data URL is generated
+    const canvasDataURLs = [];
 
-    // 2. Get Garment Code and Proof Description
-    const garmentCode = document.getElementById('garment-code').value;
-    const proofDescription = document.getElementById('proof-description').value;
+    console.log("Views array before DataURL generation:", views);
 
-    if (!garmentCode) {
-        alert("Please enter a garment code.");
-        return;
-    }
+    const dataURLPromises = views.map((viewState, index) => {
+        return new Promise(resolve => {
+            console.log(`Generating DataURL for view index: ${index}`);
 
-    // 3. Prepare Data to Send to Server
-    const proofData = {
-        customerId: selectedCustomer,
-        canvasDataURL: canvasDataURL, // Send the data URL
-        garmentCode: garmentCode,
-        proofDescription: proofDescription
-    };
+            const tempCanvasForView = new fabric.Canvas(null, {
+                width: proofCreatorCanvas.getWidth(),
+                height: proofCreatorCanvas.getHeight(),
+                backgroundColor: '#ffffff'
+            });
 
-    console.log("Sending proof data to server:", proofData);
+            tempCanvasForView.loadFromJSON(viewState, () => { // loadFromJSON callback - IMPORTANT!
+                console.log(`loadFromJSON callback for view index: ${index} STARTED`); // ADDED LOGGING - Start of callback
 
-    // 4. Send Data to Server (using Fetch API)
-    fetch(`/api/customers/${selectedCustomer}/generate-proof`, { // <-- ENSURE THIS PATH MATCHES SERVER.JS
-        method: 'PUT', // Or POST, PUT is fine for now as we are "updating" a proof for a customer
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(proofData),
-    })
-    .then(response => {
-        if (!response.ok) {
-            throw new Error(`HTTP error! status: ${response.status}`);
+                tempCanvasForView.renderAll(); // Explicitly render all objects - ALREADY PRESENT
+
+                // --- MOVE toDataURL() call INSIDE the callback ---
+                const dataURL = tempCanvasForView.toDataURL('png');
+                console.log(`DataURL generated for view index: ${index} (TEMPORARY canvas): ${dataURL.substring(0, 50)}...`);
+
+                canvasDataURLs.push(dataURL); // Add Data URL to the array
+                resolve(); // Resolve the Promise AFTER Data URL is generated
+
+                tempCanvasForView.dispose();
+                console.log(`loadFromJSON callback for view index: ${index} ENDED`); // ADDED LOGGING - End of callback
+            }, null, function() { // Fabric.js callback context - No changes needed here, but added for clarity
+                // Optional callback context if needed, can leave null
+            });
+        });
+    });
+
+    Promise.all(dataURLPromises).then(() => {
+        const garmentCode = document.getElementById('garment-code').value;
+        const proofDescription = document.getElementById('proof-description').value;
+
+        if (!garmentCode) {
+            alert("Please enter a garment code.");
+            return;
         }
-        return response.blob(); // Expecting a PDF blob back
-    })
-    .then(blob => {
-        // 5. Download the PDF
-        const pdfUrl = URL.createObjectURL(blob);
-        const downloadLink = document.createElement('a');
-        downloadLink.href = pdfUrl;
-        downloadLink.download = `customer_proof_${selectedCustomer}.pdf`; // Suggest filename
-        document.body.appendChild(downloadLink);
-        downloadLink.click();
-        downloadLink.remove();
-        URL.revokeObjectURL(pdfUrl);
 
-        alert("PDF Proof downloaded successfully!");
+        const proofData = {
+            customerId: selectedCustomer,
+            canvasDataURLs: canvasDataURLs, // Now sending array of DataURLs
+            garmentCode: garmentCode,
+            proofDescription: proofDescription
+        };
 
-    })
-    .catch(error => {
-        console.error('Error submitting proof:', error);
-        alert(`Failed to submit proof: ${error.message}`);
+        console.log("Submitting proof data with Data URLs:", proofData);
+
+        fetch(`/api/customers/${selectedCustomer}/generate-proof`, {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(proofData),
+        })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+            return response.blob();
+        })
+        .then(blob => {
+            // Create a Blob URL
+            const pdfUrl = URL.createObjectURL(blob);
+
+            // Create a temporary link element
+            const downloadLink = document.createElement('a');
+            downloadLink.href = pdfUrl;
+            downloadLink.download = `customer_proof_${selectedCustomer}.pdf`; // Suggest filename
+            document.body.appendChild(downloadLink); // Append to body (required for FF)
+            downloadLink.click(); // Programmatically click the link to trigger download
+            downloadLink.remove(); // Clean up by removing the link
+
+            URL.revokeObjectURL(pdfUrl); // Revoke the Blob URL to free resources
+
+            alert("PDF Proof downloaded successfully!"); // Success alert
+
+        })
+        .catch(error => {
+            console.error('Error submitting proof:', error);
+            alert(`Failed to submit proof: ${error.message}`);
+        });
     });
 }
 
