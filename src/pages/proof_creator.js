@@ -506,127 +506,65 @@ function submitProof() {
 
     const canvasDataURLs = [];
 
-    // Helper function to fit the content to the canvas
-function fitImageToCanvas(canvas) {
-    const canvasWidth = canvas.getWidth();
-    const canvasHeight = canvas.getHeight();
-    let bgImage = canvas.backgroundImage;
-
-    if (bgImage) {
-        // Fit background image
-        const imgAspectRatio = bgImage.width / bgImage.height;
-        const canvasAspectRatio = canvasWidth / canvasHeight;
-
-        let scaleX, scaleY, left, top;
-
-        if (canvasAspectRatio > imgAspectRatio) {
-            // Canvas is wider, scale to fit height
-            scaleX = scaleY = canvasHeight / bgImage.height;
-            left = (canvasWidth - bgImage.width * scaleX) / 2;
-            top = 0;
-        } else {
-            // Canvas is taller, scale to fit width
-            scaleX = scaleY = canvasWidth / bgImage.width;
-            left = 0;
-            top = (canvasHeight - bgImage.height * scaleY) / 2;
-        }
-        bgImage.set({ scaleX, scaleY, left, top, originX: 'left', originY: 'top' });
-    }
-
-    // Center and scale all objects relative to background (if exists), or just center.
-    canvas.getObjects().forEach(obj => {
-       if (bgImage) {
-          //1. Get *original* object position from the *display* canvas
-            const originalObject = proofCreatorCanvas.getObjects().find(o => o === obj || (o.id && obj.id && o.id === obj.id));
-            let originalLeft, originalTop;
-
-            if(originalObject){ //object found on display canvas
-              originalLeft = originalObject.left;
-              originalTop = originalObject.top;
-            } else { //not found, default to center
-              originalLeft = proofCreatorCanvas.getWidth() / 2;
-              originalTop = proofCreatorCanvas.getHeight() / 2;
-            }
-
-            // 2.  Calculate the *relative* position on the original canvas
-            const relativeLeft = originalLeft / proofCreatorCanvas.getWidth();
-            const relativeTop = originalTop / proofCreatorCanvas.getHeight();
-
-            //3.  Calculate the final *absolute* position on the *scaled* canvas
-            const finalLeft = bgImage.left + (relativeLeft * bgImage.getScaledWidth());
-            const finalTop = bgImage.top + (relativeTop * bgImage.getScaledHeight());
-
-
-            obj.set({
-                left: finalLeft,
-                top: finalTop,
-                originX: 'left', // Set origin for consistent calculations
-                originY: 'top',
-            });
-
-        } else {
-           //No background, Center the object
-          obj.set({
-            left: (canvasWidth - obj.getScaledWidth())/2,
-            top: (canvasHeight - obj.getScaledHeight())/2,
-            originX: 'left',
-            originY: 'top',
-          })
-        }
-    });
-}
-
-
+    // Store original canvas dimensions *before* scaling
+    const originalCanvasWidth = proofCreatorCanvas.getWidth();
+    const originalCanvasHeight = proofCreatorCanvas.getHeight();
 
     // Use Promise.all to wait for all data URLs to be generated
     Promise.all(views.map((viewState, index) => {
         return new Promise(resolve => {
             // Create a *temporary* canvas for rendering at higher resolution
             const tempCanvas = new fabric.Canvas(null, {
-                width: proofCreatorCanvas.getWidth() * renderScale,
-                height: proofCreatorCanvas.getHeight() * renderScale,
+                width: originalCanvasWidth * renderScale,
+                height: originalCanvasHeight * renderScale,
                 backgroundColor: '#ffffff'
             });
 
             // Load the saved view state onto the *temporary* canvas
             tempCanvas.loadFromJSON(viewState, () => {
 
-                // Scale contents of tempCanvas:
+                // Scale *only* the logo objects, adjust their positions
                 const objects = tempCanvas.getObjects();
                 objects.forEach(obj => {
-                    obj.scaleX *= renderScale;
-                    obj.scaleY *= renderScale;
-                    obj.left *= renderScale;
-                    obj.top *= renderScale;
+                    if (obj !== tempCanvas.backgroundImage) { // Crucial: Exclude the background
+                        obj.scaleX *= renderScale;
+                        obj.scaleY *= renderScale;
+                        obj.left *= renderScale;  // Scale position
+                        obj.top *= renderScale;   // Scale position
+                    }
                 });
 
+
+                // Handle the background image separately
                 if (tempCanvas.backgroundImage) {
                     tempCanvas.backgroundImage.scaleX *= renderScale;
                     tempCanvas.backgroundImage.scaleY *= renderScale;
-                    //DONT reset left and top
-                    // tempCanvas.backgroundImage.left = 0;
-                    // tempCanvas.backgroundImage.top = 0;
+                    // DO NOT scale background position.  Keep it at (0,0)
+                    tempCanvas.backgroundImage.left = 0;
+                    tempCanvas.backgroundImage.top = 0;
 
-                   // DONT set temp canvas size to image size
-                   // tempCanvas.setWidth(tempCanvas.backgroundImage.width * renderScale);
-                   // tempCanvas.setHeight(tempCanvas.backgroundImage.height * renderScale);
+                    // Set width/height to match the scaled background size
+                    tempCanvas.setWidth(tempCanvas.backgroundImage.getScaledWidth());
+                    tempCanvas.setHeight(tempCanvas.backgroundImage.getScaledHeight());
+
 
                     tempCanvas.backgroundImage.set({
-                        originX: 'left',
+                        originX: 'left',  // Ensure top-left origin
                         originY: 'top'
                     });
                 }
-                fitImageToCanvas(tempCanvas); // ADDED THIS LINE - Fit the image to the canvas
-                tempCanvas.renderAll(); // VERY IMPORTANT: Render before toDataURL()
-                const dataURL = tempCanvas.toDataURL({ format: 'png', multiplier: 1 }); // Use multiplier for quality
+
+
+                tempCanvas.renderAll();
+                const dataURL = tempCanvas.toDataURL({ format: 'png', multiplier: 1 });
                 canvasDataURLs.push(dataURL);
-                tempCanvas.dispose(); // Dispose of temporary canvas - CRITICAL
-                resolve(); // Resolve the promise AFTER data URL is generated
+                tempCanvas.dispose(); // Dispose of the temporary canvas
+                resolve(); // Resolve the promise
             });
         });
     })).then(() => {
-        // All data URLs are ready, proceed with submission
-        const proofData = {
+        // ... rest of the submitProof function (sending data to server, etc.)
+           const proofData = {
             customerId: selectedCustomer,
             canvasDataURLs: canvasDataURLs,
             garmentCode: garmentCode,
@@ -635,40 +573,40 @@ function fitImageToCanvas(canvas) {
 
         console.log("Submitting proof data:", proofData);
 
-        fetch(`/api/customers/${selectedCustomer}/generate-proof`, {
+       fetch(`/api/customers/${selectedCustomer}/generate-proof`, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json',
             },
             body: JSON.stringify(proofData),
         })
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error(`HTTP error! status: ${response.status}`);
-                }
-                return response.blob();
-            })
-            .then(blob => {
-                // Create a Blob URL
-                const pdfUrl = URL.createObjectURL(blob);
+        .then(response => {
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+            return response.blob();
+        })
+        .then(blob => {
+            // Create a Blob URL
+            const pdfUrl = URL.createObjectURL(blob);
 
-                // Create a temporary link element
-                const downloadLink = document.createElement('a');
-                downloadLink.href = pdfUrl;
-                downloadLink.download = `customer_proof_${selectedCustomer}.pdf`; // Suggest filename
-                document.body.appendChild(downloadLink); // Append to body (required for FF)
-                downloadLink.click(); // Programmatically click the link to trigger download
-                downloadLink.remove(); // Clean up by removing the link
+            // Create a temporary link element
+            const downloadLink = document.createElement('a');
+            downloadLink.href = pdfUrl;
+            downloadLink.download = `customer_proof_${selectedCustomer}.pdf`; // Suggest filename
+            document.body.appendChild(downloadLink); // Append to body (required for FF)
+            downloadLink.click(); // Programmatically click the link to trigger download
+            downloadLink.remove(); // Clean up by removing the link
 
-                URL.revokeObjectURL(pdfUrl); // Revoke the Blob URL to free resources
+            URL.revokeObjectURL(pdfUrl); // Revoke the Blob URL to free resources
 
-                alert("PDF Proof downloaded successfully!"); // Success alert
+            alert("PDF Proof downloaded successfully!"); // Success alert
 
-            })
-            .catch(error => {
-                console.error('Error submitting proof:', error);
-                alert(`Failed to submit proof: ${error.message}`);
-            });
+        })
+        .catch(error => {
+            console.error('Error submitting proof:', error);
+            alert(`Failed to submit proof: ${error.message}`);
+        });
     });
 }
 
