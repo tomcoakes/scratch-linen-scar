@@ -1,5 +1,4 @@
 // proof_creator.js
-
 /**
  * @global
  * @type {object}
@@ -15,19 +14,14 @@ let lastPosX = 0;
 let lastPosY = 0;
 let views = []; // Array to store canvas states (each view is a canvas state as JSON)
 let currentViewIndex = 0;
-const canvasScaleFactor = 3; // Increase internal resolution
 
 document.addEventListener('DOMContentLoaded', () => {
     proofCreatorCanvas = new fabric.Canvas('proof-canvas', {
         backgroundColor: '#ffffff',
         selection: true,
-        width: 600 * canvasScaleFactor, // Internal width (high resolution)
-        height: 600 * canvasScaleFactor, // Internal height (high resolution)
+      width: 600,
+      height: 600,
     });
-
-    // --- Initialize Viewport Transform (for panning) ---
-    proofCreatorCanvas.viewportTransform = [1, 0, 0, 1, 0, 0]; // VERY IMPORTANT: Identity matrix at start
-
     views.push({}); // Initialize views array with one empty view
 
     // Set default control appearance for all objects on the canvas
@@ -90,47 +84,47 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
     // --- Mouse wheel zoom ---
-   proofCreatorCanvas.on('mouse:wheel', function(opt) {
-    var delta = opt.e.deltaY;
-    zoomLevel *= 0.999 ** delta;
-    if (zoomLevel > 20) zoomLevel = 20;
-    if (zoomLevel < 0.1) zoomLevel = 0.1;
-
-    // Zoom to the mouse pointer position
-    proofCreatorCanvas.zoomToPoint({ x: opt.e.offsetX, y: opt.e.offsetY }, zoomLevel);
-
-    opt.e.preventDefault();
-    opt.e.stopPropagation();
-});
+    proofCreatorCanvas.on('mouse:wheel', function(opt) {
+        var delta = opt.e.deltaY;
+        var zoom = proofCreatorCanvas.getZoom();
+        zoom *= 0.999 ** delta;
+        if (zoom > 20) zoom = 20;
+        if (zoom < 0.1) zoom = 0.1;
+        proofCreatorCanvas.zoomToPoint({ x: opt.e.offsetX, y: opt.e.offsetY }, zoom);
+        opt.e.preventDefault();
+        opt.e.stopPropagation();
+    });
 
     // --- Panning ---
-  proofCreatorCanvas.on('mouse:down', function (opt) {
-    var evt = opt.e;
-    if (evt.altKey === true) {
-      this.isDragging = true;
-      this.selection = false;
-      lastPosX = evt.clientX;
-      lastPosY = evt.clientY;
-    }
-  });
+    proofCreatorCanvas.on('mouse:down', function (opt) {
+        var evt = opt.e;
+        if (!opt.target) { // Check if click is on canvas background
+            this.isDragging = true;
+            this.selection = false;
+            lastPosX = evt.clientX;
+            lastPosY = evt.clientY;
+        } else {
+            this.isDragging = false;
+            this.selection = true;
+        }
+    });
 
-proofCreatorCanvas.on('mouse:move', function(opt) {
-  if (this.isDragging) {
-    var e = opt.e;
-    var vpt = this.viewportTransform;
-    vpt[4] += e.clientX - lastPosX;
-    vpt[5] += e.clientY - lastPosY;
-    this.requestRenderAll();
-    lastPosX = e.clientX;
-    lastPosY = e.clientY;
-  }
-});
+    proofCreatorCanvas.on('mouse:move', function (opt) {
+        if (this.isDragging) {
+            var e = opt.e;
+            var vpt = this.viewportTransform;
+            vpt[4] += e.clientX - lastPosX;
+            vpt[5] += e.clientY - lastPosY;
+            this.requestRenderAll();
+            lastPosX = e.clientX;
+            lastPosY = e.clientY;
+        }
+    });
 
     proofCreatorCanvas.on('mouse:up', function (opt) {
-         // Recalculate object coordinates on mouse up
-      this.setViewportTransform(this.viewportTransform);
+        this.setViewportTransform(this.viewportTransform);
         this.isDragging = false;
-        this.selection = true; // Re-enable selection after panning
+        this.selection = true;
     });
 
     // --- Keyboard Delete ---
@@ -352,8 +346,8 @@ function addLogoToCanvas(logoUrl, logoName) {
             logoImg.set({
                 left: canvasWidth / 2,    // Center by default
                 top: canvasHeight / 2,
-                scaleX: 0.5 * canvasScaleFactor, // Scale for internal resolution
-                scaleY: 0.5 * canvasScaleFactor,
+                scaleX: 0.5, // Fixed scale for now - try 0.5
+                scaleY: 0.5,
                 originX: 'center',
                 originY: 'center',
                 selectable: true, // Make logos selectable so they can be deleted
@@ -369,8 +363,8 @@ function addLogoToCanvas(logoUrl, logoName) {
             logoImg.set({
                 left: canvasWidth / 2,
                 top: canvasHeight / 2,
-                scaleX: scale * canvasScaleFactor, // Scale for internal resolution
-                scaleY: scale * canvasScaleFactor,
+                scaleX: scale,
+                scaleY: scale,
                 originX: 'center',
                 originY: 'center',
                 selectable: true, // Make logos selectable so they can be deleted
@@ -512,7 +506,7 @@ function submitProof() {
             console.log(`Generating DataURL for view index: ${index}`);
 
             const tempCanvasForView = new fabric.Canvas(null, {
-                width: proofCreatorCanvas.getWidth(), // Use *scaled* dimensions
+                width: proofCreatorCanvas.getWidth(),
                 height: proofCreatorCanvas.getHeight(),
                 backgroundColor: '#ffffff'
             });
@@ -523,13 +517,13 @@ function submitProof() {
                 tempCanvasForView.renderAll(); // Explicitly render all objects - ALREADY PRESENT
 
                 // --- MOVE toDataURL() call INSIDE the callback ---
-                const dataURL = tempCanvasForView.toDataURL({format: 'png', multiplier: 1 });
+                const dataURL = tempCanvasForView.toDataURL('png');
                 console.log(`DataURL generated for view index: ${index} (TEMPORARY canvas): ${dataURL.substring(0, 50)}...`);
 
                 canvasDataURLs.push(dataURL); // Add Data URL to the array
                 resolve(); // Resolve the Promise AFTER Data URL is generated
 
-                tempCanvasForView.dispose(); // VERY IMPORTANT: Dispose of temporary canvas
+                tempCanvasForView.dispose();
                 console.log(`loadFromJSON callback for view index: ${index} ENDED`); // ADDED LOGGING - End of callback
             }, null, function() { // Fabric.js callback context - No changes needed here, but added for clarity
                 // Optional callback context if needed, can leave null
@@ -594,31 +588,23 @@ function submitProof() {
 
 // Zoom In function
 function zoomIn() {
-    zoomLevel += ZOOM_INCREMENT;
-    if (zoomLevel > 5) zoomLevel = 5;  // Max zoom
-    proofCreatorCanvas.setZoom(zoomLevel);
-    proofCreatorCanvas.setWidth(600 * canvasScaleFactor * zoomLevel);
-    proofCreatorCanvas.setHeight(600 * canvasScaleFactor * zoomLevel);
-    proofCreatorCanvas.renderAll();
+     zoomLevel = proofCreatorCanvas.getZoom();
+    zoomLevel = Math.min(zoomLevel + ZOOM_INCREMENT, 5); // Limit zoom to 5x
+    proofCreatorCanvas.zoomToPoint({ x: proofCreatorCanvas.getWidth() / 2, y: proofCreatorCanvas.getHeight() / 2 }, zoomLevel);
 }
 
 // Zoom Out function
 function zoomOut() {
-   zoomLevel -= ZOOM_INCREMENT;
-    if (zoomLevel < 0.2) zoomLevel = 0.2;  // Min zoom
-    proofCreatorCanvas.setZoom(zoomLevel);
-  proofCreatorCanvas.setWidth(600 * canvasScaleFactor * zoomLevel);
-    proofCreatorCanvas.setHeight(600 * canvasScaleFactor * zoomLevel);
-    proofCreatorCanvas.renderAll();
+     zoomLevel = proofCreatorCanvas.getZoom();
+    zoomLevel = Math.max(zoomLevel - ZOOM_INCREMENT, 0.2); // Limit zoom out to 0.2x
+    proofCreatorCanvas.zoomToPoint({ x: proofCreatorCanvas.getWidth() / 2, y: proofCreatorCanvas.getHeight() / 2 }, zoomLevel);
 }
 
 // Reset Zoom function
 function resetZoom() {
-   zoomLevel = 1;
+  zoomLevel = 1;
     proofCreatorCanvas.setZoom(1);
-    proofCreatorCanvas.viewportTransform = [1, 0, 0, 1, 0, 0]; // Reset viewport
-  proofCreatorCanvas.setWidth(600 * canvasScaleFactor);
-    proofCreatorCanvas.setHeight(600 * canvasScaleFactor);
+    proofCreatorCanvas.viewportTransform = [1, 0, 0, 1, 0, 0]; // Reset viewport transform
     proofCreatorCanvas.renderAll();
 }
 

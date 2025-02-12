@@ -1,29 +1,27 @@
-/* proof_creator.css */
+/* proof_creator.css (Modified) */
 
-/* Styles to make the canvas fit and be responsive */
-.left-column{
-      max-width: 260px;
-      min-width: 150px;
-    }
-
+/* --- VERY IMPORTANT: Remove conflicting styles --- */
 #proof-canvas {
-    width: 600px;  /* Make the canvas fill its container */
-    height: 600px; /* Maintain aspect ratio */
-    max-height: 70vh; /* Or some other maximum, relative to viewport height */
-    border: 2px solid #1abc9c; /* Example border */
-    border-radius: 10px;  /* Match other elements */
-    background-color: #fff; /* White background */
+    /* width: 600px; Remove fixed width and height */
+    /* height: 600px; */
+    /* max-height: 70vh;  REMOVE THIS */
+    border: 2px solid #1abc9c;
+    border-radius: 10px;
+    background-color: #fff;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+
+    /* Let Fabric.js manage the dimensions */
 }
+/* REMOVE THESE AS WELL */
 #proof-canvas .lower-canvas {
-    width: 600px;  /* Make the canvas fill its container */
-    height: 600px; /* Maintain aspect ratio */
+    /* width: 600px;  */
+    /* height: 600px; */
+}
+#proof-canvas .upper-canvas {
+    /* width: 600px;  */
+    /* height: 600px; */
 }
 
-#proof-canvas .upper-canvas {
-    width: 600px;  /* Make the canvas fill its container */
-    height: 600px; /* Maintain aspect ratio */
-}
 
 /* Style for the customer list */
 #customer-list {
@@ -243,41 +241,4 @@
 .view-indicator {
     width: 10px; /* Slightly smaller indicators */
     height: 10px;
-    border-width: 2px; /* Thicker border for smaller indicators */
-}
-
-
-/* --- Carousel Arrow Buttons (Vertical Middle) --- */
-.canvas-carousel-controls {
-    position: absolute;
-    bottom: 10px;
-    left: 0;
-    width: 100%;
-    display: flex;
-    justify-content: space-between; /* Arrows on left/right, indicators in center */
-    align-items: center; /* Vertically center arrows and indicators */
-    padding: 0 10px; /* Add some horizontal padding */
-    pointer-events: none; /* Allow clicks to pass through to canvas for panning/selecting */
-}
-
-.carousel-arrow {
-    background: none;
-    border: none;
-    font-size: 1.5rem; /* Size of arrows */
-    color: #555; /* Grey arrows */
-    cursor: pointer;
-    transition: color 0.3s ease;
-    pointer-events: auto; /* Make arrows clickable */
-}
-
-.carousel-arrow:hover {
-    color: #333; /* Darker grey on hover */
-}
-
-#canvas-carousel-controls #canvas-view-indicators {
-    position: static; /* Reset positioning for indicators within carousel controls */
-    transform: none;  /* Reset centering transform */
-    margin: 0 20px; /* Add some horizontal margin for indicators */
-    pointer-events: auto; /* Make indicators clickable */
-}
-
+    border-width: 
