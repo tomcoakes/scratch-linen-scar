@@ -129,7 +129,8 @@ body {
     max-width: 95%; /* Slightly smaller image inside box */
     max-height: 95%;
     display: block;
-    object-fit: contain; /* Ensure image fits without cropping */
+    transform: scale(1.0); /* Default scale (no zoom) */
+    transform-origin: center center; /* Point around which to scale */
 }
 
 .horizontal-line-top {
