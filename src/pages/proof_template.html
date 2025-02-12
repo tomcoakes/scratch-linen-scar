@@ -126,6 +126,7 @@ body {
     min-height: 60mm; /* Minimum height for each image box */
     width: 110mm;  /*  Example - Adjust as needed! */
     height: 120mm; /* Example - Adjust as needed! */
+  object-fit: contain; 
 }
 .image-box-secondary {
     border: 1px solid #ccc;
@@ -138,6 +139,7 @@ body {
     min-height: 50mm; /* Minimum height for each image box */
     width: 80mm;  /*  Example - Adjust as needed! */
     height: 57mm; /* Example - Adjust as needed! */
+  object-fit: contain; 
 }
 
 .image-box img {
@@ -146,14 +148,16 @@ body {
     display: block;
     transform: scale(1.0); /* Default scale (no zoom) */
     transform-origin: center center; /* Point around which to scale */
+    object-fit: scale-down;
 }
       
 .image-box-secondary img {
     max-width: 95%; /* Slightly smaller image inside box */
     max-height: 95%;
     display: block;
-    transform: scale(1.0); /* Default scale (no zoom) */
+    transform: scale(0.6); /* Default scale (no zoom) */
     transform-origin: center center; /* Point around which to scale */
+    object-fit: scale-down;
 }
 
 .horizontal-line-top {
