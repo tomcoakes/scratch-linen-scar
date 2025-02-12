@@ -6,23 +6,17 @@
       min-width: 150px;
     }
 
-.canvas-wrapper canvas { /* Or whatever selector targets your canvas */
-    width: 800px;         /* Set displayed width */
-    height: 600px;        /* Set displayed height */
-    border: 1px solid #ddd; /* Keep your border if you have one */
-    /* ... any other canvas styles ... */
-}
-
 #proof-canvas {
-    width: 100%;  /* Make the canvas fill its container */
-    height: auto; /* Maintain aspect ratio */
-    max-height: 70vh; /* Or some other maximum, relative to viewport height */
-    border: 2px solid #1abc9c; /* Example border */
-    border-radius: 10px;  /* Match other elements */
-    background-color: #fff; /* White background */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 800px;          /* Set the displayed width to 800 pixels */
+    height: 600px;         /* Set the displayed height to 600 pixels */
+    border: 2px solid #1abc9c; /* Keep your border */
+    border-radius: 10px;    /* Keep your border-radius */
+    background-color: #fff; /* Keep your background color */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Keep your box-shadow */
+    display: block;        /* Ensure it behaves as a block element */
+    max-width: none;       /* Override any max-width that might be inherited */
+    max-height: none;      /* Override any max-height that might be inherited */
 }
-
 /* Style for the customer list */
 #customer-list {
     list-style: none;

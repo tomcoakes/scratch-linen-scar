@@ -18,7 +18,9 @@ let currentViewIndex = 0;
 document.addEventListener('DOMContentLoaded', () => {
     proofCreatorCanvas = new fabric.Canvas('proof-canvas', {
         backgroundColor: '#ffffff',
-        selection: true // Enable object selection
+        selection: true, // Enable object selection
+        width: 800 * 3,   // Internal width is 3x displayed width
+        height: 600 * 3  // Internal height is 3x displayed height
     });
     views.push({}); // Initialize views array with one empty view
 
