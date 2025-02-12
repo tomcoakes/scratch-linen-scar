@@ -7,8 +7,9 @@
     }
 
 #proof-canvas {
-    width: 600px;  /* VISUAL width on the screen */
-    height: 600px; /* VISUAL height on the screen */
+    width: 600px;  /* Make the canvas fill its container */
+    height: 600px; /* Maintain aspect ratio */
+    max-height: 70vh; /* Or some other maximum, relative to viewport height */
     border: 2px solid #1abc9c; /* Example border */
     border-radius: 10px;  /* Match other elements */
     background-color: #fff; /* White background */
@@ -199,7 +200,6 @@
     background-color: #ccc; /* Slightly darker on hover */
 }
 
-/* proof_creator.
 /* proof_creator.css */
 
 /* ... (rest of your existing CSS) ... */
@@ -280,3 +280,4 @@
     margin: 0 20px; /* Add some horizontal margin for indicators */
     pointer-events: auto; /* Make indicators clickable */
 }
+
