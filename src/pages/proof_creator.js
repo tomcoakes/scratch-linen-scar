@@ -1,5 +1,8 @@
 // proof_creator.js
-
+/**
+ * @global
+ * @type {object}
+ */
 var fabric; // Declare fabric as a global variable
 let proofCreatorCanvas;
 let selectedCustomer = null;
@@ -75,8 +78,7 @@ document.addEventListener('DOMContentLoaded', () => {
     addViewButton.addEventListener('click', addView); // Add View button listener
       prevViewButton.addEventListener('click', previousView);
     nextViewButton.addEventListener('click', nextView);
-
-
+  
 
 
     // --- Mouse wheel zoom ---
@@ -327,44 +329,35 @@ function fetchCustomerLogos(customerId) {
 }
 
 // --- Add Logo to Canvas ---
-async function addLogoToCanvas(logoUrl, logoName) {
+function addLogoToCanvas(logoUrl, logoName) {
     console.log(`Adding logo to canvas: ${logoUrl} (${logoName})`);
 
     const canvasWidth = proofCreatorCanvas.getWidth();
     const canvasHeight = proofCreatorCanvas.getHeight();
 
+
     if (logoUrl.toLowerCase().endsWith('.svg')) {
-        // --- SVG Handling ---
-        try {
-            const response = await fetch(logoUrl);
-            if (!response.ok) {
-                throw new Error(`HTTP error! status: ${response.status}`);
-            }
-            const svgText = await response.text();
+        // Simplified SVG loading for testing
+        fabric.loadSVGFromURL(logoUrl, (objects, options) => {
+            const logoImg = fabric.util.groupSVGElements(objects, options);
 
-            // Load SVG to get dimensions, THEN add to canvas
-            fabric.loadSVGFromString(svgText, (objects, options) => {
-                const svgImage = fabric.util.groupSVGElements(objects, options);
-                 svgImage.set({
-                    left: canvasWidth / 2,
-                    top: canvasHeight / 2,
-                    originX: 'center',
-                    originY: 'center',
-                    selectable: true,
-                });
-
-                // Add to canvas and keep track of it
-                proofCreatorCanvas.add(svgImage);
-                 proofCreatorCanvas.renderAll();
+            logoImg.set({
+                left: canvasWidth / 2,    // Center by default
+                top: canvasHeight / 2,
+                scaleX: 0.5, // Fixed scale for now - try 0.5
+                scaleY: 0.5,
+                originX: 'center',
+                originY: 'center',
+                selectable: true, // Make logos selectable so they can be deleted
             });
-        } catch (error) {
-            console.error('Error loading SVG:', error);
-            alert('Failed to load SVG logo.');
-        }
+            proofCreatorCanvas.add(logoImg);
+            proofCreatorCanvas.renderAll();
+        }, null, { crossOrigin: 'anonymous' });
+
     } else {
-        // --- Raster Image Handling (as before) ---
+        // (Keep raster image loading as is for now)
         fabric.Image.fromURL(logoUrl, (logoImg) => {
-            const scale = Math.min(0.2, canvasWidth / logoImg.width, canvasHeight / logoImg.height);
+            const scale = Math.min(0.2, canvasWidth / logoImg.width, canvasHeight/logoImg.height);
             logoImg.set({
                 left: canvasWidth / 2,
                 top: canvasHeight / 2,
@@ -372,14 +365,13 @@ async function addLogoToCanvas(logoUrl, logoName) {
                 scaleY: scale,
                 originX: 'center',
                 originY: 'center',
-                selectable: true
+                selectable: true, // Make logos selectable so they can be deleted
             });
             proofCreatorCanvas.add(logoImg);
             proofCreatorCanvas.renderAll();
         }, { crossOrigin: 'anonymous' });
     }
 }
-
 
 
 // --- Garment Image Upload ---
@@ -495,189 +487,101 @@ function updateSelectedLogosDisplay() {
 
 // proof_creator.js
 
-async function submitProof() {
+function submitProof() {
+    saveCurrentView(); // <---- ADD THIS LINE at the VERY BEGINNING
+
     if (!selectedCustomer) {
         alert("Please select a customer first.");
         return;
     }
 
-    const garmentCode = document.getElementById('garment-code').value;
-    const proofDescription = document.getElementById('proof-description').value;
+    const canvasDataURLs = [];
 
-    if (!garmentCode) {
-        alert("Please enter a garment code.");
-        return;
-    }
+    console.log("Views array before DataURL generation:", views);
 
-    // Helper function to get SVG data (including scaling and positioning)
-    async function getCanvasSVG() {
-        // Clone the current canvas to avoid modifying the original
-        const tempCanvas = new fabric.Canvas();
-        tempCanvas.loadFromJSON(proofCreatorCanvas.toJSON(), async () => {
-          tempCanvas.renderAll();
+    const dataURLPromises = views.map((viewState, index) => {
+        return new Promise(resolve => {
+            console.log(`Generating DataURL for view index: ${index}`);
+
+            const tempCanvasForView = new fabric.Canvas(null, {
+                width: proofCreatorCanvas.getWidth(),
+                height: proofCreatorCanvas.getHeight(),
+                backgroundColor: '#ffffff'
+            });
+
+            tempCanvasForView.loadFromJSON(viewState, () => { // loadFromJSON callback - IMPORTANT!
+                console.log(`loadFromJSON callback for view index: ${index} STARTED`); // ADDED LOGGING - Start of callback
+
+                tempCanvasForView.renderAll(); // Explicitly render all objects - ALREADY PRESENT
+
+                // --- MOVE toDataURL() call INSIDE the callback ---
+                const dataURL = tempCanvasForView.toDataURL('png');
+                console.log(`DataURL generated for view index: ${index} (TEMPORARY canvas): ${dataURL.substring(0, 50)}...`);
+
+                canvasDataURLs.push(dataURL); // Add Data URL to the array
+                resolve(); // Resolve the Promise AFTER Data URL is generated
+
+                tempCanvasForView.dispose();
+                console.log(`loadFromJSON callback for view index: ${index} ENDED`); // ADDED LOGGING - End of callback
+            }, null, function() { // Fabric.js callback context - No changes needed here, but added for clarity
+                // Optional callback context if needed, can leave null
+            });
         });
+    });
 
-        const originalWidth = tempCanvas.getWidth();
-        const originalHeight = tempCanvas.getHeight();
+    Promise.all(dataURLPromises).then(() => {
+        const garmentCode = document.getElementById('garment-code').value;
+        const proofDescription = document.getElementById('proof-description').value;
 
-        // Fabric.js' toSVG() doesn't include background images so we add it manually
-        const backgroundImage = tempCanvas.backgroundImage;
-
-        let backgroundImageSvg = '';
-
-         if (backgroundImage) {
-           const bgImageDataUrl = await new Promise(resolve => {
-                backgroundImage.clone(clonedBgImage => {
-                clonedBgImage.getElement().onload = function() { //ensure image element is ready
-                  resolve(clonedBgImage.toDataURL());
-               }
-                });
-              });
-
-
-            backgroundImageSvg = `<image xlink:href="${bgImageDataUrl}"
-                                    x="0" y="0"
-                                    width="${originalWidth}" height="${originalHeight}"
-                                    preserveAspectRatio="xMidYMid meet"/>`;  //keep aspect ratio.
+        if (!garmentCode) {
+            alert("Please enter a garment code.");
+            return;
         }
 
+        const proofData = {
+            customerId: selectedCustomer,
+            canvasDataURLs: canvasDataURLs, // Now sending array of DataURLs
+            garmentCode: garmentCode,
+            proofDescription: proofDescription
+        };
 
-        // Get all objects *except* the background
-        const objects = tempCanvas.getObjects();
-        const objectSVGs = objects.map(obj => {
-            // Important:  Get *absolute* position, considering canvas scaling and panning.
-            const absolutePosition = obj.getPointByOrigin('left', 'top');
-            const scaleX = obj.scaleX;
-            const scaleY = obj.scaleY;
+        console.log("Submitting proof data with Data URLs:", proofData);
 
-            // Clone to avoid modifying original object.
-            return obj.clone().set({
-                left: absolutePosition.x,
-                top: absolutePosition.y,
-                scaleX: scaleX,  // keep scale
-                scaleY: scaleY   // Keep Scale
-            }).toSVG();
+        fetch(`/api/customers/${selectedCustomer}/generate-proof`, {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(proofData),
+        })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+            return response.blob();
+        })
+        .then(blob => {
+            // Create a Blob URL
+            const pdfUrl = URL.createObjectURL(blob);
+
+            // Create a temporary link element
+            const downloadLink = document.createElement('a');
+            downloadLink.href = pdfUrl;
+            downloadLink.download = `customer_proof_${selectedCustomer}.pdf`; // Suggest filename
+            document.body.appendChild(downloadLink); // Append to body (required for FF)
+            downloadLink.click(); // Programmatically click the link to trigger download
+            downloadLink.remove(); // Clean up by removing the link
+
+            URL.revokeObjectURL(pdfUrl); // Revoke the Blob URL to free resources
+
+            alert("PDF Proof downloaded successfully!"); // Success alert
+
+        })
+        .catch(error => {
+            console.error('Error submitting proof:', error);
+            alert(`Failed to submit proof: ${error.message}`);
         });
-
-
-        // Combine background and object SVGs
-       const fullSvg = `
-            <svg xmlns="http://www.w3.org/2000/svg"
-                xmlns:xlink="http://www.w3.org/1999/xlink"
-                width="${originalWidth}" height="${originalHeight}"
-                viewBox="0 0 ${originalWidth} ${originalHeight}">
-
-                ${backgroundImageSvg}
-                ${objectSVGs.join('')}
-            </svg>`;
-          tempCanvas.dispose();
-
-        return fullSvg;
-
-    }
-
-
-    const canvasSVG = await getCanvasSVG();
-
-    // Build the PDF document definition
-   const docDefinition = {
-      pageSize: 'A4',
-      pageOrientation: 'landscape',
-      pageMargins: [25 * 2.83465, 20 * 2.83465, 25 * 2.83465, 20 * 2.83465], // Convert mm to points (1mm = 2.83465 points)
-      content: [
-        {
-          image: 'companyLogo', // Use a key, define the image below
-          width: 90 * 2.83465, // Convert mm to points
-          absolutePosition: { x: 25 * 2.83465, y: 20 * 2.83465 },
-        },
-        {
-            text: 'Tel: 0333 456 1501',
-            absolutePosition: { x: 297*2.83465-100, y: 20 * 2.83465 },
-            fontSize: 12
-        },
-        {
-            text: 'Email: sales@tbsg.co.uk',
-            absolutePosition: { x: 297*2.83465-110, y: 30 * 2.83465 },
-             fontSize: 12
-        },
-        {
-          text: 'Approval of Company Logo',
-          fontSize: 28,
-          bold: true,
-          absolutePosition: { x: 25 * 2.83465, y: 60 * 2.83465 }, // Adjust Y position as needed
-        },
-        {
-          canvas: [
-            {
-              type: 'line',
-              x1: 0,
-              y1: 0,
-              x2: (297 - 50) * 2.83465, // Full page width minus margins
-              y2: 0,
-              lineWidth: 2,
-              lineColor: '#EC008D', // Pink
-            },
-          ],
-          absolutePosition: { x: 25 * 2.83465, y: 100 * 2.83465 }, // Adjust Y position as needed
-        },
-         {
-          canvas: [
-            {
-              type: 'line',
-              x1: 0,
-              y1: 0,
-              x2: (297 - 50) * 2.83465, // Full page width minus margins
-              y2: 0,
-              lineWidth: 2,
-              lineColor: '#EC008D', // Pink
-            },
-          ],
-          absolutePosition: { x: 25 * 2.83465, y: 180 * 2.83465 }, // Adjust Y position as needed
-        },
-        {
-          text: `Garment Code: ${garmentCode}`,
-          fontSize: 16,
-          absolutePosition: { x: 25 * 2.83465, y: 110 * 2.83465 },
-        },
-        {
-          text: `Description: ${proofDescription}`,
-          fontSize: 16,
-          absolutePosition: { x: 25 * 2.83465, y: 130 * 2.83465 },
-        },
-         {
-            svg: canvasSVG,
-            width: 595.28/1.7,  //width of a4 in points/scale
-            height: 595.28/1.7, //scale
-            fit: [595.28/1.7, 841.89/1.7], //fit to a scaled down a4 page.
-            absolutePosition: { x: 25 * 2.83465, y: 140 * 2.83465 }, // Position on the page
-          },
-         {
-            text: '107 Longmead Road Emerald Park East Emersons Green Bristol BS16 7FG',
-            fontSize: 9,
-            absolutePosition: { x: 25 * 2.83465, y: 190 * 2.83465 },
-            color: '#777'
-        },
-        {
-            text: 'tbsg.co.uk',
-            fontSize: 9,
-            absolutePosition: {x: 25 * 2.83465, y:195*2.83465 },
-             color: '#777'
-
-        },
-        {
-           text: 'Positional Guide only',
-            fontSize: 9,
-            absolutePosition: {x: 25 * 2.83465, y:200*2.83465 },
-             color: '#777'
-        }
-      ],
-      images: {
-        companyLogo: 'data:image/png;base64,...', // Replace ... with your company logo's base64 data
-      },
-    };
-
-    // Generate and download the PDF
-    pdfMake.createPdf(docDefinition).download(`proof_${garmentCode}.pdf`);
+    });
 }
 
 // Zoom In function
