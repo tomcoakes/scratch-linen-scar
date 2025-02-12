@@ -14,6 +14,7 @@ let lastPosX = 0;
 let lastPosY = 0;
 let views = []; // Array to store canvas states (each view is a canvas state as JSON)
 let currentViewIndex = 0;
+const renderScale = 3; // ADD THIS LINE - Set the rendering scale factor
 
 document.addEventListener('DOMContentLoaded', () => {
     proofCreatorCanvas = new fabric.Canvas('proof-canvas', {
@@ -78,7 +79,7 @@ document.addEventListener('DOMContentLoaded', () => {
     addViewButton.addEventListener('click', addView); // Add View button listener
       prevViewButton.addEventListener('click', previousView);
     nextViewButton.addEventListener('click', nextView);
-  
+
 
 
     // --- Mouse wheel zoom ---
@@ -344,8 +345,8 @@ function addLogoToCanvas(logoUrl, logoName) {
             logoImg.set({
                 left: canvasWidth / 2,    // Center by default
                 top: canvasHeight / 2,
-                scaleX: 0.5, // Fixed scale for now - try 0.5
-                scaleY: 0.5,
+                // scaleX: 0.5, // Fixed scale for now - try 0.5 REMOVED - No initial scaling
+                // scaleY: 0.5,
                 originX: 'center',
                 originY: 'center',
                 selectable: true, // Make logos selectable so they can be deleted
@@ -357,12 +358,12 @@ function addLogoToCanvas(logoUrl, logoName) {
     } else {
         // (Keep raster image loading as is for now)
         fabric.Image.fromURL(logoUrl, (logoImg) => {
-            const scale = Math.min(0.2, canvasWidth / logoImg.width, canvasHeight/logoImg.height);
+            //const scale = Math.min(0.2, canvasWidth / logoImg.width, canvasHeight/logoImg.height);  REMOVED - No initial scaling
             logoImg.set({
                 left: canvasWidth / 2,
                 top: canvasHeight / 2,
-                scaleX: scale,
-                scaleY: scale,
+                // scaleX: scale,
+                // scaleY: scale,
                 originX: 'center',
                 originY: 'center',
                 selectable: true, // Make logos selectable so they can be deleted
@@ -488,66 +489,80 @@ function updateSelectedLogosDisplay() {
 // proof_creator.js
 
 function submitProof() {
-    saveCurrentView(); // <---- ADD THIS LINE at the VERY BEGINNING
+    saveCurrentView();
 
     if (!selectedCustomer) {
         alert("Please select a customer first.");
         return;
     }
 
+    const garmentCode = document.getElementById('garment-code').value;
+    const proofDescription = document.getElementById('proof-description').value;
+
+    if (!garmentCode) {
+        alert("Please enter a garment code.");
+        return;
+    }
+
     const canvasDataURLs = [];
 
-    console.log("Views array before DataURL generation:", views);
-
-    const dataURLPromises = views.map((viewState, index) => {
+    // Use Promise.all to wait for all data URLs to be generated
+    Promise.all(views.map((viewState, index) => {
         return new Promise(resolve => {
-            console.log(`Generating DataURL for view index: ${index}`);
-
-            const tempCanvasForView = new fabric.Canvas(null, {
-                width: proofCreatorCanvas.getWidth(),
-                height: proofCreatorCanvas.getHeight(),
+            // Create a *temporary* canvas for rendering at higher resolution
+            const tempCanvas = new fabric.Canvas(null, {
+                width: proofCreatorCanvas.getWidth() * renderScale,  // Scale up
+                height: proofCreatorCanvas.getHeight() * renderScale, // Scale up
                 backgroundColor: '#ffffff'
             });
 
-            tempCanvasForView.loadFromJSON(viewState, () => { // loadFromJSON callback - IMPORTANT!
-                console.log(`loadFromJSON callback for view index: ${index} STARTED`); // ADDED LOGGING - Start of callback
 
-                tempCanvasForView.renderAll(); // Explicitly render all objects - ALREADY PRESENT
+            // Load the saved view state onto the *temporary* canvas
+            tempCanvas.loadFromJSON(viewState, () => {
 
-                // --- MOVE toDataURL() call INSIDE the callback ---
-                const dataURL = tempCanvasForView.toDataURL('png');
-                console.log(`DataURL generated for view index: ${index} (TEMPORARY canvas): ${dataURL.substring(0, 50)}...`);
+              // Scale contents of tempCanvas:
+                const objects = tempCanvas.getObjects(); // Get ALL objects (including background)
+                objects.forEach(obj => {
+                    obj.scaleX *= renderScale;
+                    obj.scaleY *= renderScale;
+                    obj.left *= renderScale;
+                    obj.top *= renderScale;
+                });
 
-                canvasDataURLs.push(dataURL); // Add Data URL to the array
-                resolve(); // Resolve the Promise AFTER Data URL is generated
+              if (tempCanvas.backgroundImage) { //scale the background image
+                tempCanvas.backgroundImage.scaleX *= renderScale;
+                tempCanvas.backgroundImage.scaleY *= renderScale;
+                tempCanvas.backgroundImage.left = 0;
+                tempCanvas.backgroundImage.top = 0;
 
-                tempCanvasForView.dispose();
-                console.log(`loadFromJSON callback for view index: ${index} ENDED`); // ADDED LOGGING - End of callback
-            }, null, function() { // Fabric.js callback context - No changes needed here, but added for clarity
-                // Optional callback context if needed, can leave null
+                tempCanvas.setWidth(tempCanvas.backgroundImage.width * renderScale);
+                tempCanvas.setHeight(tempCanvas.backgroundImage.height * renderScale);
+
+                tempCanvas.backgroundImage.set({
+                    originX: 'left', // Set origin to top-left for background scaling
+                    originY: 'top'
+                });
+              }
+
+                tempCanvas.renderAll(); // VERY IMPORTANT: Render before toDataURL()
+                const dataURL = tempCanvas.toDataURL({format: 'png', multiplier: 1}); // Use multiplier for quality
+                canvasDataURLs.push(dataURL);
+                tempCanvas.dispose(); // Dispose of the temporary canvas
+                resolve(); // Resolve the promise
             });
         });
-    });
-
-    Promise.all(dataURLPromises).then(() => {
-        const garmentCode = document.getElementById('garment-code').value;
-        const proofDescription = document.getElementById('proof-description').value;
-
-        if (!garmentCode) {
-            alert("Please enter a garment code.");
-            return;
-        }
-
+    })).then(() => {
+        // All data URLs are ready, proceed with submission
         const proofData = {
             customerId: selectedCustomer,
-            canvasDataURLs: canvasDataURLs, // Now sending array of DataURLs
+            canvasDataURLs: canvasDataURLs,
             garmentCode: garmentCode,
             proofDescription: proofDescription
         };
 
-        console.log("Submitting proof data with Data URLs:", proofData);
+        console.log("Submitting proof data:", proofData);
 
-        fetch(`/api/customers/${selectedCustomer}/generate-proof`, {
+       fetch(`/api/customers/${selectedCustomer}/generate-proof`, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json',
