@@ -1,8 +1,5 @@
 // proof_creator.js
-/**
- * @global
- * @type {object}
- */
+
 var fabric; // Declare fabric as a global variable
 let proofCreatorCanvas;
 let selectedCustomer = null;
@@ -15,14 +12,31 @@ let lastPosY = 0;
 let views = []; // Array to store canvas states (each view is a canvas state as JSON)
 let currentViewIndex = 0;
 
+// --- ADDED: Canvas dimensions ---
+const CANVAS_WIDTH = 1800;  // High-resolution width
+const CANVAS_HEIGHT = 1800; // High-resolution height
+const DISPLAY_WIDTH = 600;   // Visual width on screen
+const DISPLAY_HEIGHT = 600;  // Visual height on screen
+
 document.addEventListener('DOMContentLoaded', () => {
     proofCreatorCanvas = new fabric.Canvas('proof-canvas', {
         backgroundColor: '#ffffff',
         selection: true,
-      width: 600,
-      height: 600,
+        //  Set initial dimensions (high resolution) - but we'll override later
+        width: CANVAS_WIDTH,
+        height: CANVAS_HEIGHT
     });
     views.push({}); // Initialize views array with one empty view
+
+      // --- IMPORTANT: Override Fabric.js's canvas sizing AFTER initialization ---
+    proofCreatorCanvas.setWidth(CANVAS_WIDTH);
+    proofCreatorCanvas.setHeight(CANVAS_HEIGHT);
+    proofCreatorCanvas.wrapperEl.style.width = `${DISPLAY_WIDTH}px`; // Set wrapper size (visual)
+    proofCreatorCanvas.wrapperEl.style.height = `${DISPLAY_HEIGHT}px`;
+    proofCreatorCanvas.lowerCanvasEl.style.width = `${DISPLAY_WIDTH}px`;  // Override inline styles!
+    proofCreatorCanvas.lowerCanvasEl.style.height = `${DISPLAY_HEIGHT}px`;
+    proofCreatorCanvas.upperCanvasEl.style.width = `${DISPLAY_WIDTH}px`;
+    proofCreatorCanvas.upperCanvasEl.style.height = `${DISPLAY_HEIGHT}px`;
 
     // Set default control appearance for all objects on the canvas
     fabric.Object.prototype.set({
@@ -80,20 +94,30 @@ document.addEventListener('DOMContentLoaded', () => {
     addViewButton.addEventListener('click', addView); // Add View button listener
       prevViewButton.addEventListener('click', previousView);
     nextViewButton.addEventListener('click', nextView);
-  
+
+
 
 
     // --- Mouse wheel zoom ---
-    proofCreatorCanvas.on('mouse:wheel', function(opt) {
-        var delta = opt.e.deltaY;
-        var zoom = proofCreatorCanvas.getZoom();
-        zoom *= 0.999 ** delta;
-        if (zoom > 20) zoom = 20;
-        if (zoom < 0.1) zoom = 0.1;
-        proofCreatorCanvas.zoomToPoint({ x: opt.e.offsetX, y: opt.e.offsetY }, zoom);
-        opt.e.preventDefault();
-        opt.e.stopPropagation();
-    });
+   proofCreatorCanvas.on('mouse:wheel', function(opt) {
+    var delta = opt.e.deltaY;
+    var zoom = proofCreatorCanvas.getZoom();
+    zoom *= 0.999 ** delta;
+
+    // Limit zoom levels
+    if (zoom > 5) zoom = 5;  // Max zoom level (adjust as needed)
+    if (zoom < 0.2) zoom = 0.2; // Min zoom level (adjust as needed)
+
+    // Get the mouse pointer position relative to the canvas
+    var pointer = proofCreatorCanvas.getPointer(opt.e);
+
+    // Zoom to the pointer position
+    proofCreatorCanvas.zoomToPoint({ x: opt.e.offsetX, y: opt.e.offsetY }, zoom);
+
+    // Prevent default scrolling behavior
+    opt.e.preventDefault();
+    opt.e.stopPropagation();
+});
 
     // --- Panning ---
     proofCreatorCanvas.on('mouse:down', function (opt) {
@@ -209,6 +233,8 @@ function loadCurrentView() {
     proofCreatorCanvas.clear(); // Clear canvas - ALREADY PRESENT
     if (viewState) {
         proofCreatorCanvas.loadFromJSON(viewState, () => {
+              proofCreatorCanvas.viewportTransform = [1, 0, 0, 1, 0, 0]; //reset the view port
+              proofCreatorCanvas.setZoom(1); //reset the zoom level
             proofCreatorCanvas.renderAll();
             console.log(`LOAD VIEW: Loaded view at index: ${currentViewIndex}`);
             console.log(`LOAD VIEW: Number of objects on canvas after load: ${proofCreatorCanvas.getObjects().length}`); // Log object count after load
@@ -334,20 +360,22 @@ function fetchCustomerLogos(customerId) {
 function addLogoToCanvas(logoUrl, logoName) {
     console.log(`Adding logo to canvas: ${logoUrl} (${logoName})`);
 
-    const canvasWidth = proofCreatorCanvas.getWidth();
-    const canvasHeight = proofCreatorCanvas.getHeight();
-
+    // Use the HIGH-RESOLUTION canvas dimensions
+    const canvasWidth = CANVAS_WIDTH;
+    const canvasHeight = CANVAS_HEIGHT;
 
     if (logoUrl.toLowerCase().endsWith('.svg')) {
-        // Simplified SVG loading for testing
         fabric.loadSVGFromURL(logoUrl, (objects, options) => {
             const logoImg = fabric.util.groupSVGElements(objects, options);
+
+            // Calculate scale to fit within, say, 20% of the canvas
+            const scale = Math.min(0.2, (canvasWidth * 0.2) / logoImg.width, (canvasHeight * 0.2) / logoImg.height);
 
             logoImg.set({
                 left: canvasWidth / 2,    // Center by default
                 top: canvasHeight / 2,
-                scaleX: 0.5, // Fixed scale for now - try 0.5
-                scaleY: 0.5,
+                scaleX: scale,  // Use calculated scale
+                scaleY: scale,
                 originX: 'center',
                 originY: 'center',
                 selectable: true, // Make logos selectable so they can be deleted
@@ -357,9 +385,9 @@ function addLogoToCanvas(logoUrl, logoName) {
         }, null, { crossOrigin: 'anonymous' });
 
     } else {
-        // (Keep raster image loading as is for now)
         fabric.Image.fromURL(logoUrl, (logoImg) => {
-            const scale = Math.min(0.2, canvasWidth / logoImg.width, canvasHeight/logoImg.height);
+            // Calculate scale to fit within a reasonable portion of the canvas
+             const scale = Math.min(0.2, canvasWidth * 0.2 / logoImg.width, canvasHeight * 0.2 / logoImg.height);
             logoImg.set({
                 left: canvasWidth / 2,
                 top: canvasHeight / 2,
@@ -374,8 +402,6 @@ function addLogoToCanvas(logoUrl, logoName) {
         }, { crossOrigin: 'anonymous' });
     }
 }
-
-
 // --- Garment Image Upload ---
 
 function setupGarmentImageUpload() {
@@ -433,7 +459,7 @@ function handleGarmentImage(file) {
             saveCurrentView(); // Save canvas state *before* background change
             proofCreatorCanvas.setBackgroundImage(img, proofCreatorCanvas.renderAll.bind(proofCreatorCanvas));
             saveCurrentView(); // Save canvas state *again* AFTER background change
-            loadCurrentView();
+            loadCurrentView(); // Load the updated view
             console.log("Image set as background. Canvas dimensions:", proofCreatorCanvas.width, proofCreatorCanvas.height); //debug
 
         }, { crossOrigin: 'anonymous' }); // Important for loading from Data URL
@@ -506,14 +532,16 @@ function submitProof() {
             console.log(`Generating DataURL for view index: ${index}`);
 
             const tempCanvasForView = new fabric.Canvas(null, {
-                width: proofCreatorCanvas.getWidth(),
-                height: proofCreatorCanvas.getHeight(),
+                width: CANVAS_WIDTH, // Use the HIGH-RESOLUTION dimensions
+                height: CANVAS_HEIGHT,
                 backgroundColor: '#ffffff'
             });
 
             tempCanvasForView.loadFromJSON(viewState, () => { // loadFromJSON callback - IMPORTANT!
                 console.log(`loadFromJSON callback for view index: ${index} STARTED`); // ADDED LOGGING - Start of callback
 
+                  tempCanvasForView.viewportTransform = [1, 0, 0, 1, 0, 0]; //reset the viewport
+                tempCanvasForView.setZoom(1);
                 tempCanvasForView.renderAll(); // Explicitly render all objects - ALREADY PRESENT
 
                 // --- MOVE toDataURL() call INSIDE the callback ---
@@ -588,15 +616,17 @@ function submitProof() {
 
 // Zoom In function
 function zoomIn() {
-     zoomLevel = proofCreatorCanvas.getZoom();
-    zoomLevel = Math.min(zoomLevel + ZOOM_INCREMENT, 5); // Limit zoom to 5x
+      zoomLevel = proofCreatorCanvas.getZoom();
+    // zoomLevel = Math.min(zoomLevel + ZOOM_INCREMENT, 5); // Limit zoom to 5x //remove the zoom limit
+      zoomLevel += ZOOM_INCREMENT;
     proofCreatorCanvas.zoomToPoint({ x: proofCreatorCanvas.getWidth() / 2, y: proofCreatorCanvas.getHeight() / 2 }, zoomLevel);
 }
 
 // Zoom Out function
 function zoomOut() {
-     zoomLevel = proofCreatorCanvas.getZoom();
-    zoomLevel = Math.max(zoomLevel - ZOOM_INCREMENT, 0.2); // Limit zoom out to 0.2x
+    zoomLevel = proofCreatorCanvas.getZoom();
+    //zoomLevel = Math.max(zoomLevel - ZOOM_INCREMENT, 0.2); // Limit zoom out to 0.2x //remove zoom limit
+      zoomLevel -= ZOOM_INCREMENT;
     proofCreatorCanvas.zoomToPoint({ x: proofCreatorCanvas.getWidth() / 2, y: proofCreatorCanvas.getHeight() / 2 }, zoomLevel);
 }
 
@@ -619,3 +649,6 @@ function deleteActiveObject() {
         console.log('No object selected to delete.');
     }
 }
+
+
+  
