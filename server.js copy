@@ -805,6 +805,8 @@ app.delete("/api/customers/:customerId/proofs/:proofIndex", async (req, res) => 
     });
 });
 
+// server.js (Add this new block)
+
 app.put("/api/customers/:customerId/generate-proof", async (req, res) => {
     const customerId = Number(req.params.customerId);
     const proofData = req.body;
@@ -828,23 +830,11 @@ app.put("/api/customers/:customerId/generate-proof", async (req, res) => {
     populatedHtml = populatedHtml.replace(/\[GARMENT_CODE\]/g, proofData.garmentCode || 'N/A');
     populatedHtml = populatedHtml.replace(/\[PROOF_DESCRIPTION\]/g, proofData.proofDescription || 'N/A');
 
-    // --- 2.1. Embed Canvas Data URLs as <img> tags ---
-    const canvasImageTags = [];
-    if (proofData.canvasDataURLs && proofData.canvasDataURLs.length > 0) {
-        for (let i = 0; i < proofData.canvasDataURLs.length; i++) {
-            const dataURL = proofData.canvasDataURLs[i];
-            if (dataURL) {
-                canvasImageTags.push(`<img src="${dataURL}" alt="Proof Image ${i + 1}" style="max-width: 100%; height: auto;">`); // Inline style for image sizing
-            } else {
-                canvasImageTags.push(`<p>No Proof Image ${i + 1}.</p>`);
-            }
-        }
-    }
+    // --- 2.1. Embed Canvas Data URL as <img> tag ---
+    const canvasImageTag = `<img src="${proofData.canvasDataURL}" alt="Canvas Image" style="max-width: 100%; height: auto;">`; // Inline style for image sizing
 
-    // 2.2. Replace Placeholders with Canvas Images (Data URLs)
-    populatedHtml = populatedHtml.replace(/<!-- Proof Image 1 Placeholder -->/, canvasImageTags[0] || '<p>No Proof Image 1</p>');
-    populatedHtml = populatedHtml.replace(/<!-- Proof Image 2 Placeholder -->/, canvasImageTags[1] || '<p>No Proof Image 2</p>');
-    populatedHtml = populatedHtml.replace(/<!-- Proof Image 3 Placeholder -->/, canvasImageTags[2] || '<p>No Proof Image 3</p>');
+    // 2.2. Replace Placeholder with Canvas Image (Data URL)
+    populatedHtml = populatedHtml.replace(/<!-- Proof Image 1 Placeholder -->/, canvasImageTag);
 
 
     let pdfBuffer;

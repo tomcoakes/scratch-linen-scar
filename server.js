@@ -805,6 +805,8 @@ app.delete("/api/customers/:customerId/proofs/:proofIndex", async (req, res) => 
     });
 });
 
+// server.js (Add this new block)
+
 app.put("/api/customers/:customerId/generate-proof", async (req, res) => {
     const customerId = Number(req.params.customerId);
     const proofData = req.body;
@@ -836,7 +838,7 @@ app.put("/api/customers/:customerId/generate-proof", async (req, res) => {
             if (dataURL) {
                 canvasImageTags.push(`<img src="${dataURL}" alt="Proof Image ${i + 1}" style="max-width: 100%; height: auto;">`); // Inline style for image sizing
             } else {
-                canvasImageTags.push(`<p>No Proof Image ${i + 1}.</p>`);
+                canvasImageTags.push(`<p>No Proof Image ${i + 1}.</p>`); // Placeholder if no image
             }
         }
     }
