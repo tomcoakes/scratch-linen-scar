@@ -498,65 +498,60 @@ function submitProof() {
     }
 
     const canvasDataURLs = [];
-
-    // Store original canvas dimensions *before* scaling
     const originalCanvasWidth = proofCreatorCanvas.getWidth();
     const originalCanvasHeight = proofCreatorCanvas.getHeight();
+    console.log(`Original Canvas Dimensions: ${originalCanvasWidth} x ${originalCanvasHeight}`);
 
-    // Use Promise.all to wait for all data URLs to be generated
+    const horizontalOffset = -122; //  Offset to the LEFT (negative value)
+
     Promise.all(views.map((viewState, index) => {
         return new Promise(resolve => {
-            // Create a *temporary* canvas for rendering at higher resolution
             const tempCanvas = new fabric.Canvas(null, {
                 width: originalCanvasWidth * renderScale,
                 height: originalCanvasHeight * renderScale,
                 backgroundColor: '#ffffff'
             });
 
-            // Load the saved view state onto the *temporary* canvas
             tempCanvas.loadFromJSON(viewState, () => {
-
-                // Scale *only* the logo objects, adjust their positions
                 const objects = tempCanvas.getObjects();
                 objects.forEach(obj => {
-                    if (obj !== tempCanvas.backgroundImage) { // Crucial: Exclude the background
+                    if (obj !== tempCanvas.backgroundImage) {
+                        // Scale and position ONLY non-background objects
                         obj.scaleX *= renderScale;
                         obj.scaleY *= renderScale;
-                        obj.left *= renderScale;  // Scale position
-                        obj.top *= renderScale;   // Scale position
+                        // Apply the manual horizontal offset:
+                        obj.left = (obj.left * renderScale) + horizontalOffset; // <--- KEY CHANGE
+                        obj.top *= renderScale;
+                        console.log(`Object scaled (non-background). New left: ${obj.left}, top: ${obj.top}, scaleX: ${obj.scaleX}, scaleY: ${obj.scaleY}`); // Debug log
                     }
                 });
 
-
-                // Handle the background image separately
                 if (tempCanvas.backgroundImage) {
                     tempCanvas.backgroundImage.scaleX *= renderScale;
                     tempCanvas.backgroundImage.scaleY *= renderScale;
-                    // DO NOT scale background position.  Keep it at (0,0)
                     tempCanvas.backgroundImage.left = 0;
                     tempCanvas.backgroundImage.top = 0;
+                    console.log(`Background image scaled. New scaleX: ${tempCanvas.backgroundImage.scaleX}, scaleY: ${tempCanvas.backgroundImage.scaleY}`);
 
-                     // Set width/height to match the scaled background size
                     tempCanvas.setWidth(tempCanvas.backgroundImage.getScaledWidth());
                     tempCanvas.setHeight(tempCanvas.backgroundImage.getScaledHeight());
 
                     tempCanvas.backgroundImage.set({
-                        originX: 'left',  // Ensure top-left origin
+                        originX: 'left',
                         originY: 'top'
                     });
                 }
 
-
                 tempCanvas.renderAll();
                 const dataURL = tempCanvas.toDataURL({ format: 'png', multiplier: 1 });
                 canvasDataURLs.push(dataURL);
-                tempCanvas.dispose(); // Dispose of the temporary canvas
-                resolve(); // Resolve the promise
+                tempCanvas.dispose();
+                resolve();
             });
         });
     })).then(() => {
         // ... rest of the submitProof function (sending data to server, etc.)
-           const proofData = {
+        const proofData = {
             customerId: selectedCustomer,
             canvasDataURLs: canvasDataURLs,
             garmentCode: garmentCode,
@@ -565,7 +560,7 @@ function submitProof() {
 
         console.log("Submitting proof data:", proofData);
 
-       fetch(`/api/customers/${selectedCustomer}/generate-proof`, {
+        fetch(`/api/customers/${selectedCustomer}/generate-proof`, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json',
@@ -579,21 +574,15 @@ function submitProof() {
             return response.blob();
         })
         .then(blob => {
-            // Create a Blob URL
             const pdfUrl = URL.createObjectURL(blob);
-
-            // Create a temporary link element
             const downloadLink = document.createElement('a');
             downloadLink.href = pdfUrl;
-            downloadLink.download = `customer_proof_${selectedCustomer}.pdf`; // Suggest filename
-            document.body.appendChild(downloadLink); // Append to body (required for FF)
-            downloadLink.click(); // Programmatically click the link to trigger download
-            downloadLink.remove(); // Clean up by removing the link
-
-            URL.revokeObjectURL(pdfUrl); // Revoke the Blob URL to free resources
-
-            alert("PDF Proof downloaded successfully!"); // Success alert
-
+            downloadLink.download = `customer_proof_${selectedCustomer}.pdf`;
+            document.body.appendChild(downloadLink);
+            downloadLink.click();
+            downloadLink.remove();
+            URL.revokeObjectURL(pdfUrl);
+            alert("PDF Proof downloaded successfully!");
         })
         .catch(error => {
             console.error('Error submitting proof:', error);
