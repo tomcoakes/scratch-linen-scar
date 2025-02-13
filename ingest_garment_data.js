@@ -6,6 +6,13 @@ const path = require('path');
 const fetch = require('node-fetch'); // For making HTTP requests
 const AdmZip = require('adm-zip');   // For unzipping files
 
+const DELAY = 3000; // Let's try a 3-second delay to be safe for now
+
+// Helper function to pause execution (delay)
+function delay(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+}
+
 async function ingestGarmentData() {
     console.log("Starting garment data ingestion...");
 
@@ -22,6 +29,7 @@ async function ingestGarmentData() {
 
     try {
         console.log("Downloading products.zip...");
+        await delay(DELAY); // ADD THIS LINE - Wait for the specified delay before fetch
         const response = await fetch(apiEndpoint, {
             headers: {
                 'Authorization': `Bearer ${apiToken}`
