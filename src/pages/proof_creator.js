@@ -355,7 +355,7 @@ function addLogoToCanvas(logoUrl, logoName) {
             height: img.height, // Use intrinsic height
         });
         img.logoName = logoName;
-      
+
         console.log(`Logo added to canvas.  Object properties: left=${img.left}, top=${img.top}, width=${img.width}, height=${img.height}, scaleX=${img.scaleX}, scaleY=${img.scaleY}`);
 
         proofCreatorCanvas.add(img);
@@ -558,76 +558,73 @@ function submitProof() {
             });
         });
     })).then(() => {
-      
-          // Collect logo names from ALL canvas views
-        let allLogoNames = [];
-        views.forEach((viewState, index) => {
-            if (viewState && viewState.objects) { // Check if viewState and objects exist
-                const tempCanvas = new fabric.Canvas(); // Create a temporary canvas (not rendered)
-                tempCanvas.loadFromJSON(viewState, () => { // Load state into temp canvas
-                    const logoObjects = tempCanvas.getObjects().filter(obj => obj.logoName); // Filter for logo objects
-                    const logoNames = logoObjects.map(logoObj => logoObj.logoName); // Extract logo names
-                    allLogoNames = allLogoNames.concat(logoNames); // Add to the combined array
-                });
-            }
+
+        // Collect logo names from ALL canvas views - REVISED ASYNCHRONOUS LOGIC
+        const logoNamePromises = views.map((viewState, index) => {
+            return new Promise(resolve => {
+                if (viewState && viewState.objects) { // Check if viewState and objects exist
+                    const tempCanvas = new fabric.Canvas(); // Create a temporary canvas (not rendered)
+                    tempCanvas.loadFromJSON(viewState, () => { // Load state into temp canvas
+                        const logoObjects = tempCanvas.getObjects().filter(obj => obj.logoName); // Filter for logo objects
+                        const logoNames = logoObjects.map(logoObj => logoObj.logoName); // Extract logo names
+                        console.log(`Logo Names from View ${index}:`, logoNames); // ADDED LOGGING INSIDE CALLBACK
+                        resolve(logoNames); // Resolve the promise with logoNames
+                    }, null, function(err, fabricObjects) { // Added error callback for loadFromJSON
+                        if (err) {
+                            console.error(`Error loading view state for index ${index}:`, err);
+                            resolve([]); // Resolve with empty array in case of error to prevent Promise.all rejection
+                        }
+                    });
+                } else {
+                    resolve([]); // Resolve with empty array if viewState or viewState.objects is missing
+                }
+            });
         });
-        // Wait for all loadFromJSON callbacks to complete (important for async operations)
 
+        Promise.all(logoNamePromises).then(arrayOfLogoNameArrays => {
+            let allLogoNames = [].concat(...arrayOfLogoNameArrays); // Flatten the array of arrays
+            const combinedLogoNames = allLogoNames.join(', '); // Join names into a comma-separated string
+            console.log("Logo Names from ALL Views:", combinedLogoNames);
 
-        const combinedLogoNames = allLogoNames.join(', '); // Join names into a comma-separated string
-        console.log("Logo Names from ALL Views:", combinedLogoNames); 
-      
-      
-      
-      
-      
-        // Collect logo names from canvas objects
-        //const logoObjects = proofCreatorCanvas.getObjects().filter(obj => obj.logoName); // Assuming logos have a 'logoName' property
-        //const logoNames = logoObjects.map(logoObj => logoObj.logoName);
-        //const combinedLogoNames = logoNames.join(', '); // Join names into a comma-separated string
-        //console.log("Logo Names on Canvas:", logoNames); // Debug log to check logo names
-        
-      
-      
-      
-      
-      // ... rest of the submitProof function (sending data to server, etc.)
-        const proofData = {
-            customerId: selectedCustomer,
-            canvasDataURLs: canvasDataURLs,
-            garmentCode: garmentCode,
-            proofDescription: proofDescription
-        };
+            // ... rest of the submitProof function (sending data to server, etc.)
+            const proofData = {
+                customerId: selectedCustomer,
+                canvasDataURLs: canvasDataURLs,
+                garmentCode: garmentCode,
+                proofDescription: proofDescription,
+                logoNames: combinedLogoNames // Include combined logo names in proofData
+            };
 
-        console.log("Submitting proof data:", proofData);
+            console.log("Submitting proof data:", proofData);
 
-        fetch(`/api/customers/${selectedCustomer}/generate-proof`, {
-            method: 'PUT',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(proofData),
-        })
-        .then(response => {
-            if (!response.ok) {
-                throw new Error(`HTTP error! status: ${response.status}`);
-            }
-            return response.blob();
-        })
-        .then(blob => {
-            const pdfUrl = URL.createObjectURL(blob);
-            const downloadLink = document.createElement('a');
-            downloadLink.href = pdfUrl;
-            downloadLink.download = `customer_proof_${selectedCustomer}.pdf`;
-            document.body.appendChild(downloadLink);
-            downloadLink.click();
-            downloadLink.remove();
-            URL.revokeObjectURL(pdfUrl);
-            alert("PDF Proof downloaded successfully!");
-        })
-        .catch(error => {
-            console.error('Error submitting proof:', error);
-            alert(`Failed to submit proof: ${error.message}`);
+            fetch(`/api/customers/${selectedCustomer}/generate-proof`, {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(proofData),
+            })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                return response.blob();
+            })
+            .then(blob => {
+                const pdfUrl = URL.createObjectURL(blob);
+                const downloadLink = document.createElement('a');
+                downloadLink.href = pdfUrl;
+                downloadLink.download = `customer_proof_${selectedCustomer}.pdf`;
+                document.body.appendChild(downloadLink);
+                downloadLink.click();
+                downloadLink.remove();
+                URL.revokeObjectURL(pdfUrl);
+                alert("PDF Proof downloaded successfully!");
+            })
+            .catch(error => {
+                console.error('Error submitting proof:', error);
+                alert(`Failed to submit proof: ${error.message}`);
+            });
         });
     });
 }
