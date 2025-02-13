@@ -349,8 +349,9 @@ function addLogoToCanvas(logoUrl, logoName) {
             // Set width/height to intrinsic dimensions - NO SCALING
             width: img.width,  // Use intrinsic width
             height: img.height, // Use intrinsic height
+            logoName: logoName 
         });
-        console.log(`Logo added to canvas.  Object properties: left=${img.left}, top=${img.top}, width=${img.width}, height=${img.height}, scaleX=${img.scaleX}, scaleY=${img.scaleY}`);
+        console.log(`Logo added to canvas.  Object properties: left=${img.left}, top=${img.top}, width=${img.width}, height=${img.height}, scaleX=${img.scaleX}, scaleY=${img.scaleY}, logoName=${img.logoName}`);
 
         proofCreatorCanvas.add(img);
         proofCreatorCanvas.renderAll();
@@ -504,6 +505,19 @@ function submitProof() {
 
     const horizontalOffset = -122; // Offset to the LEFT (negative value)
     const verticalOffset = 2;    // Offset DOWN (positive value)
+  
+      // Collect logo names from all views
+    const allLogoNames = [];
+    views.forEach(viewState => {
+        if (viewState && viewState.objects) { // Check if viewState and objects exist
+            viewState.objects.forEach(objData => {
+                if (objData.logoName) {
+                    allLogoNames.push(objData.logoName);
+                }
+            });
+        }
+    });
+    const logoNamesString = allLogoNames.join(', ') || 'No Logos'; // Join names with comma, or "No Logos" if empty
 
     Promise.all(views.map((viewState, index) => {
         return new Promise(resolve => {
@@ -557,7 +571,8 @@ function submitProof() {
             customerId: selectedCustomer,
             canvasDataURLs: canvasDataURLs,
             garmentCode: garmentCode,
-            proofDescription: proofDescription
+            proofDescription: proofDescription,
+            logoNames: logoNamesString 
         };
 
         console.log("Submitting proof data:", proofData);

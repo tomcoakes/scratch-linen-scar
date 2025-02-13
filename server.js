@@ -10,7 +10,7 @@ const { generateCustomerPages } = require('./generate_customer_pages.js');
 const multer = require('multer'); // ADD THIS LINE - require multer
 const pdf = require('html-pdf-node'); // ADD THIS LINE - require html-pdf-node
 const fabric = require('fabric');
-console.log("Fabric object:", fabric);
+//console.log("Fabric object:", fabric);
 
 
 
@@ -900,11 +900,13 @@ app.put("/api/customers/:customerId/generate-proof", async (req, res) => {
                 if (customerIndex === -1) {
                     return res.status(404).json({ error: 'Customer not found in data.' });
                 }
+              
+                const logoNames = proofData.logoNames; // Get logo names from proofData
 
                 const newProof = {
                     url: proofUrl,
                     garmentCode: proofData.garmentCode,
-                    logo: 'Falcon', // For now, as discussed
+                    logo: logoNames, // For now, as discussed
                     logoPosition: 'Left Breast', // For now, as discussed
                     description: proofData.proofDescription || ''
                 };

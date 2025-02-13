@@ -71,13 +71,6 @@
         "threadNumbers": [
           "1943"
         ]
-      },
-      {
-        "logoUrl": "/customer_logos/logo-upload-input-1739458746249-28859855.png",
-        "logoName": "Alliance Flooring",
-        "logoPosition": "Left Chest",
-        "logoType": "Embroidery",
-        "threadNumbers": []
       }
     ],
     "proofs": [
@@ -155,6 +148,13 @@
         "url": "/customer_proofs/proof-vvvvvvvv--1739457939324.pdf",
         "garmentCode": "vvvvvvvv",
         "logo": "Falcon",
+        "logoPosition": "Left Breast",
+        "description": ""
+      },
+      {
+        "url": "/customer_proofs/proof-yyyyyyyyyyyyyy--1739459499053.pdf",
+        "garmentCode": "yyyyyyyyyyyyyy",
+        "logo": "No Logos",
         "logoPosition": "Left Breast",
         "description": ""
       }
