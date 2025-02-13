@@ -7,6 +7,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <link rel="stylesheet" href="threads.css">
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet"> <!-- Google Fonts -->
+  
 </head>
 <body>
   <header>
@@ -62,6 +63,25 @@
 
     
   </main>
+  
+        <!-- All Customers Modal -->
+      <div id="all-customers-modal" class="modal">
+        <div class="modal-content">
+          <span class="close-button">×</span>
+          <h2>All Customers</h2>
+
+          <div class="search-input-container">
+            <input type="text" id="search-customers-input" placeholder="Search Customers...">
+            <button type="button" id="clear-customers-search-button" class="clear-search-button" style="display:none;">×</button>
+          </div>
+
+          <div id="all-customer-list">
+            <ul id="all-customer-list-ul">
+              <!-- Customer list will be populated here by JavaScript -->
+            </ul>
+          </div>
+        </div>
+      </div>
 
   <!-- Edit Modal -->
   <div id="edit-modal" class="modal">
@@ -128,7 +148,8 @@
       </form>
     </div>
   </div>
-
+  <script src="customer-actions.js"></script>
   <script src="threads.js"></script>
+  
 </body>
 </html>
