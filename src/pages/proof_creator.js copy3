@@ -69,7 +69,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const zoomOutButton = document.getElementById('zoom-out');
     const resetZoomButton = document.getElementById('reset-zoom');
     const addViewButton = document.getElementById('add-view-button');
-      const prevViewButton = document.getElementById('prev-view-button');
+    const prevViewButton = document.getElementById('prev-view-button');
     const nextViewButton = document.getElementById('next-view-button');
 
     // Event listeners for zoom buttons:
@@ -156,7 +156,8 @@ function addView() {
     loadCurrentView();
     proofCreatorCanvas.renderAll();
     console.log(`addView: Added new blank view. Total views: ${views.length}, Current index: ${currentViewIndex}`); // ADDED LOG
-     console.log("addView: views array after addView:", views); // ADDED LOG - Inspect views array
+    console.log("addView: views array after addView:", views); // ADDED LOG - Inspect views array
+    console.log("addView() - END");
 }
 
 function updateCarousel() {
@@ -193,6 +194,7 @@ function switchToView(index) {
     } else {
         console.warn('Invalid view index:', index);
     }
+    console.log(`switchToView(${index}) - END`);
 }
 
 function previousView() {
@@ -218,6 +220,7 @@ function loadCurrentView() {
         console.log(`LOAD VIEW: Loaded blank view at index: ${currentViewIndex}`);
         console.log(`LOAD VIEW: No canvas state to load for index: ${currentViewIndex} (blank view)`); // Indicate blank load
     }
+    console.log("loadCurrentView() - END");
 }
 
 
@@ -226,6 +229,7 @@ function saveCurrentView() {
     console.log(`SAVE VIEW: Saved state of view index: ${currentViewIndex}`);
     console.log(`SAVE VIEW: Number of objects on canvas when saved: ${proofCreatorCanvas.getObjects().length}`); // Log object count at save time
     console.log(`SAVE VIEW: Saved canvas state (first 50 chars): ${JSON.stringify(views[currentViewIndex]).substring(0, 50)}...`); // Log start of JSON
+    console.log("saveCurrentView() - END");
 }
 
 
@@ -350,6 +354,8 @@ function addLogoToCanvas(logoUrl, logoName) {
             width: img.width,  // Use intrinsic width
             height: img.height, // Use intrinsic height
         });
+        img.logoName = logoName;
+
         console.log(`Logo added to canvas.  Object properties: left=${img.left}, top=${img.top}, width=${img.width}, height=${img.height}, scaleX=${img.scaleX}, scaleY=${img.scaleY}`);
 
         proofCreatorCanvas.add(img);
@@ -552,43 +558,73 @@ function submitProof() {
             });
         });
     })).then(() => {
-         // ... rest of the submitProof function (sending data to server, etc.)
-        const proofData = {
-            customerId: selectedCustomer,
-            canvasDataURLs: canvasDataURLs,
-            garmentCode: garmentCode,
-            proofDescription: proofDescription
-        };
 
-        console.log("Submitting proof data:", proofData);
+        // Collect logo names from ALL canvas views - REVISED ASYNCHRONOUS LOGIC
+        const logoNamePromises = views.map((viewState, index) => {
+            return new Promise(resolve => {
+                if (viewState && viewState.objects) { // Check if viewState and objects exist
+                    const tempCanvas = new fabric.Canvas(); // Create a temporary canvas (not rendered)
+                    tempCanvas.loadFromJSON(viewState, () => { // Load state into temp canvas
+                        const logoObjects = tempCanvas.getObjects().filter(obj => obj.logoName); // Filter for logo objects
+                        const logoNames = logoObjects.map(logoObj => logoObj.logoName); // Extract logo names
+                        console.log(`Logo Names from View ${index}:`, logoNames); // ADDED LOGGING INSIDE CALLBACK
+                        resolve(logoNames); // Resolve the promise with logoNames
+                    }, null, function(err, fabricObjects) { // Added error callback for loadFromJSON
+                        if (err) {
+                            console.error(`Error loading view state for index ${index}:`, err);
+                            resolve([]); // Resolve with empty array in case of error to prevent Promise.all rejection
+                        }
+                    });
+                } else {
+                    resolve([]); // Resolve with empty array if viewState or viewState.objects is missing
+                }
+            });
+        });
 
-        fetch(`/api/customers/${selectedCustomer}/generate-proof`, {
-            method: 'PUT',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(proofData),
-        })
-        .then(response => {
-            if (!response.ok) {
-                throw new Error(`HTTP error! status: ${response.status}`);
-            }
-            return response.blob();
-        })
-        .then(blob => {
-            const pdfUrl = URL.createObjectURL(blob);
-            const downloadLink = document.createElement('a');
-            downloadLink.href = pdfUrl;
-            downloadLink.download = `customer_proof_${selectedCustomer}.pdf`;
-            document.body.appendChild(downloadLink);
-            downloadLink.click();
-            downloadLink.remove();
-            URL.revokeObjectURL(pdfUrl);
-            alert("PDF Proof downloaded successfully!");
-        })
-        .catch(error => {
-            console.error('Error submitting proof:', error);
-            alert(`Failed to submit proof: ${error.message}`);
+        Promise.all(logoNamePromises).then(arrayOfLogoNameArrays => {
+            let allLogoNames = [].concat(...arrayOfLogoNameArrays); // Flatten the array of arrays
+            const combinedLogoNames = allLogoNames.join(', '); // Join names into a comma-separated string
+            console.log("Logo Names from ALL Views:", combinedLogoNames);
+
+            // ... rest of the submitProof function (sending data to server, etc.)
+            const proofData = {
+                customerId: selectedCustomer,
+                canvasDataURLs: canvasDataURLs,
+                garmentCode: garmentCode,
+                proofDescription: proofDescription,
+                logoNames: combinedLogoNames // Include combined logo names in proofData
+            };
+
+            console.log("Submitting proof data:", proofData);
+
+            fetch(`/api/customers/${selectedCustomer}/generate-proof`, {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(proofData),
+            })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                return response.blob();
+            })
+            .then(blob => {
+                const pdfUrl = URL.createObjectURL(blob);
+                const downloadLink = document.createElement('a');
+                downloadLink.href = pdfUrl;
+                downloadLink.download = `customer_proof_${selectedCustomer}.pdf`;
+                document.body.appendChild(downloadLink);
+                downloadLink.click();
+                downloadLink.remove();
+                URL.revokeObjectURL(pdfUrl);
+                alert("PDF Proof downloaded successfully!");
+            })
+            .catch(error => {
+                console.error('Error submitting proof:', error);
+                alert(`Failed to submit proof: ${error.message}`);
+            });
         });
     });
 }

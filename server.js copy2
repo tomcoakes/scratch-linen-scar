@@ -904,7 +904,7 @@ app.put("/api/customers/:customerId/generate-proof", async (req, res) => {
                 const newProof = {
                     url: proofUrl,
                     garmentCode: proofData.garmentCode,
-                    logo: 'Falcon', // For now, as discussed
+                    logo: proofData.logoNames || 'No Logos', // For now, as discussed
                     logoPosition: 'Left Breast', // For now, as discussed
                     description: proofData.proofDescription || ''
                 };
