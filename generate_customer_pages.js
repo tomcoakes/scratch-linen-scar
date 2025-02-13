@@ -15,7 +15,20 @@ async function generateCustomerPages() {
 
     const customersData = readJSON(CUSTOMERS_FILE);
     const threadsData = readJSON(THREADS_FILE);
-    const templateHtml = fs.readFileSync(TEMPLATE_FILE, 'utf-8');
+    let templateHtml = fs.readFileSync(TEMPLATE_FILE, 'utf-8');
+  
+      // Update the navigation links in the template HTML
+    templateHtml = templateHtml.replace(
+        `<ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="threads.html">Thread Manager</a></li>
+                </ul>`,
+        `<ul class="nav-links">
+                    <li><a href="../index.html">Home</a></li>
+                    <li><a href="../threads.html">Thread Manager</a></li>
+                    <li><a href="../proof_creator.html">Proof Creator</a></li>
+                </ul>`
+    );
 
     for (const customer of customersData) {
         const customerPageHtml = generatePageForCustomer(customer, templateHtml, threadsData);
