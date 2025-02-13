@@ -38,5 +38,49 @@
         "description": "Test Description"
       }
     ]
+  },
+  {
+    "name": "Babcock",
+    "contactPerson": "Jacqui Alexander",
+    "email": "jalexander@tbsg.co.uk",
+    "id": 2,
+    "logos": [
+      {
+        "logoUrl": "/customer_logos/logo-upload-input-1739449266942-646626614.svg",
+        "logoName": "Babcock (no TM)",
+        "logoPosition": "Left Chest",
+        "logoType": "Embroidery",
+        "threadNumbers": [
+          "1943"
+        ]
+      },
+      {
+        "logoUrl": "/customer_logos/logo-upload-input-1739449300662-224649923.svg",
+        "logoName": "Babcock (with TM)",
+        "logoPosition": "Left Chest",
+        "logoType": "Embroidery",
+        "threadNumbers": [
+          "1943"
+        ]
+      },
+      {
+        "logoUrl": "/customer_logos/logo-upload-input-1739449329764-671449568.svg",
+        "logoName": "Submarine Commissioning Group",
+        "logoPosition": "Left Chest",
+        "logoType": "Embroidery",
+        "threadNumbers": [
+          "1943"
+        ]
+      }
+    ],
+    "proofs": [
+      {
+        "url": "/customer_proofs/proof-GD05-Gildan Heavy Cotton_ T_Shirt _ Kiwi Green _ Babcock Left Breast _ Sub Com Group Rear-1739449549183.pdf",
+        "garmentCode": "GD05",
+        "logo": "Falcon",
+        "logoPosition": "Left Breast",
+        "description": "Gildan Heavy Cotton™ T-Shirt - Kiwi Green - Babcock Left Breast + Sub Com Group Rear"
+      }
+    ]
   }
 ]
