@@ -508,13 +508,20 @@ function submitProof() {
   
       // Collect logo names from all views
     const allLogoNames = [];
+    console.log("VIEWS BEFORE LOGO EXTRACTION:", views);
     views.forEach(viewState => {
+      console.log("Processing viewState:", viewState);
         if (viewState && viewState.objects) { // Check if viewState and objects exist
             viewState.objects.forEach(objData => {
                 if (objData.logoName) {
+                  console.log("Found logo object with logoName:", objData.logoName);
                     allLogoNames.push(objData.logoName);
+                } else {
+                  console.log("Object does not have logoName:", objData);
                 }
             });
+        } else {
+          console.log("viewState is empty or has no objects:", viewState);
         }
     });
     const logoNamesString = allLogoNames.join(', ') || 'No Logos'; // Join names with comma, or "No Logos" if empty
@@ -574,6 +581,7 @@ function submitProof() {
             proofDescription: proofDescription,
             logoNames: logoNamesString 
         };
+        console.log("PROOF DATA BEING SENT:", proofData); 
 
         console.log("Submitting proof data:", proofData);
 

@@ -157,6 +157,13 @@
         "logo": "No Logos",
         "logoPosition": "Left Breast",
         "description": ""
+      },
+      {
+        "url": "/customer_proofs/proof-123456--1739460084665.pdf",
+        "garmentCode": "123456",
+        "logo": "No Logos",
+        "logoPosition": "Left Breast",
+        "description": ""
       }
     ]
   }

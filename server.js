@@ -810,6 +810,7 @@ app.delete("/api/customers/:customerId/proofs/:proofIndex", async (req, res) => 
 app.put("/api/customers/:customerId/generate-proof", async (req, res) => {
     const customerId = Number(req.params.customerId);
     const proofData = req.body;
+    console.log("SERVER RECEIVED proofData:", proofData);
 
     const templatePath = path.join(__dirname, 'src', 'pages', 'proof_template.html');
     let templateHtml;
