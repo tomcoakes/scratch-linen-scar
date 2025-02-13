@@ -20,7 +20,8 @@
     "html-pdf-node": "^1.0.8",
     "pdfmake": "^0.2.9",
     "adm-zip": "^0.5.16",
-    "dotenv": "^16.4.7"
+    "dotenv": "^16.4.7",
+    "csv-parser": "^3.2.0"
   },
   "engines": {
     "node": "16.x"
