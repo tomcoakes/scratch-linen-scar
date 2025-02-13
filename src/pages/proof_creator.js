@@ -69,7 +69,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const zoomOutButton = document.getElementById('zoom-out');
     const resetZoomButton = document.getElementById('reset-zoom');
     const addViewButton = document.getElementById('add-view-button');
-      const prevViewButton = document.getElementById('prev-view-button');
+    const prevViewButton = document.getElementById('prev-view-button');
     const nextViewButton = document.getElementById('next-view-button');
 
     // Event listeners for zoom buttons:
@@ -156,7 +156,8 @@ function addView() {
     loadCurrentView();
     proofCreatorCanvas.renderAll();
     console.log(`addView: Added new blank view. Total views: ${views.length}, Current index: ${currentViewIndex}`); // ADDED LOG
-     console.log("addView: views array after addView:", views); // ADDED LOG - Inspect views array
+    console.log("addView: views array after addView:", views); // ADDED LOG - Inspect views array
+    console.log("addView() - END");
 }
 
 function updateCarousel() {
@@ -193,6 +194,7 @@ function switchToView(index) {
     } else {
         console.warn('Invalid view index:', index);
     }
+    console.log(`switchToView(${index}) - END`);
 }
 
 function previousView() {
@@ -218,6 +220,7 @@ function loadCurrentView() {
         console.log(`LOAD VIEW: Loaded blank view at index: ${currentViewIndex}`);
         console.log(`LOAD VIEW: No canvas state to load for index: ${currentViewIndex} (blank view)`); // Indicate blank load
     }
+    console.log("loadCurrentView() - END");
 }
 
 
@@ -226,6 +229,7 @@ function saveCurrentView() {
     console.log(`SAVE VIEW: Saved state of view index: ${currentViewIndex}`);
     console.log(`SAVE VIEW: Number of objects on canvas when saved: ${proofCreatorCanvas.getObjects().length}`); // Log object count at save time
     console.log(`SAVE VIEW: Saved canvas state (first 50 chars): ${JSON.stringify(views[currentViewIndex]).substring(0, 50)}...`); // Log start of JSON
+    console.log("saveCurrentView() - END");
 }
 
 
