@@ -3043,6 +3043,19 @@
         },
         "id": 191,
         "Hex": "#008E8C"
+    },
+    {
+        "ThreadNumber": "432",
+        "Thread No (thickness)": "f",
+        "Type": "432",
+        "Length (m)": "432",
+        "Colours": {
+            "Colour": "432",
+            "Stock Quantity": "3",
+            "Quantity Needed": "",
+            "PreOrder Quanity": "",
+            "Logo Name used in": ""
+        },
+        "id": 192
     }
-
 ]
