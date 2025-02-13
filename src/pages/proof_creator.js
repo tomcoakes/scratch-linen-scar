@@ -558,12 +558,40 @@ function submitProof() {
             });
         });
     })).then(() => {
+      
+          // Collect logo names from ALL canvas views
+        let allLogoNames = [];
+        views.forEach((viewState, index) => {
+            if (viewState && viewState.objects) { // Check if viewState and objects exist
+                const tempCanvas = new fabric.Canvas(); // Create a temporary canvas (not rendered)
+                tempCanvas.loadFromJSON(viewState, () => { // Load state into temp canvas
+                    const logoObjects = tempCanvas.getObjects().filter(obj => obj.logoName); // Filter for logo objects
+                    const logoNames = logoObjects.map(logoObj => logoObj.logoName); // Extract logo names
+                    allLogoNames = allLogoNames.concat(logoNames); // Add to the combined array
+                });
+            }
+        });
+        // Wait for all loadFromJSON callbacks to complete (important for async operations)
+
+
+        const combinedLogoNames = allLogoNames.join(', '); // Join names into a comma-separated string
+        console.log("Logo Names from ALL Views:", combinedLogoNames); 
+      
+      
+      
+      
+      
         // Collect logo names from canvas objects
-        const logoObjects = proofCreatorCanvas.getObjects().filter(obj => obj.logoName); // Assuming logos have a 'logoName' property
-        const logoNames = logoObjects.map(logoObj => logoObj.logoName);
-        const combinedLogoNames = logoNames.join(', '); // Join names into a comma-separated string
-        console.log("Logo Names on Canvas:", logoNames); // Debug log to check logo names
-         // ... rest of the submitProof function (sending data to server, etc.)
+        //const logoObjects = proofCreatorCanvas.getObjects().filter(obj => obj.logoName); // Assuming logos have a 'logoName' property
+        //const logoNames = logoObjects.map(logoObj => logoObj.logoName);
+        //const combinedLogoNames = logoNames.join(', '); // Join names into a comma-separated string
+        //console.log("Logo Names on Canvas:", logoNames); // Debug log to check logo names
+        
+      
+      
+      
+      
+      // ... rest of the submitProof function (sending data to server, etc.)
         const proofData = {
             customerId: selectedCustomer,
             canvasDataURLs: canvasDataURLs,
