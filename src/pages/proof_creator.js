@@ -488,148 +488,126 @@ function updateSelectedLogosDisplay() {
 // proof_creator.js
 
 function submitProof() {
-    saveCurrentView();
+  saveCurrentView();
 
-    if (!selectedCustomer) {
-        alert("Please select a customer first.");
-        return;
-    }
+  if (!selectedCustomer) {
+    alert("Please select a customer first.");
+    return;
+  }
 
-    const garmentCode = document.getElementById('garment-code').value;
-    const proofDescription = document.getElementById('proof-description').value;
+  const garmentCode = document.getElementById('garment-code').value;
+  const proofDescription = document.getElementById('proof-description').value;
 
-    if (!garmentCode) {
-        alert("Please enter a garment code.");
-        return;
-    }
+  if (!garmentCode) {
+    alert("Please enter a garment code.");
+    return;
+  }
 
-    const canvasDataURLs = [];
-    const originalCanvasWidth = proofCreatorCanvas.getWidth();
-    const originalCanvasHeight = proofCreatorCanvas.getHeight();
-    console.log(`Original Canvas Dimensions: ${originalCanvasWidth} x ${originalCanvasHeight}`);
+  const canvasDataURLs = [];
+  const originalCanvasWidth = proofCreatorCanvas.getWidth();
+  const originalCanvasHeight = proofCreatorCanvas.getHeight();
+  console.log(`Original Canvas Dimensions: ${originalCanvasWidth} x ${originalCanvasHeight}`);
 
-    const horizontalOffset = -122; // Offset to the LEFT (negative value)
-    const verticalOffset = 2;    // Offset DOWN (positive value)
+  const horizontalOffset = -122; // Offset to the LEFT (negative value)
+  const verticalOffset = 2;      // Offset DOWN (positive value)
 
-    Promise.all(views.map((viewState, index) => {
-        return new Promise(resolve => {
-            const tempCanvas = new fabric.Canvas(null, {
-                width: originalCanvasWidth * renderScale,
-                height: originalCanvasHeight * renderScale,
-                backgroundColor: '#ffffff'
-            });
+  // For each view, generate both the data URL and extract logo names.
+  Promise.all(views.map((viewState) => {
+    return new Promise(resolve => {
+      const tempCanvas = new fabric.Canvas(null, {
+        width: originalCanvasWidth * renderScale,
+        height: originalCanvasHeight * renderScale,
+        backgroundColor: '#ffffff'
+      });
 
-            tempCanvas.loadFromJSON(viewState, () => {
-                const objects = tempCanvas.getObjects();
-                objects.forEach(obj => {
-                    if (obj !== tempCanvas.backgroundImage) {
-                        // Scale and position ONLY non-background objects
-                        obj.scaleX *= renderScale;
-                        obj.scaleY *= renderScale;
-                        // Apply the manual horizontal and vertical offsets:
-                        obj.left = (obj.left * renderScale) + horizontalOffset;
-                        obj.top = (obj.top * renderScale) + verticalOffset;  // <--- KEY CHANGE (Vertical Offset)
-                        console.log(`Object scaled (non-background). New left: ${obj.left}, top: ${obj.top}, scaleX: ${obj.scaleX}, scaleY: ${obj.scaleY}`);
-                    }
-                });
-
-                if (tempCanvas.backgroundImage) {
-                    tempCanvas.backgroundImage.scaleX *= renderScale;
-                    tempCanvas.backgroundImage.scaleY *= renderScale;
-                    tempCanvas.backgroundImage.left = 0;
-                    tempCanvas.backgroundImage.top = 0;
-                    console.log(`Background image scaled. New scaleX: ${tempCanvas.backgroundImage.scaleX}, scaleY: ${tempCanvas.backgroundImage.scaleY}`);
-
-                    tempCanvas.setWidth(tempCanvas.backgroundImage.getScaledWidth());
-                    tempCanvas.setHeight(tempCanvas.backgroundImage.getScaledHeight());
-
-
-                    tempCanvas.backgroundImage.set({
-                        originX: 'left',
-                        originY: 'top'
-                    });
-                }
-
-                tempCanvas.renderAll();
-                const dataURL = tempCanvas.toDataURL({ format: 'png', multiplier: 1 });
-                canvasDataURLs.push(dataURL);
-                tempCanvas.dispose();
-                resolve();
-            });
+      tempCanvas.loadFromJSON(viewState, () => {
+        const objects = tempCanvas.getObjects();
+        objects.forEach(obj => {
+          if (obj !== tempCanvas.backgroundImage) {
+            // Scale and position non-background objects
+            obj.scaleX *= renderScale;
+            obj.scaleY *= renderScale;
+            obj.left = (obj.left * renderScale) + horizontalOffset;
+            obj.top = (obj.top * renderScale) + verticalOffset;
+            console.log(`Object scaled: left=${obj.left}, top=${obj.top}, scaleX=${obj.scaleX}, scaleY=${obj.scaleY}`);
+          }
         });
-    })).then(() => {
-      
-          // Collect logo names from ALL canvas views
-        let allLogoNames = [];
-        views.forEach((viewState, index) => {
-            if (viewState && viewState.objects) { // Check if viewState and objects exist
-                const tempCanvas = new fabric.Canvas(); // Create a temporary canvas (not rendered)
-                tempCanvas.loadFromJSON(viewState, () => { // Load state into temp canvas
-                    const logoObjects = tempCanvas.getObjects().filter(obj => obj.logoName); // Filter for logo objects
-                    const logoNames = logoObjects.map(logoObj => logoObj.logoName); // Extract logo names
-                    allLogoNames = allLogoNames.concat(logoNames); // Add to the combined array
-                });
-            }
-        });
-        // Wait for all loadFromJSON callbacks to complete (important for async operations)
 
+        if (tempCanvas.backgroundImage) {
+          tempCanvas.backgroundImage.scaleX *= renderScale;
+          tempCanvas.backgroundImage.scaleY *= renderScale;
+          tempCanvas.backgroundImage.left = 0;
+          tempCanvas.backgroundImage.top = 0;
+          console.log(`Background image scaled: scaleX=${tempCanvas.backgroundImage.scaleX}, scaleY=${tempCanvas.backgroundImage.scaleY}`);
 
-        const combinedLogoNames = allLogoNames.join(', '); // Join names into a comma-separated string
-        console.log("Logo Names from ALL Views:", combinedLogoNames); 
-      
-      
-      
-      
-      
-        // Collect logo names from canvas objects
-        //const logoObjects = proofCreatorCanvas.getObjects().filter(obj => obj.logoName); // Assuming logos have a 'logoName' property
-        //const logoNames = logoObjects.map(logoObj => logoObj.logoName);
-        //const combinedLogoNames = logoNames.join(', '); // Join names into a comma-separated string
-        //console.log("Logo Names on Canvas:", logoNames); // Debug log to check logo names
-        
-      
-      
-      
-      
-      // ... rest of the submitProof function (sending data to server, etc.)
-        const proofData = {
-            customerId: selectedCustomer,
-            canvasDataURLs: canvasDataURLs,
-            garmentCode: garmentCode,
-            proofDescription: proofDescription
-        };
+          tempCanvas.setWidth(tempCanvas.backgroundImage.getScaledWidth());
+          tempCanvas.setHeight(tempCanvas.backgroundImage.getScaledHeight());
 
-        console.log("Submitting proof data:", proofData);
+          tempCanvas.backgroundImage.set({
+            originX: 'left',
+            originY: 'top'
+          });
+        }
 
-        fetch(`/api/customers/${selectedCustomer}/generate-proof`, {
-            method: 'PUT',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(proofData),
-        })
-        .then(response => {
-            if (!response.ok) {
-                throw new Error(`HTTP error! status: ${response.status}`);
-            }
-            return response.blob();
-        })
-        .then(blob => {
-            const pdfUrl = URL.createObjectURL(blob);
-            const downloadLink = document.createElement('a');
-            downloadLink.href = pdfUrl;
-            downloadLink.download = `customer_proof_${selectedCustomer}.pdf`;
-            document.body.appendChild(downloadLink);
-            downloadLink.click();
-            downloadLink.remove();
-            URL.revokeObjectURL(pdfUrl);
-            alert("PDF Proof downloaded successfully!");
-        })
-        .catch(error => {
-            console.error('Error submitting proof:', error);
-            alert(`Failed to submit proof: ${error.message}`);
-        });
+        tempCanvas.renderAll();
+        const dataURL = tempCanvas.toDataURL({ format: 'png', multiplier: 1 });
+        // Extract logo names from objects that have a logoName property
+        const logoObjects = tempCanvas.getObjects().filter(obj => obj.logoName);
+        const logoNames = logoObjects.map(obj => obj.logoName);
+        tempCanvas.dispose();
+        resolve({ dataURL, logoNames });
+      });
     });
+  }))
+  .then(results => {
+    // Build an array of data URLs and combine all logo names
+    results.forEach(result => {
+      canvasDataURLs.push(result.dataURL);
+    });
+    const allLogoNames = results.reduce((acc, result) => acc.concat(result.logoNames), []);
+    const combinedLogoNames = allLogoNames.join(', ');
+    console.log("Logo Names from ALL Views:", combinedLogoNames);
+
+    // Prepare the proofData payload including the logo names.
+    const proofData = {
+      customerId: selectedCustomer,
+      canvasDataURLs: canvasDataURLs,
+      garmentCode: garmentCode,
+      proofDescription: proofDescription,
+      logoNames: combinedLogoNames
+    };
+
+    console.log("Submitting proof data:", proofData);
+
+    return fetch(`/api/customers/${selectedCustomer}/generate-proof`, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(proofData),
+    });
+  })
+  .then(response => {
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    return response.blob();
+  })
+  .then(blob => {
+    const pdfUrl = URL.createObjectURL(blob);
+    const downloadLink = document.createElement('a');
+    downloadLink.href = pdfUrl;
+    downloadLink.download = `customer_proof_${selectedCustomer}.pdf`;
+    document.body.appendChild(downloadLink);
+    downloadLink.click();
+    downloadLink.remove();
+    URL.revokeObjectURL(pdfUrl);
+    alert("PDF Proof downloaded successfully!");
+  })
+  .catch(error => {
+    console.error('Error submitting proof:', error);
+    alert(`Failed to submit proof: ${error.message}`);
+  });
 }
 
 // Zoom In function

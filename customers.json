@@ -87,6 +87,20 @@
         "logo": "Falcon",
         "logoPosition": "Left Breast",
         "description": ""
+      },
+      {
+        "url": "/customer_proofs/proof-111--1739455591156.pdf",
+        "garmentCode": "111",
+        "logo": "No Logos",
+        "logoPosition": "Left Breast",
+        "description": ""
+      },
+      {
+        "url": "/customer_proofs/proof-222--1739456013478.pdf",
+        "garmentCode": "222",
+        "logo": "No Logos",
+        "logoPosition": "Left Breast",
+        "description": ""
       }
     ]
   }
