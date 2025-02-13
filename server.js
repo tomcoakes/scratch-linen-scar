@@ -261,7 +261,7 @@ app.post("/api/threads", async (req, res) => {
 
   // Validate required fields
   if (
-    !newThread["ThreadNumber"] ||
+    !newThread["Thread Number"] ||
     !newThread["Colours"] ||
     !newThread["Colours"]["Colour"]
   ) {
@@ -328,7 +328,7 @@ app.put("/api/threads/:id", async (req, res) => {
 
     // Validate required fields
     if (
-      !updatedThread["ThreadNumber"] ||
+      !updatedThread["Thread Number"] ||
       !updatedThread["Colours"] ||
       !updatedThread["Colours"]["Colour"]
     ) {
