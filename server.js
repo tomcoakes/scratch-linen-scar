@@ -871,6 +871,18 @@ app.put("/api/customers/:customerId/generate-proof", async (req, res) => {
         const options = { format: 'A4', landscape: true };
         const file = { content: populatedHtml };
         pdfBuffer = await pdf.generatePdf(file, options);
+        // 2. Save the PDF buffer to customer_proofs folder
+        fs.writeFile(proofFilePath, pdfBuffer, (writeFileError) => {
+            if (writeFileError) {
+                console.error('Error saving PDF to disk:', writeFileError);
+                // IMPORTANT: We must return an error response here if saving fails
+                return res.status(500).json({ error: 'Failed to save PDF to disk.' });
+            }
+            console.log('PDF saved successfully:', proofFilePath);
+      
+        });
+      
+      
     } catch (pdfError) {
         console.error('Error generating PDF:', pdfError);
         return res.status(500).json({ error: 'Failed to generate PDF.' });
