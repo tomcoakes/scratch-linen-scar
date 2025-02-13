@@ -82,5 +82,31 @@
         "description": "Gildan Heavy Cotton™ T-Shirt - Kiwi Green - Babcock Left Breast + Sub Com Group Rear"
       }
     ]
+  },
+  {
+    "name": "The Business Supplies Group",
+    "contactPerson": "Dan Coakes",
+    "email": "dcoakes@tbsg.co.uk",
+    "id": 3,
+    "logos": [
+      {
+        "logoUrl": "/customer_logos/logo-upload-input-1739465964956-607482935.jpg",
+        "logoName": "G Farwell",
+        "logoPosition": "Left Chest",
+        "logoType": "Embroidery",
+        "threadNumbers": [
+          "1922"
+        ]
+      }
+    ],
+    "proofs": [
+      {
+        "url": "/customer_proofs/proof-GD05-Tester-20250213T170028.pdf",
+        "garmentCode": "GD05",
+        "logo": "No Logos",
+        "logoPosition": "Left Breast",
+        "description": "Tester"
+      }
+    ]
   }
 ]
