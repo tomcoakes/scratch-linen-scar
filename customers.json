@@ -29,6 +29,13 @@
         "logo": "Falcon",
         "logoPosition": "Left Breast",
         "description": "Description"
+      },
+      {
+        "url": "/customer_proofs/proof-RX101-Test Description-1739448792088.pdf",
+        "garmentCode": "RX101",
+        "logo": "Falcon",
+        "logoPosition": "Left Breast",
+        "description": "Test Description"
       }
     ]
   }

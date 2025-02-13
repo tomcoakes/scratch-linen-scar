@@ -879,6 +879,52 @@ app.put("/api/customers/:customerId/generate-proof", async (req, res) => {
                 return res.status(500).json({ error: 'Failed to save PDF to disk.' });
             }
             console.log('PDF saved successfully:', proofFilePath);
+          
+          // 3. Update customers.json
+                      const customersFilePath = path.join(__dirname, 'customers.json');
+            fs.readFile(customersFilePath, 'utf8', (readCustomerErr, customersData) => {
+                if (readCustomerErr) {
+                    console.error('Error reading customers.json:', readCustomerErr);
+                    return res.status(500).json({ error: 'Failed to read customer data.' });
+                }
+
+                let customers;
+                try {
+                    customers = JSON.parse(customersData);
+                } catch (parseCustomerError) {
+                    console.error('Error parsing customers.json:', parseCustomerError);
+                    return res.status(500).json({ error: 'Failed to parse customer data.' });
+                }
+
+                const customerIndex = customers.findIndex(c => c.id === customerId);
+                if (customerIndex === -1) {
+                    return res.status(404).json({ error: 'Customer not found in data.' });
+                }
+
+                const newProof = {
+                    url: proofUrl,
+                    garmentCode: proofData.garmentCode,
+                    logo: 'Falcon', // For now, as discussed
+                    logoPosition: 'Left Breast', // For now, as discussed
+                    description: proofData.proofDescription || ''
+                };
+
+                if (!customers[customerIndex].proofs) {
+                    customers[customerIndex].proofs = [];
+                }
+                customers[customerIndex].proofs.push(newProof);
+
+                fs.writeFile(customersFilePath, JSON.stringify(customers, null, 2), 'utf8', (writeCustomerErr) => {
+                    if (writeCustomerErr) {
+                        console.error('Error writing to customers.json:', writeCustomerErr);
+                        return res.status(500).json({ error: 'Failed to update customer data.' });
+                    }
+
+                    // 4. Send JSON response back to client
+                    res.json({ message: 'PDF Proof generated and saved successfully!', proofUrl: proofUrl });
+                });
+            });
+            
       
         });
       
