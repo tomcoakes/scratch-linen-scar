@@ -857,12 +857,14 @@ app.put("/api/customers/:customerId/generate-proof", async (req, res) => {
     populatedHtml = populatedHtml.replace(/<!-- Proof Image 2 Placeholder -->/, canvasImageTags[1] || '<p>No Proof Image 2</p>');
     populatedHtml = populatedHtml.replace(/<!-- Proof Image 3 Placeholder -->/, canvasImageTags[2] || '<p>No Proof Image 3</p>');
 
-    // 1. Generate a Unique Filename for the Proof
+    // 1. Generate a Unique Filename for the Proof - MODIFIED FILENAME GENERATION
     const timestamp = Date.now();
-    const sanitizedGarmentCode = proofData.garmentCode.replace(/[^a-zA-Z0-9]/g, "_"); // Replace non-alphanumeric chars with underscores
-    const sanitizedDescription = proofData.proofDescription.replace(/[^a-zA-Z0-9\s]/g, "_"); // Replace non-alphanumeric and non-space chars
+    const date = new Date(timestamp);
+    const dateString = date.toISOString().replace(/[-:]/g, '').slice(0, 15); // Format: YYYYMMDDTHHMMSSmmm
+    const sanitizedGarmentCode = (proofData.garmentCode || 'N_A').replace(/[^a-zA-Z0-9]/g, "_"); // Replace non-alphanumeric chars with underscores, default to 'N_A' if null/undefined
+    const sanitizedDescription = (proofData.proofDescription || '').replace(/[^a-zA-Z0-9\s]/g, "_"); // Replace non-alphanumeric and non-space chars, default to empty string if null/undefined
 
-    const proofFilename = `proof-${sanitizedGarmentCode}-${sanitizedDescription}-${timestamp}.pdf`;
+    const proofFilename = `proof-${sanitizedGarmentCode}-${sanitizedDescription}-${dateString}.pdf`; // Filename format: proof-GARMENTCODE-DESCRIPTION-DATESTAMP.pdf
     const proofFilePath = path.join(__dirname, 'src', 'pages', 'customer_proofs', proofFilename); // Full path to save PDF
     const proofUrl = `/customer_proofs/${proofFilename}`; // URL to access the file
   
@@ -938,7 +940,7 @@ app.put("/api/customers/:customerId/generate-proof", async (req, res) => {
     }
 
     res.setHeader('Content-Type', 'application/pdf');
-    res.setHeader('Content-Disposition', `attachment; filename="customer_proof_${customerId}.pdf"`);
+    res.setHeader('Content-Disposition', `attachment; filename="${proofFilename}"`);
     res.send(pdfBuffer);
 });
 
