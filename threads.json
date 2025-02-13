@@ -3043,20 +3043,6 @@
         },
         "id": 191,
         "Hex": "#008E8C"
-    },
-    {
-        "Thread Number": "1527",
-        "Thread No (thickness)": "145",
-        "Type": "jko",
-        "Length (m)": "100",
-        "Colours": {
-            "Colour": "nbkjn",
-            "Stock Quantity": "222",
-            "Quantity Needed": "",
-            "PreOrder Quanity": "",
-            "Logo Name used in": "blue green"
-        },
-        "id": 193,
-        "Hex": "#C69E6B"
     }
+
 ]
