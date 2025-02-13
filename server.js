@@ -725,7 +725,7 @@ app.put("/api/customers/:customerId/proofs", upload.single('proof-upload-input')
         const newProof = {
             url: proofUrl,
             garmentCode,
-            logo: proofData.logoNames || 'No Logos',
+            logo,
             logoPosition,
             description: proofDescription || '' // Optional description
         };
@@ -901,7 +901,13 @@ app.put("/api/customers/:customerId/generate-proof", async (req, res) => {
                     return res.status(404).json({ error: 'Customer not found in data.' });
                 }
 
-
+                const newProof = {
+                    url: proofUrl,
+                    garmentCode: proofData.garmentCode,
+                    logo: 'Falcon', // For now, as discussed
+                    logoPosition: 'Left Breast', // For now, as discussed
+                    description: proofData.proofDescription || ''
+                };
 
                 if (!customers[customerIndex].proofs) {
                     customers[customerIndex].proofs = [];
@@ -921,13 +927,7 @@ app.put("/api/customers/:customerId/generate-proof", async (req, res) => {
             
       
         });
-                      const newProof = {
-                    url: proofUrl,
-                    garmentCode: proofData.garmentCode,
-                    logo: 'Falcon', // For now, as discussed
-                    logoPosition: 'Left Breast', // For now, as discussed
-                    description: proofData.proofDescription || ''
-                };
+      
       
     } catch (pdfError) {
         console.error('Error generating PDF:', pdfError);
