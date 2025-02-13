@@ -12,6 +12,27 @@ document.addEventListener('DOMContentLoaded', () => {
   const clearSearchButton = document.getElementById('clear-search-button');
   const addThreadButton = document.getElementById('add-thread-button');
   const filterType = document.getElementById('filter-type'); // REMOVE THIS LINE
+  
+  
+  const allCustomersModal = document.getElementById('all-customers-modal'); // Get "All Customers" modal  <--- CHECK THIS LINE - IS IT HERE?
+  const openAllCustomersModalButton = document.getElementById('open-all-customers-modal-button');
+  const closeAllCustomersModalButton = allCustomersModal.querySelector('.close-button'); 
+  
+  const customerListElement = document.getElementById('customer-list');
+  const allCustomerListUl = document.getElementById('all-customer-list-ul'); // Get UL for "All Customers" modal - NEW DOM ELEMENT SELECTOR
+  const logoUploadInput = document.getElementById('logo-upload-input'); // Get reference to the hidden file input - IMPORTANT!
+  const customerSearchInput = document.getElementById('search-input'); // Get search input in "Add Existing Customer" modal
+  const clearCustomerSearchButton = document.getElementById('clear-search-button'); // Get clear search button in "Add Existing Customer" modal
+  
+        openAllCustomersModalButton.addEventListener('click', () => {
+        console.log('"Customers" button in header clicked!'); // Debug log
+        populateAllCustomersList(); // Call the new function to populate "All Customers" modal
+        allCustomersModal.style.display = 'block'; // Open the "All Customers" modal
+    });
+  
+        closeAllCustomersModalButton.addEventListener('click', () => {
+        allCustomersModal.style.display = 'none'; // Close the "All Customers" modal
+    });
 
   // Data Variables
   let threadsData = [];
@@ -569,6 +590,90 @@ document.addEventListener('DOMContentLoaded', () => {
      // Initially hide clear button
     clearSearchButton.style.display = 'none';
   };
+  
+  async function populateAllCustomersList() {
+    console.log('populateAllCustomersList() called'); 
+    try {
+        const response = await fetch('/api/customers');
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        const customers = await response.json();
+        console.log('Customers fetched for All Customers Modal:', customers); 
+
+        const allCustomerListUl = document.getElementById('all-customer-list-ul'); 
+        allCustomerListUl.innerHTML = ''; 
+
+        if (customers.length === 0) {
+            allCustomerListUl.innerHTML = '<li class="empty-list-item">No customers yet.</li>';
+            return;
+        }
+
+        customers.forEach(customer => {
+            const li = document.createElement('li');
+            const customerNameSlug = customer.name
+                .toLowerCase()
+                .replace(/\s+/g, '-')
+                .replace(/[^a-z0-9-]/g, '');
+            li.innerHTML = `
+                <span class="customer-name-text">${customer.name}</span> 
+                <a href="/customer_pages/${customerNameSlug}.html" target="_blank" class="view-customer-page-link">View Page</a>
+            `; 
+            li.classList.add('customer-list-item');
+            li.dataset.customerId = customer.id;
+            allCustomerListUl.appendChild(li);
+        });
+
+        // --- SEARCH FUNCTIONALITY FOR ALL CUSTOMERS MODAL --- (NEW CODE BLOCK)
+        const customerSearchInput = document.getElementById('search-customers-input'); // Get search input for ALL CUSTOMERS MODAL
+        const clearSearchButton = document.getElementById('clear-customers-search-button'); // Get clear button for ALL CUSTOMERS MODAL
+
+        customerSearchInput.addEventListener('input', handleAllCustomersSearchInput); // ADD EVENT LISTENERS FOR ALL CUSTOMERS MODAL SEARCH
+        clearSearchButton.addEventListener('click', clearAllCustomersSearch);
+
+        function handleAllCustomersSearchInput() { // NEW handleAllCustomersSearchInput FUNCTION
+            const searchTerm = customerSearchInput.value.toLowerCase();
+            console.log('All Customers Modal search input changed:', searchTerm);
+            filterAllCustomersList(searchTerm); // Call filter function for ALL CUSTOMERS MODAL
+            updateAllCustomersClearSearchButtonVisibility();
+        }
+
+        function clearAllCustomersSearch() { // NEW clearAllCustomersSearch FUNCTION
+            customerSearchInput.value = '';
+            console.log('All Customers Modal search input cleared');
+            filterAllCustomersList(''); // Filter with empty search term (show all)
+            updateAllCustomersClearSearchButtonVisibility();
+        }
+
+        function updateAllCustomersClearSearchButtonVisibility() { // NEW updateAllCustomersClearSearchButtonVisibility FUNCTION
+            if (customerSearchInput.value.length > 0) {
+                clearSearchButton.style.display = 'flex';
+            } else {
+                clearSearchButton.style.display = 'none';
+            }
+        }
+
+        function filterAllCustomersList(searchTerm) { // NEW filterAllCustomersList FUNCTION
+            const customerListItems = document.querySelectorAll('#all-customer-list-ul li'); // Target list in ALL CUSTOMERS MODAL
+
+            customerListItems.forEach(item => {
+                const customerName = item.querySelector('.customer-name-text').textContent.toLowerCase();
+
+                if (customerName.includes(searchTerm)) {
+                    item.style.display = '';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+        }
+        // --- END SEARCH FUNCTIONALITY FOR ALL CUSTOMERS MODAL ---
+
+
+    } catch (error) {
+        console.error('Could not fetch customers for All Customers Modal:', error);
+        allCustomerListUl.innerHTML = '<li class="error-list-item">Error loading customers.</li>';
+    }
+}
 
   // Start the Application
   initializeApp();
