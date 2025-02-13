@@ -605,3 +605,32 @@ main {
 .modal-content {
     animation: fadeIn 0.4s ease-out forwards;
 }
+
+/* Styling for customer list actions buttons */
+.customer-actions-inline button.add-logo-button,
+.customer-actions-inline a.view-customer-page-link,
+#all-customers-modal .modal-content .customer-actions-inline a.view-customer-page-link {
+    padding: 8px 15px;
+    border-radius: 5px;
+    font-size: 0.9rem;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.customer-actions-inline a.view-customer-page-link,
+#all-customers-modal .modal-content #all-customer-list-ul .customer-list-item a.view-customer-page-link {
+   background-color: #1abc9c;
+    color: white;
+    transition: background-color 0.3s;
+    padding: 8px 15px;
+    border-radius: 5px;
+    font-size: 0.9rem;
+    text-decoration: none;
+    display: inline-block;
+}
+
+/* Hover styles for view page links */
+.customer-actions-inline a.view-customer-page-link:hover,
+#all-customers-modal .modal-content #all-customer-list-ul .customer-list-item a.view-customer-page-link:hover {
+     background-color: #16a085;
+}
