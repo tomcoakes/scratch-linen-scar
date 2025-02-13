@@ -350,6 +350,8 @@ function addLogoToCanvas(logoUrl, logoName) {
             width: img.width,  // Use intrinsic width
             height: img.height, // Use intrinsic height
         });
+        img.logoName = logoName;
+      
         console.log(`Logo added to canvas.  Object properties: left=${img.left}, top=${img.top}, width=${img.width}, height=${img.height}, scaleX=${img.scaleX}, scaleY=${img.scaleY}`);
 
         proofCreatorCanvas.add(img);
@@ -552,6 +554,11 @@ function submitProof() {
             });
         });
     })).then(() => {
+        // Collect logo names from canvas objects
+        const logoObjects = proofCreatorCanvas.getObjects().filter(obj => obj.logoName); // Assuming logos have a 'logoName' property
+        const logoNames = logoObjects.map(logoObj => logoObj.logoName);
+        const combinedLogoNames = logoNames.join(', '); // Join names into a comma-separated string
+        console.log("Logo Names on Canvas:", logoNames); // Debug log to check logo names
          // ... rest of the submitProof function (sending data to server, etc.)
         const proofData = {
             customerId: selectedCustomer,

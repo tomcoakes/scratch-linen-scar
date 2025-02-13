@@ -856,11 +856,79 @@ app.put("/api/customers/:customerId/generate-proof", async (req, res) => {
     populatedHtml = populatedHtml.replace(/<!-- Proof Image 2 Placeholder -->/, canvasImageTags[1] || '<p>No Proof Image 2</p>');
     populatedHtml = populatedHtml.replace(/<!-- Proof Image 3 Placeholder -->/, canvasImageTags[2] || '<p>No Proof Image 3</p>');
 
+    // 1. Generate a Unique Filename for the Proof
+    const timestamp = Date.now();
+    const sanitizedGarmentCode = proofData.garmentCode.replace(/[^a-zA-Z0-9]/g, "_"); // Replace non-alphanumeric chars with underscores
+    const sanitizedDescription = proofData.proofDescription.replace(/[^a-zA-Z0-9\s]/g, "_"); // Replace non-alphanumeric and non-space chars
+
+    const proofFilename = `proof-${sanitizedGarmentCode}-${sanitizedDescription}-${timestamp}.pdf`;
+    const proofFilePath = path.join(__dirname, 'src', 'pages', 'customer_proofs', proofFilename); // Full path to save PDF
+    const proofUrl = `/customer_proofs/${proofFilename}`; // URL to access the file
+  
+  
     let pdfBuffer;
     try {
         const options = { format: 'A4', landscape: true };
         const file = { content: populatedHtml };
         pdfBuffer = await pdf.generatePdf(file, options);
+        // 2. Save the PDF buffer to customer_proofs folder
+        fs.writeFile(proofFilePath, pdfBuffer, (writeFileError) => {
+            if (writeFileError) {
+                console.error('Error saving PDF to disk:', writeFileError);
+                // IMPORTANT: We must return an error response here if saving fails
+                return res.status(500).json({ error: 'Failed to save PDF to disk.' });
+            }
+            console.log('PDF saved successfully:', proofFilePath);
+          
+          // 3. Update customers.json
+                      const customersFilePath = path.join(__dirname, 'customers.json');
+            fs.readFile(customersFilePath, 'utf8', (readCustomerErr, customersData) => {
+                if (readCustomerErr) {
+                    console.error('Error reading customers.json:', readCustomerErr);
+                    return res.status(500).json({ error: 'Failed to read customer data.' });
+                }
+
+                let customers;
+                try {
+                    customers = JSON.parse(customersData);
+                } catch (parseCustomerError) {
+                    console.error('Error parsing customers.json:', parseCustomerError);
+                    return res.status(500).json({ error: 'Failed to parse customer data.' });
+                }
+
+                const customerIndex = customers.findIndex(c => c.id === customerId);
+                if (customerIndex === -1) {
+                    return res.status(404).json({ error: 'Customer not found in data.' });
+                }
+
+                const newProof = {
+                    url: proofUrl,
+                    garmentCode: proofData.garmentCode,
+                    logo: 'Falcon', // For now, as discussed
+                    logoPosition: 'Left Breast', // For now, as discussed
+                    description: proofData.proofDescription || ''
+                };
+
+                if (!customers[customerIndex].proofs) {
+                    customers[customerIndex].proofs = [];
+                }
+                customers[customerIndex].proofs.push(newProof);
+
+                fs.writeFile(customersFilePath, JSON.stringify(customers, null, 2), 'utf8', (writeCustomerErr) => {
+                    if (writeCustomerErr) {
+                        console.error('Error writing to customers.json:', writeCustomerErr);
+                        return res.status(500).json({ error: 'Failed to update customer data.' });
+                    }
+
+                    // 4. Send JSON response back to client
+                    res.json({ message: 'PDF Proof generated and saved successfully!', proofUrl: proofUrl });
+                });
+            });
+            
+      
+        });
+      
+      
     } catch (pdfError) {
         console.error('Error generating PDF:', pdfError);
         return res.status(500).json({ error: 'Failed to generate PDF.' });

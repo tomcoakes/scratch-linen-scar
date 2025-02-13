@@ -80,6 +80,20 @@
         "logo": "Falcon",
         "logoPosition": "Left Breast",
         "description": "Gildan Heavy Cotton™ T-Shirt - Kiwi Green - Babcock Left Breast + Sub Com Group Rear"
+      },
+      {
+        "url": "/customer_proofs/proof-gd055-test-1739450266771.pdf",
+        "garmentCode": "gd055",
+        "logo": "Falcon",
+        "logoPosition": "Left Breast",
+        "description": "test"
+      },
+      {
+        "url": "/customer_proofs/proof-rx101-fd-1739450335270.pdf",
+        "garmentCode": "rx101",
+        "logo": "Falcon",
+        "logoPosition": "Left Breast",
+        "description": "fd"
       }
     ]
   }
