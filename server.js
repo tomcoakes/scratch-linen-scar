@@ -856,6 +856,16 @@ app.put("/api/customers/:customerId/generate-proof", async (req, res) => {
     populatedHtml = populatedHtml.replace(/<!-- Proof Image 2 Placeholder -->/, canvasImageTags[1] || '<p>No Proof Image 2</p>');
     populatedHtml = populatedHtml.replace(/<!-- Proof Image 3 Placeholder -->/, canvasImageTags[2] || '<p>No Proof Image 3</p>');
 
+    // 1. Generate a Unique Filename for the Proof
+    const timestamp = Date.now();
+    const sanitizedGarmentCode = proofData.garmentCode.replace(/[^a-zA-Z0-9]/g, "_"); // Replace non-alphanumeric chars with underscores
+    const sanitizedDescription = proofData.proofDescription.replace(/[^a-zA-Z0-9\s]/g, "_"); // Replace non-alphanumeric and non-space chars
+
+    const proofFilename = `proof-${sanitizedGarmentCode}-${sanitizedDescription}-${timestamp}.pdf`;
+    const proofFilePath = path.join(__dirname, 'src', 'pages', 'customer_proofs', proofFilename); // Full path to save PDF
+    const proofUrl = `/customer_proofs/${proofFilename}`; // URL to access the file
+  
+  
     let pdfBuffer;
     try {
         const options = { format: 'A4', landscape: true };
