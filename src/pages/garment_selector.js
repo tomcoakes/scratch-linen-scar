@@ -195,7 +195,7 @@ function constructImageUrl(brand, styleCode, colourwayCode, view) {
     const styleCodePath = styleCode.replace(/\s+/g, '%20');
     const colourwayCodePath = colourwayCode.replace(/\s+/g, '%20');
 
-    const filename = `${styleCodePath}%20${colourwayCodePath}%20${view}.jpg`;
+    const filename = `${styleCodePath}%20${colourwayCodePath}%20${view.toUpperCase()}.jpg`;
     const originalImageUrl = `${baseUrl}${brandPath}/Product%20Images/${styleCodePath}/ProductCarouselMain/${filename}`;
 
     // --- Use Glitch Proxy Route ---
