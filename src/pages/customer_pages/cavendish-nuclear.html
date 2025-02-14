@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Proplastix Ltd - Customer Page</title>
+    <title>Cavendish Nuclear - Customer Page</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="../customer_page_style.css">
@@ -11,7 +11,7 @@
 <body>
     <header>
         <div class="header-container">
-            <h1>Proplastix Ltd</h1>
+            <h1>Cavendish Nuclear</h1>
             <nav>
                 <ul class="nav-links">
                     <li><a href="../index.html">Home</a></li>
@@ -27,23 +27,17 @@
         <div class="left-side-container">
             <section class="customer-info">
                 <h3>Customer Information</h3>
-                <p><strong>Customer Name:</strong> Proplastix Ltd</p>
-                <p><strong>Contact:</strong> Steve Payne</p>
-                <p><strong>Email:</strong> spayne@tbsg.co.uk</p>
+                <p><strong>Customer Name:</strong> Cavendish Nuclear</p>
+                <p><strong>Contact:</strong> Jacqui Alexander</p>
+                <p><strong>Email:</strong> jalexander@tbsg.co.uk</p>
 <!--                    <button id="delete-customer-button" class="delete-customer-button" onclick="deleteCustomer(1)">Delete Customer</button> -->
-                   <button id="delete-customer-button" class="delete-customer-button" onclick="deleteCustomer(6)">Delete Customer</button>
+                   <button id="delete-customer-button" class="delete-customer-button" onclick="deleteCustomer(8)">Delete Customer</button>
             </section>
 
             <section class="customer-threads">
                 <h2>Threads Used</h2>
                 <ul id="customer-threads-list">
                     <!-- Threads will be inserted here by the script -->
-                    
-                        <li>
-                            Thread Number: 1749
-                            <span class="thread-colour-circle" style="background-color: #389E31;" title="Green"></span>
-                            (Stock: N/A)
-                        </li>
                     
                         <li>
                             Thread Number: 1801
@@ -62,24 +56,13 @@
                     <!-- Logo images will be inserted here by the script -->
                     
                 <div class="logo-item">
-                    <img src="/customer_logos/logo-upload-input-1739551236577-562072287.svg" alt="Proplastix - Green and Black">
-                    <p class="logo-name"><strong>Name:</strong> Proplastix - Green and Black</p>
+                    <img src="/customer_logos/logo-upload-input-1739551477662-398287420.svg" alt="Cavendish Nuclear - White">
+                    <p class="logo-name"><strong>Name:</strong> Cavendish Nuclear - White</p>
                     <p class="logo-position"><strong>Position:</strong> Left Chest</p>
                     <p class="logo-type"><strong>Type:</strong> Embroidery</p>
-                    <p class="logo-threads"><strong>Threads:</strong> 1749</p>
+                    <p class="logo-threads"><strong>Threads:</strong> 1801</p>
                     <div class="logo-actions">
-                        <button class="delete-logo-button" onclick="deleteLogo(6, 0)" data-logo-index="0">Delete Logo</button>
-                    </div>
-                </div>
-            
-                <div class="logo-item">
-                    <img src="/customer_logos/logo-upload-input-1739551267688-443205668.svg" alt="Proplastix - Green and White">
-                    <p class="logo-name"><strong>Name:</strong> Proplastix - Green and White</p>
-                    <p class="logo-position"><strong>Position:</strong> Left Chest</p>
-                    <p class="logo-type"><strong>Type:</strong> Embroidery</p>
-                    <p class="logo-threads"><strong>Threads:</strong> 1749, 1801</p>
-                    <div class="logo-actions">
-                        <button class="delete-logo-button" onclick="deleteLogo(6, 1)" data-logo-index="1">Delete Logo</button>
+                        <button class="delete-logo-button" onclick="deleteLogo(8, 0)" data-logo-index="0">Delete Logo</button>
                     </div>
                 </div>
             
@@ -90,7 +73,7 @@
         <section class="customer-proofs">
             <h2>Proofs</h2>
         <div class="button-container">
-         <button id="add-proof-button" onclick="openProofModal(6)">Add Proof</button>
+         <button id="add-proof-button" onclick="openProofModal(8)">Add Proof</button>
 
          </div>
 <!--               <button type="button" onclick="openProofUploadModal([CUSTOMER_ID])">Add Proof</button> -->
@@ -118,17 +101,17 @@
     </footer>
 
 
-    <div id="upload-proof-modal-6" class="modal">
+    <div id="upload-proof-modal-8" class="modal">
         <div class="modal-content">
-            <span class="close-button" onclick="closeProofModal(6)">×</span>
-            <h2>Upload Proof for Proplastix Ltd</h2>
-            <form id="upload-proof-form-6" onsubmit="return false;">
+            <span class="close-button" onclick="closeProofModal(8)">×</span>
+            <h2>Upload Proof for Cavendish Nuclear</h2>
+            <form id="upload-proof-form-8" onsubmit="return false;">
                 <input type="file" id="proof-upload-input" name="proof-upload-input" accept=".pdf" required>
                 <input type="text" id="proof-garment-code" name="garmentCode" placeholder="Garment Code" required>
                 <input type="text" id="proof-logo" name="logo" placeholder="Logo" required>
                 <input type="text" id="proof-logo-position" name="logoPosition" placeholder="Logo Position" required>
                 <textarea id="proof-description" name="proofDescription" placeholder="Optional Description"></textarea>
-                <button type="button" onclick="handleProofUpload(6)">Upload Proof</button>
+                <button type="button" onclick="handleProofUpload(8)">Upload Proof</button>
             </form>
         </div>
     </div>

@@ -85,6 +85,20 @@
         "threadNumbers": [
           "1943"
         ]
+      },
+      {
+        "logoUrl": "/customer_logos/logo-upload-input-1739551408184-649809303.svg",
+        "logoName": "Reverse YPN",
+        "logoPosition": "Full Back",
+        "logoType": "Embroidery",
+        "threadNumbers": []
+      },
+      {
+        "logoUrl": "/customer_logos/logo-upload-input-1739551425920-789197339.svg",
+        "logoName": "YPN - Full Wording",
+        "logoPosition": "Full Back",
+        "logoType": "Embroidery",
+        "threadNumbers": []
       }
     ],
     "proofs": [
@@ -189,6 +203,100 @@
     "name": "Proplastix Ltd",
     "contactPerson": "Steve Payne",
     "email": "spayne@tbsg.co.uk",
-    "id": 6
+    "id": 6,
+    "logos": [
+      {
+        "logoUrl": "/customer_logos/logo-upload-input-1739551236577-562072287.svg",
+        "logoName": "Proplastix - Green and Black",
+        "logoPosition": "Left Chest",
+        "logoType": "Embroidery",
+        "threadNumbers": [
+          "1749"
+        ]
+      },
+      {
+        "logoUrl": "/customer_logos/logo-upload-input-1739551267688-443205668.svg",
+        "logoName": "Proplastix - Green and White",
+        "logoPosition": "Left Chest",
+        "logoType": "Embroidery",
+        "threadNumbers": [
+          "1749",
+          "1801"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Carparison Ltd",
+    "contactPerson": "Rebecca Matthewman",
+    "email": "rmatthewman@tbsg.co.uk",
+    "id": 7,
+    "logos": [
+      {
+        "logoUrl": "/customer_logos/logo-upload-input-1739551349592-331887325.svg",
+        "logoName": "Carparison (large) + Vanparison (small)",
+        "logoPosition": "Other",
+        "logoType": "Embroidery",
+        "threadNumbers": []
+      },
+      {
+        "logoUrl": "/customer_logos/logo-upload-input-1739551373416-442656318.svg",
+        "logoName": "Carparison + Vanparison + Corparison",
+        "logoPosition": "Other",
+        "logoType": "Embroidery",
+        "threadNumbers": []
+      }
+    ]
+  },
+  {
+    "name": "Cavendish Nuclear",
+    "contactPerson": "Jacqui Alexander",
+    "email": "jalexander@tbsg.co.uk",
+    "id": 8,
+    "logos": [
+      {
+        "logoUrl": "/customer_logos/logo-upload-input-1739551477662-398287420.svg",
+        "logoName": "Cavendish Nuclear - White",
+        "logoPosition": "Left Chest",
+        "logoType": "Embroidery",
+        "threadNumbers": [
+          "1801"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Mama Bear Preschool",
+    "contactPerson": "James Hardinge",
+    "email": "jhardinge@tbsg.co.uk",
+    "id": 9,
+    "logos": [
+      {
+        "logoUrl": "/customer_logos/logo-upload-input-1739551572900-512524030.svg",
+        "logoName": "Mama Bears Preschool",
+        "logoPosition": "Left Chest",
+        "logoType": "Embroidery",
+        "threadNumbers": [
+          "1801"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "CO-OP",
+    "contactPerson": "Mrs COOP",
+    "email": "co@op.com",
+    "id": 10,
+    "logos": [
+      {
+        "logoUrl": "/customer_logos/logo-upload-input-1739551613349-237568242.svg",
+        "logoName": "Co-op",
+        "logoPosition": "Left Chest",
+        "logoType": "Embroidery",
+        "threadNumbers": [
+          "1801"
+        ]
+      }
+    ]
   }
 ]
