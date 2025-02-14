@@ -71,7 +71,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const searchTerm = partialCode.toUpperCase();
         return garmentDataCache.filter(garment =>
-            garment.styleCode.toUpperCase().startsWith(searchTerm) || garment.title.toUpperCase().includes(searchTerm)
+            garment.styleCode.toUpperCase().startsWith(searchTerm) //|| garment.title.toUpperCase().includes(searchTerm)
         ).slice(0, 10);
     }
 
