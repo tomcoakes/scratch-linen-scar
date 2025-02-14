@@ -486,6 +486,7 @@
     cursor: pointer;
     font-size: 0.9em;
     flex: 0 0 auto;
+    max-width: 117px;
 }
 
 .garment-image-options button.selected {
@@ -509,4 +510,43 @@
     max-height: 95%;
     display: block;
     object-fit: contain;
+}
+
+#garment-code-suggestions li.highlighted {
+    background-color: #f0f0f0; /* Example highlight color - adjust as needed */
+    color: black; /* Ensure text is readable on highlight */
+}
+
+/* --- Garment Image Options Grid Layout --- */
+.garment-image-options-grid {
+    display: grid; /* Enable grid layout */
+    grid-template-columns: repeat(2, 1fr); /* 2 columns, equal width */
+    grid-template-rows: repeat(2, 1fr);    /* 2 rows, equal height */
+    gap: 5px; /* Spacing between grid items (adjust as needed) */
+    width: 100%; /* Take full width of parent (garment-lookup-panel) */
+    max-width: 300px; /* Example max-width - adjust to match colour dropdown if needed, or remove for 100% width */
+    margin-top: 10px; /* Add some space above the grid */
+}
+
+.garment-image-options-grid .garment-image-options {
+    display: contents; /* Important:  Make .garment-image-options NOT interfere with grid layout */
+}
+
+
+.image-option-button {
+    display: block; /* Make buttons block-level to fill grid cells */
+    width: 100%;      /* Ensure equal width */
+    height: 100%;     /* Ensure equal height */
+    padding: 0;       /* Remove default button padding if needed for equal sizing */
+    margin: 0;        /* Remove default button margins */
+    box-sizing: border-box; /* Include padding and border in button's total size */
+    text-align: center; /* Center text within button */
+    font-size: 0.9em; /* Adjust font size if needed to fit text */
+    border: 1px solid #ccc; /* Example border style */
+    background-color: #eee; /* Example background color */
+    cursor: pointer;
+}
+
+.image-option-button:hover {
+    background-color: #ddd; /* Hover effect */
 }

@@ -8,53 +8,45 @@ document.addEventListener('DOMContentLoaded', () => {
     const garmentImagePreviewDiv = document.getElementById('garment-image-preview');
     const garmentLookupPanel = document.getElementById('garment-lookup-panel');
 
-
     let garmentDataCache = []; // Cache for all garment data (for autocomplete)
+    let highlightedSuggestionIndex = -1; // Track highlighted suggestion
 
     garmentCodeInput.addEventListener('input', handleGarmentCodeInput);
-    // REMOVE focus event listener that shows the panel on focus
-    // garmentCodeInput.addEventListener('focus', () => garmentLookupPanel.style.display = 'block');
-    // REMOVE blur event listener that hides the panel on blur
-    // garmentCodeInput.addEventListener('blur', () => setTimeout(() => {
-    //     if (!garmentLookupPanel.matches(':hover')) {
-    //         garmentLookupPanel.style.display = 'none';
-    //         garmentSuggestionsDropdown.style.display = 'none'; // Hide suggestions too on blur
-    //     }
-    // }, 200));
-    // REMOVE mouseleave event listener that hides the panel on mouseleave
-    // garmentLookupPanel.addEventListener('mouseleave', () => garmentLookupPanel.style.display = 'none');
-    garmentSuggestionsDropdown.addEventListener('mousedown', (event) => { // Mousedown instead of click
-        event.preventDefault(); // Prevent blur event when clicking on suggestion
+    garmentSuggestionsDropdown.addEventListener('mousedown', (event) => {
+        event.preventDefault();
     });
+
+    // --- NEW: Keydown event listener for input ---
+    garmentCodeInput.addEventListener('keydown', handleKeyboardNavigation);
 
 
     async function handleGarmentCodeInput(event) {
         const garmentCode = event.target.value.trim().toUpperCase();
-        garmentImageOptionsDiv.innerHTML = ''; // Clear image options
-        garmentImagePreviewDiv.innerHTML = ''; // Clear image preview
-        garmentColourDropdown.innerHTML = `<option value="">-- Select Colour --</option>`; // Reset colour dropdown
+        garmentImageOptionsDiv.innerHTML = '';
+        garmentImagePreviewDiv.innerHTML = '';
+        garmentColourDropdown.innerHTML = `<option value="">-- Select Colour --</option>`;
+        highlightedSuggestionIndex = -1; // Reset highlight on new input
 
         if (garmentCode.length < 2) {
-            garmentSuggestionsDropdown.style.display = 'none'; // Hide dropdown if input too short
+            garmentSuggestionsDropdown.style.display = 'none';
             garmentSuggestionsDropdown.innerHTML = '';
-            garmentColourDropdown.innerHTML = `<option value="">-- Select Colour --</option>`; // Clear colour options just in case (and reset to default)
+            garmentColourDropdown.innerHTML = `<option value="">-- Select Colour --</option>`;
             return;
         }
 
-        const suggestions = await getGarmentCodeSuggestions(garmentCode); // Get suggestions
-        displayGarmentCodeSuggestions(suggestions); // Display suggestions
+        const suggestions = await getGarmentCodeSuggestions(garmentCode);
+        displayGarmentCodeSuggestions(suggestions);
 
         if (suggestions.length === 0) {
-            // If no suggestions (and input is long enough), try to fetch garment directly
             try {
                 const garments = await fetchGarmentData(garmentCode);
-                displayGarmentColourOptions(garments[0]); // Display colours, even if no suggestions
+                displayGarmentColourOptions(garments[0]);
             } catch (error) {
                 console.error("Error fetching garment data:", error);
                 garmentColourDropdown.innerHTML = `<option value="">Error loading colours</option>`;
             }
         } else {
-            garmentColourDropdown.innerHTML = `<option value="">-- Select Colour --</option>`; // Clear colour options if showing suggestions (and reset to default)
+            garmentColourDropdown.innerHTML = `<option value="">-- Select Colour --</option>`;
         }
     }
 
@@ -70,44 +62,51 @@ document.addEventListener('DOMContentLoaded', () => {
 
     async function getGarmentCodeSuggestions(partialCode) {
         if (garmentDataCache.length === 0) {
-            const allGarmentsResponse = await fetch('/api/garments'); // Fetch ALL garments for cache
+            const allGarmentsResponse = await fetch('/api/garments');
             if (!allGarmentsResponse.ok) {
                 throw new Error(`Failed to fetch all garment data for suggestions: ${allGarmentsResponse.status}`);
             }
-            garmentDataCache = await allGarmentsResponse.json(); // Cache all garment data
+            garmentDataCache = await allGarmentsResponse.json();
         }
 
         const searchTerm = partialCode.toUpperCase();
         return garmentDataCache.filter(garment =>
             garment.styleCode.toUpperCase().startsWith(searchTerm) || garment.title.toUpperCase().includes(searchTerm)
-        ).slice(0, 10); // Limit suggestions to top 10
+        ).slice(0, 10);
     }
 
 
     function displayGarmentCodeSuggestions(suggestions) {
-        garmentSuggestionsDropdown.innerHTML = ''; // Clear existing suggestions
+        garmentSuggestionsDropdown.innerHTML = '';
+        highlightedSuggestionIndex = -1; // Reset on new suggestions
 
         if (suggestions.length > 0) {
-            suggestions.forEach(garment => {
+            suggestions.forEach((garment, index) => {
                 const suggestionItem = document.createElement('li');
                 suggestionItem.textContent = `${garment.styleCode} - ${garment.title}`;
-                suggestionItem.addEventListener('mousedown', () => { // Mousedown to prevent blur issue
-                    garmentCodeInput.value = garment.styleCode;
-                    garmentSuggestionsDropdown.style.display = 'none'; // Hide suggestions
-                    displayGarmentColourOptions(garment); // Directly load colours for selected garment
+                suggestionItem.addEventListener('mousedown', () => {
+                    selectSuggestion(garment); // Use selectSuggestion function
                 });
                 garmentSuggestionsDropdown.appendChild(suggestionItem);
             });
-            garmentSuggestionsDropdown.style.display = 'block'; // Show dropdown
+            garmentSuggestionsDropdown.style.display = 'block';
+            highlightSuggestion(0); // Highlight the first suggestion initially
         } else {
-            garmentSuggestionsDropdown.style.display = 'none'; // Hide if no suggestions
+            garmentSuggestionsDropdown.style.display = 'none';
         }
+    }
+
+    function selectSuggestion(garment) {
+        garmentCodeInput.value = garment.styleCode;
+        garmentSuggestionsDropdown.style.display = 'none';
+        displayGarmentColourOptions(garment);
+        highlightedSuggestionIndex = -1; // Reset highlight after selection
     }
 
 
     function displayGarmentColourOptions(garment) {
-        garmentColourDropdown.innerHTML = `<option value="">-- Select Colour --</option>`; // Clear and reset dropdown
-        garmentImageOptionsDiv.innerHTML = ''; // Clear image options
+        garmentColourDropdown.innerHTML = `<option value="">-- Select Colour --</option>`;
+        garmentImageOptionsDiv.innerHTML = '';
         garmentImagePreviewDiv.innerHTML = '';
 
         if (!garment) {
@@ -119,36 +118,33 @@ document.addEventListener('DOMContentLoaded', () => {
             garment.colourwayCodes.forEach(colourCode => {
                 const colourName = getColourwayName(colourCode) || colourCode;
                 const option = document.createElement('option');
-                option.value = colourCode; // Store code as value (Corrected: using colourCode)
-                option.textContent = colourName; // Display user-friendly name
+                option.value = colourCode;
+                option.textContent = colourName;
                 garmentColourDropdown.appendChild(option);
             });
-             garmentColourDropdown.style.display = 'block'; // Make dropdown visible
+            garmentColourDropdown.style.display = 'block';
         } else {
             garmentColourDropdown.innerHTML = `<option value="">No colours available</option>`;
         }
     }
 
     function handleColourSelection(event) {
-        const colourwayCode = garmentColourDropdown.value; // Get selected colourway code from dropdown
-         const selectedGarmentCode = garmentCodeInput.value.trim().toUpperCase();
+        const colourwayCode = garmentColourDropdown.value;
+        const selectedGarmentCode = garmentCodeInput.value.trim().toUpperCase();
         const selectedGarment = garmentDataCache.find(garment => garment.styleCode.toUpperCase() === selectedGarmentCode);
 
-
         if (selectedGarment) {
-           displayGarmentImageOptions(selectedGarment, colourwayCode);
+            displayGarmentImageOptions(selectedGarment, colourwayCode);
         } else {
             console.warn("Garment object not found for code:", selectedGarmentCode);
         }
-
     }
 
-    garmentColourDropdown.addEventListener('change', handleColourSelection); // ADD CHANGE EVENT LISTENER TO DROPDOWN
+    garmentColourDropdown.addEventListener('change', handleColourSelection);
 
 
-    // --- Display Garment Image Options (unchanged) ---
     function displayGarmentImageOptions(garment, colourwayCode) {
-        garmentImageOptionsDiv.innerHTML = ''; // Clear previous image options
+        garmentImageOptionsDiv.innerHTML = '';
         garmentImagePreviewDiv.innerHTML = '';
 
         const imageTypes = ['Front', 'Back', 'Side', 'Detail'];
@@ -163,7 +159,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // --- Handle Image Selection (unchanged) ---
     function handleImageSelection(event, garment, colourwayCode) {
         const imageType = event.target.dataset.imageType;
         const imageUrl = event.target.dataset.imageUrl;
@@ -171,7 +166,6 @@ document.addEventListener('DOMContentLoaded', () => {
         displayGarmentPreviewImage(imageUrl);
     }
 
-    // --- Display Garment Preview Image (unchanged) ---
     function displayGarmentPreviewImage(imageUrl) {
         garmentImagePreviewDiv.innerHTML = '';
 
@@ -186,19 +180,17 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
 
-    // --- Helper function to construct image URL (unchanged) ---
     function constructImageUrl(brand, styleCode, colourwayCode, view) {
         const baseUrl = 'https://www.fullcollection.com/storage/phoenix/2025/Phoenix%20All%20Images/';
         const brandPath = brand.replace(/\s+/g, '%20');
         const styleCodePath = styleCode.replace(/\s+/g, '%20');
         const colourwayCodePath = colourwayCode.replace(/\s+/g, '%20');
 
-        const filename = `${styleCodePath}%20${colourwayCodePath}%20${view.toUpperCase()}.jpg`;
+        const filename = `${styleCodePath}%20${colourwayCodePath}%20${view}.jpg`;
         return `${baseUrl}${brandPath}/Product%20Images/${styleCodePath}/ProductCarouselMain/${filename}`;
     }
 
 
-    // --- Helper function to get colourway name from code (unchanged) ---
     let colourwayNamesMap = null;
 
     async function loadColourwayNamesMap() {
@@ -224,26 +216,68 @@ document.addEventListener('DOMContentLoaded', () => {
 
     loadColourwayNamesMap();
 
-    // --- Show/Hide Garment Lookup Panel (REMOVED HIDING LOGIC) ---
-    // garmentCodeInput.addEventListener('focus', () => {
-    //     garmentLookupPanel.style.display = 'block';
-    //     garmentSuggestionsDropdown.style.display = 'block'; // Show suggestions dropdown on focus
-    // });
 
-    // garmentCodeInput.addEventListener('blur', () => {
-    //     setTimeout(() => {
-    //         if (!garmentLookupPanel.matches(':hover')) {
-    //             garmentLookupPanel.style.display = 'none';
-    //              garmentSuggestionsDropdown.style.display = 'none'; // Hide suggestions on blur too
-    //         }
-    //     }, 200);
-    // });
+    // --- NEW: Keyboard Navigation Functions ---
+    function handleKeyboardNavigation(event) {
+        if (garmentSuggestionsDropdown.style.display !== 'block') return; // Only navigate if dropdown is visible
 
-    // garmentLookupPanel.addEventListener('mouseleave', () => {
-    //     garmentLookupPanel.style.display = 'none';
-    //      garmentSuggestionsDropdown.style.display = 'none'; // Hide suggestions on mouseleave too
-    // });
+        const suggestions = garmentSuggestionsDropdown.querySelectorAll('li');
+        if (!suggestions.length) return;
 
-    // Ensure panel is visible by default in JavaScript (optional, can also do in CSS)
+        if (event.key === 'Enter') {
+            event.preventDefault(); // Prevent form submission
+            if (highlightedSuggestionIndex >= 0 && highlightedSuggestionIndex < suggestions.length) {
+                const highlightedItem = suggestions[highlightedSuggestionIndex];
+                const garmentCode = highlightedItem.textContent.split(' - ')[0]; // Extract code from text
+                const selectedGarment = garmentDataCache.find(g => g.styleCode === garmentCode);
+                if (selectedGarment) {
+                    selectSuggestion(selectedGarment);
+                }
+            }
+        } else if (event.key === 'ArrowDown') {
+            event.preventDefault();
+            highlightNextSuggestion(suggestions);
+        } else if (event.key === 'ArrowUp') {
+            event.preventDefault();
+            highlightPreviousSuggestion(suggestions);
+        }
+    }
+
+    function highlightSuggestion(index) {
+        const suggestions = garmentSuggestionsDropdown.querySelectorAll('li');
+        if (!suggestions.length) return;
+
+        // Remove previous highlight
+        const highlighted = garmentSuggestionsDropdown.querySelector('.highlighted');
+        if (highlighted) {
+            highlighted.classList.remove('highlighted');
+        }
+
+        if (index >= 0 && index < suggestions.length) {
+            suggestions[index].classList.add('highlighted');
+            highlightedSuggestionIndex = index;
+        } else {
+            highlightedSuggestionIndex = -1;
+        }
+    }
+
+    function highlightNextSuggestion(suggestions) {
+        let nextIndex = highlightedSuggestionIndex + 1;
+        if (nextIndex >= suggestions.length) {
+            nextIndex = 0; // Wrap around to the first item
+        }
+        highlightSuggestion(nextIndex);
+    }
+
+    function highlightPreviousSuggestion(suggestions) {
+        let prevIndex = highlightedSuggestionIndex - 1;
+        if (prevIndex < 0) {
+            prevIndex = suggestions.length - 1; // Wrap around to the last item
+        }
+        highlightSuggestion(prevIndex);
+    }
+
+
+    // Ensure panel is visible by default (optional, can also do in CSS)
     garmentLookupPanel.style.display = 'block';
 });
