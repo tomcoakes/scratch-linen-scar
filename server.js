@@ -12,10 +12,12 @@ const pdf = require('html-pdf-node'); // ADD THIS LINE - require html-pdf-node
 const fabric = require('fabric');
 //console.log("Fabric object:", fabric);
 const garmentCataloguePath = path.join(__dirname, 'garment_catalogue.json'); // Path to your new JSON file
+const request = require('request');
 
 
 
 const app = express();
+app.use(cors());
 
 // --- Multer Configuration (Updated) ---
 
@@ -998,6 +1000,29 @@ app.get('/image-check', async (req, res) => {
         console.error('Proxy error during fetch:', error); // Log full fetch error
         res.status(500).send('Proxy error');
     }
+});
+
+// Proxy route for garment images
+app.get('/garment-image-proxy', (req, res) => {
+    const imageUrl = req.query.imageUrl; // Get the image URL from the query parameter
+
+    if (!imageUrl) {
+        return res.status(400).send('imageUrl parameter is required');
+    }
+
+    request.get({
+        url: imageUrl,
+        encoding: null // Important to handle binary data (images)
+    }, (error, response, body) => {
+        if (error || response.statusCode !== 200) {
+            console.error('Proxy request error:', error || `Status code: ${response.statusCode}`);
+            return res.status(500).send('Proxy request failed');
+        }
+
+        res.set('Content-Type', response.headers['content-type']); // Set the correct Content-Type
+        res.set('Access-Control-Allow-Origin', '*'); // Optional, but good practice for CORS
+        res.send(body); // Send the image data back to the client
+    });
 });
 
 // Start server

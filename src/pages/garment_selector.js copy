@@ -189,20 +189,16 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
 
-function constructImageUrl(brand, styleCode, colourwayCode, view) {
-    const baseUrl = 'https://www.fullcollection.com/storage/phoenix/2025/Phoenix%20All%20Images/';
-    const brandPath = brand.replace(/\s+/g, '%20');
-    const styleCodePath = styleCode.replace(/\s+/g, '%20');
-    const colourwayCodePath = colourwayCode.replace(/\s+/g, '%20');
+    function constructImageUrl(brand, styleCode, colourwayCode, view) {
+        const baseUrl = 'https://www.fullcollection.com/storage/phoenix/2025/Phoenix%20All%20Images/';
+        const brandPath = brand.replace(/\s+/g, '%20');
+        const styleCodePath = styleCode.replace(/\s+/g, '%20');
+        const colourwayCodePath = colourwayCode.replace(/\s+/g, '%20');
 
-    const filename = `${styleCodePath}%20${colourwayCodePath}%20${view}.jpg`;
-    const originalImageUrl = `${baseUrl}${brandPath}/Product%20Images/${styleCodePath}/ProductCarouselMain/${filename}`;
-
-    // --- Use Glitch Proxy Route ---
-    const glitchProxyUrl = '/garment-image-proxy?imageUrl='; // Path to your Glitch proxy route
-    const proxiedImageUrl = glitchProxyUrl + encodeURIComponent(originalImageUrl); // Encode the original URL
-    return proxiedImageUrl;
-}
+        const filename = `${styleCodePath}%20${colourwayCodePath}%20${view.toUpperCase()}.jpg`;
+        return `${baseUrl}${brandPath}/Product%20Images/${styleCodePath}/ProductCarouselMain/${filename}`;
+      
+    }
 
 
     let colourwayNamesMap = null;
