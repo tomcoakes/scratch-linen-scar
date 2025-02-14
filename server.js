@@ -11,6 +11,7 @@ const multer = require('multer'); // ADD THIS LINE - require multer
 const pdf = require('html-pdf-node'); // ADD THIS LINE - require html-pdf-node
 const fabric = require('fabric');
 //console.log("Fabric object:", fabric);
+const garmentCataloguePath = path.join(__dirname, 'garment_catalogue.json'); // Path to your new JSON file
 
 
 
@@ -942,6 +943,23 @@ app.put("/api/customers/:customerId/generate-proof", async (req, res) => {
     res.setHeader('Content-Type', 'application/pdf');
     res.setHeader('Content-Disposition', `attachment; filename="${proofFilename}"`);
     res.send(pdfBuffer);
+});
+
+
+app.get("/api/garments", (req, res) => {
+    fs.readFile(garmentCataloguePath, "utf8", (err, data) => {
+        if (err) {
+            console.error("Error reading garment_catalogue.json:", err);
+            return res.status(500).json({ error: "Failed to read garment catalogue data." });
+        }
+        try {
+            const garments = JSON.parse(data);
+            res.json(garments);
+        } catch (parseError) {
+            console.error("Error parsing garment_catalogue.json:", parseError);
+            res.status(500).json({ error: "Invalid garment catalogue data format." });
+        }
+    });
 });
 
 
