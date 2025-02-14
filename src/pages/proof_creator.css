@@ -280,68 +280,84 @@
 /* proof_creator.css */
 
 /* --- Garment Lookup UI --- */
-.garment-lookup-ui {
-  background-color: #f9f9f9;
-  border: 1px solid #ddd;
-  border-radius: 5px;
-  padding: 10px;
-  margin-top: 10px; /* Spacing below zoom controls */
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  position: absolute;
-  left: 0px;
-  top: 0px;
+.garment-lookup-container {
+    position: relative; /* Positioning context for panel */
+    width: 250px; /* Example width, adjust as needed */
+    margin-top: 10px; /* Spacing below zoom buttons */
 }
 
-.garment-lookup-ui h3 {
-  font-size: 1.2em;
-  margin-top: 0;
-  margin-bottom: 10px;
+.garment-search-section h3 {
+    font-size: 1.2em;
+    margin-top: 0;
+    margin-bottom: 10px;
 }
 
 .garment-search-input input[type="text"] {
-  width: calc(100% - 22px); /* Adjust width for padding/border */
-  padding: 8px;
-  margin-bottom: 10px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
+    width: calc(100% - 22px); /* Adjust width for padding/border */
+    padding: 8px;
+    margin-bottom: 0; /* No margin below input anymore */
+    border: 1px solid #ccc;
+    border-radius: 4px;
 }
 
+.garment-lookup-panel {
+    position: absolute; /* Overlay positioning */
+    top: 100%; /* Positioned below the container */
+    left: 0;
+    width: 100%; /* Match container width */
+    background-color: #f9f9f9;
+    border: 1px solid #ccc;
+    border-top: none; /* No top border to visually connect to input */
+    border-radius: 0 0 5px 5px; /* Rounded corners at bottom only */
+    box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+    padding: 10px;
+    z-index: 1000; /* Ensure it's on top of other content */
+    display: none; /* Initially hidden */
+    max-height: 300px; /* Example max height, adjust as needed */
+    overflow-y: auto; /* Scroll if content overflows */
+}
+
+
+/* --- Colour and Image Options (Inside Panel) --- */
 .garment-colour-options,
 .garment-image-options {
-  display: flex;
-  gap: 8px;
-  margin-bottom: 10px;
-  overflow-x: auto; /* Horizontal scrolling for options if needed */
+    display: flex;
+    gap: 8px;
+    margin-bottom: 10px;
+    overflow-x: auto;
+    flex-wrap: wrap; /* Allow buttons to wrap to next line */
 }
 
 .garment-colour-options button,
 .garment-image-options button {
-  padding: 8px 12px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  background-color: #eee;
-  cursor: pointer;
-  font-size: 0.9em;
+    padding: 8px 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: #eee;
+    cursor: pointer;
+    font-size: 0.9em;
+    flex: 0 0 auto; /* Don't allow buttons to grow/shrink, base size on content */
 }
+
 
 .garment-colour-options button.selected,
 .garment-image-options button.selected {
-  background-color: #ddd; /* Highlight selected option */
+    background-color: #ddd;
 }
 
 .garment-image-preview {
-  border: 1px dashed #ddd;
-  border-radius: 5px;
-  min-height: 100px; /* Adjust preview area height */
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
+    border: 1px dashed #ddd;
+    border-radius: 5px;
+    min-height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
 }
 
 .garment-image-preview img {
-  max-width: 95%;
-  max-height: 95%;
-  display: block;
-  object-fit: contain; /* Make sure image fits within preview box */
+    max-width: 95%;
+    max-height: 95%;
+    display: block;
+    object-fit: contain;
 }
