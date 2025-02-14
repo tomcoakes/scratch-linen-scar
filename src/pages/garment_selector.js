@@ -144,7 +144,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
     function displayGarmentImageOptions(garment, colourwayCode) {
-        garmentImageOptionsDiv.innerHTML = '';
+        garmentImageOptionsDiv.innerHTML = ''; // Clear previous image options
         garmentImagePreviewDiv.innerHTML = '';
 
         const imageTypes = ['Front', 'Back', 'Side', 'Detail'];
@@ -155,23 +155,30 @@ document.addEventListener('DOMContentLoaded', () => {
         garmentImageOptionsDiv.innerHTML = imageOptionsHTML;
 
         garmentImageOptionsDiv.querySelectorAll('.image-option-button').forEach(button => {
+            // --- MODIFIED: Pass garment and colourwayCode to handleImageSelection ---
             button.addEventListener('click', (event) => handleImageSelection(event, garment, colourwayCode));
         });
     }
 
+    // --- Handle Image Selection (modified) ---
     function handleImageSelection(event, garment, colourwayCode) {
         const imageType = event.target.dataset.imageType;
         const imageUrl = event.target.dataset.imageUrl;
         console.log(`Selected image type: ${imageType}, URL: ${imageUrl}`);
-        displayGarmentPreviewImage(imageUrl);
+
+        // --- NEW: Get colour name using getColourwayName ---
+        const colourName = getColourwayName(colourwayCode) || colourwayCode;
+
+        // --- MODIFIED: Pass garment, colourName, and imageUrl to displayGarmentPreviewImage ---
+        displayGarmentPreviewImage(imageUrl, garment, colourName);
     }
 
-    function displayGarmentPreviewImage(imageUrl) {
+    function displayGarmentPreviewImage(imageUrl, garment, colourName) { // MODIFIED: Accept garment and colourName
         garmentImagePreviewDiv.innerHTML = '';
 
         const imgElement = document.createElement('img');
         imgElement.src = imageUrl;
-        imgElement.style.cursor = 'pointer';
+        imgElement.style.cursor = 'pointer'; // Change cursor to pointer to indicate clickability
 
         imgElement.onload = () => {
             garmentImagePreviewDiv.appendChild(imgElement);
@@ -180,27 +187,13 @@ document.addEventListener('DOMContentLoaded', () => {
             garmentImagePreviewDiv.innerHTML = `<p>Image not available.</p>`;
         };
 
-        // --- Modified: Click event listener to pass garment and colour data ---
+        // --- NEW: Click event listener for the image (modified to pass more data) ---
         garmentImagePreviewDiv.addEventListener('click', () => {
-            const currentImageUrl = imgElement.src;
-            const currentGarmentCode = garmentCodeInput.value;
-
-            // --- Get the selected garment object ---
-            const selectedGarment = garmentDataCache.find(garment => garment.styleCode.toUpperCase() === currentGarmentCode.toUpperCase());
-            const selectedColourwayCode = garmentColourDropdown.value;
-            const selectedColourwayName = getColourwayName(selectedColourwayCode) || selectedColourwayCode; // Get colour name
-
-            if (selectedGarment) {
-                handleGarmentImageFromURL(
-                    currentImageUrl,
-                    currentGarmentCode,
-                    selectedGarment.title, // Pass garment title
-                    selectedColourwayName // Pass colourway name
-                );
-            } else {
-                console.warn("Garment object not found in cache for code:", currentGarmentCode);
-                handleGarmentImageFromURL(currentImageUrl, currentGarmentCode, null, selectedColourwayName); // Still call function, but with null for title
-            }
+            const currentImageUrl = imgElement.src; // Get the image URL
+            const currentGarmentCode = garmentCodeInput.value; // Get the garment code from input
+            const garmentDescription = garment.title; // Get garment description from garment object
+            // --- MODIFIED: Call handleGarmentImageFromURL with description and colourName ---
+            handleGarmentImageFromURL(currentImageUrl, currentGarmentCode, garmentDescription, colourName);
         });
     }
 

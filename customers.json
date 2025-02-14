@@ -43,6 +43,13 @@
         "logo": "No Logos",
         "logoPosition": "Left Breast",
         "description": ""
+      },
+      {
+        "url": "/customer_proofs/proof-RX101-Pro RTX Pro Piqu_ Polo Shirt _ Purple-20250214T160205.pdf",
+        "garmentCode": "RX101",
+        "logo": "No Logos",
+        "logoPosition": "Left Breast",
+        "description": "Pro RTX Pro Piqué Polo Shirt - Purple"
       }
     ]
   },
@@ -89,11 +96,11 @@
         "description": "Gildan Heavy Cotton™ T-Shirt - Kiwi Green - Babcock Left Breast + Sub Com Group Rear"
       },
       {
-        "url": "/customer_proofs/proof-BR001--20250214T151814.pdf",
-        "garmentCode": "BR001",
+        "url": "/customer_proofs/proof-WR001-Warrior Hi_Vis Waistcoat _ Fluorescent Orange-20250214T160414.pdf",
+        "garmentCode": "WR001",
         "logo": "No Logos",
         "logoPosition": "Left Breast",
-        "description": ""
+        "description": "Warrior Hi-Vis Waistcoat - Fluorescent Orange"
       }
     ]
   },
