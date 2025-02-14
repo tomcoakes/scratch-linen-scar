@@ -433,7 +433,7 @@
     position: absolute;
     top: 100%;
     left: 0;
-    width: 100%;
+    width: calc(100% - 22px);
     background-color: #f9f9f9;
     border: 1px solid #ccc;
     border-top: none;

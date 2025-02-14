@@ -193,7 +193,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const styleCodePath = styleCode.replace(/\s+/g, '%20');
         const colourwayCodePath = colourwayCode.replace(/\s+/g, '%20');
 
-        const filename = `${styleCodePath}%20${colourwayCodePath}%20${view.toUpperCase}.jpg`;
+        const filename = `${styleCodePath}%20${colourwayCodePath}%20${view.toUpperCase()}.jpg`;
         return `${baseUrl}${brandPath}/Product%20Images/${styleCodePath}/ProductCarouselMain/${filename}`;
     }
 
