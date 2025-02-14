@@ -370,17 +370,114 @@
 }
 
 
-/* --- Colour and Image Options (Inside Panel) --- */
-.garment-colour-options,
+/* proof_creator.css */
+
+/* --- Garment Lookup UI - Container and Panel (Dropdown Style) - UPDATED --- */
+.garment-lookup-container {
+    position: relative; /* Positioning context for panel */
+    width: 280px; /* Slightly wider container */
+    margin-top: 10px;
+}
+
+.garment-search-section h3 {
+    font-size: 1.2em;
+    margin-top: 0;
+    margin-bottom: 10px;
+}
+
+.garment-search-input {
+    position: relative; /* For positioning the dropdown */
+}
+
+.garment-search-input input[type="text"] {
+    width: calc(100% - 22px);
+    padding: 8px;
+    margin-bottom: 0; /* No margin below input */
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+/* --- Autocomplete Suggestions Dropdown --- */
+.suggestions-dropdown {
+    position: absolute; /* Position dropdown below input */
+    left: 0;
+    top: 100%;
+    width: 100%;
+    background-color: white;
+    border: 1px solid #ccc;
+    border-top: none; /* Visually connect to input */
+    border-radius: 0 0 4px 4px; /* Rounded bottom corners */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    z-index: 1100; /* Higher than panel */
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: none; /* Initially hidden */
+    max-height: 200px; /* Example max height for suggestions */
+    overflow-y: auto; /* Scroll if many suggestions */
+}
+
+.suggestions-dropdown li {
+    padding: 8px 12px;
+    cursor: pointer;
+    font-size: 0.95em;
+}
+
+.suggestions-dropdown li:hover {
+    background-color: #eee;
+}
+
+
+/* --- Garment Lookup Panel (Dropdown Content Area) --- */
+.garment-lookup-panel {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background-color: #f9f9f9;
+    border: 1px solid #ccc;
+    border-top: none;
+    border-radius: 0 0 5px 5px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+    padding: 10px;
+    z-index: 1000;
+    display: none; /* Initially hidden */
+    /* max-height: 300px;  No max height for panel anymore */
+    overflow-y: visible; /* No scroll for panel itself, content within will scroll */
+}
+
+/* --- Colour Dropdown Styling --- */
+.garment-colour-selection label {
+    display: block; /* Label on top of dropdown */
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.garment-colour-selection select {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-bottom: 10px;
+    font-size: 0.95em;
+    appearance: none; /* Remove default dropdown arrow for custom styling if needed */
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background-image: url('data:image/svg+xml;utf8,<svg fill="currentColor" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/><path d="M0 0h24v24H0z" fill="none"/></svg>'); /* Example custom arrow */
+    background-repeat: no-repeat;
+    background-position-x: 100%;
+    background-position-y: 5px;
+}
+
+/* --- Image Options (Horizontal Buttons) --- */
 .garment-image-options {
     display: flex;
     gap: 8px;
     margin-bottom: 10px;
     overflow-x: auto;
-    flex-wrap: wrap; /* Allow buttons to wrap to next line */
+    flex-wrap: wrap;
 }
 
-.garment-colour-options button,
 .garment-image-options button {
     padding: 8px 12px;
     border: 1px solid #ccc;
@@ -388,15 +485,15 @@
     background-color: #eee;
     cursor: pointer;
     font-size: 0.9em;
-    flex: 0 0 auto; /* Don't allow buttons to grow/shrink, base size on content */
+    flex: 0 0 auto;
 }
 
-
-.garment-colour-options button.selected,
 .garment-image-options button.selected {
     background-color: #ddd;
 }
 
+
+/* --- Image Preview (unchanged) --- */
 .garment-image-preview {
     border: 1px dashed #ddd;
     border-radius: 5px;

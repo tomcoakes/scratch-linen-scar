@@ -89,25 +89,32 @@
             </div>
 
             <!-- --- NEW Garment Search UI --- -->
-            <div id="garment-lookup-ui" class="garment-lookup-ui">
-              <h3>Garment Lookup</h3>
-              <div class="garment-search-input">
-                <input
-                  type="text"
-                  id="garment-code-lookup-input"
-                  placeholder="Enter Garment Code"
-                />
-              </div>
-              <div id="garment-colour-options" class="garment-colour-options">
-                <!-- Colour options buttons will be added here -->
-              </div>
-              <div id="garment-image-options" class="garment-image-options">
-                <!-- Image options (Front, Back, Side, Detail) will be added here -->
-              </div>
-              <div id="garment-image-preview" class="garment-image-preview">
-                <!-- Selected garment image preview will be shown here -->
-              </div>
-            </div>
+<div class="garment-lookup-container">
+    <div class="garment-search-section">
+        <h2>Garment Lookup</h2>
+        <div class="garment-search-input">
+            <input type="text" id="garment-code-lookup-input" placeholder="Enter Garment Code">
+            <ul id="garment-code-suggestions" class="suggestions-dropdown"></ul> <!-- Autocomplete dropdown -->
+        </div>
+    </div>
+
+    <div id="garment-lookup-panel" class="garment-lookup-panel">
+        <div class="garment-colour-selection">
+            <label for="garment-colour-dropdown">Select Colour:</label>
+            <select id="garment-colour-dropdown">
+                <option value="">-- Select Colour --</option>
+                <!-- Colour options will be added here -->
+            </select>
+        </div>
+        <div id="garment-image-options" class="garment-image-options">
+            <!-- Image options will be added here -->
+        </div>
+        <div id="garment-image-preview" class="garment-image-preview">
+            <!-- Selected garment image preview -->
+        </div>
+    </div>
+</div>
+            
 
             <canvas id="proof-canvas" width="600" height="600"></canvas>
 
