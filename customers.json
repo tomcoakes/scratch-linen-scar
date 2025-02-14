@@ -150,5 +150,45 @@
         "description": ""
       }
     ]
+  },
+  {
+    "name": "Bradleys Surveyors",
+    "contactPerson": "Darren McKenna",
+    "email": "dmckenna@tbsg.co.uk",
+    "id": 4,
+    "logos": [
+      {
+        "logoUrl": "/customer_logos/logo-upload-input-1739551056966-974922248.svg",
+        "logoName": "Bradleys Surveyors",
+        "logoPosition": "Left Chest",
+        "logoType": "Embroidery",
+        "threadNumbers": [
+          "1824"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Data-Path",
+    "contactPerson": "Mr Path",
+    "email": "Mmr@path.com",
+    "id": 5,
+    "logos": [
+      {
+        "logoUrl": "/customer_logos/logo-upload-input-1739551110716-388941210.svg",
+        "logoName": "data-path",
+        "logoPosition": "Left Chest",
+        "logoType": "Embroidery",
+        "threadNumbers": [
+          "1824"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Proplastix Ltd",
+    "contactPerson": "Steve Payne",
+    "email": "spayne@tbsg.co.uk",
+    "id": 6
   }
 ]
