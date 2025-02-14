@@ -441,7 +441,7 @@
     box-shadow: 0 4px 8px rgba(0,0,0,0.15);
     padding: 10px;
     z-index: 1000;
-    display: none; /* Initially hidden */
+    display: block; /* Initially hidden */
     /* max-height: 300px;  No max height for panel anymore */
     overflow-y: visible; /* No scroll for panel itself, content within will scroll */
 }

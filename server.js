@@ -982,16 +982,20 @@ app.get("/api/colourway-names", (req, res) => {
 });
 
 app.get('/image-check', async (req, res) => {
-    const imageUrl = req.query.url; // Get image URL from query parameter
+    const imageUrl = req.query.url;
+    console.log("Proxy received request for URL:", imageUrl); // Log received URL
+
     if (!imageUrl) {
+        console.log("Error: Missing URL parameter"); // Log missing URL error
         return res.status(400).send('Missing URL parameter');
     }
 
     try {
         const response = await fetch(imageUrl, { method: 'HEAD' });
-        res.status(response.status).send(); // Forward the status code
+        console.log("Proxy fetched URL, status code:", response.status); // Log status code from fetch
+        res.status(response.status).send();
     } catch (error) {
-        console.error('Proxy error:', error);
+        console.error('Proxy error during fetch:', error); // Log full fetch error
         res.status(500).send('Proxy error');
     }
 });
