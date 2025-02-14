@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const garmentCode = garmentCodeInput.value.trim().toUpperCase(); // Get garment code, convert to uppercase for consistency
         if (garmentCode.length < 2) { 
             garmentColourOptionsDiv.innerHTML = '';
-            garmentImagesPreviewDiv.innerHTML = '';
+            garmentImagesPreviewDiv.innerHTML = '';const response = await fetch('/colourway
             return;
         }
 
