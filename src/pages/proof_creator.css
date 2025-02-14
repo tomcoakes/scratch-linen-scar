@@ -29,7 +29,7 @@
   padding: 0;
   margin: 0;
   /*     overflow-y: auto; /* Make the list scrollable if it overflows */
-  max-height: 300px; /* Set a maximum height */
+  min-height: 300px; /* Set a maximum height */
   overflow: auto;
 }
 

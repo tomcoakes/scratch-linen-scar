@@ -224,6 +224,15 @@
           "1801"
         ]
       }
+    ],
+    "proofs": [
+      {
+        "url": "/customer_proofs/proof-55000-SOL_S North Fleece Jacket _ Charcoal-20250214T165541.pdf",
+        "garmentCode": "55000",
+        "logo": "No Logos",
+        "logoPosition": "Left Breast",
+        "description": "SOL'S North Fleece Jacket - Charcoal"
+      }
     ]
   },
   {
@@ -296,6 +305,15 @@
         "threadNumbers": [
           "1801"
         ]
+      }
+    ],
+    "proofs": [
+      {
+        "url": "/customer_proofs/proof-55000-SOL_S North Fleece Jacket _ Grey Marl-20250214T165958.pdf",
+        "garmentCode": "55000",
+        "logo": "No Logos",
+        "logoPosition": "Left Breast",
+        "description": "SOL'S North Fleece Jacket - Grey Marl"
       }
     ]
   }
