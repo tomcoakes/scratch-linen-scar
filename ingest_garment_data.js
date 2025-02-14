@@ -1,35 +1,37 @@
 // ingest_garment_data.js
 
-require('dotenv').config(); // Load environment variables from .env file
+require('dotenv').config();
 const fs = require('fs');
 const path = require('path');
-const fetch = require('node-fetch'); // For making HTTP requests
-const AdmZip = require('adm-zip');   // For unzipping files
+const fetch = require('node-fetch');
+const AdmZip = require('adm-zip');
+const csvParser = require('csv-parser');
 
-const DELAY = 3000; // Let's try a 3-second delay to be safe for now
+const DELAY = 3000;
 
-// Helper function to pause execution (delay)
 function delay(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
 }
 
 async function ingestGarmentData() {
-    console.log("Starting garment data ingestion...");
+    console.log("Starting garment data ingestion (parsing only selected headers)...");
 
-    const zipFilePath = path.join(__dirname, 'supplier_data', 'products.zip'); // Where to save the downloaded zip
-    const extractPath = path.join(__dirname, 'supplier_data', 'extracted_products'); // Folder to extract contents into
+    const zipFilePath = path.join(__dirname, 'supplier_data', 'products.zip');
+    const extractPath = path.join(__dirname, 'supplier_data', 'extracted_products');
+    const garmentCataloguePath = path.join(__dirname, 'garment_catalogue.json');
+    const csvFilePath = path.join(extractPath, 'products.csv'); 
 
     const apiEndpoint = 'https://www.pencarrie.com/api/public/v1/export/products.zip';
-    const apiToken = process.env.PENCARRIE_API_TOKEN; // Access your token from .env
+    const apiToken = process.env.PENCARRIE_API_TOKEN;
 
     if (!apiToken) {
         console.error("Error: PENCARRIE_API_TOKEN environment variable is not set in .env file.");
-        return; // Stop execution if token is missing
+        return;
     }
 
     try {
         console.log("Downloading products.zip...");
-        await delay(DELAY); // ADD THIS LINE - Wait for the specified delay before fetch
+        await delay(DELAY);
         const response = await fetch(apiEndpoint, {
             headers: {
                 'Authorization': `Bearer ${apiToken}`
@@ -48,16 +50,62 @@ async function ingestGarmentData() {
         // --- Unzipping ---
         console.log("Unzipping products.zip...");
         const zip = new AdmZip(zipFilePath);
-
-        // Ensure the extraction directory exists
         if (!fs.existsSync(extractPath)) {
             fs.mkdirSync(extractPath, { recursive: true });
         }
-
-        zip.extractAllTo(extractPath, true); // true for overwrite
+        zip.extractAllTo(extractPath, true);
         console.log(`products.zip extracted to: ${extractPath}`);
 
-        console.log("Garment data ingestion - Download and Unzip COMPLETED!");
+        // --- CSV Parsing and JSON Conversion (Selecting only needed headers) ---
+        console.log("Parsing CSV (selected headers) and converting to JSON...");
+        const garments = [];
+
+        fs.createReadStream(csvFilePath)
+            .pipe(csvParser())
+            .on('data', (row) => {
+                try {
+                    // --- Transform and structure data - SELECTING ONLY NEEDED FIELDS ---
+                    const garment = {
+                        sku: row['SKU'],
+                        styleCode: row['Style Code'],
+                        title: row['Title'],
+                        brand: row['Brand'],
+                        type: row['Type'],
+                        colourwayName: row['Colourway Name'],
+                        frontImage: row['Front Image'],
+                        backImage: row['Back Image'],
+                        sideImage: row['Side Image'],
+                        detailImage: row['Detail Image']
+                    };
+                    garments.push(garment);
+                     console.log("Parsed garment (SKU):", garment.sku, garment.title); // Log successful parse
+                } catch (error) {
+                    console.error("Error parsing CSV row:", error);
+                }
+            })
+            .on('error', (error) => {
+                console.error("CSV parsing error:", error);
+            })
+            .on('end', () => {
+                fs.writeFile(garmentCataloguePath, JSON.stringify(garments, null, 2), (err) => {
+                    if (err) {
+                        console.error("Error writing garment_catalogue.json:", err);
+                    } else {
+                        console.log(`Successfully converted ${garments.length} garments and saved to garment_catalogue.json`);
+                    }
+
+                    // --- Delete CSV file ---
+                    fs.unlink(csvFilePath, (unlinkErr) => {
+                        if (unlinkErr) {
+                            console.error("Error deleting CSV file:", unlinkErr);
+                        } else {
+                            console.log(`CSV file deleted: ${csvFilePath}`);
+                        }
+                    });
+                });
+            });
+
+        console.log("Garment data ingestion and JSON conversion COMPLETED (selected headers)!");
 
     } catch (error) {
         console.error("Error during garment data ingestion:", error);
