@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Customer Proof</title>
+  
+    <style>
+
+      /* proof_creator.css */
+
+/* Reset and Base Styles (ensure consistency) */
+body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background-color: #fff; /* Ensure PDF background is white */
+    color: #333; /* Default text color */
+}
+
+.proof-container {
+    width: 297mm; /* A4 Landscape Width */
+    height: 210mm; /* A4 Landscape Height */
+    padding: 5mm 5mm; /* Adjust padding for margins */
+    position: relative;
+    background-color: #fff; /* White background for PDF */
+    /* border: 1px solid red;  For debugging layout */
+}
+
+/* --- Header Section --- */
+.header {
+    text-align: left;
+    margin-bottom: 10px; /* Reduced margin */
+    color: #000; /* Black header text */
+    border-bottom: 2px solid #EC008D;
+}
+
+.header h1 {
+    font-size: 28px;
+    margin-bottom: 10px;
+    font-weight: bold;
+    margin-top: 100px;
+}
+
+.header p {
+    font-size: 11px; /* Smaller contact info text */
+    margin: 0;
+    color: #555; /* Slightly lighter contact info */
+}
+
+/* --- Logo Area (Top Left) --- */
+.logo-area {
+    position: absolute;
+    top: 5mm;
+    left: 5mm; /* Match container padding */
+    width: 90px; /* Adjusted logo width */
+    height: auto; /* Adjust height automatically */
+}
+
+.logo-area img {
+    max-width: 200%;
+    height: auto;
+    display: block;
+}
+
+/* --- Contact Info (Top Right) --- */
+.company-tel {
+    position: absolute;
+    top: 20mm;
+    right: 25mm; /* Match container padding */
+    text-align: right;
+    color: #000; /* Black contact info text */
+    margin-top: auto;
+  font-size: 15pt;
+}
+.company-email {
+    position: absolute;
+    top: 20mm;
+    right: 25mm; /* Match container padding */
+    text-align: right;
+    color: #000; /* Black contact info text */
+  font-size: 15pt;
+    
+}
+
+.contact-info p {
+    font-size: 12px; /* Slightly larger contact info text */
+    margin: 3px 0; /* Adjusted spacing */
+}
+
+/* --- Garment Details (Below Header) --- */
+.garment-details {
+    margin-top: 20px; /* Spacing below header */
+    margin-bottom: 20px;
+    color: #000; /* Black garment details text */
+}
+
+.garment-details p {
+    font-size: 16px; /* Slightly larger garment details text */
+    margin: 6px 0; /* Adjusted spacing */
+    font-weight: normal; /* Make garment details normal weight */
+}
+
+
+/* --- Image Grid --- */
+.image-grid {
+    display: grid;
+    grid-template-columns: 0.4fr 0.3fr; /* First column takes more width, second column (stack) takes less */
+    gap: 4mm; /* Gap between grid items */
+    margin-bottom: 15mm;
+}
+
+.image-box-stack {
+    display: grid; /* Enable grid layout for the stacked boxes */
+    grid-template-rows: 1fr 1fr; /* Stack them vertically, equal height */
+    gap: 4mm; /* Gap between stacked boxes */
+}
+
+
+.image-box {
+    border: 1px solid #ccc;
+    /* height: 130mm;  No fixed height anymore, adjust to content */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    border-radius: 5px;
+    min-height: 60mm; /* Minimum height for each image box */
+    width: 110mm;  /*  Example - Adjust as needed! */
+    height: 120mm; /* Example - Adjust as needed! */
+  object-fit: contain; 
+}
+.image-box-secondary {
+    border: 1px solid #ccc;
+    /* height: 130mm;  No fixed height anymore, adjust to content */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    border-radius: 5px;
+    min-height: 50mm; /* Minimum height for each image box */
+    width: 80mm;  /*  Example - Adjust as needed! */
+    height: 57mm; /* Example - Adjust as needed! */
+  object-fit: contain; 
+}
+
+.image-box img {
+    max-width: 95%; /* Slightly smaller image inside box */
+    max-height: 95%;
+    display: block;
+    transform: scale(1.0); /* Default scale (no zoom) */
+    transform-origin: center center; /* Point around which to scale */
+    object-fit: scale-down;
+}
+      
+.image-box-secondary img {
+    max-width: 95%; /* Slightly smaller image inside box */
+    max-height: 95%;
+    display: block;
+    transform: scale(0.6); /* Default scale (no zoom) */
+    transform-origin: center center; /* Point around which to scale */
+    object-fit: scale-down;
+}
+
+.horizontal-line-top {
+    position: absolute;
+    top: 165px; /* Adjust position under logo */
+    left: 25mm;
+    right: 25mm;
+    height: 2px;
+    background-color: #EC008D; /* Pink line colour */
+}
+
+.horizontal-line-bottom {
+    position: absolute;
+    bottom: 20mm; /* Adjust position above footer */
+    left: 5mm;
+    right: 5mm;
+    height: 1px; /* Thinner bottom line */
+    background-color: #ccc; /* Light grey bottom line */
+}
+
+/* --- Footer Section --- */
+.footer {
+    position: absolute;
+    bottom: 10mm;
+    left: 5mm; /* Match container padding */
+    right: 5mm; /* Match container padding */
+    text-align: left;
+    font-size: 9px; /* Even smaller footer text */
+    color: #777; /* Darker grey footer text */
+    border-top: 2px solid #EC008D; /* Lighter border */
+    padding-top: 8px; /* Reduced padding */
+}
+
+.footer p {
+    margin: 2px 0; /* Reduced spacing in footer */
+}
+
+.company-tel {
+  position: absolute;
+}
+      
+    </style>
+</head>
+<body>
+    <div class="proof-container">
+        <div class="logo-area">
+            <!-- Company Logo -->
+            <img src="images/company_logo.png" alt="Company Logo">
+        </div>
+        <div class="company-contact-info">
+              <p class="company-tel">Tel: 0333 456 1501</p>
+              <p class="company-email">Email: sales@tbsg.co.uk</p>
+        </div>
+
+        <div class="header">
+            <h1>Approval of Company Logo</h1>
+
+        </div>
+
+        <div class="horizontal-line-top"></div>  <!-- Top Horizontal Line -->
+
+
+        <div class="garment-details">
+            <p>[GARMENT_CODE]</p>
+            <p>[PROOF_DESCRIPTION]</p>
+        </div>
+
+        <div class="image-grid">
+            <div class="image-box" id="proof-image-1">
+                <!-- Proof Image 1 Placeholder -->
+            </div>
+            <div class="image-box-stack">
+              <div class="image-box-secondary" id="proof-image-2">
+                  <!-- Proof Image 2 Placeholder -->
+              </div>
+              <div class="image-box-secondary" id="proof-image-3">
+                  <!-- Proof Image 3 Placeholder -->
+              </div>
+            </div>
+        </div>
+
+        <div class="footer">
+            <p>107 Longmead Road Emerald Park East Emersons Green Bristol BS16 7FG</p>
+            <p>tbsg.co.uk</p>
+             <p>Positional Guide only</p>
+        </div>
+    </div>
+</body>
+</html>

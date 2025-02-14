@@ -1,119 +1,118 @@
 /* proof_creator.css */
 
 /* Styles to make the canvas fit and be responsive */
-.left-column{
-      max-width: 260px;
-      min-width: 150px;
-    }
+.left-column {
+  max-width: 260px;
+  min-width: 150px;
+}
 
 /* --- CRUCIAL: Set display size, NOT actual size --- */
 #proof-canvas {
-    width: 600px;  /* VISUAL width */
-    height: 600px; /* VISUAL height */
-    border: 2px solid #1abc9c;
-    border-radius: 10px;
-    background-color: #fff;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 600px; /* VISUAL width */
+  height: 600px; /* VISUAL height */
+  border: 2px solid #1abc9c;
+  border-radius: 10px;
+  background-color: #fff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 /*  Remove width/height from lower/upper canvas - let Fabric manage those */
 #proof-canvas .lower-canvas,
 #proof-canvas .upper-canvas {
-    /* width: 600px;   REMOVE */
-    /* height: 600px;  REMOVE */
+  /* width: 600px;   REMOVE */
+  /* height: 600px;  REMOVE */
 }
-
 
 /* Style for the customer list */
 #customer-list {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-/*     overflow-y: auto; /* Make the list scrollable if it overflows */ */
-    max-height: 300px; /* Set a maximum height */
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  /*     overflow-y: auto; /* Make the list scrollable if it overflows */
+  max-height: 300px; /* Set a maximum height */
 }
 
 #customer-list li {
-    padding: 10px;
-    border-bottom: 1px solid #eee;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
+  padding: 10px;
+  border-bottom: 1px solid #eee;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
 }
 
 #customer-list li:hover {
-    background-color: #f0f0f0;
+  background-color: #f0f0f0;
 }
 
 #customer-list li.selected {
-    background-color: #1abc9c; /* Customer page main color */
-    color: white;
+  background-color: #1abc9c; /* Customer page main color */
+  color: white;
 }
 
 /* Style for the selected logo list */
 #selected-logos-list {
-    list-style: none;
-    padding: 0;
-    margin: 10px 0;
+  list-style: none;
+  padding: 0;
+  margin: 10px 0;
 }
 
 #selected-logos-list li {
-    padding: 8px;
-    background-color: #f9f9f9;
-    border: 1px solid #ddd;
-    margin-bottom: 5px;
-    border-radius: 4px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+  padding: 8px;
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
+  margin-bottom: 5px;
+  border-radius: 4px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 #selected-logos-list button {
-    background-color: #e74c3c; /* Red color for remove button */
-    color: white;
-    border: none;
-    padding: 5px 10px;
-    border-radius: 4px;
-    cursor: pointer;
+  background-color: #e74c3c; /* Red color for remove button */
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 4px;
+  cursor: pointer;
 }
 
 #selected-logos-list button:hover {
-    background-color: #c0392b;
+  background-color: #c0392b;
 }
 #proof-creator-page .main-container {
-   display: flex;
-    gap: 1rem; /*Consistent spacing*/
-    overflow: hidden;
-     width: 100%;
-    max-width: none;
-    margin: 0;
+  display: flex;
+  gap: 1rem; /*Consistent spacing*/
+  overflow: hidden;
+  width: 100%;
+  max-width: none;
+  margin: 0;
 }
 
 #proof-creator-page .left-column {
-    flex: 0.5;
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-    overflow-y: auto;
-    max-height: calc(100vh - 160px);
-    background: #fff;
-    padding: 2rem;
-    border-radius: 10px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  flex: 0.5;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  overflow-y: auto;
+  max-height: calc(100vh - 160px);
+  background: #fff;
+  padding: 2rem;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 #proof-form {
-   margin-top: 2rem;
+  margin-top: 2rem;
   display: flex;
   flex-wrap: wrap;
-    gap: 1rem;
+  gap: 1rem;
 }
 #proof-form label {
-   display: block;
+  display: block;
 }
 #proof-form input,
 #proof-form textarea {
- width: 100%;
+  width: 100%;
   padding: 0.5rem 0.75rem;
   border: 1px solid #ced4da;
   border-radius: 0.25rem;
@@ -139,64 +138,64 @@
   margin-top: 1.4rem;
 }
 #submit-proof-button:hover {
-     background-color: #16a085;
+  background-color: #16a085;
 }
 
 /* Inside proof_creator.css */
 
 .canvas-controls {
-    display: flex;
-    gap: 10px; /* Space between buttons */
-    margin-bottom: 10px; /* Space below the buttons */
-    justify-content: center; /* Center the buttons horizontally */
+  display: flex;
+  gap: 10px; /* Space between buttons */
+  margin-bottom: 10px; /* Space below the buttons */
+  justify-content: center; /* Center the buttons horizontally */
 }
 
 .canvas-controls button {
-    padding: 8px 12px;
-    font-size: 1rem;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    background-color: #3498db; /* Example color */
-    color: white;
-    transition: background-color 0.3s ease;
+  padding: 8px 12px;
+  font-size: 1rem;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  background-color: #3498db; /* Example color */
+  color: white;
+  transition: background-color 0.3s ease;
 }
 
 .canvas-controls button:hover {
-    background-color: #2980b9;
+  background-color: #2980b9;
 }
 
 #reset-zoom {
   background-color: #960736; /* Different color for reset */
 }
-#reset-zoom:hover{
-   background-color: #ec4b3c;
+#reset-zoom:hover {
+  background-color: #ec4b3c;
 }
 
 .canvas-view-indicators {
-    display: flex;
-    justify-content: center; /* Center the indicators */
-    gap: 8px; /* Spacing between indicators */
-    margin-bottom: 10px; /* Space below indicators */
+  display: flex;
+  justify-content: center; /* Center the indicators */
+  gap: 8px; /* Spacing between indicators */
+  margin-bottom: 10px; /* Space below indicators */
 }
 
 .view-indicator {
-    width: 12px;
-    height: 12px;
-    border-radius: 50%;
-    background-color: #ddd; /* Default indicator color */
-    border: 2px solid transparent; /* To make active state clearer */
-    cursor: pointer;
-    transition: background-color 0.3s ease, border-color 0.3s ease;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background-color: #ddd; /* Default indicator color */
+  border: 2px solid transparent; /* To make active state clearer */
+  cursor: pointer;
+  transition: background-color 0.3s ease, border-color 0.3s ease;
 }
 
 .view-indicator.active {
-    background-color: #1abc9c; /* Active indicator color (customer page turquoise) */
-    border-color: #7f8c8d; /* Example border for active state */
+  background-color: #1abc9c; /* Active indicator color (customer page turquoise) */
+  border-color: #7f8c8d; /* Example border for active state */
 }
 
 .view-indicator:hover {
-    background-color: #ccc; /* Slightly darker on hover */
+  background-color: #ccc; /* Slightly darker on hover */
 }
 
 /* proof_creator.css */
@@ -204,78 +203,145 @@
 /* ... (rest of your existing CSS) ... */
 
 .canvas-wrapper {
-    position: relative; /* Positioning context for controls */
-    /* Ensure wrapper takes up available space */
-    width: 100%;
-    display: flex;
-    flex-direction: column; /* Stack controls and canvas vertically */
-    align-items: center; /* Center content horizontally */
+  position: relative; /* Positioning context for controls */
+  /* Ensure wrapper takes up available space */
+  width: 100%;
+  display: flex;
+  flex-direction: column; /* Stack controls and canvas vertically */
+  align-items: center; /* Center content horizontally */
 }
-
 
 /* --- Canvas Controls (Top Right) --- */
 .canvas-controls {
-    position: absolute; /* Positioned relative to canvas-wrapper */
-    top: 10px;          /* Adjust as needed */
-    right: 10px;         /* Adjust as needed */
-    display: flex;
-    gap: 5px;
-    z-index: 100; /* Ensure controls are on top of canvas */
+  position: absolute; /* Positioned relative to canvas-wrapper */
+  top: 10px; /* Adjust as needed */
+  right: 10px; /* Adjust as needed */
+  display: flex;
+  gap: 5px;
+  z-index: 100; /* Ensure controls are on top of canvas */
 }
 
 .canvas-controls button {
-    padding: 6px 10px; /* Smaller buttons */
-    font-size: 0.8rem;
+  padding: 6px 10px; /* Smaller buttons */
+  font-size: 0.8rem;
 }
 
 /* --- Canvas Carousel Indicators (Bottom Center) --- */
 .canvas-view-indicators {
-    position: absolute; /* Positioned relative to canvas-wrapper */
-    bottom: 10px;       /* Adjust as needed */
-    left: 50%;         /* Center horizontally */
-    transform: translateX(-50%); /* Center precisely */
-    display: flex;
-    gap: 6px;
-    z-index: 100; /* Ensure indicators are on top of canvas */
+  position: absolute; /* Positioned relative to canvas-wrapper */
+  bottom: 10px; /* Adjust as needed */
+  left: 50%; /* Center horizontally */
+  transform: translateX(-50%); /* Center precisely */
+  display: flex;
+  gap: 6px;
+  z-index: 100; /* Ensure indicators are on top of canvas */
 }
 
 .view-indicator {
-    width: 10px; /* Slightly smaller indicators */
-    height: 10px;
-    border-width: 2px; /* Thicker border for smaller indicators */
+  width: 10px; /* Slightly smaller indicators */
+  height: 10px;
+  border-width: 2px; /* Thicker border for smaller indicators */
 }
-
 
 /* --- Carousel Arrow Buttons (Vertical Middle) --- */
 .canvas-carousel-controls {
-    position: absolute;
-    bottom: 10px;
-    left: 0;
-    width: 100%;
-    display: flex;
-    justify-content: space-between; /* Arrows on left/right, indicators in center */
-    align-items: center; /* Vertically center arrows and indicators */
-    padding: 0 10px; /* Add some horizontal padding */
-    pointer-events: none; /* Allow clicks to pass through to canvas for panning/selecting */
+  position: absolute;
+  bottom: 10px;
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-between; /* Arrows on left/right, indicators in center */
+  align-items: center; /* Vertically center arrows and indicators */
+  padding: 0 10px; /* Add some horizontal padding */
+  pointer-events: none; /* Allow clicks to pass through to canvas for panning/selecting */
 }
 
 .carousel-arrow {
-    background: none;
-    border: none;
-    font-size: 1.5rem; /* Size of arrows */
-    color: #555; /* Grey arrows */
-    cursor: pointer;
-    transition: color 0.3s ease;
-    pointer-events: auto; /* Make arrows clickable */
+  background: none;
+  border: none;
+  font-size: 1.5rem; /* Size of arrows */
+  color: #555; /* Grey arrows */
+  cursor: pointer;
+  transition: color 0.3s ease;
+  pointer-events: auto; /* Make arrows clickable */
 }
 
 .carousel-arrow:hover {
-    color: #333; /* Darker grey on hover */
+  color: #333; /* Darker grey on hover */
 }
 
 #canvas-carousel-controls #canvas-view-indicators {
-    position: static; /* Reset positioning for indicators within carousel controls */
-    transform: none;  /* Reset centering transform */
-    margin: 0 20px; /* Add some horizontal margin for indicators */
-    pointer-events: auto; /* Make indicators clickable */
+  position: static; /* Reset positioning for indicators within carousel controls */
+  transform: none; /* Reset centering transform */
+  margin: 0 20px; /* Add some horizontal margin for indicators */
+  pointer-events: auto; /* Make indicators clickable */
+}
+
+/* proof_creator.css */
+
+/* --- Garment Lookup UI --- */
+.garment-lookup-ui {
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  padding: 10px;
+  margin-top: 10px; /* Spacing below zoom controls */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  position: absolute;
+  left: 0px;
+  top: 0px;
+}
+
+.garment-lookup-ui h3 {
+  font-size: 1.2em;
+  margin-top: 0;
+  margin-bottom: 10px;
+}
+
+.garment-search-input input[type="text"] {
+  width: calc(100% - 22px); /* Adjust width for padding/border */
+  padding: 8px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.garment-colour-options,
+.garment-image-options {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 10px;
+  overflow-x: auto; /* Horizontal scrolling for options if needed */
+}
+
+.garment-colour-options button,
+.garment-image-options button {
+  padding: 8px 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color: #eee;
+  cursor: pointer;
+  font-size: 0.9em;
+}
+
+.garment-colour-options button.selected,
+.garment-image-options button.selected {
+  background-color: #ddd; /* Highlight selected option */
+}
+
+.garment-image-preview {
+  border: 1px dashed #ddd;
+  border-radius: 5px;
+  min-height: 100px; /* Adjust preview area height */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.garment-image-preview img {
+  max-width: 95%;
+  max-height: 95%;
+  display: block;
+  object-fit: contain; /* Make sure image fits within preview box */
 }

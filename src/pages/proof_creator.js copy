@@ -14,6 +14,7 @@ let lastPosX = 0;
 let lastPosY = 0;
 let views = []; // Array to store canvas states (each view is a canvas state as JSON)
 let currentViewIndex = 0;
+const renderScale = 3; // ADD THIS LINE - Set the rendering scale factor
 
 document.addEventListener('DOMContentLoaded', () => {
     proofCreatorCanvas = new fabric.Canvas('proof-canvas', {
@@ -78,7 +79,7 @@ document.addEventListener('DOMContentLoaded', () => {
     addViewButton.addEventListener('click', addView); // Add View button listener
       prevViewButton.addEventListener('click', previousView);
     nextViewButton.addEventListener('click', nextView);
-  
+
 
 
     // --- Mouse wheel zoom ---
@@ -335,41 +336,35 @@ function addLogoToCanvas(logoUrl, logoName) {
     const canvasWidth = proofCreatorCanvas.getWidth();
     const canvasHeight = proofCreatorCanvas.getHeight();
 
+    // Function to add the logo to the canvas
+    function addImageToCanvas(img) {
+        console.log(`addImageToCanvas called.  Intrinsic image dimensions: width=${img.width}, height=${img.height}`);
+
+        img.set({
+            left: canvasWidth / 2, // Center horizontally
+            top: canvasHeight / 2,  // Center vertically
+            originX: 'center',
+            originY: 'center',
+            selectable: true,
+            // Set width/height to intrinsic dimensions - NO SCALING
+            width: img.width,  // Use intrinsic width
+            height: img.height, // Use intrinsic height
+            logoName: logoName 
+        });
+        console.log(`Logo added to canvas.  Object properties: left=${img.left}, top=${img.top}, width=${img.width}, height=${img.height}, scaleX=${img.scaleX}, scaleY=${img.scaleY}, logoName=${img.logoName}`);
+
+        proofCreatorCanvas.add(img);
+        proofCreatorCanvas.renderAll();
+    }
+
 
     if (logoUrl.toLowerCase().endsWith('.svg')) {
-        // Simplified SVG loading for testing
         fabric.loadSVGFromURL(logoUrl, (objects, options) => {
             const logoImg = fabric.util.groupSVGElements(objects, options);
-
-            logoImg.set({
-                left: canvasWidth / 2,    // Center by default
-                top: canvasHeight / 2,
-                scaleX: 0.5, // Fixed scale for now - try 0.5
-                scaleY: 0.5,
-                originX: 'center',
-                originY: 'center',
-                selectable: true, // Make logos selectable so they can be deleted
-            });
-            proofCreatorCanvas.add(logoImg);
-            proofCreatorCanvas.renderAll();
+            addImageToCanvas(logoImg);
         }, null, { crossOrigin: 'anonymous' });
-
     } else {
-        // (Keep raster image loading as is for now)
-        fabric.Image.fromURL(logoUrl, (logoImg) => {
-            const scale = Math.min(0.2, canvasWidth / logoImg.width, canvasHeight/logoImg.height);
-            logoImg.set({
-                left: canvasWidth / 2,
-                top: canvasHeight / 2,
-                scaleX: scale,
-                scaleY: scale,
-                originX: 'center',
-                originY: 'center',
-                selectable: true, // Make logos selectable so they can be deleted
-            });
-            proofCreatorCanvas.add(logoImg);
-            proofCreatorCanvas.renderAll();
-        }, { crossOrigin: 'anonymous' });
+        fabric.Image.fromURL(logoUrl, addImageToCanvas, { crossOrigin: 'anonymous' });
     }
 }
 
@@ -488,64 +483,107 @@ function updateSelectedLogosDisplay() {
 // proof_creator.js
 
 function submitProof() {
-    saveCurrentView(); // <---- ADD THIS LINE at the VERY BEGINNING
+    saveCurrentView();
 
     if (!selectedCustomer) {
         alert("Please select a customer first.");
         return;
     }
 
+    const garmentCode = document.getElementById('garment-code').value;
+    const proofDescription = document.getElementById('proof-description').value;
+
+    if (!garmentCode) {
+        alert("Please enter a garment code.");
+        return;
+    }
+
     const canvasDataURLs = [];
+    const originalCanvasWidth = proofCreatorCanvas.getWidth();
+    const originalCanvasHeight = proofCreatorCanvas.getHeight();
+    console.log(`Original Canvas Dimensions: ${originalCanvasWidth} x ${originalCanvasHeight}`);
 
-    console.log("Views array before DataURL generation:", views);
+    const horizontalOffset = -122; // Offset to the LEFT (negative value)
+    const verticalOffset = 2;    // Offset DOWN (positive value)
+  
+      // Collect logo names from all views
+    const allLogoNames = [];
+    console.log("VIEWS BEFORE LOGO EXTRACTION:", views);
+    views.forEach(viewState => {
+      console.log("Processing viewState:", viewState);
+        if (viewState && viewState.objects) { // Check if viewState and objects exist
+            viewState.objects.forEach(objData => {
+                if (objData.logoName) {
+                  console.log("Found logo object with logoName:", objData.logoName);
+                    allLogoNames.push(objData.logoName);
+                } else {
+                  console.log("Object does not have logoName:", objData);
+                }
+            });
+        } else {
+          console.log("viewState is empty or has no objects:", viewState);
+        }
+    });
+    const logoNamesString = allLogoNames.join(', ') || 'No Logos'; // Join names with comma, or "No Logos" if empty
 
-    const dataURLPromises = views.map((viewState, index) => {
+    Promise.all(views.map((viewState, index) => {
         return new Promise(resolve => {
-            console.log(`Generating DataURL for view index: ${index}`);
-
-            const tempCanvasForView = new fabric.Canvas(null, {
-                width: proofCreatorCanvas.getWidth(),
-                height: proofCreatorCanvas.getHeight(),
+            const tempCanvas = new fabric.Canvas(null, {
+                width: originalCanvasWidth * renderScale,
+                height: originalCanvasHeight * renderScale,
                 backgroundColor: '#ffffff'
             });
 
-            tempCanvasForView.loadFromJSON(viewState, () => { // loadFromJSON callback - IMPORTANT!
-                console.log(`loadFromJSON callback for view index: ${index} STARTED`); // ADDED LOGGING - Start of callback
+            tempCanvas.loadFromJSON(viewState, () => {
+                const objects = tempCanvas.getObjects();
+                objects.forEach(obj => {
+                    if (obj !== tempCanvas.backgroundImage) {
+                        // Scale and position ONLY non-background objects
+                        obj.scaleX *= renderScale;
+                        obj.scaleY *= renderScale;
+                        // Apply the manual horizontal and vertical offsets:
+                        obj.left = (obj.left * renderScale) + horizontalOffset;
+                        obj.top = (obj.top * renderScale) + verticalOffset;  // <--- KEY CHANGE (Vertical Offset)
+                        console.log(`Object scaled (non-background). New left: ${obj.left}, top: ${obj.top}, scaleX: ${obj.scaleX}, scaleY: ${obj.scaleY}`);
+                    }
+                });
 
-                tempCanvasForView.renderAll(); // Explicitly render all objects - ALREADY PRESENT
+                if (tempCanvas.backgroundImage) {
+                    tempCanvas.backgroundImage.scaleX *= renderScale;
+                    tempCanvas.backgroundImage.scaleY *= renderScale;
+                    tempCanvas.backgroundImage.left = 0;
+                    tempCanvas.backgroundImage.top = 0;
+                    console.log(`Background image scaled. New scaleX: ${tempCanvas.backgroundImage.scaleX}, scaleY: ${tempCanvas.backgroundImage.scaleY}`);
 
-                // --- MOVE toDataURL() call INSIDE the callback ---
-                const dataURL = tempCanvasForView.toDataURL('png');
-                console.log(`DataURL generated for view index: ${index} (TEMPORARY canvas): ${dataURL.substring(0, 50)}...`);
+                    tempCanvas.setWidth(tempCanvas.backgroundImage.getScaledWidth());
+                    tempCanvas.setHeight(tempCanvas.backgroundImage.getScaledHeight());
 
-                canvasDataURLs.push(dataURL); // Add Data URL to the array
-                resolve(); // Resolve the Promise AFTER Data URL is generated
 
-                tempCanvasForView.dispose();
-                console.log(`loadFromJSON callback for view index: ${index} ENDED`); // ADDED LOGGING - End of callback
-            }, null, function() { // Fabric.js callback context - No changes needed here, but added for clarity
-                // Optional callback context if needed, can leave null
+                    tempCanvas.backgroundImage.set({
+                        originX: 'left',
+                        originY: 'top'
+                    });
+                }
+
+                tempCanvas.renderAll();
+                const dataURL = tempCanvas.toDataURL({ format: 'png', multiplier: 1 });
+                canvasDataURLs.push(dataURL);
+                tempCanvas.dispose();
+                resolve();
             });
         });
-    });
-
-    Promise.all(dataURLPromises).then(() => {
-        const garmentCode = document.getElementById('garment-code').value;
-        const proofDescription = document.getElementById('proof-description').value;
-
-        if (!garmentCode) {
-            alert("Please enter a garment code.");
-            return;
-        }
-
+    })).then(() => {
+         // ... rest of the submitProof function (sending data to server, etc.)
         const proofData = {
             customerId: selectedCustomer,
-            canvasDataURLs: canvasDataURLs, // Now sending array of DataURLs
+            canvasDataURLs: canvasDataURLs,
             garmentCode: garmentCode,
-            proofDescription: proofDescription
+            proofDescription: proofDescription,
+            logoNames: logoNamesString 
         };
+        console.log("PROOF DATA BEING SENT:", proofData); 
 
-        console.log("Submitting proof data with Data URLs:", proofData);
+        console.log("Submitting proof data:", proofData);
 
         fetch(`/api/customers/${selectedCustomer}/generate-proof`, {
             method: 'PUT',
@@ -561,21 +599,15 @@ function submitProof() {
             return response.blob();
         })
         .then(blob => {
-            // Create a Blob URL
             const pdfUrl = URL.createObjectURL(blob);
-
-            // Create a temporary link element
             const downloadLink = document.createElement('a');
             downloadLink.href = pdfUrl;
-            downloadLink.download = `customer_proof_${selectedCustomer}.pdf`; // Suggest filename
-            document.body.appendChild(downloadLink); // Append to body (required for FF)
-            downloadLink.click(); // Programmatically click the link to trigger download
-            downloadLink.remove(); // Clean up by removing the link
-
-            URL.revokeObjectURL(pdfUrl); // Revoke the Blob URL to free resources
-
-            alert("PDF Proof downloaded successfully!"); // Success alert
-
+            downloadLink.download = `customer_proof_${selectedCustomer}.pdf`;
+            document.body.appendChild(downloadLink);
+            downloadLink.click();
+            downloadLink.remove();
+            URL.revokeObjectURL(pdfUrl);
+            alert("PDF Proof downloaded successfully!");
         })
         .catch(error => {
             console.error('Error submitting proof:', error);
