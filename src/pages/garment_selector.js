@@ -34,7 +34,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (garmentCode.length < 2) {
             garmentSuggestionsDropdown.style.display = 'none'; // Hide dropdown if input too short
             garmentSuggestionsDropdown.innerHTML = '';
-            garmentColourOptionsDiv.innerHTML = ''; // Clear colour options just in case
+            garmentColourDropdown.innerHTML = `<option value="">-- Select Colour --</option>`; // Clear colour options just in case (and reset to default)
             return;
         }
 
@@ -48,10 +48,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 displayGarmentColourOptions(garments[0]); // Display colours, even if no suggestions
             } catch (error) {
                 console.error("Error fetching garment data:", error);
-                garmentColourOptionsDiv.innerHTML = `<option value="">Error loading colours</option>`;
+                garmentColourDropdown.innerHTML = `<option value="">Error loading colours</option>`;
             }
         } else {
-            garmentColourOptionsDiv.innerHTML = ''; // Clear colour options if showing suggestions
+            garmentColourDropdown.innerHTML = `<option value="">-- Select Colour --</option>`; // Clear colour options if showing suggestions (and reset to default)
         }
     }
 
@@ -116,7 +116,7 @@ document.addEventListener('DOMContentLoaded', () => {
             garment.colourwayCodes.forEach(colourCode => {
                 const colourName = getColourwayName(colourCode) || colourCode;
                 const option = document.createElement('option');
-                option.value = colourwayCode; // Store code as value
+                option.value = colourCode; // Store code as value (Corrected: using colourCode)
                 option.textContent = colourName; // Display user-friendly name
                 garmentColourDropdown.appendChild(option);
             });
@@ -144,22 +144,39 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
     // --- Display Garment Image Options (unchanged) ---
-    function displayGarmentImageOptions(garment, colourwayCode) {
-        garmentImageOptionsDiv.innerHTML = ''; // Clear previous image options
-        garmentImagePreviewDiv.innerHTML = '';
+function displayGarmentImageOptions(garment, colourwayCode) {
+    garmentImageOptionsDiv.innerHTML = ''; // Clear previous image options
+    garmentImagePreviewDiv.innerHTML = '';
 
-        const imageTypes = ['Front', 'Back', 'Side', 'Detail'];
-        const imageOptionsHTML = imageTypes.map(imageType => {
-            const imageUrl = constructImageUrl(garment.brand, garment.styleCode, colourwayCode, imageType);
-            return `<button class="image-option-button" data-image-type="${imageType}" data-image-url="${imageUrl}">${imageType} View</button>`;
-        }).join('');
-        garmentImageOptionsDiv.innerHTML = imageOptionsHTML;
+    const imageTypes = ['Front', 'Back', 'Side', 'Detail'];
+    const imagePromises = imageTypes.map(async imageType => { // Use async map to handle promises
+        const imageUrl = constructImageUrl(garment.brand, garment.styleCode, colourwayCode, imageType);
+        try {
+            const response = await fetch(imageUrl, { method: 'HEAD' }); // Use HEAD request for efficiency
+            if (response.ok) { // Check if response status is OK (200)
+                return `<button class="image-option-button" data-image-type="${imageType}" data-image-url="${imageUrl}">${imageType} View</button>`;
+            } else {
+                return null; // Image not found, return null to filter out
+            }
+        } catch (error) {
+            console.warn(`Error checking image for ${imageType} view:`, error);
+            return null; // Error during check, also filter out (or handle differently if needed)
+        }
+    });
+
+    Promise.all(imagePromises).then(imageOptionsHTMLArray => { // Wait for all image checks to complete
+        const validImageOptionsHTML = imageOptionsHTMLArray.filter(html => html !== null).join(''); // Filter out nulls and join
+        garmentImageOptionsDiv.innerHTML = validImageOptionsHTML;
 
         garmentImageOptionsDiv.querySelectorAll('.image-option-button').forEach(button => {
             button.addEventListener('click', (event) => handleImageSelection(event, garment, colourwayCode));
         });
-    }
 
+        if (validImageOptionsHTML === '') { // If no valid image options were found
+            garmentImageOptionsDiv.innerHTML = `<p>No images available for this colour.</p>`;
+        }
+    });
+}
     // --- Handle Image Selection (unchanged) ---
     function handleImageSelection(event, garment, colourwayCode) {
         const imageType = event.target.dataset.imageType;
@@ -190,7 +207,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const styleCodePath = styleCode.replace(/\s+/g, '%20');
         const colourwayCodePath = colourwayCode.replace(/\s+/g, '%20');
 
-        const filename = `${styleCodePath}%20${colourwayCodePath}%20${view}.jpg`;
+        const filename = `${styleCodePath}%20${colourwayCodePath}%20${view.toUpperCase()}.jpg`;
         return `${baseUrl}${brandPath}/Product%20Images/${styleCodePath}/ProductCarouselMain/${filename}`;
     }
 
