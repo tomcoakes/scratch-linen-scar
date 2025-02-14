@@ -96,12 +96,20 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    function selectSuggestion(garment) {
-        garmentCodeInput.value = garment.styleCode;
-        garmentSuggestionsDropdown.style.display = 'none';
-        displayGarmentColourOptions(garment);
-        highlightedSuggestionIndex = -1; // Reset highlight after selection
+function selectSuggestion(garment) {
+    garmentCodeInput.value = garment.styleCode;
+    garmentSuggestionsDropdown.style.display = 'none';
+    displayGarmentColourOptions(garment);
+    highlightedSuggestionIndex = -1; // Reset highlight after selection
+
+    // --- NEW: Populate "Optional Description" with garment title ---
+    const proofDescriptionTextarea = document.getElementById('proof-description');
+    if (proofDescriptionTextarea) {
+        proofDescriptionTextarea.value = garment.title; // Set textarea value to garment title
+    } else {
+        console.warn("Optional description textarea element not found!");
     }
+}
 
 
     function displayGarmentColourOptions(garment) {
@@ -128,17 +136,32 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    function handleColourSelection(event) {
-        const colourwayCode = garmentColourDropdown.value;
-        const selectedGarmentCode = garmentCodeInput.value.trim().toUpperCase();
-        const selectedGarment = garmentDataCache.find(garment => garment.styleCode.toUpperCase() === selectedGarmentCode);
+function handleColourSelection(event) {
+    const colourwayCode = garmentColourDropdown.value; // Get selected colourway code from dropdown
+    const selectedGarmentCode = garmentCodeInput.value.trim().toUpperCase();
+    const selectedGarment = garmentDataCache.find(garment => garment.styleCode.toUpperCase() === selectedGarmentCode);
+    const colourwayName = getColourwayName(colourwayCode) || colourwayCode; // Get colour name or code
 
-        if (selectedGarment) {
-            displayGarmentImageOptions(selectedGarment, colourwayCode);
-        } else {
-            console.warn("Garment object not found for code:", selectedGarmentCode);
-        }
+    if (selectedGarment) {
+        displayGarmentImageOptions(selectedGarment, colourwayCode);
+    } else {
+        console.warn("Garment object not found for code:", selectedGarmentCode);
     }
+
+    // --- NEW: Append colour to "Optional Description" ---
+    const proofDescriptionTextarea = document.getElementById('proof-description');
+    if (proofDescriptionTextarea) {
+        let currentDescription = proofDescriptionTextarea.value;
+        let newDescription = currentDescription; // Start with current description
+
+        if (colourwayCode) { // Only append colour if a colour is selected
+            newDescription += ` - ${colourwayName}`; // Append " - " and colour name/code
+        }
+        proofDescriptionTextarea.value = newDescription; // Update textarea value
+    } else {
+        console.warn("Optional description textarea element not found!");
+    }
+}
 
     garmentColourDropdown.addEventListener('change', handleColourSelection);
 
