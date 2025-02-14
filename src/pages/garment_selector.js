@@ -171,12 +171,21 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const imgElement = document.createElement('img');
         imgElement.src = imageUrl;
+        imgElement.style.cursor = 'pointer'; // Change cursor to pointer to indicate clickability
+
         imgElement.onload = () => {
             garmentImagePreviewDiv.appendChild(imgElement);
         };
         imgElement.onerror = () => {
             garmentImagePreviewDiv.innerHTML = `<p>Image not available.</p>`;
         };
+
+        // --- NEW: Click event listener for the image ---
+        garmentImagePreviewDiv.addEventListener('click', () => {
+            const currentImageUrl = imgElement.src; // Get the image URL
+            const currentGarmentCode = garmentCodeInput.value; // Get the garment code from input
+            handleGarmentImageFromURL(currentImageUrl, currentGarmentCode); // Call the new function
+        });
     }
 
 
@@ -186,7 +195,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const styleCodePath = styleCode.replace(/\s+/g, '%20');
         const colourwayCodePath = colourwayCode.replace(/\s+/g, '%20');
 
-        const filename = `${styleCodePath}%20${colourwayCodePath}%20${view}.jpg`;
+        const filename = `${styleCodePath}%20${colourwayCodePath}%20${view.toUpperCase()}.jpg`;
         return `${baseUrl}${brandPath}/Product%20Images/${styleCodePath}/ProductCarouselMain/${filename}`;
     }
 

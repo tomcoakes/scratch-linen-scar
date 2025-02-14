@@ -383,6 +383,53 @@ function setupGarmentImageUpload() {
 }
 
 
+function handleGarmentImageFromURL(imageUrl, garmentCode) {
+    console.log("handleGarmentImageFromURL called with URL:", imageUrl, "and garmentCode:", garmentCode); // Debug log
+
+    if (!imageUrl) {
+        console.warn("handleGarmentImageFromURL called without an image URL.");
+        return;
+    }
+
+    fabric.Image.fromURL(imageUrl, (img) => {
+        console.log("fabric.Image.fromURL callback executed. Image:", img); // Debug log
+
+        if (!img) { //image failed to load
+          console.error("Failed to load image from URL onto canvas");
+          return;
+        }
+
+        // Calculate scaling. We want to fit the image *within* the canvas
+        const canvasWidth = proofCreatorCanvas.getWidth();
+        const canvasHeight = proofCreatorCanvas.getHeight();
+        const scale = Math.min(canvasWidth / img.width, canvasHeight / img.height, 1);
+
+        img.set({
+            scaleX: scale,
+            scaleY: scale,
+            left: (canvasWidth - img.width * scale) / 2, // Center horizontally
+            top: (canvasHeight - img.height * scale) / 2, // Center vertically
+            selectable: false // Garment image should NOT be selectable/movable
+        });
+
+        saveCurrentView(); // Save canvas state *before* background change
+        proofCreatorCanvas.setBackgroundImage(img, proofCreatorCanvas.renderAll.bind(proofCreatorCanvas));
+        saveCurrentView(); // Save canvas state *again* AFTER background change
+        loadCurrentView();
+        console.log("Image from URL set as background. Canvas dimensions:", proofCreatorCanvas.width, proofCreatorCanvas.height); //debug
+
+        // Set the garment code input value
+        const garmentCodeInput = document.getElementById('garment-code');
+        if (garmentCodeInput) {
+            garmentCodeInput.value = garmentCode;
+        } else {
+            console.warn("Garment code input element not found!");
+        }
+
+
+    }, { crossOrigin: 'anonymous' }); // Important for loading from Data URL
+}
+
 function handleGarmentImage(file) {
     console.log("handleGarmentImage called with file:", file); // Debug log
 
