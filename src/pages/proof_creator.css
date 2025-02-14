@@ -295,29 +295,78 @@
     margin-bottom: 10px;
 }
 
+.garment-search-input {
+    position: relative; /* Needed for positioning dropdown */
+}
+
 .garment-search-input input[type="text"] {
-    width: calc(100% - 22px); /* Adjust width for padding/border */
+    width: calc(100% - 22px);
     padding: 8px;
-    margin-bottom: 0; /* No margin below input anymore */
+    margin-bottom: 0; /* No margin below input */
     border: 1px solid #ccc;
     border-radius: 4px;
 }
 
-.garment-lookup-panel {
+/* --- Autocomplete Suggestions Dropdown --- */
+.suggestions-dropdown {
     position: absolute; /* Overlay positioning */
-    top: 100%; /* Positioned below the container */
     left: 0;
-    width: 100%; /* Match container width */
-    background-color: #f9f9f9;
+    top: 100%; /* Below input */
+    width: 100%;
+    background-color: white;
     border: 1px solid #ccc;
-    border-top: none; /* No top border to visually connect to input */
-    border-radius: 0 0 5px 5px; /* Rounded corners at bottom only */
-    box-shadow: 0 4px 8px rgba(0,0,0,0.15);
-    padding: 10px;
-    z-index: 1000; /* Ensure it's on top of other content */
+    border-top: none; /* Connect visually to input */
+    border-radius: 0 0 4px 4px; /* Rounded bottom corners */
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    z-index: 1100; /* Higher than panel */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.15);
+    max-height: 200px; /* Scrollable suggestions */
+    overflow-y: auto;
     display: none; /* Initially hidden */
-    max-height: 300px; /* Example max height, adjust as needed */
-    overflow-y: auto; /* Scroll if content overflows */
+}
+
+.suggestions-dropdown li {
+    padding: 8px 12px;
+    cursor: pointer;
+    font-size: 0.95em;
+}
+
+.suggestions-dropdown li:hover {
+    background-color: #eee;
+}
+
+
+/* --- Colour and Image Dropdowns --- */
+.garment-colour-selection,
+.garment-image-selection {
+    margin-bottom: 10px;
+}
+
+.garment-colour-selection label,
+.garment-image-selection label {
+    display: block; /* Labels on top of dropdowns */
+    margin-bottom: 5px;
+    font-size: 0.9em;
+    color: #555;
+}
+
+.garment-colour-selection select,
+.garment-image-selection select {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 0.95em;
+    appearance: none; /* Remove default dropdown arrow */
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background-image: url('data:image/svg+xml;utf8,<svg fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/><path d="M0 0h24v24H0z" fill="none"/></svg>'); /* Custom arrow */
+    background-repeat: no-repeat;
+    background-position-x: 100%;
+    background-position-y: 5px;
+    padding-right: 25px; /* Make space for arrow */
 }
 
 
