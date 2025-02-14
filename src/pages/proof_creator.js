@@ -383,8 +383,8 @@ function setupGarmentImageUpload() {
 }
 
 
-function handleGarmentImageFromURL(imageUrl, garmentCode) {
-    console.log("handleGarmentImageFromURL called with URL:", imageUrl, "and garmentCode:", garmentCode); // Debug log
+function handleGarmentImageFromURL(imageUrl, garmentCode, garmentTitle, colourwayName) { // Modified parameters
+    console.log("handleGarmentImageFromURL called with URL:", imageUrl, "garmentCode:", garmentCode, "garmentTitle:", garmentTitle, "colourwayName:", colourwayName); // Debug log
 
     if (!imageUrl) {
         console.warn("handleGarmentImageFromURL called without an image URL.");
@@ -392,38 +392,30 @@ function handleGarmentImageFromURL(imageUrl, garmentCode) {
     }
 
     fabric.Image.fromURL(imageUrl, (img) => {
-        console.log("fabric.Image.fromURL callback executed. Image:", img); // Debug log
+        // ... (image loading and canvas background setting code - unchanged) ...
 
-        if (!img) { //image failed to load
-          console.error("Failed to load image from URL onto canvas");
-          return;
-        }
-
-        // Calculate scaling. We want to fit the image *within* the canvas
-        const canvasWidth = proofCreatorCanvas.getWidth();
-        const canvasHeight = proofCreatorCanvas.getHeight();
-        const scale = Math.min(canvasWidth / img.width, canvasHeight / img.height, 1);
-
-        img.set({
-            scaleX: scale,
-            scaleY: scale,
-            left: (canvasWidth - img.width * scale) / 2, // Center horizontally
-            top: (canvasHeight - img.height * scale) / 2, // Center vertically
-            selectable: false // Garment image should NOT be selectable/movable
-        });
-
-        saveCurrentView(); // Save canvas state *before* background change
-        proofCreatorCanvas.setBackgroundImage(img, proofCreatorCanvas.renderAll.bind(proofCreatorCanvas));
-        saveCurrentView(); // Save canvas state *again* AFTER background change
-        loadCurrentView();
-        console.log("Image from URL set as background. Canvas dimensions:", proofCreatorCanvas.width, proofCreatorCanvas.height); //debug
-
-        // Set the garment code input value
+        // Set the garment code input value (unchanged)
         const garmentCodeInput = document.getElementById('garment-code');
         if (garmentCodeInput) {
             garmentCodeInput.value = garmentCode;
         } else {
             console.warn("Garment code input element not found!");
+        }
+
+        // --- NEW: Set the optional description textarea ---
+        const proofDescriptionTextarea = document.getElementById('proof-description');
+        if (proofDescriptionTextarea) {
+            let descriptionText = "";
+            if (garmentTitle && colourwayName) {
+                descriptionText = `${garmentTitle} - ${colourwayName}`; // Combine title and colour
+            } else if (garmentTitle) {
+                descriptionText = garmentTitle; // Just title if colour is missing
+            } else if (colourwayName) {
+                descriptionText = colourwayName; // Just colour if title is missing (unlikely, but for robustness)
+            }
+            proofDescriptionTextarea.value = descriptionText;
+        } else {
+            console.warn("Optional description textarea element not found!");
         }
 
 

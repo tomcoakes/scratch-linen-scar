@@ -96,20 +96,12 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-function selectSuggestion(garment) {
-    garmentCodeInput.value = garment.styleCode;
-    garmentSuggestionsDropdown.style.display = 'none';
-    displayGarmentColourOptions(garment);
-    highlightedSuggestionIndex = -1; // Reset highlight after selection
-
-    // --- NEW: Populate "Optional Description" with garment title ---
-    const proofDescriptionTextarea = document.getElementById('proof-description');
-    if (proofDescriptionTextarea) {
-        proofDescriptionTextarea.value = garment.title; // Set textarea value to garment title
-    } else {
-        console.warn("Optional description textarea element not found!");
+    function selectSuggestion(garment) {
+        garmentCodeInput.value = garment.styleCode;
+        garmentSuggestionsDropdown.style.display = 'none';
+        displayGarmentColourOptions(garment);
+        highlightedSuggestionIndex = -1; // Reset highlight after selection
     }
-}
 
 
     function displayGarmentColourOptions(garment) {
@@ -136,32 +128,17 @@ function selectSuggestion(garment) {
         }
     }
 
-function handleColourSelection(event) {
-    const colourwayCode = garmentColourDropdown.value; // Get selected colourway code from dropdown
-    const selectedGarmentCode = garmentCodeInput.value.trim().toUpperCase();
-    const selectedGarment = garmentDataCache.find(garment => garment.styleCode.toUpperCase() === selectedGarmentCode);
-    const colourwayName = getColourwayName(colourwayCode) || colourwayCode; // Get colour name or code
+    function handleColourSelection(event) {
+        const colourwayCode = garmentColourDropdown.value;
+        const selectedGarmentCode = garmentCodeInput.value.trim().toUpperCase();
+        const selectedGarment = garmentDataCache.find(garment => garment.styleCode.toUpperCase() === selectedGarmentCode);
 
-    if (selectedGarment) {
-        displayGarmentImageOptions(selectedGarment, colourwayCode);
-    } else {
-        console.warn("Garment object not found for code:", selectedGarmentCode);
-    }
-
-    // --- NEW: Append colour to "Optional Description" ---
-    const proofDescriptionTextarea = document.getElementById('proof-description');
-    if (proofDescriptionTextarea) {
-        let currentDescription = proofDescriptionTextarea.value;
-        let newDescription = currentDescription; // Start with current description
-
-        if (colourwayCode) { // Only append colour if a colour is selected
-            newDescription += ` - ${colourwayName}`; // Append " - " and colour name/code
+        if (selectedGarment) {
+            displayGarmentImageOptions(selectedGarment, colourwayCode);
+        } else {
+            console.warn("Garment object not found for code:", selectedGarmentCode);
         }
-        proofDescriptionTextarea.value = newDescription; // Update textarea value
-    } else {
-        console.warn("Optional description textarea element not found!");
     }
-}
 
     garmentColourDropdown.addEventListener('change', handleColourSelection);
 
@@ -194,7 +171,7 @@ function handleColourSelection(event) {
 
         const imgElement = document.createElement('img');
         imgElement.src = imageUrl;
-        imgElement.style.cursor = 'pointer'; // Change cursor to pointer to indicate clickability
+        imgElement.style.cursor = 'pointer';
 
         imgElement.onload = () => {
             garmentImagePreviewDiv.appendChild(imgElement);
@@ -203,11 +180,27 @@ function handleColourSelection(event) {
             garmentImagePreviewDiv.innerHTML = `<p>Image not available.</p>`;
         };
 
-        // --- NEW: Click event listener for the image ---
+        // --- Modified: Click event listener to pass garment and colour data ---
         garmentImagePreviewDiv.addEventListener('click', () => {
-            const currentImageUrl = imgElement.src; // Get the image URL
-            const currentGarmentCode = garmentCodeInput.value; // Get the garment code from input
-            handleGarmentImageFromURL(currentImageUrl, currentGarmentCode); // Call the new function
+            const currentImageUrl = imgElement.src;
+            const currentGarmentCode = garmentCodeInput.value;
+
+            // --- Get the selected garment object ---
+            const selectedGarment = garmentDataCache.find(garment => garment.styleCode.toUpperCase() === currentGarmentCode.toUpperCase());
+            const selectedColourwayCode = garmentColourDropdown.value;
+            const selectedColourwayName = getColourwayName(selectedColourwayCode) || selectedColourwayCode; // Get colour name
+
+            if (selectedGarment) {
+                handleGarmentImageFromURL(
+                    currentImageUrl,
+                    currentGarmentCode,
+                    selectedGarment.title, // Pass garment title
+                    selectedColourwayName // Pass colourway name
+                );
+            } else {
+                console.warn("Garment object not found in cache for code:", currentGarmentCode);
+                handleGarmentImageFromURL(currentImageUrl, currentGarmentCode, null, selectedColourwayName); // Still call function, but with null for title
+            }
         });
     }
 
