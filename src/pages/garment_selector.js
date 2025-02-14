@@ -70,7 +70,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     async function loadColourwayNamesMap() {
         if (!colourwayNamesMap) { // Load only once
-            const response = await fetch('../colourway_names.json'); // Fetch your mapping JSON
+            const response = await fetch('/api/colourway-names'); // Fetch your mapping JSON
             if (!response.ok) {
                 console.error('Failed to load colourway_names.json');
                 colourwayNamesMap = {}; // Default to empty map

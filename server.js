@@ -963,6 +963,24 @@ app.get("/api/garments", (req, res) => {
 });
 
 
+app.get("/api/colourway-names", (req, res) => {
+    const colourwayNamesPath = path.join(__dirname, 'colourway_names.json'); // Path to your JSON file
+
+    fs.readFile(colourwayNamesPath, "utf8", (err, data) => {
+        if (err) {
+            console.error("Error reading colourway_names.json:", err);
+            return res.status(500).json({ error: "Failed to read colourway names data." });
+        }
+        try {
+            const colourwayNames = JSON.parse(data);
+            res.json(colourwayNames);
+        } catch (parseError) {
+            console.error("Error parsing colourway_names.json:", parseError);
+            res.status(500).json({ error: "Invalid colourway names data format." });
+        }
+    });
+});
+
 // Start server
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
