@@ -981,6 +981,21 @@ app.get("/api/colourway-names", (req, res) => {
     });
 });
 
+app.get('/image-check', async (req, res) => {
+    const imageUrl = req.query.url; // Get image URL from query parameter
+    if (!imageUrl) {
+        return res.status(400).send('Missing URL parameter');
+    }
+
+    try {
+        const response = await fetch(imageUrl, { method: 'HEAD' });
+        res.status(response.status).send(); // Forward the status code
+    } catch (error) {
+        console.error('Proxy error:', error);
+        res.status(500).send('Proxy error');
+    }
+});
+
 // Start server
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);

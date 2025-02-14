@@ -7,6 +7,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const garmentImageOptionsDiv = document.getElementById('garment-image-options');
     const garmentImagePreviewDiv = document.getElementById('garment-image-preview');
     const garmentLookupPanel = document.getElementById('garment-lookup-panel');
+    const proxyBaseUrl = '/image-check?url='; // URL of your proxy endpoint
 
 
     let garmentDataCache = []; // Cache for all garment data (for autocomplete)
@@ -144,19 +145,19 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
     // --- Display Garment Image Options (unchanged) ---
-function displayGarmentImageOptions(garment, colourwayCode) {
+async function displayGarmentImageOptions(garment, colourwayCode) {
     garmentImageOptionsDiv.innerHTML = ''; // Clear previous image options
     garmentImagePreviewDiv.innerHTML = '';
-
-    const imageTypes = ['Front', 'Back', 'Side', 'Detail'];
-    const imagePromises = imageTypes.map(async imageType => { // Use async map to handle promises
+const imageTypes = ['Front', 'Back', 'Side', 'Detail']; 
+    const imagePromises = imageTypes.map(async imageType => {
         const imageUrl = constructImageUrl(garment.brand, garment.styleCode, colourwayCode, imageType);
+        const proxyUrl = proxyBaseUrl + encodeURIComponent(imageUrl); // Construct proxy URL
         try {
-            const response = await fetch(imageUrl, { method: 'HEAD' }); // Use HEAD request for efficiency
-            if (response.ok) { // Check if response status is OK (200)
-                return `<button class="image-option-button" data-image-type="${imageType}" data-image-url="${imageUrl}">${imageType} View</button>`;
+            const response = await fetch(proxyUrl, { method: 'HEAD' }); // Fetch from proxy
+            if (response.ok) {
+                return `<button ... data-image-url="${imageUrl}">...</button>`; // Original image URL for button
             } else {
-                return null; // Image not found, return null to filter out
+                return null;
             }
         } catch (error) {
             console.warn(`Error checking image for ${imageType} view:`, error);
@@ -177,6 +178,8 @@ function displayGarmentImageOptions(garment, colourwayCode) {
         }
     });
 }
+
+
     // --- Handle Image Selection (unchanged) ---
     function handleImageSelection(event, garment, colourwayCode) {
         const imageType = event.target.dataset.imageType;

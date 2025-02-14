@@ -281,10 +281,9 @@
 
 /* --- Garment Lookup UI --- */
 .garment-lookup-container {
-    position: relative; /* Positioning context for panel */
+    position: absolute; /* Positioning context for panel */
     width: 250px; /* Example width, adjust as needed */
     margin-top: 10px; /* Spacing below zoom buttons */
-    position: absolute;
     left: 0px;
     top: 0px;
 }
@@ -374,9 +373,10 @@
 
 /* --- Garment Lookup UI - Container and Panel (Dropdown Style) - UPDATED --- */
 .garment-lookup-container {
-    position: relative; /* Positioning context for panel */
+    position: absolute; /* Positioning context for panel */
     width: 280px; /* Slightly wider container */
     margin-top: 10px;
+  left: 0px;
 }
 
 .garment-search-section h3 {
