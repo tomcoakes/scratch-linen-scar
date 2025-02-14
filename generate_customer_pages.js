@@ -166,23 +166,29 @@ function generatePageForCustomer(customer, templateHtml, threadsData) {
                 <tr>
                     <th>Preview</th>
                     <th>Garment Code</th>
-                    <th>Logo</th>
-                    <th>Position</th>
                     <th>Description</th>
                     <th>Actions</th>
                 </tr>
             </thead>
             <tbody>
     `;
+  
+  
+  
+        // <th>Logo</th>
+        // <th>Position</th>
 
+  
+  
+  
+  
     if (customer.proofs && customer.proofs.length > 0) {
         customer.proofs.forEach((proof, index) => {
             proofsHtml += `
                 <tr data-proof-index="${index}">
                   <td><a href="${proof.url}" target="_blank">View Proof</a></td>
                     <td>${proof.garmentCode}</td>
-                    <td>${proof.logo}</td>
-                    <td>${proof.logoPosition}</td>
+
                     <td>${proof.description || 'N/A'}</td>
                     <td>
                         <button class="delete-proof-button" onclick="handleProofDelete(${customer.id}, ${index})">Delete</button>
@@ -190,6 +196,16 @@ function generatePageForCustomer(customer, templateHtml, threadsData) {
                 </tr>
             `;
         });
+      
+      
+      
+        // <td>${proof.logo}</td>
+        // <td>${proof.logoPosition}</td>
+      
+      
+      
+      
+      
     } else { // Corrected ELSE placement
         proofsHtml += '<tr><td colspan="6">No proofs added yet.</td></tr>';
     }
