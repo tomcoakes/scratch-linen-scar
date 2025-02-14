@@ -1,0 +1,9226 @@
+[
+  {
+    "code": "100",
+    "name": "100"
+  },
+  {
+    "code": "101",
+    "name": "101"
+  },
+  {
+    "code": "102",
+    "name": "102"
+  },
+  {
+    "code": "103",
+    "name": "103"
+  },
+  {
+    "code": "105",
+    "name": "105"
+  },
+  {
+    "code": "106",
+    "name": "106"
+  },
+  {
+    "code": "108",
+    "name": "108"
+  },
+  {
+    "code": "110",
+    "name": "110"
+  },
+  {
+    "code": "112",
+    "name": "112"
+  },
+  {
+    "code": "116",
+    "name": "116"
+  },
+  {
+    "code": "118",
+    "name": "118"
+  },
+  {
+    "code": "120",
+    "name": "120"
+  },
+  {
+    "code": "122",
+    "name": "122"
+  },
+  {
+    "code": "125",
+    "name": "125"
+  },
+  {
+    "code": "127",
+    "name": "127"
+  },
+  {
+    "code": "128",
+    "name": "128"
+  },
+  {
+    "code": "132",
+    "name": "132"
+  },
+  {
+    "code": "133",
+    "name": "133"
+  },
+  {
+    "code": "134",
+    "name": "134"
+  },
+  {
+    "code": "137",
+    "name": "137"
+  },
+  {
+    "code": "138",
+    "name": "138"
+  },
+  {
+    "code": "144",
+    "name": "144"
+  },
+  {
+    "code": "145",
+    "name": "145"
+  },
+  {
+    "code": "147",
+    "name": "147"
+  },
+  {
+    "code": "149",
+    "name": "149"
+  },
+  {
+    "code": "153",
+    "name": "153"
+  },
+  {
+    "code": "158",
+    "name": "158"
+  },
+  {
+    "code": "164",
+    "name": "164"
+  },
+  {
+    "code": "166",
+    "name": "166"
+  },
+  {
+    "code": "167",
+    "name": "167"
+  },
+  {
+    "code": "170",
+    "name": "170"
+  },
+  {
+    "code": "172",
+    "name": "172"
+  },
+  {
+    "code": "173",
+    "name": "173"
+  },
+  {
+    "code": "175",
+    "name": "175"
+  },
+  {
+    "code": "177",
+    "name": "177"
+  },
+  {
+    "code": "179",
+    "name": "179"
+  },
+  {
+    "code": "181",
+    "name": "181"
+  },
+  {
+    "code": "182",
+    "name": "182"
+  },
+  {
+    "code": "188",
+    "name": "188"
+  },
+  {
+    "code": "192",
+    "name": "192"
+  },
+  {
+    "code": "195",
+    "name": "195"
+  },
+  {
+    "code": "212",
+    "name": "212"
+  },
+  {
+    "code": "225",
+    "name": "225"
+  },
+  {
+    "code": "236",
+    "name": "236"
+  },
+  {
+    "code": "239",
+    "name": "239"
+  },
+  {
+    "code": "241",
+    "name": "241"
+  },
+  {
+    "code": "242",
+    "name": "242"
+  },
+  {
+    "code": "243",
+    "name": "243"
+  },
+  {
+    "code": "246",
+    "name": "246"
+  },
+  {
+    "code": "248",
+    "name": "248"
+  },
+  {
+    "code": "250",
+    "name": "250"
+  },
+  {
+    "code": "251",
+    "name": "251"
+  },
+  {
+    "code": "255",
+    "name": "255"
+  },
+  {
+    "code": "258",
+    "name": "258"
+  },
+  {
+    "code": "263",
+    "name": "263"
+  },
+  {
+    "code": "266",
+    "name": "266"
+  },
+  {
+    "code": "270",
+    "name": "270"
+  },
+  {
+    "code": "273",
+    "name": "273"
+  },
+  {
+    "code": "274",
+    "name": "274"
+  },
+  {
+    "code": "278",
+    "name": "278"
+  },
+  {
+    "code": "280",
+    "name": "280"
+  },
+  {
+    "code": "281",
+    "name": "281"
+  },
+  {
+    "code": "288",
+    "name": "288"
+  },
+  {
+    "code": "293",
+    "name": "293"
+  },
+  {
+    "code": "295",
+    "name": "295"
+  },
+  {
+    "code": "299",
+    "name": "299"
+  },
+  {
+    "code": "308",
+    "name": "308"
+  },
+  {
+    "code": "309",
+    "name": "309"
+  },
+  {
+    "code": "310",
+    "name": "310"
+  },
+  {
+    "code": "321",
+    "name": "321"
+  },
+  {
+    "code": "337",
+    "name": "337"
+  },
+  {
+    "code": "344",
+    "name": "344"
+  },
+  {
+    "code": "348",
+    "name": "348"
+  },
+  {
+    "code": "357",
+    "name": "357"
+  },
+  {
+    "code": "359",
+    "name": "359"
+  },
+  {
+    "code": "361",
+    "name": "361"
+  },
+  {
+    "code": "367",
+    "name": "367"
+  },
+  {
+    "code": "370",
+    "name": "370"
+  },
+  {
+    "code": "373",
+    "name": "373"
+  },
+  {
+    "code": "378",
+    "name": "378"
+  },
+  {
+    "code": "379",
+    "name": "379"
+  },
+  {
+    "code": "381",
+    "name": "381"
+  },
+  {
+    "code": "384",
+    "name": "384"
+  },
+  {
+    "code": "397",
+    "name": "397"
+  },
+  {
+    "code": "415",
+    "name": "415"
+  },
+  {
+    "code": "428",
+    "name": "428"
+  },
+  {
+    "code": "434",
+    "name": "434"
+  },
+  {
+    "code": "440",
+    "name": "440"
+  },
+  {
+    "code": "445",
+    "name": "445"
+  },
+  {
+    "code": "449",
+    "name": "449"
+  },
+  {
+    "code": "467",
+    "name": "467"
+  },
+  {
+    "code": "469",
+    "name": "469"
+  },
+  {
+    "code": "495",
+    "name": "495"
+  },
+  {
+    "code": "497",
+    "name": "497"
+  },
+  {
+    "code": "500",
+    "name": "500"
+  },
+  {
+    "code": "501",
+    "name": "501"
+  },
+  {
+    "code": "1000",
+    "name": "1000"
+  },
+  {
+    "code": "1001",
+    "name": "1001"
+  },
+  {
+    "code": "1002",
+    "name": "1002"
+  },
+  {
+    "code": "1003",
+    "name": "1003"
+  },
+  {
+    "code": "1004",
+    "name": "1004"
+  },
+  {
+    "code": "1005",
+    "name": "1005"
+  },
+  {
+    "code": "1010",
+    "name": "1010"
+  },
+  {
+    "code": "1011",
+    "name": "1011"
+  },
+  {
+    "code": "1012",
+    "name": "1012"
+  },
+  {
+    "code": "1014",
+    "name": "1014"
+  },
+  {
+    "code": "1020",
+    "name": "1020"
+  },
+  {
+    "code": "1021",
+    "name": "1021"
+  },
+  {
+    "code": "1023",
+    "name": "1023"
+  },
+  {
+    "code": "1024",
+    "name": "1024"
+  },
+  {
+    "code": "1025",
+    "name": "1025"
+  },
+  {
+    "code": "1027",
+    "name": "1027"
+  },
+  {
+    "code": "1028",
+    "name": "1028"
+  },
+  {
+    "code": "1029",
+    "name": "1029"
+  },
+  {
+    "code": "1032",
+    "name": "1032"
+  },
+  {
+    "code": "1033",
+    "name": "1033"
+  },
+  {
+    "code": "1035",
+    "name": "1035"
+  },
+  {
+    "code": "1037",
+    "name": "1037"
+  },
+  {
+    "code": "1038",
+    "name": "1038"
+  },
+  {
+    "code": "1039",
+    "name": "1039"
+  },
+  {
+    "code": "1040",
+    "name": "1040"
+  },
+  {
+    "code": "1041",
+    "name": "1041"
+  },
+  {
+    "code": "1042",
+    "name": "1042"
+  },
+  {
+    "code": "1043",
+    "name": "1043"
+  },
+  {
+    "code": "1044",
+    "name": "1044"
+  },
+  {
+    "code": "1046",
+    "name": "1046"
+  },
+  {
+    "code": "1047",
+    "name": "1047"
+  },
+  {
+    "code": "1048",
+    "name": "1048"
+  },
+  {
+    "code": "1049",
+    "name": "1049"
+  },
+  {
+    "code": "1050",
+    "name": "1050"
+  },
+  {
+    "code": "1051",
+    "name": "1051"
+  },
+  {
+    "code": "1055",
+    "name": "1055"
+  },
+  {
+    "code": "1056",
+    "name": "1056"
+  },
+  {
+    "code": "1057",
+    "name": "1057"
+  },
+  {
+    "code": "1058",
+    "name": "1058"
+  },
+  {
+    "code": "1059",
+    "name": "1059"
+  },
+  {
+    "code": "1060",
+    "name": "1060"
+  },
+  {
+    "code": "1064",
+    "name": "1064"
+  },
+  {
+    "code": "1065",
+    "name": "1065"
+  },
+  {
+    "code": "1068",
+    "name": "1068"
+  },
+  {
+    "code": "1069",
+    "name": "1069"
+  },
+  {
+    "code": "1070",
+    "name": "1070"
+  },
+  {
+    "code": "1071",
+    "name": "1071"
+  },
+  {
+    "code": "1072",
+    "name": "1072"
+  },
+  {
+    "code": "1074",
+    "name": "1074"
+  },
+  {
+    "code": "1075",
+    "name": "1075"
+  },
+  {
+    "code": "1076",
+    "name": "1076"
+  },
+  {
+    "code": "1078",
+    "name": "1078"
+  },
+  {
+    "code": "1079",
+    "name": "1079"
+  },
+  {
+    "code": "1082",
+    "name": "1082"
+  },
+  {
+    "code": "1083",
+    "name": "1083"
+  },
+  {
+    "code": "1084",
+    "name": "1084"
+  },
+  {
+    "code": "1085",
+    "name": "1085"
+  },
+  {
+    "code": "1086",
+    "name": "1086"
+  },
+  {
+    "code": "1087",
+    "name": "1087"
+  },
+  {
+    "code": "1088",
+    "name": "1088"
+  },
+  {
+    "code": "1090",
+    "name": "1090"
+  },
+  {
+    "code": "1091",
+    "name": "1091"
+  },
+  {
+    "code": "1092",
+    "name": "1092"
+  },
+  {
+    "code": "1093",
+    "name": "1093"
+  },
+  {
+    "code": "1094",
+    "name": "1094"
+  },
+  {
+    "code": "1095",
+    "name": "1095"
+  },
+  {
+    "code": "1096",
+    "name": "1096"
+  },
+  {
+    "code": "1101",
+    "name": "1101"
+  },
+  {
+    "code": "1103",
+    "name": "1103"
+  },
+  {
+    "code": "1109",
+    "name": "1109"
+  },
+  {
+    "code": "1110",
+    "name": "1110"
+  },
+  {
+    "code": "1112",
+    "name": "1112"
+  },
+  {
+    "code": "1118",
+    "name": "1118"
+  },
+  {
+    "code": "1121",
+    "name": "1121"
+  },
+  {
+    "code": "1122",
+    "name": "1122"
+  },
+  {
+    "code": "1123",
+    "name": "1123"
+  },
+  {
+    "code": "1124",
+    "name": "1124"
+  },
+  {
+    "code": "1125",
+    "name": "1125"
+  },
+  {
+    "code": "1126",
+    "name": "1126"
+  },
+  {
+    "code": "1132",
+    "name": "1132"
+  },
+  {
+    "code": "1133",
+    "name": "1133"
+  },
+  {
+    "code": "1134",
+    "name": "1134"
+  },
+  {
+    "code": "1135",
+    "name": "1135"
+  },
+  {
+    "code": "1136",
+    "name": "1136"
+  },
+  {
+    "code": "1137",
+    "name": "1137"
+  },
+  {
+    "code": "1138",
+    "name": "1138"
+  },
+  {
+    "code": "1143",
+    "name": "1143"
+  },
+  {
+    "code": "1145",
+    "name": "1145"
+  },
+  {
+    "code": "1146",
+    "name": "1146"
+  },
+  {
+    "code": "1147",
+    "name": "1147"
+  },
+  {
+    "code": "1149",
+    "name": "1149"
+  },
+  {
+    "code": "1151",
+    "name": "1151"
+  },
+  {
+    "code": "1154",
+    "name": "1154"
+  },
+  {
+    "code": "1155",
+    "name": "1155"
+  },
+  {
+    "code": "1158",
+    "name": "1158"
+  },
+  {
+    "code": "1159",
+    "name": "1159"
+  },
+  {
+    "code": "1164",
+    "name": "1164"
+  },
+  {
+    "code": "1166",
+    "name": "1166"
+  },
+  {
+    "code": "1167",
+    "name": "1167"
+  },
+  {
+    "code": "1169",
+    "name": "1169"
+  },
+  {
+    "code": "1170",
+    "name": "1170"
+  },
+  {
+    "code": "1171",
+    "name": "1171"
+  },
+  {
+    "code": "1172",
+    "name": "1172"
+  },
+  {
+    "code": "1173",
+    "name": "1173"
+  },
+  {
+    "code": "1175",
+    "name": "1175"
+  },
+  {
+    "code": "1176",
+    "name": "1176"
+  },
+  {
+    "code": "1177",
+    "name": "1177"
+  },
+  {
+    "code": "1178",
+    "name": "1178"
+  },
+  {
+    "code": "1180",
+    "name": "1180"
+  },
+  {
+    "code": "1181",
+    "name": "1181"
+  },
+  {
+    "code": "1182",
+    "name": "1182"
+  },
+  {
+    "code": "1184",
+    "name": "1184"
+  },
+  {
+    "code": "1186",
+    "name": "1186"
+  },
+  {
+    "code": "1187",
+    "name": "1187"
+  },
+  {
+    "code": "1188",
+    "name": "1188"
+  },
+  {
+    "code": "1189",
+    "name": "1189"
+  },
+  {
+    "code": "1191",
+    "name": "1191"
+  },
+  {
+    "code": "1192",
+    "name": "1192"
+  },
+  {
+    "code": "1195",
+    "name": "1195"
+  },
+  {
+    "code": "1212",
+    "name": "1212"
+  },
+  {
+    "code": "1223",
+    "name": "1223"
+  },
+  {
+    "code": "1224",
+    "name": "1224"
+  },
+  {
+    "code": "1225",
+    "name": "1225"
+  },
+  {
+    "code": "1238",
+    "name": "1238"
+  },
+  {
+    "code": "1239",
+    "name": "1239"
+  },
+  {
+    "code": "1241",
+    "name": "1241"
+  },
+  {
+    "code": "1242",
+    "name": "1242"
+  },
+  {
+    "code": "1243",
+    "name": "1243"
+  },
+  {
+    "code": "1246",
+    "name": "1246"
+  },
+  {
+    "code": "1247",
+    "name": "1247"
+  },
+  {
+    "code": "1248",
+    "name": "1248"
+  },
+  {
+    "code": "1249",
+    "name": "1249"
+  },
+  {
+    "code": "1250",
+    "name": "1250"
+  },
+  {
+    "code": "1251",
+    "name": "1251"
+  },
+  {
+    "code": "1254",
+    "name": "1254"
+  },
+  {
+    "code": "1255",
+    "name": "1255"
+  },
+  {
+    "code": "1258",
+    "name": "1258"
+  },
+  {
+    "code": "1266",
+    "name": "1266"
+  },
+  {
+    "code": "1270",
+    "name": "1270"
+  },
+  {
+    "code": "1273",
+    "name": "1273"
+  },
+  {
+    "code": "1274",
+    "name": "1274"
+  },
+  {
+    "code": "1275",
+    "name": "1275"
+  },
+  {
+    "code": "1276",
+    "name": "1276"
+  },
+  {
+    "code": "1278",
+    "name": "1278"
+  },
+  {
+    "code": "1279",
+    "name": "1279"
+  },
+  {
+    "code": "1280",
+    "name": "1280"
+  },
+  {
+    "code": "1281",
+    "name": "1281"
+  },
+  {
+    "code": "1287",
+    "name": "1287"
+  },
+  {
+    "code": "1288",
+    "name": "1288"
+  },
+  {
+    "code": "1290",
+    "name": "1290"
+  },
+  {
+    "code": "1291",
+    "name": "1291"
+  },
+  {
+    "code": "1293",
+    "name": "1293"
+  },
+  {
+    "code": "1294",
+    "name": "1294"
+  },
+  {
+    "code": "1295",
+    "name": "1295"
+  },
+  {
+    "code": "1296",
+    "name": "1296"
+  },
+  {
+    "code": "1297",
+    "name": "1297"
+  },
+  {
+    "code": "1298",
+    "name": "1298"
+  },
+  {
+    "code": "1304",
+    "name": "1304"
+  },
+  {
+    "code": "1307",
+    "name": "1307"
+  },
+  {
+    "code": "1309",
+    "name": "1309"
+  },
+  {
+    "code": "1310",
+    "name": "1310"
+  },
+  {
+    "code": "1311",
+    "name": "1311"
+  },
+  {
+    "code": "1313",
+    "name": "1313"
+  },
+  {
+    "code": "1321",
+    "name": "1321"
+  },
+  {
+    "code": "1322",
+    "name": "1322"
+  },
+  {
+    "code": "1329",
+    "name": "1329"
+  },
+  {
+    "code": "1334",
+    "name": "1334"
+  },
+  {
+    "code": "1338",
+    "name": "1338"
+  },
+  {
+    "code": "1342",
+    "name": "1342"
+  },
+  {
+    "code": "1344",
+    "name": "1344"
+  },
+  {
+    "code": "1353",
+    "name": "1353"
+  },
+  {
+    "code": "1354",
+    "name": "1354"
+  },
+  {
+    "code": "1360",
+    "name": "1360"
+  },
+  {
+    "code": "1368",
+    "name": "1368"
+  },
+  {
+    "code": "1369",
+    "name": "1369"
+  },
+  {
+    "code": "1370",
+    "name": "1370"
+  },
+  {
+    "code": "1372",
+    "name": "1372"
+  },
+  {
+    "code": "1375",
+    "name": "1375"
+  },
+  {
+    "code": "1379",
+    "name": "1379"
+  },
+  {
+    "code": "1381",
+    "name": "1381"
+  },
+  {
+    "code": "1383",
+    "name": "1383"
+  },
+  {
+    "code": "1384",
+    "name": "1384"
+  },
+  {
+    "code": "1385",
+    "name": "1385"
+  },
+  {
+    "code": "1397",
+    "name": "1397"
+  },
+  {
+    "code": "1528",
+    "name": "1528"
+  },
+  {
+    "code": "1538",
+    "name": "1538"
+  },
+  {
+    "code": "1542",
+    "name": "1542"
+  },
+  {
+    "code": "1555",
+    "name": "1555"
+  },
+  {
+    "code": "1566",
+    "name": "1566"
+  },
+  {
+    "code": "1593",
+    "name": "1593"
+  },
+  {
+    "code": "1594",
+    "name": "1594"
+  },
+  {
+    "code": "1610",
+    "name": "1610"
+  },
+  {
+    "code": "1611",
+    "name": "1611"
+  },
+  {
+    "code": "1615",
+    "name": "1615"
+  },
+  {
+    "code": "1621",
+    "name": "1621"
+  },
+  {
+    "code": "1622",
+    "name": "1622"
+  },
+  {
+    "code": "1623",
+    "name": "1623"
+  },
+  {
+    "code": "1624",
+    "name": "1624"
+  },
+  {
+    "code": "1633",
+    "name": "1633"
+  },
+  {
+    "code": "1635",
+    "name": "1635"
+  },
+  {
+    "code": "1637",
+    "name": "1637"
+  },
+  {
+    "code": "1640",
+    "name": "1640"
+  },
+  {
+    "code": "1642",
+    "name": "1642"
+  },
+  {
+    "code": "1643",
+    "name": "1643"
+  },
+  {
+    "code": "1647",
+    "name": "1647"
+  },
+  {
+    "code": "1649",
+    "name": "1649"
+  },
+  {
+    "code": "1650",
+    "name": "1650"
+  },
+  {
+    "code": "1651",
+    "name": "1651"
+  },
+  {
+    "code": "1657",
+    "name": "1657"
+  },
+  {
+    "code": "1659",
+    "name": "1659"
+  },
+  {
+    "code": "1670",
+    "name": "1670"
+  },
+  {
+    "code": "1673",
+    "name": "1673"
+  },
+  {
+    "code": "1674",
+    "name": "1674"
+  },
+  {
+    "code": "1675",
+    "name": "1675"
+  },
+  {
+    "code": "1676",
+    "name": "1676"
+  },
+  {
+    "code": "1678",
+    "name": "1678"
+  },
+  {
+    "code": "1682",
+    "name": "1682"
+  },
+  {
+    "code": "1687",
+    "name": "1687"
+  },
+  {
+    "code": "1694",
+    "name": "1694"
+  },
+  {
+    "code": "1701",
+    "name": "1701"
+  },
+  {
+    "code": "1703",
+    "name": "1703"
+  },
+  {
+    "code": "1709",
+    "name": "1709"
+  },
+  {
+    "code": "1711",
+    "name": "1711"
+  },
+  {
+    "code": "1718",
+    "name": "1718"
+  },
+  {
+    "code": "1725",
+    "name": "1725"
+  },
+  {
+    "code": "1728",
+    "name": "1728"
+  },
+  {
+    "code": "1733",
+    "name": "1733"
+  },
+  {
+    "code": "1735",
+    "name": "1735"
+  },
+  {
+    "code": "1738",
+    "name": "1738"
+  },
+  {
+    "code": "1739",
+    "name": "1739"
+  },
+  {
+    "code": "1741",
+    "name": "1741"
+  },
+  {
+    "code": "1742",
+    "name": "1742"
+  },
+  {
+    "code": "1743",
+    "name": "1743"
+  },
+  {
+    "code": "1746",
+    "name": "1746"
+  },
+  {
+    "code": "1747",
+    "name": "1747"
+  },
+  {
+    "code": "1749",
+    "name": "1749"
+  },
+  {
+    "code": "1750",
+    "name": "1750"
+  },
+  {
+    "code": "1751",
+    "name": "1751"
+  },
+  {
+    "code": "1755",
+    "name": "1755"
+  },
+  {
+    "code": "1765",
+    "name": "1765"
+  },
+  {
+    "code": "1766",
+    "name": "1766"
+  },
+  {
+    "code": "1767",
+    "name": "1767"
+  },
+  {
+    "code": "1771",
+    "name": "1771"
+  },
+  {
+    "code": "1772",
+    "name": "1772"
+  },
+  {
+    "code": "1776",
+    "name": "1776"
+  },
+  {
+    "code": "1781",
+    "name": "1781"
+  },
+  {
+    "code": "1784",
+    "name": "1784"
+  },
+  {
+    "code": "1787",
+    "name": "1787"
+  },
+  {
+    "code": "1791",
+    "name": "1791"
+  },
+  {
+    "code": "1794",
+    "name": "1794"
+  },
+  {
+    "code": "1797",
+    "name": "1797"
+  },
+  {
+    "code": "1799",
+    "name": "1799"
+  },
+  {
+    "code": "1800",
+    "name": "1800"
+  },
+  {
+    "code": "1801",
+    "name": "1801"
+  },
+  {
+    "code": "1802",
+    "name": "1802"
+  },
+  {
+    "code": "1803",
+    "name": "1803"
+  },
+  {
+    "code": "1804",
+    "name": "1804"
+  },
+  {
+    "code": "1805",
+    "name": "1805"
+  },
+  {
+    "code": "1809",
+    "name": "1809"
+  },
+  {
+    "code": "1810",
+    "name": "1810"
+  },
+  {
+    "code": "1811",
+    "name": "1811"
+  },
+  {
+    "code": "1812",
+    "name": "1812"
+  },
+  {
+    "code": "1815",
+    "name": "1815"
+  },
+  {
+    "code": "1817",
+    "name": "1817"
+  },
+  {
+    "code": "1823",
+    "name": "1823"
+  },
+  {
+    "code": "1825",
+    "name": "1825"
+  },
+  {
+    "code": "1827",
+    "name": "1827"
+  },
+  {
+    "code": "1828",
+    "name": "1828"
+  },
+  {
+    "code": "1829",
+    "name": "1829"
+  },
+  {
+    "code": "1831",
+    "name": "1831"
+  },
+  {
+    "code": "1832",
+    "name": "1832"
+  },
+  {
+    "code": "1833",
+    "name": "1833"
+  },
+  {
+    "code": "1834",
+    "name": "1834"
+  },
+  {
+    "code": "1838",
+    "name": "1838"
+  },
+  {
+    "code": "1839",
+    "name": "1839"
+  },
+  {
+    "code": "1840",
+    "name": "1840"
+  },
+  {
+    "code": "1842",
+    "name": "1842"
+  },
+  {
+    "code": "1843",
+    "name": "1843"
+  },
+  {
+    "code": "1846",
+    "name": "1846"
+  },
+  {
+    "code": "1847",
+    "name": "1847"
+  },
+  {
+    "code": "1848",
+    "name": "1848"
+  },
+  {
+    "code": "1850",
+    "name": "1850"
+  },
+  {
+    "code": "1851",
+    "name": "1851"
+  },
+  {
+    "code": "1861",
+    "name": "1861"
+  },
+  {
+    "code": "1874",
+    "name": "1874"
+  },
+  {
+    "code": "1880",
+    "name": "1880"
+  },
+  {
+    "code": "1893",
+    "name": "1893"
+  },
+  {
+    "code": "1895",
+    "name": "1895"
+  },
+  {
+    "code": "1910",
+    "name": "1910"
+  },
+  {
+    "code": "1915",
+    "name": "1915"
+  },
+  {
+    "code": "1917",
+    "name": "1917"
+  },
+  {
+    "code": "1918",
+    "name": "1918"
+  },
+  {
+    "code": "1922",
+    "name": "1922"
+  },
+  {
+    "code": "1924",
+    "name": "1924"
+  },
+  {
+    "code": "1932",
+    "name": "1932"
+  },
+  {
+    "code": "1934",
+    "name": "1934"
+  },
+  {
+    "code": "1939",
+    "name": "1939"
+  },
+  {
+    "code": "1940",
+    "name": "1940"
+  },
+  {
+    "code": "1941",
+    "name": "1941"
+  },
+  {
+    "code": "1945",
+    "name": "1945"
+  },
+  {
+    "code": "1948",
+    "name": "1948"
+  },
+  {
+    "code": "1950",
+    "name": "1950"
+  },
+  {
+    "code": "1951",
+    "name": "1951"
+  },
+  {
+    "code": "1953",
+    "name": "1953"
+  },
+  {
+    "code": "1955",
+    "name": "1955"
+  },
+  {
+    "code": "1965",
+    "name": "1965"
+  },
+  {
+    "code": "1966",
+    "name": "1966"
+  },
+  {
+    "code": "1967",
+    "name": "1967"
+  },
+  {
+    "code": "1968",
+    "name": "1968"
+  },
+  {
+    "code": "1970",
+    "name": "1970"
+  },
+  {
+    "code": "1971",
+    "name": "1971"
+  },
+  {
+    "code": "1976",
+    "name": "1976"
+  },
+  {
+    "code": "1977",
+    "name": "1977"
+  },
+  {
+    "code": "1980",
+    "name": "1980"
+  },
+  {
+    "code": "1981",
+    "name": "1981"
+  },
+  {
+    "code": "1982",
+    "name": "1982"
+  },
+  {
+    "code": "1984",
+    "name": "1984"
+  },
+  {
+    "code": "1987",
+    "name": "1987"
+  },
+  {
+    "code": "1988",
+    "name": "1988"
+  },
+  {
+    "code": "1990",
+    "name": "1990"
+  },
+  {
+    "code": "2800",
+    "name": "2800"
+  },
+  {
+    "code": "4000",
+    "name": "4000"
+  },
+  {
+    "code": "4001",
+    "name": "4001"
+  },
+  {
+    "code": "4011",
+    "name": "4011"
+  },
+  {
+    "code": "4024",
+    "name": "4024"
+  },
+  {
+    "code": "4043",
+    "name": "4043"
+  },
+  {
+    "code": "4076",
+    "name": "4076"
+  },
+  {
+    "code": "4118",
+    "name": "4118"
+  },
+  {
+    "code": "4137",
+    "name": "4137"
+  },
+  {
+    "code": "4147",
+    "name": "4147"
+  },
+  {
+    "code": "4166",
+    "name": "4166"
+  },
+  {
+    "code": "6574",
+    "name": "6574"
+  },
+  {
+    "code": "6575",
+    "name": "6575"
+  },
+  {
+    "code": "6589",
+    "name": "6589"
+  },
+  {
+    "code": "6593",
+    "name": "6593"
+  },
+  {
+    "code": "6611",
+    "name": "6611"
+  },
+  {
+    "code": "6615",
+    "name": "6615"
+  },
+  {
+    "code": "6623",
+    "name": "6623"
+  },
+  {
+    "code": "6624",
+    "name": "6624"
+  },
+  {
+    "code": "6633",
+    "name": "6633"
+  },
+  {
+    "code": "6635",
+    "name": "6635"
+  },
+  {
+    "code": "6637",
+    "name": "6637"
+  },
+  {
+    "code": "6640",
+    "name": "6640"
+  },
+  {
+    "code": "6641",
+    "name": "6641"
+  },
+  {
+    "code": "6642",
+    "name": "6642"
+  },
+  {
+    "code": "6643",
+    "name": "6643"
+  },
+  {
+    "code": "6645",
+    "name": "6645"
+  },
+  {
+    "code": "6649",
+    "name": "6649"
+  },
+  {
+    "code": "6651",
+    "name": "6651"
+  },
+  {
+    "code": "6657",
+    "name": "6657"
+  },
+  {
+    "code": "6659",
+    "name": "6659"
+  },
+  {
+    "code": "6661",
+    "name": "6661"
+  },
+  {
+    "code": "6670",
+    "name": "6670"
+  },
+  {
+    "code": "6672",
+    "name": "6672"
+  },
+  {
+    "code": "6673",
+    "name": "6673"
+  },
+  {
+    "code": "6675",
+    "name": "6675"
+  },
+  {
+    "code": "6676",
+    "name": "6676"
+  },
+  {
+    "code": "6678",
+    "name": "6678"
+  },
+  {
+    "code": "6682",
+    "name": "6682"
+  },
+  {
+    "code": "6684",
+    "name": "6684"
+  },
+  {
+    "code": "6687",
+    "name": "6687"
+  },
+  {
+    "code": "6701",
+    "name": "6701"
+  },
+  {
+    "code": "6709",
+    "name": "6709"
+  },
+  {
+    "code": "6710",
+    "name": "6710"
+  },
+  {
+    "code": "6711",
+    "name": "6711"
+  },
+  {
+    "code": "6718",
+    "name": "6718"
+  },
+  {
+    "code": "6722",
+    "name": "6722"
+  },
+  {
+    "code": "6728",
+    "name": "6728"
+  },
+  {
+    "code": "6733",
+    "name": "6733"
+  },
+  {
+    "code": "6738",
+    "name": "6738"
+  },
+  {
+    "code": "6739",
+    "name": "6739"
+  },
+  {
+    "code": "6741",
+    "name": "6741"
+  },
+  {
+    "code": "6742",
+    "name": "6742"
+  },
+  {
+    "code": "6748",
+    "name": "6748"
+  },
+  {
+    "code": "6765",
+    "name": "6765"
+  },
+  {
+    "code": "6767",
+    "name": "6767"
+  },
+  {
+    "code": "6772",
+    "name": "6772"
+  },
+  {
+    "code": "6784",
+    "name": "6784"
+  },
+  {
+    "code": "6791",
+    "name": "6791"
+  },
+  {
+    "code": "6797",
+    "name": "6797"
+  },
+  {
+    "code": "6800",
+    "name": "6800"
+  },
+  {
+    "code": "6802",
+    "name": "6802"
+  },
+  {
+    "code": "6803",
+    "name": "6803"
+  },
+  {
+    "code": "6805",
+    "name": "6805"
+  },
+  {
+    "code": "6810",
+    "name": "6810"
+  },
+  {
+    "code": "6811",
+    "name": "6811"
+  },
+  {
+    "code": "6812",
+    "name": "6812"
+  },
+  {
+    "code": "6815",
+    "name": "6815"
+  },
+  {
+    "code": "6816",
+    "name": "6816"
+  },
+  {
+    "code": "6817",
+    "name": "6817"
+  },
+  {
+    "code": "6822",
+    "name": "6822"
+  },
+  {
+    "code": "6823",
+    "name": "6823"
+  },
+  {
+    "code": "6829",
+    "name": "6829"
+  },
+  {
+    "code": "6832",
+    "name": "6832"
+  },
+  {
+    "code": "6839",
+    "name": "6839"
+  },
+  {
+    "code": "6841",
+    "name": "6841"
+  },
+  {
+    "code": "6843",
+    "name": "6843"
+  },
+  {
+    "code": "6844",
+    "name": "6844"
+  },
+  {
+    "code": "6846",
+    "name": "6846"
+  },
+  {
+    "code": "6848",
+    "name": "6848"
+  },
+  {
+    "code": "6851",
+    "name": "6851"
+  },
+  {
+    "code": "6859",
+    "name": "6859"
+  },
+  {
+    "code": "6878",
+    "name": "6878"
+  },
+  {
+    "code": "6879",
+    "name": "6879"
+  },
+  {
+    "code": "6880",
+    "name": "6880"
+  },
+  {
+    "code": "6882",
+    "name": "6882"
+  },
+  {
+    "code": "6884",
+    "name": "6884"
+  },
+  {
+    "code": "6893",
+    "name": "6893"
+  },
+  {
+    "code": "6895",
+    "name": "6895"
+  },
+  {
+    "code": "6902",
+    "name": "6902"
+  },
+  {
+    "code": "6918",
+    "name": "6918"
+  },
+  {
+    "code": "6921",
+    "name": "6921"
+  },
+  {
+    "code": "6922",
+    "name": "6922"
+  },
+  {
+    "code": "6924",
+    "name": "6924"
+  },
+  {
+    "code": "6934",
+    "name": "6934"
+  },
+  {
+    "code": "6938",
+    "name": "6938"
+  },
+  {
+    "code": "6940",
+    "name": "6940"
+  },
+  {
+    "code": "6945",
+    "name": "6945"
+  },
+  {
+    "code": "6946",
+    "name": "6946"
+  },
+  {
+    "code": "6949",
+    "name": "6949"
+  },
+  {
+    "code": "6950",
+    "name": "6950"
+  },
+  {
+    "code": "6951",
+    "name": "6951"
+  },
+  {
+    "code": "6952",
+    "name": "6952"
+  },
+  {
+    "code": "6953",
+    "name": "6953"
+  },
+  {
+    "code": "6955",
+    "name": "6955"
+  },
+  {
+    "code": "6966",
+    "name": "6966"
+  },
+  {
+    "code": "6967",
+    "name": "6967"
+  },
+  {
+    "code": "6970",
+    "name": "6970"
+  },
+  {
+    "code": "6971",
+    "name": "6971"
+  },
+  {
+    "code": "6977",
+    "name": "6977"
+  },
+  {
+    "code": "6980",
+    "name": "6980"
+  },
+  {
+    "code": "6981",
+    "name": "6981"
+  },
+  {
+    "code": "6984",
+    "name": "6984"
+  },
+  {
+    "code": "6987",
+    "name": "6987"
+  },
+  {
+    "code": "6988",
+    "name": "6988"
+  },
+  {
+    "code": "6990",
+    "name": "6990"
+  },
+  {
+    "code": "BLK",
+    "name": "Black"
+  },
+  {
+    "code": "FNA",
+    "name": "French Navy"
+  },
+  {
+    "code": "CVY",
+    "name": "Convoy Grey"
+  },
+  {
+    "code": "WHI",
+    "name": "White"
+  },
+  {
+    "code": "BRO",
+    "name": "Bright Royal"
+  },
+  {
+    "code": "BOT",
+    "name": "Bottle Green"
+  },
+  {
+    "code": "LXF",
+    "name": "Light Oxford"
+  },
+  {
+    "code": "ORA",
+    "name": "Orange"
+  },
+  {
+    "code": "AQA",
+    "name": "Aqua Green"
+  },
+  {
+    "code": "ROY",
+    "name": "Royal Blue"
+  },
+  {
+    "code": "DKP",
+    "name": "Dark Purple"
+  },
+  {
+    "code": "RED",
+    "name": "Red"
+  },
+  {
+    "code": "NPI",
+    "name": "Neon Pink"
+  },
+  {
+    "code": "NYL",
+    "name": "Neon Yellow"
+  },
+  {
+    "code": "NGN",
+    "name": "Neon Green"
+  },
+  {
+    "code": "NOR",
+    "name": "Neon Orange"
+  },
+  {
+    "code": "NAV",
+    "name": "Navy"
+  },
+  {
+    "code": "APL",
+    "name": "Apple Green"
+  },
+  {
+    "code": "KEL",
+    "name": "Kelly Green"
+  },
+  {
+    "code": "DBK",
+    "name": "Deep Black"
+  },
+  {
+    "code": "ATO",
+    "name": "Atoll Blue"
+  },
+  {
+    "code": "HDM",
+    "name": "Heather Denim"
+  },
+  {
+    "code": "HEK",
+    "name": "Heather Khaki"
+  },
+  {
+    "code": "GYM",
+    "name": "Grey Marl"
+  },
+  {
+    "code": "CHM",
+    "name": "Charcoal Marl"
+  },
+  {
+    "code": "HOB",
+    "name": "Heather Oxblood"
+  },
+  {
+    "code": "CMF",
+    "name": "Camo"
+  },
+  {
+    "code": "GCM",
+    "name": "Grey Camo"
+  },
+  {
+    "code": "BLC",
+    "name": "Blue Camo"
+  },
+  {
+    "code": "BK/WH",
+    "name": "Black/White"
+  },
+  {
+    "code": "WH/BK",
+    "name": "White/Black"
+  },
+  {
+    "code": "FN/WH",
+    "name": "French Navy/White"
+  },
+  {
+    "code": "RY/WH",
+    "name": "Royal Blue/White"
+  },
+  {
+    "code": "RD/WH",
+    "name": "Red/White"
+  },
+  {
+    "code": "SKY",
+    "name": "Sky Blue"
+  },
+  {
+    "code": "YEL",
+    "name": "Yellow"
+  },
+  {
+    "code": "PGE",
+    "name": "Pure Grey"
+  },
+  {
+    "code": "BGN",
+    "name": "Bright Green"
+  },
+  {
+    "code": "WH/NV",
+    "name": "White/Navy"
+  },
+  {
+    "code": "WH/RD",
+    "name": "White/Red"
+  },
+  {
+    "code": "DNM",
+    "name": "Denim"
+  },
+  {
+    "code": "CYP",
+    "name": "Creamy Pink"
+  },
+  {
+    "code": "CHE",
+    "name": "Chestnut"
+  },
+  {
+    "code": "MTG",
+    "name": "Metal Grey"
+  },
+  {
+    "code": "NLM",
+    "name": "Neon Lime"
+  },
+  {
+    "code": "BGN/W",
+    "name": "Bright Green/White"
+  },
+  {
+    "code": "RD/BK",
+    "name": "Red/Black"
+  },
+  {
+    "code": "OR/BK",
+    "name": "Orange/Black"
+  },
+  {
+    "code": "L/BLK",
+    "name": "Lemon/Black"
+  },
+  {
+    "code": "L/ROY",
+    "name": "Lemon/Royal Blue"
+  },
+  {
+    "code": "CHA",
+    "name": "Charcoal"
+  },
+  {
+    "code": "UMB",
+    "name": "Umber"
+  },
+  {
+    "code": "WH/FN",
+    "name": "White/French Navy"
+  },
+  {
+    "code": "WH/NC",
+    "name": "White/Neon Coral"
+  },
+  {
+    "code": "WH/RY",
+    "name": "White/Royal Blue"
+  },
+  {
+    "code": "ULM",
+    "name": "Ultramarine"
+  },
+  {
+    "code": "MIN",
+    "name": "Mint"
+  },
+  {
+    "code": "FN/RY",
+    "name": "French Navy/Royal Blue"
+  },
+  {
+    "code": "RY/FN",
+    "name": "Royal Blue/French Navy"
+  },
+  {
+    "code": "BK/RD",
+    "name": "Black/Red"
+  },
+  {
+    "code": "ABW",
+    "name": "Absolute White"
+  },
+  {
+    "code": "DUB",
+    "name": "Duck Blue"
+  },
+  {
+    "code": "ARM",
+    "name": "Army"
+  },
+  {
+    "code": "DGY",
+    "name": "Dark Grey"
+  },
+  {
+    "code": "MGY",
+    "name": "Mouse Grey"
+  },
+  {
+    "code": "BUR",
+    "name": "Burgundy"
+  },
+  {
+    "code": "ORC",
+    "name": "Orchid"
+  },
+  {
+    "code": "FUS",
+    "name": "Fuchsia"
+  },
+  {
+    "code": "LEM",
+    "name": "Lemon Yellow"
+  },
+  {
+    "code": "GOL",
+    "name": "Gold"
+  },
+  {
+    "code": "DKH",
+    "name": "Dark Khaki"
+  },
+  {
+    "code": "HSK",
+    "name": "Heather Sky"
+  },
+  {
+    "code": "ASH",
+    "name": "Ash"
+  },
+  {
+    "code": "DNB",
+    "name": "Denim Brut"
+  },
+  {
+    "code": "FOR",
+    "name": "Forest Green"
+  },
+  {
+    "code": "HEP",
+    "name": "Heather Pink"
+  },
+  {
+    "code": "CDB",
+    "name": "Creamy Dark Blue"
+  },
+  {
+    "code": "NCR",
+    "name": "Neon Coral"
+  },
+  {
+    "code": "CYB",
+    "name": "Creamy Blue"
+  },
+  {
+    "code": "GYM/BX",
+    "name": "Grey Marl/Bordeaux"
+  },
+  {
+    "code": "GYM/F",
+    "name": "Grey Marl/French Navy"
+  },
+  {
+    "code": "CHM/B",
+    "name": "Charcoal Marl/Black"
+  },
+  {
+    "code": "RD/FN",
+    "name": "Red/French Navy"
+  },
+  {
+    "code": "AYB",
+    "name": "Abyss Blue"
+  },
+  {
+    "code": "NAT",
+    "name": "Natural"
+  },
+  {
+    "code": "PER",
+    "name": "Pepper Red"
+  },
+  {
+    "code": "DBK/M",
+    "name": "Deep Black/Multicolour"
+  },
+  {
+    "code": "WH/ML",
+    "name": "White/Multicolour"
+  },
+  {
+    "code": "NGT",
+    "name": "Night Blue"
+  },
+  {
+    "code": "ANM",
+    "name": "Anthracite Marl"
+  },
+  {
+    "code": "GME",
+    "name": "Grey Melange"
+  },
+  {
+    "code": "DEK",
+    "name": "Deep Khaki"
+  },
+  {
+    "code": "BTD",
+    "name": "Brut Denim"
+  },
+  {
+    "code": "OPW",
+    "name": "Optic White"
+  },
+  {
+    "code": "SFB",
+    "name": "Soft Blue"
+  },
+  {
+    "code": "DPB",
+    "name": "Deep Blue"
+  },
+  {
+    "code": "SFG",
+    "name": "Soft Grey"
+  },
+  {
+    "code": "NGM",
+    "name": "Night Blue Marl"
+  },
+  {
+    "code": "DRD",
+    "name": "Deep Burgundy"
+  },
+  {
+    "code": "OFW",
+    "name": "Off White"
+  },
+  {
+    "code": "KHA",
+    "name": "Khaki"
+  },
+  {
+    "code": "ROP",
+    "name": "Rope"
+  },
+  {
+    "code": "BRE",
+    "name": "Bright Red"
+  },
+  {
+    "code": "PPN",
+    "name": "Pale Pink"
+  },
+  {
+    "code": "ARB",
+    "name": "Arctic Blue"
+  },
+  {
+    "code": "POB",
+    "name": "Pool Blue"
+  },
+  {
+    "code": "APUR",
+    "name": "Astral Purple"
+  },
+  {
+    "code": "FZG",
+    "name": "Frozen Green"
+  },
+  {
+    "code": "SPG",
+    "name": "Spring Green"
+  },
+  {
+    "code": "PORA",
+    "name": "Pop Orange"
+  },
+  {
+    "code": "LYL",
+    "name": "Light Yellow"
+  },
+  {
+    "code": "BLU",
+    "name": "Blue"
+  },
+  {
+    "code": "BOR",
+    "name": "Burnt Orange"
+  },
+  {
+    "code": "LIL",
+    "name": "Lilac"
+  },
+  {
+    "code": "DPC",
+    "name": "Deep Charcoal"
+  },
+  {
+    "code": "HBE",
+    "name": "Heather Beige"
+  },
+  {
+    "code": "HLG",
+    "name": "Heather Light Green"
+  },
+  {
+    "code": "BEI",
+    "name": "Beige"
+  },
+  {
+    "code": "RCB",
+    "name": "Recycled Black"
+  },
+  {
+    "code": "RCW",
+    "name": "Recycled White"
+  },
+  {
+    "code": "RCN",
+    "name": "Recycled Navy"
+  },
+  {
+    "code": "LNN",
+    "name": "Linen"
+  },
+  {
+    "code": "CME",
+    "name": "Charcoal Melange"
+  },
+  {
+    "code": "CMG",
+    "name": "Creamy Green"
+  },
+  {
+    "code": "HBL",
+    "name": "Heather Blue"
+  },
+  {
+    "code": "PCH",
+    "name": "Peach"
+  },
+  {
+    "code": "GMP",
+    "name": "Green Empire"
+  },
+  {
+    "code": "DBE",
+    "name": "Dark Beige"
+  },
+  {
+    "code": "CNP",
+    "name": "Candy Pink"
+  },
+  {
+    "code": "FKR",
+    "name": "Folk Red"
+  },
+  {
+    "code": "FKP",
+    "name": "Folk Pink"
+  },
+  {
+    "code": "MBG",
+    "name": "Medium Burgundy"
+  },
+  {
+    "code": "AY/SH",
+    "name": "Army/Shear Beige"
+  },
+  {
+    "code": "CAG/SH",
+    "name": "Carbon Grey/Shear Beige"
+  },
+  {
+    "code": "CAG",
+    "name": "Carbon Grey"
+  },
+  {
+    "code": "SH/BE",
+    "name": "Shear Beige/Beige"
+  },
+  {
+    "code": "AY/DA",
+    "name": "Army/Dark Army"
+  },
+  {
+    "code": "CAG/B",
+    "name": "Carbon Grey/Black"
+  },
+  {
+    "code": "CRE",
+    "name": "Cream"
+  },
+  {
+    "code": "TUR",
+    "name": "Turquoise Blue"
+  },
+  {
+    "code": "BDG",
+    "name": "Bud Green"
+  },
+  {
+    "code": "GPH",
+    "name": "Graphite Grey"
+  },
+  {
+    "code": "PYR",
+    "name": "Poppy Red"
+  },
+  {
+    "code": "FSP",
+    "name": "Flash Pink"
+  },
+  {
+    "code": "MOR",
+    "name": "Medium Orange"
+  },
+  {
+    "code": "LBL",
+    "name": "Light Blue"
+  },
+  {
+    "code": "IGN",
+    "name": "Irish Green"
+  },
+  {
+    "code": "LML",
+    "name": "Light Grey Marl"
+  },
+  {
+    "code": "DKO",
+    "name": "Dark Orange"
+  },
+  {
+    "code": "DBEI",
+    "name": "Dusty Beige"
+  },
+  {
+    "code": "BSTP",
+    "name": "Blue Stripe"
+  },
+  {
+    "code": "BTO",
+    "name": "Bright Orange"
+  },
+  {
+    "code": "RBP",
+    "name": "Ribbon Pink"
+  },
+  {
+    "code": "OBD",
+    "name": "Oxblood"
+  },
+  {
+    "code": "SAN",
+    "name": "Sand"
+  },
+  {
+    "code": "CHO",
+    "name": "Chocolate"
+  },
+  {
+    "code": "BK/LM",
+    "name": "Black/Lime Green"
+  },
+  {
+    "code": "WH/AQ",
+    "name": "White/Aqua"
+  },
+  {
+    "code": "FN/NO",
+    "name": "French Navy/Neon Orange"
+  },
+  {
+    "code": "FO/WH",
+    "name": "Forest Green/White"
+  },
+  {
+    "code": "GM/OR",
+    "name": "Grey Marl/Orange"
+  },
+  {
+    "code": "HE/NV",
+    "name": "Heather Grey/Navy"
+  },
+  {
+    "code": "GRN",
+    "name": "Green"
+  },
+  {
+    "code": "KG/WH",
+    "name": "Kelly Green/White"
+  },
+  {
+    "code": "DG/LG",
+    "name": "Dark Grey/Light Grey Marl"
+  },
+  {
+    "code": "CH/BE",
+    "name": "Chocolate/Beige"
+  },
+  {
+    "code": "BK/GY",
+    "name": "Black/Grey"
+  },
+  {
+    "code": "WH/OR",
+    "name": "White/Orange"
+  },
+  {
+    "code": "PIN",
+    "name": "Pink"
+  },
+  {
+    "code": "NV/WH",
+    "name": "Navy/White"
+  },
+  {
+    "code": "GN/WH",
+    "name": "Golf Green/White"
+  },
+  {
+    "code": "BK/LG",
+    "name": "Black/Light Grey"
+  },
+  {
+    "code": "SK/FN",
+    "name": "Sky Blue/French Navy"
+  },
+  {
+    "code": "LTP",
+    "name": "Light Purple"
+  },
+  {
+    "code": "GSA",
+    "name": "Green Sage"
+  },
+  {
+    "code": "EME",
+    "name": "Emerald"
+  },
+  {
+    "code": "LIM",
+    "name": "Lime Green"
+  },
+  {
+    "code": "LGR",
+    "name": "Light Grey"
+  },
+  {
+    "code": "ZIN",
+    "name": "Zinc"
+  },
+  {
+    "code": "ERT",
+    "name": "Earth"
+  },
+  {
+    "code": "TGR",
+    "name": "Tango Red"
+  },
+  {
+    "code": "MPI",
+    "name": "Medium Pink"
+  },
+  {
+    "code": "APR",
+    "name": "Apricot"
+  },
+  {
+    "code": "PYW",
+    "name": "Pale Yellow"
+  },
+  {
+    "code": "CRL",
+    "name": "Coral"
+  },
+  {
+    "code": "ICE",
+    "name": "Ice Blue"
+  },
+  {
+    "code": "PBE",
+    "name": "Petroleum Blue"
+  },
+  {
+    "code": "CAB",
+    "name": "Caribbean Blue"
+  },
+  {
+    "code": "CHI",
+    "name": "Chilli Red"
+  },
+  {
+    "code": "ANP",
+    "name": "Ancient Pink"
+  },
+  {
+    "code": "HIB",
+    "name": "Hibiscus Red"
+  },
+  {
+    "code": "TCT",
+    "name": "Terracotta"
+  },
+  {
+    "code": "HEA",
+    "name": "Heather Grey"
+  },
+  {
+    "code": "GRE",
+    "name": "Grey"
+  },
+  {
+    "code": "AZR",
+    "name": "Azure"
+  },
+  {
+    "code": "TIA",
+    "name": "Titanium"
+  },
+  {
+    "code": "CSR",
+    "name": "Classic Red"
+  },
+  {
+    "code": "BSK",
+    "name": "Bright Sky"
+  },
+  {
+    "code": "DBL",
+    "name": "Dark Blue"
+  },
+  {
+    "code": "PUR",
+    "name": "Purple"
+  },
+  {
+    "code": "TAN",
+    "name": "Tan"
+  },
+  {
+    "code": "MIB",
+    "name": "Mineral Blue"
+  },
+  {
+    "code": "IND",
+    "name": "Indigo Blue"
+  },
+  {
+    "code": "OLI",
+    "name": "Olive Green"
+  },
+  {
+    "code": "MOC",
+    "name": "Mocha"
+  },
+  {
+    "code": "PWR",
+    "name": "Powder Rose"
+  },
+  {
+    "code": "UGY",
+    "name": "Urban Grey"
+  },
+  {
+    "code": "SHR",
+    "name": "Sport Heather"
+  },
+  {
+    "code": "IRN",
+    "name": "Iron"
+  },
+  {
+    "code": "DLV",
+    "name": "Dark Olive"
+  },
+  {
+    "code": "ABG",
+    "name": "Absinthe Green"
+  },
+  {
+    "code": "DCH",
+    "name": "Dark Chocolate"
+  },
+  {
+    "code": "DEG",
+    "name": "Deep Grey Marl"
+  },
+  {
+    "code": "RD/GY",
+    "name": "Red/Medium Grey"
+  },
+  {
+    "code": "PET",
+    "name": "Petrol"
+  },
+  {
+    "code": "DNE",
+    "name": "Dune"
+  },
+  {
+    "code": "WTE",
+    "name": "Winter Emerald"
+  },
+  {
+    "code": "BRN",
+    "name": "Brown"
+  },
+  {
+    "code": "BK/RY",
+    "name": "Black/Royal Blue"
+  },
+  {
+    "code": "BK/YL",
+    "name": "Black/Yellow"
+  },
+  {
+    "code": "TU/WH",
+    "name": "Turquoise Blue/White"
+  },
+  {
+    "code": "AY/BE",
+    "name": "Army/Beige"
+  },
+  {
+    "code": "GY/OR",
+    "name": "Grey/Orange"
+  },
+  {
+    "code": "C/BEI",
+    "name": "Chocolate/Beige"
+  },
+  {
+    "code": "PI/WH",
+    "name": "Pink/White"
+  },
+  {
+    "code": "BE/WH",
+    "name": "Beige/White"
+  },
+  {
+    "code": "LI/WH",
+    "name": "Lime Green/White"
+  },
+  {
+    "code": "PGE/W",
+    "name": "Pure Grey/White"
+  },
+  {
+    "code": "FS/WH",
+    "name": "Fuchsia/White"
+  },
+  {
+    "code": "AP/BK",
+    "name": "Apple Green/Black"
+  },
+  {
+    "code": "OXB",
+    "name": "Oxford Blue"
+  },
+  {
+    "code": "BNV",
+    "name": "Bright Navy"
+  },
+  {
+    "code": "CBL",
+    "name": "Corporate Blue"
+  },
+  {
+    "code": "SIL",
+    "name": "Silver"
+  },
+  {
+    "code": "PRT",
+    "name": "Port"
+  },
+  {
+    "code": "WH/SI",
+    "name": "White/Silver"
+  },
+  {
+    "code": "LB/MB",
+    "name": "Light Blue/Mid Blue"
+  },
+  {
+    "code": "ABK",
+    "name": "Black"
+  },
+  {
+    "code": "ASK",
+    "name": "Sky Blue"
+  },
+  {
+    "code": "ANY",
+    "name": "Navy"
+  },
+  {
+    "code": "ADR",
+    "name": "Deep Royal"
+  },
+  {
+    "code": "ARO",
+    "name": "Royal Blue"
+  },
+  {
+    "code": "APU",
+    "name": "Purple"
+  },
+  {
+    "code": "AGR",
+    "name": "Green"
+  },
+  {
+    "code": "ACG",
+    "name": "Grey"
+  },
+  {
+    "code": "ACH",
+    "name": "Charcoal"
+  },
+  {
+    "code": "ARD",
+    "name": "Red"
+  },
+  {
+    "code": "ABY",
+    "name": "Burgundy"
+  },
+  {
+    "code": "BK/CH",
+    "name": "Black/Charcoal"
+  },
+  {
+    "code": "B/MRB",
+    "name": "Black/Marine Blue"
+  },
+  {
+    "code": "B/TRD",
+    "name": "Black/True Red"
+  },
+  {
+    "code": "NV/CH",
+    "name": "Navy/Charcoal"
+  },
+  {
+    "code": "BK/AZ",
+    "name": "Black/Azure"
+  },
+  {
+    "code": "BK/BR",
+    "name": "Black/Bright Red"
+  },
+  {
+    "code": "BK/GP",
+    "name": "Black/Graphite Grey"
+  },
+  {
+    "code": "NV/GP",
+    "name": "Navy/Graphite Grey"
+  },
+  {
+    "code": "ERW",
+    "name": "Eco Raw"
+  },
+  {
+    "code": "TEA",
+    "name": "Teal"
+  },
+  {
+    "code": "OXN",
+    "name": "Oxford Navy"
+  },
+  {
+    "code": "LAV",
+    "name": "Lavender"
+  },
+  {
+    "code": "DSN",
+    "name": "Desert Sand"
+  },
+  {
+    "code": "BCM",
+    "name": "Black Urban Marl"
+  },
+  {
+    "code": "SAP",
+    "name": "Sapphire Blue"
+  },
+  {
+    "code": "NML",
+    "name": "Navy Marl"
+  },
+  {
+    "code": "PNG",
+    "name": "Pine Green"
+  },
+  {
+    "code": "CBO",
+    "name": "Carbon"
+  },
+  {
+    "code": "DKM",
+    "name": "Dark Grey Marl"
+  },
+  {
+    "code": "HPK",
+    "name": "Hot Pink"
+  },
+  {
+    "code": "STO",
+    "name": "Stone"
+  },
+  {
+    "code": "SBL",
+    "name": "Surf Blue"
+  },
+  {
+    "code": "CSP",
+    "name": "Classic Pink"
+  },
+  {
+    "code": "PUT",
+    "name": "Putty"
+  },
+  {
+    "code": "BK/CR",
+    "name": "Black/Classic Red"
+  },
+  {
+    "code": "BK/OR",
+    "name": "Black/Orange"
+  },
+  {
+    "code": "BK/FS",
+    "name": "Black/Fuchsia"
+  },
+  {
+    "code": "PT/NV",
+    "name": "Putty/Navy"
+  },
+  {
+    "code": "FN/CS",
+    "name": "French Navy/Classic Red"
+  },
+  {
+    "code": "NV/PT",
+    "name": "Navy/Putty"
+  },
+  {
+    "code": "GP/OY",
+    "name": "Graphite Grey/Oyster Grey"
+  },
+  {
+    "code": "CS/WH",
+    "name": "Classic Red/White"
+  },
+  {
+    "code": "BK/CS",
+    "name": "Black/Classic Red"
+  },
+  {
+    "code": "B/R/W",
+    "name": "Black/Red/White"
+  },
+  {
+    "code": "B/G/C",
+    "name": "Black/Graphite Grey/Classic Red"
+  },
+  {
+    "code": "B-G-W",
+    "name": "Black/Graphite Grey/White"
+  },
+  {
+    "code": "N-R-W",
+    "name": "Navy/Royal Blue/White"
+  },
+  {
+    "code": "N/R/W",
+    "name": "Navy/Red/White"
+  },
+  {
+    "code": "OL/BK",
+    "name": "Olive Green/Black"
+  },
+  {
+    "code": "G/B/W",
+    "name": "Bottle Green/Black/White"
+  },
+  {
+    "code": "R-B-W",
+    "name": "Red/Black/White"
+  },
+  {
+    "code": "R/B/W",
+    "name": "Royal Blue/Black/White"
+  },
+  {
+    "code": "O/B/W",
+    "name": "Orange/Black/White"
+  },
+  {
+    "code": "PRE",
+    "name": "Pure Red"
+  },
+  {
+    "code": "FPI",
+    "name": "Fresh Pink"
+  },
+  {
+    "code": "COB",
+    "name": "Cobalt"
+  },
+  {
+    "code": "SAL",
+    "name": "Salmon Pink"
+  },
+  {
+    "code": "IGY",
+    "name": "Ice Grey"
+  },
+  {
+    "code": "LG/WH",
+    "name": "Light Grey/White"
+  },
+  {
+    "code": "BRO/W",
+    "name": "Bright Royal/White"
+  },
+  {
+    "code": "BO/WH",
+    "name": "Bottle Green/White Snowflakes"
+  },
+  {
+    "code": "GP/LG",
+    "name": "Graphite Grey/Light Grey"
+  },
+  {
+    "code": "WH/CS",
+    "name": "White/Classic Red"
+  },
+  {
+    "code": "SB/WH",
+    "name": "Surf Blue/White"
+  },
+  {
+    "code": "PR/WH",
+    "name": "Purple/White"
+  },
+  {
+    "code": "GP/BK",
+    "name": "Graphite Grey/Black"
+  },
+  {
+    "code": "OR/WH",
+    "name": "Orange/White"
+  },
+  {
+    "code": "BIS",
+    "name": "Biscuit"
+  },
+  {
+    "code": "STE",
+    "name": "Steel Grey"
+  },
+  {
+    "code": "MUS",
+    "name": "Mustard"
+  },
+  {
+    "code": "B/BRO",
+    "name": "Black/Bright Royal"
+  },
+  {
+    "code": "CHR",
+    "name": "Charcoal"
+  },
+  {
+    "code": "FLY",
+    "name": "Fluorescent Yellow"
+  },
+  {
+    "code": "ACC",
+    "name": "Arctic Camo"
+  },
+  {
+    "code": "FCA",
+    "name": "Field Camo"
+  },
+  {
+    "code": "JUN",
+    "name": "Jungle Camo"
+  },
+  {
+    "code": "MDC",
+    "name": "Midnight Camo"
+  },
+  {
+    "code": "UCM",
+    "name": "Urban Camo"
+  },
+  {
+    "code": "MNH",
+    "name": "Midnight Haze"
+  },
+  {
+    "code": "CDH",
+    "name": "Cloudy Haze"
+  },
+  {
+    "code": "ESH",
+    "name": "Expresso Haze"
+  },
+  {
+    "code": "STH",
+    "name": "Strawberry Haze"
+  },
+  {
+    "code": "AI/BK",
+    "name": "Airforce Blue/Black"
+  },
+  {
+    "code": "BU/BK",
+    "name": "Burgundy/Black"
+  },
+  {
+    "code": "MU/BK",
+    "name": "Mustard/Black"
+  },
+  {
+    "code": "SN/BK",
+    "name": "Sand/Black"
+  },
+  {
+    "code": "MI/BK",
+    "name": "Military Green/Black"
+  },
+  {
+    "code": "NTS",
+    "name": "Natural Stone"
+  },
+  {
+    "code": "DYB",
+    "name": "Dusty Blue"
+  },
+  {
+    "code": "DUG",
+    "name": "Dusty Green"
+  },
+  {
+    "code": "CYG",
+    "name": "Cloudy Grey"
+  },
+  {
+    "code": "OA/WH",
+    "name": "Oatmeal/White"
+  },
+  {
+    "code": "OX/WH",
+    "name": "Oxford Navy/White"
+  },
+  {
+    "code": "OL/WH",
+    "name": "Olive Green/White"
+  },
+  {
+    "code": "AS/WH",
+    "name": "Ash/White"
+  },
+  {
+    "code": "PEB",
+    "name": "Pebble"
+  },
+  {
+    "code": "ALM",
+    "name": "Almond"
+  },
+  {
+    "code": "CDG",
+    "name": "Cloud Grey"
+  },
+  {
+    "code": "BK/BK",
+    "name": "Black/Black"
+  },
+  {
+    "code": "HE/BK",
+    "name": "Heather Grey/Black"
+  },
+  {
+    "code": "STB",
+    "name": "Steel Blue Tri-Blend"
+  },
+  {
+    "code": "MGR",
+    "name": "Military Green"
+  },
+  {
+    "code": "OAT",
+    "name": "Oatmeal"
+  },
+  {
+    "code": "VBK",
+    "name": "Vintage Black"
+  },
+  {
+    "code": "VOL",
+    "name": "Vintage Olive"
+  },
+  {
+    "code": "MRG",
+    "name": "Marina Green"
+  },
+  {
+    "code": "WNT",
+    "name": "Walnut"
+  },
+  {
+    "code": "FIR",
+    "name": "Fire Red"
+  },
+  {
+    "code": "VAN",
+    "name": "Vanilla"
+  },
+  {
+    "code": "AIR",
+    "name": "Airforce"
+  },
+  {
+    "code": "DTP",
+    "name": "Dusty Purple"
+  },
+  {
+    "code": "VIO",
+    "name": "Violet"
+  },
+  {
+    "code": "GRA",
+    "name": "Granite"
+  },
+  {
+    "code": "SUS",
+    "name": "Sunset"
+  },
+  {
+    "code": "ROS",
+    "name": "Rose"
+  },
+  {
+    "code": "TPK",
+    "name": "True Pink"
+  },
+  {
+    "code": "FEF",
+    "name": "Festival Fuchsia"
+  },
+  {
+    "code": "PMK",
+    "name": "Pumpkin"
+  },
+  {
+    "code": "ADM",
+    "name": "Almond Marl"
+  },
+  {
+    "code": "BK/SF",
+    "name": "Black/Soft White"
+  },
+  {
+    "code": "NS/DB",
+    "name": "Natural Stone/Dusty Blue"
+  },
+  {
+    "code": "VN/BI",
+    "name": "Vanilla/Biscuit"
+  },
+  {
+    "code": "TP/CR",
+    "name": "True Pink/Classic Red"
+  },
+  {
+    "code": "BKCH",
+    "name": "Black Cherry"
+  },
+  {
+    "code": "BLST",
+    "name": "Blue Steel"
+  },
+  {
+    "code": "BLCC",
+    "name": "Blueberry Cheesecake"
+  },
+  {
+    "code": "DJBL",
+    "name": "Dijon Blue"
+  },
+  {
+    "code": "ALPK",
+    "name": "Alpine Peaks"
+  },
+  {
+    "code": "DEPK",
+    "name": "Desert Peaks"
+  },
+  {
+    "code": "GLPK",
+    "name": "Glacier Peaks"
+  },
+  {
+    "code": "RKPK",
+    "name": "Rocky Peaks"
+  },
+  {
+    "code": "BRB",
+    "name": "Bright Blue"
+  },
+  {
+    "code": "BLV",
+    "name": "Bright Lavender"
+  },
+  {
+    "code": "BPN",
+    "name": "Bright Pink"
+  },
+  {
+    "code": "SFW/C",
+    "name": "Soft White/Classic Red"
+  },
+  {
+    "code": "SFW/F",
+    "name": "Soft White/French Navy"
+  },
+  {
+    "code": "F/SFW",
+    "name": "French Navy/Soft White"
+  },
+  {
+    "code": "OAFL",
+    "name": "Oatmeal Fleck"
+  },
+  {
+    "code": "NVFL",
+    "name": "Navy Fleck"
+  },
+  {
+    "code": "LGFL",
+    "name": "Light Grey Fleck"
+  },
+  {
+    "code": "DPI",
+    "name": "Dusky Pink"
+  },
+  {
+    "code": "FLO",
+    "name": "Fluorescent Orange"
+  },
+  {
+    "code": "AMS",
+    "name": "Antique Moss"
+  },
+  {
+    "code": "AGY",
+    "name": "Antique Grey"
+  },
+  {
+    "code": "ABU",
+    "name": "Antique Burgundy"
+  },
+  {
+    "code": "MOS",
+    "name": "Moss"
+  },
+  {
+    "code": "AZ/ON",
+    "name": "Azure/Oxford Navy"
+  },
+  {
+    "code": "ON/FR",
+    "name": "Oxford Navy/Fire Red"
+  },
+  {
+    "code": "ON/MU",
+    "name": "Oxford Navy/Mustard"
+  },
+  {
+    "code": "EM/SF",
+    "name": "Emerald/Soft White"
+  },
+  {
+    "code": "LG/BK",
+    "name": "Light Grey/Black"
+  },
+  {
+    "code": "G/BSH",
+    "name": "Graphite Grey/Blush"
+  },
+  {
+    "code": "L/CTN",
+    "name": "Light Grey/Citron"
+  },
+  {
+    "code": "CS/TP",
+    "name": "Classic Red/True Pink"
+  },
+  {
+    "code": "OR/GP",
+    "name": "Orange/Graphite Grey"
+  },
+  {
+    "code": "AQG",
+    "name": "Antique Grey"
+  },
+  {
+    "code": "OA/BK",
+    "name": "Oatmeal/Black"
+  },
+  {
+    "code": "OX/BK",
+    "name": "Oxford Navy/Black"
+  },
+  {
+    "code": "BI/BK",
+    "name": "Biscuit/Black"
+  },
+  {
+    "code": "WN/BK",
+    "name": "Walnut/Black"
+  },
+  {
+    "code": "FN/LG",
+    "name": "French Navy/Light Grey"
+  },
+  {
+    "code": "BRO/OW",
+    "name": "Bright Royal/Off White"
+  },
+  {
+    "code": "BO/OW",
+    "name": "Bottle Green/Off White"
+  },
+  {
+    "code": "CS/OW",
+    "name": "Classic Red/Off White"
+  },
+  {
+    "code": "BU/OW",
+    "name": "Burgundy/Off White"
+  },
+  {
+    "code": "DGR",
+    "name": "Dark Graphite"
+  },
+  {
+    "code": "B/FLO",
+    "name": "Black/Fluorescent Orange"
+  },
+  {
+    "code": "BK/FY",
+    "name": "Black/Fluorescent Yellow"
+  },
+  {
+    "code": "BK/ST",
+    "name": "Black/Stone"
+  },
+  {
+    "code": "NV/ST",
+    "name": "Navy/Stone"
+  },
+  {
+    "code": "SFW",
+    "name": "Soft White"
+  },
+  {
+    "code": "HOA",
+    "name": "Heather Oatmeal"
+  },
+  {
+    "code": "HNY",
+    "name": "Heather Navy"
+  },
+  {
+    "code": "PLU",
+    "name": "Plum"
+  },
+  {
+    "code": "FLG",
+    "name": "Fluorescent Green"
+  },
+  {
+    "code": "CAR",
+    "name": "Caramel"
+  },
+  {
+    "code": "BSH",
+    "name": "Blush"
+  },
+  {
+    "code": "PSP",
+    "name": "Pastel Pink"
+  },
+  {
+    "code": "MAG",
+    "name": "Magenta"
+  },
+  {
+    "code": "FLP",
+    "name": "Fluorescent Pink"
+  },
+  {
+    "code": "RUS",
+    "name": "Rust"
+  },
+  {
+    "code": "OW/MO",
+    "name": "Off White/Mocha"
+  },
+  {
+    "code": "SK/WH",
+    "name": "Sky Blue/White"
+  },
+  {
+    "code": "SB/OW",
+    "name": "Surf Blue/Off White"
+  },
+  {
+    "code": "NV/LG",
+    "name": "Navy/Light Grey"
+  },
+  {
+    "code": "OL/OA",
+    "name": "Olive Green/Oatmeal"
+  },
+  {
+    "code": "DP/OW",
+    "name": "Dusky Pink/Off White"
+  },
+  {
+    "code": "FS/OW",
+    "name": "Fuchsia/Off White"
+  },
+  {
+    "code": "MU/OW",
+    "name": "Mustard/Off White"
+  },
+  {
+    "code": "GO/BK",
+    "name": "Gold/Black"
+  },
+  {
+    "code": "BR/OW",
+    "name": "Bright Red/Off White"
+  },
+  {
+    "code": "OW/BR",
+    "name": "Off White/Bright Red"
+  },
+  {
+    "code": "OW/FN",
+    "name": "Off White/French Navy"
+  },
+  {
+    "code": "BU/WH",
+    "name": "Burgundy/White"
+  },
+  {
+    "code": "FGF",
+    "name": "Forager Fusion"
+  },
+  {
+    "code": "LQZ",
+    "name": "Liquorice Zing"
+  },
+  {
+    "code": "SDP",
+    "name": "Sherbet Dip"
+  },
+  {
+    "code": "TE/FN",
+    "name": "Teal/French Navy"
+  },
+  {
+    "code": "LV/FN",
+    "name": "Lavender/French Navy"
+  },
+  {
+    "code": "SMO",
+    "name": "Smoke"
+  },
+  {
+    "code": "B/K/W",
+    "name": "Black/Kelly Green/White"
+  },
+  {
+    "code": "N/O/W",
+    "name": "French Navy/Orange/White"
+  },
+  {
+    "code": "N-S-W",
+    "name": "French Navy/Sapphire Blue/White"
+  },
+  {
+    "code": "BK/GO",
+    "name": "Black/Gold"
+  },
+  {
+    "code": "BK/HE",
+    "name": "Black/Heather Grey"
+  },
+  {
+    "code": "APB",
+    "name": "Alpine Blues"
+  },
+  {
+    "code": "ACD",
+    "name": "Arctic Dawn"
+  },
+  {
+    "code": "AUM",
+    "name": "Autumn Moss"
+  },
+  {
+    "code": "BJK",
+    "name": "Black Jacks"
+  },
+  {
+    "code": "CHS",
+    "name": "Cherry Sherbet"
+  },
+  {
+    "code": "CHBL",
+    "name": "Chilli Blues"
+  },
+  {
+    "code": "CKC",
+    "name": "Crackling Campfire"
+  },
+  {
+    "code": "ETG",
+    "name": "Electric Grey"
+  },
+  {
+    "code": "LFZ",
+    "name": "Lavender Fizz"
+  },
+  {
+    "code": "MSP",
+    "name": "Marina Splash"
+  },
+  {
+    "code": "MMX",
+    "name": "Milkshake Mix"
+  },
+  {
+    "code": "MGF",
+    "name": "Morning Frost"
+  },
+  {
+    "code": "RTB",
+    "name": "Retro Blues"
+  },
+  {
+    "code": "WMB",
+    "name": "Watermelon Breeze"
+  },
+  {
+    "code": "WBR",
+    "name": "Winter Berries"
+  },
+  {
+    "code": "NV/TP",
+    "name": "Navy/Taupe"
+  },
+  {
+    "code": "FO/TP",
+    "name": "Forest Green/Taupe"
+  },
+  {
+    "code": "BK/SB",
+    "name": "Black/Surf Blue"
+  },
+  {
+    "code": "GRY",
+    "name": "Frost Grey"
+  },
+  {
+    "code": "NVH",
+    "name": "Navy Herringbone"
+  },
+  {
+    "code": "CHH",
+    "name": "Charcoal Herringbone"
+  },
+  {
+    "code": "ST/SHA",
+    "name": "Stone/Shadow Grey"
+  },
+  {
+    "code": "SAB/LG",
+    "name": "Slate Blue/Light Grey"
+  },
+  {
+    "code": "BK/DLV",
+    "name": "Black/Dark Olive"
+  },
+  {
+    "code": "CH/DAM",
+    "name": "Chocolate/Dark Amber"
+  },
+  {
+    "code": "NV/RD",
+    "name": "Navy/Red"
+  },
+  {
+    "code": "SU/HTB",
+    "name": "Sunflower/Heritage Blue"
+  },
+  {
+    "code": "PBL",
+    "name": "Powder Blue"
+  },
+  {
+    "code": "PST",
+    "name": "Pistachio"
+  },
+  {
+    "code": "PWP",
+    "name": "Powder Pink"
+  },
+  {
+    "code": "WH/WH",
+    "name": "White/White"
+  },
+  {
+    "code": "FN/FN",
+    "name": "French Navy/French Navy"
+  },
+  {
+    "code": "RY/RY",
+    "name": "Bright Royal/Bright Royal"
+  },
+  {
+    "code": "PG/WH",
+    "name": "Pure Green/White"
+  },
+  {
+    "code": "BO/BO",
+    "name": "Bottle Green/Bottle Green"
+  },
+  {
+    "code": "LG/LG",
+    "name": "Light Grey/Light Grey"
+  },
+  {
+    "code": "GP/GP",
+    "name": "Graphite Grey/Graphite Grey"
+  },
+  {
+    "code": "CC/CA",
+    "name": "Chocolate/Caramel"
+  },
+  {
+    "code": "CS/CS",
+    "name": "Classic Red/Classic Red"
+  },
+  {
+    "code": "BU/GY",
+    "name": "Burgundy/Grey"
+  },
+  {
+    "code": "PSP/P",
+    "name": "Pastel Pink/Pastel Pink"
+  },
+  {
+    "code": "DS/BK",
+    "name": "Desert Sand/Black"
+  },
+  {
+    "code": "NV/BK",
+    "name": "Navy/Black"
+  },
+  {
+    "code": "FG/BK",
+    "name": "Fresh Green/Black"
+  },
+  {
+    "code": "FP/WH",
+    "name": "Fluorescent Pink/White"
+  },
+  {
+    "code": "SU/WH",
+    "name": "Sunflower/White"
+  },
+  {
+    "code": "FY/WH",
+    "name": "Fluorescent Yellow/White"
+  },
+  {
+    "code": "WSN",
+    "name": "Warm Sand"
+  },
+  {
+    "code": "PSB",
+    "name": "Pastel Blue"
+  },
+  {
+    "code": "PSM",
+    "name": "Pastel Mint"
+  },
+  {
+    "code": "PSL",
+    "name": "Pastel Lemon"
+  },
+  {
+    "code": "VST",
+    "name": "Vintage Stone"
+  },
+  {
+    "code": "VDM",
+    "name": "Vintage Denim"
+  },
+  {
+    "code": "VLD",
+    "name": "Vintage Light Denim"
+  },
+  {
+    "code": "VCO",
+    "name": "Vintage Cornflower"
+  },
+  {
+    "code": "VLB",
+    "name": "Vintage Light Blue"
+  },
+  {
+    "code": "VBO",
+    "name": "Vintage Bottle Green"
+  },
+  {
+    "code": "VSG",
+    "name": "Vintage Sage Green"
+  },
+  {
+    "code": "VGE",
+    "name": "Vintage Grey"
+  },
+  {
+    "code": "VBN",
+    "name": "Vintage Brown"
+  },
+  {
+    "code": "VRD",
+    "name": "Vintage Red"
+  },
+  {
+    "code": "VDP",
+    "name": "Vintage Dusky Pink"
+  },
+  {
+    "code": "VOR",
+    "name": "Vintage Orange"
+  },
+  {
+    "code": "VSA",
+    "name": "Vintage Sand"
+  },
+  {
+    "code": "VMU",
+    "name": "Vintage Mustard"
+  },
+  {
+    "code": "VJC",
+    "name": "Vintage Jungle Camo"
+  },
+  {
+    "code": "DYP",
+    "name": "Dusty Pink"
+  },
+  {
+    "code": "B/B/B",
+    "name": "Black/Black/Black"
+  },
+  {
+    "code": "NV/CS",
+    "name": "Navy/Classic Red"
+  },
+  {
+    "code": "GY/BK",
+    "name": "Grey/Black"
+  },
+  {
+    "code": "GY/GY",
+    "name": "Grey/Grey"
+  },
+  {
+    "code": "CS/BK",
+    "name": "Classic Red/Black"
+  },
+  {
+    "code": "VBK/ST",
+    "name": "Vintage Black/Stone"
+  },
+  {
+    "code": "VDM/ST",
+    "name": "Vintage Denim/Stone"
+  },
+  {
+    "code": "VOL/ST",
+    "name": "Vintage Olive/Stone"
+  },
+  {
+    "code": "VBN/ST",
+    "name": "Vintage Brown/Stone"
+  },
+  {
+    "code": "HGH",
+    "name": "Heather Graphite"
+  },
+  {
+    "code": "FNI",
+    "name": "Forest Night"
+  },
+  {
+    "code": "RWD",
+    "name": "Redwood"
+  },
+  {
+    "code": "SAB",
+    "name": "Slate Blue"
+  },
+  {
+    "code": "CAM",
+    "name": "Camel"
+  },
+  {
+    "code": "OL/ST",
+    "name": "Olive Green/Stone"
+  },
+  {
+    "code": "GEB",
+    "name": "Geo Blue"
+  },
+  {
+    "code": "GEG",
+    "name": "Geo Grey"
+  },
+  {
+    "code": "GEL",
+    "name": "Geo Lime"
+  },
+  {
+    "code": "GOR",
+    "name": "Geo Orange"
+  },
+  {
+    "code": "TPG",
+    "name": "Tropical Greens"
+  },
+  {
+    "code": "SRM",
+    "name": "Storm Grey"
+  },
+  {
+    "code": "CFP",
+    "name": "Candyfloss Pink"
+  },
+  {
+    "code": "SSR",
+    "name": "Sunset Reds"
+  },
+  {
+    "code": "OBL",
+    "name": "Ocean Blue"
+  },
+  {
+    "code": "LGY",
+    "name": "Light Grey"
+  },
+  {
+    "code": "RNW",
+    "name": "Rainbow"
+  },
+  {
+    "code": "GM/BK",
+    "name": "Grey Marl/Black"
+  },
+  {
+    "code": "FS/BK",
+    "name": "Fuchsia/Black"
+  },
+  {
+    "code": "YL/BK",
+    "name": "Yellow/Black"
+  },
+  {
+    "code": "NVD",
+    "name": "Navy Dusk"
+  },
+  {
+    "code": "SAG",
+    "name": "Sage Green"
+  },
+  {
+    "code": "BLP",
+    "name": "Blush Pink"
+  },
+  {
+    "code": "WH/GP",
+    "name": "White/Graphite Grey"
+  },
+  {
+    "code": "NT/NT",
+    "name": "Natural/Natural"
+  },
+  {
+    "code": "SB/GP",
+    "name": "Surf Blue/Graphite Grey"
+  },
+  {
+    "code": "MIN/G",
+    "name": "Mint/Light Grey"
+  },
+  {
+    "code": "LI/GP",
+    "name": "Lime Green/Graphite Grey"
+  },
+  {
+    "code": "LG/GP",
+    "name": "Light Grey/Graphite Grey"
+  },
+  {
+    "code": "ANT",
+    "name": "Anthracite"
+  },
+  {
+    "code": "CSP/G",
+    "name": "Classic Pink/Graphite Grey"
+  },
+  {
+    "code": "FS/GP",
+    "name": "Fuchsia/Graphite Grey"
+  },
+  {
+    "code": "YL/GP",
+    "name": "Yellow/Graphite Grey"
+  },
+  {
+    "code": "PU/LG",
+    "name": "Purple/Light Grey"
+  },
+  {
+    "code": "CP/LG",
+    "name": "Classic Pink/Light Grey"
+  },
+  {
+    "code": "SK/LG",
+    "name": "Sky Blue/Light Grey"
+  },
+  {
+    "code": "BRF",
+    "name": "Black Reflective"
+  },
+  {
+    "code": "SRF",
+    "name": "Silver Reflective"
+  },
+  {
+    "code": "BU/SD",
+    "name": "Burgundy/Sand"
+  },
+  {
+    "code": "FN/OW",
+    "name": "French Navy/Off White"
+  },
+  {
+    "code": "RY/OW",
+    "name": "Bright Royal/Off White"
+  },
+  {
+    "code": "MIN/W",
+    "name": "Mint/White"
+  },
+  {
+    "code": "KG/OW",
+    "name": "Kelly Green/Off White"
+  },
+  {
+    "code": "MGR/M",
+    "name": "Military Green/Military Green"
+  },
+  {
+    "code": "LG/FN",
+    "name": "Light Grey/French Navy"
+  },
+  {
+    "code": "CSP/W",
+    "name": "Classic Pink/White"
+  },
+  {
+    "code": "JBK",
+    "name": "Jet Black"
+  },
+  {
+    "code": "FY/BK",
+    "name": "Fluorescent Yellow/Black"
+  },
+  {
+    "code": "PWB",
+    "name": "Powder Blue"
+  },
+  {
+    "code": "MSR",
+    "name": "Mushroom"
+  },
+  {
+    "code": "CLY",
+    "name": "Clay"
+  },
+  {
+    "code": "NUD",
+    "name": "Nude"
+  },
+  {
+    "code": "DRL",
+    "name": "Dark Royal Blue"
+  },
+  {
+    "code": "FRP",
+    "name": "Fresh Pink"
+  },
+  {
+    "code": "RY/BK",
+    "name": "Royal Blue/Black"
+  },
+  {
+    "code": "BK/BN",
+    "name": "Black/Brown"
+  },
+  {
+    "code": "FN/BN",
+    "name": "French Navy/Brown"
+  },
+  {
+    "code": "LDN",
+    "name": "Light Denim"
+  },
+  {
+    "code": "VON",
+    "name": "Vintage Oxford Navy"
+  },
+  {
+    "code": "VMG",
+    "name": "Vintage Military Green"
+  },
+  {
+    "code": "CL/BK",
+    "name": "Clear/Black"
+  },
+  {
+    "code": "DEM",
+    "name": "Dark Emerald"
+  },
+  {
+    "code": "MNS",
+    "name": "Moonstone"
+  },
+  {
+    "code": "RSQ",
+    "name": "Rose Quartz"
+  },
+  {
+    "code": "BTZ",
+    "name": "Blue Topaz"
+  },
+  {
+    "code": "JAD",
+    "name": "Jade Green"
+  },
+  {
+    "code": "BNX",
+    "name": "Black Onyx"
+  },
+  {
+    "code": "RRD",
+    "name": "Ruby Red"
+  },
+  {
+    "code": "CME/B",
+    "name": "Charcoal Melange/Black"
+  },
+  {
+    "code": "GME/T",
+    "name": "Grey Melange/Tan"
+  },
+  {
+    "code": "SOP",
+    "name": "Soft Pink"
+  },
+  {
+    "code": "OYS",
+    "name": "Oyster"
+  },
+  {
+    "code": "RSG",
+    "name": "Rose Gold"
+  },
+  {
+    "code": "TAU",
+    "name": "Taupe"
+  },
+  {
+    "code": "SMT",
+    "name": "Soft Mint"
+  },
+  {
+    "code": "CBC",
+    "name": "Combat Camo"
+  },
+  {
+    "code": "JC/BK",
+    "name": "Jungle Camo/Black"
+  },
+  {
+    "code": "HZT",
+    "name": "Hazelnut"
+  },
+  {
+    "code": "BLG",
+    "name": "Blue Grey"
+  },
+  {
+    "code": "CCR",
+    "name": "Cookies & Cream"
+  },
+  {
+    "code": "MCC",
+    "name": "Mint Choc Chip"
+  },
+  {
+    "code": "BSW",
+    "name": "Blueberry Swirl"
+  },
+  {
+    "code": "RRP",
+    "name": "Raspberry Ripple"
+  },
+  {
+    "code": "MGS",
+    "name": "Mango Sorbet"
+  },
+  {
+    "code": "SVG",
+    "name": "Silver Grey"
+  },
+  {
+    "code": "LPI",
+    "name": "Light Pink"
+  },
+  {
+    "code": "GNC",
+    "name": "Green Camo"
+  },
+  {
+    "code": "PAW",
+    "name": "Paw Print"
+  },
+  {
+    "code": "DTL",
+    "name": "Digital Lavender"
+  },
+  {
+    "code": "GYGL",
+    "name": "Grey Glow In The Dark"
+  },
+  {
+    "code": "BPGL",
+    "name": "Blush Pink Glow In The Dark"
+  },
+  {
+    "code": "GDNO",
+    "name": "Green Dinosaur"
+  },
+  {
+    "code": "BTED",
+    "name": "Brown Teddy"
+  },
+  {
+    "code": "PUNC",
+    "name": "Pink Unicorn"
+  },
+  {
+    "code": "AZ/BK",
+    "name": "Azure/Black"
+  },
+  {
+    "code": "NV/NV",
+    "name": "Navy/Navy"
+  },
+  {
+    "code": "DLP/B",
+    "name": "Dolphin/Black"
+  },
+  {
+    "code": "BRE/B",
+    "name": "Bright Red/Black"
+  },
+  {
+    "code": "NPN",
+    "name": "Navy Pindot"
+  },
+  {
+    "code": "NCK",
+    "name": "Navy Check"
+  },
+  {
+    "code": "GBC",
+    "name": "Grey Brown Check"
+  },
+  {
+    "code": "GNT",
+    "name": "Gunmetal"
+  },
+  {
+    "code": "FIG",
+    "name": "Fig"
+  },
+  {
+    "code": "SYS",
+    "name": "Sky Blue Stripe"
+  },
+  {
+    "code": "SKM",
+    "name": "Sky Marl"
+  },
+  {
+    "code": "SOB",
+    "name": "Solid Black"
+  },
+  {
+    "code": "SWH",
+    "name": "Solid White"
+  },
+  {
+    "code": "SNT",
+    "name": "Solid Natural Blend"
+  },
+  {
+    "code": "SBB",
+    "name": "Solid Baby Blue Blend"
+  },
+  {
+    "code": "SNA",
+    "name": "Solid Navy"
+  },
+  {
+    "code": "AHE",
+    "name": "Athletic Heather"
+  },
+  {
+    "code": "SDR",
+    "name": "Solid Red Tri-Blend"
+  },
+  {
+    "code": "SPI",
+    "name": "Solid Pink Blend"
+  },
+  {
+    "code": "SKL",
+    "name": "Solid Kelly Green Blend"
+  },
+  {
+    "code": "WH/KL",
+    "name": "White/Kelly Green"
+  },
+  {
+    "code": "NT/BK",
+    "name": "Natural/Black"
+  },
+  {
+    "code": "AH/BK",
+    "name": "Athletic Heather/Black"
+  },
+  {
+    "code": "WH/PI",
+    "name": "White/Pink"
+  },
+  {
+    "code": "W/BBL",
+    "name": "White/Baby Blue"
+  },
+  {
+    "code": "TEP",
+    "name": "Team Purple"
+  },
+  {
+    "code": "BER",
+    "name": "Berry"
+  },
+  {
+    "code": "LVB",
+    "name": "Lavender Blue"
+  },
+  {
+    "code": "LAD",
+    "name": "Lavender Dust"
+  },
+  {
+    "code": "RPR",
+    "name": "Royal Purple"
+  },
+  {
+    "code": "DGS",
+    "name": "Dark Grey Solid"
+  },
+  {
+    "code": "SDD",
+    "name": "Sand Dune"
+  },
+  {
+    "code": "MAR",
+    "name": "Maroon"
+  },
+  {
+    "code": "VWH",
+    "name": "Vintage White"
+  },
+  {
+    "code": "HDT",
+    "name": "Heather Deep Teal"
+  },
+  {
+    "code": "HDB",
+    "name": "Heather Dusty Blue"
+  },
+  {
+    "code": "HOV",
+    "name": "Heather Olive"
+  },
+  {
+    "code": "DGH",
+    "name": "Dark Grey Heather"
+  },
+  {
+    "code": "HMV",
+    "name": "Heather Mauve"
+  },
+  {
+    "code": "HORC",
+    "name": "Heather Orchid"
+  },
+  {
+    "code": "HSU",
+    "name": "Heather Sunset"
+  },
+  {
+    "code": "HMU",
+    "name": "Heather Mustard"
+  },
+  {
+    "code": "HFV",
+    "name": "Heather French Vanilla"
+  },
+  {
+    "code": "HDS",
+    "name": "Heather Dust"
+  },
+  {
+    "code": "STM",
+    "name": "Storm"
+  },
+  {
+    "code": "DHT",
+    "name": "Deep Grey Heather"
+  },
+  {
+    "code": "MVE",
+    "name": "Mauve"
+  },
+  {
+    "code": "BKH",
+    "name": "Black Heather"
+  },
+  {
+    "code": "HSAG",
+    "name": "Heather Sage Green"
+  },
+  {
+    "code": "HNT",
+    "name": "Heather Natural"
+  },
+  {
+    "code": "HPG",
+    "name": "Heather Pink Gravel"
+  },
+  {
+    "code": "NT/FO",
+    "name": "Natural/Forest Green"
+  },
+  {
+    "code": "NT/FS",
+    "name": "Natural/Fuchsia"
+  },
+  {
+    "code": "NT/NV",
+    "name": "Natural/Navy"
+  },
+  {
+    "code": "NT/RD",
+    "name": "Natural/Red"
+  },
+  {
+    "code": "NT/CM",
+    "name": "Natural/Cream"
+  },
+  {
+    "code": "BK/NT",
+    "name": "Black/Natural"
+  },
+  {
+    "code": "MS/NT",
+    "name": "Mushroom/Natural"
+  },
+  {
+    "code": "BDM",
+    "name": "Black Denim"
+  },
+  {
+    "code": "BLD",
+    "name": "Blue Denim"
+  },
+  {
+    "code": "IDM",
+    "name": "Indigo Denim"
+  },
+  {
+    "code": "GDM",
+    "name": "Grey Denim"
+  },
+  {
+    "code": "CAH",
+    "name": "Carbon Heather"
+  },
+  {
+    "code": "BKO",
+    "name": "Black"
+  },
+  {
+    "code": "WHO",
+    "name": "White"
+  },
+  {
+    "code": "NNV",
+    "name": "Nautical Navy"
+  },
+  {
+    "code": "CFG",
+    "name": "Camo Green"
+  },
+  {
+    "code": "TOF",
+    "name": "Toffee"
+  },
+  {
+    "code": "DRO",
+    "name": "Dusty Rose"
+  },
+  {
+    "code": "BBG",
+    "name": "Bubble Gum Pink"
+  },
+  {
+    "code": "ONT",
+    "name": "Organic Natural"
+  },
+  {
+    "code": "WH/HE",
+    "name": "White/Heather Grey"
+  },
+  {
+    "code": "W/SWN",
+    "name": "White/Swiss Navy"
+  },
+  {
+    "code": "ONT/M",
+    "name": "Organic Natural/Mocha"
+  },
+  {
+    "code": "WH/NN",
+    "name": "White/Nautical Navy"
+  },
+  {
+    "code": "SOL",
+    "name": "Soft Olive"
+  },
+  {
+    "code": "SPK",
+    "name": "Soft Pink"
+  },
+  {
+    "code": "CMA",
+    "name": "Classic Marl"
+  },
+  {
+    "code": "FGR",
+    "name": "Flag Red"
+  },
+  {
+    "code": "DLP",
+    "name": "Dolphin"
+  },
+  {
+    "code": "MNRL",
+    "name": "Mineral"
+  },
+  {
+    "code": "DKN",
+    "name": "Dark Navy"
+  },
+  {
+    "code": "POS",
+    "name": "Poseidon Blue"
+  },
+  {
+    "code": "DCG",
+    "name": "Dark Cedar Green"
+  },
+  {
+    "code": "SFGM",
+    "name": "Soft Grey Marl"
+  },
+  {
+    "code": "DAB",
+    "name": "Dark Aegean Blue"
+  },
+  {
+    "code": "PTC",
+    "name": "Potters Clay"
+  },
+  {
+    "code": "B/CBO",
+    "name": "Black/Carbon"
+  },
+  {
+    "code": "SBE",
+    "name": "Strobe"
+  },
+  {
+    "code": "ATL",
+    "name": "Atlantic"
+  },
+  {
+    "code": "DTE",
+    "name": "Deep Teal"
+  },
+  {
+    "code": "CTN",
+    "name": "Citron"
+  },
+  {
+    "code": "SYNG",
+    "name": "Synthetic Green"
+  },
+  {
+    "code": "ASP",
+    "name": "Asphalt"
+  },
+  {
+    "code": "POP",
+    "name": "Poppy Red"
+  },
+  {
+    "code": "ATM",
+    "name": "Autumn"
+  },
+  {
+    "code": "TST",
+    "name": "Toast"
+  },
+  {
+    "code": "BK/HT",
+    "name": "Black/Deep Heather"
+  },
+  {
+    "code": "WH/HT",
+    "name": "White/Deep Heather"
+  },
+  {
+    "code": "WH/DM",
+    "name": "White/Denim Tri-Blend"
+  },
+  {
+    "code": "WH/KG",
+    "name": "White/Kelly Green"
+  },
+  {
+    "code": "WHF",
+    "name": "White Fleck Tri-Blend"
+  },
+  {
+    "code": "GRG",
+    "name": "Grass Green Tri-Blend"
+  },
+  {
+    "code": "ATG",
+    "name": "Athletic Grey Tri-Blend"
+  },
+  {
+    "code": "LRD",
+    "name": "Light Red Tri-Blend"
+  },
+  {
+    "code": "CDR",
+    "name": "Cardinal Red"
+  },
+  {
+    "code": "BRI",
+    "name": "Brick Red"
+  },
+  {
+    "code": "HSL",
+    "name": "Heather Slate"
+  },
+  {
+    "code": "DBLK",
+    "name": "DTG Black"
+  },
+  {
+    "code": "DWHI",
+    "name": "DTG White"
+  },
+  {
+    "code": "HFO",
+    "name": "Heather Forest"
+  },
+  {
+    "code": "DDGY",
+    "name": "DTG Dark Grey"
+  },
+  {
+    "code": "DLA",
+    "name": "Dark Lavender"
+  },
+  {
+    "code": "HST",
+    "name": "Heather Stone"
+  },
+  {
+    "code": "HSD",
+    "name": "Heather Sand Dune"
+  },
+  {
+    "code": "TRR",
+    "name": "True Royal"
+  },
+  {
+    "code": "DUS",
+    "name": "Dust"
+  },
+  {
+    "code": "HPNA",
+    "name": "Heather Prism Natural"
+  },
+  {
+    "code": "HPBL",
+    "name": "Heather Prism Blue"
+  },
+  {
+    "code": "HPDB",
+    "name": "Heather Prism Dusty Blue"
+  },
+  {
+    "code": "HPIB",
+    "name": "Heather Prism Ice Blue"
+  },
+  {
+    "code": "HAQ",
+    "name": "Heather Aqua"
+  },
+  {
+    "code": "HSG",
+    "name": "Heather Sea Green"
+  },
+  {
+    "code": "HMN",
+    "name": "Heather Midnight Navy"
+  },
+  {
+    "code": "HCM",
+    "name": "Heather Columbia Blue"
+  },
+  {
+    "code": "HIC",
+    "name": "Heather Ice Blue"
+  },
+  {
+    "code": "HPLI",
+    "name": "Heather Prism Lilac"
+  },
+  {
+    "code": "HPR",
+    "name": "Heather Purple"
+  },
+  {
+    "code": "HMT",
+    "name": "Heather Mint"
+  },
+  {
+    "code": "HPMI",
+    "name": "Heather Prism Mint"
+  },
+  {
+    "code": "HMG",
+    "name": "Heather Military Green"
+  },
+  {
+    "code": "HGN",
+    "name": "Heather Green"
+  },
+  {
+    "code": "HKG",
+    "name": "Heather Kelly Green"
+  },
+  {
+    "code": "HEM",
+    "name": "Heather Emerald"
+  },
+  {
+    "code": "HBG",
+    "name": "Heather Bubble Gum"
+  },
+  {
+    "code": "HGY",
+    "name": "Heather Cool Grey"
+  },
+  {
+    "code": "HCE",
+    "name": "Heather Cement"
+  },
+  {
+    "code": "HSM",
+    "name": "Heather Storm"
+  },
+  {
+    "code": "HBN",
+    "name": "Heather Brown"
+  },
+  {
+    "code": "HCY",
+    "name": "Heather Clay"
+  },
+  {
+    "code": "HCV",
+    "name": "Heather Canvas Red"
+  },
+  {
+    "code": "HCD",
+    "name": "Heather Cardinal"
+  },
+  {
+    "code": "HRD",
+    "name": "Heather Red"
+  },
+  {
+    "code": "HMR",
+    "name": "Heather Maroon"
+  },
+  {
+    "code": "HCP",
+    "name": "Heather Charity Pink"
+  },
+  {
+    "code": "HPSU",
+    "name": "Heather Prism Sunset"
+  },
+  {
+    "code": "HPC",
+    "name": "Heather Peach"
+  },
+  {
+    "code": "HPPE",
+    "name": "Heather Prism Peach"
+  },
+  {
+    "code": "HAT",
+    "name": "Heather Autumn"
+  },
+  {
+    "code": "HYG",
+    "name": "Heather Yellow Gold"
+  },
+  {
+    "code": "BL/WH",
+    "name": "Blue/White"
+  },
+  {
+    "code": "SGS",
+    "name": "Sea Grass"
+  },
+  {
+    "code": "LOL",
+    "name": "Light Olive Green"
+  },
+  {
+    "code": "GFN",
+    "name": "Griffin"
+  },
+  {
+    "code": "CLA",
+    "name": "Claret"
+  },
+  {
+    "code": "SUN",
+    "name": "Sunflower"
+  },
+  {
+    "code": "ODM",
+    "name": "Original Denim"
+  },
+  {
+    "code": "ACW",
+    "name": "Arctic White"
+  },
+  {
+    "code": "IKB",
+    "name": "Ink Blue"
+  },
+  {
+    "code": "SPH",
+    "name": "Soft Peach"
+  },
+  {
+    "code": "SNY",
+    "name": "Sun Yellow"
+  },
+  {
+    "code": "WMY",
+    "name": "Wild Mulberry"
+  },
+  {
+    "code": "FEG",
+    "name": "Fern Green"
+  },
+  {
+    "code": "NV/HE",
+    "name": "Navy/Heather Grey"
+  },
+  {
+    "code": "CH/BK",
+    "name": "Charcoal/Black"
+  },
+  {
+    "code": "HE/CH",
+    "name": "Heather Grey/Charcoal"
+  },
+  {
+    "code": "BK/GR",
+    "name": "Black/Granite"
+  },
+  {
+    "code": "MD/MD",
+    "name": "Midnight/Midnight"
+  },
+  {
+    "code": "ARBL",
+    "name": "Air Blue"
+  },
+  {
+    "code": "GRGL",
+    "name": "Green Glow"
+  },
+  {
+    "code": "SPCR",
+    "name": "Spiced Coral"
+  },
+  {
+    "code": "B/W/B",
+    "name": "Black/White/Black"
+  },
+  {
+    "code": "B/W/R",
+    "name": "Black/White/Red"
+  },
+  {
+    "code": "R/W/B",
+    "name": "Red/White/Black"
+  },
+  {
+    "code": "G-W-B",
+    "name": "Gold/White/Beige"
+  },
+  {
+    "code": "N/W/D",
+    "name": "Navy/White/Dark Navy"
+  },
+  {
+    "code": "O/W/L",
+    "name": "Olive Green/White/Loden"
+  },
+  {
+    "code": "BE/GN",
+    "name": "Beige/Green"
+  },
+  {
+    "code": "LB/WH",
+    "name": "Light Blue/White"
+  },
+  {
+    "code": "DN/DN",
+    "name": "Dark Navy/Dark Navy"
+  },
+  {
+    "code": "SPC",
+    "name": "Spruce Green"
+  },
+  {
+    "code": "BUK",
+    "name": "Buck"
+  },
+  {
+    "code": "DG/DG",
+    "name": "Dark Grey/Dark Grey"
+  },
+  {
+    "code": "HE/HE",
+    "name": "Heather Grey/Heather Grey"
+  },
+  {
+    "code": "RD/RD",
+    "name": "Red/Red"
+  },
+  {
+    "code": "MR/MR",
+    "name": "Maroon/Maroon"
+  },
+  {
+    "code": "BK/SI",
+    "name": "Black/Silver"
+  },
+  {
+    "code": "HE/MR",
+    "name": "Heather Grey/Maroon"
+  },
+  {
+    "code": "OCH",
+    "name": "Ocher"
+  },
+  {
+    "code": "B/GNC",
+    "name": "Black/Green Camo"
+  },
+  {
+    "code": "GNC/B",
+    "name": "Green Camo/Black"
+  },
+  {
+    "code": "BR/KH",
+    "name": "Brown/Khaki"
+  },
+  {
+    "code": "SEB",
+    "name": "Sea Blue"
+  },
+  {
+    "code": "BOL",
+    "name": "Burnt Olive"
+  },
+  {
+    "code": "CHB",
+    "name": "China Blue"
+  },
+  {
+    "code": "HAO",
+    "name": "Hawaiian Ocean"
+  },
+  {
+    "code": "DLFG",
+    "name": "Dark Leaf Green"
+  },
+  {
+    "code": "FSG",
+    "name": "Fresh Green"
+  },
+  {
+    "code": "PEG",
+    "name": "Pepper Green"
+  },
+  {
+    "code": "ROB",
+    "name": "Rose Brown"
+  },
+  {
+    "code": "SPOR",
+    "name": "Spicy Orange"
+  },
+  {
+    "code": "BMC",
+    "name": "Black Multicam"
+  },
+  {
+    "code": "MLC",
+    "name": "Multicam"
+  },
+  {
+    "code": "LOD",
+    "name": "Loden"
+  },
+  {
+    "code": "DHE",
+    "name": "Dark Heather"
+  },
+  {
+    "code": "DN/NV",
+    "name": "Dark Navy/Navy"
+  },
+  {
+    "code": "CC/GB",
+    "name": "Chocolate Chip/Greyish Brown"
+  },
+  {
+    "code": "GNV",
+    "name": "Greyish Navy"
+  },
+  {
+    "code": "GNG",
+    "name": "Greenish Grey"
+  },
+  {
+    "code": "LNV",
+    "name": "Light Navy"
+  },
+  {
+    "code": "DKC/B",
+    "name": "Dark Camo/Black"
+  },
+  {
+    "code": "WC/BK",
+    "name": "Wood Camo/Black"
+  },
+  {
+    "code": "M/W/O",
+    "name": "Moss Green/White/Olive Green"
+  },
+  {
+    "code": "KH/WH",
+    "name": "Khaki/White"
+  },
+  {
+    "code": "SI/WH",
+    "name": "Silver/White"
+  },
+  {
+    "code": "DGY/W",
+    "name": "Dark Grey/White"
+  },
+  {
+    "code": "MR/WH",
+    "name": "Maroon/White"
+  },
+  {
+    "code": "CH/NV",
+    "name": "Charcoal/Navy"
+  },
+  {
+    "code": "CH/NG",
+    "name": "Charcoal/Neon Green"
+  },
+  {
+    "code": "CH/NO",
+    "name": "Charcoal/Neon Orange"
+  },
+  {
+    "code": "HE/WH",
+    "name": "Heather Grey/White Stars"
+  },
+  {
+    "code": "KCP",
+    "name": "Kanati Camo Print"
+  },
+  {
+    "code": "DEL",
+    "name": "Delft"
+  },
+  {
+    "code": "CSG",
+    "name": "Classic Green"
+  },
+  {
+    "code": "MKB",
+    "name": "Mink Beige"
+  },
+  {
+    "code": "CHC",
+    "name": "Chocolate Chip"
+  },
+  {
+    "code": "NTR",
+    "name": "Nature"
+  },
+  {
+    "code": "RTD",
+    "name": "Ready To Dye"
+  },
+  {
+    "code": "NYH",
+    "name": "Navy Heather"
+  },
+  {
+    "code": "GRH",
+    "name": "Granite Heather"
+  },
+  {
+    "code": "OAH",
+    "name": "Oatmeal Heather"
+  },
+  {
+    "code": "WNV",
+    "name": "Washed Navy"
+  },
+  {
+    "code": "BG/WH",
+    "name": "Bright Green/White"
+  },
+  {
+    "code": "DBG/W",
+    "name": "Deep Burgundy/White"
+  },
+  {
+    "code": "DBG",
+    "name": "Deep Burgundy"
+  },
+  {
+    "code": "BK/KH",
+    "name": "Black/Khaki"
+  },
+  {
+    "code": "WH/DE",
+    "name": "White/Duck Egg"
+  },
+  {
+    "code": "NV/MR",
+    "name": "Navy/Marine Blue"
+  },
+  {
+    "code": "NV/BU",
+    "name": "Navy/Burgundy"
+  },
+  {
+    "code": "BU/NV",
+    "name": "Burgundy/Navy"
+  },
+  {
+    "code": "DE/NV",
+    "name": "Duck Egg/Navy"
+  },
+  {
+    "code": "OBL/B",
+    "name": "Ocean Blue/Black"
+  },
+  {
+    "code": "BDR",
+    "name": "Bold Red"
+  },
+  {
+    "code": "CNB",
+    "name": "Carolina Blue"
+  },
+  {
+    "code": "SNB",
+    "name": "Stone Blue"
+  },
+  {
+    "code": "TBL",
+    "name": "Tropical Blue"
+  },
+  {
+    "code": "HRY",
+    "name": "Heather Royal"
+  },
+  {
+    "code": "ASA",
+    "name": "Antique Sapphire"
+  },
+  {
+    "code": "KIW",
+    "name": "Kiwi"
+  },
+  {
+    "code": "JDD",
+    "name": "Jade Dome"
+  },
+  {
+    "code": "SGY",
+    "name": "Sport Grey"
+  },
+  {
+    "code": "PGN",
+    "name": "Paragon"
+  },
+  {
+    "code": "GHE",
+    "name": "Graphite Heather"
+  },
+  {
+    "code": "CHY",
+    "name": "Cherry Red"
+  },
+  {
+    "code": "ACY",
+    "name": "Antique Cherry Red"
+  },
+  {
+    "code": "AZA",
+    "name": "Azalea"
+  },
+  {
+    "code": "HEL",
+    "name": "Heliconia"
+  },
+  {
+    "code": "DAI",
+    "name": "Daisy"
+  },
+  {
+    "code": "IRS",
+    "name": "Iris"
+  },
+  {
+    "code": "BDK",
+    "name": "Blue Dusk"
+  },
+  {
+    "code": "MTB",
+    "name": "Metro Blue"
+  },
+  {
+    "code": "PRD",
+    "name": "Prairie Dust"
+  },
+  {
+    "code": "SYG",
+    "name": "Safety Green"
+  },
+  {
+    "code": "TAG",
+    "name": "Tangerine"
+  },
+  {
+    "code": "TXO",
+    "name": "T Orange"
+  },
+  {
+    "code": "SYO",
+    "name": "S Orange"
+  },
+  {
+    "code": "CSK",
+    "name": "Cornsilk"
+  },
+  {
+    "code": "VGG",
+    "name": "Vegas Gold"
+  },
+  {
+    "code": "BBL",
+    "name": "Baby Blue"
+  },
+  {
+    "code": "TEI",
+    "name": "Teal Ice"
+  },
+  {
+    "code": "TRD",
+    "name": "True Red"
+  },
+  {
+    "code": "CPK",
+    "name": "Charity Pink"
+  },
+  {
+    "code": "MID",
+    "name": "Midnight"
+  },
+  {
+    "code": "HSP",
+    "name": "Heather Sapphire"
+  },
+  {
+    "code": "BBY",
+    "name": "Blackberry"
+  },
+  {
+    "code": "AJD",
+    "name": "Antique Jade Dome"
+  },
+  {
+    "code": "AIG",
+    "name": "Antique Irish Green"
+  },
+  {
+    "code": "TWD",
+    "name": "Tweed"
+  },
+  {
+    "code": "RST",
+    "name": "Russet"
+  },
+  {
+    "code": "AOR",
+    "name": "Antique Orange"
+  },
+  {
+    "code": "YHZ",
+    "name": "Yellow Haze"
+  },
+  {
+    "code": "OGO",
+    "name": "Old Gold"
+  },
+  {
+    "code": "PHB",
+    "name": "Pitch Black"
+  },
+  {
+    "code": "BNS",
+    "name": "Brown Savana"
+  },
+  {
+    "code": "NMT",
+    "name": "Navy Mist"
+  },
+  {
+    "code": "KMT",
+    "name": "Kelly Mist"
+  },
+  {
+    "code": "RMT",
+    "name": "Red Mist"
+  },
+  {
+    "code": "CBY",
+    "name": "Chambray"
+  },
+  {
+    "code": "FBL",
+    "name": "Flo Blue"
+  },
+  {
+    "code": "SDN",
+    "name": "Sport Dark Navy"
+  },
+  {
+    "code": "SRO",
+    "name": "Sport Royal"
+  },
+  {
+    "code": "LAG",
+    "name": "Lagoon Blue"
+  },
+  {
+    "code": "CKM",
+    "name": "Chalky Mint"
+  },
+  {
+    "code": "SSC",
+    "name": "Sport Scarlet Red"
+  },
+  {
+    "code": "GAR",
+    "name": "Garnet"
+  },
+  {
+    "code": "CEM",
+    "name": "Cement"
+  },
+  {
+    "code": "CCA",
+    "name": "Cocoa"
+  },
+  {
+    "code": "PLM",
+    "name": "Pink Lemonade"
+  },
+  {
+    "code": "AQU",
+    "name": "Aquatic"
+  },
+  {
+    "code": "B/DLP",
+    "name": "Black/Dolphin"
+  },
+  {
+    "code": "BK/SR",
+    "name": "Black/Sport Red"
+  },
+  {
+    "code": "NV/GR",
+    "name": "Navy/Granite"
+  },
+  {
+    "code": "GR/BK",
+    "name": "Granite/Black"
+  },
+  {
+    "code": "BRJ",
+    "name": "Bright Jade"
+  },
+  {
+    "code": "MBL",
+    "name": "Mid Blue"
+  },
+  {
+    "code": "BLI",
+    "name": "Bright Lime"
+  },
+  {
+    "code": "BPU",
+    "name": "Bright Purple"
+  },
+  {
+    "code": "HCH",
+    "name": "Heather Charcoal"
+  },
+  {
+    "code": "HNV",
+    "name": "Harbour Navy"
+  },
+  {
+    "code": "CTW",
+    "name": "Charcoal Twill"
+  },
+  {
+    "code": "DNH",
+    "name": "Dark Navy Heather"
+  },
+  {
+    "code": "CBHE",
+    "name": "Classic Blue Heather"
+  },
+  {
+    "code": "CHEA",
+    "name": "Charcoal Heather"
+  },
+  {
+    "code": "HWB",
+    "name": "Hawaiian Blue"
+  },
+  {
+    "code": "SEF",
+    "name": "Seafoam"
+  },
+  {
+    "code": "RBL",
+    "name": "Reflex Blue"
+  },
+  {
+    "code": "COR",
+    "name": "Cornflower"
+  },
+  {
+    "code": "MMG",
+    "name": "Magenta Magic"
+  },
+  {
+    "code": "MEL",
+    "name": "Melon Green"
+  },
+  {
+    "code": "SOU",
+    "name": "Sour Green"
+  },
+  {
+    "code": "ERG",
+    "name": "Earthy Green"
+  },
+  {
+    "code": "CBG",
+    "name": "Combat Green"
+  },
+  {
+    "code": "CIT",
+    "name": "Citrus"
+  },
+  {
+    "code": "ELG",
+    "name": "Electric Green"
+  },
+  {
+    "code": "HOC",
+    "name": "Hot Chocolate"
+  },
+  {
+    "code": "RHC",
+    "name": "Red Hot Chilli"
+  },
+  {
+    "code": "BPI",
+    "name": "Baby Pink"
+  },
+  {
+    "code": "HYP",
+    "name": "Hyper Pink"
+  },
+  {
+    "code": "EPI",
+    "name": "Electric Pink"
+  },
+  {
+    "code": "PES",
+    "name": "Peach Sorbet"
+  },
+  {
+    "code": "OCR",
+    "name": "Orange Crush"
+  },
+  {
+    "code": "ORF",
+    "name": "Orange Flame"
+  },
+  {
+    "code": "EOR",
+    "name": "Electric Orange"
+  },
+  {
+    "code": "SHL",
+    "name": "Sherbet Lemon"
+  },
+  {
+    "code": "EYL",
+    "name": "Electric Yellow"
+  },
+  {
+    "code": "JB/AW",
+    "name": "Jet Black/Arctic White"
+  },
+  {
+    "code": "JB/EO",
+    "name": "Jet Black/Electric Orange"
+  },
+  {
+    "code": "JB/FR",
+    "name": "Jet Black/Fire Red"
+  },
+  {
+    "code": "JB/GO",
+    "name": "Jet Black/Gold"
+  },
+  {
+    "code": "AW/FR",
+    "name": "Arctic White/Fire Red"
+  },
+  {
+    "code": "AW/JB",
+    "name": "Arctic White/Jet Black"
+  },
+  {
+    "code": "AW/SA",
+    "name": "Arctic White/Sapphire Blue"
+  },
+  {
+    "code": "FN/AW",
+    "name": "French Navy/Arctic White"
+  },
+  {
+    "code": "FN/FR",
+    "name": "French Navy/Fire Red"
+  },
+  {
+    "code": "RY/AW",
+    "name": "Royal Blue/Arctic White"
+  },
+  {
+    "code": "SA/CH",
+    "name": "Sapphire Blue/Charcoal"
+  },
+  {
+    "code": "PR/AW",
+    "name": "Purple/Arctic White"
+  },
+  {
+    "code": "KG/AW",
+    "name": "Kelly Green/Arctic White"
+  },
+  {
+    "code": "CH/JB",
+    "name": "Charcoal/Jet Black"
+  },
+  {
+    "code": "FR/AW",
+    "name": "Fire Red/Arctic White"
+  },
+  {
+    "code": "FR/JB",
+    "name": "Fire Red/Jet Black"
+  },
+  {
+    "code": "EY/JB",
+    "name": "Electric Yellow/Jet Black"
+  },
+  {
+    "code": "BME",
+    "name": "Black Slate Melange"
+  },
+  {
+    "code": "NME",
+    "name": "Navy Melange"
+  },
+  {
+    "code": "OME",
+    "name": "Ocean Melange"
+  },
+  {
+    "code": "RPM",
+    "name": "Raspberry Melange"
+  },
+  {
+    "code": "EPM",
+    "name": "Electric Pink Melange"
+  },
+  {
+    "code": "CH/LM",
+    "name": "Charcoal/Lime Green"
+  },
+  {
+    "code": "BK/BME",
+    "name": "Black/Black Slate Melange"
+  },
+  {
+    "code": "NV/NME",
+    "name": "Navy/Navy Melange"
+  },
+  {
+    "code": "GY/GME",
+    "name": "Grey/Grey Melange"
+  },
+  {
+    "code": "OC/OME",
+    "name": "Ocean/Ocean Melange"
+  },
+  {
+    "code": "CBN",
+    "name": "Cobalt Navy"
+  },
+  {
+    "code": "MIG",
+    "name": "Mineral Green"
+  },
+  {
+    "code": "BSE",
+    "name": "Black Smoke"
+  },
+  {
+    "code": "VMK",
+    "name": "Vanilla Milkshake"
+  },
+  {
+    "code": "ATB",
+    "name": "Atlantic Blue"
+  },
+  {
+    "code": "DSB",
+    "name": "Deep Sea Blue"
+  },
+  {
+    "code": "NYS",
+    "name": "Navy Smoke"
+  },
+  {
+    "code": "NFN",
+    "name": "New French Navy"
+  },
+  {
+    "code": "TQS",
+    "name": "Turquoise Surf"
+  },
+  {
+    "code": "DUL",
+    "name": "Dusty Lilac"
+  },
+  {
+    "code": "TVI",
+    "name": "True Violet"
+  },
+  {
+    "code": "UVT",
+    "name": "Ultra Violet"
+  },
+  {
+    "code": "PPM",
+    "name": "Peppermint"
+  },
+  {
+    "code": "CAT",
+    "name": "Cactus Green"
+  },
+  {
+    "code": "RFG",
+    "name": "Rainforest Green"
+  },
+  {
+    "code": "MOG",
+    "name": "Moondust Grey"
+  },
+  {
+    "code": "NCL",
+    "name": "Natural Clay"
+  },
+  {
+    "code": "PLA",
+    "name": "Platinum Grey"
+  },
+  {
+    "code": "SHK",
+    "name": "Shark Grey"
+  },
+  {
+    "code": "CRT",
+    "name": "Caramel Toffee"
+  },
+  {
+    "code": "PMP",
+    "name": "Pumpkin Pie"
+  },
+  {
+    "code": "CLT",
+    "name": "Caramel Latte"
+  },
+  {
+    "code": "CFU",
+    "name": "Chocolate Fudge Brownie"
+  },
+  {
+    "code": "GBT",
+    "name": "Ginger Biscuit"
+  },
+  {
+    "code": "SFR",
+    "name": "Soft Red"
+  },
+  {
+    "code": "CRA",
+    "name": "Cranberry"
+  },
+  {
+    "code": "RRS",
+    "name": "Red Rust"
+  },
+  {
+    "code": "BGS",
+    "name": "Burgundy Smoke"
+  },
+  {
+    "code": "PKP",
+    "name": "Pinky Purple"
+  },
+  {
+    "code": "LKP",
+    "name": "Lipstick Pink"
+  },
+  {
+    "code": "LOR",
+    "name": "Light Orange"
+  },
+  {
+    "code": "PPT",
+    "name": "Peach Perfect"
+  },
+  {
+    "code": "SUO",
+    "name": "Sunset Orange"
+  },
+  {
+    "code": "PNC",
+    "name": "Pina Colada"
+  },
+  {
+    "code": "JB/HE",
+    "name": "Jet Black/Heather Grey"
+  },
+  {
+    "code": "JB/HP",
+    "name": "Jet Black/Hot Pink"
+  },
+  {
+    "code": "JB/KG",
+    "name": "Jet Black/Kelly Green"
+  },
+  {
+    "code": "JB/OR",
+    "name": "Jet Black/Orange Crush"
+  },
+  {
+    "code": "JB/PR",
+    "name": "Jet Black/Purple"
+  },
+  {
+    "code": "JB/SA",
+    "name": "Jet Black/Sapphire Blue"
+  },
+  {
+    "code": "JB/SW",
+    "name": "Jet Black/Sun Yellow"
+  },
+  {
+    "code": "AW/FN",
+    "name": "Arctic White/French Navy"
+  },
+  {
+    "code": "SK/AW",
+    "name": "Sky Blue/Arctic White"
+  },
+  {
+    "code": "HW/OX",
+    "name": "Hawaiian Blue/Oxford Navy"
+  },
+  {
+    "code": "NF/FR",
+    "name": "New French Navy/Fire Red"
+  },
+  {
+    "code": "NF/HE",
+    "name": "New French Navy/Heather Grey"
+  },
+  {
+    "code": "NF/SK",
+    "name": "New French Navy/Sky Blue"
+  },
+  {
+    "code": "OX/CF",
+    "name": "Oxford Navy/Candyfloss Pink"
+  },
+  {
+    "code": "OX/HW",
+    "name": "Oxford Navy/Hawaiian Blue"
+  },
+  {
+    "code": "OX/SW",
+    "name": "Oxford Navy/Sun Yellow"
+  },
+  {
+    "code": "RY/SW",
+    "name": "Royal Blue/Sun Yellow"
+  },
+  {
+    "code": "SA/HE",
+    "name": "Sapphire Blue/Heather Grey"
+  },
+  {
+    "code": "SA/OR",
+    "name": "Sapphire Blue/Orange Crush"
+  },
+  {
+    "code": "PR/SW",
+    "name": "Purple/Sun Yellow"
+  },
+  {
+    "code": "FO/GO",
+    "name": "Forest Green/Gold"
+  },
+  {
+    "code": "CH/BU",
+    "name": "Charcoal/Burgundy"
+  },
+  {
+    "code": "CH/HE",
+    "name": "Charcoal/Heather Grey"
+  },
+  {
+    "code": "CH/OR",
+    "name": "Charcoal/Orange"
+  },
+  {
+    "code": "HE/FR",
+    "name": "Heather Grey/Fire Red"
+  },
+  {
+    "code": "HE/JB",
+    "name": "Heather Grey/Jet Black"
+  },
+  {
+    "code": "HE/FN",
+    "name": "Heather Grey/New French Navy"
+  },
+  {
+    "code": "HE/SA",
+    "name": "Heather Grey/Sapphire Blue"
+  },
+  {
+    "code": "BU/CH",
+    "name": "Burgundy/Charcoal"
+  },
+  {
+    "code": "BU/GO",
+    "name": "Burgundy/Gold"
+  },
+  {
+    "code": "BPI/A",
+    "name": "Baby Pink/Arctic White"
+  },
+  {
+    "code": "HP/FN",
+    "name": "Hot Pink/French Navy"
+  },
+  {
+    "code": "BMG",
+    "name": "Blue Melange"
+  },
+  {
+    "code": "SOB/B",
+    "name": "Solid Black/Black Camo"
+  },
+  {
+    "code": "OX/HE",
+    "name": "Oxford Navy/Heather Grey"
+  },
+  {
+    "code": "BKC",
+    "name": "Black Camo"
+  },
+  {
+    "code": "SFO",
+    "name": "Surf Ocean"
+  },
+  {
+    "code": "SFP",
+    "name": "Surf Purple"
+  },
+  {
+    "code": "SFPK",
+    "name": "Surf Pink"
+  },
+  {
+    "code": "SFY",
+    "name": "Surf Yellow"
+  },
+  {
+    "code": "BCD",
+    "name": "Blue Cloud"
+  },
+  {
+    "code": "GPM",
+    "name": "Grey Pink Marble"
+  },
+  {
+    "code": "PSD",
+    "name": "Pastel Sunset Dip"
+  },
+  {
+    "code": "TDS",
+    "name": "Tie Dye Swirl"
+  },
+  {
+    "code": "JB/CH",
+    "name": "Jet Black/Charcoal"
+  },
+  {
+    "code": "JB/WH",
+    "name": "Jet Black/White"
+  },
+  {
+    "code": "FR/WH",
+    "name": "Fire Red/White"
+  },
+  {
+    "code": "BU/HE",
+    "name": "Burgundy/Heather Grey"
+  },
+  {
+    "code": "HP/WH",
+    "name": "Hot Pink/White"
+  },
+  {
+    "code": "OX/AW",
+    "name": "Oxford Navy/Arctic White"
+  },
+  {
+    "code": "SG/JB",
+    "name": "Steel Grey/Jet Black"
+  },
+  {
+    "code": "SDC",
+    "name": "Solid Charcoal"
+  },
+  {
+    "code": "CH/WH",
+    "name": "Charcoal/White"
+  },
+  {
+    "code": "DBK/W",
+    "name": "Deep Black/White"
+  },
+  {
+    "code": "MU/WH",
+    "name": "Mustard/White"
+  },
+  {
+    "code": "HBK",
+    "name": "Heather Black"
+  },
+  {
+    "code": "HBU",
+    "name": "Heather Burgundy"
+  },
+  {
+    "code": "TWP",
+    "name": "Twilight Purple"
+  },
+  {
+    "code": "MGT",
+    "name": "Mango Tango"
+  },
+  {
+    "code": "MNV",
+    "name": "Midnight Navy"
+  },
+  {
+    "code": "LHB",
+    "name": "Light Heather Blue"
+  },
+  {
+    "code": "WH/MB",
+    "name": "White/Mid Blue"
+  },
+  {
+    "code": "LB/NV",
+    "name": "Light Blue/Navy"
+  },
+  {
+    "code": "ITB",
+    "name": "Italian Blue"
+  },
+  {
+    "code": "ELB",
+    "name": "Electric Blue"
+  },
+  {
+    "code": "DPW",
+    "name": "Deep Wine"
+  },
+  {
+    "code": "RAS",
+    "name": "Raspberry"
+  },
+  {
+    "code": "CAN",
+    "name": "Canary"
+  },
+  {
+    "code": "NV/YL",
+    "name": "Navy/Yellow"
+  },
+  {
+    "code": "GP/WH",
+    "name": "Graphite Grey/White"
+  },
+  {
+    "code": "HES",
+    "name": "Heather Solid"
+  },
+  {
+    "code": "TOM",
+    "name": "Tomato Red"
+  },
+  {
+    "code": "BK/PR",
+    "name": "Black/Purple"
+  },
+  {
+    "code": "NV/LB",
+    "name": "Navy/Light Blue"
+  },
+  {
+    "code": "NV/MY",
+    "name": "Navy/Mid Yellow"
+  },
+  {
+    "code": "NV/RY",
+    "name": "Navy/Royal Blue"
+  },
+  {
+    "code": "NV/TU",
+    "name": "Navy/Turquoise Blue"
+  },
+  {
+    "code": "LSA",
+    "name": "Light Sand"
+  },
+  {
+    "code": "BKML",
+    "name": "Black Melange"
+  },
+  {
+    "code": "LML/B",
+    "name": "Light Grey Marl/Black"
+  },
+  {
+    "code": "B/BRE",
+    "name": "Black/Bright Red"
+  },
+  {
+    "code": "LRY",
+    "name": "Light Royal Blue Melange"
+  },
+  {
+    "code": "SNWG",
+    "name": "Snow Grey"
+  },
+  {
+    "code": "GYH",
+    "name": "Grey Heather"
+  },
+  {
+    "code": "WIN",
+    "name": "Wine"
+  },
+  {
+    "code": "BK/GN",
+    "name": "Black/Green"
+  },
+  {
+    "code": "SL/BK",
+    "name": "Slate Grey/Black"
+  },
+  {
+    "code": "NV/SK",
+    "name": "Navy/Sky Blue"
+  },
+  {
+    "code": "OXF",
+    "name": "Oxford Grey"
+  },
+  {
+    "code": "AHH",
+    "name": "Ash Heather"
+  },
+  {
+    "code": "TCR",
+    "name": "True Coral"
+  },
+  {
+    "code": "CMK",
+    "name": "Coconut Milk"
+  },
+  {
+    "code": "STQ",
+    "name": "Sea Turquoise"
+  },
+  {
+    "code": "DRB",
+    "name": "Dark Royal Blue"
+  },
+  {
+    "code": "MLG",
+    "name": "Marl Grey"
+  },
+  {
+    "code": "FNH",
+    "name": "French Navy Heather"
+  },
+  {
+    "code": "TRI",
+    "name": "True Indigo"
+  },
+  {
+    "code": "IMT",
+    "name": "Ice Mint"
+  },
+  {
+    "code": "SRM/N",
+    "name": "Storm Grey/Navy"
+  },
+  {
+    "code": "RD/NV",
+    "name": "Red/Navy"
+  },
+  {
+    "code": "MLS",
+    "name": "Marl Silver"
+  },
+  {
+    "code": "MDK",
+    "name": "Marl Dark Grey"
+  },
+  {
+    "code": "NNH",
+    "name": "Night Navy Heather"
+  },
+  {
+    "code": "LGH",
+    "name": "Light Grey Heather"
+  },
+  {
+    "code": "LR/BK",
+    "name": "Light Royal Blue/Black"
+  },
+  {
+    "code": "FO/BK",
+    "name": "Forest Green/Black"
+  },
+  {
+    "code": "DG/BK",
+    "name": "Dark Grey/Black"
+  },
+  {
+    "code": "YL/DG",
+    "name": "Yellow/Dark Grey"
+  },
+  {
+    "code": "LKH",
+    "name": "Light Khaki"
+  },
+  {
+    "code": "FGY",
+    "name": "Fine Grey"
+  },
+  {
+    "code": "PTT/N",
+    "name": "Patriot Blue/Natural"
+  },
+  {
+    "code": "DLG/N",
+    "name": "Dusty Light Green/Natural"
+  },
+  {
+    "code": "CMN/N",
+    "name": "Cumin Yellow/Natural"
+  },
+  {
+    "code": "RUN",
+    "name": "Rustic Natural"
+  },
+  {
+    "code": "PTT",
+    "name": "Patriot Blue"
+  },
+  {
+    "code": "SLA",
+    "name": "Slate"
+  },
+  {
+    "code": "TRY",
+    "name": "True Yellow"
+  },
+  {
+    "code": "WNAT",
+    "name": "Washed Natural"
+  },
+  {
+    "code": "WGCL",
+    "name": "Washed Green Clay"
+  },
+  {
+    "code": "WWTG",
+    "name": "Washed Water Green"
+  },
+  {
+    "code": "WKGR",
+    "name": "Washed Kombu Green"
+  },
+  {
+    "code": "WOGY",
+    "name": "Washed Olive Grey"
+  },
+  {
+    "code": "WCCF",
+    "name": "Washed Caramel Coffee"
+  },
+  {
+    "code": "WSBR",
+    "name": "Washed Santal Brown"
+  },
+  {
+    "code": "WNPC",
+    "name": "Washed Nude Peach"
+  },
+  {
+    "code": "WPIO",
+    "name": "Washed Pink Ochre"
+  },
+  {
+    "code": "WCPI",
+    "name": "Washed Coral Pink"
+  },
+  {
+    "code": "WSUN",
+    "name": "Washed Sunflower"
+  },
+  {
+    "code": "WDRB",
+    "name": "Washed Dream blue"
+  },
+  {
+    "code": "WPLB",
+    "name": "Washed Pearl Blue"
+  },
+  {
+    "code": "WLPR",
+    "name": "Washed Light Purple"
+  },
+  {
+    "code": "WMIG",
+    "name": "Washed Misty Green"
+  },
+  {
+    "code": "WLCG",
+    "name": "Washed Lichen Green"
+  },
+  {
+    "code": "WSER",
+    "name": "Washed Sierra"
+  },
+  {
+    "code": "WLPC",
+    "name": "Washed Light Peach"
+  },
+  {
+    "code": "WPRP",
+    "name": "Washed Parma Pink"
+  },
+  {
+    "code": "WTOR",
+    "name": "Washed Tawny Orange"
+  },
+  {
+    "code": "BL/HM",
+    "name": "Black Night/Hemp"
+  },
+  {
+    "code": "EU/HM",
+    "name": "Ecume/Hemp"
+  },
+  {
+    "code": "RW/EU",
+    "name": "Rosewood/Ecume"
+  },
+  {
+    "code": "RCD",
+    "name": "Recycled Denim"
+  },
+  {
+    "code": "NV/BE",
+    "name": "Navy/Beige"
+  },
+  {
+    "code": "DBR",
+    "name": "Dark Brown"
+  },
+  {
+    "code": "CBLU",
+    "name": "Classic Blue"
+  },
+  {
+    "code": "GGN",
+    "name": "Garden Green"
+  },
+  {
+    "code": "N/CBO",
+    "name": "Navy/Carbon"
+  },
+  {
+    "code": "CSV",
+    "name": "Cool Silver"
+  },
+  {
+    "code": "INH",
+    "name": "Indigo Heather"
+  },
+  {
+    "code": "PEA",
+    "name": "Peat"
+  },
+  {
+    "code": "BK/EM",
+    "name": "Black/Emerald"
+  },
+  {
+    "code": "BK/GT",
+    "name": "Black/Gunmetal"
+  },
+  {
+    "code": "RY/NV",
+    "name": "Royal Blue/Navy"
+  },
+  {
+    "code": "B/A/W",
+    "name": "Black/Amber/White"
+  },
+  {
+    "code": "W/B/B",
+    "name": "White/Black/Black"
+  },
+  {
+    "code": "S/N/W",
+    "name": "Sky Blue/Navy/White"
+  },
+  {
+    "code": "N/S/W",
+    "name": "Navy/Sky Blue/White"
+  },
+  {
+    "code": "GY/LI",
+    "name": "Grey/Lime Green"
+  },
+  {
+    "code": "N/R/R",
+    "name": "Navy/Royal Blue/Royal Blue"
+  },
+  {
+    "code": "DKM/B",
+    "name": "Dark Grey Marl/Black"
+  },
+  {
+    "code": "WSU",
+    "name": "Sublimation White"
+  },
+  {
+    "code": "PAB",
+    "name": "Pale Blue"
+  },
+  {
+    "code": "WH/PA",
+    "name": "White/Pale Blue"
+  },
+  {
+    "code": "WH/PP",
+    "name": "White/Pale Pink"
+  },
+  {
+    "code": "WH/OX",
+    "name": "White/Oxford Navy"
+  },
+  {
+    "code": "PB/WH",
+    "name": "Pale Blue/White"
+  },
+  {
+    "code": "CF/WH",
+    "name": "Candyfloss Pink/White"
+  },
+  {
+    "code": "LTS",
+    "name": "Light Stone"
+  },
+  {
+    "code": "NV/GN",
+    "name": "Navy/Green"
+  },
+  {
+    "code": "N/WSP",
+    "name": "Navy/White Stripes"
+  },
+  {
+    "code": "PBB",
+    "name": "Pale Blue Bear"
+  },
+  {
+    "code": "LBBU",
+    "name": "Light Brown Bunny"
+  },
+  {
+    "code": "PUW",
+    "name": "Pure White"
+  },
+  {
+    "code": "SWN",
+    "name": "Swiss Navy"
+  },
+  {
+    "code": "LBR",
+    "name": "Light Brown"
+  },
+  {
+    "code": "HON",
+    "name": "Honey"
+  },
+  {
+    "code": "GBU",
+    "name": "Grey Bunny"
+  },
+  {
+    "code": "LTED",
+    "name": "Light Brown Teddy"
+  },
+  {
+    "code": "MLT",
+    "name": "Multicolour"
+  },
+  {
+    "code": "GY/WH",
+    "name": "Grey/White"
+  },
+  {
+    "code": "MBN",
+    "name": "Mid Brown"
+  },
+  {
+    "code": "WH/GY",
+    "name": "White/Grey"
+  },
+  {
+    "code": "BWCA",
+    "name": "Black/White Cat"
+  },
+  {
+    "code": "BWCO",
+    "name": "Black/White Cow"
+  },
+  {
+    "code": "WAB",
+    "name": "White Angel Bear"
+  },
+  {
+    "code": "WBU",
+    "name": "White Bunny"
+  },
+  {
+    "code": "WTD",
+    "name": "White Teddy"
+  },
+  {
+    "code": "CLMB",
+    "name": "Cream Lamb"
+  },
+  {
+    "code": "BLBU",
+    "name": "Blue Bunny"
+  },
+  {
+    "code": "BLDN",
+    "name": "Blue Dragon"
+  },
+  {
+    "code": "BLTD",
+    "name": "Blue Teddy"
+  },
+  {
+    "code": "GYEL",
+    "name": "Grey Elephant"
+  },
+  {
+    "code": "GRKB",
+    "name": "Grey Koala Bear"
+  },
+  {
+    "code": "GWPG",
+    "name": "Grey/White Penguin"
+  },
+  {
+    "code": "BLIO",
+    "name": "Brown Lion"
+  },
+  {
+    "code": "BOWL",
+    "name": "Brown Owl"
+  },
+  {
+    "code": "BSLT",
+    "name": "Brown Sloth"
+  },
+  {
+    "code": "LBKG",
+    "name": "Light Brown Kangaroo"
+  },
+  {
+    "code": "LBRE",
+    "name": "Light Brown Reindeer"
+  },
+  {
+    "code": "BGIR",
+    "name": "Brown Giraffe"
+  },
+  {
+    "code": "BHIC",
+    "name": "Brown Highland Cow"
+  },
+  {
+    "code": "BDOG",
+    "name": "Brown Dog"
+  },
+  {
+    "code": "PBUN",
+    "name": "Pink Bunny"
+  },
+  {
+    "code": "PITD",
+    "name": "Pink Teddy"
+  },
+  {
+    "code": "OROG",
+    "name": "Orangutan"
+  },
+  {
+    "code": "RBE",
+    "name": "Rainbow Bear"
+  },
+  {
+    "code": "WH/BL",
+    "name": "White/Blue"
+  },
+  {
+    "code": "BBEA",
+    "name": "Blue Bear"
+  },
+  {
+    "code": "PRAB",
+    "name": "Pink Rabbit"
+  },
+  {
+    "code": "CBU",
+    "name": "White Bunny"
+  },
+  {
+    "code": "POCT",
+    "name": "Purple Octopus"
+  },
+  {
+    "code": "GCTR",
+    "name": "Green Christmas Tree"
+  },
+  {
+    "code": "LBPO",
+    "name": "Light Brown Pony"
+  },
+  {
+    "code": "MBDR",
+    "name": "Mid Brown Christmas Deer"
+  },
+  {
+    "code": "DBOW",
+    "name": "Dark Brown Owl"
+  },
+  {
+    "code": "PIBU",
+    "name": "Pink Butterfly"
+  },
+  {
+    "code": "OCAT",
+    "name": "Orange Ginger Cat"
+  },
+  {
+    "code": "OPMK",
+    "name": "Orange Pumkin"
+  },
+  {
+    "code": "WHGH",
+    "name": "White Ghost"
+  },
+  {
+    "code": "BLHB",
+    "name": "Blue Hero Bear"
+  },
+  {
+    "code": "LBGB",
+    "name": "Light Brown Gingerbread Man"
+  },
+  {
+    "code": "PIHT",
+    "name": "Pink Heart"
+  },
+  {
+    "code": "BBP",
+    "name": "Baby Pink"
+  },
+  {
+    "code": "N/A",
+    "name": "N/A"
+  },
+  {
+    "code": "CLR",
+    "name": "Clear"
+  },
+  {
+    "code": "071",
+    "name": "071"
+  },
+  {
+    "code": "066",
+    "name": "066"
+  },
+  {
+    "code": "072",
+    "name": "072"
+  },
+  {
+    "code": "084",
+    "name": "084"
+  },
+  {
+    "code": "045",
+    "name": "045"
+  },
+  {
+    "code": "027",
+    "name": "027"
+  },
+  {
+    "code": "028",
+    "name": "028"
+  },
+  {
+    "code": "029",
+    "name": "029"
+  },
+  {
+    "code": "075",
+    "name": "075"
+  },
+  {
+    "code": "044",
+    "name": "044"
+  },
+  {
+    "code": "043",
+    "name": "043"
+  },
+  {
+    "code": "042",
+    "name": "042"
+  },
+  {
+    "code": "076",
+    "name": "076"
+  },
+  {
+    "code": "094",
+    "name": "094"
+  },
+  {
+    "code": "095",
+    "name": "095"
+  },
+  {
+    "code": "032",
+    "name": "032"
+  },
+  {
+    "code": "033",
+    "name": "033"
+  },
+  {
+    "code": "035",
+    "name": "035"
+  },
+  {
+    "code": "097",
+    "name": "097"
+  },
+  {
+    "code": "010",
+    "name": "010"
+  },
+  {
+    "code": "011",
+    "name": "011"
+  },
+  {
+    "code": "012",
+    "name": "012"
+  },
+  {
+    "code": "048",
+    "name": "048"
+  },
+  {
+    "code": "051",
+    "name": "051"
+  },
+  {
+    "code": "099",
+    "name": "099"
+  },
+  {
+    "code": "079",
+    "name": "079"
+  },
+  {
+    "code": "049",
+    "name": "049"
+  },
+  {
+    "code": "050",
+    "name": "050"
+  },
+  {
+    "code": "085",
+    "name": "085"
+  },
+  {
+    "code": "086",
+    "name": "086"
+  },
+  {
+    "code": "087",
+    "name": "087"
+  },
+  {
+    "code": "060",
+    "name": "060"
+  },
+  {
+    "code": "040",
+    "name": "040"
+  },
+  {
+    "code": "041",
+    "name": "041"
+  },
+  {
+    "code": "055",
+    "name": "055"
+  },
+  {
+    "code": "056",
+    "name": "056"
+  },
+  {
+    "code": "058",
+    "name": "058"
+  },
+  {
+    "code": "059",
+    "name": "059"
+  },
+  {
+    "code": "037",
+    "name": "037"
+  },
+  {
+    "code": "078",
+    "name": "078"
+  },
+  {
+    "code": "021",
+    "name": "021"
+  },
+  {
+    "code": "039",
+    "name": "039"
+  },
+  {
+    "code": "013",
+    "name": "013"
+  },
+  {
+    "code": "024",
+    "name": "024"
+  },
+  {
+    "code": "065",
+    "name": "065"
+  },
+  {
+    "code": "064",
+    "name": "064"
+  },
+  {
+    "code": "069",
+    "name": "069"
+  },
+  {
+    "code": "070",
+    "name": "070"
+  },
+  {
+    "code": "023",
+    "name": "023"
+  },
+  {
+    "code": "MELC",
+    "name": "Melco"
+  },
+  {
+    "code": "TAJI",
+    "name": "Tajima"
+  },
+  {
+    "code": "BROT",
+    "name": "Brother"
+  },
+  {
+    "code": "AUB",
+    "name": "Aubergine"
+  },
+  {
+    "code": "BDX",
+    "name": "Bordeaux"
+  },
+  {
+    "code": "LGN",
+    "name": "Light Green"
+  },
+  {
+    "code": "MSI",
+    "name": "Metallic Silver"
+  },
+  {
+    "code": "FLM",
+    "name": "Flame Red"
+  },
+  {
+    "code": "MYL",
+    "name": "Medium Yellow"
+  },
+  {
+    "code": "AGO",
+    "name": "Antique Gold"
+  },
+  {
+    "code": "MGO",
+    "name": "Metallic Gold"
+  },
+  {
+    "code": "RXS",
+    "name": "Reflex Silver"
+  },
+  {
+    "code": "HOSI",
+    "name": "Holographic Silver"
+  },
+  {
+    "code": "HORW",
+    "name": "Holographic Rainbow"
+  },
+  {
+    "code": "TFB",
+    "name": "Tiffany Blue"
+  },
+  {
+    "code": "NBL",
+    "name": "Neon Blue"
+  },
+  {
+    "code": "HCL",
+    "name": "Hot Coral"
+  },
+  {
+    "code": "LGO",
+    "name": "Light Gold"
+  },
+  {
+    "code": "GID",
+    "name": "Glow in the Dark"
+  },
+  {
+    "code": "TAPE",
+    "name": "Tape"
+  },
+  {
+    "code": "SHT",
+    "name": "Sheet"
+  },
+  {
+    "code": "FILM",
+    "name": "Film"
+  },
+  {
+    "code": "CYA",
+    "name": "Cyan"
+  },
+  {
+    "code": "PWDR",
+    "name": "Powder"
+  },
+  {
+    "code": "PPR",
+    "name": "Paper"
+  },
+  {
+    "code": "CEI",
+    "name": "Ceil Blue"
+  },
+  {
+    "code": "CGN",
+    "name": "Clean Green"
+  },
+  {
+    "code": "DYG",
+    "name": "Dynamo Grey"
+  },
+  {
+    "code": "CLP",
+    "name": "Calm Pink"
+  },
+  {
+    "code": "IVO",
+    "name": "Ivory"
+  },
+  {
+    "code": "CBE",
+    "name": "Cool Blue"
+  },
+  {
+    "code": "MGH",
+    "name": "Moon Grey Heather"
+  },
+  {
+    "code": "VGH",
+    "name": "Volcano Grey Heather"
+  },
+  {
+    "code": "DRC",
+    "name": "Dark Camel"
+  },
+  {
+    "code": "ORK",
+    "name": "Organic Khaki"
+  },
+  {
+    "code": "ALG",
+    "name": "Almond Green"
+  },
+  {
+    "code": "PEL",
+    "name": "Petal Rose"
+  },
+  {
+    "code": "WBK",
+    "name": "Washed Black"
+  },
+  {
+    "code": "WAQ",
+    "name": "Washed Aquamarine"
+  },
+  {
+    "code": "WAG",
+    "name": "Washed Almond Green"
+  },
+  {
+    "code": "WOK",
+    "name": "Washed Organic Khaki"
+  },
+  {
+    "code": "WPR",
+    "name": "Washed Petal Rose"
+  },
+  {
+    "code": "BK/BE",
+    "name": "Black/Beige"
+  },
+  {
+    "code": "KH/BE",
+    "name": "Khaki/Beige"
+  },
+  {
+    "code": "I/C/K",
+    "name": "Ivory/Cherry/Khaki"
+  },
+  {
+    "code": "I/C/N",
+    "name": "Ivory/Curcuma/Navy"
+  },
+  {
+    "code": "OK/BE",
+    "name": "Organic Khaki/Beige"
+  },
+  {
+    "code": "DC/BE",
+    "name": "Dark Camel/Beige"
+  },
+  {
+    "code": "BBK",
+    "name": "Burnt Brick"
+  },
+  {
+    "code": "MNL",
+    "name": "Mineral Grey"
+  },
+  {
+    "code": "WES",
+    "name": "Wet Sand"
+  },
+  {
+    "code": "WNA",
+    "name": "Washed Dark Navy"
+  },
+  {
+    "code": "WDC",
+    "name": "Washed Dark Camel"
+  },
+  {
+    "code": "DS/HZ",
+    "name": "Desert Sand/Horizon Blue"
+  },
+  {
+    "code": "HZ/DS",
+    "name": "Horizon Blue/Desert Sand"
+  },
+  {
+    "code": "PNP",
+    "name": "Pineapple"
+  },
+  {
+    "code": "SEW",
+    "name": "Sea Water"
+  },
+  {
+    "code": "BRG",
+    "name": "Brook Green"
+  },
+  {
+    "code": "PPK",
+    "name": "Paprika"
+  },
+  {
+    "code": "WCG",
+    "name": "Washed Coal Grey"
+  },
+  {
+    "code": "PKB",
+    "name": "Peacock Blue"
+  },
+  {
+    "code": "BSA",
+    "name": "Blue Sapphire"
+  },
+  {
+    "code": "RCH",
+    "name": "Recycled Cream Heather"
+  },
+  {
+    "code": "RNH",
+    "name": "Recycled Navy Heather"
+  },
+  {
+    "code": "RAH",
+    "name": "Recycled Anthracite Heather"
+  },
+  {
+    "code": "ROG",
+    "name": "Recycled Oxford Grey"
+  },
+  {
+    "code": "RIV",
+    "name": "Riviera blue"
+  },
+  {
+    "code": "PRM",
+    "name": "Parma"
+  },
+  {
+    "code": "PCKG",
+    "name": "Peacock Green"
+  },
+  {
+    "code": "CCF",
+    "name": "Cream Coffee"
+  },
+  {
+    "code": "MCG",
+    "name": "Malachite Green"
+  },
+  {
+    "code": "BEC",
+    "name": "Beige Cream"
+  },
+  {
+    "code": "AQM",
+    "name": "Aquamarine"
+  },
+  {
+    "code": "ADB",
+    "name": "Adriatic Blue"
+  },
+  {
+    "code": "LTU",
+    "name": "Light Turquoise"
+  },
+  {
+    "code": "CBH",
+    "name": "Cool Blue Heather"
+  },
+  {
+    "code": "NHE",
+    "name": "Navy Blue Heather"
+  },
+  {
+    "code": "DPL",
+    "name": "Deep Plum"
+  },
+  {
+    "code": "CEL",
+    "name": "Celadon Green"
+  },
+  {
+    "code": "GFD",
+    "name": "Green Field"
+  },
+  {
+    "code": "AZG",
+    "name": "Amazon Green"
+  },
+  {
+    "code": "OKH",
+    "name": "Organic Khaki Heather"
+  },
+  {
+    "code": "AGH",
+    "name": "Amazon Green Heather"
+  },
+  {
+    "code": "GBH",
+    "name": "Grizzly Brown Heather"
+  },
+  {
+    "code": "DCY",
+    "name": "Dark Cherry"
+  },
+  {
+    "code": "PLR",
+    "name": "Pearl Rose"
+  },
+  {
+    "code": "CPR",
+    "name": "Cherry Purple"
+  },
+  {
+    "code": "RSB",
+    "name": "Raspberry Sorbet"
+  },
+  {
+    "code": "SIE",
+    "name": "Sienna"
+  },
+  {
+    "code": "BUN",
+    "name": "Butternut"
+  },
+  {
+    "code": "CLH",
+    "name": "Clementine Heather"
+  },
+  {
+    "code": "LEC",
+    "name": "Lemon Citrus"
+  },
+  {
+    "code": "CCM",
+    "name": "Curcuma"
+  },
+  {
+    "code": "RNA",
+    "name": "Raw Natural"
+  },
+  {
+    "code": "GEM",
+    "name": "Gemstone Green"
+  },
+  {
+    "code": "DFW",
+    "name": "Driftwood"
+  },
+  {
+    "code": "ARS",
+    "name": "Antique Rose"
+  },
+  {
+    "code": "LCR",
+    "name": "Light Coral"
+  },
+  {
+    "code": "ABS",
+    "name": "Apple Blossom"
+  },
+  {
+    "code": "CYR",
+    "name": "Candy Rose"
+  },
+  {
+    "code": "AME",
+    "name": "Amethyst Blue"
+  },
+  {
+    "code": "PML",
+    "name": "Pomelo"
+  },
+  {
+    "code": "WMN",
+    "name": "Washed Mineral Grey"
+  },
+  {
+    "code": "WPP",
+    "name": "Washed Paprika"
+  },
+  {
+    "code": "WIV",
+    "name": "Washed Ivory"
+  },
+  {
+    "code": "DBLA",
+    "name": "Dip Dye Black"
+  },
+  {
+    "code": "DWES",
+    "name": "Dip Dye Wet Sand"
+  },
+  {
+    "code": "DAQM",
+    "name": "Dip Dye Aquamarine"
+  },
+  {
+    "code": "DNAV",
+    "name": "Dip Dye Navy"
+  },
+  {
+    "code": "DJAD",
+    "name": "Dip Dye Jade Green"
+  },
+  {
+    "code": "DPEL",
+    "name": "Dip Dye Petal Rose"
+  },
+  {
+    "code": "NVB",
+    "name": "Navy Blue Heather"
+  },
+  {
+    "code": "WJG",
+    "name": "Washed Jade Green"
+  },
+  {
+    "code": "WPO",
+    "name": "Washed Pomelo"
+  },
+  {
+    "code": "WPA",
+    "name": "Washed Parma"
+  },
+  {
+    "code": "WSE",
+    "name": "Washed Sea Water"
+  },
+  {
+    "code": "WSL",
+    "name": "Washed Slate"
+  },
+  {
+    "code": "WCC",
+    "name": "Washed Cream Coffee"
+  },
+  {
+    "code": "WSI",
+    "name": "Washed Sienna"
+  },
+  {
+    "code": "WLC",
+    "name": "Washed Lemon Citrus"
+  },
+  {
+    "code": "POM",
+    "name": "Sweet Pomelo"
+  },
+  {
+    "code": "WDW",
+    "name": "Washed White"
+  },
+  {
+    "code": "WLI",
+    "name": "Washed Linen"
+  },
+  {
+    "code": "WCB",
+    "name": "Washed Cool Blue"
+  },
+  {
+    "code": "WKH",
+    "name": "Washed Pale Khaki"
+  },
+  {
+    "code": "LIB",
+    "name": "Linen Blue"
+  },
+  {
+    "code": "PAA",
+    "name": "Pastel Apricot"
+  },
+  {
+    "code": "WLS",
+    "name": "Washed Linen Sand"
+  },
+  {
+    "code": "WBS",
+    "name": "Washed Brown Sugar"
+  },
+  {
+    "code": "WCA",
+    "name": "Washed Camel"
+  },
+  {
+    "code": "WS/DF",
+    "name": "Wet Sand/Driftwood"
+  },
+  {
+    "code": "WID",
+    "name": "Washed Indigo"
+  },
+  {
+    "code": "LNS",
+    "name": "Linen Sand"
+  },
+  {
+    "code": "WWS",
+    "name": "Washed Wet Sand"
+  },
+  {
+    "code": "BSU",
+    "name": "Brown Sugar"
+  },
+  {
+    "code": "BEH",
+    "name": "Beige Sand Heather"
+  },
+  {
+    "code": "GVL",
+    "name": "Gravel"
+  },
+  {
+    "code": "DIN",
+    "name": "Deep Indigo Heather"
+  },
+  {
+    "code": "SYN",
+    "name": "Sporty Navy"
+  },
+  {
+    "code": "CRO",
+    "name": "Crush Orange"
+  },
+  {
+    "code": "SYN/S",
+    "name": "Sporty Navy/Sporty Navy"
+  },
+  {
+    "code": "DR/BK",
+    "name": "Dark Royal Blue/Black"
+  },
+  {
+    "code": "SGY/B",
+    "name": "Sporty Grey/Black"
+  },
+  {
+    "code": "SKH",
+    "name": "Sporty Khaki"
+  },
+  {
+    "code": "SRBL",
+    "name": "Sporty Royal Blue"
+  },
+  {
+    "code": "SPCL",
+    "name": "Sporty Coral"
+  },
+  {
+    "code": "IWH",
+    "name": "Icy White"
+  },
+  {
+    "code": "INV",
+    "name": "Icy Navy"
+  },
+  {
+    "code": "OLC",
+    "name": "Olive Camouflage"
+  },
+  {
+    "code": "IGR",
+    "name": "Icy Grey"
+  },
+  {
+    "code": "IN/MD",
+    "name": "Indigo/Midnight"
+  },
+  {
+    "code": "SP/MA",
+    "name": "Spruce/Mallard"
+  },
+  {
+    "code": "BWD",
+    "name": "Brown Denim"
+  },
+  {
+    "code": "BFL",
+    "name": "Black Faux Leather"
+  },
+  {
+    "code": "NV/CA",
+    "name": "Navy/Camel"
+  },
+  {
+    "code": "O/CHE",
+    "name": "Olive Green/Chestnut"
+  },
+  {
+    "code": "KH/BN",
+    "name": "Khaki/Brown"
+  },
+  {
+    "code": "NV/BN",
+    "name": "Navy/Brown"
+  },
+  {
+    "code": "BK/TA",
+    "name": "Black/Tan Denim"
+  },
+  {
+    "code": "ID/BN",
+    "name": "Indigo Denim/Brown Denim"
+  },
+  {
+    "code": "MRB",
+    "name": "Marine Blue"
+  },
+  {
+    "code": "DKE",
+    "name": "Duck Egg"
+  },
+  {
+    "code": "RVI",
+    "name": "Rich Violet"
+  },
+  {
+    "code": "OAG",
+    "name": "Oasis Green"
+  },
+  {
+    "code": "PCK",
+    "name": "Peacock"
+  },
+  {
+    "code": "LTE",
+    "name": "Latte"
+  },
+  {
+    "code": "STW",
+    "name": "Strawberry Red"
+  },
+  {
+    "code": "SLS",
+    "name": "Salsa"
+  },
+  {
+    "code": "RAC",
+    "name": "Raspberry Crush"
+  },
+  {
+    "code": "BK/HP",
+    "name": "Black/Hot Pink"
+  },
+  {
+    "code": "BK/TU",
+    "name": "Black/Turquoise Blue"
+  },
+  {
+    "code": "BR/NT",
+    "name": "Brown/Natural"
+  },
+  {
+    "code": "BK/DG",
+    "name": "Black/Dark Grey"
+  },
+  {
+    "code": "WH/OB",
+    "name": "White/Oxford Blue"
+  },
+  {
+    "code": "STE/B",
+    "name": "Steel/Black"
+  },
+  {
+    "code": "CA/NV",
+    "name": "Camel/Navy"
+  },
+  {
+    "code": "SG/BK",
+    "name": "Steel/Black"
+  },
+  {
+    "code": "BK/SU",
+    "name": "Black/Sunflower"
+  },
+  {
+    "code": "DG/SI",
+    "name": "Dark Grey/Silver"
+  },
+  {
+    "code": "GRS",
+    "name": "Grass"
+  },
+  {
+    "code": "NV/LM",
+    "name": "Navy/Lime Green"
+  },
+  {
+    "code": "NV/BL",
+    "name": "Navy/Blue"
+  },
+  {
+    "code": "TU/NV",
+    "name": "Turquoise Blue/Navy"
+  },
+  {
+    "code": "SI/DG",
+    "name": "Silver/Dark Grey"
+  },
+  {
+    "code": "RV/BK",
+    "name": "Rich Violet/Black"
+  },
+  {
+    "code": "BK/RV",
+    "name": "Black/Rich Violet"
+  },
+  {
+    "code": "NV/AU",
+    "name": "Navy/Aubergine"
+  },
+  {
+    "code": "NV/GO",
+    "name": "Navy/Gold"
+  },
+  {
+    "code": "NV/SI",
+    "name": "Navy/Silver"
+  },
+  {
+    "code": "RE/BU",
+    "name": "Red/Burgundy"
+  },
+  {
+    "code": "BU/AU",
+    "name": "Burgundy/Aubergine"
+  },
+  {
+    "code": "NV/PU",
+    "name": "Navy/Purple"
+  },
+  {
+    "code": "MO/BN",
+    "name": "Moss Green/Brown"
+  },
+  {
+    "code": "BU/BN",
+    "name": "Burgundy/Brown"
+  },
+  {
+    "code": "YL/NV",
+    "name": "Yellow/Navy"
+  },
+  {
+    "code": "OR/NV",
+    "name": "Orange/Navy"
+  },
+  {
+    "code": "AMB",
+    "name": "Amber"
+  },
+  {
+    "code": "ZG/BK",
+    "name": "Zoom Grey/Black"
+  },
+  {
+    "code": "BK/ZG",
+    "name": "Black/Zoom Grey"
+  },
+  {
+    "code": "PSN",
+    "name": "Persian Blue"
+  },
+  {
+    "code": "BK/BL",
+    "name": "Black/Blue"
+  },
+  {
+    "code": "NV/OW",
+    "name": "Navy/Off White"
+  },
+  {
+    "code": "SHA",
+    "name": "Shadow Grey"
+  },
+  {
+    "code": "SAH",
+    "name": "Sahara"
+  },
+  {
+    "code": "VLG",
+    "name": "Vintage Light Grey"
+  },
+  {
+    "code": "BO/BK",
+    "name": "Bottle Green/Black"
+  },
+  {
+    "code": "ZST",
+    "name": "Zinc Stripe"
+  },
+  {
+    "code": "CST",
+    "name": "Charcoal Stripe"
+  },
+  {
+    "code": "F/B/W",
+    "name": "French Navy/Black/White"
+  },
+  {
+    "code": "G-B-W",
+    "name": "Graphite Grey/Black/White"
+  },
+  {
+    "code": "F-B-L",
+    "name": "Fuchsia/Black/Light Grey"
+  },
+  {
+    "code": "N/B/W",
+    "name": "French Navy/Black/White"
+  },
+  {
+    "code": "CVG",
+    "name": "Covert Green"
+  },
+  {
+    "code": "B/B/G",
+    "name": "Black/Black/Grey"
+  },
+  {
+    "code": "N/N/P",
+    "name": "Navy/Navy/Putty"
+  },
+  {
+    "code": "R/B/B",
+    "name": "Red/Black/Black"
+  },
+  {
+    "code": "R-N-W",
+    "name": "Royal Blue/Navy/White"
+  },
+  {
+    "code": "G/B/B",
+    "name": "Grey/Black/Black"
+  },
+  {
+    "code": "PI/GY",
+    "name": "Pink/Grey"
+  },
+  {
+    "code": "GY/RD",
+    "name": "Grey/Red"
+  },
+  {
+    "code": "NV/NT",
+    "name": "Navy/Natural"
+  },
+  {
+    "code": "CEG",
+    "name": "Celtic Green"
+  },
+  {
+    "code": "DVG",
+    "name": "Dove Grey"
+  },
+  {
+    "code": "FEN",
+    "name": "Fennel"
+  },
+  {
+    "code": "GYL",
+    "name": "Golden Yellow"
+  },
+  {
+    "code": "BK/TN",
+    "name": "Black/Tan"
+  },
+  {
+    "code": "SK/NV",
+    "name": "Sky/Navy"
+  },
+  {
+    "code": "GY/YL",
+    "name": "Grey/Yellow"
+  },
+  {
+    "code": "TA/NV",
+    "name": "Tan/Navy"
+  },
+  {
+    "code": "BK/SK",
+    "name": "Black/Sky Blue"
+  },
+  {
+    "code": "AQ/GY",
+    "name": "Aqua/Grey"
+  },
+  {
+    "code": "LI/BK",
+    "name": "Lime Green/Black"
+  },
+  {
+    "code": "ST/OL",
+    "name": "Stone/Olive Green"
+  },
+  {
+    "code": "CGY",
+    "name": "Cool Grey"
+  },
+  {
+    "code": "WH/EM",
+    "name": "White/Emerald"
+  },
+  {
+    "code": "RY/YL",
+    "name": "Royal Blue/Yellow"
+  },
+  {
+    "code": "RD/GN",
+    "name": "Red/Green"
+  },
+  {
+    "code": "RD/YL",
+    "name": "Red/Yellow"
+  },
+  {
+    "code": "VBL",
+    "name": "Vivid Blue"
+  },
+  {
+    "code": "AQ/BK",
+    "name": "Aqua/Black"
+  },
+  {
+    "code": "BK/PI",
+    "name": "Black/Pink"
+  },
+  {
+    "code": "SRP/W",
+    "name": "Super Pink/White"
+  },
+  {
+    "code": "BK/NV",
+    "name": "Black/Navy"
+  },
+  {
+    "code": "LI/GY",
+    "name": "Lime Green/Grey"
+  },
+  {
+    "code": "PM/TU",
+    "name": "Plum/Turquoise"
+  },
+  {
+    "code": "NV/GY",
+    "name": "Navy/Grey"
+  },
+  {
+    "code": "TE/GY",
+    "name": "Teal/Grey"
+  },
+  {
+    "code": "CGR",
+    "name": "Charcoal Grey"
+  },
+  {
+    "code": "BK/AS",
+    "name": "Black/Ash"
+  },
+  {
+    "code": "OB/NV",
+    "name": "Oxford Blue/Navy"
+  },
+  {
+    "code": "NRY",
+    "name": "New Royal Blue"
+  },
+  {
+    "code": "GR/GR",
+    "name": "Green/Green"
+  },
+  {
+    "code": "SE/BK",
+    "name": "Seal Grey/Black"
+  },
+  {
+    "code": "CS/NV",
+    "name": "Classic Red/Navy"
+  },
+  {
+    "code": "BU/BU",
+    "name": "Burgundy/Burgundy"
+  },
+  {
+    "code": "BK/SE",
+    "name": "Black/Seal Grey"
+  },
+  {
+    "code": "SEG",
+    "name": "Seal Grey"
+  },
+  {
+    "code": "SEM",
+    "name": "Seal Grey Marl"
+  },
+  {
+    "code": "B/BLN",
+    "name": "Black/Black Lining"
+  },
+  {
+    "code": "SE/SE",
+    "name": "Seal Grey/Seal Grey"
+  },
+  {
+    "code": "CS/SE",
+    "name": "Classic Red/Seal Grey"
+  },
+  {
+    "code": "OB/BK",
+    "name": "Oxford Blue/Black"
+  },
+  {
+    "code": "NV/SE",
+    "name": "Navy/Seal Grey"
+  },
+  {
+    "code": "N/FRB",
+    "name": "Navy/French Blue"
+  },
+  {
+    "code": "LCN",
+    "name": "Lichen"
+  },
+  {
+    "code": "JEM",
+    "name": "Jem"
+  },
+  {
+    "code": "NV/NR",
+    "name": "Navy/New Royal Blue"
+  },
+  {
+    "code": "NR/NV",
+    "name": "New Royal Blue/Navy"
+  },
+  {
+    "code": "BK/OB",
+    "name": "Black/Oxford Blue"
+  },
+  {
+    "code": "OFB/N",
+    "name": "Oxford Blue Marl/Navy"
+  },
+  {
+    "code": "B/MMO",
+    "name": "Black/Magma Orange"
+  },
+  {
+    "code": "NV/OB",
+    "name": "Navy/Oxford Blue"
+  },
+  {
+    "code": "B/MNL",
+    "name": "Black/Mineral Grey"
+  },
+  {
+    "code": "MNL/B",
+    "name": "Mineral Grey/Black"
+  },
+  {
+    "code": "SGB/N",
+    "name": "Strong Blue/Navy"
+  },
+  {
+    "code": "MNL/A",
+    "name": "Mineral Grey/Ash"
+  },
+  {
+    "code": "AS/BK",
+    "name": "Ash/Black"
+  },
+  {
+    "code": "SOR/B",
+    "name": "Solar/Black"
+  },
+  {
+    "code": "BK/NR",
+    "name": "Black/New Royal Blue"
+  },
+  {
+    "code": "BK/OP",
+    "name": "Black/Orange Pop"
+  },
+  {
+    "code": "YL/OR",
+    "name": "Yellow/Orange"
+  },
+  {
+    "code": "YL/RY",
+    "name": "Yellow/Royal Blue"
+  },
+  {
+    "code": "BRR/L",
+    "name": "Briar/Lime Punch"
+  },
+  {
+    "code": "AS/RI",
+    "name": "Ash/Rio Red"
+  },
+  {
+    "code": "BRR/O",
+    "name": "Briar/Oxford Blue"
+  },
+  {
+    "code": "BRR/B",
+    "name": "Briar/Black"
+  },
+  {
+    "code": "B/BRR",
+    "name": "Black/Briar"
+  },
+  {
+    "code": "O/BRR",
+    "name": "Oxford Blue/Briar"
+  },
+  {
+    "code": "OB/SE",
+    "name": "Oxford Blue/Seal Grey"
+  },
+  {
+    "code": "PR/SE",
+    "name": "Majestic Purple/Seal Grey"
+  },
+  {
+    "code": "BO/SE",
+    "name": "Bottle Green/Seal Grey"
+  },
+  {
+    "code": "KL/SE",
+    "name": "Keylime/Seal Grey"
+  },
+  {
+    "code": "SO/SE",
+    "name": "Sun Orange/Seal Grey"
+  },
+  {
+    "code": "FRB/N",
+    "name": "French Blue/Navy"
+  },
+  {
+    "code": "NR/BK",
+    "name": "New Royal Blue/Black"
+  },
+  {
+    "code": "VBP/B",
+    "name": "Vibrant Purple/Black"
+  },
+  {
+    "code": "EXG/B",
+    "name": "Extreme Green/Black"
+  },
+  {
+    "code": "DSP/B",
+    "name": "Dark Spruce/Black"
+  },
+  {
+    "code": "RKG/B",
+    "name": "Rock Grey/Black"
+  },
+  {
+    "code": "N/MMO",
+    "name": "Navy/Magma Orange"
+  },
+  {
+    "code": "VVG",
+    "name": "Vivid Green"
+  },
+  {
+    "code": "SYL",
+    "name": "Sport Yellow"
+  },
+  {
+    "code": "WGY",
+    "name": "Workguard Grey"
+  },
+  {
+    "code": "WG/BK",
+    "name": "Workguard Grey/Black"
+  },
+  {
+    "code": "NV/GL",
+    "name": "Navy/Gold"
+  },
+  {
+    "code": "PU/YL",
+    "name": "Purple/Yellow"
+  },
+  {
+    "code": "PR/PR",
+    "name": "Purple/Purple"
+  },
+  {
+    "code": "BR/BR",
+    "name": "Brown/Brown"
+  },
+  {
+    "code": "BU/CA",
+    "name": "Burgundy/Camel"
+  },
+  {
+    "code": "BG/BG",
+    "name": "Burgundy/Burgundy"
+  },
+  {
+    "code": "RY/LM",
+    "name": "Royal Blue/Lime Green"
+  },
+  {
+    "code": "LM/RY",
+    "name": "Lime Green/Royal Blue"
+  },
+  {
+    "code": "FE/PI",
+    "name": "Fennel/Pink"
+  },
+  {
+    "code": "RA/LM",
+    "name": "Raspberry/Lime Green"
+  },
+  {
+    "code": "OC/LM",
+    "name": "Ocean Blue/Lime Green"
+  },
+  {
+    "code": "PMG",
+    "name": "Paramedic Green"
+  },
+  {
+    "code": "FLA",
+    "name": "Flame"
+  },
+  {
+    "code": "PR/GY",
+    "name": "Purple/Grey"
+  },
+  {
+    "code": "VG/BK",
+    "name": "Vivid Green/Black"
+  },
+  {
+    "code": "PR/BK",
+    "name": "Purple/Black"
+  },
+  {
+    "code": "FRG/B",
+    "name": "Frost Grey/Black"
+  },
+  {
+    "code": "BK/GM",
+    "name": "Black/Grey Marl"
+  },
+  {
+    "code": "FLO/G",
+    "name": "Fluorescent Orange/Grey"
+  },
+  {
+    "code": "FY/GY",
+    "name": "Fluorescent Yellow/Grey"
+  },
+  {
+    "code": "FLO/N",
+    "name": "Fluorescent Orange/Navy"
+  },
+  {
+    "code": "FY/NV",
+    "name": "Fluorescent Yellow/Navy"
+  },
+  {
+    "code": "BEL",
+    "name": "Belgium"
+  },
+  {
+    "code": "GER",
+    "name": "Germany"
+  },
+  {
+    "code": "NZD",
+    "name": "New Zealand"
+  },
+  {
+    "code": "ENG",
+    "name": "England"
+  },
+  {
+    "code": "FRA",
+    "name": "France"
+  },
+  {
+    "code": "ITA",
+    "name": "Italy"
+  },
+  {
+    "code": "SCO",
+    "name": "Scotland"
+  },
+  {
+    "code": "SFA",
+    "name": "South Africa"
+  },
+  {
+    "code": "IRE",
+    "name": "Ireland"
+  },
+  {
+    "code": "SPN",
+    "name": "Spain"
+  },
+  {
+    "code": "WAL",
+    "name": "Wales"
+  },
+  {
+    "code": "HOL",
+    "name": "Holland"
+  },
+  {
+    "code": "AUS",
+    "name": "Australia"
+  },
+  {
+    "code": "NV/OR",
+    "name": "Navy/Orange"
+  },
+  {
+    "code": "PR/CH",
+    "name": "Purple/Charcoal"
+  },
+  {
+    "code": "MRN",
+    "name": "Marine Navy"
+  },
+  {
+    "code": "ROR",
+    "name": "Rocco Red"
+  },
+  {
+    "code": "LIC",
+    "name": "Lichen Green"
+  },
+  {
+    "code": "FLO/B",
+    "name": "Fluorescent Orange/Black"
+  },
+  {
+    "code": "NG/BK",
+    "name": "Neon Green/Black"
+  },
+  {
+    "code": "FY/O/B",
+    "name": "Fluorescent Yellow/Orange/Black"
+  },
+  {
+    "code": "NV/SN",
+    "name": "Navy/Sand"
+  },
+  {
+    "code": "TA/BK",
+    "name": "Tan/Black"
+  },
+  {
+    "code": "BKOL",
+    "name": "Black Olive"
+  },
+  {
+    "code": "FRG",
+    "name": "Frost Grey"
+  },
+  {
+    "code": "WH/SK",
+    "name": "White/Sky Blue"
+  },
+  {
+    "code": "PI/PI",
+    "name": "Pink/Pink"
+  },
+  {
+    "code": "SGR",
+    "name": "Solid Grey"
+  },
+  {
+    "code": "PCG",
+    "name": "Paramedic Green"
+  },
+  {
+    "code": "YL/LM",
+    "name": "Yellow/Lime Green"
+  },
+  {
+    "code": "Y/PCG",
+    "name": "Yellow/Paramedic Green"
+  },
+  {
+    "code": "YL/PI",
+    "name": "Yellow/Pink"
+  },
+  {
+    "code": "YL/PR",
+    "name": "Yellow/Purple"
+  },
+  {
+    "code": "YL/RD",
+    "name": "Yellow/Red"
+  },
+  {
+    "code": "DBW",
+    "name": "Dark Blue Wash"
+  },
+  {
+    "code": "LBW",
+    "name": "Light Blue Wash"
+  },
+  {
+    "code": "WH/MCK",
+    "name": "White/Multi Check"
+  },
+  {
+    "code": "B/RPL",
+    "name": "Black/Red Plaid"
+  },
+  {
+    "code": "RYPL",
+    "name": "Royal Plaid"
+  },
+  {
+    "code": "NVPL",
+    "name": "Navy Plaid"
+  },
+  {
+    "code": "TTPL",
+    "name": "Titanium Plaid"
+  },
+  {
+    "code": "CBPL",
+    "name": "Carbon Plaid"
+  },
+  {
+    "code": "WH/HP",
+    "name": "White/Hot Pink"
+  },
+  {
+    "code": "HE/RY",
+    "name": "Heather Grey/Royal Blue"
+  },
+  {
+    "code": "BP/WH",
+    "name": "Bright Pink/White"
+  },
+  {
+    "code": "B.G.W",
+    "name": "Black/Grey/White"
+  },
+  {
+    "code": "W/R/W",
+    "name": "White/Red/White"
+  },
+  {
+    "code": "G/L/W",
+    "name": "Grey/Lime Green/White"
+  },
+  {
+    "code": "GY/AQ",
+    "name": "Grey/Aqua"
+  },
+  {
+    "code": "FL/BK",
+    "name": "Fluoro Green/Black"
+  },
+  {
+    "code": "NWH",
+    "name": "Neon White"
+  },
+  {
+    "code": "BK/LV",
+    "name": "Black/Lavender"
+  },
+  {
+    "code": "SGY/H",
+    "name": "Sport Grey/Hot Coral"
+  },
+  {
+    "code": "CDY",
+    "name": "Candy"
+  },
+  {
+    "code": "CBT",
+    "name": "Combat"
+  },
+  {
+    "code": "SRP",
+    "name": "Super Pink"
+  },
+  {
+    "code": "OR/GY",
+    "name": "Orange/Grey"
+  },
+  {
+    "code": "MIX",
+    "name": "Mixed"
+  },
+  {
+    "code": "DSK",
+    "name": "Dusky Blue"
+  },
+  {
+    "code": "DNA",
+    "name": "Deep Navy"
+  },
+  {
+    "code": "COL",
+    "name": "Classic Olive"
+  },
+  {
+    "code": "LGP",
+    "name": "Light Graphite"
+  },
+  {
+    "code": "MNB",
+    "name": "Mountain Blue"
+  },
+  {
+    "code": "CLG",
+    "name": "College Green"
+  },
+  {
+    "code": "W/DNA",
+    "name": "White/Deep Navy"
+  },
+  {
+    "code": "SU/KG",
+    "name": "Sunflower/Kelly Green"
+  },
+  {
+    "code": "NEM",
+    "name": "Neo Mint"
+  },
+  {
+    "code": "VHN",
+    "name": "Heather Navy"
+  },
+  {
+    "code": "RHR",
+    "name": "Heather Royal"
+  },
+  {
+    "code": "OCT",
+    "name": "Ocean Teal"
+  },
+  {
+    "code": "SFL",
+    "name": "Soft Lavender"
+  },
+  {
+    "code": "DRP",
+    "name": "Dark Plum"
+  },
+  {
+    "code": "TRF",
+    "name": "Truffle"
+  },
+  {
+    "code": "NTW",
+    "name": "Navy Twill"
+  },
+  {
+    "code": "INK",
+    "name": "Ink Blue"
+  },
+  {
+    "code": "DGN",
+    "name": "Dark Green"
+  },
+  {
+    "code": "LFG",
+    "name": "Leaf Green"
+  },
+  {
+    "code": "ECR",
+    "name": "Ecru"
+  },
+  {
+    "code": "FLS",
+    "name": "Flintstone"
+  },
+  {
+    "code": "PWG",
+    "name": "Powder Grey"
+  },
+  {
+    "code": "SUY",
+    "name": "Sunshine"
+  },
+  {
+    "code": "DPG",
+    "name": "Deep Green"
+  },
+  {
+    "code": "KIT",
+    "name": "Kit"
+  },
+  {
+    "code": "GRP",
+    "name": "Grape"
+  },
+  {
+    "code": "DNML",
+    "name": "Denim Melange"
+  },
+  {
+    "code": "HE/DG",
+    "name": "Heather Grey/Dark Grey"
+  },
+  {
+    "code": "OML",
+    "name": "Olive Melange"
+  },
+  {
+    "code": "DPG/B",
+    "name": "Deep Green/Black"
+  },
+  {
+    "code": "CLY/B",
+    "name": "Clay/Black"
+  },
+  {
+    "code": "ASP/B",
+    "name": "Asphalt/Black"
+  },
+  {
+    "code": "SCG",
+    "name": "Space Grey"
+  },
+  {
+    "code": "B/BKML",
+    "name": "Black/Black Melange"
+  },
+  {
+    "code": "SCG/G",
+    "name": "Space Grey/Grey Melange"
+  },
+  {
+    "code": "SCG/B",
+    "name": "Space Grey/Black"
+  },
+  {
+    "code": "DYO",
+    "name": "Dusty Orange"
+  },
+  {
+    "code": "OCE",
+    "name": "Ocean"
+  },
+  {
+    "code": "BK/EB",
+    "name": "Black/Electric Blue"
+  },
+  {
+    "code": "N/BLM",
+    "name": "Navy/Blue Marl"
+  },
+  {
+    "code": "PR/LG",
+    "name": "Purple/Light Grey Marl"
+  },
+  {
+    "code": "PUM",
+    "name": "Purple Marl"
+  },
+  {
+    "code": "GM/GY",
+    "name": "Grey Marl/Grey"
+  },
+  {
+    "code": "OYB",
+    "name": "Olympus Blue"
+  },
+  {
+    "code": "BK/RF",
+    "name": "Black/Reflective"
+  },
+  {
+    "code": "DMH",
+    "name": "Denim Heather"
+  },
+  {
+    "code": "MOH",
+    "name": "Moss Heather"
+  },
+  {
+    "code": "ORR",
+    "name": "Orange Rust"
+  },
+  {
+    "code": "NT/CS",
+    "name": "Natural/Classic Red"
+  },
+  {
+    "code": "NT/FN",
+    "name": "Natural/French Navy"
+  },
+  {
+    "code": "NT/LI",
+    "name": "Natural/lime"
+  },
+  {
+    "code": "LV/WH",
+    "name": "Lavender/White"
+  },
+  {
+    "code": "PSM/W",
+    "name": "Pastel Mint/White"
+  },
+  {
+    "code": "PSP/W",
+    "name": "Pastel Pink/White"
+  },
+  {
+    "code": "SFW/B",
+    "name": "Soft White/Black"
+  },
+  {
+    "code": "SFW/LG",
+    "name": "Soft White/Light Grey"
+  },
+  {
+    "code": "SFW/RG",
+    "name": "Soft White/Rose Gold"
+  },
+  {
+    "code": "NT/BL",
+    "name": "Natural/Blue Grey"
+  },
+  {
+    "code": "NT/DU",
+    "name": "Natural/Dusty Green"
+  },
+  {
+    "code": "NT/CA",
+    "name": "Natural/Caramel"
+  },
+  {
+    "code": "NT/PC",
+    "name": "Natural/Peach"
+  },
+  {
+    "code": "GYS",
+    "name": "Grey Stripe"
+  },
+  {
+    "code": "RDS",
+    "name": "Red Stripe"
+  },
+  {
+    "code": "MYST",
+    "name": "Myrobalan Stone"
+  },
+  {
+    "code": "SST",
+    "name": "Sea Salt"
+  },
+  {
+    "code": "PMRS",
+    "name": "Pomegranate Rose"
+  },
+  {
+    "code": "VAQ",
+    "name": "Vintage Aqua"
+  },
+  {
+    "code": "NT/LG",
+    "name": "Natural/Light Grey"
+  },
+  {
+    "code": "N/SAG",
+    "name": "Natural/Sage Green"
+  },
+  {
+    "code": "N/PSP",
+    "name": "Natural/Pastel Pink"
+  },
+  {
+    "code": "N/PST",
+    "name": "Natural/Pistachio"
+  },
+  {
+    "code": "NAT/B",
+    "name": "Natural/Bright Red"
+  },
+  {
+    "code": "NT/SB",
+    "name": "Natural/Surf Blue"
+  },
+  {
+    "code": "NTG",
+    "name": "Natural Gold"
+  },
+  {
+    "code": "DEB",
+    "name": "Duck Egg Blue"
+  },
+  {
+    "code": "BSM",
+    "name": "Blossom"
+  },
+  {
+    "code": "SFF",
+    "name": "Saffron"
+  },
+  {
+    "code": "NT/OL",
+    "name": "Natural/Olive Green"
+  },
+  {
+    "code": "NT/OR",
+    "name": "Natural/Orange Rust"
+  },
+  {
+    "code": "NT/PI",
+    "name": "Natural/Pink"
+  },
+  {
+    "code": "NT/GY",
+    "name": "Natural/Grey"
+  },
+  {
+    "code": "NT/AM",
+    "name": "Natural/Amber"
+  },
+  {
+    "code": "CAP",
+    "name": "Cappuccino"
+  },
+  {
+    "code": "FN/NT",
+    "name": "French Navy/Natural"
+  },
+  {
+    "code": "DMR/NT",
+    "name": "Dark Marine/Natural"
+  },
+  {
+    "code": "SAG/NT",
+    "name": "Sage Green/Natural"
+  },
+  {
+    "code": "OBD/NT",
+    "name": "Oxblood/Natural"
+  },
+  {
+    "code": "ROS/NT",
+    "name": "Rose/Natural"
+  },
+  {
+    "code": "PMK/NT",
+    "name": "Pumpkin/Natural"
+  },
+  {
+    "code": "SFW/BO",
+    "name": "Soft White/Bottle Green"
+  },
+  {
+    "code": "SFW/CA",
+    "name": "Soft White/Caramel"
+  },
+  {
+    "code": "SFW/FN",
+    "name": "Soft White/French Navy"
+  },
+  {
+    "code": "FLR",
+    "name": "Fluorescent Red"
+  },
+  {
+    "code": "OPQ",
+    "name": "Opaque"
+  },
+  {
+    "code": "PCF",
+    "name": "Pacific"
+  },
+  {
+    "code": "PSG",
+    "name": "Pastel Green"
+  },
+  {
+    "code": "MGE",
+    "name": "Mid Grey"
+  },
+  {
+    "code": "VVR",
+    "name": "Vivid Red"
+  },
+  {
+    "code": "STP",
+    "name": "Sweet Pink"
+  },
+  {
+    "code": "CTW/B",
+    "name": "Charcoal Twill/Black"
+  },
+  {
+    "code": "PR/YL",
+    "name": "Purple/Yellow"
+  },
+  {
+    "code": "PCG/Y",
+    "name": "Paramedic Green/Yellow"
+  },
+  {
+    "code": "LI/YL",
+    "name": "Lime Green/Yellow"
+  },
+  {
+    "code": "RA/YL",
+    "name": "Raspberry/Yellow"
+  },
+  {
+    "code": "OR/YL",
+    "name": "Orange/Yellow"
+  },
+  {
+    "code": "OR/RY",
+    "name": "Orange/Royal Blue"
+  },
+  {
+    "code": "YL/GY",
+    "name": "Yellow/Grey"
+  },
+  {
+    "code": "RFC",
+    "name": "Reflective"
+  }
+]
