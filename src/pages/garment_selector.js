@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const garmentSuggestionsDropdown = document.getElementById('garment-code-suggestions'); // Autocomplete list
     const garmentColourDropdown = document.getElementById('garment-colour-dropdown'); // Colour dropdown <select>
     const garmentImageOptionsDiv = document.getElementById('garment-image-options');
-    const garmentImagePreviewDiv = document.getElementById('garment-image-preview');
+    let garmentImagePreviewDiv = document.getElementById('garment-image-preview');
     const garmentLookupPanel = document.getElementById('garment-lookup-panel');
 
     let garmentDataCache = []; // Cache for all garment data (for autocomplete)
@@ -173,28 +173,35 @@ document.addEventListener('DOMContentLoaded', () => {
         displayGarmentPreviewImage(imageUrl, garment, colourName);
     }
 
-    function displayGarmentPreviewImage(imageUrl, garment, colourName) { // MODIFIED: Accept garment and colourName
-        garmentImagePreviewDiv.innerHTML = '';
+    function displayGarmentPreviewImage(imageUrl, garment, colourName) {
+        const oldPreviewDiv = garmentImagePreviewDiv; // Keep reference to the *original* div
+
+        const newPreviewDiv = garmentImagePreviewDiv.cloneNode(false); // Clone to create a *new* div
+        newPreviewDiv.innerHTML = ''; // Clear inner HTML of the *new* div
 
         const imgElement = document.createElement('img');
         imgElement.src = imageUrl;
-        imgElement.style.cursor = 'pointer'; // Change cursor to pointer to indicate clickability
+        imgElement.style.cursor = 'pointer';
 
         imgElement.onload = () => {
-            garmentImagePreviewDiv.appendChild(imgElement);
+            newPreviewDiv.appendChild(imgElement); // Append to the *new* div
         };
         imgElement.onerror = () => {
-            garmentImagePreviewDiv.innerHTML = `<p>Image not available.</p>`;
+            newPreviewDiv.innerHTML = `<p>Image not available.</p>`; // Set error message on *new* div
         };
 
-        // --- NEW: Click event listener for the image (modified to pass more data) ---
-        garmentImagePreviewDiv.addEventListener('click', () => {
-            const currentImageUrl = imgElement.src; // Get the image URL
-            const currentGarmentCode = garmentCodeInput.value; // Get the garment code from input
-            const garmentDescription = garment.title; // Get garment description from garment object
-            // --- MODIFIED: Call handleGarmentImageFromURL with description and colourName ---
+        // --- Click event listener for the *new* image preview div ---
+        newPreviewDiv.addEventListener('click', () => {
+            const currentImageUrl = imgElement.src;
+            const currentGarmentCode = garmentCodeInput.value;
+            const garmentDescription = garment.title;
             handleGarmentImageFromURL(currentImageUrl, currentGarmentCode, garmentDescription, colourName);
         });
+
+        oldPreviewDiv.replaceWith(newPreviewDiv); // Replace the *old* div with the *new* div
+
+        // --- IMPORTANT: Update the global variable to point to the *new* div ---
+        garmentImagePreviewDiv = newPreviewDiv;
     }
 
 
