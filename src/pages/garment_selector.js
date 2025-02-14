@@ -3,7 +3,8 @@
 document.addEventListener('DOMContentLoaded', () => {
     const garmentCodeInput = document.getElementById('garment-code-lookup-input');
     const garmentColourOptionsDiv = document.getElementById('garment-colour-options');
-    const garmentImagesPreviewDiv = document.getElementById('garment-image-preview');
+    const garmentImageOptionsDiv = document.getElementById('garment-image-options'); // ADDED
+    const garmentImagePreviewDiv = document.getElementById('garment-image-preview');
     const garmentLookupPanel = document.getElementById('garment-lookup-panel');
 
     garmentCodeInput.addEventListener('input', handleGarmentCodeInput);
@@ -12,7 +13,8 @@ document.addEventListener('DOMContentLoaded', () => {
         const garmentCode = garmentCodeInput.value.trim().toUpperCase();
         if (garmentCode.length < 2) {
             garmentColourOptionsDiv.innerHTML = '';
-            garmentImagesPreviewDiv.innerHTML = '';
+            garmentImageOptionsDiv.innerHTML = ''; // Clear image options too
+            garmentImagePreviewDiv.innerHTML = '';
             return;
         }
 
@@ -37,7 +39,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function displayGarmentColourOptions(garment) {
         garmentColourOptionsDiv.innerHTML = '';
-        garmentImagesPreviewDiv.innerHTML = '';
+        garmentImageOptionsDiv.innerHTML = ''; // Clear image options when colours change
+        garmentImagePreviewDiv.innerHTML = '';
 
         if (!garment) {
             garmentColourOptionsDiv.innerHTML = `<p>No garment found for this code.</p>`;
@@ -52,28 +55,83 @@ document.addEventListener('DOMContentLoaded', () => {
             garmentColourOptionsDiv.innerHTML = colourOptionsHTML;
 
             garmentColourOptionsDiv.querySelectorAll('.colour-option-button').forEach(button => {
-                button.addEventListener('click', handleColourSelection);
+                button.addEventListener('click', (event) => handleColourSelection(event, garment)); // Pass garment object
             });
         } else {
             garmentColourOptionsDiv.innerHTML = `<p>No colour options available for ${garment.styleCode}.</p>`;
         }
     }
 
-    function handleColourSelection(event) {
+    function handleColourSelection(event, garment) { // RECEIVE GARMENT OBJECT
         const colourwayCode = event.target.dataset.colourwayCode;
-        // ... (Next step: Display garment images for selected colour) ...
-        console.log(`Selected colourway code: ${colourwayCode}`);
+        console.log(`Selected colourway code: ${colourwayCode}, Style Code: ${garment.styleCode}`);
+        displayGarmentImageOptions(garment, colourwayCode); // Call new function to display image options
     }
+
+    // --- NEW FUNCTION: Display Garment Image Options ---
+    function displayGarmentImageOptions(garment, colourwayCode) {
+        garmentImageOptionsDiv.innerHTML = ''; // Clear previous image options
+        garmentImagePreviewDiv.innerHTML = ''; // Clear image preview
+
+        const imageTypes = ['Front', 'Back', 'Side', 'Detail']; // Array of image types to check
+        const imageOptionsHTML = imageTypes.map(imageType => {
+            const imageUrl = constructImageUrl(garment.brand, garment.styleCode, colourwayCode, imageType);
+            // For now, just create a button for each type - we'll check for image existence later if needed
+            return `<button class="image-option-button" data-image-type="${imageType}" data-image-url="${imageUrl}">${imageType} View</button>`;
+        }).join('');
+        garmentImageOptionsDiv.innerHTML = imageOptionsHTML;
+
+        // Add event listeners to image option buttons
+        garmentImageOptionsDiv.querySelectorAll('.image-option-button').forEach(button => {
+            button.addEventListener('click', (event) => handleImageSelection(event, garment, colourwayCode)); // Pass garment and colour code
+        });
+    }
+
+    // --- NEW FUNCTION: Handle Image Selection ---
+    function handleImageSelection(event, garment, colourwayCode) {
+        const imageType = event.target.dataset.imageType;
+        const imageUrl = event.target.dataset.imageUrl; // URL already constructed in displayGarmentImageOptions
+        console.log(`Selected image type: ${imageType}, URL: ${imageUrl}`);
+        displayGarmentPreviewImage(imageUrl); // Call function to display image in preview
+    }
+
+
+    // --- NEW FUNCTION: Display Garment Preview Image ---
+    function displayGarmentPreviewImage(imageUrl) {
+        garmentImagePreviewDiv.innerHTML = ''; // Clear previous preview
+
+        const imgElement = document.createElement('img');
+        imgElement.src = imageUrl;
+        imgElement.onload = () => {
+            garmentImagePreviewDiv.appendChild(imgElement);
+        };
+        imgElement.onerror = () => {
+            garmentImagePreviewDiv.innerHTML = `<p>Image not available.</p>`; // Display message if image fails to load
+        };
+    }
+
+
+    // --- Helper function to construct image URL ---
+    function constructImageUrl(brand, styleCode, colourwayCode, view) {
+        const baseUrl = 'https://www.fullcollection.com/storage/phoenix/2025/Phoenix%20All%20Images/';
+        const brandPath = brand.replace(/\s+/g, '%20'); // URL-encode brand name (replace spaces with %20)
+        const styleCodePath = styleCode.replace(/\s+/g, '%20'); // URL-encode style code
+        const colourwayCodePath = colourwayCode.replace(/\s+/g, '%20'); // URL-encode colourway code
+
+        const filename = `${styleCodePath}%20${colourwayCodePath}%20${view}.jpg`;
+        return `${baseUrl}${brandPath}/Product%20Images/${styleCodePath}/ProductCarouselMain/${filename}`;
+    }
+
 
     // --- Helper function to get colourway name from code ---
     let colourwayNamesMap = null;
 
     async function loadColourwayNamesMap() {
-        if (!colourwayNamesMap) { // Load only once
-            const response = await fetch('/api/colourway-names'); // CORRECTED fetch path - API endpoint!
+        if (!colourwayNamesMap) {
+            const response = await fetch('/api/colourway-names');
             if (!response.ok) {
                 console.error('Failed to load colourway names from /api/colourway-names');
-                colourwayNamesMap = {}; // Default to empty map
+                colourwayNamesMap = {};
             } else {
                 const namesArray = await response.json();
                 colourwayNamesMap = namesArray.reduce((map, obj) => {
