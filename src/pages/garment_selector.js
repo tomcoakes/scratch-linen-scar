@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const garmentCode = garmentCodeInput.value.trim().toUpperCase(); // Get garment code, convert to uppercase for consistency
         if (garmentCode.length < 2) { 
             garmentColourOptionsDiv.innerHTML = '';
-            garmentImagesPreviewDiv.innerHTML = '';const response = await fetch('/colourway
+            garmentImagesPreviewDiv.innerHTML = '';
             return;
         }
 
@@ -70,7 +70,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     async function loadColourwayNamesMap() {
         if (!colourwayNamesMap) { // Load only once
-            const response = await fetch('/colourway_names.json'); // Fetch your mapping JSON
+            const response = await fetch('../colourway_names.json'); // Fetch your mapping JSON
             if (!response.ok) {
                 console.error('Failed to load colourway_names.json');
                 colourwayNamesMap = {}; // Default to empty map
