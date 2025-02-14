@@ -180,6 +180,15 @@
           "1824"
         ]
       }
+    ],
+    "proofs": [
+      {
+        "url": "/customer_proofs/proof-njk--20250214T174850.pdf",
+        "garmentCode": "njk",
+        "logo": "No Logos",
+        "logoPosition": "Left Breast",
+        "description": ""
+      }
     ]
   },
   {
@@ -314,6 +323,13 @@
         "logo": "No Logos",
         "logoPosition": "Left Breast",
         "description": "SOL'S North Fleece Jacket - Grey Marl"
+      },
+      {
+        "url": "/customer_proofs/proof-51000-SOL_S Unisex Norway Fleece Bodywarmer _ Green-20250214T174630.pdf",
+        "garmentCode": "51000",
+        "logo": "No Logos",
+        "logoPosition": "Left Breast",
+        "description": "SOL'S Unisex Norway Fleece Bodywarmer - Green"
       }
     ]
   }
