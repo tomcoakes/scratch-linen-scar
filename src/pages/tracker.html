@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Active Job Tracker</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css"> <!-- Link to your existing style.css for basic styling -->
+    <link rel="stylesheet" href="tracker.css"> <!-- NEW stylesheet for tracker-specific styles -->
+</head>
+<body>
+    <header>
+        <div class="header-container">
+            <h1>Active Job Tracker</h1>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="threads.html">Thread Manager</a></li>
+                    <li><a href="proof_creator.html">Proof Creator</a></li>
+                    <li style="float:right"><a href="tracker.html" class="active">Job Tracker</a></li> 
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="tracker-container">
+        <section class="controls">
+            <input type="file" id="csv-upload-input" accept=".csv">
+            <input type="text" id="job-search-input" placeholder="Search Jobs...">
+        </section>
+
+        <div class="table-container">
+            <table id="job-tracker-table">
+                <thead>
+                    <tr>
+                        <th>Job ID</th>
+                        <th>Customer</th>
+                        <th>Status</th>
+                        <!-- Add more headers based on your CSV data -->
+                    </tr>
+                </thead>
+                <tbody id="job-table-body">
+                    <!-- Job data rows will be inserted here -->
+                </tbody>
+            </table>
+        </div>
+    </main>
+
+    <footer>
+        <p>© 2025 Colour Matcher</p>
+    </footer>
+
+    <script src="tracker.js" defer></script> 
+</body>
+</html>

@@ -15,14 +15,13 @@ const garmentCataloguePath = path.join(__dirname, 'garment_catalogue.json'); // 
 const request = require('request');
 
 const AWS = require('aws-sdk');
-const bodyParser = require('body-parser'); 
+ 
 
 
 
 const app = express();
 app.use(cors());
-app.use(bodyParser.urlencoded({ extended: false })); // ADD THIS LINE - for parsing url-encoded webhook data
-app.use(bodyParser.json()); // ADD THIS LINE - for parsing json-encoded webhook data (if Mailgun sends JSON)
+
 
 // --- Multer Configuration (Updated) ---
 
@@ -1138,46 +1137,7 @@ app.get('/garment-image-proxy', (req, res) => {
 });
 
 
-app.post("/api/receive-job-report-email", (req, res) => {
-    console.log("Webhook received at /api/receive-job-report-email");
-    // console.log("Webhook request body:", req.body); // Log full webhook body for debugging (initially)
 
-    // --- Step 1: Access data from Mailgun webhook ---
-    const sender = req.body.sender; // Email sender
-    const subject = req.body.subject; // Email subject
-    const attachments = req.body.attachments; // Array of attachments
-
-    console.log("Email Sender:", sender);
-    console.log("Email Subject:", subject);
-    console.log("Attachments Count:", attachments?.length || 0);
-
-
-    // --- Step 2: Check for CSV attachment (Example - adapt based on Mailgun webhook format) ---
-    const csvAttachment = attachments?.find(attachment => attachment.filename.toLowerCase().endsWith('.csv'));
-
-    if (csvAttachment) {
-        const csvContent = csvAttachment.content; // CSV data as a string (base64 encoded?)
-        const csvFilename = csvAttachment.filename;
-        console.log(`Found CSV attachment: ${csvFilename}, size: ${csvContent.length} bytes`);
-
-        // --- Step 3: Process CSV data (For now, just log the content) ---
-        console.log("--- CSV Content (First 100 chars): ---");
-        console.log(csvContent.substring(0, 100) + "..."); 
-
-
-        // --- TODO:  Here you would add code to: ---
-        // 1. Decode the base64-encoded CSV content (if needed)
-        // 2. Parse the CSV data (using csv-parser or similar)
-        // 3. Transform and store the job data (e.g., save to active_jobs.json or a database)
-        // 4. Respond to Mailgun webhook to acknowledge receipt (res.status(200).send('Webhook received and processed'));
-
-        res.status(200).send('Webhook received, processing CSV attachment...'); // Acknowledge receipt to Mailgun
-
-    } else {
-        console.warn("No CSV attachment found in email.");
-        res.status(200).send('Webhook received, no CSV attachment found.'); // Acknowledge receipt even if no CSV
-    }
-});
 
 // Start server
 app.listen(PORT, () => {

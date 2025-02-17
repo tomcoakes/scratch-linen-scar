@@ -1,0 +1,35 @@
+  /* src/pages/tracker.css */
+
+    .tracker-container {
+        padding: 20px;
+    }
+
+    .controls {
+        margin-bottom: 20px;
+        display: flex;
+        gap: 20px;
+        align-items: center;
+    }
+
+    #job-search-input {
+        padding: 8px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+    }
+
+    #job-tracker-table {
+        border-collapse: collapse;
+        width: 100%;
+    }
+
+    #job-tracker-table th, 
+    #job-tracker-table td {
+        border: 1px solid #ddd;
+        padding: 8px;
+        text-align: left;
+    }
+
+    #job-tracker-table th {
+        background-color: #f0f0f0;
+        font-weight: bold;
+    }
