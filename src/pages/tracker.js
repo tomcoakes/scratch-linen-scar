@@ -72,6 +72,8 @@ document.addEventListener("DOMContentLoaded", () => {
           const data = await response.json(); // Expecting JSON back from the server
           console.log('Parsed CSV data received from server:', data); // Log received data
           alert('CSV file processed and data received from server! Check console.'); // Alert
+        
+          fetchOrderData();
 
           // Next steps: Display the order data in the table! 
 

@@ -1231,9 +1231,9 @@ app.post('/api/upload-orders', express.text({ type: 'text/csv' }), (req, res) =>
 
                 console.log('CSV data consolidated and merged with existing data.');
 
-                updateActiveJobsJSON(updatedJobsData); // Save the UPDATED data to JSON
+                updateActiveJobsJSON(Object.values(updatedJobsData)); // Save the UPDATED data to JSON <--- ADD THIS LINE (Convert to array before saving)
 
-                res.json(updatedJobsData); // Send the updated JSON data back to the client
+                res.json(Object.values(updatedJobsData)); // Send the updated JSON data back to the client <--- ADD THIS LINE (Convert to array before sending)
 
             })
             .on('error', (error) => {
