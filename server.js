@@ -1259,24 +1259,39 @@ app.get('/api/active-orders', (req, res) => {
 });
 
 
-// --- Helper function to parse Excel date format (if needed) ---
+// --- Helper function to parse Excel date format and DD/MM/YY format ---
 function parseExcelDate(excelDateSerial) {
     if (!excelDateSerial) return null; // Return null for empty values
 
-    const excelEpoch = new Date(Date.UTC(1899, 11, 30)); // Excel epoch
-    const millisecondsInDay = 24 * 60 * 60 * 1000;
+    // --- Attempt to parse DD/MM/YY format FIRST ---
+    const dateParts = excelDateSerial.split('/');
+    if (dateParts.length === 3) {
+        const day = parseInt(dateParts[0], 10);
+        const month = parseInt(dateParts[1], 10) - 1; // Month is 0-indexed in JavaScript Date
+        let year = parseInt(dateParts[2], 10);
 
-    const days = parseInt(excelDateSerial, 10); // Parse as integer
+        if (year >= 0 && year <= 99) { // Adjust two-digit year to four-digit (21st century assumption)
+            year += 2000; // Assumes 21st century for years 00-99. You might need to adjust this for 20th century dates.
+        }
 
-    if (isNaN(days)) {
-        console.warn(`Invalid date value: ${excelDateSerial}`);
-        return null; // Return null for invalid date values
+        const parsedDate = new Date(year, month, day);
+        if (!isNaN(parsedDate)) { // Check if date is valid
+            return parsedDate;
+        }
     }
 
+    // --- Fallback to Excel serial date parsing (if DD/MM/YY parsing fails) ---
+    const excelEpoch = new Date(Date.UTC(1899, 11, 30)); // Excel epoch
+    const millisecondsInDay = 24 * 60 * 60 * 1000;
+    const days = parseInt(excelDateSerial, 10);
 
-    return new Date(excelEpoch.getTime() + days * millisecondsInDay);
+    if (!isNaN(days)) {
+        return new Date(excelEpoch.getTime() + days * millisecondsInDay);
+    }
+
+    console.warn(`Invalid date value: ${excelDateSerial}`);
+    return null; // Return null if all parsing attempts fail
 }
-
 
 // Start server
 app.listen(PORT, () => {

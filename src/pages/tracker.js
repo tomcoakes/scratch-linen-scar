@@ -99,7 +99,7 @@ document.addEventListener("DOMContentLoaded", () => {
 }
   
   
-  function displayOrderData(orders) {
+function displayOrderData(orders) {
     const tableBody = document.querySelector('#orders-table tbody');
     tableBody.innerHTML = ''; // Clear existing table rows
 
@@ -109,32 +109,24 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     orders.forEach(order => {
-        const row = tableBody.insertRow(); // Create a new table row (<tr>)
-
-        // --- ADD TABLE CELLS (<td>) FOR EACH HEADER ---
-        let cellIndex = 0; // Keep track of cell index
+        const row = tableBody.insertRow();
+        let cellIndex = 0;
 
         // Helper function to add a cell with text content
         const addCell = (textContent) => {
-            const cell = row.insertCell(cellIndex++); // insertCell() increments cellIndex
-            cell.textContent = textContent || ''; // Use textContent and handle null/undefined
+            const cell = row.insertCell(cellIndex++);
+            cell.textContent = textContent || '';
         };
 
-        addCell(order.OUR_REFERENCE);
-        addCell(order["A/C"]); // Access using bracket notation for headers with spaces/special chars
-        addCell(order["Trader Name"]);
-        addCell(order["Product Code"]);
-        addCell(order["Product Description"]);
-        addCell(order["Product Pack Size"]);
-        addCell(order["Ordered Qty"]);
-        addCell(order["Outstanding Qty"]);
-        addCell(order["Total Price"]);
-        addCell(order["Total Cost"]);
-        addCell(order["Order Date"]);
-        addCell(order["Item Due Date"]);
-        addCell(order["SWP CODE"]);
-        // ... add cells for all your "Tracker" sheet headers in order, using addCell() ... 
-        // ... (add cells for all 27 headers from your Tracker sheet) ...  For now, let's just do the first 13 or so to get started, you can add the rest later!
+        addCell(order.SORD);             // Use "SORD" (uppercase, as we renamed it in server.js)
+        addCell(order["Trader Code"]);    // Use "Trader Code" (with space)
+        addCell(order["Trader Name"]);   // Use "Trader Name" (with space)
+        addCell(order["Total Items"]);    // Use "Total Items"  (with space)
+        addCell(order["Ordered Date"]);   // Use "Ordered Date" (with space)
+        addCell(order["Due Date"]);       // Use "Due Date"     (with space)
+        addCell(order["Total Logos"]);    // Use "Total Logos"  (with space)
+        // ... (add cells for the rest of your Tracker sheet headers, using the EXACT keys from your consolidated JSON data) ...
+        // ... Make sure the keys in addCell() match the keys in your consolidated JSON ...
     });
 }
 });
