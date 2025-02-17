@@ -352,6 +352,13 @@
         "logoPosition": "Unspecified",
         "logoType": "",
         "threadNumbers": []
+      },
+      {
+        "logoUrl": "https://pantone-colour-matcher-customer-logos-bucket.s3.eu-north-1.amazonaws.com/customer_logos/1739789598963-NHS%20-%20White.jpg",
+        "logoName": "cfdsafgvds",
+        "logoPosition": "Left Chest",
+        "logoType": "Embroidery",
+        "threadNumbers": []
       }
     ]
   }
