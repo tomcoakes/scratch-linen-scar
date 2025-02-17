@@ -15,6 +15,8 @@ const garmentCataloguePath = path.join(__dirname, 'garment_catalogue.json'); // 
 const request = require('request');
 
 const AWS = require('aws-sdk');
+
+const activeJobsPath = path.join(__dirname, 'active_jobs.json'); 
  
 
 
@@ -1136,7 +1138,21 @@ app.get('/garment-image-proxy', (req, res) => {
     });
 });
 
-
+app.get("/api/active-jobs", (req, res) => {
+    fs.readFile(activeJobsPath, "utf8", (err, data) => {
+        if (err) {
+            console.error("Error reading active_jobs.json:", err);
+            return res.status(500).json({ error: "Failed to read active jobs data." });
+        }
+        try {
+            const activeJobs = JSON.parse(data);
+            res.json(activeJobs);
+        } catch (parseError) {
+            console.error("Error parsing active_jobs.json:", parseError);
+            res.status(500).json({ error: "Invalid active jobs data format." });
+        }
+    });
+});
 
 
 // Start server
