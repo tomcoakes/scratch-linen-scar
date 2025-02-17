@@ -15,6 +15,7 @@ const garmentCataloguePath = path.join(__dirname, 'garment_catalogue.json'); // 
 const request = require('request');
 
 const AWS = require('aws-sdk');
+const csvParser = require('csv-parser');
 
 
  
@@ -1139,6 +1140,53 @@ app.get('/garment-image-proxy', (req, res) => {
 });
 
 
+
+// --- NEW API Endpoint: Handle CSV Upload for Orders ---
+app.post('/api/upload-orders', express.text({ type: 'text/csv' }), (req, res) => {
+    const csvText = req.body;
+    const results = [];
+
+    const stream = require('stream').Readable.from(csvText);
+
+    stream
+        .pipe(csvParser({
+            headers: [ // Explicitly define your CSV headers here
+                "OUR_REFERENCE", "A/C", "Trader Name", "Product Code", 
+                "Product Description", "Product Pack Size", "Ordered Qty", 
+                "Outstanding Qty", "Total Price", "Total Cost", "Order Date", 
+                "Item Due Date", "SWP CODE" 
+            ]
+        }))
+        .on('data', (row) => {
+            results.push(row);
+        })
+        .on('end', () => {
+            console.log('CSV data parsed on server:', results); // Log parsed CSV data
+
+            // --- CALL THE FUNCTION TO UPDATE JSON FILE ---
+            updateActiveJobsJSON(results); // Pass the parsed data to the function
+
+            res.json(results); // Send the parsed JSON data back to the client (we're still doing this for now)
+
+        })
+        .on('error', (error) => {
+            console.error('CSV parsing error on server:', error);
+            res.status(500).json({ error: 'Failed to parse CSV data on server.' });
+        });
+});
+
+// --- Helper function to write data to active_jobs.json ---
+function updateActiveJobsJSON(jobsData) {
+    const filePath = path.join(__dirname, 'active_jobs.json'); // Path to active_jobs.json
+
+    fs.writeFile(filePath, JSON.stringify(jobsData, null, 2), 'utf8', (err) => {
+        if (err) {
+            console.error("Error writing to active_jobs.json:", err);
+        } else {
+            console.log("Successfully updated active_jobs.json");
+        }
+    });
+}
 
 
 // Start server
