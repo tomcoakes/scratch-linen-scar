@@ -22,7 +22,8 @@
     "adm-zip": "^0.5.16",
     "dotenv": "^16.4.7",
     "csv-parser": "^3.2.0",
-    "request": "^2.88.2"
+    "request": "^2.88.2",
+    "aws-sdk": "^2.1692.0"
   },
   "engines": {
     "node": "16.x"
