@@ -359,6 +359,13 @@
         "logoPosition": "Left Chest",
         "logoType": "Embroidery",
         "threadNumbers": []
+      },
+      {
+        "logoUrl": "https://pantone-colour-matcher-customer-logos-bucket.s3.eu-north-1.amazonaws.com/customer_logos/1739793232963-24120549949%20-%20Bradleys%20SURVEYORS%20Logo%20for%20polos%20etc.svg",
+        "logoName": "No Name",
+        "logoPosition": "Unspecified",
+        "logoType": "",
+        "threadNumbers": []
       }
     ]
   }

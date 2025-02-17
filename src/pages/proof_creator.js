@@ -353,6 +353,16 @@ function addLogoToCanvas(logoUrl, logoName) {
         });
         console.log(`Logo added to canvas.  Object properties: left=${img.left}, top=${img.top}, width=${img.width}, height=${img.height}, scaleX=${img.scaleX}, scaleY=${img.scaleY}, logoName=${img.logoName}`);
 
+      
+          // --- TEMPORARILY HARDCODE A PUBLIC SVG URL FOR TESTING ---
+    const testSvgUrl = 'https://upload.wikimedia.org/wikipedia/commons/0/02/SVG_logo.svg'; // Example public SVG URL
+    fabric.loadSVGFromURL(testSvgUrl, (objects, options) => { // Use testSvgUrl here
+        const logoImg = fabric.util.groupSVGElements(objects, options);
+        addImageToCanvas(logoImg);
+    }, null, { crossOrigin: 'anonymous' });
+      
+      
+      
         proofCreatorCanvas.add(img);
         proofCreatorCanvas.renderAll();
     }
