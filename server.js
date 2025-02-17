@@ -1188,6 +1188,27 @@ function updateActiveJobsJSON(jobsData) {
     });
 }
 
+// --- NEW API Endpoint: Get Active Orders Data ---
+app.get('/api/active-orders', (req, res) => {
+    const filePath = path.join(__dirname, 'active_jobs.json'); // Path to active_jobs.json
+
+    fs.readFile(filePath, 'utf8', (err, data) => {
+        if (err) {
+            console.error("Error reading active_jobs.json:", err);
+            return res.status(500).json({ error: 'Failed to read active order data.' });
+        }
+
+        try {
+            const jobsData = JSON.parse(data);
+            console.log('Active order data read from JSON and sent to client.'); // Log server-side read
+            res.json(jobsData); // Send the JSON data back to the client
+
+        } catch (parseError) {
+            console.error("Error parsing active_jobs.json:", parseError);
+            return res.status(500).json({ error: 'Error parsing active order data.' });
+        }
+    });
+});
 
 // Start server
 app.listen(PORT, () => {
