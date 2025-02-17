@@ -23,35 +23,37 @@ app.use(cors());
 
 // --- Multer Configuration (Updated) ---
 
-const storage = multer.diskStorage({
-    destination: function (req, file, cb) {
-        let uploadPath;
-        if (file.fieldname === 'logo-upload-input') {
-            uploadPath = path.join(__dirname, 'src', 'pages', 'customer_logos');
-        } else if (file.fieldname === 'proof-upload-input') {
-            uploadPath = path.join(__dirname, 'src', 'pages', 'customer_proofs');
-        } else {
-            return cb(new Error('Invalid fieldname')); // Reject unexpected fields
-        }
+const storage = multer.memoryStorage()
 
-        // Create destination folder if it doesn't exist
-        if (!fs.existsSync(uploadPath)) {
-            try {
-                fs.mkdirSync(uploadPath, { recursive: true });
-                console.log("Upload folder created successfully:", uploadPath);
-            } catch (mkdirError) {
-                console.error("Error creating upload folder:", mkdirError);
-                return cb(mkdirError);
-            }
-        }
-        cb(null, uploadPath);
-    },
-    filename: function (req, file, cb) {
-        const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1E9);
-        const fileExtension = path.extname(file.originalname);
-        cb(null, file.fieldname + '-' + uniqueSuffix + fileExtension);
-    }
-});
+// const storage = multer.diskStorage({
+//     destination: function (req, file, cb) {
+//         let uploadPath;
+//         if (file.fieldname === 'logo-upload-input') {
+//             uploadPath = path.join(__dirname, 'src', 'pages', 'customer_logos');
+//         } else if (file.fieldname === 'proof-upload-input') {
+//             uploadPath = path.join(__dirname, 'src', 'pages', 'customer_proofs');
+//         } else {
+//             return cb(new Error('Invalid fieldname')); // Reject unexpected fields
+//         }
+
+//         // Create destination folder if it doesn't exist
+//         if (!fs.existsSync(uploadPath)) {
+//             try {
+//                 fs.mkdirSync(uploadPath, { recursive: true });
+//                 console.log("Upload folder created successfully:", uploadPath);
+//             } catch (mkdirError) {
+//                 console.error("Error creating upload folder:", mkdirError);
+//                 return cb(mkdirError);
+//             }
+//         }
+//         cb(null, uploadPath);
+//     },
+//     filename: function (req, file, cb) {
+//         const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1E9);
+//         const fileExtension = path.extname(file.originalname);
+//         cb(null, file.fieldname + '-' + uniqueSuffix + fileExtension);
+//     }
+// });
 
 const upload = multer({
   storage: storage,
@@ -528,6 +530,8 @@ app.put("/api/customers/:id/logos", upload.single('logo-upload-input'), async (r
     if (!req.file) {
         return res.status(400).json({ error: "No logo file uploaded." });
     }
+  
+  console.log("req.file object:", req.file);
 
     // --- S3 Upload Parameters ---
     const uploadParams = {
