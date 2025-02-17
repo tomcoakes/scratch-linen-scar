@@ -1,100 +1,123 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Order Production Tracker</title>
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
-    />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
-    />
-    <link rel="stylesheet" href="style.css" />
-    <!-- Link to your main style.css for basic styling -->
-    <link rel="stylesheet" href="tracker.css" />
-    <!-- NEW: Link to tracker.css for tracker-specific styles -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="tracker.css">
     <script src="tracker.js" defer></script>
-    <!-- NEW: Link to tracker.js -->
-  </head>
-  <body>
+</head>
+<body>
     <header>
-      <div class="header-container">
-        <h1>Order Production Tracker</h1>
-        <nav>
-          <ul class="nav-links">
-            <li><a href="index.html">Home</a></li>
-            <li><a href="threads.html">Thread Manager</a></li>
-            <li><a href="proof_creator.html">Proof Creator</a></li>
-            <li><a href="tracker.html" class="active">Order Tracker</a></li>
-            <!-- NEW: Tracker link -->
-          </ul>
-        </nav>
-      </div>
+        <div class="header-container">
+            <h1>Order Production Tracker</h1>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="threads.html">Thread Manager</a></li>
+                    <li><a href="proof_creator.html">Proof Creator</a></li>
+                    <li><a href="tracker.html" class="active">Order Tracker</a></li>
+                </ul>
+            </nav>
+        </div>
     </header>
 
     <main>
-      <div class="main-container">
-        <section class="controls">
-          <h2>Upload Order Data</h2>
-          <div id="dropArea" class="drop-area">
-            <p>Drag & Drop CSV File Here</p>
-            <p>or</p>
-            <button id="fileButton" class="primary-btn">Choose File</button>
-            <input
-              type="file"
-              id="fileInput"
-              accept=".csv"
-              style="display: none"
-            />
-          </div>
-        </section>
+        <div class="main-container">
 
-        <div class="table-container">
-          <h2>Active Orders</h2>
-          <table id="orders-table">
-            <thead>
-              <tr>
-                <th>SORD</th>
-                <th>Trader Code</th>
-                <th>Trader Name</th>
-                <th>Total Items</th>
-                <th>Ordered Date</th>
-                <th>Due Date</th>
-                <th>Items on Back Order</th>
-                <th>Remaining Items</th>
-                <th>Available Shipped?</th>
-                <th>New or Repeat</th>
-                <th>Emb or DTF</th>
-                <th>Garments Status</th>
-                <th>Emb File Status</th>
-                <th>DTF Status</th>
-                <th>Started</th>
-                <th>Complete</th>
-                <th>On Hold</th>
-                <th>Comments</th>
-                <th>Total Logos</th>
-                <th>Logos Completed</th>
-                <th>Logos Remaining</th>
-                <th>% Comp</th>
-                <th>Prod Time Total</th>
-                <th>Prod Time Remaining</th>
-                <th>Time until Due</th>
-                <th>Total Value</th>
-                <th>Total Profit</th>
-              </tr>
-            </thead>
-            <tbody>
-              <!-- Order data rows will be inserted here -->
-            </tbody>
-          </table>
+            <!-- Sidebar -->
+            <aside class="sidebar" id="sidebar">
+                <div class="sidebar-header">
+                    <h2>Upload Orders</h2>
+                    <button class="close-sidebar-button" id="close-sidebar-button" aria-label="Close Sidebar">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+                <div id="dropArea" class="drop-area">
+                    <p>Drag & Drop CSV File Here</p>
+                    <p>or</p>
+                    <button id="fileButton" class="primary-btn">Choose File</button>
+                    <input type="file" id="fileInput" accept=".csv" style="display: none;">
+                </div>
+            </aside>
+
+            <!-- Main Content Area -->
+            <div class="main-content">
+                <div class="top-cards-container">
+                  <div class="top-card">
+                      <span class="card-icon"><i class="fas fa-list-ol"></i></span>
+                      <div class="card-content">
+                          <h3>Total Orders</h3>
+                          <p id="total-orders-count">0</p>
+                      </div>
+                    </div>
+                    <div class="top-card">
+                        <span class="card-icon"><i class="fas fa-exclamation-triangle"></i></span>
+                        <div class="card-content">
+                            <h3>Orders Due Soon</h3>
+                            <p id="due-soon-count">0</p>
+                        </div>
+                    </div>
+                     <div class="top-card">
+                      <span class="card-icon"><i class="fas fa-sync-alt"></i></span>
+                      <div class="card-content">
+                        <h3>Outstanding Items</h3>
+                        <p id="outstanding-items-count">0</p>
+                    </div>
+                  </div>
+                </div>
+
+                <section class="controls">
+                  <div class="search-input-container">
+                    <input type="text" id="search-input" placeholder="Search Orders...">
+                    <button type="button" id="clear-search-button" class="clear-search-button" style="display:none;">×</button>
+                    </div>
+                </section>
+
+                <div class="table-container">
+                    <table id="orders-table">
+                        <thead>
+                            <tr>
+                                <th data-sort-key="SORD">SORD <span class="sort-indicator"></span></th>
+                                <th data-sort-key="Trader Code">Trader Code <span class="sort-indicator"></span></th>
+                                <th data-sort-key="Trader Name">Trader Name <span class="sort-indicator"></span></th>
+                                <th data-sort-key="Total Items">Total Items <span class="sort-indicator"></span></th>
+                                <th data-sort-key="Ordered Date">Ordered Date <span class="sort-indicator"></span></th>
+                                <th data-sort-key="Due Date">Due Date <span class="sort-indicator"></span></th>
+                                  <th data-sort-key="Total Logos">Total Logos <span class="sort-indicator"></span></th>
+                                <!-- Placeholder for delete column -->
+                                <th class="delete-column">Delete</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- Order data rows will be inserted here -->
+                        </tbody>
+                    </table>
+                </div>
+              <div id="delete-drop-zone" class="delete-drop-zone">
+                  <i class="fas fa-trash-alt"></i> Drag here to delete
+                </div>
+            </div>
         </div>
-      </div>
     </main>
+          <!-- Modal for Confirming Deletion -->
+    <div id="deleteConfirmationModal" class="modal">
+        <div class="modal-content">
+            <span class="close-button" onclick="closeDeleteModal()">×</span>
+            <h2>Confirm Deletion</h2>
+            <p>Are you sure you want to delete this order?</p>
+            <button id="confirmDeleteButton" class="danger-btn" onclick="confirmDeletion()">Delete</button>
+            <button id="cancelDeleteButton" class="secondary-btn" onclick="closeDeleteModal()">Cancel</button>
+        </div>
+    </div>
+  
 
     <footer>
-      <p>© 2025 Colour Matcher</p>
+        <p>© 2025 Colour Matcher</p>
     </footer>
-  </body>
+
+</body>
 </html>

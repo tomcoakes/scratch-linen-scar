@@ -1146,37 +1146,43 @@ app.post('/api/upload-orders', express.text({ type: 'text/csv' }), (req, res) =>
     const csvText = req.body;
     const results = [];
     const filePath = path.join(__dirname, 'active_jobs.json'); // Path to active_jobs.json
-    let existingJobsData = {}; // To store existing jobs data (initially empty)
 
-    // --- Load existing active_jobs.json data FIRST ---
+    // --- 1. Load Existing Data ---
     fs.readFile(filePath, 'utf8', (readErr, existingData) => {
-        if (!readErr) { // No error means file exists and was read
+        let existingJobsData = {}; // Start with an empty object
+
+        if (!readErr) { // File exists and was read
             try {
-                existingJobsData = JSON.parse(existingData);
-                console.log('Existing active_jobs.json data loaded.');
+                existingJobsData = JSON.parse(existingData); // Parse existing JSON
+                // Convert to an object keyed by SORD (if it's currently an array)
+                if (Array.isArray(existingJobsData)) {
+                    existingJobsData = existingJobsData.reduce((acc, job) => {
+                        acc[job.SORD] = job;
+                        return acc;
+                    }, {});
+                }
+
+                console.log('Existing active_jobs.json data loaded and converted to object.');
             } catch (parseError) {
                 console.error('Error parsing existing active_jobs.json:', parseError);
-                // If parsing fails, we'll start with an empty object
-                existingJobsData = {}; 
+                // If parsing fails, we still continue with an empty object
             }
-        } else if (readErr.code === 'ENOENT') {
-            console.log('active_jobs.json not found, starting fresh.');
-            // It's okay if the file doesn't exist yet (first time upload)
-        } else {
+        } else if (readErr.code !== 'ENOENT') { // Ignore "file not found" error
             console.error('Error reading active_jobs.json:', readErr);
             return res.status(500).json({ error: 'Failed to read existing active order data.' });
         }
+        //If readErr.code is ENOENT, then we proceed with the empty object
 
-
+        // --- 2. Process New CSV Data ---
         const stream = require('stream').Readable.from(csvText);
 
         stream
             .pipe(csvParser({
-                headers: [ 
-                    "OUR_REFERENCE", "A/C", "Trader Name", "Product Code", 
-                    "Product Description", "Product Pack Size", "Ordered Qty", 
-                    "Outstanding Qty", "Total Price", "Total Cost", "Order Date", 
-                    "Item Due Date", "SWP CODE" 
+                headers: [
+                    "OUR_REFERENCE", "A/C", "Trader Name", "Product Code",
+                    "Product Description", "Product Pack Size", "Ordered Qty",
+                    "Outstanding Qty", "Total Price", "Total Cost", "Order Date",
+                    "Item Due Date", "SWP CODE"
                 ]
             }))
             .on('data', (row) => {
@@ -1186,54 +1192,58 @@ app.post('/api/upload-orders', express.text({ type: 'text/csv' }), (req, res) =>
                 console.log('CSV data parsed on server, starting consolidation and update...');
 
                 const consolidatedOrders = {}; // Object to hold consolidated orders (NEW OBJECT EACH TIME)
-                const updatedJobsData = { ...existingJobsData }; // Clone existing data to update - IMPORTANT
 
                 results.forEach(row => {
                     const sord = row.OUR_REFERENCE;
 
                     if (!consolidatedOrders[sord]) {
-                        consolidatedOrders[sord] = { 
-                            SORD: sord, 
-                            "Trader Code": row["A/C"], 
+                        consolidatedOrders[sord] = {
+                            SORD: sord,
+                            "Trader Code": row["A/C"],
                             "Trader Name": row["Trader Name"],
                             "Total Items": 0,
-                            "Ordered Date": row["Order Date"] || null, 
-                            "Due Date": row["Item Due Date"] || null,   
-                            "Total Logos": 0, 
+                            "Ordered Date": row["Order Date"] || null,
+                            "Due Date": row["Item Due Date"] || null,
+                            "Total Logos": 0,
                         };
                     }
 
-                    consolidatedOrders[sord]["Total Items"] += parseInt(row["Outstanding Qty"] || 0, 10); 
-                    if (row["SWP CODE"]) { 
+                    consolidatedOrders[sord]["Total Items"] += parseInt(row["Outstanding Qty"] || 0, 10);
+                    if (row["SWP CODE"]) {
                         consolidatedOrders[sord]["Total Logos"]++;
                     }
 
-                    const orderDate = parseExcelDate(row["Order Date"]); 
-                    const dueDate = parseExcelDate(row["Item Due Date"]);  
+                    const orderDate = parseExcelDate(row["Order Date"]);
+                    const dueDate = parseExcelDate(row["Item Due Date"]);
 
                     if (orderDate) {
                         if (!consolidatedOrders[sord]["Ordered Date"] || orderDate < new Date(consolidatedOrders[sord]["Ordered Date"])) {
-                            consolidatedOrders[sord]["Ordered Date"] = orderDate.toISOString().split('T')[0]; 
+                            consolidatedOrders[sord]["Ordered Date"] = orderDate.toISOString().split('T')[0];
                         }
                     }
                     if (dueDate) {
                         if (!consolidatedOrders[sord]["Due Date"] || dueDate < new Date(consolidatedOrders[sord]["Due Date"])) {
-                            consolidatedOrders[sord]["Due Date"] = dueDate.toISOString().split('T')[0]; 
+                            consolidatedOrders[sord]["Due Date"] = dueDate.toISOString().split('T')[0];
                         }
                     }
                 });
 
 
-                // --- MERGE NEW DATA WITH EXISTING DATA ---
+              // --- 3. Merge with Existing Data (and Convert to Array) ---
+                // We merge into a *copy* of the existing data:
+                const updatedJobsData = { ...existingJobsData };
+
                 for (const sord in consolidatedOrders) {
-                    updatedJobsData[sord] = consolidatedOrders[sord]; // Overwrite or add new SORD data
+                  // If the SORD exists, update it.  If not, this adds it.
+                  updatedJobsData[sord] = consolidatedOrders[sord];
                 }
+               const updatedJobsArray = Object.values(updatedJobsData); // VERY IMPORTANT: Convert back to array
 
                 console.log('CSV data consolidated and merged with existing data.');
 
-                updateActiveJobsJSON(Object.values(updatedJobsData)); // Save the UPDATED data to JSON <--- ADD THIS LINE (Convert to array before saving)
+                updateActiveJobsJSON(updatedJobsArray); // Save the UPDATED data to JSON  <-- Now an array
 
-                res.json(Object.values(updatedJobsData)); // Send the updated JSON data back to the client <--- ADD THIS LINE (Convert to array before sending)
+                res.json(updatedJobsArray); // Send the updated JSON data back to the client <-- Now an array
 
             })
             .on('error', (error) => {
