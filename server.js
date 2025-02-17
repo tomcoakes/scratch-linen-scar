@@ -538,7 +538,7 @@ app.put("/api/customers/:id/logos", upload.single('logo-upload-input'), async (r
         Bucket: process.env.AWS_S3_BUCKET_NAME, // Use bucket name from .env
         Key: `customer_logos/${Date.now()}-${req.file.originalname}`, // Unique key (filename) in S3 bucket
         Body: req.file.buffer, // Use file buffer directly from multer
-        ACL: 'public-read' // Make logo images publicly accessible (adjust permissions as needed)
+        // ACL: 'public-read' // Make logo images publicly accessible (adjust permissions as needed)
     };
 
     try {

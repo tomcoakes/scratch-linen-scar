@@ -344,6 +344,15 @@
     "name": "s3 tester",
     "contactPerson": "s3 tester",
     "email": "s3@tester.com",
-    "id": 11
+    "id": 11,
+    "logos": [
+      {
+        "logoUrl": "https://pantone-colour-matcher-customer-logos-bucket.s3.eu-north-1.amazonaws.com/customer_logos/1739788495369-carparison.png",
+        "logoName": "No Name",
+        "logoPosition": "Unspecified",
+        "logoType": "",
+        "threadNumbers": []
+      }
+    ]
   }
 ]
