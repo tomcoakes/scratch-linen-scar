@@ -339,5 +339,11 @@
         "description": "SOL'S Unisex Norway Fleece Bodywarmer - Green"
       }
     ]
+  },
+  {
+    "name": "s3 tester",
+    "contactPerson": "s3 tester",
+    "email": "s3@tester.com",
+    "id": 11
   }
 ]

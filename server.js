@@ -14,6 +14,8 @@ const fabric = require('fabric');
 const garmentCataloguePath = path.join(__dirname, 'garment_catalogue.json'); // Path to your new JSON file
 const request = require('request');
 
+const AWS = require('aws-sdk');
+
 
 
 const app = express();
@@ -505,47 +507,59 @@ app.post("/api/customers", async (req, res) => {
     });
 });
 
+
+
+
+const s3 = new AWS.S3({
+    accessKeyId: process.env.AWS_ACCESS_KEY_ID,
+    secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
+    region: process.env.AWS_REGION
+});
+
+
+
+
+
+// --- Updated API Endpoint: Add Logo (PUT) - Uploads to S3 ---
 app.put("/api/customers/:id/logos", upload.single('logo-upload-input'), async (req, res) => {
     const customerId = Number(req.params.id);
-    console.log(`PUT /api/customers/${customerId}/logos called`);
+    console.log(`PUT /api/customers/${customerId}/logos - Uploading to S3`);
 
     if (!req.file) {
         return res.status(400).json({ error: "No logo file uploaded." });
     }
 
-    const logoFilename = req.file.filename;
-    const logoImageUrl = `/customer_logos/${logoFilename}`;
+    // --- S3 Upload Parameters ---
+    const uploadParams = {
+        Bucket: process.env.AWS_S3_BUCKET_NAME, // Use bucket name from .env
+        Key: `customer_logos/${Date.now()}-${req.file.originalname}`, // Unique key (filename) in S3 bucket
+        Body: req.file.buffer, // Use file buffer directly from multer
+        ACL: 'public-read' // Make logo images publicly accessible (adjust permissions as needed)
+    };
 
-    // 1. Receive Logo Details from Request Body
-    const logoName = req.body.logoName;
-    const logoPosition = req.body.logoPosition;
-    const logoType = req.body.logoType;
-    const threadNumbers = req.body.threadNumbers ? req.body.threadNumbers.split(',').map(s => s.trim()) : []; // Split comma-separated string into array
+    try {
+        console.log("Attempting to upload to S3...");
+        const s3UploadResult = await s3.upload(uploadParams).promise();
+        console.log("S3 upload successful:", s3UploadResult);
 
-    console.log("Uploaded logo filename:", logoFilename);
-    console.log("Logo image URL:", logoImageUrl);
-    console.log("Logo Name:", logoName);
-    console.log("Logo Position:", logoPosition);
-    console.log("Logo Type:", logoType);
-    console.log("Thread Numbers:", threadNumbers);
+        const logoImageUrl = s3UploadResult.Location; // URL of the uploaded logo in S3
+
+        // 1. Receive Logo Details from Request Body (same as before)
+        const logoName = req.body.logoName;
+        const logoPosition = req.body.logoPosition;
+        const logoType = req.body.logoType;
+        const threadNumbers = req.body.threadNumbers ? req.body.threadNumbers.split(',').map(s => s.trim()) : [];
+
+        console.log("Logo Name:", logoName);
+        console.log("Logo Position:", logoPosition);
+        console.log("Logo Type:", logoType);
+        console.log("Thread Numbers:", threadNumbers);
 
 
-    const CUSTOMERS_FILE = path.join(__dirname, "customers.json");
+        const CUSTOMERS_FILE = path.join(__dirname, "customers.json");
 
-    fs.readFile(CUSTOMERS_FILE, "utf8", async (err, data) => {
-        if (err) {
-            console.error("Error reading customers.json:", err);
-            return res.status(500).json({ error: "Failed to read customer data." });
-        }
-
-        let customers;
-        try {
-            customers = JSON.parse(data);
-        } catch (parseError) {
-            console.error("Error parsing customers.json:", parseError);
-            return res.status(500).json({ error: "Invalid customer data format." });
-        }
-
+        const data = fs.readFileSync(CUSTOMERS_FILE, "utf8");
+        let customers = JSON.parse(data);
         const customerIndex = customers.findIndex(c => c.id === customerId);
 
         if (customerIndex === -1) {
@@ -553,34 +567,122 @@ app.put("/api/customers/:id/logos", upload.single('logo-upload-input'), async (r
         }
 
         const customer = customers[customerIndex];
-
         if (!customer.logos) {
             customer.logos = [];
         }
 
-        // 2. Update customers.json to store full logo details
+        // 2. Update customers.json to store full logo details (using S3 URL)
         const newLogoEntry = {
-            logoUrl: logoImageUrl,
-            logoName: logoName || "No Name", // Default to "No Name" if empty
-            logoPosition: logoPosition || "Unspecified", // Default to "Unspecified" if empty
-            logoType: logoType || "", // Default to empty string if empty
-            threadNumbers: threadNumbers // Array of thread numbers
+            logoUrl: logoImageUrl, // Store S3 URL here
+            logoName: logoName || "No Name",
+            logoPosition: logoPosition || "Unspecified",
+            logoType: logoType || "",
+            threadNumbers: threadNumbers
         };
         customer.logos.push(newLogoEntry);
 
         customers[customerIndex] = customer;
 
-        fs.writeFile(CUSTOMERS_FILE, JSON.stringify(customers, null, 2), "utf8", (err) => {
-            if (err) {
-                console.error("Error writing to customers.json:", err);
-                return res.status(500).json({ error: "Failed to update customer data." });
-            }
-            res.json({ message: "Customer logo updated successfully with details.", customer: customer, logoDetails: newLogoEntry }); // Send back full logo details in response
-            console.log(`Customer ID ${customerId} logo updated with details:`, newLogoEntry);
-            generateCustomerPages();
-        });
-    });
+        fs.writeFileSync(CUSTOMERS_FILE, JSON.stringify(customers, null, 2), "utf8");
+        res.json({ message: "Customer logo updated successfully with details (uploaded to S3).", customer: customer, logoDetails: newLogoEntry });
+        console.log(`Customer ID ${customerId} logo updated with details (S3 URL):`, newLogoEntry);
+        generateCustomerPages();
+
+
+    } catch (error) {
+        console.error("Error in S3 logo upload:", error);
+        return res.status(500).json({ error: `Failed to upload logo to S3: ${error.message}` });
+    }
 });
+
+
+
+
+
+
+
+
+
+
+
+
+
+// app.put("/api/customers/:id/logos", upload.single('logo-upload-input'), async (req, res) => {
+//     const customerId = Number(req.params.id);
+//     console.log(`PUT /api/customers/${customerId}/logos called`);
+
+//     if (!req.file) {
+//         return res.status(400).json({ error: "No logo file uploaded." });
+//     }
+
+//     const logoFilename = req.file.filename;
+//     const logoImageUrl = `/customer_logos/${logoFilename}`;
+
+//     // 1. Receive Logo Details from Request Body
+//     const logoName = req.body.logoName;
+//     const logoPosition = req.body.logoPosition;
+//     const logoType = req.body.logoType;
+//     const threadNumbers = req.body.threadNumbers ? req.body.threadNumbers.split(',').map(s => s.trim()) : []; // Split comma-separated string into array
+
+//     console.log("Uploaded logo filename:", logoFilename);
+//     console.log("Logo image URL:", logoImageUrl);
+//     console.log("Logo Name:", logoName);
+//     console.log("Logo Position:", logoPosition);
+//     console.log("Logo Type:", logoType);
+//     console.log("Thread Numbers:", threadNumbers);
+
+
+//     const CUSTOMERS_FILE = path.join(__dirname, "customers.json");
+
+//     fs.readFile(CUSTOMERS_FILE, "utf8", async (err, data) => {
+//         if (err) {
+//             console.error("Error reading customers.json:", err);
+//             return res.status(500).json({ error: "Failed to read customer data." });
+//         }
+
+//         let customers;
+//         try {
+//             customers = JSON.parse(data);
+//         } catch (parseError) {
+//             console.error("Error parsing customers.json:", parseError);
+//             return res.status(500).json({ error: "Invalid customer data format." });
+//         }
+
+//         const customerIndex = customers.findIndex(c => c.id === customerId);
+
+//         if (customerIndex === -1) {
+//             return res.status(404).json({ error: "Customer not found." });
+//         }
+
+//         const customer = customers[customerIndex];
+
+//         if (!customer.logos) {
+//             customer.logos = [];
+//         }
+
+//         // 2. Update customers.json to store full logo details
+//         const newLogoEntry = {
+//             logoUrl: logoImageUrl,
+//             logoName: logoName || "No Name", // Default to "No Name" if empty
+//             logoPosition: logoPosition || "Unspecified", // Default to "Unspecified" if empty
+//             logoType: logoType || "", // Default to empty string if empty
+//             threadNumbers: threadNumbers // Array of thread numbers
+//         };
+//         customer.logos.push(newLogoEntry);
+
+//         customers[customerIndex] = customer;
+
+//         fs.writeFile(CUSTOMERS_FILE, JSON.stringify(customers, null, 2), "utf8", (err) => {
+//             if (err) {
+//                 console.error("Error writing to customers.json:", err);
+//                 return res.status(500).json({ error: "Failed to update customer data." });
+//             }
+//             res.json({ message: "Customer logo updated successfully with details.", customer: customer, logoDetails: newLogoEntry }); // Send back full logo details in response
+//             console.log(`Customer ID ${customerId} logo updated with details:`, newLogoEntry);
+//             generateCustomerPages();
+//         });
+//     });
+// });
 
 /**
  * API Endpoint to Delete a Customer Logo
