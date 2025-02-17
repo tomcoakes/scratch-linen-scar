@@ -1,44 +1,81 @@
 // src/pages/tracker.js
+
 document.addEventListener('DOMContentLoaded', () => {
-    const dropArea = document.getElementById('dropArea');
-    const fileInput = document.getElementById('fileInput');
-    const fileButton = document.getElementById('fileButton');
-    const sidebar = document.getElementById('sidebar'); // Get sidebar element
-    const closeSidebarButton = document.getElementById('close-sidebar-button');
-    const searchInput = document.getElementById('search-input'); // Get search input
-    const clearSearchButton = document.getElementById('clear-search-button');
-    const tableBody = document.querySelector('#orders-table tbody'); //get the table
+  // --- DOM Element Variables ---
+  const dropArea = document.getElementById('dropArea');
+  const fileInput = document.getElementById('fileInput');
+  const fileButton = document.getElementById('fileButton');
+  const tableBody = document.querySelector('#orders-table tbody');
+  const searchInput = document.getElementById('search-input');
+  const clearSearchButton = document.getElementById('clear-search-button');
+  const sidebar = document.getElementById('sidebar');
+  const toggleSidebarButton = document.getElementById('toggle-sidebar');
+  const deleteArea = document.getElementById('delete-area');
 
-    fileButton.addEventListener('click', () => {
-        fileInput.click();
-    });
 
-    fileInput.addEventListener('change', handleFile);
-    dropArea.addEventListener('dragover', handleDragOver);
-    dropArea.addEventListener('drop', handleFileDrop);
+    // --- Functions from your previous script.js ---
+    // Include the hexToRgb, calculateColorMatchScore functions here...
+    // ... (all helper functions from the previous script.js files)
+function hexToRgb(hex) {
+  if (!hex) return null;
+  hex = hex.replace(/^#/, "");
+  if (hex.length === 3) {
+    hex = hex[0]+hex[0] + hex[1]+hex[1] + hex[2]+hex[2];
+  }
+  if (hex.length !== 6) return null;
+  const num = parseInt(hex, 16);
+  if (isNaN(num)) return null;
+  return {
+    r: (num >> 16) & 255,
+    g: (num >> 8) & 255,
+    b: (num & 255)
+  };
+}
 
-        function handleDragOver(evt) {
-        evt.preventDefault();
-        dropArea.classList.add('dragover');
+  // --- Event Listeners ---
+  fileButton.addEventListener('click', () => {
+    fileInput.click();
+  });
+
+  fileInput.addEventListener('change', handleFile);
+  dropArea.addEventListener('dragover', handleDragOver);
+  dropArea.addEventListener('drop', handleFileDrop);
+  dropArea.addEventListener('dragleave', handleDragLeave); // Add dragleave
+  searchInput.addEventListener('input', handleSearchInput);
+  clearSearchButton.addEventListener('click', clearSearch);
+    toggleSidebarButton.addEventListener('click', toggleSidebar);
+
+
+  // --- Drag-and-Drop Handlers (Same as before, plus dragleave) ---
+  function handleDragOver(evt) {
+    evt.preventDefault();
+    dropArea.classList.add('dragover');
+    deleteArea.style.display = 'block';  // Show the delete area
+  }
+
+   function handleDragLeave(evt) { // Corrected event handler for dragleave
+      evt.preventDefault();
+      dropArea.classList.remove('dragover');
     }
 
-    function handleFileDrop(evt) {
-        evt.preventDefault();
-        dropArea.classList.remove('dragover');
-        const files = evt.dataTransfer.files;
-        handleFiles(files);
-    }
 
-    function handleFile(evt) {
-        const files = fileInput.files;
-        handleFiles(files);
-    }
+  function handleFileDrop(evt) {
+    evt.preventDefault();
+    dropArea.classList.remove('dragover');
+    const files = evt.dataTransfer.files;
+    handleFiles(files);
+  }
 
-    function handleFiles(files) {
+  function handleFile(evt) {
+    const files = fileInput.files;
+    handleFiles(files);
+  }
+
+   async function handleFiles(files) {
         if (files.length > 0) {
             const file = files[0];
             if (file.type === 'text/csv' || file.name.endsWith('.csv')) {
-                const reader = new FileReader();
+              const reader = new FileReader();
 
                 reader.onload = function(event) {
                     const csvText = event.target.result;
@@ -58,257 +95,298 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    async function parseCSVData(csvText) {
-    try {
-        const response = await fetch('/api/upload-orders', { // NEW API ENDPOINT URL
-            method: 'POST',
-            headers: {
-                'Content-Type': 'text/csv' // Tell the server we're sending CSV text
-            },
-            body: csvText
-        });
+   // --- Data Processing and Display ---
+  async function parseCSVData(csvText) {
+     try {
+         const response = await fetch('/api/upload-orders', {
+             method: 'POST',
+             headers: {
+                 'Content-Type': 'text/csv'
+             },
+             body: csvText
+         });
 
-        if (!response.ok) {
-            throw new Error(`HTTP error! status: ${response.status}`);
-        }
+         if (!response.ok) {
+             throw new Error(`HTTP error! status: ${response.status}`);
+         }
 
-        const data = await response.json(); // Expecting JSON array back from the server
-        console.log('Parsed CSV data received from server:', data);
-        alert('CSV file processed and data received from server! Table will now update.'); // Alert
+         const data = await response.json();
+         console.log('Parsed CSV data received from server:', data);
+         // alert('CSV file processed and data received from server! Table will now update.');
 
-       fetchOrderData();
+         fetchOrderData();  // Fetch and display data after successful upload
+         displaySummaryCards(data); // Display the summary cards
 
-    } catch (error) {
-        console.error('Error sending CSV data to server:', error);
-        alert('Error processing CSV file.');
-    }
-}
+     } catch (error) {
+         console.error('Error sending CSV data to server:', error);
+         alert('Error processing CSV file.');
+     }
+  }
 
-    async function fetchOrderData() {
+  async function fetchOrderData() {
     try {
         const response = await fetch('/api/active-orders');
         if (!response.ok) {
-            throw new Error(`HTTP error! status: ${response.status}`);
+          throw new Error(`HTTP error! status: ${response.status}`);
         }
-        const data = await response.json();
-        console.log('Order data fetched:', data);
-        displayOrderData(data); // Call function to display data in the table
-
+      const data = await response.json();
+      console.log('Order data fetched:', data);
+        displayOrderData(data); // Pass the fetched data to displayOrderData
     } catch (error) {
-        console.error('Error fetching order data:', error);
-        alert('Failed to load order data.');
+      console.error('Error fetching order data:', error);
     }
-}
+  }
 
-    function displayOrderData(orders) {
+ function displayOrderData(orders) {
     const tableBody = document.querySelector('#orders-table tbody');
-    tableBody.innerHTML = ''; // Clear existing rows
+    tableBody.innerHTML = ''; // Clear existing table rows
 
-    if (!orders || orders.length === 0) {
-        tableBody.innerHTML = `<tr><td colspan="27" style="text-align:center;">No active orders found.</td></tr>`;  //adjust the colspan if you have less or more columns.
+    if (orders.length === 0) {
+        tableBody.innerHTML = `<tr><td colspan="14" style="text-align:center;">No active orders found.</td></tr>`;  // Updated colspan
         return;
     }
 
     orders.forEach(order => {
-        const row = tableBody.insertRow();
+      const row = tableBody.insertRow();
+      //Make row draggable
+      row.draggable = true;
+      row.dataset.sord = order.SORD; // Set SORD as a data attribute
+      row.addEventListener('dragstart', handleDragStart);
 
-        // Helper function to add a cell with text content
-        const addCell = (textContent) => {
-            const cell = row.insertCell();
-            cell.textContent = textContent || ''; // Handle null/undefined
-        };
-
-        addCell(order.SORD);
-        addCell(order["Trader Code"]); // Use bracket notation for properties with spaces
-        addCell(order["Trader Name"]);
-        addCell(order["Total Items"]);
-        addCell(order["Ordered Date"]);
-        addCell(order["Due Date"]);
-        addCell(order["Total Logos"]);
-        // Add a placeholder cell for the delete button (for now, just visual)
-        const deleteCell = row.insertCell();
-        deleteCell.className = 'delete-column'; // Add a class for styling
-        deleteCell.innerHTML = '<button class="delete-order-button">Delete</button>'; // Placeholder button
+      // Add cells, mapping data correctly
+      row.insertCell().textContent = order.SORD;
+      row.insertCell().textContent = order["Trader Code"];
+      row.insertCell().textContent = order["Trader Name"];
+      row.insertCell().textContent = order["Total Items"];
+      row.insertCell().textContent = order["Ordered Date"];
+      row.insertCell().textContent = order["Due Date"];
+      row.insertCell().textContent = order["Total Logos"];
     });
-
-      attachDeleteButtonListeners();
 }
 
-// Close sidebar when the close button is clicked
-closeSidebarButton.addEventListener('click', () => {
-  sidebar.classList.add('closed');
-});
 
-// Open sidebar when you click anywhere else on the page
-document.addEventListener('click', (event) => {
-  if (!sidebar.contains(event.target) && !event.target.matches('#fileButton, #fileButton *')) { //if clicked outside of sidebar
-    sidebar.classList.remove('closed');
-  }
-});
-// Search input event listener
-searchInput.addEventListener('input', () => {
+  // --- Initial Data Load ---
+  fetchOrderData();
+
+  // --- Search Functionality ---
+
+  function handleSearchInput() {
     const searchTerm = searchInput.value.toLowerCase();
-    filterTable(searchTerm);
+    filterOrderTable(searchTerm);
     updateClearSearchButtonVisibility();
-});
+  }
 
-clearSearchButton.addEventListener('click', () => {
+  function clearSearch() {
     searchInput.value = '';
-    filterTable('');
-    clearSearchButton.style.display = 'none';
-});
+    filterOrderTable('');
+    updateClearSearchButtonVisibility();
+  }
 
-function updateClearSearchButtonVisibility() {
-    clearSearchButton.style.display = searchInput.value.length > 0 ? 'inline-block' : 'none';
-}
+  function updateClearSearchButtonVisibility() {
+    clearSearchButton.style.display = searchInput.value ? 'inline-block' : 'none';
+  }
 
-//filter function
+  function filterOrderTable(searchTerm) {
+    const rows = tableBody.querySelectorAll('tr'); // Get all rows in the table body
 
-function filterTable(searchTerm) {
-    const rows = tableBody.querySelectorAll('tr'); //select all rows
     rows.forEach(row => {
-    const rowText = row.textContent.toLowerCase();
-    row.style.display = rowText.includes(searchTerm) ? '' : 'none'; //show or hide based on text
+      let rowText = row.textContent.toLowerCase(); // Get the text content of the entire row
+
+      if (rowText.includes(searchTerm)) {
+        row.style.display = ''; // Show row if it contains the search term
+      } else {
+        row.style.display = 'none'; // Hide row if it doesn't match
+      }
+    });
+  }
+
+  // --- Sidebar Toggle ---
+
+  function toggleSidebar() {
+      sidebar.classList.toggle('collapsed');
+      const icon = toggleSidebarButton.querySelector('i');
+      icon.classList.toggle('fa-chevron-left');
+      icon.classList.toggle('fa-chevron-right');
+  }
+
+  // --- Sorting ---
+  function attachSortListeners() {
+    const headers = document.querySelectorAll('#orders-table th.sortable');
+    headers.forEach(header => {
+        header.addEventListener('click', () => handleSort(header));
     });
 }
 
-//sorting logic
-    document.querySelectorAll('#orders-table th[data-sort-key]').forEach(header => {
-        header.addEventListener('click', () => {
-          const sortKey = header.getAttribute('data-sort-key');
-          let sortOrder = 'asc'; // Default to ascending
+  let currentSort = { key: null, order: 'asc' }; // Initialize sorting state
 
-          // Toggle sort order if already sorting by this column
-          if (header.classList.contains('sorted-asc')) {
-                sortOrder = 'desc';
-              header.classList.remove('sorted-asc');
-              header.classList.add('sorted-desc');
-            } else if (header.classList.contains('sorted-desc')) {
-              sortOrder = 'asc';
-              header.classList.remove('sorted-desc');
-                header.classList.add('sorted-asc');
-            } else { //if neither, add the sort
-            // Remove sort classes from other headers
-            document.querySelectorAll('#orders-table th[data-sort-key]').forEach(h => {
-                h.classList.remove('sorted-asc', 'sorted-desc');
-            });
-                header.classList.add('sorted-asc');
-            }
-            sortTable(sortKey, sortOrder);
-        });
-});
-
-function sortTable(key, order) {
-    const tbody = document.querySelector('#orders-table tbody');
-    const rows = Array.from(tbody.querySelectorAll('tr')); // Convert NodeList to Array
-
-    rows.sort((rowA, rowB) => {
-      let aVal = rowA.cells[getHeaderIndex(key)].textContent.trim();
-      let bVal = rowB.cells[getHeaderIndex(key)].textContent.trim();
-
-    // Convert values to numbers if they appear to be numeric, otherwise, convert to lowercase strings
-    aVal = !isNaN(parseFloat(aVal)) && isFinite(aVal) ? parseFloat(aVal) : aVal.toLowerCase();
-    bVal = !isNaN(parseFloat(bVal)) && isFinite(bVal) ? parseFloat(bVal) : bVal.toLowerCase();
-
-    if (aVal < bVal) {
-      return order === 'asc' ? -1 : 1;
+  function handleSort(header) {
+    const key = header.dataset.sort;
+      if (currentSort.key === key) {
+          currentSort.order = currentSort.order === 'asc' ? 'desc' : 'asc';
+      } else {
+      currentSort.key = key;
+      currentSort.order = 'asc';
     }
-    if (aVal > bVal) {
-        return order === 'asc' ? 1 : -1;
-     }
-      return 0;
-    });
 
-    // Re-append sorted rows to tbody
-    rows.forEach(row => tbody.appendChild(row)); //re-adds them in the right order
+      sortOrderData(currentSort.key, currentSort.order); // Sort the data and re-display
+      updateSortIndicators();
+  }
+
+ function sortOrderData(key, order) {
+    console.log("Sorting by:", key, order); // Log the sort key and order
+
+    // 1. Fetch the current data. We'll assume `fetchOrderData` populates a global
+    //    variable `orderData`.
+    fetch('/api/active-orders') // Use the correct endpoint
+        .then(response => {
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+            return response.json();
+        })
+        .then(orderData => {
+          console.log("Original orderData before sort:", orderData);
+
+          // 2. Sort the data.
+          orderData.sort((a, b) => {
+              const aValue = a[key] ?? ''; // Use empty string for null/undefined
+              const bValue = b[key] ?? '';
+
+              let comparison = 0;
+            if (typeof aValue === 'number' && typeof bValue === 'number') {
+                comparison = aValue - bValue; // Numerical comparison
+            } else if (typeof aValue === 'string' && typeof bValue === 'string') {
+              comparison = aValue.localeCompare(bValue); // String comparison
+            }
+
+            return order === 'asc' ? comparison : -comparison;
+            });
+          console.log("Sorted orderData:", orderData);
+
+            // 3. Re-display the data.
+          displayOrderData(orderData);
+
+        }).catch(error => {
+            console.error('Error fetching or sorting order data:', error);
+        });
+    }
+
+    function updateSortIndicators() {
+    const headers = document.querySelectorAll('#orders-table th.sortable');
+
+    headers.forEach(header => {
+        const sortKey = header.dataset.sort;
+
+        // Remove existing sort classes
+        header.classList.remove('sorted-asc', 'sorted-desc');
+        // Remove existing icon
+        const existingIcon = header.querySelector('.sort-indicator i');
+        if (existingIcon) {
+            existingIcon.remove();
+        }
+
+        // If this is the currently sorted column, add the correct class and icon
+        if (sortKey === currentSort.key) {
+            const icon = document.createElement('i');
+            icon.classList.add('fas');
+            if (currentSort.order === 'asc') {
+                header.classList.add('sorted-asc');
+                icon.classList.add('fa-sort-up');  // Font Awesome up-arrow
+            } else {
+                header.classList.add('sorted-desc');
+                icon.classList.add('fa-sort-down'); // Font Awesome down-arrow
+            }
+            header.querySelector('.sort-indicator').appendChild(icon);
+        }
+    });
+}
+  
+  function handleDragStart(event) {
+    event.dataTransfer.setData('text/plain', event.target.dataset.sord); // Store SORD on drag
+    deleteArea.style.display = 'block'; // Make delete area visible
 }
 
-//helper for sorting to get column
-function getHeaderIndex(key) {
-  const headerRow = document.querySelector('#orders-table thead tr');
-  for (let i = 0; i < headerRow.cells.length; i++) {
-      if (headerRow.cells[i].getAttribute('data-sort-key') === key) {
-          return i;
+  // --- Drag and Drop for DELETE ---
+  deleteArea.addEventListener('dragover', (event) => {
+    event.preventDefault();
+    deleteArea.classList.add('active');
+  });
+
+  deleteArea.addEventListener('dragleave', () => {
+    deleteArea.classList.remove('active');
+  });
+
+  deleteArea.addEventListener('drop', async (event) => {
+    event.preventDefault();
+    deleteArea.classList.remove('active');
+    const sordToDelete = event.dataTransfer.getData('text/plain');
+    console.log("Drop Event - SORD to Delete:", sordToDelete);  // Log SORD
+
+    if (confirm(`Are you sure you want to delete order ${sordToDelete}?`)) {
+        try {
+            const response = await fetch(`/api/delete-order/${sordToDelete}`, {
+                method: 'DELETE',
+            });
+
+            if (!response.ok) {
+                const errorText = await response.text();
+                throw new Error(`Server error: ${response.status} - ${errorText}`);
+            }
+            // Remove row from table (optional, if you want to instantly reflect the change)
+          const rowToDelete = document.querySelector(`#orders-table tbody tr[data-sord="${sordToDelete}"]`);
+              if (rowToDelete) {
+                rowToDelete.remove();
+             }
+
+            alert(`Order ${sordToDelete} deleted successfully.`);
+            // Fetch and display updated data.
+            fetchOrderData();
+        } catch (error) {
+            console.error('Error deleting order:', error);
+            alert(`Error deleting order: ${error.message}`);
         }
     }
-   return -1; //shouldnt happen, but...
-}
+    deleteArea.style.display = 'none';
+  });
 
+   // --- Summary Card Functions ---
+    function displaySummaryCards(orders) {
+        const cardsContainer = document.getElementById('summary-cards');
+        cardsContainer.innerHTML = ''; // Clear previous cards
 
-  function attachDeleteButtonListeners() { //find delete buttons, attach listeners
-    document.querySelectorAll('.delete-order-button').forEach(button => {
-        button.addEventListener('click', function(event) {
-            const row = this.closest('tr');
-            const sord = row.querySelector('td:first-child').textContent; // Assumes SORD is first
-            openDeleteModal(sord, row);
-        });
-    });
-}
+        const totalJobs = orders.length;
+        const totalItems = orders.reduce((sum, order) => sum + (parseInt(order['Total Items'], 10) || 0), 0);
 
-function openDeleteModal(sord, rowToDelete) {
-    const modal = document.getElementById('deleteConfirmationModal');
-    modal.style.display = 'flex';
-    modal.dataset.sord = sord; // Store SORD to delete in the modal's dataset.  CRUCIAL
-    modal.dataset.rowToDelete = rowToDelete;
-}
+       const totalLogos = orders.reduce((total, order) => total + (parseInt(order['Total Logos'], 10) || 0), 0);
 
-function closeDeleteModal() {
-    const modal = document.getElementById('deleteConfirmationModal');
-    modal.style.display = 'none';
-    delete modal.dataset.sord; // Clear SORD data
-}
+        // Create Total Jobs Card
+        const totalJobsCard = document.createElement('div');
+        totalJobsCard.classList.add('card');
+        totalJobsCard.innerHTML = `<h3>Total Jobs</h3><p>${totalJobs}</p>`;
+        cardsContainer.appendChild(totalJobsCard);
 
+        // Create Total Items Card
+        const totalItemsCard = document.createElement('div');
+        totalItemsCard.classList.add('card');
+        totalItemsCard.innerHTML = `<h3>Total Items</h3><p>${totalItems}</p>`;
+        cardsContainer.appendChild(totalItemsCard);
 
-// Function to actually delete the order - INCOMPLETE - Add later
+        const totalLogosCard = document.createElement('div');
+        totalLogosCard.classList.add('card');
+        totalLogosCard.innerHTML = `<h3>Total Logos</h3><p>${totalLogos}</p>`;
+        cardsContainer.appendChild(totalLogosCard);
 
-async function confirmDeletion() {
-    const modal = document.getElementById('deleteConfirmationModal');
-    const sordToDelete = modal.dataset.sord; // Get SORD to delete
-    const row = document.getElementById(sordToDelete)
-    console.log(`Deleting order with SORD: ${sordToDelete}`);
-
-    if (!sordToDelete) {
-        console.error('No SORD found to delete.');
-        closeDeleteModal();
-        return;
     }
   
-    closeDeleteModal();
+  
+  // --- INITIALIZATION ---
 
-     // Make the DELETE request to your server here (Implementation below).
+  // Call attachSortListeners when the DOM is ready
+    attachSortListeners();
+  
+  
+  // --- Utility Functions ---
+  function normalisePantoneCode(pantoneCode = "") {
+  return pantoneCode.replace(/^pantone\s*\+?/i, "").trim();
 }
-
-
-// Drag and Drop Delete - Placeholder, just visual effect
-const deleteDropZone = document.getElementById('delete-drop-zone');
-
-tableBody.addEventListener('dragstart', (event) => {
-    const row = event.target.closest('tr');
-    if (row) {
-        event.dataTransfer.setData('text/plain', row.id); // Store row ID for deletion
-        deleteDropZone.classList.add('drag-target');
-    }
-});
-
-deleteDropZone.addEventListener('dragover', (event) => {
-    event.preventDefault();
-    deleteDropZone.classList.add('dragover');
-});
-
-deleteDropZone.addEventListener('dragleave', () => {
-    deleteDropZone.classList.remove('dragover');
-});
-
-deleteDropZone.addEventListener('drop', (event) => {
-    event.preventDefault();
-    deleteDropZone.classList.remove('dragover');
-    const sordToDelete = event.dataTransfer.getData('text/plain'); // get sord
-     // You can directly call openDeleteModal here if you want.
-     openDeleteModal(sordToDelete);
-
-});
-
-//initial load of data
-fetchOrderData();
-
 });
