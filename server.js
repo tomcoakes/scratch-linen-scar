@@ -1160,15 +1160,63 @@ app.post('/api/upload-orders', express.text({ type: 'text/csv' }), (req, res) =>
         .on('data', (row) => {
             results.push(row);
         })
-        .on('end', () => {
-            console.log('CSV data parsed on server:', results); // Log parsed CSV data
+.on('end', () => {
+    console.log('CSV data parsed on server, starting consolidation...');
 
-            // --- CALL THE FUNCTION TO UPDATE JSON FILE ---
-            updateActiveJobsJSON(results); // Pass the parsed data to the function
+    const consolidatedOrders = {}; // Object to hold consolidated orders, keyed by SORD
+    const consolidatedResults = []; // Array to hold the final consolidated order objects
 
-            res.json(results); // Send the parsed JSON data back to the client (we're still doing this for now)
+    results.forEach(row => {
+        const sord = row.OUR_REFERENCE; // Use OUR_REFERENCE as the key (SORD)
 
-        })
+        if (!consolidatedOrders[sord]) {
+            consolidatedOrders[sord] = { // Initialize consolidated order entry
+                SORD: sord, // Rename OUR_REFERENCE to SORD for output
+                "Trader Code": row["A/C"], // "A/C" to "Trader Code"
+                "Trader Name": row["Trader Name"],
+                "Total Items": 0,
+                "Ordered Date": row["Order Date"] || null, // Keep earliest date
+                "Due Date": row["Item Due Date"] || null,   // Keep earliest date
+                "Total Logos": 0, // Initialize logo count
+                // ... (add other initial fields from your Tracker sheet that you want to pre-calculate from CSV, if any)
+            };
+        }
+
+        // --- SUMMING QUANTITIES, COUNTING LOGOS, etc. ---
+        consolidatedOrders[sord]["Total Items"] += parseInt(row["Outstanding Qty"] || 0, 10); // Sum Outstanding Qty
+        if (row["SWP CODE"]) { // Count SWP CODE entries as "Logos"
+            consolidatedOrders[sord]["Total Logos"]++;
+        }
+
+        // --- FIND EARLIEST DATES (similar to your macro) ---
+        const orderDate = parseExcelDate(row["Order Date"]); // Helper function to parse Excel dates (see below)
+        const dueDate = parseExcelDate(row["Item Due Date"]);  // Helper function to parse Excel dates (see below)
+
+        if (orderDate) {
+            if (!consolidatedOrders[sord]["Ordered Date"] || orderDate < new Date(consolidatedOrders[sord]["Ordered Date"])) {
+                consolidatedOrders[sord]["Ordered Date"] = orderDate.toISOString().split('T')[0]; // Store as YYYY-MM-DD
+            }
+        }
+        if (dueDate) {
+            if (!consolidatedOrders[sord]["Due Date"] || dueDate < new Date(consolidatedOrders[sord]["Due Date"])) {
+                consolidatedOrders[sord]["Due Date"] = dueDate.toISOString().split('T')[0]; // Store as YYYY-MM-DD
+            }
+        }
+    });
+
+
+    // Convert the consolidatedOrders object into an array
+    for (const sord in consolidatedOrders) {
+        consolidatedResults.push(consolidatedOrders[sord]);
+    }
+
+    console.log('CSV data consolidated:', consolidatedResults); // Log consolidated data
+
+    updateActiveJobsJSON(consolidatedResults); // Update active_jobs.json with consolidated data
+
+    res.json(consolidatedResults); // Send the consolidated JSON data back to the client
+
+})
         .on('error', (error) => {
             console.error('CSV parsing error on server:', error);
             res.status(500).json({ error: 'Failed to parse CSV data on server.' });
@@ -1209,6 +1257,26 @@ app.get('/api/active-orders', (req, res) => {
         }
     });
 });
+
+
+// --- Helper function to parse Excel date format (if needed) ---
+function parseExcelDate(excelDateSerial) {
+    if (!excelDateSerial) return null; // Return null for empty values
+
+    const excelEpoch = new Date(Date.UTC(1899, 11, 30)); // Excel epoch
+    const millisecondsInDay = 24 * 60 * 60 * 1000;
+
+    const days = parseInt(excelDateSerial, 10); // Parse as integer
+
+    if (isNaN(days)) {
+        console.warn(`Invalid date value: ${excelDateSerial}`);
+        return null; // Return null for invalid date values
+    }
+
+
+    return new Date(excelEpoch.getTime() + days * millisecondsInDay);
+}
+
 
 // Start server
 app.listen(PORT, () => {
