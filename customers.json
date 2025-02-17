@@ -347,15 +347,15 @@
     "id": 11,
     "logos": [
       {
-        "logoUrl": "https://pantone-colour-matcher-customer-logos-bucket.s3.eu-north-1.amazonaws.com/customer_logos/1739788495369-carparison.png",
-        "logoName": "No Name",
-        "logoPosition": "Unspecified",
-        "logoType": "",
+        "logoUrl": "https://pantone-colour-matcher-customer-logos-bucket.s3.eu-north-1.amazonaws.com/customer_logos/1739789598963-NHS%20-%20White.jpg",
+        "logoName": "cfdsafgvds",
+        "logoPosition": "Left Chest",
+        "logoType": "Embroidery",
         "threadNumbers": []
       },
       {
-        "logoUrl": "https://pantone-colour-matcher-customer-logos-bucket.s3.eu-north-1.amazonaws.com/customer_logos/1739789598963-NHS%20-%20White.jpg",
-        "logoName": "cfdsafgvds",
+        "logoUrl": "https://pantone-colour-matcher-customer-logos-bucket.s3.eu-north-1.amazonaws.com/customer_logos/1739793053152-ROOFING%20%281%29.svg",
+        "logoName": "BD Roofing",
         "logoPosition": "Left Chest",
         "logoType": "Embroidery",
         "threadNumbers": []
