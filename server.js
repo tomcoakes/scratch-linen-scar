@@ -532,6 +532,7 @@ app.put("/api/customers/:id/logos", upload.single('logo-upload-input'), async (r
     }
   
   console.log("req.file object:", req.file);
+  const fileMimeType = req.file.mimetype; // ADD THIS LINE - Get MIME type from multer
 
     // --- S3 Upload Parameters ---
     const uploadParams = {
@@ -539,7 +540,9 @@ app.put("/api/customers/:id/logos", upload.single('logo-upload-input'), async (r
         Key: `customer_logos/${Date.now()}-${req.file.originalname}`, // Unique key (filename) in S3 bucket
         Body: req.file.buffer, // Use file buffer directly from multer
         // ACL: 'public-read' // Make logo images publicly accessible (adjust permissions as needed)
+        ContentType: fileMimeType === 'image/svg+xml' ? 'image/svg+xml' : fileMimeType
     };
+    
 
     try {
         console.log("Attempting to upload to S3...");

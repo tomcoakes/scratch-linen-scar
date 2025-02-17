@@ -61,24 +61,13 @@
                 </div>
             
                 <div class="logo-item">
-                    <img src="https://pantone-colour-matcher-customer-logos-bucket.s3.eu-north-1.amazonaws.com/customer_logos/1739793053152-ROOFING%20%281%29.svg" alt="BD Roofing">
-                    <p class="logo-name"><strong>Name:</strong> BD Roofing</p>
-                    <p class="logo-position"><strong>Position:</strong> Left Chest</p>
-                    <p class="logo-type"><strong>Type:</strong> Embroidery</p>
-                    <p class="logo-threads"><strong>Threads:</strong> </p>
-                    <div class="logo-actions">
-                        <button class="delete-logo-button" onclick="deleteLogo(11, 1)" data-logo-index="1">Delete Logo</button>
-                    </div>
-                </div>
-            
-                <div class="logo-item">
                     <img src="https://pantone-colour-matcher-customer-logos-bucket.s3.eu-north-1.amazonaws.com/customer_logos/1739793232963-24120549949%20-%20Bradleys%20SURVEYORS%20Logo%20for%20polos%20etc.svg" alt="No Name">
                     <p class="logo-name"><strong>Name:</strong> No Name</p>
                     <p class="logo-position"><strong>Position:</strong> Unspecified</p>
                     <p class="logo-type"><strong>Type:</strong> N/A</p>
                     <p class="logo-threads"><strong>Threads:</strong> </p>
                     <div class="logo-actions">
-                        <button class="delete-logo-button" onclick="deleteLogo(11, 2)" data-logo-index="2">Delete Logo</button>
+                        <button class="delete-logo-button" onclick="deleteLogo(11, 1)" data-logo-index="1">Delete Logo</button>
                     </div>
                 </div>
             
@@ -105,7 +94,17 @@
                 </tr>
             </thead>
             <tbody>
-    <tr><td colspan="6">No proofs added yet.</td></tr>
+    
+                <tr data-proof-index="0">
+                  <td><a href="/customer_proofs/proof-WR001-Warrior Hi_Vis Waistcoat _ Fluorescent Orange-20250217T122424.pdf" target="_blank">View Proof</a></td>
+                    <td>WR001</td>
+
+                    <td>Warrior Hi-Vis Waistcoat - Fluorescent Orange</td>
+                    <td>
+                        <button class="delete-proof-button" onclick="handleProofDelete(11, 0)">Delete</button>
+                    </td>
+                </tr>
+            
             </tbody>
         </table>
     </div>

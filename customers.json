@@ -354,18 +354,20 @@
         "threadNumbers": []
       },
       {
-        "logoUrl": "https://pantone-colour-matcher-customer-logos-bucket.s3.eu-north-1.amazonaws.com/customer_logos/1739793053152-ROOFING%20%281%29.svg",
-        "logoName": "BD Roofing",
-        "logoPosition": "Left Chest",
-        "logoType": "Embroidery",
-        "threadNumbers": []
-      },
-      {
         "logoUrl": "https://pantone-colour-matcher-customer-logos-bucket.s3.eu-north-1.amazonaws.com/customer_logos/1739793232963-24120549949%20-%20Bradleys%20SURVEYORS%20Logo%20for%20polos%20etc.svg",
         "logoName": "No Name",
         "logoPosition": "Unspecified",
         "logoType": "",
         "threadNumbers": []
+      }
+    ],
+    "proofs": [
+      {
+        "url": "/customer_proofs/proof-WR001-Warrior Hi_Vis Waistcoat _ Fluorescent Orange-20250217T122424.pdf",
+        "garmentCode": "WR001",
+        "logo": "No Logos",
+        "logoPosition": "Left Breast",
+        "description": "Warrior Hi-Vis Waistcoat - Fluorescent Orange"
       }
     ]
   }
