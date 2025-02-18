@@ -1145,44 +1145,34 @@ app.get('/garment-image-proxy', (req, res) => {
 app.post('/api/upload-orders', express.text({ type: 'text/csv' }), (req, res) => {
     const csvText = req.body;
     const results = [];
-    const filePath = path.join(__dirname, 'active_jobs.json'); // Path to active_jobs.json
+    const filePath = path.join(__dirname, 'active_jobs.json');
+    let existingJobsData = {};
 
-    // --- 1. Load Existing Data ---
     fs.readFile(filePath, 'utf8', (readErr, existingData) => {
-        let existingJobsData = {}; // Start with an empty object
-
-        if (!readErr) { // File exists and was read
+        if (!readErr) {
             try {
-                existingJobsData = JSON.parse(existingData); // Parse existing JSON
-                // Convert to an object keyed by SORD (if it's currently an array)
-                if (Array.isArray(existingJobsData)) {
-                    existingJobsData = existingJobsData.reduce((acc, job) => {
-                        acc[job.SORD] = job;
-                        return acc;
-                    }, {});
-                }
-
-                console.log('Existing active_jobs.json data loaded and converted to object.');
+                existingJobsData = JSON.parse(existingData);
             } catch (parseError) {
                 console.error('Error parsing existing active_jobs.json:', parseError);
-                // If parsing fails, we still continue with an empty object
+                existingJobsData = {};
             }
-        } else if (readErr.code !== 'ENOENT') { // Ignore "file not found" error
+        } else if (readErr.code === 'ENOENT') {
+            console.log('active_jobs.json not found, starting fresh.');
+        } else {
             console.error('Error reading active_jobs.json:', readErr);
             return res.status(500).json({ error: 'Failed to read existing active order data.' });
         }
-        //If readErr.code is ENOENT, then we proceed with the empty object
 
-        // --- 2. Process New CSV Data ---
         const stream = require('stream').Readable.from(csvText);
 
         stream
             .pipe(csvParser({
                 headers: [
-                    "OUR_REFERENCE", "A/C", "Trader Name", "Product Code",
-                    "Product Description", "Product Pack Size", "Ordered Qty",
-                    "Outstanding Qty", "Total Price", "Total Cost", "Order Date",
-                    "Item Due Date", "SWP CODE"
+                  "OUR_REFERENCE", "A/C", "Trader Name", "Product Code",
+                  "Product Description", "Product Pack Size", "Ordered Qty",
+                  "Outstanding Qty", "Total Price", "Total Cost", "Order Date",
+                  "Item Due Date", "SWP Parts", "Other Parts", "Reference", // Added new columns
+                  "Contact", "Rep", "Address"
                 ]
             }))
             .on('data', (row) => {
@@ -1191,7 +1181,8 @@ app.post('/api/upload-orders', express.text({ type: 'text/csv' }), (req, res) =>
             .on('end', () => {
                 console.log('CSV data parsed on server, starting consolidation and update...');
 
-                const consolidatedOrders = {}; // Object to hold consolidated orders (NEW OBJECT EACH TIME)
+                const consolidatedOrders = {};
+                const updatedJobsData = { ...existingJobsData }; // Clone existing data
 
                 results.forEach(row => {
                     const sord = row.OUR_REFERENCE;
@@ -1201,49 +1192,81 @@ app.post('/api/upload-orders', express.text({ type: 'text/csv' }), (req, res) =>
                             SORD: sord,
                             "Trader Code": row["A/C"],
                             "Trader Name": row["Trader Name"],
-                            "Total Items": 0,
-                            "Ordered Date": row["Order Date"] || null,
-                            "Due Date": row["Item Due Date"] || null,
-                            "Total Logos": 0,
+                            "Total Items": 0, // Initialize.  We'll sum this later.
+                            "Item List": [], // Initialize the Item List array!
+                            "Ordered Date": null,  // Initialize.  We'll check for earliest date.
+                            "Due Date": null,     // Initialize.  We'll check for earliest date.
+                            "Total Logos": 0,      // Initialize. We'll sum this later.
+                            "Reference": row.Reference, // Add other fields
+                            "Contact": row.Contact,
+                            "Rep": row.Rep,
+                            "Address": row.Address
                         };
                     }
 
+                   // --- Item List Processing ---
+                  let masterCode = row["Product Code"].trim(); // Use trim() to remove potential whitespace
+                  if (masterCode) { // Only process if masterCode is not empty
+                    // 1. Find existing item in Item List (if any) with this Master Code
+                    let existingItem = consolidatedOrders[sord]["Item List"].find(item => item["Master Code"] === masterCode);
+
+                    // 2. If no existing item, create a new one!
+                    if (!existingItem) {
+                        existingItem = {
+                            "Master Code": masterCode,
+                            "Description": row["Product Description"],
+                            "Ordered Qty": 0,  // Initialize - we'll sum up below
+                            "Outstanding Qty": 0, // Initialize
+                            "SWP Parts": [],    // Initialize as empty array
+                            "Other Parts": []    // Initialize as empty array
+                        };
+                        consolidatedOrders[sord]["Item List"].push(existingItem);
+                    }
+
+                    // 3. Update the existing (or newly created) item:
+                    existingItem["Ordered Qty"] += parseInt(row["Ordered Qty"] || 0, 10);
+                    existingItem["Outstanding Qty"] += parseInt(row["Outstanding Qty"] || 0, 10);
+
+                    // Split SWP Parts and Other Parts into arrays, handle empty/null cases:
+                    const swpParts = row["SWP Parts"] ? row["SWP Parts"].split(',').map(part => part.trim()).filter(part => part !== "") : [];
+                    const otherParts = row["Other Parts"] ? row["Other Parts"].split(',').map(part => part.trim()).filter(part => part !== "") : [];
+
+                    existingItem["SWP Parts"].push(...swpParts);  // Use spread operator to add to the array
+                    existingItem["Other Parts"].push(...otherParts); // Use spread operator to add to the array
+
+                    // 4.  Update Total Logos Count *for the entire SORD*
+                    consolidatedOrders[sord]["Total Logos"] += swpParts.length;
+
+                    // 5.  Update the Total Items (across ALL items for the SORD)
                     consolidatedOrders[sord]["Total Items"] += parseInt(row["Outstanding Qty"] || 0, 10);
-                    if (row["SWP CODE"]) {
-                        consolidatedOrders[sord]["Total Logos"]++;
-                    }
+                   }
 
-                    const orderDate = parseExcelDate(row["Order Date"]);
-                    const dueDate = parseExcelDate(row["Item Due Date"]);
+                  // Date handling (same as before, but now using our helper function)
+                  const orderDate = parseExcelDate(row["Order Date"]);
+                  const dueDate = parseExcelDate(row["Item Due Date"]);
 
-                    if (orderDate) {
-                        if (!consolidatedOrders[sord]["Ordered Date"] || orderDate < new Date(consolidatedOrders[sord]["Ordered Date"])) {
-                            consolidatedOrders[sord]["Ordered Date"] = orderDate.toISOString().split('T')[0];
+                  if (orderDate) {
+                    const existingOrderDate = consolidatedOrders[sord]["Ordered Date"] ? parseExcelDate(consolidatedOrders[sord]["Ordered Date"]) : null;
+                        if (!existingOrderDate || orderDate < existingOrderDate) {
+                            consolidatedOrders[sord]["Ordered Date"] = formatDate(orderDate); // Use formatDate helper
                         }
-                    }
-                    if (dueDate) {
-                        if (!consolidatedOrders[sord]["Due Date"] || dueDate < new Date(consolidatedOrders[sord]["Due Date"])) {
-                            consolidatedOrders[sord]["Due Date"] = dueDate.toISOString().split('T')[0];
+                  }
+                 if (dueDate) {
+                      const existingDueDate = consolidatedOrders[sord]["Due Date"] ? parseExcelDate(consolidatedOrders[sord]["Due Date"]) : null;
+                       if (!existingDueDate || dueDate < existingDueDate) {
+                            consolidatedOrders[sord]["Due Date"] = formatDate(dueDate); // Use formatDate helper
                         }
-                    }
+                  }
                 });
 
-
-              // --- 3. Merge with Existing Data (and Convert to Array) ---
-                // We merge into a *copy* of the existing data:
-                const updatedJobsData = { ...existingJobsData };
-
+                // Merge new data with existing data
                 for (const sord in consolidatedOrders) {
-                  // If the SORD exists, update it.  If not, this adds it.
-                  updatedJobsData[sord] = consolidatedOrders[sord];
+                    updatedJobsData[sord] = consolidatedOrders[sord];
                 }
-               const updatedJobsArray = Object.values(updatedJobsData); // VERY IMPORTANT: Convert back to array
 
                 console.log('CSV data consolidated and merged with existing data.');
-
-                updateActiveJobsJSON(updatedJobsArray); // Save the UPDATED data to JSON  <-- Now an array
-
-                res.json(updatedJobsArray); // Send the updated JSON data back to the client <-- Now an array
+                updateActiveJobsJSON(Object.values(updatedJobsData)); // Save as JSON array
+                res.json(Object.values(updatedJobsData)); // Send JSON array to client
 
             })
             .on('error', (error) => {
@@ -1321,6 +1344,14 @@ function parseExcelDate(excelDateSerial) {
 
     console.warn(`Invalid date value: ${excelDateSerial}`);
     return null; // Return null if all parsing attempts fail
+}
+
+function formatDate(date) {
+  const d = new Date(date);
+  const day = String(d.getUTCDate()).padStart(2, '0');
+  const month = String(d.getUTCMonth() + 1).padStart(2, '0'); // Month is 0-indexed
+  const year = d.getUTCFullYear();
+  return `${day}/${month}/${year}`;
 }
 
 // Start server
