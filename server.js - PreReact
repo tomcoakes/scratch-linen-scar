@@ -1377,47 +1377,6 @@ function formatDate(date) {
   return `${day}/${month}/${year}`;
 }
 
-
-// --- API Endpoint: Delete Order ---
-app.delete('/api/delete-order/:sord', (req, res) => {
-    const sordToDelete = req.params.sord;
-    const filePath = path.join(__dirname, 'active_jobs.json');
-
-    fs.readFile(filePath, 'utf8', (readErr, data) => {
-        if (readErr) {
-            console.error("Error reading active_jobs.json:", readErr);
-            return res.status(500).json({ error: 'Failed to read active order data.' });
-        }
-
-        try {
-            let jobsData = JSON.parse(data);
-
-            // Check if jobsData is an array or an object
-            if (!Array.isArray(jobsData)) {
-                // Convert to array if it's an object
-                jobsData = Object.values(jobsData);
-            }
-
-
-            // Filter out the order with the matching SORD
-            const updatedJobsData = jobsData.filter(job => job.SORD !== sordToDelete);
-
-            // Check if an order was actually removed
-            if (updatedJobsData.length === jobsData.length) {
-                return res.status(404).json({ error: `Order with SORD ${sordToDelete} not found.` });
-            }
-
-            // Write the updated data back to the file
-            updateActiveJobsJSON(updatedJobsData);
-            res.json({ message: `Order ${sordToDelete} deleted successfully.` });
-
-        } catch (parseError) {
-            console.error("Error parsing active_jobs.json:", parseError);
-            return res.status(500).json({ error: 'Error parsing active order data.' });
-        }
-    });
-});
-
 // Start server
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
