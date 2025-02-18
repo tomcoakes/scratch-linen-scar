@@ -50,19 +50,7 @@ function App() {
 
     return (
         React.createElement('div', null,
-            React.createElement('header', { /* No need to add class for global header style */ },
-                React.createElement('div', { className: 'header-container' }, // Use regular class name 'header-container'
-                    React.createElement('h1', null, 'Order Production Tracker'),
-                    React.createElement('nav', null,
-                        React.createElement('ul', { className: 'nav-links' }, // Use regular class name 'nav-links'
-                            React.createElement('li', null, React.createElement('a', { href: "index.html" }, 'Home')),
-                            React.createElement('li', null, React.createElement('a', { href: "threads.html" }, 'Thread Manager')),
-                            React.createElement('li', null, React.createElement('a', { href: "proof_creator.html" }, 'Proof Creator')),
-                            React.createElement('li', null, React.createElement('a', { href: "tracker.html", className: 'active' }, 'Order Tracker')) // Use regular class name 'active'
-                        )
-                    )
-                )
-            ),
+
 
             React.createElement(Sidebar, { onFileUpload: handleFileUpload }),
             React.createElement(SearchBar, {

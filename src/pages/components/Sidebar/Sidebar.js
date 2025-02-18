@@ -1,7 +1,5 @@
 // src/pages/components/Sidebar/Sidebar.js
-//import React from 'react'; // No need to import React here anymore with CDN
 
-//import styles from './Sidebar.module.css'; // If you create Sidebar.module.css
 
 // --- Sidebar Component (React) ---
 function Sidebar({ onFileUpload }) { // onFileUpload prop to pass CSV data handling up
@@ -81,26 +79,26 @@ function Sidebar({ onFileUpload }) { // onFileUpload prop to pass CSV data handl
 
 
     return (
-        React.createElement('aside', { className: "sidebar", id: "sidebar" },
-            React.createElement('div', { className: "sidebar-header" },
+        React.createElement('aside', { className: "sidebar", id: "sidebar" }, // className as string "sidebar"
+            React.createElement('div', { className: "sidebarHeader" }, // className as string "sidebarHeader"
                 React.createElement('h2', null, 'Upload & Actions'),
-                React.createElement('button', { id: "toggle-sidebar", className: "toggle-sidebar-button" },
+                React.createElement('button', { id: "toggle-sidebar", className: "toggleSidebarButton" }, // className as string "toggleSidebarButton"
                     React.createElement('i', { className: "fas fa-chevron-left" })
                 )
             ),
             React.createElement('div', {
                     id: "dropArea",
-                    className: `drop-area ${isDragOver ? 'dragover' : ''}`,
+                    className: `dropArea ${isDragOver ? 'dragover' : ''}`, // classNames as strings "dropArea" and "dragover"
                     onDragOver: handleDragOver,
                     onDrop: handleFileDrop,
-                    onDragLeave: handleDragLeave // Add dragLeave handler
+                    onDragLeave: handleDragLeave
                 },
                 React.createElement('p', null, 'Drag & Drop CSV File Here'),
                 React.createElement('p', null, 'or'),
-                React.createElement('button', { id: "fileButton", className: "primary-btn", onClick: () => document.getElementById('fileInput').click() }, 'Choose File'),
+                React.createElement('button', { id: "fileButton", className: "primaryBtn", onClick: () => document.getElementById('fileInput').click() }, 'Choose File'), // className as string "primaryBtn"
                 React.createElement('input', { type: 'file', id: 'fileInput', accept: ".csv", style: { display: 'none' }, onChange: handleFileInputChange })
             ),
-            React.createElement('div', { id: "delete-area", className: "delete-area" , style: {display: isDragOver ? 'block' : 'none'} }, // Conditionally show delete area
+            React.createElement('div', { id: "delete-area", className: `deleteArea ${isDragOver ? 'active' : ''}` , style: {display: isDragOver ? 'block' : 'none'} }, // classNames as strings "deleteArea" and "active"
                 React.createElement('i', { className: "fas fa-trash-alt" }),
                 ' Drag orders here to DELETE'
             )
@@ -108,4 +106,4 @@ function Sidebar({ onFileUpload }) { // onFileUpload prop to pass CSV data handl
     );
 }
 
-export default Sidebar; // Export the component
+export default Sidebar;
