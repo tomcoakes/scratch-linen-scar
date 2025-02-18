@@ -124,7 +124,15 @@
         ]
       }
     ],
-    "proofs": []
+    "proofs": [
+      {
+        "url": "/customer_proofs/proof-RX700-Pro RTX High Visibility Waistcoat _ Navy-20250218T142557.pdf",
+        "garmentCode": "RX700",
+        "logo": "No Logos",
+        "logoPosition": "Left Breast",
+        "description": "Pro RTX High Visibility Waistcoat - Navy"
+      }
+    ]
   },
   {
     "name": "Data-Path",
