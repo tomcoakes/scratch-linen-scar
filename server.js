@@ -1315,51 +1315,27 @@ app.get('/api/active-orders', (req, res) => {
 // --- Helper function to parse Excel date format and DD/MM/YY format ---
 // --- Helper function to parse DD/MM/YYYY date format ---
 function parseExcelDate(dateString) {
-    console.log("parseExcelDate called with:", dateString); // Log the input
-
     if (!dateString) {
-        console.log("dateString is empty or null. Returning null.");
         return null; // Handle empty or null values
     }
 
-    // Split the date string by '/'
-    const parts = dateString.split('/');
-    console.log("Date parts after split:", parts);
-
-    if (parts.length !== 3) {
-        console.warn(`Invalid date format: ${dateString}`);
-        return null; // Handle invalid format
+    // Check if the dateString matches the YYYY-MM-DD format using a regular expression
+    const dateRegex = /^\d{4}-\d{2}-\d{2}$/;
+    if (!dateRegex.test(dateString)) {
+      console.warn(`Invalid date format: ${dateString}`);
+      return null; // Handle invalid format
     }
 
-    const day = parseInt(parts[0], 10);
-    const month = parseInt(parts[1], 10) - 1; // Month is 0-indexed in JavaScript Date
-    let year = parseInt(parts[2], 10);
+    const [year, month, day] = dateString.split('-').map(Number);
 
-    console.log(`Parsed date components: Day=${day}, Month=${month}, Year=${year}`);
+    // Month is 0-indexed in JavaScript Date
+    const parsedDate = new Date(Date.UTC(year, month - 1, day));
 
-    // Handle two-digit years (assuming 2000s for now)
-    if (year >= 0 && year <= 99) {
-        year += 2000;
-        console.log("Year adjusted to:", year);
-    }
-
-    // Check for NaN (Not a Number) in day, month, or year
-    if (isNaN(day) || isNaN(month) || isNaN(year)) {
-      console.warn(`Invalid date components in: ${dateString}`);
-      return null; // Handle invalid components
-    }
-
-    // Create a Date object (using UTC to avoid timezone issues)
-    const parsedDate = new Date(Date.UTC(year, month, day));
-    console.log("Parsed Date object:", parsedDate);
-
-    // Final check for invalid date (e.g., February 30th)
     if (isNaN(parsedDate)) {
         console.warn(`Invalid date: ${dateString}`);
         return null;
     }
 
-    console.log("Returning parsedDate:", parsedDate);
     return parsedDate;
 }
 
