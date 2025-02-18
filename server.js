@@ -1313,37 +1313,54 @@ app.get('/api/active-orders', (req, res) => {
 
 
 // --- Helper function to parse Excel date format and DD/MM/YY format ---
-function parseExcelDate(excelDateSerial) {
-    if (!excelDateSerial) return null; // Return null for empty values
+// --- Helper function to parse DD/MM/YYYY date format ---
+function parseExcelDate(dateString) {
+    console.log("parseExcelDate called with:", dateString); // Log the input
 
-    // --- Attempt to parse DD/MM/YY format FIRST ---
-    const dateParts = excelDateSerial.split('/');
-    if (dateParts.length === 3) {
-        const day = parseInt(dateParts[0], 10);
-        const month = parseInt(dateParts[1], 10) - 1; // Month is 0-indexed in JavaScript Date
-        let year = parseInt(dateParts[2], 10);
-
-        if (year >= 0 && year <= 99) { // Adjust two-digit year to four-digit (21st century assumption)
-            year += 2000; // Assumes 21st century for years 00-99. You might need to adjust this for 20th century dates.
-        }
-
-        const parsedDate = new Date(year, month, day);
-        if (!isNaN(parsedDate)) { // Check if date is valid
-            return parsedDate;
-        }
+    if (!dateString) {
+        console.log("dateString is empty or null. Returning null.");
+        return null; // Handle empty or null values
     }
 
-    // --- Fallback to Excel serial date parsing (if DD/MM/YY parsing fails) ---
-    const excelEpoch = new Date(Date.UTC(1899, 11, 30)); // Excel epoch
-    const millisecondsInDay = 24 * 60 * 60 * 1000;
-    const days = parseInt(excelDateSerial, 10);
+    // Split the date string by '/'
+    const parts = dateString.split('/');
+    console.log("Date parts after split:", parts);
 
-    if (!isNaN(days)) {
-        return new Date(excelEpoch.getTime() + days * millisecondsInDay);
+    if (parts.length !== 3) {
+        console.warn(`Invalid date format: ${dateString}`);
+        return null; // Handle invalid format
     }
 
-    console.warn(`Invalid date value: ${excelDateSerial}`);
-    return null; // Return null if all parsing attempts fail
+    const day = parseInt(parts[0], 10);
+    const month = parseInt(parts[1], 10) - 1; // Month is 0-indexed in JavaScript Date
+    let year = parseInt(parts[2], 10);
+
+    console.log(`Parsed date components: Day=${day}, Month=${month}, Year=${year}`);
+
+    // Handle two-digit years (assuming 2000s for now)
+    if (year >= 0 && year <= 99) {
+        year += 2000;
+        console.log("Year adjusted to:", year);
+    }
+
+    // Check for NaN (Not a Number) in day, month, or year
+    if (isNaN(day) || isNaN(month) || isNaN(year)) {
+      console.warn(`Invalid date components in: ${dateString}`);
+      return null; // Handle invalid components
+    }
+
+    // Create a Date object (using UTC to avoid timezone issues)
+    const parsedDate = new Date(Date.UTC(year, month, day));
+    console.log("Parsed Date object:", parsedDate);
+
+    // Final check for invalid date (e.g., February 30th)
+    if (isNaN(parsedDate)) {
+        console.warn(`Invalid date: ${dateString}`);
+        return null;
+    }
+
+    console.log("Returning parsedDate:", parsedDate);
+    return parsedDate;
 }
 
 function formatDate(date) {
