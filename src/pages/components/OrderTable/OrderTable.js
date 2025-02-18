@@ -3,6 +3,8 @@
 // --- OrderTable Component (UPDATED to fetch data and filter) ---
 function OrderTable({ orders, searchTerm }) { // Receive orders and searchTerm as props
 
+    console.log("OrderTable component received props:", { orders, searchTerm }); // *** ADD THIS LOG ***
+
     const filteredOrders = React.useMemo(() => { // Use useMemo for filtering
         if (!searchTerm) {
             return orders; // No search term, return all orders
@@ -34,9 +36,11 @@ function OrderTable({ orders, searchTerm }) { // Receive orders and searchTerm a
                     )
                 ),
                 React.createElement('tbody', null,
+                    console.log("Orders array before mapping in OrderTable:", orders), // *** ADD THIS LOG ***
                     filteredOrders.length > 0 ? ( // Conditionally render rows based on filteredOrders
-                        filteredOrders.map(order => (
-                            React.createElement('tr', { key: order.SORD },
+                        filteredOrders.map(order => {
+                            console.log("Mapping order:", order); // *** ADD THIS LOG INSIDE MAP ***
+                            return React.createElement('tr', { key: order.SORD },
                                 React.createElement('td', null, order.SORD),
                                 React.createElement('td', null, order["Trader Name"]),
                                 React.createElement('td', null, order["Total Items"]),
@@ -45,7 +49,7 @@ function OrderTable({ orders, searchTerm }) { // Receive orders and searchTerm a
                                 React.createElement('td', null, order["Total Logos"])
                                 // ... (ADD MORE TABLE CELLS HERE LATER) ...
                             )
-                        ))
+                        })
                     ) : (
                         React.createElement('tr', null,
                             React.createElement('td', { colSpan: "14", style: { textAlign: 'center' } }, 'No active orders found.') // Updated colspan
