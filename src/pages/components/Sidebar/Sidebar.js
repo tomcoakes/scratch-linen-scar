@@ -98,10 +98,7 @@ function Sidebar({ onFileUpload }) { // onFileUpload prop to pass CSV data handl
                 React.createElement('button', { id: "fileButton", className: "primaryBtn", onClick: () => document.getElementById('fileInput').click() }, 'Choose File'), // className as string "primaryBtn"
                 React.createElement('input', { type: 'file', id: 'fileInput', accept: ".csv", style: { display: 'none' }, onChange: handleFileInputChange })
             ),
-            React.createElement('div', { id: "delete-area", className: `deleteArea ${isDragOver ? 'active' : ''}` , style: {display: isDragOver ? 'block' : 'none'} }, // classNames as strings "deleteArea" and "active"
-                React.createElement('i', { className: "fas fa-trash-alt" }),
-                ' Drag orders here to DELETE'
-            )
+
         )
     );
 }
