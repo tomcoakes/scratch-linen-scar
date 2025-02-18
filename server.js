@@ -1143,26 +1143,30 @@ app.get('/garment-image-proxy', (req, res) => {
 
 
 // --- NEW API Endpoint: Handle CSV Upload for Orders ---
+// --- NEW API Endpoint: Handle CSV Upload for Orders (UPDATED for NO DUPLICATES) ---
+// --- NEW API Endpoint: Handle CSV Upload for Orders (UPDATED for NO DUPLICATES and NEW FIELDS) ---
 app.post('/api/upload-orders', express.text({ type: 'text/csv' }), (req, res) => {
     const csvText = req.body;
     const results = [];
     const filePath = path.join(__dirname, 'active_jobs.json'); // Path to active_jobs.json
-    let existingJobsData = {}; // To store existing jobs data (initially empty)
+    let existingJobsData = []; // To store existing jobs data as array (initially empty)
 
     // --- Load existing active_jobs.json data FIRST ---
     fs.readFile(filePath, 'utf8', (readErr, existingData) => {
         if (!readErr) { // No error means file exists and was read
             try {
                 existingJobsData = JSON.parse(existingData);
+                if (!Array.isArray(existingJobsData)) { // Ensure it's an array
+                    existingJobsData = []; // If not, treat as empty
+                }
                 console.log('Existing active_jobs.json data loaded.');
             } catch (parseError) {
                 console.error('Error parsing existing active_jobs.json:', parseError);
-                // If parsing fails, we'll start with an empty object
-                existingJobsData = {};
+                existingJobsData = []; // If parsing fails, start with an empty array
             }
         } else if (readErr.code === 'ENOENT') {
-            console.log('active_jobs.json not found, starting fresh.');
-            // It's okay if the file doesn't exist yet (first time upload)
+            console.log('active_jobs.json not found, starting fresh with an empty array.');
+            existingJobsData = []; // Start with an empty array if file doesn't exist
         } else {
             console.error('Error reading active_jobs.json:', readErr);
             return res.status(500).json({ error: 'Failed to read existing active order data.' });
@@ -1185,91 +1189,94 @@ app.post('/api/upload-orders', express.text({ type: 'text/csv' }), (req, res) =>
                 results.push(row);
             })
             .on('end', () => {
-                console.log('CSV data parsed on server, starting consolidation and update...');
+                console.log('CSV data parsed on server, starting consolidation and update (NEW ORDERS ONLY)...');
 
-                const consolidatedOrders = {}; // Object to hold consolidated orders (NEW OBJECT EACH TIME)
-                const updatedJobsData = { ...existingJobsData }; // Clone existing data to update - IMPORTANT
+                const consolidatedOrders = {}; // Object to hold consolidated orders from CSV
+                const newOrdersToAdd = []; // Array to hold ONLY new orders that will be added
+
+                // Create a Set of existing SORDs for efficient lookup
+                const existingSords = new Set(existingJobsData.map(job => job.SORD));
 
                 results.forEach(row => {
                     const sord = row.OUR_REFERENCE;
+
+                    if (existingSords.has(sord)) {
+                        console.log(`SORD ${sord} already exists. Skipping.`);
+                        return; // Skip this order if it already exists
+                    }
 
                     if (!consolidatedOrders[sord]) {
                         consolidatedOrders[sord] = {
                             SORD: sord,
                             "Trader Code": row["A/C"],
                             "Trader Name": row["Trader Name"],
-                            "Total Items": 0, // Initialize.  We'll sum this later.
-                            "Item List": [],  // Initialize the Item List array!
-                            "Ordered Date": null,  // Initialize.  We'll check for earliest date.
-                            "Due Date": null,     // Initialize.  We'll check for earliest date.
-                            "Total Logos": 0,      // Initialize. We'll sum this later.
-                            "Reference": row.Reference, // Add other fields
+                            "Total Items": 0,
+                            "Item List": [],
+                            "Ordered Date": null,
+                            "Due Date": null,
+                            "Total Logos": 0,
+                            "Reference": row.Reference,
                             "Contact": row.Contact,
                             "Rep": row.Rep,
-                            "Address": row.Address
+                            "Address": row.Address,
+
+                            // --- NEW FIELDS with Default Values ---
+                            isNew: true, // Default to true for new orders
+                            garmentStatus: 'Not Started', // Default garment status
+                            decorationMethod: '', // Default decoration method (empty initially)
+                            embroideryFileStatus: '', // Default embroidery file status
+                            dtfStatus: '', // Default DTF status
+                            jobStatus: 'Not Started' // Default job status
                         };
                     }
 
-                    let masterCode = row["Product Code"].trim();  // Use trim() to remove potential whitespace
-                    if (masterCode) { // Only process if masterCode is not empty
-
-                        // 1. Find existing item in Item List (if any) with this Master Code
+                    let masterCode = row["Product Code"].trim();
+                    if (masterCode) {
                         let existingItem = consolidatedOrders[sord]["Item List"].find(item => item["Master Code"] === masterCode);
 
-                        // 2. If no existing item, create a new one!
                         if (!existingItem) {
                             existingItem = {
                                 "Master Code": masterCode,
                                 "Description": row["Product Description"],
-                                "Ordered Qty": 0,  // Initialize - we'll sum up below
-                                "Outstanding Qty": 0, // Initialize
-                                "SWP Parts": [],    // Initialize as empty array
-                                "Other Parts": [],    // Initialize as empty array
-                                "SWP Parts Desc": [],  // NEW: Array for SWP Parts descriptions
-                                "Other Parts Desc": [] // NEW: Array for Other Parts descriptions
+                                "Ordered Qty": 0,
+                                "Outstanding Qty": 0,
+                                "SWP Parts": [],
+                                "Other Parts": [],
+                                "SWP Parts Desc": [],
+                                "Other Parts Desc": []
                             };
                             consolidatedOrders[sord]["Item List"].push(existingItem);
                         }
 
-                        // 3. Update the existing (or newly created) item:
                         existingItem["Ordered Qty"] += parseInt(row["Ordered Qty"] || 0, 10);
                         existingItem["Outstanding Qty"] += parseInt(row["Outstanding Qty"] || 0, 10);
 
-                         // --- SWP Parts and Descriptions ---
                         const swpParts = row["SWP Parts"] ? row["SWP Parts"].split(',').map(part => part.trim()).filter(part => part !== "") : [];
                         const swpPartsDesc = row["SWP Parts Desc"] ? row["SWP Parts Desc"].split(',').map(desc => desc.trim()).filter(desc => desc !== "") : [];
 
-                        // IMPORTANT: Handle cases where the number of parts and descriptions don't match
                         if (swpParts.length !== swpPartsDesc.length) {
-                            console.warn(`Mismatch in SWP Parts and Descriptions for SORD ${sord}, Master Code ${masterCode}. Parts: ${swpParts.join(',')}, Descriptions: ${swpPartsDesc.join(',')}`);
-                            // Pad the shorter array with empty strings.
+                            console.warn(`Mismatch in SWP Parts and Descriptions for SORD ${sord}, Master Code ${masterCode}.`);
                             const maxLength = Math.max(swpParts.length, swpPartsDesc.length);
                             while (swpParts.length < maxLength) swpParts.push("");
                             while (swpPartsDesc.length < maxLength) swpPartsDesc.push("");
                         }
 
-                        existingItem["SWP Parts"].push(...swpParts); // Use spread operator to add to the array
-                        existingItem["SWP Parts Desc"].push(...swpPartsDesc); // Use spread operator
-                        consolidatedOrders[sord]["Total Logos"] += swpParts.length; // Count logos
+                        existingItem["SWP Parts"].push(...swpParts);
+                        existingItem["SWP Parts Desc"].push(...swpPartsDesc);
+                        consolidatedOrders[sord]["Total Logos"] += swpParts.length;
 
-
-                        // --- Other Parts and Descriptions ---
                         const otherParts = row["Other Parts"] ? row["Other Parts"].split(',').map(part => part.trim()).filter(part => part !== "") : [];
                         const otherPartsDesc = row["Other Parts Desc"] ? row["Other Parts Desc"].split(',').map(desc => desc.trim()).filter(desc => desc !== "") : [];
 
-                        // IMPORTANT: Handle cases where the number of parts and descriptions don't match
                         if (otherParts.length !== otherPartsDesc.length) {
-                          console.warn(`Mismatch in Other Parts and Descriptions for SORD ${sord}, Master Code ${masterCode}. Parts: ${otherParts.join(',')}, Descriptions: ${otherPartsDesc.join(',')}`);
+                            console.warn(`Mismatch in Other Parts and Descriptions for SORD ${sord}, Master Code ${masterCode}.`);
                             const maxLength = Math.max(otherParts.length, otherPartsDesc.length);
-                          while (otherParts.length < maxLength) otherParts.push("");
-                          while (otherPartsDesc.length < maxLength) otherPartsDesc.push("");
+                            while (otherParts.length < maxLength) otherParts.push("");
+                            while (otherPartsDesc.length < maxLength) otherPartsDesc.push("");
                         }
-                        existingItem["Other Parts"].push(...otherParts); // Use spread operator to add to the array
-                        existingItem["Other Parts Desc"].push(...otherPartsDesc); // Use spread operator
+                        existingItem["Other Parts"].push(...otherParts);
+                        existingItem["Other Parts Desc"].push(...otherPartsDesc);
 
-                        // --- (Rest of your consolidation logic - Date handling, etc.) ---
-
-                        // 5.  Update the Total Items (across ALL items for the SORD)
                         consolidatedOrders[sord]["Total Items"] += parseInt(row["Outstanding Qty"] || 0, 10);
 
                         const orderDate = parseExcelDate(row["Order Date"]);
@@ -1290,13 +1297,19 @@ app.post('/api/upload-orders', express.text({ type: 'text/csv' }), (req, res) =>
                     }
                 });
 
-                // Merge new data with existing data, and convert to array:
-                const updatedJobsArray = Object.values(Object.assign({}, existingJobsData, consolidatedOrders));
+                // Convert consolidatedOrders object to an array of new orders
+                const newOrdersArray = Object.values(consolidatedOrders);
 
-                console.log('CSV data consolidated and merged with existing data.');
+                // Filter out any orders from newOrdersArray that already exist in existingJobsData
+                const trulyNewOrders = newOrdersArray.filter(newOrder => !existingSords.has(newOrder.SORD));
 
-                updateActiveJobsJSON(updatedJobsArray); // Save as JSON array
-                res.json(updatedJobsArray); // Send JSON array to client
+                // Combine existing jobs data with the truly new orders
+                const updatedJobsArray = [...existingJobsData, ...trulyNewOrders];
+
+                console.log(`CSV data processed. ${trulyNewOrders.length} new orders added, ${results.length - trulyNewOrders.length} existing orders skipped.`);
+
+                updateActiveJobsJSON(updatedJobsArray);
+                res.json(updatedJobsArray);
 
             })
             .on('error', (error) => {
