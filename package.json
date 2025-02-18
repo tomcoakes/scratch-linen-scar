@@ -23,7 +23,9 @@
     "dotenv": "^16.4.7",
     "csv-parser": "^3.2.0",
     "request": "^2.88.2",
-    "aws-sdk": "^2.1692.0"
+    "aws-sdk": "^2.1692.0",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0"
   },
   "engines": {
     "node": "16.x"
