@@ -56,7 +56,7 @@ function App() {
             console.log("appStateReady is true, rendering child components... (initial render)"); // Log before rendering children (initial)
             renderChildComponents(searchTerm); // Pass searchTerm as argument to renderChildComponents (initially empty)
         }
-    }, [appStateReady]); // Dependency on appStateReady - run when it becomes true (for initial render)
+    }, [searchTerm, appStateReady]); // Dependency on appStateReady - run when it becomes true (for initial render)
 
 
 

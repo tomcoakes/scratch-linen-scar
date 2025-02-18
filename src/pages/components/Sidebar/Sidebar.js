@@ -1,9 +1,6 @@
-// src/pages/components/Sidebar/Sidebar.js
-
-
-// --- Sidebar Component (React) ---
-function Sidebar({ onFileUpload }) { // onFileUpload prop to pass CSV data handling up
+function Sidebar({ onFileUpload }) {
     const [isDragOver, setIsDragOver] = React.useState(false);
+    const [isCollapsed, setIsCollapsed] = React.useState(false); // <-- State for collapsed sidebar
 
     const handleDragOver = (evt) => {
         evt.preventDefault();
@@ -77,28 +74,35 @@ function Sidebar({ onFileUpload }) { // onFileUpload prop to pass CSV data handl
         }
     }
 
+    const toggleSidebar = () => { // <-- ADDED toggleSidebar FUNCTION
+        setIsCollapsed(!isCollapsed);
+    };
+
 
     return (
-        React.createElement('aside', { className: "sidebar", id: "sidebar" }, // className as string "sidebar"
-            React.createElement('div', { className: "sidebarHeader" }, // className as string "sidebarHeader"
+        React.createElement('aside', { className: `sidebar ${isCollapsed ? 'collapsed' : ''}`, id: "sidebar" }, // <-- Conditional 'collapsed' class
+            React.createElement('div', { className: "sidebarHeader" },
                 React.createElement('h2', null, 'Upload & Actions'),
-                React.createElement('button', { id: "toggle-sidebar", className: "toggleSidebarButton" }, // className as string "toggleSidebarButton"
-                    React.createElement('i', { className: "fas fa-chevron-left" })
+                React.createElement('button', {
+                        id: "toggle-sidebar",
+                        className: "toggleSidebarButton",
+                        onClick: toggleSidebar // <-- Attached toggleSidebar function
+                    },
+                    React.createElement('i', { className: `fas ${isCollapsed ? 'fa-chevron-right' : 'fa-chevron-left'}` }) // Conditional icon class
                 )
             ),
             React.createElement('div', {
                     id: "dropArea",
-                    className: `dropArea ${isDragOver ? 'dragover' : ''}`, // classNames as strings "dropArea" and "dragover"
+                    className: `dropArea ${isDragOver ? 'dragover' : ''}`,
                     onDragOver: handleDragOver,
                     onDrop: handleFileDrop,
                     onDragLeave: handleDragLeave
                 },
                 React.createElement('p', null, 'Drag & Drop CSV File Here'),
                 React.createElement('p', null, 'or'),
-                React.createElement('button', { id: "fileButton", className: "primaryBtn", onClick: () => document.getElementById('fileInput').click() }, 'Choose File'), // className as string "primaryBtn"
+                React.createElement('button', { id: "fileButton", className: "primaryBtn", onClick: () => document.getElementById('fileInput').click() }, 'Choose File'),
                 React.createElement('input', { type: 'file', id: 'fileInput', accept: ".csv", style: { display: 'none' }, onChange: handleFileInputChange })
-            ),
-
+            )
         )
     );
 }
