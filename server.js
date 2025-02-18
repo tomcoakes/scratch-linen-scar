@@ -1206,7 +1206,8 @@ app.post('/api/upload-orders', express.text({ type: 'text/csv' }), (req, res) =>
                             "Reference": row.Reference, // Add other fields
                             "Contact": row.Contact,
                             "Rep": row.Rep,
-                            "Address": row.Address
+                            "Address": row.Address,
+                            "status": "In Progress" // add the new status field
                         };
                     }
 
@@ -1290,8 +1291,23 @@ app.post('/api/upload-orders', express.text({ type: 'text/csv' }), (req, res) =>
                     }
                 });
 
+              // Mark jobs as completed if they are not in the new CSV data
+              for (const existingSord in existingJobsData) {
+                if (!consolidatedOrders.hasOwnProperty(existingSord)) {
+                  // This SORD exists in the old data but not in the new data
+                    existingJobsData[existingSord].status = "Completed"; // Add/update status
+                    //we still add it to the object that we will be writing to the json
+                    updatedJobsData[existingSord] = existingJobsData[existingSord];
+                }
+                //if the job is new or existing, give status 'in progress
+                else{
+                    existingJobsData[existingSORD].status = "In Progress"; // Add/update status
+                    updatedJobsData[existingSORD] = existingJobsData[existingSORD];
+                }
+              }
+
                 // Merge new data with existing data, and convert to array:
-                const updatedJobsArray = Object.values(Object.assign({}, existingJobsData, consolidatedOrders));
+                const updatedJobsArray = Object.values(updatedJobsData);
 
                 console.log('CSV data consolidated and merged with existing data.');
 
