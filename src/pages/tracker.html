@@ -8,7 +8,13 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="tracker.css">
+
+    <!-- Load React and ReactDOM FIRST (from a CDN) -->
+    <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+    <!-- THEN load Babel -->
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <!-- THEN load your script, with type="text/babel" -->
     <script src="tracker.js" defer type="text/babel"></script>
 </head>
 <body>
