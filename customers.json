@@ -22,36 +22,7 @@
         "threadNumbers": []
       }
     ],
-    "proofs": [
-      {
-        "url": "/customer_proofs/proof-upload-input-1739267325679-635122888.pdf",
-        "garmentCode": "RS232M",
-        "logo": "Falcon",
-        "logoPosition": "Left Breast",
-        "description": "Description"
-      },
-      {
-        "url": "/customer_proofs/proof-RX101-Test Description-1739448792088.pdf",
-        "garmentCode": "RX101",
-        "logo": "Falcon",
-        "logoPosition": "Left Breast",
-        "description": "Test Description"
-      },
-      {
-        "url": "/customer_proofs/proof-RX101--20250214T144953.pdf",
-        "garmentCode": "RX101",
-        "logo": "No Logos",
-        "logoPosition": "Left Breast",
-        "description": ""
-      },
-      {
-        "url": "/customer_proofs/proof-RX101-Pro RTX Pro Piqu_ Polo Shirt _ Purple-20250214T160205.pdf",
-        "garmentCode": "RX101",
-        "logo": "No Logos",
-        "logoPosition": "Left Breast",
-        "description": "Pro RTX Pro Piqué Polo Shirt - Purple"
-      }
-    ]
+    "proofs": []
   },
   {
     "name": "Babcock",
@@ -103,20 +74,6 @@
     ],
     "proofs": [
       {
-        "url": "/customer_proofs/proof-GD05-Gildan Heavy Cotton_ T_Shirt _ Kiwi Green _ Babcock Left Breast _ Sub Com Group Rear-1739449549183.pdf",
-        "garmentCode": "GD05",
-        "logo": "Falcon",
-        "logoPosition": "Left Breast",
-        "description": "Gildan Heavy Cotton™ T-Shirt - Kiwi Green - Babcock Left Breast + Sub Com Group Rear"
-      },
-      {
-        "url": "/customer_proofs/proof-WR001-Warrior Hi_Vis Waistcoat _ Fluorescent Orange-20250214T160414.pdf",
-        "garmentCode": "WR001",
-        "logo": "No Logos",
-        "logoPosition": "Left Breast",
-        "description": "Warrior Hi-Vis Waistcoat - Fluorescent Orange"
-      },
-      {
         "url": "/customer_proofs/proof-RX101-Pro RTX Pro Piqu_ Polo Shirt _ Sky Blue-20250214T161540.pdf",
         "garmentCode": "RX101",
         "logo": "No Logos",
@@ -143,22 +100,8 @@
     ],
     "proofs": [
       {
-        "url": "/customer_proofs/proof-GD05-Tester-20250213T170028.pdf",
-        "garmentCode": "GD05",
-        "logo": "No Logos",
-        "logoPosition": "Left Breast",
-        "description": "Tester"
-      },
-      {
         "url": "/customer_proofs/proof-RX101--20250214T144846.pdf",
         "garmentCode": "RX101",
-        "logo": "No Logos",
-        "logoPosition": "Left Breast",
-        "description": ""
-      },
-      {
-        "url": "/customer_proofs/proof-grfes--20250214T145121.pdf",
-        "garmentCode": "grfes",
         "logo": "No Logos",
         "logoPosition": "Left Breast",
         "description": ""
@@ -181,15 +124,7 @@
         ]
       }
     ],
-    "proofs": [
-      {
-        "url": "/customer_proofs/proof-njk--20250214T174850.pdf",
-        "garmentCode": "njk",
-        "logo": "No Logos",
-        "logoPosition": "Left Breast",
-        "description": ""
-      }
-    ]
+    "proofs": []
   },
   {
     "name": "Data-Path",
