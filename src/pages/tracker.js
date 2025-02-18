@@ -8,7 +8,7 @@ import OrderTable from './components/OrderTable/OrderTable.js';
 import SummaryCards from './components/SummaryCards/SummaryCards.js';
 
 
-// --- Main App Component (Now updates window.appState in useEffect) ---
+// --- Main App Component (Now passes searchTerm directly in useEffect) ---
 function App() {
     const [orders, setOrders] = React.useState([]);
     const [searchTerm, setSearchTerm] = React.useState(''); // State for search term
@@ -46,7 +46,7 @@ function App() {
             console.log("window.appState updated in useEffect (orders change):", window.appState); // Log after update
 
 
-            renderChildComponents(); // Call function to RE-RENDER child components (AFTER DATA FETCH and state update)
+            renderChildComponents(searchTerm); // Pass searchTerm as argument to renderChildComponents
         }
     }, [orders, appStateReady]); // Dependency on 'orders' and 'appStateReady' - re-run when 'orders' changes or on initial app ready
 
@@ -54,7 +54,7 @@ function App() {
     React.useEffect(() => { // NEW useEffect to render child components AFTER appStateReady (INITIAL RENDER ONLY)
         if (appStateReady) {
             console.log("appStateReady is true, rendering child components... (initial render)"); // Log before rendering children (initial)
-            renderChildComponents(); // Call function to render child components (INITIAL RENDER)
+            renderChildComponents(searchTerm); // Pass searchTerm as argument to renderChildComponents (initially empty)
         }
     }, [appStateReady]); // Dependency on appStateReady - run when it becomes true (for initial render)
 
@@ -89,19 +89,19 @@ function App() {
     }
 
 
-    function renderChildComponents() { // Function to RENDER or UPDATE child components
+    function renderChildComponents(currentSearchTerm) { // Function to RENDER or UPDATE child components - NOW ACCEPTS searchTerm ARGUMENT
         // --- CORRECT WAY: Use root.render() on EXISTING roots to UPDATE content ---
         sidebarRoot.render(React.createElement(Sidebar, { onFileUpload: window.appState.handleFileUpload })); // Use root.render()
 
         searchBarRoot.render(React.createElement(SearchBar, {
-            searchTerm: window.appState.searchTerm, // Use root.render()
+            searchTerm: currentSearchTerm, // Pass currentSearchTerm directly as prop
             onSearchChange: window.appState.handleSearchChange,
             onClearSearch: window.appState.handleClearSearch
         }));
 
         summaryCardsRoot.render(React.createElement(SummaryCards, { orders: window.appState.orders })); // Use root.render()
 
-        orderTableRoot.render(React.createElement(OrderTable, { orders: window.appState.orders, searchTerm: window.appState.searchTerm })); // Use root.render()
+        orderTableRoot.render(React.createElement(OrderTable, { orders: window.appState.orders, searchTerm: currentSearchTerm })); // Pass currentSearchTerm directly as prop
     }
 
 

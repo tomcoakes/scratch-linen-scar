@@ -2,7 +2,9 @@
 
 // --- SearchBar Component (React) ---
 function SearchBar({ searchTerm, onSearchChange, onClearSearch }) {
+  console.log("SearchBar - Received searchTerm prop:", searchTerm); 
     const handleInputChange = (event) => {
+      console.log("SearchBar - handleInputChange - event.target.value:", event.target.value);
         onSearchChange(event.target.value);
     };
 
@@ -32,4 +34,4 @@ function SearchBar({ searchTerm, onSearchChange, onClearSearch }) {
     );
 }
 
-export default SearchBar;
+export default SearchBar; // Export the component
