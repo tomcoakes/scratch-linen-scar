@@ -105,11 +105,13 @@ main.main-container-tracker {
     padding: 20px;
     border-radius: 8px;
     background-color: #f9f9f9; /* Slightly lighter background for content area */
-    transition: margin-left 0.4s ease-out; /* Transition for margin-left */
+    transition: flex-basis 0.4s ease-out, margin-left 0.4s ease-out; /* Transition for flex-basis and margin-left */
     margin-left: 20px; /* Initial left margin */
+    flex-basis: 0; /* Initial flex-basis - content takes remaining space */ /* ADDED flex-basis: 0; */
 }
 
-/* Expand content when sidebar is collapsed */
-.main-container-tracker .sidebar-container.collapsed + .content { /* Target content when sidebar-container.collapsed is previous sibling */
-    margin-left: 0; /* Remove left margin to expand content */
+/* Expand content when sidebar is collapsed - CORRECTED CSS for FULL WIDTH EXPANSION */
+.main-container-tracker .sidebar-container.collapsed + .content {
+    margin-left: 0;     /* Keep margin-left: 0 for visual shift (optional) */
+    flex-basis: 100%;   /* CORRECTED: flex-basis: 100% for full width expansion */ /* ADDED flex-basis: 100%; */
 }
