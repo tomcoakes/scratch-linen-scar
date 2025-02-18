@@ -1,6 +1,4 @@
 // src/pages/components/SummaryCards/SummaryCards.js
-//import React from 'react'; // No need to import React here anymore with CDN
-//import styles from './SummaryCards.module.css'; // If you create SummaryCards.module.css
 
 // --- SummaryCards Component (React) ---
 function SummaryCards({ orders }) {
@@ -9,7 +7,7 @@ function SummaryCards({ orders }) {
     const totalLogos = orders.reduce((total, order) => total + (parseInt(order['Total Logos'], 10) || 0), 0);
 
     return (
-        React.createElement('div', { className: "summary-cards", id: "summary-cards" },
+        React.createElement('div', { className: "summary-cards-container" }, // Changed className to "summary-cards-container"
             React.createElement('div', { className: "card" },
                 React.createElement('h3', null, 'Total Jobs'),
                 React.createElement('p', null, totalJobs)

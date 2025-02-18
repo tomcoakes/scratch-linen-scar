@@ -1,0 +1,32 @@
+/* src/pages/components/SummaryCards/SummaryCards.module.css */
+
+.summary-cards-container { /* Renamed class to .summary-cards-container */
+    display: flex;
+    gap: 20px;
+    margin-bottom: 25px; /* Add margin below summary cards */
+}
+
+.card {
+    background-color: #fff;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.08);
+    border: 1px solid #e2e8f0;
+    flex: 1; /* Distribute space evenly among cards */
+    text-align: center;
+}
+
+.card h3 {
+    margin-top: 0;
+    margin-bottom: 10px;
+    color: #4a5568;
+    font-size: 1.3rem;
+    font-weight: 500;
+}
+
+.card p {
+    margin: 0;
+    font-size: 1.5rem;
+    color: #2d3748;
+    font-weight: 600;
+}

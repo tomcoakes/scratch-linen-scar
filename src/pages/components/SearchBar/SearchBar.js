@@ -1,6 +1,4 @@
 // src/pages/components/SearchBar/SearchBar.js
-//import React from 'react'; // No need to import React here anymore with CDN
-//import styles from './SearchBar.module.css'; // If you create SearchBar.module.css
 
 // --- SearchBar Component (React) ---
 function SearchBar({ searchTerm, onSearchChange, onClearSearch }) {
@@ -13,7 +11,7 @@ function SearchBar({ searchTerm, onSearchChange, onClearSearch }) {
     };
 
     return (
-        React.createElement('div', { className: "table-controls" },
+        React.createElement('div', { className: "search-bar" }, // Changed className to "search-bar"
             React.createElement('div', { className: "search-input-container" },
                 React.createElement('input', {
                     type: "text",
@@ -34,4 +32,4 @@ function SearchBar({ searchTerm, onSearchChange, onClearSearch }) {
     );
 }
 
-export default SearchBar; // Export the component
+export default SearchBar;

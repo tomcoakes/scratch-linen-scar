@@ -1,4 +1,4 @@
-/* src/pages/globalStyles.module.css */
+/* src/pages/globalStyles.css */
 
 /* ============================================
    1. Reset and Base Styles
@@ -13,7 +13,7 @@
 
 body {
     font-family: 'Poppins', sans-serif;
-    background-color: #f4f4f8;
+    background-color: #f4f4f8; /* Light grey background */
     color: #333;
     line-height: 1.6;
     display: flex;
@@ -27,7 +27,7 @@ body {
    ============================================ */
 
 header, footer {
-    background-color: #2c3e50;
+    background-color: #2c3e50; /* Darker header/footer background */
     color: #fff;
     padding: 1rem 0;
     text-align: center;
@@ -76,4 +76,33 @@ nav ul.nav-links li a:hover,
 nav ul.nav-links li a.active {
     background-color: #3a5a5e;
     color: #ffffff;
+}
+
+/* ============================================
+   3. Main Content Layout
+   ============================================ */
+
+main.main-container-tracker {
+    display: flex; /* Make main a flex container */
+    flex: 1; /* Allow main to grow and take remaining space */
+    max-width: 1400px; /* Maximum width for main content */
+    margin: 20px auto; /* Center main content with top/bottom margin */
+    padding: 20px;
+    width: 95%; /* Take up 95% of the viewport width */
+    background-color: #fff; /* White background for main content area */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.05); /* Subtle shadow */
+    border-radius: 8px; /* Rounded corners */
+}
+
+.sidebar-container {
+    width: 280px; /* Fixed width for sidebar */
+    margin-right: 20px; /* Spacing between sidebar and content */
+    flex-shrink: 0; /* Prevent sidebar from shrinking */
+}
+
+.content {
+    flex-grow: 1; /* Allow content area to take remaining space */
+    padding: 20px;
+    border-radius: 8px;
+    background-color: #f9f9f9; /* Slightly lighter background for content area */
 }

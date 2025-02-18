@@ -1,0 +1,44 @@
+/* src/pages/components/OrderTable/OrderTable.module.css */
+
+.order-table-container { /* Renamed class to .order-table-container */
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.08);
+    border: 1px solid #e2e8f0;
+    padding: 20px;
+}
+
+.order-table-container h2 {
+    margin-top: 0;
+    margin-bottom: 20px;
+    font-size: 1.5rem;
+    color: #34495e;
+}
+
+#orders-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+#orders-table thead th {
+    background-color: #f0f3f4;
+    color: #4a5568;
+    font-weight: 500;
+    padding: 12px 15px;
+    text-align: left;
+    border-bottom: 2px solid #e2e8f0;
+}
+
+#orders-table tbody td {
+    padding: 10px 15px;
+    border-bottom: 1px solid #e2e8f0;
+    color: #333;
+}
+
+#orders-table tbody tr:last-child td {
+    border-bottom: none; /* Remove border from last row */
+}
+
+#orders-table tbody tr:hover {
+    background-color: #f9fafb; /* Light hover background */
+}

@@ -1,6 +1,4 @@
 // src/pages/components/OrderTable/OrderTable.js
-//import React from 'react'; // No need to import React here anymore with CDN
-//import styles from './OrderTable.module.css'; // If you create OrderTable.module.css
 
 // --- OrderTable Component (UPDATED to fetch data and filter) ---
 function OrderTable({ orders, searchTerm }) { // Receive orders and searchTerm as props
@@ -21,7 +19,7 @@ function OrderTable({ orders, searchTerm }) { // Receive orders and searchTerm a
 
 
     return (
-        React.createElement('div', { className: "table-container", id: "order-table-container" },
+        React.createElement('div', { className: "order-table-container" }, // Changed className to "order-table-container"
             React.createElement('h2', null, 'Active Orders (React Component!)'),
             React.createElement('table', { id: 'orders-table' },
                 React.createElement('thead', null,

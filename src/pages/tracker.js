@@ -1,7 +1,5 @@
 // src/pages/tracker.js
 // import ReactDOM from 'react-dom/client';
-// REMOVE LINE BELOW: import styles from './globalStyles.module.css'; // Global styles
-//import componentStyles from './tracker.module.css'; // Tracker page styles (if you keep this)
 
 // --- Import Components from their new folders ---
 import Sidebar from './components/Sidebar/Sidebar.js';
@@ -50,8 +48,6 @@ function App() {
 
     return (
         React.createElement('div', null,
-
-
             React.createElement(Sidebar, { onFileUpload: handleFileUpload }),
             React.createElement(SearchBar, {
                 searchTerm: searchTerm,
@@ -60,10 +56,6 @@ function App() {
             }),
             React.createElement(SummaryCards, { orders: orders }),
             React.createElement(OrderTable, { orders: orders, searchTerm: searchTerm }),
-
-            React.createElement('footer', null,
-                React.createElement('p', null, '© 2025 Colour Matcher')
-            )
         )
     );
 }
