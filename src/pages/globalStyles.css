@@ -1,0 +1,79 @@
+/* src/pages/globalStyles.module.css */
+
+/* ============================================
+   1. Reset and Base Styles
+   ============================================ */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif; /* Consistent font throughout */
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #f4f4f8;
+    color: #333;
+    line-height: 1.6;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    font-size: 14px; /* Base font size */
+}
+
+/* ============================================
+   2. Header and Footer
+   ============================================ */
+
+header, footer {
+    background-color: #2c3e50;
+    color: #fff;
+    padding: 1rem 0;
+    text-align: center;
+    font-size: 1rem;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+footer {
+    position: static;
+    margin-top: auto;
+    width: 100%;
+}
+
+header .header-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 1200px;
+    margin: 0 auto;
+    width: 90%;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 2.5rem;
+    font-weight: 600;
+}
+
+nav ul.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+
+nav ul.nav-links li a {
+    color: #ecf0f1;
+    text-decoration: none;
+    font-size: 1rem;
+    padding: 8px 12px;
+    border-radius: 4px;
+    transition: background-color 0.3s ease, color: 0.3s ease;
+}
+
+nav ul.nav-links li a:hover,
+nav ul.nav-links li a.active {
+    background-color: #3a5a5e;
+    color: #ffffff;
+}
