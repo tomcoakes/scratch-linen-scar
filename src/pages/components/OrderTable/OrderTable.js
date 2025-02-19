@@ -1,23 +1,29 @@
 // src/pages/components/OrderTable/OrderTable.js
 
-// --- OrderTable Component (UPDATED to fetch data and filter) ---
-function OrderTable({ orders, searchTerm }) { // Receive orders and searchTerm as props
+import React from 'react';
 
-    console.log("OrderTable component received props:", { orders, searchTerm }); // *** ADD THIS LOG ***
+// --- OrderTable Component (UPDATED - Full Code with Row Expansion) ---
+function OrderTable({ orders, searchTerm }) {
 
-    const filteredOrders = React.useMemo(() => { // Use useMemo for filtering
+    const filteredOrders = React.useMemo(() => {
         if (!searchTerm) {
-            return orders; // No search term, return all orders
+            return orders;
         }
 
         const lowerSearchTerm = searchTerm.toLowerCase();
         return orders.filter(order => {
-            return Object.values(order).some(value => { // Search in all order values
-                if (value === null || value === undefined) return false; // Skip null or undefined values
-                return String(value).toLowerCase().includes(lowerSearchTerm); // Convert to string and check
+            return Object.values(order).some(value => {
+                if (value === null || value === undefined) return false;
+                return String(value).toLowerCase().includes(lowerSearchTerm);
             });
         });
-    }, [orders, searchTerm]); // Re-filter when orders or searchTerm change
+    }, [orders, searchTerm]);
+
+    const [expandedRowSORD, setExpandedRowSORD] = React.useState(null);
+
+    const handleRowClick = (sord) => {
+        setExpandedRowSORD(expandedRowSORD === sord ? null : sord);
+    };
 
 
     return (
@@ -32,36 +38,46 @@ function OrderTable({ orders, searchTerm }) { // Receive orders and searchTerm a
                         React.createElement('th', null, 'Ordered Date'),
                         React.createElement('th', null, 'Due Date'),
                         React.createElement('th', null, 'Total Logos'),
-                        React.createElement('th', null, 'Status')       // <-- KEEP "Status" HEADER
-                        // ... (ADD MORE TABLE HEADERS HERE LATER) ...
+                        React.createElement('th', null, 'Status')
                     )
                 ),
                 React.createElement('tbody', null,
                     filteredOrders.length > 0 ? (
                         filteredOrders.map(order => (
-                            React.createElement(React.Fragment, { key: order.SORD }, // Use React.Fragment to group rows without extra DOM element
-                                React.createElement('tr', null, // --- Main Data Row ---
+                            React.createElement(React.Fragment, { key: order.SORD },
+                                React.createElement('tr', { // --- Main Data Row ---
+                                        onClick: () => handleRowClick(order.SORD),
+                                        className: "data-row"
+                                    },
                                     React.createElement('td', null, order.SORD),
                                     React.createElement('td', null, order["Trader Name"]),
                                     React.createElement('td', null, order["Total Items"]),
                                     React.createElement('td', null, order["Ordered Date"]),
                                     React.createElement('td', null, order["Due Date"]),
                                     React.createElement('td', null, order["Total Logos"]),
-                                    React.createElement('td', null, order.jobStatus)      // <-- Job Status Column
-                                    // ... (ADD MORE TABLE CELLS HERE LATER) ...
+                                    React.createElement('td', null, order.jobStatus)
                                 ),
-                                React.createElement('tr', { className: "info-row" }, // --- Info Row (Tags and Decoration) ---
-                                    React.createElement('td', { colSpan: "14" }, // <-- colSpan to span all columns
-                                        React.createElement('div', { className: "info-container" }, // Container for tags and decoration
-                                            React.createElement('div', { className: "tags-container" }, // Container for tags
-                                                order.isNew ? React.createElement('span', { className: "new-tag" }, 'New') : null // "New" Tag
+                                React.createElement('tr', { className: "info-row" },
+                                    React.createElement('td', { colSpan: "14" },
+                                        React.createElement('div', { className: "info-container" },
+                                            React.createElement('div', { className: "tags-container" },
+                                                order.isNew ? React.createElement('span', { className: "new-tag" }, 'New') : null
                                             ),
-                                            React.createElement('div', { className: "decoration-container" }, // Container for decoration
-                                                order.decorationMethod // Decoration Method
+                                            React.createElement('div', { className: "decoration-container" },
+                                                order.decorationMethod
                                             )
                                         )
                                     )
-                                )
+                                ),
+                                expandedRowSORD === order.SORD ? ( // --- Expansion Row ---
+                                    React.createElement('tr', { className: "expansion-row" },
+                                        React.createElement('td', { colSpan: "14" },
+                                            React.createElement('div', { className: "expansion-content" },
+                                                'Expansion Content Here for SORD: ', order.SORD // Placeholder text
+                                            )
+                                        )
+                                    )
+                                ) : null
                             )
                         ))
                     ) : (
@@ -71,8 +87,7 @@ function OrderTable({ orders, searchTerm }) { // Receive orders and searchTerm a
                     )
                 )
             )
-        )
-    );
+        );
 }
 
-export default OrderTable; // Export the component
+export default OrderTable;

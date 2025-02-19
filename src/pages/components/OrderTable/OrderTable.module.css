@@ -29,23 +29,45 @@
     border-bottom: 2px solid #e2e8f0;
 }
 
-#orders-table tbody td {
-    padding: 10px 15px;
-    border-bottom: 1px solid #e2e8f0;
-    color: #333;
-}
-
-#orders-table tbody tr:last-child td {
-    border-bottom: none; /* Remove border from last row */
-}
-
-#orders-table tbody tr:hover {
-    background-color: #f9fafb; /* Light hover background */
-}
-
 /* src/pages/components/OrderTable/OrderTable.module.css */
 
 /* ... (rest of your OrderTable.module.css) ... */
+
+#orders-table tbody td {
+    padding: 10px 15px;
+    /* border-bottom: 1px solid #e2e8f0; */ /* REMOVE border-bottom from default data cells */ /* <-- REMOVED BORDER */
+    color: #333;
+    /* Default row height - adjust as needed */
+    padding-top: 12px;
+    padding-bottom: 12px;
+}
+
+/* Style for the "info-row" - nested row - BORDER ONLY BELOW INFO ROW */
+#orders-table tbody tr.info-row td {
+    padding: 0;
+    border-bottom: 1px solid #e2e8f0; /* ADD border-bottom TO INFO-ROW CELLS */ /* <-- ADDED BORDER-BOTTOM HERE */
+}
+
+/* Container for tags and decoration in info-row */
+.info-container {
+    padding: 6px 15px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    font-size: 0.9em;
+    color: #555;
+}
+
+/* Container for tags (if needed for specific tag styling later) */
+.tags-container {
+    /* Add specific styling for tags-container if needed */
+}
+
+/* Container for decoration method (if needed for specific decoration styling later) */
+.decoration-container {
+    /* Add specific styling for decoration-container if needed */
+}
+
 
 .new-tag {
     background-color: #f0f0f0; /* Light grey background for tag */
@@ -54,5 +76,19 @@
     border-radius: 4px;
     font-size: 0.85em;
     font-weight: 500;
-    margin-left: 5px;
+    margin-left: 0; /* Remove margin-left as it's in nested row now */
+}
+
+/* Style for expansion row (initially hidden) */
+#orders-table tbody tr.expansion-row td {
+    padding: 0; /* Remove padding from expansion row cells */
+    border-bottom: 1px solid #e2e8f0; /* Optional: border below expansion row */
+    background-color: #fefefe; /* Very light background for expansion row */
+}
+
+/* Container for expansion content */
+.expansion-content {
+    padding: 20px 15px; /* Add padding to expansion content */
+    background-color: #fefefe; /* Match background color */
+    border-top: 1px solid #e2e8f0; /* Add a top border to visually separate from data rows */
 }

@@ -1,92 +1,185 @@
-// src/pages/OrderTracker.jsx
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
-import './OrderTracker.css'; // Import the CSS for this page
+// Remove any import statements since React is loaded from the CDN.
+// Instead, we get useState and useEffect from the global React variable.
+const { useState, useEffect } = React;
 
-const OrderTracker = () => {
-  // State to hold the orders data
+// --- Options for dropdowns ---
+const garmentStatusOptions = ["In Stock", "Not Ordered", "Ordered", "Part Received", "Booked in", "Delayed"];
+const decorationMethodOptions = ["Embroidery", "DTF", "Both"];
+const embroideryFileStatusOptions = ["On File", "Not Ordered", "Ordered", "Arrived", "Delayed", "Fixing"];
+const dtfStatusOptions = ["In Stock", "Not Started", "On Press", "Printed", "Issues"];
+const jobStatusOptions = ["Not Started", "Started", "On Hold", "Part Shipped", "Complete", "Sent"];
+
+function OrderTracker() {
+  // orders: all orders from the server
   const [orders, setOrders] = useState([]);
-  // Track which orders (by SORD) have their extra details expanded
-  const [expandedOrderIds, setExpandedOrderIds] = useState([]);
-  // State for the CSV file chosen by the user
-  const [csvFile, setCsvFile] = useState(null);
-  // State for showing the new orders modal (after CSV upload)
-  const [showNewOrdersModal, setShowNewOrdersModal] = useState(false);
-  // Data for new orders that need user review (fields like decoration method, status, etc.)
-  const [newOrdersData, setNewOrdersData] = useState([]);
+  // showModal: when new orders are found, show the modal popup
+  const [showModal, setShowModal] = useState(false);
+  // newOrdersForm: holds extra fields for each new order (keyed by SORD)
+  const [newOrdersForm, setNewOrdersForm] = useState({});
+  // expandedRows: object mapping SORD to true/false for whether the row is expanded
+  const [expandedRows, setExpandedRows] = useState({});
+  // completedItems: tracks which master codes have been checked off per order (used for the progress bar)
+  const [completedItems, setCompletedItems] = useState({});
+  // backOrderSelections: tracks which back order items (from "Other Parts") are selected per order
+  const [backOrderSelections, setBackOrderSelections] = useState({});
 
-  // Fetch orders when the component mounts
+  // --- Fetch orders from your API when the component loads ---
   useEffect(() => {
     fetchOrders();
   }, []);
 
-  // Fetch active orders from your API endpoint
   const fetchOrders = async () => {
     try {
-      const res = await axios.get('/api/active-orders');
-      setOrders(res.data);
+      const res = await fetch('/api/active-orders');
+      const data = await res.json();
+      setOrders(data);
+      // Initialize completedItems and backOrderSelections for each order:
+      const compItems = {};
+      const backOrders = {};
+      data.forEach(order => {
+        // Create an array of booleans for each item in the order's Item List
+        compItems[order.SORD] = order["Item List"].map(() => false);
+        // Start with an empty array for back order selections
+        backOrders[order.SORD] = [];
+      });
+      setCompletedItems(compItems);
+      setBackOrderSelections(backOrders);
     } catch (error) {
-      console.error('Error fetching orders:', error);
+      console.error("Error fetching orders:", error);
     }
   };
 
-  // When user selects a CSV file
-  const handleFileChange = (e) => {
-    setCsvFile(e.target.files[0]);
-  };
+  // --- Handle CSV Upload ---
+  const handleCSVUpload = (e) => {
+    const file = e.target.files[0];
+    if (!file) return;
 
-  // Upload the CSV file to your API endpoint
-  const handleUploadCsv = async () => {
-    if (!csvFile) return;
     const reader = new FileReader();
     reader.onload = async (event) => {
       const csvText = event.target.result;
       try {
-        // POST the CSV text to the upload endpoint
-        const res = await axios.post('/api/upload-orders', csvText, {
-          headers: { 'Content-Type': 'text/csv' },
+        const res = await fetch('/api/upload-orders', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'text/csv'
+          },
+          body: csvText
         });
-        const updatedOrders = res.data;
-        // Identify new orders (assuming new orders have isNew: true)
-        const newOrders = updatedOrders.filter(order => order.isNew);
+        const updatedOrders = await res.json();
         setOrders(updatedOrders);
+        // Identify any new orders (ones with isNew === true)
+        const newOrders = updatedOrders.filter(order => order.isNew);
         if (newOrders.length > 0) {
-          setNewOrdersData(newOrders);
-          setShowNewOrdersModal(true);
+          // Set up form data for these new orders
+          const formData = {};
+          newOrders.forEach(order => {
+            formData[order.SORD] = {
+              isNew: order.isNew,
+              garmentStatus: order.garmentStatus || "",
+              decorationMethod: order.decorationMethod || "",
+              embroideryFileStatus: order.embroideryFileStatus || "",
+              dtfStatus: order.dtfStatus || ""
+            };
+          });
+          setNewOrdersForm(formData);
+          setShowModal(true);
         }
+        // Also update our completedItems and backOrderSelections for any new orders
+        const compItems = { ...completedItems };
+        const backOrders = { ...backOrderSelections };
+        updatedOrders.forEach(order => {
+          if (!compItems[order.SORD]) {
+            compItems[order.SORD] = order["Item List"].map(() => false);
+          }
+          if (!backOrders[order.SORD]) {
+            backOrders[order.SORD] = [];
+          }
+        });
+        setCompletedItems(compItems);
+        setBackOrderSelections(backOrders);
       } catch (error) {
-        console.error('Error uploading CSV:', error);
+        console.error("Error uploading CSV:", error);
       }
     };
-    reader.readAsText(csvFile);
+    reader.readAsText(file);
   };
 
-  // Toggle the expansion of order details when a row is clicked
-  const toggleRowExpansion = (sord) => {
-    setExpandedOrderIds(prev =>
-      prev.includes(sord)
-        ? prev.filter(id => id !== sord)
-        : [...prev, sord]
-    );
+  // --- Handlers for the modal popup form (for new orders) ---
+  const handleModalChange = (sord, field, value) => {
+    setNewOrdersForm(prev => ({
+      ...prev,
+      [sord]: {
+        ...prev[sord],
+        [field]: value
+      }
+    }));
   };
 
-  // Handler for changes made in the new orders modal
-  const handleNewOrderChange = (sord, field, value) => {
-    setNewOrdersData(prev =>
-      prev.map(order => order.SORD === sord ? { ...order, [field]: value } : order)
-    );
-  };
-
-  // Save the new orders data after user review
-  const saveNewOrders = () => {
-    // For now, update the orders state with the changes from the modal.
-    // In a real application, you would send these updates to your server.
+  const handleModalSubmit = () => {
+    // Update orders with the values from the modal form.
     const updatedOrders = orders.map(order => {
-      const newOrder = newOrdersData.find(no => no.SORD === order.SORD);
-      return newOrder ? newOrder : order;
+      if (newOrdersForm[order.SORD]) {
+        return {
+          ...order,
+          isNew: newOrdersForm[order.SORD].isNew,
+          garmentStatus: newOrdersForm[order.SORD].garmentStatus,
+          decorationMethod: newOrdersForm[order.SORD].decorationMethod,
+          embroideryFileStatus: newOrdersForm[order.SORD].embroideryFileStatus,
+          dtfStatus: newOrdersForm[order.SORD].dtfStatus
+        };
+      }
+      return order;
     });
     setOrders(updatedOrders);
-    setShowNewOrdersModal(false);
+    setShowModal(false);
+  };
+
+  // --- Toggle row expansion (to show additional job details) ---
+  const toggleRowExpansion = (sord) => {
+    setExpandedRows(prev => ({
+      ...prev,
+      [sord]: !prev[sord]
+    }));
+  };
+
+  // --- Toggle a completed item (checkbox in the expanded row) ---
+  const handleCompletedItemToggle = (sord, index) => {
+    setCompletedItems(prev => {
+      const updated = { ...prev };
+      updated[sord][index] = !updated[sord][index];
+      return updated;
+    });
+  };
+
+  // --- Toggle back order items (from Other Parts) ---
+  const handleBackOrderToggle = (sord, item) => {
+    setBackOrderSelections(prev => {
+      const selected = prev[sord] || [];
+      if (selected.includes(item)) {
+        // Remove the item if already selected
+        return { ...prev, [sord]: selected.filter(x => x !== item) };
+      } else {
+        return { ...prev, [sord]: [...selected, item] };
+      }
+    });
+  };
+
+  // --- Handle changes to fields in the expanded row (e.g. garmentStatus, jobStatus) ---
+  const handleFieldChange = (sord, field, value) => {
+    setOrders(prev => prev.map(order => {
+      if (order.SORD === sord) {
+        return { ...order, [field]: value };
+      }
+      return order;
+    }));
+  };
+
+  // --- Calculate progress percentage based on completed items ---
+  const calculateProgress = (sord) => {
+    const comp = completedItems[sord] || [];
+    const total = comp.length;
+    const completedCount = comp.filter(val => val).length;
+    return total ? Math.round((completedCount / total) * 100) : 0;
   };
 
   return (
@@ -95,11 +188,10 @@ const OrderTracker = () => {
       
       {/* CSV Upload Section */}
       <div className="upload-section">
-        <input type="file" accept=".csv" onChange={handleFileChange} />
-        <button onClick={handleUploadCsv}>Upload CSV</button>
+        <input type="file" accept=".csv" onChange={handleCSVUpload} />
       </div>
-      
-      {/* Main Orders Table */}
+
+      {/* Orders Table */}
       <table className="orders-table">
         <thead>
           <tr>
@@ -116,148 +208,93 @@ const OrderTracker = () => {
           {orders.map(order => (
             <React.Fragment key={order.SORD}>
               <tr className="order-row" onClick={() => toggleRowExpansion(order.SORD)}>
-                <td>{order.SORD}</td>
+                <td>
+                  {order.SORD} {order.isNew && <span className="new-tag">New</span>}
+                </td>
                 <td>{order["Trader Name"]}</td>
                 <td>{order["Total Items"]}</td>
-                <td>{order["Ordered Date"] || '-'}</td>
-                <td>{order["Due Date"] || '-'}</td>
+                <td>{order["Ordered Date"]}</td>
+                <td>{order["Due Date"]}</td>
                 <td>{order["Total Logos"]}</td>
                 <td>
-                  <select
-                    value={order.jobStatus}
-                    // Prevent the dropdown click from toggling the row expansion
-                    onClick={(e) => e.stopPropagation()}
-                    onChange={(e) => {
-                      const newStatus = e.target.value;
-                      setOrders(prev =>
-                        prev.map(o =>
-                          o.SORD === order.SORD ? { ...o, jobStatus: newStatus } : o
-                        )
-                      );
-                    }}
-                  >
-                    <option value="Not Started">Not Started</option>
-                    <option value="Started">Started</option>
-                    <option value="On Hold">On Hold</option>
-                    <option value="Part Shipped">Part Shipped</option>
-                    <option value="Complete">Complete</option>
-                    <option value="Sent">Sent</option>
+                  <select value={order.jobStatus} onChange={(e) => handleFieldChange(order.SORD, 'jobStatus', e.target.value)}>
+                    {jobStatusOptions.map(option => (
+                      <option key={option} value={option}>{option}</option>
+                    ))}
                   </select>
                 </td>
               </tr>
-              {/* Expanded Row with Additional Details */}
-              {expandedOrderIds.includes(order.SORD) && (
-                <tr className="order-details-row">
+              {/* Expanded Row for Additional Details */}
+              {expandedRows[order.SORD] && (
+                <tr className="expanded-row">
                   <td colSpan="7">
-                    <div className="order-details">
-                      <div>
-                        <strong>Garment Status:</strong>
-                        <select
-                          value={order.garmentStatus}
-                          onChange={(e) => {
-                            const newVal = e.target.value;
-                            setOrders(prev =>
-                              prev.map(o =>
-                                o.SORD === order.SORD ? { ...o, garmentStatus: newVal } : o
-                              )
-                            );
-                          }}
-                        >
-                          <option value="Not Started">Not Started</option>
-                          <option value="In Stock">In Stock</option>
-                          <option value="Not Ordered">Not Ordered</option>
-                          <option value="Ordered">Ordered</option>
-                          <option value="Part Received">Part Received</option>
-                          <option value="Booked in">Booked in</option>
-                          <option value="Delayed">Delayed</option>
-                        </select>
-                      </div>
-                      <div>
-                        <strong>Decoration Method:</strong>
-                        <select
-                          value={order.decorationMethod}
-                          onChange={(e) => {
-                            const newVal = e.target.value;
-                            setOrders(prev =>
-                              prev.map(o =>
-                                o.SORD === order.SORD ? { ...o, decorationMethod: newVal } : o
-                              )
-                            );
-                          }}
-                        >
+                    <div className="expanded-content">
+                      <div className="field-group">
+                        <label>Garment Status:</label>
+                        <select value={order.garmentStatus} onChange={(e) => handleFieldChange(order.SORD, 'garmentStatus', e.target.value)}>
                           <option value="">Select</option>
-                          <option value="Embroidery">Embroidery</option>
-                          <option value="DTF">DTF</option>
-                          <option value="Both">Both</option>
+                          {garmentStatusOptions.map(option => (
+                            <option key={option} value={option}>{option}</option>
+                          ))}
                         </select>
                       </div>
-                      {(order.decorationMethod === 'Embroidery' || order.decorationMethod === 'Both') && (
-                        <div>
-                          <strong>Embroidery File Status:</strong>
-                          <select
-                            value={order.embroideryFileStatus}
-                            onChange={(e) => {
-                              const newVal = e.target.value;
-                              setOrders(prev =>
-                                prev.map(o =>
-                                  o.SORD === order.SORD ? { ...o, embroideryFileStatus: newVal } : o
-                                )
-                              );
-                            }}
-                          >
+                      {(order.decorationMethod === "Embroidery" || order.decorationMethod === "Both") && (
+                        <div className="field-group">
+                          <label>Embroidery File Status:</label>
+                          <select value={order.embroideryFileStatus} onChange={(e) => handleFieldChange(order.SORD, 'embroideryFileStatus', e.target.value)}>
                             <option value="">Select</option>
-                            <option value="On File">On File</option>
-                            <option value="Not Ordered">Not Ordered</option>
-                            <option value="Ordered">Ordered</option>
-                            <option value="Arrived">Arrived</option>
-                            <option value="Delayed">Delayed</option>
-                            <option value="Fixing">Fixing</option>
+                            {embroideryFileStatusOptions.map(option => (
+                              <option key={option} value={option}>{option}</option>
+                            ))}
                           </select>
                         </div>
                       )}
-                      {(order.decorationMethod === 'DTF' || order.decorationMethod === 'Both') && (
-                        <div>
-                          <strong>DTF Status:</strong>
-                          <select
-                            value={order.dtfStatus}
-                            onChange={(e) => {
-                              const newVal = e.target.value;
-                              setOrders(prev =>
-                                prev.map(o =>
-                                  o.SORD === order.SORD ? { ...o, dtfStatus: newVal } : o
-                                )
-                              );
-                            }}
-                          >
+                      {(order.decorationMethod === "DTF" || order.decorationMethod === "Both") && (
+                        <div className="field-group">
+                          <label>DTF Status:</label>
+                          <select value={order.dtfStatus} onChange={(e) => handleFieldChange(order.SORD, 'dtfStatus', e.target.value)}>
                             <option value="">Select</option>
-                            <option value="In Stock">In Stock</option>
-                            <option value="Not Started">Not Started</option>
-                            <option value="On Press">On Press</option>
-                            <option value="Printed">Printed</option>
-                            <option value="Issues">Issues</option>
+                            {dtfStatusOptions.map(option => (
+                              <option key={option} value={option}>{option}</option>
+                            ))}
                           </select>
                         </div>
                       )}
-                      <div>
-                        <strong>Back Order Items:</strong>
-                        <div className="backorder-items">
-                          {order["Item List"] && order["Item List"].map(item => (
-                            <label key={item["Master Code"]}>
-                              <input type="checkbox" />{' '}
-                              {item["Master Code"]} - {item.Description}
-                            </label>
-                          ))}
+                      <div className="field-group">
+                        <label>Back Order Items:</label>
+                        <div className="back-order-list">
+                          {order["Item List"].map((item, index) => {
+                            // For each item, list its Other Parts (if any)
+                            return item["Other Parts"].map((otherPart, idx) => (
+                              <div key={index + '-' + idx}>
+                                <input 
+                                  type="checkbox" 
+                                  checked={(backOrderSelections[order.SORD] || []).includes(otherPart)}
+                                  onChange={() => handleBackOrderToggle(order.SORD, otherPart)}
+                                />
+                                <span>{otherPart}</span>
+                              </div>
+                            ));
+                          })}
                         </div>
                       </div>
-                      <div>
-                        <strong>Items Completed:</strong>
-                        <div className="items-completed">
-                          {order["Item List"] && order["Item List"].map(item => (
-                            <label key={item["Master Code"]}>
-                              <input type="checkbox" />{' '}
-                              {item["Master Code"]}
-                            </label>
+                      <div className="field-group">
+                        <label>Items Completed:</label>
+                        <div className="completed-items-list">
+                          {order["Item List"].map((item, index) => (
+                            <div key={index}>
+                              <input 
+                                type="checkbox" 
+                                checked={completedItems[order.SORD] ? completedItems[order.SORD][index] : false}
+                                onChange={() => handleCompletedItemToggle(order.SORD, index)}
+                              />
+                              <span>{item["Master Code"]}</span>
+                            </div>
                           ))}
+                        </div>
+                        <div className="progress-bar">
+                          <div className="progress" style={{ width: `${calculateProgress(order.SORD)}%` }}></div>
+                          <span>{calculateProgress(order.SORD)}%</span>
                         </div>
                       </div>
                     </div>
@@ -269,118 +306,85 @@ const OrderTracker = () => {
         </tbody>
       </table>
 
-      {/* Modal for Reviewing New Orders (after CSV upload) */}
-      {showNewOrdersModal && (
+      {/* Modal Popup for New Orders */}
+      {showModal && (
         <div className="modal-overlay">
-          <div className="modal-content">
-            <h3>Review New Orders</h3>
-            {newOrdersData.map(order => (
-              <div key={order.SORD} className="modal-order-item">
-                <p>
-                  <strong>{order.SORD} - {order["Trader Name"]}</strong>
-                </p>
-                <div>
+          <div className="modal">
+            <h3>New Orders - Update Details</h3>
+            {Object.keys(newOrdersForm).map(sord => (
+              <div key={sord} className="modal-order-form">
+                <h4>Order: {sord}</h4>
+                <div className="field-group">
                   <label>
-                    <input
-                      type="checkbox"
-                      checked={order.isNew}
-                      onChange={(e) =>
-                        handleNewOrderChange(order.SORD, 'isNew', e.target.checked)
-                      }
-                    />{' '}
-                    New Order
+                    <input 
+                      type="checkbox" 
+                      checked={newOrdersForm[sord].isNew} 
+                      onChange={(e) => handleModalChange(sord, 'isNew', e.target.checked)}
+                    />
+                    New
                   </label>
                 </div>
-                <div>
-                  <label>
-                    Garment Status:{' '}
-                    <select
-                      value={order.garmentStatus}
-                      onChange={(e) =>
-                        handleNewOrderChange(order.SORD, 'garmentStatus', e.target.value)
-                      }
-                    >
-                      <option value="Not Started">Not Started</option>
-                      <option value="In Stock">In Stock</option>
-                      <option value="Not Ordered">Not Ordered</option>
-                      <option value="Ordered">Ordered</option>
-                      <option value="Part Received">Part Received</option>
-                      <option value="Booked in">Booked in</option>
-                      <option value="Delayed">Delayed</option>
-                    </select>
-                  </label>
+                <div className="field-group">
+                  <label>Garment Status:</label>
+                  <select 
+                    value={newOrdersForm[sord].garmentStatus} 
+                    onChange={(e) => handleModalChange(sord, 'garmentStatus', e.target.value)}
+                  >
+                    <option value="">Select</option>
+                    {garmentStatusOptions.map(option => (
+                      <option key={option} value={option}>{option}</option>
+                    ))}
+                  </select>
                 </div>
-                <div>
-                  <label>
-                    Decoration Method:{' '}
-                    <select
-                      value={order.decorationMethod}
-                      onChange={(e) =>
-                        handleNewOrderChange(order.SORD, 'decorationMethod', e.target.value)
-                      }
+                <div className="field-group">
+                  <label>Decoration Method:</label>
+                  <select 
+                    value={newOrdersForm[sord].decorationMethod} 
+                    onChange={(e) => handleModalChange(sord, 'decorationMethod', e.target.value)}
+                  >
+                    <option value="">Select</option>
+                    {decorationMethodOptions.map(option => (
+                      <option key={option} value={option}>{option}</option>
+                    ))}
+                  </select>
+                </div>
+                {(newOrdersForm[sord].decorationMethod === "Embroidery" || newOrdersForm[sord].decorationMethod === "Both") && (
+                  <div className="field-group">
+                    <label>Embroidery File Status:</label>
+                    <select 
+                      value={newOrdersForm[sord].embroideryFileStatus} 
+                      onChange={(e) => handleModalChange(sord, 'embroideryFileStatus', e.target.value)}
                     >
                       <option value="">Select</option>
-                      <option value="Embroidery">Embroidery</option>
-                      <option value="DTF">DTF</option>
-                      <option value="Both">Both</option>
+                      {embroideryFileStatusOptions.map(option => (
+                        <option key={option} value={option}>{option}</option>
+                      ))}
                     </select>
-                  </label>
-                </div>
-                {(order.decorationMethod === 'Embroidery' ||
-                  order.decorationMethod === 'Both') && (
-                  <div>
-                    <label>
-                      Embroidery File Status:{' '}
-                      <select
-                        value={order.embroideryFileStatus}
-                        onChange={(e) =>
-                          handleNewOrderChange(
-                            order.SORD,
-                            'embroideryFileStatus',
-                            e.target.value
-                          )
-                        }
-                      >
-                        <option value="">Select</option>
-                        <option value="On File">On File</option>
-                        <option value="Not Ordered">Not Ordered</option>
-                        <option value="Ordered">Ordered</option>
-                        <option value="Arrived">Arrived</option>
-                        <option value="Delayed">Delayed</option>
-                        <option value="Fixing">Fixing</option>
-                      </select>
-                    </label>
                   </div>
                 )}
-                {(order.decorationMethod === 'DTF' ||
-                  order.decorationMethod === 'Both') && (
-                  <div>
-                    <label>
-                      DTF Status:{' '}
-                      <select
-                        value={order.dtfStatus}
-                        onChange={(e) =>
-                          handleNewOrderChange(order.SORD, 'dtfStatus', e.target.value)
-                        }
-                      >
-                        <option value="">Select</option>
-                        <option value="In Stock">In Stock</option>
-                        <option value="Not Started">Not Started</option>
-                        <option value="On Press">On Press</option>
-                        <option value="Printed">Printed</option>
-                        <option value="Issues">Issues</option>
-                      </select>
-                    </label>
+                {(newOrdersForm[sord].decorationMethod === "DTF" || newOrdersForm[sord].decorationMethod === "Both") && (
+                  <div className="field-group">
+                    <label>DTF Status:</label>
+                    <select 
+                      value={newOrdersForm[sord].dtfStatus} 
+                      onChange={(e) => handleModalChange(sord, 'dtfStatus', e.target.value)}
+                    >
+                      <option value="">Select</option>
+                      {dtfStatusOptions.map(option => (
+                        <option key={option} value={option}>{option}</option>
+                      ))}
+                    </select>
                   </div>
                 )}
               </div>
             ))}
-            <button onClick={saveNewOrders}>Save New Orders</button>
+            <button onClick={handleModalSubmit}>Save Changes</button>
           </div>
         </div>
       )}
     </div>
   );
-};
+}
 
-export default OrderTracker;
+// Make OrderTracker globally accessible
+window.OrderTracker = OrderTracker;
