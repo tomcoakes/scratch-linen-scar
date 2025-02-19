@@ -70,36 +70,36 @@ function OrderTable({ orders, searchTerm }) {
                                     )
                                 ),
                                 React.createElement('tr', { className: `expansion-row ${expandedRowSord === order.SORD ? 'expanded' : ''}` }, // <-- Expansion row, conditional 'expanded' class
-                                    React.createElement('td', { colSpan: "14" }, // Span all columns
-                                        React.createElement('div', { className: "expansion-content" }, // Container for expansion content
-                                            React.createElement('div', {className: 'back-order-section'},
-                                                React.createElement('h3', null, 'Back Order Items'),
-                                                React.createElement('p', null, 'Placeholder for Back Order Items List') // Placeholder
-                                            ),
-                                            React.createElement('div', {className: 'garment-status-section'},
-                                                React.createElement('h3', null, 'Garment Status'),
-                                                React.createElement('p', null, order.garmentStatus), // Placeholder, for now just showing current status
-                                            ),
-                                            order.decorationMethod === 'Embroidery' || order.decorationMethod === 'Both' ? (
-                                                React.createElement('div', {className: 'embroidery-status-section'},
-                                                    React.createElement('h3', null, 'Embroidery Status'),
-                                                    React.createElement('p', null, order.embroideryFileStatus) // Placeholder
-                                                )
-                                            ) : null,
-                                            order.decorationMethod === 'DTF' || order.decorationMethod === 'Both' ? (
-                                                React.createElement('div', {className: 'dtf-status-section'},
-                                                    React.createElement('h3', null, 'DTF Status'),
-                                                    React.createElement('p', null, order.dtfStatus) // Placeholder
-                                                )
-                                            ) : null,
-                                            React.createElement('div', {className: 'items-completed-section'},
-                                                React.createElement('h3', null, 'Items Completed'),
-                                                React.createElement('p', null, 'Placeholder for Items Completed List') // Placeholder
-                                            )
+                                  React.createElement('td', { colSpan: "14" }, // Span all columns
+                                      React.createElement('div', { className: "expansion-content" }, // Container for expansion content
+                                          React.createElement('div', {className: 'back-order-section'},
+                                              React.createElement('h3', null, 'Back Order Items'),
+                                              React.createElement('p', null, order["Other Parts"] ? order["Other Parts"].join(', ') : "None") // Display "Other Parts"
+                                          ),
+                                          React.createElement('div', {className: 'garment-status-section'},
+                                              React.createElement('h3', null, 'Garment Status'),
+                                              React.createElement('p', null, order.garmentStatus), // Display garmentStatus
+                                          ),
+                                          order.decorationMethod === 'Embroidery' || order.decorationMethod === 'Both' ? (
+                                              React.createElement('div', {className: 'embroidery-status-section'},
+                                                  React.createElement('h3', null, 'Embroidery Status'),
+                                                  React.createElement('p', null, order.embroideryFileStatus) // Display embroideryFileStatus
+                                              )
+                                          ) : null,
+                                          order.decorationMethod === 'DTF' || order.decorationMethod === 'Both' ? (
+                                              React.createElement('div', {className: 'dtf-status-section'},
+                                                  React.createElement('h3', null, 'DTF Status'),
+                                                  React.createElement('p', null, order.dtfStatus) // Display dtfStatus
+                                              )
+                                          ) : null,
+                                           React.createElement('div', {className: 'items-completed-section'},
+                                              React.createElement('h3', null, 'Items Completed'),
+                                              React.createElement('p', null, order["Item List"].map(item => item["Master Code"]).join(', '))  //List Master Codes
+                                          )
 
-                                        )
-                                    )
-                                ),
+                                      )
+                                  )
+                              ),
                             )
                         ))
                     ) : (
