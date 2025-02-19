@@ -79,8 +79,8 @@ function OrderTable({ orders, searchTerm }) {
                     )
                 )
             )
-        )
-      );
+                            )
+        );
     }
 
 export default OrderTable;
