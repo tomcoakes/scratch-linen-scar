@@ -69,8 +69,8 @@ function OrderTable({ orders, searchTerm }) {
                                         )
                                     )
                                 ),
-                                expandedRowSORD === order.SORD ? ( 
-                                    React.createElement('tr', { className: "expansion-row" },
+                                expandedRowSORD === order.SORD ? (
+                                    React.createElement('tr', { className: `expansion-row ${expandedRowSORD === order.SORD ? 'expanded' : ''}` }, // <-- Conditional "expanded" class
                                         React.createElement('td', { colSpan: "14" },
                                             React.createElement('div', { className: "expansion-content" },
                                                 'Expansion Content Here for SORD: ', order.SORD

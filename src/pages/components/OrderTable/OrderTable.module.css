@@ -81,14 +81,39 @@
 
 /* Style for expansion row (initially hidden) */
 #orders-table tbody tr.expansion-row td {
-    padding: 0; /* Remove padding from expansion row cells */
-    border-bottom: 1px solid #e2e8f0; /* Optional: border below expansion row */
-    background-color: #fefefe; /* Very light background for expansion row */
+    padding: 0;
+    border-bottom: 1px solid #e2e8f0;
+    background-color: #fefefe;
+    overflow: hidden;       /* Hide content when height is 0 during animation */
+    height: 0;            /* Initial height: 0 for slide-down effect */
+    transition: height 0.3s ease-out; /* Transition for height property */
 }
+
+/* Expansion row when expanded (height: auto to reveal content) */
+#orders-table tbody tr.expansion-row.expanded td {
+    height: auto;         /* Animate to auto height to reveal content */
+}
+
 
 /* Container for expansion content */
 .expansion-content {
-    padding: 20px 15px; /* Add padding to expansion content */
-    background-color: #fefefe; /* Match background color */
-    border-top: 1px solid #e2e8f0; /* Add a top border to visually separate from data rows */
+    padding: 0 15px;      /* Vertical padding will be animated */
+    background-color: #fefefe;
+    border-top: 1px solid #e2e8f0;
+    opacity: 0;           /* Initial opacity: 0 for fade-in effect */
+    transform: translateY(-10px); /* Start position slightly above for slide-down */
+    transition: max-height 0.3s ease-out, opacity 0.3s ease-out;/* Transitions for opacity, padding, transform with slight delay for opacity */
+    overflow: hidden;      /* Ensure content within animates smoothly */
+    padding-top: 0;       /* Initial padding-top: 0 for slide-down effect */
+    padding-bottom: 0;    /* Initial padding-bottom: 0 for slide-down effect */
+}
+
+
+/* Expansion content when expansion-row is expanded - ANIMATION APPLIED HERE */
+#orders-table tbody tr.expansion-row.expanded td .expansion-content {
+  max-height: 500px;
+    opacity: 1;           /* Animate to opacity: 1 to fade in */
+    transform: translateY(0); /* Animate to translateY(0) to slide down to final position */
+    padding-top: 20px;    /* Animate padding-top to 20px to slide down */
+    padding-bottom: 20px; /* Animate padding-bottom to 20px to slide down */
 }
