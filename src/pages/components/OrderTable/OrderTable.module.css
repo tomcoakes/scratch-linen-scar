@@ -80,18 +80,20 @@
 }
 
 /* Style for expansion row (initially hidden) */
-#orders-table tbody tr.expansion-row td {
+#orders-table tbody tr.expansion-row { /* <-- TARGETING TR ELEMENT DIRECTLY */
+    /* #orders-table tbody tr.expansion-row td { - REMOVE THIS RULE - APPLY HEIGHT/TRANSITION TO TR */
     padding: 0;
     border-bottom: 1px solid #e2e8f0;
     background-color: #fefefe;
-    overflow: hidden;       /* Hide content when height is 0 during animation */
-    height: 0;            /* Initial height: 0 for slide-down effect */
-    transition: height 0.3s ease-out; /* Transition for height property */
+    overflow: hidden;
+    height: 0;         /* Initial height: 0 for slide-down effect - NOW ON TR */
+    transition: height 0.3s ease-out; /* Transition for height property - NOW ON TR */
 }
 
 /* Expansion row when expanded (height: auto to reveal content) */
-#orders-table tbody tr.expansion-row.expanded td {
-    height: auto;         /* Animate to auto height to reveal content */
+#orders-table tbody tr.expansion-row.expanded { /* <-- TARGETING TR ELEMENT DIRECTLY */
+    /* #orders-table tbody tr.expansion-row.expanded td { - REMOVE THIS RULE - APPLY HEIGHT: AUTO TO TR */
+    height: auto;         /* Animate to auto height to reveal content - NOW ON TR */
 }
 
 
@@ -102,7 +104,7 @@
     border-top: 1px solid #e2e8f0;
     opacity: 0;           /* Initial opacity: 0 for fade-in effect */
     transform: translateY(-10px); /* Start position slightly above for slide-down */
-    transition: max-height 0.3s ease-out, opacity 0.3s ease-out;/* Transitions for opacity, padding, transform with slight delay for opacity */
+    transition: opacity 0.3s ease-out 0.1s, padding 0.3s ease-out, transform 0.3s ease-out; /* Transitions for opacity, padding, transform with slight delay for opacity */
     overflow: hidden;      /* Ensure content within animates smoothly */
     padding-top: 0;       /* Initial padding-top: 0 for slide-down effect */
     padding-bottom: 0;    /* Initial padding-bottom: 0 for slide-down effect */
@@ -111,7 +113,6 @@
 
 /* Expansion content when expansion-row is expanded - ANIMATION APPLIED HERE */
 #orders-table tbody tr.expansion-row.expanded td .expansion-content {
-  max-height: 500px;
     opacity: 1;           /* Animate to opacity: 1 to fade in */
     transform: translateY(0); /* Animate to translateY(0) to slide down to final position */
     padding-top: 20px;    /* Animate padding-top to 20px to slide down */
