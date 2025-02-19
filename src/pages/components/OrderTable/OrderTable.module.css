@@ -68,40 +68,44 @@ main {
 }
 
 #orders-table tbody tr.expanded {
-  background-color: #c6f5b3; /* Light green-ish when expanded */
+  background-color: #f2f2f2; /* Light green-ish when expanded */
 }
 
 /* ---------- Info Row (for tags/decoration) ---------- */
 #orders-table tbody tr.info-row td {
   padding: 0;
-  border-bottom: none;
+  /* Remove cell borders so we can add a row-level separator */
+}
+
+#orders-table tbody tr.info-row {
+  border-bottom: 1px solid #e2e8f0;  /* Separates each entry */
 }
 
 .info-container {
-    padding: 6px 15px;
-    display: flex; /* Use flexbox */
-    align-items: center; /* Vertically center items */
-    justify-content: space-between; /* Distribute space */
-    gap: 15px;
-    font-size: 0.9em;
-    color: #555;
+  padding: 6px 15px;
+  display: flex;           /* Use flexbox */
+  align-items: center;     /* Vertically center items */
+  justify-content: space-between; /* Distribute space */
+  gap: 15px;
+  font-size: 0.9em;
+  color: #555;
 }
 
 .tags-container {
   display: flex;
-  gap: 10px; /* Space between tags */
+  gap: 10px;             /* Space between tags */
   align-items: center;
-  flex-wrap: wrap; /* Allow tags to wrap if needed */
+  flex-wrap: wrap;       /* Allow tags to wrap if needed */
   min-width: 180px;
 }
 
 .new-tag,
 .embroidery-tag,
 .dtf-tag {
-    padding: 2px 6px;  /* Smaller padding for tags */
-    border-radius: 4px;
-    font-size: 0.8em;  /* Smaller font size for tags */
-    font-weight: 500;
+  padding: 2px 6px;      /* Smaller padding for tags */
+  border-radius: 4px;
+  font-size: 0.8em;      /* Smaller font size for tags */
+  font-weight: 500;
 }
 
 /* ---------- Expansion Row with Sliding Effect ---------- */
@@ -123,13 +127,15 @@ main {
   transition: max-height 0.5s ease, opacity 0.5s ease, padding 0.5s ease;
 }
 
-/* When expanded, reveal the content */
+/* When expanded, reveal the content with a refined, cohesive look */
 .expansion-row.expanded .expansion-content {
   max-height: 500px; /* Adjust if needed */
   opacity: 1;
   padding: 20px 15px;
-  background-color: #dffad4;
-  border-bottom: 1px solid #e2e8f0;
+  background-color: #e7f7ee;        /* A more refined, subtle green */
+  border: 1px solid #d2e8d2;
+  border-top: none;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
 /* ---------- Sections Within Expansion Content ---------- */
@@ -150,90 +156,56 @@ main {
 }
 
 /* ---------- Items Completed Section ---------- */
-/* ---------- Items Completed Section ---------- */
 .items-completed-section {
-    padding: 15px;
-    border: 1px solid #eee;
-    border-radius: 6px;
-    background-color: #fafafa;
-    max-height: 200px;  /* Adjust the height as needed */
-    overflow-y: auto;   /* Enables vertical scrolling */
+  padding: 15px;
+  border: 1px solid #eee;
+  border-radius: 6px;
+  background-color: #fafafa;
+  max-height: 200px;  /* Adjust the height as needed */
+  overflow-y: auto;   /* Enables vertical scrolling */
 }
 
 .items-completed-table {
-    width: 100%;
-    border-collapse: collapse;
+  width: 100%;
+  border-collapse: collapse;
 }
 
 .items-completed-table th,
 .items-completed-table td {
-    padding: 8px 12px;
-    text-align: left;
-    border-bottom: 1px solid #f0f0f0;
+  padding: 8px 12px;
+  text-align: left;
+  border-bottom: 1px solid #f0f0f0;
 }
 
 .items-completed-table th {
-    background-color: #f9fafb;
-    color: #666;
-    font-weight: 500;
+  background-color: #f9fafb;
+  color: #666;
+  font-weight: 500;
 }
 
 .items-completed-table tr.completed {
-    text-decoration: line-through;
-    color: #999;
+  text-decoration: line-through;
+  color: #999;
 }
 
 .items-completed-table input[type="number"] {
-    width: 60px;
-    padding: 4px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
+  width: 60px;
+  padding: 4px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
 }
 
-.status-dropdowns-container {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-}
-
-.status-dropdowns-container select{
-  padding: .2rem;
-  border-radius: .25rem;
-  border-color: rgba(0,0,0, .3);
-}
-
-.new-tag {
-    background-color: #f0f0f0;
-    color: #333;
-}
-
-.embroidery-tag {
-    background-color: #d1e7dd; /* Example: light green */
-    color: #0f5132; /* Example: dark green */
-    border: 1px solid #badbcc;
-}
-
-.dtf-tag {
-    background-color: #cff4fc; /* Example: light blue */
-    color: #055160; /* Example: dark blue */
-    border: 1px solid #b6effb;
-}
-
-
-
-/* Style for each dropdown */
-/* ---------- Fixed Dropdown Positions ---------- */
-/* ---------- Fixed Dropdown Positions (Aligned to the Left) ---------- */
+/* ---------- Status Dropdowns ---------- */
+/* Fixed positions for dropdowns (aligned to the left, next to tags) */
 .status-dropdowns-container {
   display: grid;
   grid-template-columns: repeat(3, auto);  /* Three columns with auto width */
-  gap: 10px;                              /* Slight gap between dropdowns */
-                    /* Spacing from the tags container */
-
-    margin-right: auto;
+  gap: 10px;
+  margin-left: 30px;
+  margin-right: auto;
 }
 
-/* ---------- Base Styling for Dropdowns ---------- */
+/* Base styling for dropdowns */
 .status-dropdowns-container select {
   width: 100%;
   /* Increase right padding so the arrow doesn't cover text */
@@ -263,7 +235,7 @@ main {
   outline: none;
 }
 
-/* ---------- Specific Dropdown Colouring ---------- */
+/* Specific Dropdown Colouring */
 /* Garment dropdown styling */
 .status-dropdowns-container select[id^="garment-status-"] {
   background-color: #ded1e7;
@@ -297,7 +269,7 @@ main {
   color: #fff;
 }
 
-/* ---------- Optional: Label Styling ---------- */
+/* Optional: Label Styling for dropdowns */
 .status-dropdowns-container label {
   display: block;
   margin-bottom: 4px;
@@ -306,7 +278,6 @@ main {
   color: #444;
   text-align: left;
 }
-
 
 /* ---------- Footer ---------- */
 footer {
