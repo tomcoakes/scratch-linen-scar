@@ -98,4 +98,26 @@
     /* Style for the content inside expansion row - you can customize this further */
     font-size: 1rem;
     color: #333;
+    display: grid; /* Use grid for layout */
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Responsive columns */
+    gap: 20px; /* Spacing between sections */
+}
+
+.back-order-section,
+.garment-status-section,
+.embroidery-status-section,
+.dtf-status-section,
+.items-completed-section{
+    padding: 15px;
+    border: 1px solid #eee;
+    border-radius: 6px;
+    background-color: #fafafa;
+}
+
+.expansion-content h3 {
+    margin-top: 0;
+    margin-bottom: 10px;
+    font-size: 1.1rem;
+    color: #4a5568;
+    font-weight: 500;
 }
