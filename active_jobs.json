@@ -1357,7 +1357,7 @@
     "Rep": "Vicky Gill",
     "Address": "unit 17 union way, Aston , Birmingham, Wset Midlands , B6 7FH",
     "isNew": true,
-    "garmentStatus": "Not Started",
+    "garmentStatus": "Not Ordered",
     "decorationMethod": "",
     "embroideryFileStatus": "",
     "dtfStatus": "",
@@ -5325,7 +5325,7 @@
         "Other Parts Desc": [
           "Classic Full Zip Micro Fleece Jacket - Navy - 2XLarge"
         ],
-        "Completed Qty": 5
+        "Completed Qty": 2
       },
       {
         "Master Code": "SWPTFCN003-L",
@@ -5346,7 +5346,7 @@
         "Other Parts Desc": [
           "Uneek Classic Polo Shirt - Navy - Large"
         ],
-        "Completed Qty": 0
+        "Completed Qty": 4
       },
       {
         "Master Code": "SWPTFCN003-M",
@@ -5367,7 +5367,7 @@
         "Other Parts Desc": [
           "Uneek Classic Polo Shirt - Navy - Medium"
         ],
-        "Completed Qty": 0
+        "Completed Qty": 3
       },
       {
         "Master Code": "SWPTFCN003-S",
@@ -6115,10 +6115,10 @@
     "Rep": "Phil Murphy",
     "Address": "Manor Farm, Guilsborough Road, West Haddon, Northampton, NN6 7AQ",
     "isNew": true,
-    "garmentStatus": "Ordered",
+    "garmentStatus": "Not Ordered",
     "decorationMethod": "Both",
-    "embroideryFileStatus": "On File",
-    "dtfStatus": "In Stock",
+    "embroideryFileStatus": "Not Ordered",
+    "dtfStatus": "Not Started",
     "jobStatus": "Not Started"
   }
 ]

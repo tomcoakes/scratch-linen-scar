@@ -221,16 +221,17 @@ main {
 
 
 /* Style for each dropdown */
+/* ---------- Fixed Dropdown Positions ---------- */
 .status-dropdowns-container {
   display: grid;
-  grid-template-columns: 200px 200px 200px;  /* Fixed columns for Garment, Embroidery, DTF */
+  grid-template-columns: 1fr 1fr 1fr;  /* Reserve three equal columns */
   gap: 20px;
-  max-width: 640px;  /* 3 * 200px + 2 * 20px = 640px total */
-  margin: 20px auto;  /* Center the container horizontally */
+  max-width: 640px; /* Adjust as needed */
+  margin: 20px auto; /* Center the grid container */
 }
 
-/* Base styling for all dropdowns */
-.status-dropdown {
+/* ---------- Base Styling for Dropdowns ---------- */
+.status-dropdowns-container select {
   width: 100%;
   padding: 8px 12px;
   font-size: 14px;
@@ -248,37 +249,40 @@ main {
   cursor: pointer;
 }
 
-.status-dropdown:hover {
+.status-dropdowns-container select:hover {
   border-color: #999;
 }
 
-.status-dropdown:focus {
+.status-dropdowns-container select:focus {
   border-color: #666;
   box-shadow: 0 0 4px rgba(0, 0, 0, 0.2);
   outline: none;
 }
 
-/* Specific dropdown colouring for added style */
-.garment-dropdown {
+/* ---------- Specific Dropdown Colouring ---------- */
+/* Garment dropdown styling */
+.status-dropdowns-container select[id^="garment-status-"] {
   background-color: #fafafa;
   border-color: #b0bec5;
   color: #333;
 }
 
-.embroidery-dropdown {
-  background-color: #e3f2fd; /* Light blue tint */
-  border-color: #90caf9;
-  color: #333;
+/* Embroidery dropdown styling */
+.status-dropdowns-container select[id^="embroidery-status-"] {
+  background-color: #D1E7DD; /* Light blue tint */
+  border-color: #BADBCC;
+  color: #0F5132;
 }
 
-.dtf-dropdown {
-  background-color: #fce4ec; /* Light pink tint */
-  border-color: #f48fb1;
-  color: #333;
+/* DTF dropdown styling */
+.status-dropdowns-container select[id^="dtf-status-"] {
+  background-color: #CFF4FC; /* Light pink tint */
+  border-color: #B7F0FB;
+  color: #185860;
 }
 
-/* Optional: Label styling for each dropdown */
-.status-label {
+/* ---------- Optional: Label Styling ---------- */
+.status-dropdowns-container label {
   display: block;
   margin-bottom: 4px;
   font-size: 13px;
@@ -286,7 +290,6 @@ main {
   color: #444;
   text-align: left;
 }
-
 
 /* ---------- Footer ---------- */
 footer {
