@@ -40,6 +40,7 @@
     /* Default row height - adjust as needed */
     padding-top: 12px;
     padding-bottom: 12px;
+  transition: padding-top 0.3s ease, padding-bottom 0.3s ease; 
 }
 #orders-table tbody tr {
   /* Removed border-bottom, added background */
@@ -48,6 +49,7 @@
 }
 #orders-table tbody tr.expanded {
     background-color: #f5f7fa; /* Light grey background when expanded */
+    transition: background-color 0.3s ease;
 }
 
 
