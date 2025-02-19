@@ -92,6 +92,7 @@ main {
   gap: 10px; /* Space between tags */
   align-items: center;
   flex-wrap: wrap; /* Allow tags to wrap if needed */
+  min-width: 180px;
 }
 
 .new-tag,
@@ -227,7 +228,9 @@ main {
   display: grid;
   grid-template-columns: repeat(3, auto);  /* Three columns with auto width */
   gap: 10px;                              /* Slight gap between dropdowns */
-  margin-left: 15px;                      /* Spacing from the tags container */
+                    /* Spacing from the tags container */
+
+    margin-right: auto;
 }
 
 /* ---------- Base Styling for Dropdowns ---------- */
