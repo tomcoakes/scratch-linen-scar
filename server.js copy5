@@ -1309,8 +1309,7 @@ app.post('/api/upload-orders', express.text({ type: 'text/csv' }), (req, res) =>
                 console.log(`CSV data processed. ${trulyNewOrders.length} new orders added, ${results.length - trulyNewOrders.length} existing orders skipped.`);
 
                 updateActiveJobsJSON(updatedJobsArray);
-                // res.json(updatedJobsArray);
-                res.json(trulyNewOrders); // <-- RETURN trulyNewOrders
+                res.json(updatedJobsArray);
 
             })
             .on('error', (error) => {
@@ -1425,50 +1424,6 @@ app.delete('/api/delete-order/:sord', (req, res) => {
             // Write the updated data back to the file
             updateActiveJobsJSON(updatedJobsData);
             res.json({ message: `Order ${sordToDelete} deleted successfully.` });
-
-        } catch (parseError) {
-            console.error("Error parsing active_jobs.json:", parseError);
-            return res.status(500).json({ error: 'Error parsing active order data.' });
-        }
-    });
-});
-
-
-// --- NEW API Endpoint: Update Order (PUT) ---
-app.put('/api/update-order/:sord', (req, res) => {
-    const sordToUpdate = req.params.sord;
-    const updatedOrderData = req.body;
-    const filePath = path.join(__dirname, 'active_jobs.json');
-
-    fs.readFile(filePath, 'utf8', (readErr, data) => {
-        if (readErr) {
-            console.error("Error reading active_jobs.json:", readErr);
-            return res.status(500).json({ error: 'Failed to read active order data.' });
-        }
-
-        try {
-            let jobsData = JSON.parse(data);
-
-            // Find the index of the order to update
-            const orderIndex = jobsData.findIndex(job => job.SORD === sordToUpdate);
-
-            if (orderIndex === -1) {
-                return res.status(404).json({ error: `Order with SORD ${sordToUpdate} not found.` });
-            }
-
-            // Update the order data.  IMPORTANT: MERGE the data to preserve existing fields
-            jobsData[orderIndex] = { ...jobsData[orderIndex], ...updatedOrderData };
-            jobsData[orderIndex].isNew = false; // Clear 'isNew' flag
-
-            // Write the updated data back to the file
-            fs.writeFile(filePath, JSON.stringify(jobsData, null, 2), 'utf8', (writeErr) => {
-                if (writeErr) {
-                    console.error("Error writing to active_jobs.json:", writeErr);
-                    return res.status(500).json({ error: 'Failed to update order data.' });
-                }
-
-                res.json({ message: `Order ${sordToUpdate} updated successfully.`, updatedOrder: jobsData[orderIndex] });
-            });
 
         } catch (parseError) {
             console.error("Error parsing active_jobs.json:", parseError);

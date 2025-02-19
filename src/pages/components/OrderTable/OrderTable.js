@@ -25,7 +25,7 @@ function OrderTable({ orders, searchTerm }) {
 
     return (
         React.createElement('div', { className: "order-table-container" },
-            React.createElement('h2', null, 'Active Orders (React Component!)'),
+            React.createElement('h2', null, 'Active Orders'),
             React.createElement('table', { id: 'orders-table' },
                 React.createElement('thead', null,
                     React.createElement('tr', null,
