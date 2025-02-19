@@ -1147,14 +1147,20 @@ function parseExcelDate(dateString) {
         return null; // Handle empty or null values
     }
 
-    // Check if the dateString matches the YYYY-MM-DD format using a regular expression
-    const dateRegex = /^\d{4}-\d{2}-\d{2}$/;
-    if (!dateRegex.test(dateString)) {
-      console.warn(`Invalid date format: ${dateString}`);
-      return null; // Handle invalid format
-    }
+    // Check if the dateString is purely numeric (Excel date)
+    if (/^\d+$/.test(dateString)) {
+        // Excel date as number of days since 1900-01-01 (with a bug for 1900-02-29)
+        const excelDate = parseInt(dateString, 10);
+        const parsedDate = new Date(Date.UTC(1899, 11, 30 + excelDate)); // 1899-12-30 is day 0
+          if (isNaN(parsedDate)) {
+                console.warn(`Invalid date (numeric): ${dateString}`);
+                return null;
+            }
+        return parsedDate
 
-    const [year, month, day] = dateString.split('-').map(Number);
+    } else {
+
+    const [day, month, year] = dateString.split('/').map(Number);
 
     // Month is 0-indexed in JavaScript Date
     const parsedDate = new Date(Date.UTC(year, month - 1, day));
@@ -1165,6 +1171,7 @@ function parseExcelDate(dateString) {
     }
 
     return parsedDate;
+    }
 }
 
 function formatDate(date) {

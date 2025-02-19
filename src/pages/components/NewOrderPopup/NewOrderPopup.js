@@ -17,10 +17,10 @@ function NewOrderPopup({ newOrders, onOrderUpdates, onClose }) {
         setUpdatedOrders(newUpdatedOrders);
     };
 
-    const handleCheckboxChange = (sord, field, checked) => {
+    const handleCheckboxChange = (sord, field, checked) => { // Corrected checkbox handler
       const newUpdatedOrders = updatedOrders.map(order => {
           if (order.SORD === sord) {
-              return { ...order, [field]: checked };
+              return { ...order, [field]: checked }; // Directly use 'checked' value
           }
           return order;
       });
@@ -41,6 +41,7 @@ function NewOrderPopup({ newOrders, onOrderUpdates, onClose }) {
                     React.createElement('thead', null,
                         React.createElement('tr', null,
                             React.createElement('th', null, 'SORD'),
+                            React.createElement('th', null, 'Ordered Date'),
                             React.createElement('th', null, 'New/Repeat'),
                             React.createElement('th', null, 'Garment Status'),
                             React.createElement('th', null, 'Decoration Method'),
@@ -52,11 +53,12 @@ function NewOrderPopup({ newOrders, onOrderUpdates, onClose }) {
                         updatedOrders.map(order => (
                             React.createElement('tr', { key: order.SORD },
                                 React.createElement('td', null, order.SORD),
+                                React.createElement('td', null, order["Ordered Date"]),
                                 React.createElement('td', null,
                                     React.createElement('input', {
                                         type: "checkbox",
-                                        checked: !order.isNew,  // Checked means NOT new (Repeat)
-                                        onChange: (e) => handleCheckboxChange(order.SORD, 'isNew', !e.target.checked) // Invert checked for 'isNew'
+                                        checked: !order.isNew,  // Checked if NOT new (i.e., Repeat)
+                                        onChange: (e) => handleCheckboxChange(order.SORD, 'isNew', !e.target.checked)
                                     })
                                 ),
                                 React.createElement('td', null,
