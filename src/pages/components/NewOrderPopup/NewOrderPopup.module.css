@@ -19,7 +19,7 @@
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     max-width: 90%; /* Limit popup width */
-    width: 800px;
+/*     width: 800px; */
     max-height: 80vh; /* Limit popup height with scroll */
     overflow-y: auto; /* Add vertical scroll if content overflows */
 }
