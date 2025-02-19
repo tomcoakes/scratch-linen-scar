@@ -141,3 +141,31 @@
     color: #4a5568;
     font-weight: 500;
 }
+
+/* src/pages/components/OrderTable/OrderTable.module.css */
+
+/* ... (previous OrderTable.module.css styles) ... */
+
+.items-completed-section {
+    padding: 15px;
+    border: 1px solid #eee;
+    border-radius: 6px;
+    background-color: #fafafa;
+    max-height: 200px; /* Set a maximum height for the section */
+    overflow-y: auto;    /* Enable vertical scrolling if content overflows */
+}
+
+.items-completed-list {
+    list-style: none; /* Remove default list bullets */
+    padding: 0;       /* Remove default padding */
+    margin: 0;        /* Remove default margin */
+}
+
+.items-completed-list li {
+    padding: 5px 0; /* Add some vertical padding to list items */
+    border-bottom: 1px solid #f0f0f0; /* Add a subtle separator between list items */
+}
+
+.items-completed-list li:last-child {
+    border-bottom: none; /* Remove separator from the last list item */
+}

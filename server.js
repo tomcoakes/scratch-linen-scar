@@ -1282,7 +1282,8 @@ app.post('/api/upload-orders', express.text({ type: 'text/csv' }), (req, res) =>
                                 "SWP Parts": [],
                                 "Other Parts": [],
                                 "SWP Parts Desc": [],
-                                "Other Parts Desc": []
+                                "Other Parts Desc": [],
+                                "Completed Qty": 0,
                             };
                             consolidatedOrders[sord]["Item List"].push(existingItem);
                         }

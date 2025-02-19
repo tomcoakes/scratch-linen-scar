@@ -92,9 +92,15 @@ function OrderTable({ orders, searchTerm }) {
                                                   React.createElement('p', null, order.dtfStatus) // Display dtfStatus
                                               )
                                           ) : null,
-                                           React.createElement('div', {className: 'items-completed-section'},
+                                           React.createElement('div', { className: 'items-completed-section' },
                                               React.createElement('h3', null, 'Items Completed'),
-                                              React.createElement('p', null, order["Item List"].map(item => item["Master Code"]).join(', '))  //List Master Codes
+                                              React.createElement('ul', { className: 'items-completed-list' }, // Unordered list for items
+                                                  order["Item List"].map(item => (
+                                                      React.createElement('li', { key: item["Master Code"] }, // List item for each master code
+                                                          `${item["Master Code"]} (Qty: ${item["Outstanding Qty"]})` // Display Master Code and Outstanding Qty
+                                                      )
+                                                  ))
+                                              )
                                           )
 
                                       )
