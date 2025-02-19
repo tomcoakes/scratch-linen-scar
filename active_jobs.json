@@ -24,7 +24,7 @@
         "Other Parts Desc": [
           "Classic Full Zip Micro Fleece Jacket - Navy - 2XLarge"
         ],
-        "Completed Qty": 2
+        "Completed Qty": 3
       },
       {
         "Master Code": "SWPTFCN003-L",
@@ -45,7 +45,7 @@
         "Other Parts Desc": [
           "Uneek Classic Polo Shirt - Navy - Large"
         ],
-        "Completed Qty": 0
+        "Completed Qty": 15
       },
       {
         "Master Code": "SWPTFCN003-M",
@@ -66,7 +66,7 @@
         "Other Parts Desc": [
           "Uneek Classic Polo Shirt - Navy - Medium"
         ],
-        "Completed Qty": 0
+        "Completed Qty": 7
       },
       {
         "Master Code": "SWPTFCN003-S",
@@ -814,7 +814,7 @@
     "Rep": "Phil Murphy",
     "Address": "Manor Farm, Guilsborough Road, West Haddon, Northampton, NN6 7AQ",
     "isNew": true,
-    "garmentStatus": "Not Started",
+    "garmentStatus": "Booked in",
     "decorationMethod": "",
     "embroideryFileStatus": "",
     "dtfStatus": "",
@@ -1868,7 +1868,7 @@
         "Other Parts Desc": [
           "36\" Red Regatta kids Dover Jacket RG244"
         ],
-        "Completed Qty": 0
+        "Completed Qty": 1
       }
     ],
     "Ordered Date": "05/02/2025",
@@ -1908,7 +1908,7 @@
         "Other Parts Desc": [
           "Russell Nano Padded Bodywarmer - Black - Medium"
         ],
-        "Completed Qty": 0
+        "Completed Qty": 2
       }
     ],
     "Ordered Date": "06/02/2025",
