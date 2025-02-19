@@ -279,9 +279,21 @@ main {
   text-align: left;
 }
 
-#orders-table tbody tr.data-row { /* Target .data-row for main data rows */
-    background-color: #fff; /* Default background */
-    transition: background-color 0.3s ease; /* Smooth transition for background */
+.new-tag {
+    background-color: #f0f0f0;
+    color: #333;
+}
+
+.embroidery-tag {
+    background-color: #d1e7dd; /* Example: light green */
+    color: #0f5132; /* Example: dark green */
+    border: 1px solid #badbcc;
+}
+
+.dtf-tag {
+    background-color: #cff4fc; /* Example: light blue */
+    color: #055160; /* Example: dark blue */
+    border: 1px solid #b6effb;
 }
 
 /* ---------- Footer ---------- */

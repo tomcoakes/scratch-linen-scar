@@ -1,5 +1,44 @@
 [
   {
+    "SORD": "SORD01611929",
+    "Trader Code": "BIR003X",
+    "Trader Name": "Birmingham Stopper",
+    "Total Items": 3,
+    "Item List": [
+      {
+        "Master Code": "SWPBIRSTOP003-M",
+        "Description": "Medium Black Birmingham Stopper UX Fleece - UX5",
+        "Ordered Qty": 3,
+        "Outstanding Qty": 3,
+        "SWP Parts": [
+          "SWPEMB-BIR001"
+        ],
+        "Other Parts": [
+          "UX5.B.M"
+        ],
+        "SWP Parts Desc": [
+          "Birmingham Stopper Left Breast Embroidery - Maroon/White"
+        ],
+        "Other Parts Desc": [
+          "Full Zip Fleece - Black - M"
+        ]
+      }
+    ],
+    "Ordered Date": "06/01/2025",
+    "Due Date": "10/02/2025",
+    "Total Logos": 1,
+    "Reference": "BIR003X",
+    "Contact": "",
+    "Rep": "Tammy Harris",
+    "Address": "DELIVER TO RECEPTION NOT STORES, 235 Icknield St, Birmingham , , B18 6QU",
+    "isNew": true,
+    "garmentStatus": "Not Started",
+    "decorationMethod": "",
+    "embroideryFileStatus": "",
+    "dtfStatus": "",
+    "jobStatus": "Not Started"
+  },
+  {
     "SORD": "SORD01613087",
     "Trader Code": "FAR001X",
     "Trader Name": "The Farming Community Network",
@@ -23,8 +62,7 @@
         ],
         "Other Parts Desc": [
           "Classic Full Zip Micro Fleece Jacket - Navy - 2XLarge"
-        ],
-        "Completed Qty": 0
+        ]
       },
       {
         "Master Code": "SWPTFCN003-L",
@@ -44,8 +82,7 @@
         ],
         "Other Parts Desc": [
           "Uneek Classic Polo Shirt - Navy - Large"
-        ],
-        "Completed Qty": 0
+        ]
       },
       {
         "Master Code": "SWPTFCN003-M",
@@ -65,8 +102,7 @@
         ],
         "Other Parts Desc": [
           "Uneek Classic Polo Shirt - Navy - Medium"
-        ],
-        "Completed Qty": 0
+        ]
       },
       {
         "Master Code": "SWPTFCN003-S",
@@ -86,8 +122,7 @@
         ],
         "Other Parts Desc": [
           "Uneek Classic Polo Shirt - Navy - Small"
-        ],
-        "Completed Qty": 0
+        ]
       },
       {
         "Master Code": "SWPTFCN003-XL",
@@ -107,8 +142,7 @@
         ],
         "Other Parts Desc": [
           "Uneek Classic Polo Shirt - Navy - X-Large"
-        ],
-        "Completed Qty": 0
+        ]
       },
       {
         "Master Code": "SWPTFCN003-XXL",
@@ -128,8 +162,7 @@
         ],
         "Other Parts Desc": [
           "Uneek Classic Polo Shirt - Navy - 2X-Large"
-        ],
-        "Completed Qty": 0
+        ]
       },
       {
         "Master Code": "SWPTFCN005-L",
@@ -149,8 +182,7 @@
         ],
         "Other Parts Desc": [
           "Large Navy Printable Recycled Softshell Gilet RS902M"
-        ],
-        "Completed Qty": 0
+        ]
       },
       {
         "Master Code": "SWPTFCN005-M",
@@ -170,8 +202,7 @@
         ],
         "Other Parts Desc": [
           "Medium Navy Printable Recycled Softshell Gilet RS902M"
-        ],
-        "Completed Qty": 0
+        ]
       },
       {
         "Master Code": "SWPTFCN005-XL",
@@ -191,8 +222,7 @@
         ],
         "Other Parts Desc": [
           "XL Navy Printable Recycled Softshell Gilet RS902M"
-        ],
-        "Completed Qty": 0
+        ]
       },
       {
         "Master Code": "SWPTFCN005-XXL",
@@ -212,8 +242,7 @@
         ],
         "Other Parts Desc": [
           "XXL Navy Printable Recycled Softshell Gilet RS902M"
-        ],
-        "Completed Qty": 0
+        ]
       },
       {
         "Master Code": "SWPTFCN005-S",
@@ -235,8 +264,7 @@
         "Other Parts Desc": [
           "Result Recycled 2 Layer Soft Shell Jacket - Navy - Small",
           "Small Navy Printable Recycled Softshell Gilet RS902M"
-        ],
-        "Completed Qty": 0
+        ]
       },
       {
         "Master Code": "SWPTFCN006-L",
@@ -256,8 +284,7 @@
         ],
         "Other Parts Desc": [
           "Large Navy Printable Recycled Softshell Gilet RS902F"
-        ],
-        "Completed Qty": 0
+        ]
       },
       {
         "Master Code": "SWPTFCN006-M",
@@ -277,8 +304,7 @@
         ],
         "Other Parts Desc": [
           "Medium Navy Printable Recycled Softshell Gilet RS902F"
-        ],
-        "Completed Qty": 0
+        ]
       },
       {
         "Master Code": "SWPTFCN006-S",
@@ -298,8 +324,7 @@
         ],
         "Other Parts Desc": [
           "Small Navy Printable Recycled Softshell Gilet RS902F"
-        ],
-        "Completed Qty": 0
+        ]
       },
       {
         "Master Code": "SWPTFCN006-XL",
@@ -319,8 +344,7 @@
         ],
         "Other Parts Desc": [
           "XL Navy Printable Recycled Softshell Gilet RS902F"
-        ],
-        "Completed Qty": 0
+        ]
       },
       {
         "Master Code": "SWPTFCN006-XS",
@@ -340,8 +364,7 @@
         ],
         "Other Parts Desc": [
           "XS Navy Printable Recycled Softshell Gilet RS902F"
-        ],
-        "Completed Qty": 0
+        ]
       },
       {
         "Master Code": "SWPTFCN006-XXL",
@@ -361,8 +384,7 @@
         ],
         "Other Parts Desc": [
           "XXL Navy Printable Recycled Softshell Gilet RS902F"
-        ],
-        "Completed Qty": 0
+        ]
       },
       {
         "Master Code": "SWPTFCN002-XS",
@@ -382,8 +404,7 @@
         ],
         "Other Parts Desc": [
           "Ladies Classic Full Zip Fleece Jacket - Navy - XS"
-        ],
-        "Completed Qty": 0
+        ]
       },
       {
         "Master Code": "SWPTFCN008-L",
@@ -403,8 +424,7 @@
         ],
         "Other Parts Desc": [
           "Large Navy Luca men's microfleece gilet"
-        ],
-        "Completed Qty": 0
+        ]
       },
       {
         "Master Code": "SWPTFCN008-M",
@@ -424,8 +444,7 @@
         ],
         "Other Parts Desc": [
           "Medium Navy Luca men's microfleece gilet"
-        ],
-        "Completed Qty": 0
+        ]
       },
       {
         "Master Code": "SWPTFCN008-S",
@@ -445,8 +464,7 @@
         ],
         "Other Parts Desc": [
           "Small Navy Luca men's microfleece gilet"
-        ],
-        "Completed Qty": 0
+        ]
       },
       {
         "Master Code": "SWPTFCN008-XL",
@@ -466,8 +484,7 @@
         ],
         "Other Parts Desc": [
           "XL Navy Luca men's microfleece gilet"
-        ],
-        "Completed Qty": 0
+        ]
       },
       {
         "Master Code": "SWPTFCN008-XXL",
@@ -487,8 +504,7 @@
         ],
         "Other Parts Desc": [
           "XXL Navy Luca men's microfleece gilet"
-        ],
-        "Completed Qty": 0
+        ]
       },
       {
         "Master Code": "SWPTFCN007-L",
@@ -508,8 +524,7 @@
         ],
         "Other Parts Desc": [
           "Size 14 Navy Regatta Ladies Haber II Fleece Bodywarmer (TRA793)"
-        ],
-        "Completed Qty": 0
+        ]
       },
       {
         "Master Code": "SWPTFCN007-XS",
@@ -529,8 +544,7 @@
         ],
         "Other Parts Desc": [
           "Size 8 Navy Regatta Ladies Haber II Fleece Bodywarmer (TRA793)"
-        ],
-        "Completed Qty": 0
+        ]
       },
       {
         "Master Code": "SWPTFCN007-XXL",
@@ -550,8 +564,7 @@
         ],
         "Other Parts Desc": [
           "Size 18 Navy Regatta Ladies Haber II Fleece Bodywarmer (TRA793)"
-        ],
-        "Completed Qty": 0
+        ]
       },
       {
         "Master Code": "SWPTFCN002-M",
@@ -571,8 +584,7 @@
         ],
         "Other Parts Desc": [
           "Ladies Classic Full Zip Fleece Jacket - Navy - Medium"
-        ],
-        "Completed Qty": 0
+        ]
       },
       {
         "Master Code": "SWPTFCN007-M",
@@ -592,8 +604,7 @@
         ],
         "Other Parts Desc": [
           "Size 12 Navy Regatta Ladies Haber II Fleece Bodywarmer (TRA793)"
-        ],
-        "Completed Qty": 0
+        ]
       },
       {
         "Master Code": "SWPTFCN007-S",
@@ -613,8 +624,7 @@
         ],
         "Other Parts Desc": [
           "Size 10 Navy Regatta Ladies Haber II Fleece Bodywarmer (TRA793)"
-        ],
-        "Completed Qty": 0
+        ]
       },
       {
         "Master Code": "SWPTFCN007-XL",
@@ -634,8 +644,7 @@
         ],
         "Other Parts Desc": [
           "Size 16 Navy Regatta Ladies Haber II Fleece Bodywarmer (TRA793)"
-        ],
-        "Completed Qty": 0
+        ]
       },
       {
         "Master Code": "SWPTFCN002-S",
@@ -655,8 +664,7 @@
         ],
         "Other Parts Desc": [
           "Ladies Classic Full Zip Fleece Jacket - Navy - Small"
-        ],
-        "Completed Qty": 0
+        ]
       },
       {
         "Master Code": "SWPTFCN002-XL",
@@ -676,8 +684,7 @@
         ],
         "Other Parts Desc": [
           "Ladies Classic Full Zip Fleece Jacket - Navy - X-Large"
-        ],
-        "Completed Qty": 0
+        ]
       },
       {
         "Master Code": "SWPTFCN003-XS",
@@ -697,8 +704,7 @@
         ],
         "Other Parts Desc": [
           "Uneek Classic Polo Shirt - Navy - X/Small"
-        ],
-        "Completed Qty": 0
+        ]
       },
       {
         "Master Code": "SWPTFCN001-XL",
@@ -718,8 +724,7 @@
         ],
         "Other Parts Desc": [
           "Classic Full Zip Micro Fleece Jacket - Navy - XLarge"
-        ],
-        "Completed Qty": 0
+        ]
       },
       {
         "Master Code": "SWPTFCN001-M",
@@ -739,8 +744,7 @@
         ],
         "Other Parts Desc": [
           "Classic Full Zip Micro Fleece Jacket - Navy - Medium"
-        ],
-        "Completed Qty": 0
+        ]
       },
       {
         "Master Code": "SWPTFCN001-L",
@@ -760,8 +764,7 @@
         ],
         "Other Parts Desc": [
           "Classic Full Zip Micro Fleece Jacket - Navy - Large"
-        ],
-        "Completed Qty": 0
+        ]
       },
       {
         "Master Code": "SWPTFCN001-S",
@@ -781,8 +784,7 @@
         ],
         "Other Parts Desc": [
           "Classic Full Zip Micro Fleece Jacket - Navy - Small"
-        ],
-        "Completed Qty": 0
+        ]
       },
       {
         "Master Code": "SWPTFCN002-L",
@@ -802,13 +804,12 @@
         ],
         "Other Parts Desc": [
           "Ladies Classic Full Zip Fleece Jacket - Navy - Large"
-        ],
-        "Completed Qty": 0
+        ]
       }
     ],
     "Ordered Date": "07/01/2025",
     "Due Date": null,
-    "Total Logos": 470,
+    "Total Logos": 76,
     "Reference": "FAR001X",
     "Contact": "Sandra Caulfield",
     "Rep": "Phil Murphy",
@@ -842,8 +843,7 @@
         ],
         "Other Parts Desc": [
           "Pro RTX Pro Sweatshirt - Navy - XXLarge"
-        ],
-        "Completed Qty": 0
+        ]
       }
     ],
     "Ordered Date": "07/01/2025",
@@ -882,8 +882,7 @@
         ],
         "Other Parts Desc": [
           "Premium Outdoor Jacket Navy 3X Large"
-        ],
-        "Completed Qty": 0
+        ]
       },
       {
         "Master Code": "SWPEUC001-L",
@@ -901,8 +900,7 @@
         ],
         "Other Parts Desc": [
           "Premium Outdoor Jacket Navy Large"
-        ],
-        "Completed Qty": 0
+        ]
       },
       {
         "Master Code": "SWPEUC001-M",
@@ -920,8 +918,7 @@
         ],
         "Other Parts Desc": [
           "Premium Outdoor Jacket Navy Medium"
-        ],
-        "Completed Qty": 0
+        ]
       },
       {
         "Master Code": "SWPEUC001-S",
@@ -939,8 +936,7 @@
         ],
         "Other Parts Desc": [
           "Premium Outdoor Jacket Navy Small"
-        ],
-        "Completed Qty": 0
+        ]
       },
       {
         "Master Code": "SWPEUC001-XL",
@@ -958,8 +954,7 @@
         ],
         "Other Parts Desc": [
           "Premium Outdoor Jacket Navy X-Large"
-        ],
-        "Completed Qty": 0
+        ]
       },
       {
         "Master Code": "SWPEUC001-XXL",
@@ -977,8 +972,7 @@
         ],
         "Other Parts Desc": [
           "Premium Outdoor Jacket Navy 2X Large"
-        ],
-        "Completed Qty": 0
+        ]
       },
       {
         "Master Code": "SWPEUC002-3XL",
@@ -996,8 +990,7 @@
         ],
         "Other Parts Desc": [
           "T-Shirt Navy 3X Large"
-        ],
-        "Completed Qty": 0
+        ]
       },
       {
         "Master Code": "SWPEUC002-L",
@@ -1015,8 +1008,7 @@
         ],
         "Other Parts Desc": [
           "T-Shirt Navy Large"
-        ],
-        "Completed Qty": 0
+        ]
       },
       {
         "Master Code": "SWPEUC002-M",
@@ -1034,8 +1026,7 @@
         ],
         "Other Parts Desc": [
           "T-Shirt Navy Medium"
-        ],
-        "Completed Qty": 0
+        ]
       },
       {
         "Master Code": "SWPEUC002-S",
@@ -1053,8 +1044,7 @@
         ],
         "Other Parts Desc": [
           "T-Shirt Navy Small"
-        ],
-        "Completed Qty": 0
+        ]
       },
       {
         "Master Code": "SWPEUC002-XL",
@@ -1072,8 +1062,7 @@
         ],
         "Other Parts Desc": [
           "T-Shirt Navy X Large"
-        ],
-        "Completed Qty": 0
+        ]
       },
       {
         "Master Code": "SWPEUC002-XXL",
@@ -1091,8 +1080,7 @@
         ],
         "Other Parts Desc": [
           "T-Shirt Navy 2X Large"
-        ],
-        "Completed Qty": 0
+        ]
       },
       {
         "Master Code": "SWPEUC003-3XL",
@@ -1110,8 +1098,7 @@
         ],
         "Other Parts Desc": [
           "T-Shirt Beige 3XLarge"
-        ],
-        "Completed Qty": 0
+        ]
       },
       {
         "Master Code": "SWPEUC003-L",
@@ -1129,8 +1116,7 @@
         ],
         "Other Parts Desc": [
           "T-Shirt Beige Large"
-        ],
-        "Completed Qty": 0
+        ]
       },
       {
         "Master Code": "SWPEUC003-M",
@@ -1148,8 +1134,7 @@
         ],
         "Other Parts Desc": [
           "T-Shirt Beige Medium"
-        ],
-        "Completed Qty": 0
+        ]
       },
       {
         "Master Code": "SWPEUC003-S",
@@ -1167,8 +1152,7 @@
         ],
         "Other Parts Desc": [
           "T-Shirt Beige Small"
-        ],
-        "Completed Qty": 0
+        ]
       },
       {
         "Master Code": "SWPEUC003-XL",
@@ -1186,8 +1170,7 @@
         ],
         "Other Parts Desc": [
           "T-Shirt Beige Xlarge"
-        ],
-        "Completed Qty": 0
+        ]
       },
       {
         "Master Code": "SWPEUC003-XXL",
@@ -1205,8 +1188,7 @@
         ],
         "Other Parts Desc": [
           "T-Shirt Beige 2XLarge"
-        ],
-        "Completed Qty": 0
+        ]
       },
       {
         "Master Code": "SWPEUC004-3XL",
@@ -1224,8 +1206,7 @@
         ],
         "Other Parts Desc": [
           "Classic Hooded Sweatshirt Navy 3 X Large"
-        ],
-        "Completed Qty": 0
+        ]
       },
       {
         "Master Code": "SWPEUC004-L",
@@ -1243,8 +1224,7 @@
         ],
         "Other Parts Desc": [
           "Classic Hooded Sweatshirt Navy Large"
-        ],
-        "Completed Qty": 0
+        ]
       },
       {
         "Master Code": "SWPEUC004-M",
@@ -1262,8 +1242,7 @@
         ],
         "Other Parts Desc": [
           "Classic Hooded Sweatshirt Navy Medium"
-        ],
-        "Completed Qty": 0
+        ]
       },
       {
         "Master Code": "SWPEUC004-S",
@@ -1281,8 +1260,7 @@
         ],
         "Other Parts Desc": [
           "Classic Hooded Sweatshirt Navy Small"
-        ],
-        "Completed Qty": 0
+        ]
       },
       {
         "Master Code": "SWPEUC004-XL",
@@ -1300,8 +1278,7 @@
         ],
         "Other Parts Desc": [
           "Classic Hooded Sweatshirt Navy X Large"
-        ],
-        "Completed Qty": 0
+        ]
       },
       {
         "Master Code": "SWPEUC004-XXL",
@@ -1319,8 +1296,7 @@
         ],
         "Other Parts Desc": [
           "Classic Hooded Sweatshirt Navy 2 X Large"
-        ],
-        "Completed Qty": 0
+        ]
       },
       {
         "Master Code": "SWPEUC005-M",
@@ -1338,8 +1314,7 @@
         ],
         "Other Parts Desc": [
           "Classic Sweatshirt - Navy - Medium"
-        ],
-        "Completed Qty": 0
+        ]
       },
       {
         "Master Code": "SWPEUC006",
@@ -1353,8 +1328,7 @@
         "SWP Parts Desc": [],
         "Other Parts Desc": [
           "Heavweight Cuffed Beanies - Navy - One Size"
-        ],
-        "Completed Qty": 0
+        ]
       },
       {
         "Master Code": "SWPEUC007",
@@ -1372,13 +1346,12 @@
         ],
         "Other Parts Desc": [
           "Beechfield Original 5 Panel Cap - Navy - One Size"
-        ],
-        "Completed Qty": 0
+        ]
       }
     ],
     "Ordered Date": "17/01/2025",
     "Due Date": null,
-    "Total Logos": 48,
+    "Total Logos": 26,
     "Reference": "FIL100X",
     "Contact": "Kevin Clapham ",
     "Rep": "Vicky Gill",
@@ -1412,8 +1385,7 @@
         ],
         "Other Parts Desc": [
           "Classic Full Zip Micro Fleece Jacket - Black - 2XLarge"
-        ],
-        "Completed Qty": 0
+        ]
       },
       {
         "Master Code": "SWPMID0021-XL",
@@ -1431,8 +1403,7 @@
         ],
         "Other Parts Desc": [
           "Classic Full Zip Micro Fleece Jacket - Black - XLarge"
-        ],
-        "Completed Qty": 0
+        ]
       },
       {
         "Master Code": "SWPMID0021-M",
@@ -1450,13 +1421,12 @@
         ],
         "Other Parts Desc": [
           "Classic Full Zip Micro Fleece Jacket - Black - Medium"
-        ],
-        "Completed Qty": 0
+        ]
       }
     ],
     "Ordered Date": "27/01/2025",
     "Due Date": null,
-    "Total Logos": 6,
+    "Total Logos": 3,
     "Reference": "MBP/JSL",
     "Contact": "Kathryn Fitter",
     "Rep": "Ricky Neale ",
@@ -1492,13 +1462,12 @@
         "Other Parts Desc": [
           "Beeswift Economy Vented Safety Helmet Blue",
           "Beeswift Economy Vented Safety Helmet Blue"
-        ],
-        "Completed Qty": 0
+        ]
       }
     ],
     "Ordered Date": "28/01/2025",
     "Due Date": "18/02/2025",
-    "Total Logos": 30,
+    "Total Logos": 1,
     "Reference": "DDS100C",
     "Contact": "Joy",
     "Rep": "Lorraine Rogers",
@@ -1536,8 +1505,7 @@
         ],
         "Other Parts Desc": [
           "XXL Deep Navy Fruit of the Loom Original T-Shirt"
-        ],
-        "Completed Qty": 0
+        ]
       },
       {
         "Master Code": "SWPYMCA002-XL",
@@ -1559,8 +1527,7 @@
         ],
         "Other Parts Desc": [
           "XL Deep Blue AWDis College Hoodie"
-        ],
-        "Completed Qty": 0
+        ]
       },
       {
         "Master Code": "SWPYMCA002-XXL",
@@ -1582,8 +1549,7 @@
         ],
         "Other Parts Desc": [
           "XXL Deep Blue AWDis College Hoodie"
-        ],
-        "Completed Qty": 0
+        ]
       },
       {
         "Master Code": "SWPYMCA003-XL",
@@ -1605,8 +1571,7 @@
         ],
         "Other Parts Desc": [
           "XL Deep Navy Fruit of the Loom Original T-Shirt"
-        ],
-        "Completed Qty": 0
+        ]
       },
       {
         "Master Code": "SWPYMCA004-XL",
@@ -1628,8 +1593,7 @@
         ],
         "Other Parts Desc": [
           "XL Dark Navy Fruit of the Loom Original Piqu� Polo Shirt"
-        ],
-        "Completed Qty": 0
+        ]
       },
       {
         "Master Code": "SWPYMCA001",
@@ -1649,13 +1613,12 @@
         ],
         "Other Parts Desc": [
           "Beechfield Original 5 Panel Cap - Graphite- One Size"
-        ],
-        "Completed Qty": 0
+        ]
       }
     ],
     "Ordered Date": "29/01/2025",
     "Due Date": null,
-    "Total Logos": 29,
+    "Total Logos": 17,
     "Reference": "YMC001I",
     "Contact": "Fen Yee Teng",
     "Rep": "Adrian Walker",
@@ -1693,8 +1656,7 @@
         ],
         "Other Parts Desc": [
           "Small Hooded Sweatshirt - Black"
-        ],
-        "Completed Qty": 0
+        ]
       },
       {
         "Master Code": "SWPCAV001-M",
@@ -1716,8 +1678,7 @@
         ],
         "Other Parts Desc": [
           "Hooded Sweatshirt - Black - M"
-        ],
-        "Completed Qty": 0
+        ]
       },
       {
         "Master Code": "SWPCAV001-L",
@@ -1739,8 +1700,7 @@
         ],
         "Other Parts Desc": [
           "Hooded Sweatshirt - Black - L"
-        ],
-        "Completed Qty": 0
+        ]
       },
       {
         "Master Code": "SWPCAV001-XL",
@@ -1762,13 +1722,12 @@
         ],
         "Other Parts Desc": [
           "XL Hooded Sweatshirt - Black"
-        ],
-        "Completed Qty": 0
+        ]
       }
     ],
     "Ordered Date": "29/01/2025",
     "Due Date": null,
-    "Total Logos": 240,
+    "Total Logos": 12,
     "Reference": "BABNUCC",
     "Contact": "",
     "Rep": "Jacqui Alexander",
@@ -1804,8 +1763,7 @@
         ],
         "Other Parts Desc": [
           "Medium UCI TWC01 Hi Viz Waistcoat"
-        ],
-        "Completed Qty": 0
+        ]
       },
       {
         "Master Code": "SWPDUR001-XXL",
@@ -1825,13 +1783,12 @@
         ],
         "Other Parts Desc": [
           "XXL UCI TWC01 Hi Viz Waistcoat"
-        ],
-        "Completed Qty": 0
+        ]
       }
     ],
     "Ordered Date": "03/02/2025",
     "Due Date": null,
-    "Total Logos": 160,
+    "Total Logos": 4,
     "Reference": "DUR003",
     "Contact": "Sophie ",
     "Rep": "Ricky Neale ",
@@ -1867,13 +1824,12 @@
         ],
         "Other Parts Desc": [
           "36\" Red Regatta kids Dover Jacket RG244"
-        ],
-        "Completed Qty": 0
+        ]
       }
     ],
     "Ordered Date": "05/02/2025",
     "Due Date": null,
-    "Total Logos": 6,
+    "Total Logos": 2,
     "Reference": "COR025",
     "Contact": "Tara Easterling",
     "Rep": "Phil Murphy",
@@ -1907,13 +1863,12 @@
         ],
         "Other Parts Desc": [
           "Russell Nano Padded Bodywarmer - Black - Medium"
-        ],
-        "Completed Qty": 0
+        ]
       }
     ],
     "Ordered Date": "06/02/2025",
     "Due Date": null,
-    "Total Logos": 7,
+    "Total Logos": 1,
     "Reference": "MBP/MDC",
     "Contact": "Nigel Finney",
     "Rep": "Ricky Neale ",
@@ -1949,8 +1904,7 @@
         "Other Parts Desc": [
           "Eagle Premium Poloshirt - Navy - Large",
           "Eagle Poloshirt - Navy - L"
-        ],
-        "Completed Qty": 0
+        ]
       },
       {
         "Master Code": "SWPLFW001-M",
@@ -1970,8 +1924,7 @@
         "Other Parts Desc": [
           "Eagle Premium Poloshirt - Navy - Medium",
           "Eagle Poloshirt - Navy - M"
-        ],
-        "Completed Qty": 0
+        ]
       },
       {
         "Master Code": "SWPLFW001-S",
@@ -1991,8 +1944,7 @@
         "Other Parts Desc": [
           "Eagle Premium Poloshirt - Navy - Small",
           "Eagle Poloshirt - Navy - S"
-        ],
-        "Completed Qty": 0
+        ]
       },
       {
         "Master Code": "SWPLFW001-XL",
@@ -2012,8 +1964,7 @@
         "Other Parts Desc": [
           "Eagle Premium Poloshirt - Navy - X-Large",
           "Eagle Poloshirt - Navy - XL"
-        ],
-        "Completed Qty": 0
+        ]
       },
       {
         "Master Code": "SWPLFW001-XXL",
@@ -2031,8 +1982,7 @@
         ],
         "Other Parts Desc": [
           "Eagle Poloshirt - Navy - 2XL"
-        ],
-        "Completed Qty": 0
+        ]
       },
       {
         "Master Code": "SWPLFW001-XXXL",
@@ -2050,13 +2000,12 @@
         ],
         "Other Parts Desc": [
           "Eagle Poloshirt - Navy - 3XL"
-        ],
-        "Completed Qty": 0
+        ]
       }
     ],
     "Ordered Date": "06/02/2025",
     "Due Date": null,
-    "Total Logos": 15,
+    "Total Logos": 6,
     "Reference": "LIF100",
     "Contact": "Kerry Renwick",
     "Rep": "Jaime Canosa",
@@ -2082,8 +2031,7 @@
         "SWP Parts": [],
         "Other Parts": [],
         "SWP Parts Desc": [],
-        "Other Parts Desc": [],
-        "Completed Qty": 0
+        "Other Parts Desc": []
       }
     ],
     "Ordered Date": "06/02/2025",
@@ -2114,8 +2062,7 @@
         "SWP Parts": [],
         "Other Parts": [],
         "SWP Parts Desc": [],
-        "Other Parts Desc": [],
-        "Completed Qty": 0
+        "Other Parts Desc": []
       }
     ],
     "Ordered Date": "07/02/2025",
@@ -2146,8 +2093,7 @@
         "SWP Parts": [],
         "Other Parts": [],
         "SWP Parts Desc": [],
-        "Other Parts Desc": [],
-        "Completed Qty": 0
+        "Other Parts Desc": []
       }
     ],
     "Ordered Date": "07/02/2025",
@@ -2178,8 +2124,7 @@
         "SWP Parts": [],
         "Other Parts": [],
         "SWP Parts Desc": [],
-        "Other Parts Desc": [],
-        "Completed Qty": 0
+        "Other Parts Desc": []
       }
     ],
     "Ordered Date": "07/02/2025",
@@ -2218,8 +2163,7 @@
         ],
         "Other Parts Desc": [
           "Large Navy L/Sleeve Poloshirt RX102"
-        ],
-        "Completed Qty": 0
+        ]
       }
     ],
     "Ordered Date": "10/02/2025",
@@ -2262,8 +2206,7 @@
         ],
         "Other Parts Desc": [
           "Uneek Classic Polo Shirt - Black - Large"
-        ],
-        "Completed Qty": 0
+        ]
       },
       {
         "Master Code": "SWPDIVE001-M",
@@ -2285,8 +2228,7 @@
         ],
         "Other Parts Desc": [
           "Uneek Classic Polo Shirt - Black - Medium"
-        ],
-        "Completed Qty": 0
+        ]
       },
       {
         "Master Code": "SWPDIVE001-S",
@@ -2308,8 +2250,7 @@
         ],
         "Other Parts Desc": [
           "Uneek Classic Polo Shirt - Black - Small"
-        ],
-        "Completed Qty": 0
+        ]
       },
       {
         "Master Code": "SWPDIVE001-XL",
@@ -2331,8 +2272,7 @@
         ],
         "Other Parts Desc": [
           "Uneek Classic Polo Shirt - Black - XLarge"
-        ],
-        "Completed Qty": 0
+        ]
       },
       {
         "Master Code": "SWPDIVE002-L",
@@ -2354,8 +2294,7 @@
         ],
         "Other Parts Desc": [
           "Classic Sweatshirt - Black - L"
-        ],
-        "Completed Qty": 0
+        ]
       },
       {
         "Master Code": "SWPDIVE002-M",
@@ -2377,8 +2316,7 @@
         ],
         "Other Parts Desc": [
           "Classic Sweatshirt - Black - M"
-        ],
-        "Completed Qty": 0
+        ]
       },
       {
         "Master Code": "SWPDIVE002-S",
@@ -2400,8 +2338,7 @@
         ],
         "Other Parts Desc": [
           "Classic Sweatshirt - Black - S"
-        ],
-        "Completed Qty": 0
+        ]
       },
       {
         "Master Code": "SWPDIVE002-XL",
@@ -2423,8 +2360,7 @@
         ],
         "Other Parts Desc": [
           "Classic Sweatshirt - Black - XL"
-        ],
-        "Completed Qty": 0
+        ]
       },
       {
         "Master Code": "SWPDIVE003-M",
@@ -2446,8 +2382,7 @@
         ],
         "Other Parts Desc": [
           "Classic Crew Neck T-Shirt - Black - M"
-        ],
-        "Completed Qty": 0
+        ]
       },
       {
         "Master Code": "SWPDIVE003-S",
@@ -2469,8 +2404,7 @@
         ],
         "Other Parts Desc": [
           "Classic Crew Neck T-Shirt - Black - S"
-        ],
-        "Completed Qty": 0
+        ]
       },
       {
         "Master Code": "EMBSETUP",
@@ -2480,13 +2414,12 @@
         "SWP Parts": [],
         "Other Parts": [],
         "SWP Parts Desc": [],
-        "Other Parts Desc": [],
-        "Completed Qty": 0
+        "Other Parts Desc": []
       }
     ],
     "Ordered Date": "11/02/2025",
     "Due Date": null,
-    "Total Logos": 93,
+    "Total Logos": 30,
     "Reference": "DIV001C",
     "Contact": "Polly Connolly",
     "Rep": "Josh Moore",
@@ -2522,8 +2455,7 @@
         ],
         "Other Parts Desc": [
           "Uneek Classic Polo Shirt - Navy - Medium"
-        ],
-        "Completed Qty": 0
+        ]
       },
       {
         "Master Code": "SWPDIVE012-M",
@@ -2543,8 +2475,7 @@
         ],
         "Other Parts Desc": [
           "Classic Sweatshirt - Navy - Medium"
-        ],
-        "Completed Qty": 0
+        ]
       },
       {
         "Master Code": "SWPDIVE013-M",
@@ -2564,8 +2495,7 @@
         ],
         "Other Parts Desc": [
           "Classic Crew Neck T-Shirt - Navy - M"
-        ],
-        "Completed Qty": 0
+        ]
       },
       {
         "Master Code": "SWPDIVE013-S",
@@ -2585,8 +2515,7 @@
         ],
         "Other Parts Desc": [
           "Classic Crew Neck T-Shirt - Navy - S"
-        ],
-        "Completed Qty": 0
+        ]
       },
       {
         "Master Code": "SWPDIVE014-M",
@@ -2606,13 +2535,12 @@
         ],
         "Other Parts Desc": [
           "Hooded Sweatshirt - Navy - M"
-        ],
-        "Completed Qty": 0
+        ]
       }
     ],
     "Ordered Date": "11/02/2025",
     "Due Date": null,
-    "Total Logos": 40,
+    "Total Logos": 10,
     "Reference": "DIV001C",
     "Contact": "Polly Connolly",
     "Rep": "Josh Moore",
@@ -2648,8 +2576,7 @@
         ],
         "Other Parts Desc": [
           "Beechfield Original Cuffed Beanie - Black - One Size"
-        ],
-        "Completed Qty": 0
+        ]
       },
       {
         "Master Code": "SWPPRS0008.DG/B.L",
@@ -2669,8 +2596,7 @@
         ],
         "Other Parts Desc": [
           "Premium Outdoor Jacket Deep Grey Black Large"
-        ],
-        "Completed Qty": 0
+        ]
       },
       {
         "Master Code": "SWPPRS0009.BK.L",
@@ -2690,8 +2616,7 @@
         ],
         "Other Parts Desc": [
           "Uneek Classic Polo Shirt - Black - Large"
-        ],
-        "Completed Qty": 0
+        ]
       },
       {
         "Master Code": "SWPPRS0010.C.L",
@@ -2711,8 +2636,7 @@
         ],
         "Other Parts Desc": [
           "Classic Sweatshirt - Black - L"
-        ],
-        "Completed Qty": 0
+        ]
       },
       {
         "Master Code": "SWPPRS0011.C.L",
@@ -2732,8 +2656,7 @@
         ],
         "Other Parts Desc": [
           "AWDis Street Hoodie - Charcoal - Black"
-        ],
-        "Completed Qty": 0
+        ]
       },
       {
         "Master Code": "SWPPRS0012.SB.16.5",
@@ -2751,8 +2674,7 @@
         ],
         "Other Parts Desc": [
           "Brook Taverner Pisa Long Sleeve Slim Fit Shirt - Sky Blue - 16.5\""
-        ],
-        "Completed Qty": 0
+        ]
       },
       {
         "Master Code": "SWPPRS0013.C.L",
@@ -2772,13 +2694,12 @@
         ],
         "Other Parts Desc": [
           "AWDis Sophomore Zip Neck Sweatshirt - Charcoal - Large"
-        ],
-        "Completed Qty": 0
+        ]
       }
     ],
     "Ordered Date": "11/02/2025",
     "Due Date": null,
-    "Total Logos": 28,
+    "Total Logos": 13,
     "Reference": "PRS113C",
     "Contact": "Tom Boreham",
     "Rep": "Steve Payne",
@@ -2804,8 +2725,7 @@
         "SWP Parts": [],
         "Other Parts": [],
         "SWP Parts Desc": [],
-        "Other Parts Desc": [],
-        "Completed Qty": 0
+        "Other Parts Desc": []
       }
     ],
     "Ordered Date": "11/02/2025",
@@ -2836,8 +2756,7 @@
         "SWP Parts": [],
         "Other Parts": [],
         "SWP Parts Desc": [],
-        "Other Parts Desc": [],
-        "Completed Qty": 0
+        "Other Parts Desc": []
       }
     ],
     "Ordered Date": "11/02/2025",
@@ -2868,8 +2787,7 @@
         "SWP Parts": [],
         "Other Parts": [],
         "SWP Parts Desc": [],
-        "Other Parts Desc": [],
-        "Completed Qty": 0
+        "Other Parts Desc": []
       }
     ],
     "Ordered Date": "11/02/2025",
@@ -2900,8 +2818,7 @@
         "SWP Parts": [],
         "Other Parts": [],
         "SWP Parts Desc": [],
-        "Other Parts Desc": [],
-        "Completed Qty": 0
+        "Other Parts Desc": []
       }
     ],
     "Ordered Date": "11/02/2025",
@@ -2932,8 +2849,7 @@
         "SWP Parts": [],
         "Other Parts": [],
         "SWP Parts Desc": [],
-        "Other Parts Desc": [],
-        "Completed Qty": 0
+        "Other Parts Desc": []
       }
     ],
     "Ordered Date": "11/02/2025",
@@ -2964,8 +2880,7 @@
         "SWP Parts": [],
         "Other Parts": [],
         "SWP Parts Desc": [],
-        "Other Parts Desc": [],
-        "Completed Qty": 0
+        "Other Parts Desc": []
       }
     ],
     "Ordered Date": "11/02/2025",
@@ -2996,8 +2911,7 @@
         "SWP Parts": [],
         "Other Parts": [],
         "SWP Parts Desc": [],
-        "Other Parts Desc": [],
-        "Completed Qty": 0
+        "Other Parts Desc": []
       }
     ],
     "Ordered Date": "11/02/2025",
@@ -3028,8 +2942,7 @@
         "SWP Parts": [],
         "Other Parts": [],
         "SWP Parts Desc": [],
-        "Other Parts Desc": [],
-        "Completed Qty": 0
+        "Other Parts Desc": []
       }
     ],
     "Ordered Date": "11/02/2025",
@@ -3060,8 +2973,7 @@
         "SWP Parts": [],
         "Other Parts": [],
         "SWP Parts Desc": [],
-        "Other Parts Desc": [],
-        "Completed Qty": 0
+        "Other Parts Desc": []
       }
     ],
     "Ordered Date": "11/02/2025",
@@ -3100,8 +3012,7 @@
         ],
         "Other Parts Desc": [
           "Small French Navy AWD Cool T Shirt"
-        ],
-        "Completed Qty": 0
+        ]
       },
       {
         "Master Code": "SWPCAV021-M",
@@ -3119,8 +3030,7 @@
         ],
         "Other Parts Desc": [
           "Medium French Navy AWD Cool T Shirt"
-        ],
-        "Completed Qty": 0
+        ]
       },
       {
         "Master Code": "SWPCAV021-L",
@@ -3138,8 +3048,7 @@
         ],
         "Other Parts Desc": [
           "Large French Navy AWD Cool T Shirt"
-        ],
-        "Completed Qty": 0
+        ]
       },
       {
         "Master Code": "SWPCAV021-XL",
@@ -3157,8 +3066,7 @@
         ],
         "Other Parts Desc": [
           "XL French Navy AWD Cool T Shirt"
-        ],
-        "Completed Qty": 0
+        ]
       },
       {
         "Master Code": "SWPCAV021-XXL",
@@ -3176,8 +3084,7 @@
         ],
         "Other Parts Desc": [
           "XXL French Navy AWD Cool T Shirt"
-        ],
-        "Completed Qty": 0
+        ]
       },
       {
         "Master Code": "SWPCAV021-XXXL",
@@ -3195,8 +3102,7 @@
         ],
         "Other Parts Desc": [
           "3XL French Navy AWD Cool T Shirt"
-        ],
-        "Completed Qty": 0
+        ]
       },
       {
         "Master Code": "EMBSETUP",
@@ -3206,13 +3112,12 @@
         "SWP Parts": [],
         "Other Parts": [],
         "SWP Parts Desc": [],
-        "Other Parts Desc": [],
-        "Completed Qty": 0
+        "Other Parts Desc": []
       }
     ],
     "Ordered Date": "12/02/2025",
     "Due Date": null,
-    "Total Logos": 300,
+    "Total Logos": 6,
     "Reference": "GB_301599_00362742",
     "Contact": "Thomas Burt",
     "Rep": "Jacqui Alexander",
@@ -3246,13 +3151,12 @@
         ],
         "Other Parts Desc": [
           "Result Wooly Ski Hat - Bottle Green - One Size"
-        ],
-        "Completed Qty": 0
+        ]
       }
     ],
     "Ordered Date": "12/02/2025",
     "Due Date": null,
-    "Total Logos": 30,
+    "Total Logos": 1,
     "Reference": "INDAVEO",
     "Contact": "Donna Benerayan",
     "Rep": "Teresa Williams",
@@ -3288,8 +3192,7 @@
         ],
         "Other Parts Desc": [
           "XXL Burgundy Sol Supreme Sweatshirt"
-        ],
-        "Completed Qty": 0
+        ]
       },
       {
         "Master Code": "SWPRAYST010-L",
@@ -3309,8 +3212,7 @@
         ],
         "Other Parts Desc": [
           "Large Black SOL'S Summer II Cotton Piqu� Polo Shirt"
-        ],
-        "Completed Qty": 0
+        ]
       },
       {
         "Master Code": "SWPRAYST010-M",
@@ -3330,8 +3232,7 @@
         ],
         "Other Parts Desc": [
           "Medium Black SOL'S Summer II Cotton Piqu� Polo Shirt"
-        ],
-        "Completed Qty": 0
+        ]
       },
       {
         "Master Code": "SWPRAYST010-XL",
@@ -3351,13 +3252,12 @@
         ],
         "Other Parts Desc": [
           "XL Black SOL'S Summer II Cotton Piqu� Polo Shirt"
-        ],
-        "Completed Qty": 0
+        ]
       }
     ],
     "Ordered Date": "12/02/2025",
     "Due Date": null,
-    "Total Logos": 64,
+    "Total Logos": 8,
     "Reference": "RAY004C",
     "Contact": "",
     "Rep": "James Hardinge",
@@ -3395,13 +3295,12 @@
         ],
         "Other Parts Desc": [
           "Size 20 Pink Women's poplin long sleeve blouse"
-        ],
-        "Completed Qty": 0
+        ]
       }
     ],
     "Ordered Date": "12/02/2025",
     "Due Date": null,
-    "Total Logos": 12,
+    "Total Logos": 3,
     "Reference": "BES013C",
     "Contact": "Gary Maslen",
     "Rep": "Lorraine Rogers",
@@ -3435,8 +3334,7 @@
         ],
         "Other Parts Desc": [
           "Classic Full Zip Micro Fleece Jacket - Black - XLarge"
-        ],
-        "Completed Qty": 0
+        ]
       }
     ],
     "Ordered Date": "13/02/2025",
@@ -3475,8 +3373,7 @@
         ],
         "Other Parts Desc": [
           "Age 3-4  Yellow Childrens Poloshirt (UC103)"
-        ],
-        "Completed Qty": 0
+        ]
       },
       {
         "Master Code": "SWPMAMA001-5-6",
@@ -3494,8 +3391,7 @@
         ],
         "Other Parts Desc": [
           "Age 5-6  Yellow Childrens Poloshirt (UC103)"
-        ],
-        "Completed Qty": 0
+        ]
       },
       {
         "Master Code": "SWPMAMA003-3-4",
@@ -3513,8 +3409,7 @@
         ],
         "Other Parts Desc": [
           "Age 3-4 Purple Classic Sweatshirt Kids"
-        ],
-        "Completed Qty": 0
+        ]
       },
       {
         "Master Code": "SWPMAMA003-5-6",
@@ -3532,13 +3427,12 @@
         ],
         "Other Parts Desc": [
           "Age 5-6 Purple Classic Sweatshirt Kids"
-        ],
-        "Completed Qty": 0
+        ]
       }
     ],
     "Ordered Date": "13/02/2025",
     "Due Date": null,
-    "Total Logos": 40,
+    "Total Logos": 4,
     "Reference": "MAM001",
     "Contact": "",
     "Rep": "Phil Murphy",
@@ -3572,8 +3466,7 @@
         ],
         "Other Parts Desc": [
           "Russell Smart Soft Shell Jacket - Navy - XL"
-        ],
-        "Completed Qty": 0
+        ]
       }
     ],
     "Ordered Date": "13/02/2025",
@@ -3612,8 +3505,7 @@
         ],
         "Other Parts Desc": [
           "Pro RTX Pro Piqu� Polo Shirt - Solid Grey - Medium"
-        ],
-        "Completed Qty": 0
+        ]
       },
       {
         "Master Code": "SWPCOP003-M",
@@ -3631,8 +3523,7 @@
         ],
         "Other Parts Desc": [
           "Regatta Ablaze Soft Shell Jacket - Black/Black - Medium"
-        ],
-        "Completed Qty": 0
+        ]
       },
       {
         "Master Code": "COOPLANYARD",
@@ -3642,13 +3533,12 @@
         "SWP Parts": [],
         "Other Parts": [],
         "SWP Parts Desc": [],
-        "Other Parts Desc": [],
-        "Completed Qty": 0
+        "Other Parts Desc": []
       }
     ],
     "Ordered Date": "13/02/2025",
     "Due Date": null,
-    "Total Logos": 4,
+    "Total Logos": 2,
     "Reference": "CHESTAO",
     "Contact": "Tom Killworth",
     "Rep": "Fiona Swannell",
@@ -3682,8 +3572,7 @@
         ],
         "Other Parts Desc": [
           "Pro RTX Ladies Pro Piqu� Polo Shirt - Solid Grey - Medium"
-        ],
-        "Completed Qty": 0
+        ]
       },
       {
         "Master Code": "SWPCOP004-12",
@@ -3701,8 +3590,7 @@
         ],
         "Other Parts Desc": [
           "Sz 12 Black Regatta Ladies Ablaze Printable Soft Shell Jacket"
-        ],
-        "Completed Qty": 0
+        ]
       },
       {
         "Master Code": "COOPLANYARD",
@@ -3712,13 +3600,12 @@
         "SWP Parts": [],
         "Other Parts": [],
         "SWP Parts Desc": [],
-        "Other Parts Desc": [],
-        "Completed Qty": 0
+        "Other Parts Desc": []
       }
     ],
     "Ordered Date": "13/02/2025",
     "Due Date": null,
-    "Total Logos": 3,
+    "Total Logos": 2,
     "Reference": "CHESTAO",
     "Contact": "Tom Killworth",
     "Rep": "Fiona Swannell",
@@ -3752,8 +3639,7 @@
         ],
         "Other Parts Desc": [
           "Pro RTX Pro Piqu� Polo Shirt - Solid Grey - Small"
-        ],
-        "Completed Qty": 0
+        ]
       },
       {
         "Master Code": "SWPCOP003-M",
@@ -3771,8 +3657,7 @@
         ],
         "Other Parts Desc": [
           "Regatta Ablaze Soft Shell Jacket - Black/Black - Medium"
-        ],
-        "Completed Qty": 0
+        ]
       },
       {
         "Master Code": "COOPLANYARD",
@@ -3782,13 +3667,12 @@
         "SWP Parts": [],
         "Other Parts": [],
         "SWP Parts Desc": [],
-        "Other Parts Desc": [],
-        "Completed Qty": 0
+        "Other Parts Desc": []
       }
     ],
     "Ordered Date": "13/02/2025",
     "Due Date": null,
-    "Total Logos": 3,
+    "Total Logos": 2,
     "Reference": "CHESTAO",
     "Contact": "Tom Killworth",
     "Rep": "Fiona Swannell",
@@ -3822,8 +3706,7 @@
         ],
         "Other Parts Desc": [
           "Pro RTX Pro Piqu� Polo Shirt - Solid Grey - Medium"
-        ],
-        "Completed Qty": 0
+        ]
       },
       {
         "Master Code": "SWPCOP003-M",
@@ -3841,8 +3724,7 @@
         ],
         "Other Parts Desc": [
           "Regatta Ablaze Soft Shell Jacket - Black/Black - Medium"
-        ],
-        "Completed Qty": 0
+        ]
       },
       {
         "Master Code": "COOPLANYARD",
@@ -3852,13 +3734,12 @@
         "SWP Parts": [],
         "Other Parts": [],
         "SWP Parts Desc": [],
-        "Other Parts Desc": [],
-        "Completed Qty": 0
+        "Other Parts Desc": []
       }
     ],
     "Ordered Date": "13/02/2025",
     "Due Date": null,
-    "Total Logos": 3,
+    "Total Logos": 2,
     "Reference": "CHESTAO",
     "Contact": "Tom Killworth",
     "Rep": "Fiona Swannell",
@@ -3892,8 +3773,7 @@
         ],
         "Other Parts Desc": [
           "Pro RTX Ladies Pro Piqu� Polo Shirt - Solid Grey - Medium"
-        ],
-        "Completed Qty": 0
+        ]
       },
       {
         "Master Code": "SWPCOP004-12",
@@ -3911,8 +3791,7 @@
         ],
         "Other Parts Desc": [
           "Sz 12 Black Regatta Ladies Ablaze Printable Soft Shell Jacket"
-        ],
-        "Completed Qty": 0
+        ]
       },
       {
         "Master Code": "COOPLANYARD",
@@ -3922,13 +3801,12 @@
         "SWP Parts": [],
         "Other Parts": [],
         "SWP Parts Desc": [],
-        "Other Parts Desc": [],
-        "Completed Qty": 0
+        "Other Parts Desc": []
       }
     ],
     "Ordered Date": "13/02/2025",
     "Due Date": null,
-    "Total Logos": 3,
+    "Total Logos": 2,
     "Reference": "CHESTAO",
     "Contact": "Tom Killworth",
     "Rep": "Fiona Swannell",
@@ -3962,8 +3840,7 @@
         ],
         "Other Parts Desc": [
           "Pro RTX Ladies Pro Piqu� Polo Shirt - Solid Grey - Large"
-        ],
-        "Completed Qty": 0
+        ]
       },
       {
         "Master Code": "SWPCOP004-16",
@@ -3981,8 +3858,7 @@
         ],
         "Other Parts Desc": [
           "Sz 16 Black Regatta Ladies Ablaze Printable Soft Shell Jacket"
-        ],
-        "Completed Qty": 0
+        ]
       },
       {
         "Master Code": "COOPLANYARD",
@@ -3992,8 +3868,7 @@
         "SWP Parts": [],
         "Other Parts": [],
         "SWP Parts Desc": [],
-        "Other Parts Desc": [],
-        "Completed Qty": 0
+        "Other Parts Desc": []
       }
     ],
     "Ordered Date": "13/02/2025",
@@ -4032,8 +3907,7 @@
         ],
         "Other Parts Desc": [
           "Pro RTX Pro Piqu� Polo Shirt - Solid Grey - Large"
-        ],
-        "Completed Qty": 0
+        ]
       },
       {
         "Master Code": "SWPCOP003-L",
@@ -4051,8 +3925,7 @@
         ],
         "Other Parts Desc": [
           "Regatta Ablaze Soft Shell Jacket - Black/Black - Large"
-        ],
-        "Completed Qty": 0
+        ]
       },
       {
         "Master Code": "SWPCOP005",
@@ -4070,8 +3943,7 @@
         ],
         "Other Parts Desc": [
           "Black Bib Apron with Pocket"
-        ],
-        "Completed Qty": 0
+        ]
       },
       {
         "Master Code": "COOPLANYARD",
@@ -4081,13 +3953,12 @@
         "SWP Parts": [],
         "Other Parts": [],
         "SWP Parts Desc": [],
-        "Other Parts Desc": [],
-        "Completed Qty": 0
+        "Other Parts Desc": []
       }
     ],
     "Ordered Date": "13/02/2025",
     "Due Date": null,
-    "Total Logos": 6,
+    "Total Logos": 3,
     "Reference": "CHESTAO",
     "Contact": "Tom Killworth",
     "Rep": "Fiona Swannell",
@@ -4121,8 +3992,7 @@
         ],
         "Other Parts Desc": [
           "Pro RTX Pro Piqu� Polo Shirt - Solid Grey - Large"
-        ],
-        "Completed Qty": 0
+        ]
       },
       {
         "Master Code": "SWPCOP003-L",
@@ -4140,8 +4010,7 @@
         ],
         "Other Parts Desc": [
           "Regatta Ablaze Soft Shell Jacket - Black/Black - Large"
-        ],
-        "Completed Qty": 0
+        ]
       },
       {
         "Master Code": "SWPCOP005",
@@ -4159,8 +4028,7 @@
         ],
         "Other Parts Desc": [
           "Black Bib Apron with Pocket"
-        ],
-        "Completed Qty": 0
+        ]
       },
       {
         "Master Code": "COOPLANYARD",
@@ -4170,13 +4038,12 @@
         "SWP Parts": [],
         "Other Parts": [],
         "SWP Parts Desc": [],
-        "Other Parts Desc": [],
-        "Completed Qty": 0
+        "Other Parts Desc": []
       }
     ],
     "Ordered Date": "13/02/2025",
     "Due Date": null,
-    "Total Logos": 7,
+    "Total Logos": 3,
     "Reference": "CHESTAO",
     "Contact": "Tom Killworth",
     "Rep": "Fiona Swannell",
@@ -4210,8 +4077,7 @@
         ],
         "Other Parts Desc": [
           "Classic Full Zip Micro Fleece Jacket - Navy - Large"
-        ],
-        "Completed Qty": 0
+        ]
       },
       {
         "Master Code": "SWPBES0013.FN.L",
@@ -4229,13 +4095,12 @@
         ],
         "Other Parts Desc": [
           "Classic Pique Poloshirt - French Navy - Large"
-        ],
-        "Completed Qty": 0
+        ]
       }
     ],
     "Ordered Date": "13/02/2025",
     "Due Date": null,
-    "Total Logos": 6,
+    "Total Logos": 2,
     "Reference": "BES013C",
     "Contact": "Gary Maslen",
     "Rep": "Lorraine Rogers",
@@ -4269,8 +4134,7 @@
         ],
         "Other Parts Desc": [
           "Pro RTX Ladies Pro Piqu� Polo Shirt - Solid Grey - Medium"
-        ],
-        "Completed Qty": 0
+        ]
       },
       {
         "Master Code": "SWPCOP004-16",
@@ -4288,8 +4152,7 @@
         ],
         "Other Parts Desc": [
           "Sz 16 Black Regatta Ladies Ablaze Printable Soft Shell Jacket"
-        ],
-        "Completed Qty": 0
+        ]
       },
       {
         "Master Code": "COOPLANYARD",
@@ -4299,13 +4162,12 @@
         "SWP Parts": [],
         "Other Parts": [],
         "SWP Parts Desc": [],
-        "Other Parts Desc": [],
-        "Completed Qty": 0
+        "Other Parts Desc": []
       }
     ],
     "Ordered Date": "13/02/2025",
     "Due Date": null,
-    "Total Logos": 3,
+    "Total Logos": 2,
     "Reference": "CHESTAO",
     "Contact": "Tom Killworth",
     "Rep": "Fiona Swannell",
@@ -4341,8 +4203,7 @@
         "Other Parts Desc": [
           "Classic Full Zip Micro Fleece Jacket - Black - Large",
           "Full Zip Fleece - Black- L"
-        ],
-        "Completed Qty": 0
+        ]
       },
       {
         "Master Code": "SWPGMT019-L",
@@ -4360,13 +4221,12 @@
         ],
         "Other Parts Desc": [
           "Pro RTX Pro Sweatshirt - Black - Large"
-        ],
-        "Completed Qty": 0
+        ]
       }
     ],
     "Ordered Date": "13/02/2025",
     "Due Date": null,
-    "Total Logos": 4,
+    "Total Logos": 2,
     "Reference": "GMT001X",
     "Contact": "",
     "Rep": "Tammy Harris",
@@ -4402,8 +4262,7 @@
         ],
         "Other Parts Desc": [
           "Pro RTX Ladies Pro Piqu� Polo Shirt - Solid Grey - XS"
-        ],
-        "Completed Qty": 0
+        ]
       },
       {
         "Master Code": "SWPCOP004-10",
@@ -4421,8 +4280,7 @@
         ],
         "Other Parts Desc": [
           "Sz 10 Black Regatta Ladies Ablaze Printable Soft Shell Jacket"
-        ],
-        "Completed Qty": 0
+        ]
       },
       {
         "Master Code": "COOPLANYARD",
@@ -4432,8 +4290,7 @@
         "SWP Parts": [],
         "Other Parts": [],
         "SWP Parts Desc": [],
-        "Other Parts Desc": [],
-        "Completed Qty": 0
+        "Other Parts Desc": []
       }
     ],
     "Ordered Date": "13/02/2025",
@@ -4472,8 +4329,7 @@
         ],
         "Other Parts Desc": [
           "Result Wooly Ski Hat - Navy - One Size"
-        ],
-        "Completed Qty": 0
+        ]
       },
       {
         "Master Code": "SWPBES0006.N.XL",
@@ -4491,13 +4347,12 @@
         ],
         "Other Parts Desc": [
           "Kariban Lightweight Padded Bodywarmer - Navy - X-Large"
-        ],
-        "Completed Qty": 0
+        ]
       }
     ],
     "Ordered Date": "14/02/2025",
     "Due Date": null,
-    "Total Logos": 76,
+    "Total Logos": 2,
     "Reference": "BES013C",
     "Contact": "Gary Maslen",
     "Rep": "Lorraine Rogers",
@@ -4531,8 +4386,7 @@
         ],
         "Other Parts Desc": [
           "Hi-Vis Safety Waistcoat/Vest - Yellow - M"
-        ],
-        "Completed Qty": 0
+        ]
       },
       {
         "Master Code": "SWPMID0005-L",
@@ -4550,8 +4404,7 @@
         ],
         "Other Parts Desc": [
           "Hi-Vis Safety Waistcoat/Vest - Yellow - L"
-        ],
-        "Completed Qty": 0
+        ]
       },
       {
         "Master Code": "SWPMID0011-XXL",
@@ -4569,8 +4422,7 @@
         ],
         "Other Parts Desc": [
           "Hi-Vis Executive Waistcoat - Yellow - XXL"
-        ],
-        "Completed Qty": 0
+        ]
       },
       {
         "Master Code": "SWPMID0007-M",
@@ -4592,13 +4444,12 @@
         "Other Parts Desc": [
           "Hi-Vis Reversible Fleece Bodywarmer - Yellow - M",
           "Hi-Vis Reversible Fleece Bodywarmer - Yellow - M"
-        ],
-        "Completed Qty": 0
+        ]
       }
     ],
     "Ordered Date": "17/02/2025",
     "Due Date": null,
-    "Total Logos": 32,
+    "Total Logos": 5,
     "Reference": "MBP/RAP",
     "Contact": "Katie Noone",
     "Rep": "Ricky Neale ",
@@ -4634,8 +4485,7 @@
         "Other Parts Desc": [
           "2802 - Standard Coverall - Navy - Small",
           "Standard Coverall Size S Fit R Navy"
-        ],
-        "Completed Qty": 0
+        ]
       },
       {
         "Master Code": "SWPPLY001-M",
@@ -4655,8 +4505,7 @@
         "Other Parts Desc": [
           "2802NA Standard Coverall - Navy - Medium",
           "Standard Coverall Size M Fit R Navy"
-        ],
-        "Completed Qty": 0
+        ]
       },
       {
         "Master Code": "SWPPLY015-M",
@@ -4674,8 +4523,7 @@
         ],
         "Other Parts Desc": [
           "Standard Cotton Coat Size M Fit R White"
-        ],
-        "Completed Qty": 0
+        ]
       }
     ],
     "Ordered Date": "17/02/2025",
@@ -4716,8 +4564,7 @@
         ],
         "Other Parts Desc": [
           "Hi-Vis Winter Traffic Jacket  Size L Fit R Yellow"
-        ],
-        "Completed Qty": 0
+        ]
       },
       {
         "Master Code": "SWPARQ002-M",
@@ -4739,8 +4586,7 @@
         "Other Parts Desc": [
           "Hi-Vis Winter Traffic Jacket",
           "Yellow - Medium"
-        ],
-        "Completed Qty": 0
+        ]
       },
       {
         "Master Code": "SWPARQ002-XL",
@@ -4760,8 +4606,7 @@
         ],
         "Other Parts Desc": [
           "Hi-Vis Winter Traffic Jacket  Size XL Fit R Yellow"
-        ],
-        "Completed Qty": 0
+        ]
       },
       {
         "Master Code": "SWPARQ003-L",
@@ -4781,13 +4626,12 @@
         ],
         "Other Parts Desc": [
           "Hi-Vis Safety Waistcoat/Vest - Yellow - L"
-        ],
-        "Completed Qty": 0
+        ]
       }
     ],
     "Ordered Date": "17/02/2025",
     "Due Date": null,
-    "Total Logos": 74,
+    "Total Logos": 8,
     "Reference": "ARQ002D",
     "Contact": "",
     "Rep": "Darren McKenna",
@@ -4821,13 +4665,12 @@
         ],
         "Other Parts Desc": [
           "Stormtech Road Warrior Computer Pack - Graphite / Black - One Size"
-        ],
-        "Completed Qty": 0
+        ]
       }
     ],
     "Ordered Date": "17/02/2025",
     "Due Date": null,
-    "Total Logos": 10,
+    "Total Logos": 1,
     "Reference": "SMU001",
     "Contact": "accounts payable - vendor  176834",
     "Rep": "Paul Boneham",
@@ -4863,8 +4706,7 @@
         ],
         "Other Parts Desc": [
           "Classic Sweatshirt - Black - M"
-        ],
-        "Completed Qty": 0
+        ]
       },
       {
         "Master Code": "SWPDAT001-XL",
@@ -4884,8 +4726,7 @@
         ],
         "Other Parts Desc": [
           "Classic Sweatshirt - Black - XL"
-        ],
-        "Completed Qty": 0
+        ]
       },
       {
         "Master Code": "SWPDAT002-M",
@@ -4905,8 +4746,7 @@
         ],
         "Other Parts Desc": [
           "Classic Crew Neck T-Shirt - Black - M"
-        ],
-        "Completed Qty": 0
+        ]
       },
       {
         "Master Code": "EMBSETUP",
@@ -4916,13 +4756,12 @@
         "SWP Parts": [],
         "Other Parts": [],
         "SWP Parts Desc": [],
-        "Other Parts Desc": [],
-        "Completed Qty": 0
+        "Other Parts Desc": []
       }
     ],
     "Ordered Date": "17/02/2025",
     "Due Date": null,
-    "Total Logos": 40,
+    "Total Logos": 6,
     "Reference": "DAT006S",
     "Contact": "",
     "Rep": "Darren McKenna",
@@ -4956,8 +4795,7 @@
         ],
         "Other Parts Desc": [
           "Pro RTX Pro Piqu� Polo Shirt - Black - Large"
-        ],
-        "Completed Qty": 0
+        ]
       },
       {
         "Master Code": "SWPOLI0054-L",
@@ -4975,8 +4813,7 @@
         ],
         "Other Parts Desc": [
           "The UX Hoodie Black Large"
-        ],
-        "Completed Qty": 0
+        ]
       },
       {
         "Master Code": "SWPOLI0074.B/O.L",
@@ -4998,8 +4835,7 @@
         "Other Parts Desc": [
           "Result Genuine Recycled Thermoquilt Gilet - Black / Orange - Large",
           "Result Genuine Recycled Thermoquilt Gilet - Black / Orange - Large"
-        ],
-        "Completed Qty": 0
+        ]
       },
       {
         "Master Code": "SWPOLI0071-L",
@@ -5017,8 +4853,7 @@
         ],
         "Other Parts Desc": [
           "Classic Hooded Sweatshirt Black Large"
-        ],
-        "Completed Qty": 0
+        ]
       },
       {
         "Master Code": "SWPOLI0004-L",
@@ -5038,13 +4873,12 @@
         ],
         "Other Parts Desc": [
           "Hi-Vis Safety Waistcoat/Vest - Yellow - L"
-        ],
-        "Completed Qty": 0
+        ]
       }
     ],
     "Ordered Date": "17/02/2025",
     "Due Date": null,
-    "Total Logos": 13,
+    "Total Logos": 7,
     "Reference": "OLI001X",
     "Contact": "",
     "Rep": "Rebecca Matthewman ",
@@ -5080,8 +4914,7 @@
         ],
         "Other Parts Desc": [
           "Large Seal Grey Regatta Thor III Men's Interactive Fleece TRF532"
-        ],
-        "Completed Qty": 0
+        ]
       },
       {
         "Master Code": "SWPFIRC010-M",
@@ -5101,13 +4934,12 @@
         ],
         "Other Parts Desc": [
           "Medium Seal Grey Regatta Thor III Men's Interactive Fleece TRF532"
-        ],
-        "Completed Qty": 0
+        ]
       }
     ],
     "Ordered Date": "17/02/2025",
     "Due Date": null,
-    "Total Logos": 6,
+    "Total Logos": 4,
     "Reference": "FIR015",
     "Contact": "Alvaro Silva",
     "Rep": "Chris Sayles",
@@ -5141,8 +4973,7 @@
         ],
         "Other Parts Desc": [
           "Classic Full Zip Micro Fleece Jacket - Black - Small"
-        ],
-        "Completed Qty": 0
+        ]
       },
       {
         "Master Code": "SWPMID0021-XL",
@@ -5160,8 +4991,7 @@
         ],
         "Other Parts Desc": [
           "Classic Full Zip Micro Fleece Jacket - Black - XLarge"
-        ],
-        "Completed Qty": 0
+        ]
       },
       {
         "Master Code": "SWPMID0047.B.S",
@@ -5179,8 +5009,7 @@
         ],
         "Other Parts Desc": [
           "Russell Nano Padded Bodywarmer - Black - Small"
-        ],
-        "Completed Qty": 0
+        ]
       }
     ],
     "Ordered Date": "17/02/2025",
@@ -5219,8 +5048,7 @@
         ],
         "Other Parts Desc": [
           "Russell Nano Padded Bodywarmer - Black - Small"
-        ],
-        "Completed Qty": 0
+        ]
       }
     ],
     "Ordered Date": "17/02/2025",
@@ -5230,10 +5058,10 @@
     "Contact": "Mariclaire Reynolds",
     "Rep": "Ricky Neale ",
     "Address": "GATE 2 , Unit 6 Spartan Industrial Estate, West Bromwich, , B70 0DH",
-    "isNew": true,
-    "garmentStatus": "Not Started",
-    "decorationMethod": "",
-    "embroideryFileStatus": "",
+    "isNew": false,
+    "garmentStatus": "Not Ordered",
+    "decorationMethod": "Embroidery",
+    "embroideryFileStatus": "On File",
     "dtfStatus": "",
     "jobStatus": "Not Started"
   },
@@ -5259,8 +5087,7 @@
         ],
         "Other Parts Desc": [
           "Russell Nano Padded Bodywarmer - Black - Small"
-        ],
-        "Completed Qty": 0
+        ]
       }
     ],
     "Ordered Date": "17/02/2025",
@@ -5270,10 +5097,10 @@
     "Contact": "Mariclaire Reynolds",
     "Rep": "Ricky Neale ",
     "Address": "GATE 2 , Unit 6 Spartan Industrial Estate, West Bromwich, , B70 0DH",
-    "isNew": true,
-    "garmentStatus": "Not Started",
-    "decorationMethod": "",
-    "embroideryFileStatus": "",
+    "isNew": false,
+    "garmentStatus": "Ordered",
+    "decorationMethod": "Embroidery",
+    "embroideryFileStatus": "On File",
     "dtfStatus": "",
     "jobStatus": "Not Started"
   },
@@ -5299,8 +5126,7 @@
         ],
         "Other Parts Desc": [
           "Russell Nano Padded Bodywarmer - Black - Small"
-        ],
-        "Completed Qty": 0
+        ]
       }
     ],
     "Ordered Date": "17/02/2025",
@@ -5311,10 +5137,49 @@
     "Rep": "Ricky Neale ",
     "Address": "GATE 2 , Unit 6 Spartan Industrial Estate, West Bromwich, , B70 0DH",
     "isNew": true,
-    "garmentStatus": "Not Started",
-    "decorationMethod": "",
+    "garmentStatus": "Ordered",
+    "decorationMethod": "DTF",
     "embroideryFileStatus": "",
-    "dtfStatus": "",
+    "dtfStatus": "Not Started",
+    "jobStatus": "Not Started"
+  },
+  {
+    "SORD": "SORD016369291234",
+    "Trader Code": "MBP/MID",
+    "Trader Name": "MBP Door Solutions - Midlands",
+    "Total Items": 1,
+    "Item List": [
+      {
+        "Master Code": "SWPMID0047.B.S",
+        "Description": "Russell Nano Padded Bodywarmer - Black - Small with MBP Logo",
+        "Ordered Qty": 1,
+        "Outstanding Qty": 1,
+        "SWP Parts": [
+          "SWPEMB-MBP004"
+        ],
+        "Other Parts": [
+          "441M.BK.S"
+        ],
+        "SWP Parts Desc": [
+          "MBP Centre Cap Embroidery Logo - White/Orange"
+        ],
+        "Other Parts Desc": [
+          "Russell Nano Padded Bodywarmer - Black - Small"
+        ]
+      }
+    ],
+    "Ordered Date": "17/02/2025",
+    "Due Date": null,
+    "Total Logos": 1,
+    "Reference": "MBP/MID",
+    "Contact": "Mariclaire Reynolds",
+    "Rep": "Ricky Neale ",
+    "Address": "GATE 2 , Unit 6 Spartan Industrial Estate, West Bromwich, , B70 0DH",
+    "isNew": true,
+    "garmentStatus": "Ordered",
+    "decorationMethod": "DTF",
+    "embroideryFileStatus": "",
+    "dtfStatus": "In Stock",
     "jobStatus": "Not Started"
   },
   {
@@ -5339,8 +5204,7 @@
         ],
         "Other Parts Desc": [
           "Russell Nano Padded Bodywarmer - Black - Small"
-        ],
-        "Completed Qty": 0
+        ]
       }
     ],
     "Ordered Date": "17/02/2025",
@@ -5350,11 +5214,11 @@
     "Contact": "Mariclaire Reynolds",
     "Rep": "Ricky Neale ",
     "Address": "GATE 2 , Unit 6 Spartan Industrial Estate, West Bromwich, , B70 0DH",
-    "isNew": true,
-    "garmentStatus": "Not Started",
-    "decorationMethod": "",
+    "isNew": false,
+    "garmentStatus": "Ordered",
+    "decorationMethod": "DTF",
     "embroideryFileStatus": "",
-    "dtfStatus": "",
+    "dtfStatus": "Not Started",
     "jobStatus": "Not Started"
   },
   {
@@ -5379,8 +5243,7 @@
         ],
         "Other Parts Desc": [
           "Russell Nano Padded Bodywarmer - Black - Small"
-        ],
-        "Completed Qty": 0
+        ]
       }
     ],
     "Ordered Date": "17/02/2025",
@@ -5392,9 +5255,9 @@
     "Address": "GATE 2 , Unit 6 Spartan Industrial Estate, West Bromwich, , B70 0DH",
     "isNew": true,
     "garmentStatus": "Not Started",
-    "decorationMethod": "",
-    "embroideryFileStatus": "",
-    "dtfStatus": "",
+    "decorationMethod": "Both",
+    "embroideryFileStatus": "Not Ordered",
+    "dtfStatus": "On Press",
     "jobStatus": "Not Started"
   },
   {
@@ -5420,7 +5283,7 @@
         "Other Parts Desc": [
           "Russell Nano Padded Bodywarmer - Black - Small"
         ],
-        "Completed Qty": 0
+        "Completed Qty": 1
       }
     ],
     "Ordered Date": "17/02/2025",
@@ -5431,9 +5294,9 @@
     "Rep": "Ricky Neale ",
     "Address": "GATE 2 , Unit 6 Spartan Industrial Estate, West Bromwich, , B70 0DH",
     "isNew": true,
-    "garmentStatus": "Not Started",
-    "decorationMethod": "",
-    "embroideryFileStatus": "",
+    "garmentStatus": "Ordered",
+    "decorationMethod": "Embroidery",
+    "embroideryFileStatus": "On File",
     "dtfStatus": "",
     "jobStatus": "Not Started"
   },
@@ -5462,7 +5325,7 @@
         "Other Parts Desc": [
           "Classic Full Zip Micro Fleece Jacket - Navy - 2XLarge"
         ],
-        "Completed Qty": 0
+        "Completed Qty": 2
       },
       {
         "Master Code": "SWPTFCN003-L",
@@ -5483,7 +5346,7 @@
         "Other Parts Desc": [
           "Uneek Classic Polo Shirt - Navy - Large"
         ],
-        "Completed Qty": 0
+        "Completed Qty": 4
       },
       {
         "Master Code": "SWPTFCN003-M",
@@ -5504,7 +5367,7 @@
         "Other Parts Desc": [
           "Uneek Classic Polo Shirt - Navy - Medium"
         ],
-        "Completed Qty": 0
+        "Completed Qty": 3
       },
       {
         "Master Code": "SWPTFCN003-S",
@@ -6241,7 +6104,7 @@
         "Other Parts Desc": [
           "Ladies Classic Full Zip Fleece Jacket - Navy - Large"
         ],
-        "Completed Qty": 0
+        "Completed Qty": 4
       }
     ],
     "Ordered Date": "07/01/2025",
@@ -6252,10 +6115,10 @@
     "Rep": "Phil Murphy",
     "Address": "Manor Farm, Guilsborough Road, West Haddon, Northampton, NN6 7AQ",
     "isNew": true,
-    "garmentStatus": "Not Started",
-    "decorationMethod": "",
-    "embroideryFileStatus": "",
-    "dtfStatus": "",
+    "garmentStatus": "Not Ordered",
+    "decorationMethod": "Both",
+    "embroideryFileStatus": "Not Ordered",
+    "dtfStatus": "Not Started",
     "jobStatus": "Not Started"
   }
 ]
