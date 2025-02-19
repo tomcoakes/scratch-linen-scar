@@ -132,7 +132,7 @@ main {
   max-height: 500px; /* Adjust if needed */
   opacity: 1;
   padding: 20px 15px;
-  background-color: #e7f7ee;        /* A more refined, subtle green */
+  background-color: #fff;        /* A more refined, subtle green */
   border: 1px solid #d2e8d2;
   border-top: none;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
@@ -277,6 +277,11 @@ main {
   font-weight: 600;
   color: #444;
   text-align: left;
+}
+
+#orders-table tbody tr.data-row { /* Target .data-row for main data rows */
+    background-color: #fff; /* Default background */
+    transition: background-color 0.3s ease; /* Smooth transition for background */
 }
 
 /* ---------- Footer ---------- */

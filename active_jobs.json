@@ -21,7 +21,8 @@
         ],
         "Other Parts Desc": [
           "Full Zip Fleece - Black - M"
-        ]
+        ],
+        "Completed Qty": 1
       }
     ],
     "Ordered Date": "06/01/2025",
@@ -32,7 +33,7 @@
     "Rep": "Tammy Harris",
     "Address": "DELIVER TO RECEPTION NOT STORES, 235 Icknield St, Birmingham , , B18 6QU",
     "isNew": true,
-    "garmentStatus": "Not Started",
+    "garmentStatus": "Ordered",
     "decorationMethod": "",
     "embroideryFileStatus": "",
     "dtfStatus": "",
