@@ -1,6 +1,6 @@
 // src/pages/components/OrderTable/OrderTable.js
 
-// --- OrderTable Component (UPDATED - Callback for Updates) ---
+// --- OrderTable Component (UPDATED - Input Initialization from JSON) ---
 function OrderTable({ orders, searchTerm, onItemCompletionChange }) { // Receive onItemCompletionChange prop
     const [filteredOrders, setFilteredOrders] = React.useState([]);
     const [expandedRowSord, setExpandedRowSord] = React.useState(null);
@@ -129,8 +129,9 @@ function OrderTable({ orders, searchTerm, onItemCompletionChange }) { // Receive
                                                     ),
                                                     React.createElement('tbody', null,
                                                         order["Item List"].map(item => {
-                                                            const completedQty = (completedQuantities[order.SORD] && completedQuantities[order.SORD][item["Master Code"]]) || 0; // Get completed qty, default 0
-                                                            const isCompleted = completedQty >= item["Outstanding Qty"];
+                                                          const initialCompletedQty = item["Completed Qty"] || 0;
+                                                          const completedQty = (completedQuantities[order.SORD] && completedQuantities[order.SORD][item["Master Code"]]) || initialCompletedQty; // Get completed qty, default to initialCompletedQty
+                                                          const isCompleted = completedQty >= item["Outstanding Qty"];
 
                                                             return (
                                                                 React.createElement('tr', { key: item["Master Code"], className: isCompleted ? 'completed' : '' }, // Conditionally apply 'completed' class
@@ -141,7 +142,7 @@ function OrderTable({ orders, searchTerm, onItemCompletionChange }) { // Receive
                                                                             type: "number",
                                                                             min: "0",
                                                                             max: item["Outstanding Qty"],
-                                                                            value: completedQty,
+                                                                            value: completedQty,   // Now correctly initialized and updated
                                                                             onChange: (e) => handleCompletedQtyChange(order.SORD, item["Master Code"], e.target.value)
 
                                                                         })

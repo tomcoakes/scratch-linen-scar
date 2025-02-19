@@ -1,340 +1,192 @@
-/* =========================================
-   Global Base & Reset
-========================================= */
-* {
-  box-sizing: border-box;
+/* ---------- Global Layout (for sticky footer) ---------- */
+html, body {
+  height: 100%;
   margin: 0;
-  padding: 0;
 }
 
 body {
+  display: flex;
+  flex-direction: column;
   font-family: 'Poppins', sans-serif;
   background-color: #f7f7f7;
   color: #333;
-  line-height: 1.6;
 }
 
-/* =========================================
-   Header & Navigation
-========================================= */
-header {
-  background: linear-gradient(90deg, #4b6cb7, #182848);
-  color: #fff;
-  padding: 20px 0;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-}
-
-.header-container {
-  max-width: 1200px;
-  margin: auto;
-  padding: 0 20px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.header-container h1 {
-  font-size: 2rem;
-}
-
-nav ul {
-  list-style: none;
-  display: flex;
-  gap: 20px;
-}
-
-nav ul li a {
-  color: #fff;
-  text-decoration: none;
-  font-weight: 500;
-  transition: color 0.3s ease;
-}
-
-nav ul li a:hover,
-nav ul li a.active {
-  color: #ffd700;
-}
-
-/* =========================================
-   Main Layout
-========================================= */
-.main-container-tracker {
-  display: flex;
-  min-height: calc(100vh - 80px);
-  padding: 20px;
-}
-
-.sidebar-container {
-  width: 250px;
-  background-color: #fff;
-  padding: 20px;
-  border-right: 1px solid #ddd;
-  box-shadow: 2px 0 5px rgba(0,0,0,0.05);
-}
-
-.content {
+/* Ensure main content grows */
+main {
   flex: 1;
-  padding: 20px;
 }
 
-/* =========================================
-   Search Bar & Summary Cards (Placeholders)
-========================================= */
-.search-bar-container {
-  margin-bottom: 20px;
-}
-
-.summary-cards {
-  display: flex;
-  gap: 20px;
-  margin-bottom: 20px;
-}
-
-/* =========================================
-   Order Table Container & Basic Table Style
-========================================= */
+/* ---------- Order Table Container ---------- */
 .order-table-container {
   background-color: #fff;
-  padding: 20px;
   border-radius: 8px;
-  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.08);
+  border: 1px solid #e2e8f0;
+  padding: 20px;
+  margin-bottom: 20px; /* space between table & footer */
 }
 
+.order-table-container h2 {
+  margin-top: 0;
+  margin-bottom: 20px;
+  font-size: 1.5rem;
+  color: #34495e;
+}
+
+/* ---------- Orders Table ---------- */
 #orders-table {
   width: 100%;
   border-collapse: collapse;
 }
 
-#orders-table th,
-#orders-table td {
+#orders-table thead th {
+  background-color: #f0f3f4;
+  color: #4a5568;
+  font-weight: 500;
   padding: 12px 15px;
-  border: 1px solid #ddd;
   text-align: left;
+  border-bottom: 2px solid #e2e8f0;
 }
 
-#orders-table th {
-  background-color: #f0f0f0;
-  font-weight: 600;
+#orders-table tbody td {
+  padding: 12px 15px;
+  color: #333;
 }
 
-/* -----------------------------------------
-   Table Row Hover & Click Effects
------------------------------------------ */
+/* Ensure each table row is a proper table row and on top of expansion content */
 #orders-table tbody tr {
-  transition: background-color 0.3s ease, transform 0.3s ease;
-  cursor: pointer;
+  display: table-row;
+  background-color: #fff;
+  transition: background-color 0.3s ease;
+  position: relative;
+  z-index: 1;
 }
 
 #orders-table tbody tr:hover {
-  background-color: #eef3fd;
-  transform: scale(1.02);
+  background-color: #f9fafb;
 }
 
-#orders-table tr.expanded {
-  background-color: #e8f0fe;
+#orders-table tbody tr.expanded {
+  background-color: #c6f5b3; /* Light green-ish when expanded */
 }
 
-/* =========================================
-   Info Row – Tags & Decoration
-========================================= */
-.info-row {
-  background-color: #fafafa;
-  transition: max-height 0.5s ease, opacity 0.5s ease, padding 0.5s ease;
-}
-
-/* Wrap info content so its space is fully collapsible */
-.info-row .info-container {
-  overflow: hidden;
+/* ---------- Info Row (for tags/decoration) ---------- */
+#orders-table tbody tr.info-row td {
+  padding: 0;
+  border-bottom: none;
 }
 
 .info-container {
+  padding: 6px 15px;
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  padding: 10px 0;
+  gap: 15px;
+  font-size: 0.9em;
+  color: #555;
+  border-bottom: 1px solid #e2e8f0;
 }
 
-.tags-container span.new-tag {
-  background-color: #ff6f61;
-  color: #fff;
+.new-tag {
+  background-color: #f0f0f0;
+  color: #333;
   padding: 4px 8px;
   border-radius: 4px;
-  font-weight: bold;
-  font-size: 0.8rem;
+  font-size: 0.85em;
+  font-weight: 500;
 }
 
-.decoration-container {
-  font-style: italic;
-  color: #555;
-}
-
-/* =========================================
-   Expansion Row – Hidden by Default
-   (Back Order, Garment Status, etc.)
-========================================= */
+/* ---------- Expansion Row with Sliding Effect ---------- */
 .expansion-row {
-  border-top: none;
+  display: table-row; /* Always render as a table row */
 }
 
 .expansion-row td {
+  /* Remove default cell padding so collapsed row takes no space */
   padding: 0;
   border: none;
 }
 
-/* The inner container that will be animated */
 .expansion-content {
   max-height: 0;
   overflow: hidden;
   opacity: 0;
-  padding: 0 20px;       /* horizontal padding remains */
-  transition: max-height 0.5s ease, padding 0.5s ease, opacity 0.5s ease;
-  border-top: none;
+  padding: 0 15px;  /* Keep horizontal padding */
+  transition: max-height 0.5s ease, opacity 0.5s ease, padding 0.5s ease;
 }
 
-/* When expanded, animate to full height, restore padding and border */
+/* When expanded, reveal the content */
 .expansion-row.expanded .expansion-content {
-  max-height: 1000px;    /* large enough to show the content */
+  max-height: 500px; /* Adjust if needed */
   opacity: 1;
-  padding: 20px;
-  border-top: 1px solid #ddd;
+  padding: 20px 15px;
+  background-color: #dffad4;
+  border-bottom: 1px solid #e2e8f0;
 }
 
-/* -----------------------------------------
-   Sections inside Expansion Content
------------------------------------------ */
-.back-order-section,
-.garment-status-section,
-.embroidery-status-section,
-.dtf-status-section,
-.items-completed-section {
+/* ---------- Sections Within Expansion Content ---------- */
+.expansion-content > div {
+  padding: 15px;
+  border: 1px solid #eee;
+  border-radius: 6px;
+  background-color: #fafafa;
   margin-bottom: 20px;
 }
 
-.back-order-section h3,
-.garment-status-section h3,
-.embroidery-status-section h3,
-.dtf-status-section h3,
-.items-completed-section h3 {
+.expansion-content h3 {
+  margin-top: 0;
   margin-bottom: 10px;
-  font-size: 1.2rem;
-  color: #182848;
-  border-bottom: 2px solid #4b6cb7;
-  display: inline-block;
-  padding-bottom: 2px;
+  font-size: 1.1rem;
+  color: #4a5568;
+  font-weight: 500;
 }
 
-/* -----------------------------------------
-   Items Completed Table (Inside Expansion)
------------------------------------------ */
+/* ---------- Items Completed Section ---------- */
+/* ---------- Items Completed Section ---------- */
+.items-completed-section {
+    padding: 15px;
+    border: 1px solid #eee;
+    border-radius: 6px;
+    background-color: #fafafa;
+    max-height: 200px;  /* Adjust the height as needed */
+    overflow-y: auto;   /* Enables vertical scrolling */
+}
+
 .items-completed-table {
-  width: 100%;
-  border-collapse: collapse;
+    width: 100%;
+    border-collapse: collapse;
 }
 
 .items-completed-table th,
 .items-completed-table td {
-  padding: 10px;
-  border: 1px solid #ccc;
+    padding: 8px 12px;
+    text-align: left;
+    border-bottom: 1px solid #f0f0f0;
 }
 
 .items-completed-table th {
-  background-color: #f5f5f5;
+    background-color: #f9fafb;
+    color: #666;
+    font-weight: 500;
 }
 
 .items-completed-table tr.completed {
-  background-color: #d4edda;
+    text-decoration: line-through;
+    color: #999;
 }
 
 .items-completed-table input[type="number"] {
-  width: 60px;
-  padding: 5px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  text-align: center;
-  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    width: 60px;
+    padding: 4px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
 }
 
-.items-completed-table input[type="number"]:focus {
-  border-color: #4b6cb7;
-  box-shadow: 0 0 5px rgba(75, 108, 183, 0.5);
-}
 
-/* =========================================
-   Footer
-========================================= */
+/* ---------- Footer ---------- */
 footer {
   background-color: #182848;
   color: #fff;
   text-align: center;
   padding: 15px;
-  position: relative;
-  bottom: 0;
-  width: 100%;
-}
-
-/* =========================================
-   Extra Epic Animations & Transitions
-========================================= */
-@keyframes slideDown {
-  0% {
-    max-height: 0;
-    opacity: 0;
-  }
-  100% {
-    max-height: 1000px;
-    opacity: 1;
-  }
-}
-
-@keyframes slideUp {
-  0% {
-    max-height: 1000px;
-    opacity: 1;
-  }
-  100% {
-    max-height: 0;
-    opacity: 0;
-  }
-}
-
-/* =========================================
-   Custom Scrollbar (Optional)
-========================================= */
-.content::-webkit-scrollbar {
-  width: 8px;
-}
-
-.content::-webkit-scrollbar-track {
-  background: #f1f1f1;
-}
-
-.content::-webkit-scrollbar-thumb {
-  background: #888;
-  border-radius: 4px;
-}
-
-.content::-webkit-scrollbar-thumb:hover {
-  background: #555;
-}
-
-/* =========================================
-   Responsive Design Tweaks
-========================================= */
-@media (max-width: 768px) {
-  .header-container {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-  nav ul {
-    flex-direction: column;
-    gap: 10px;
-  }
-  .main-container-tracker {
-    flex-direction: column;
-  }
-  .sidebar-container {
-    width: 100%;
-    border-right: none;
-    border-bottom: 1px solid #ddd;
-  }
 }
