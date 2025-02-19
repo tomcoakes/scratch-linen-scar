@@ -78,22 +78,29 @@ main {
 }
 
 .info-container {
-  padding: 6px 15px;
-  display: flex;
-  align-items: center;
-  gap: 15px;
-  font-size: 0.9em;
-  color: #555;
-  border-bottom: 1px solid #e2e8f0;
+    padding: 6px 15px;
+    display: flex; /* Use flexbox */
+    align-items: center; /* Vertically center items */
+    justify-content: space-between; /* Distribute space */
+    gap: 15px;
+    font-size: 0.9em;
+    color: #555;
 }
 
-.new-tag {
-  background-color: #f0f0f0;
-  color: #333;
-  padding: 4px 8px;
-  border-radius: 4px;
-  font-size: 0.85em;
-  font-weight: 500;
+.tags-container {
+  display: flex;
+  gap: 10px; /* Space between tags */
+  align-items: center;
+  flex-wrap: wrap; /* Allow tags to wrap if needed */
+}
+
+.new-tag,
+.embroidery-tag,
+.dtf-tag {
+    padding: 2px 6px;  /* Smaller padding for tags */
+    border-radius: 4px;
+    font-size: 0.8em;  /* Smaller font size for tags */
+    font-weight: 500;
 }
 
 /* ---------- Expansion Row with Sliding Effect ---------- */
@@ -180,6 +187,49 @@ main {
     padding: 4px;
     border: 1px solid #ccc;
     border-radius: 4px;
+}
+
+.status-dropdowns-container {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.status-dropdowns-container select{
+  padding: .2rem;
+  border-radius: .25rem;
+  border-color: rgba(0,0,0, .3);
+}
+
+.new-tag {
+    background-color: #f0f0f0;
+    color: #333;
+}
+
+.embroidery-tag {
+    background-color: #d1e7dd; /* Example: light green */
+    color: #0f5132; /* Example: dark green */
+    border: 1px solid #badbcc;
+}
+
+.dtf-tag {
+    background-color: #cff4fc; /* Example: light blue */
+    color: #055160; /* Example: dark blue */
+    border: 1px solid #b6effb;
+}
+
+/* Style for the label/select wrapper div */
+.status-dropdowns-container div {
+    margin-right: 15px; /* Add some spacing between dropdowns */
+    display: flex;        /* Use flexbox for layout */
+    align-items: center; /* Vertically center label and select */
+    gap: 5px;             /* Space between label and select */
+}
+
+/* Style for the labels */
+.status-dropdowns-container label {
+    font-weight: 500; /* Make labels slightly bolder */
+    color: #4a5568;   /* Slightly darker text color */
 }
 
 

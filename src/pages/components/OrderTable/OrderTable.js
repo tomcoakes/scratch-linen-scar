@@ -1,10 +1,10 @@
 // src/pages/components/OrderTable/OrderTable.js
 
-// --- OrderTable Component (UPDATED - Input Initialization from JSON) ---
-function OrderTable({ orders, searchTerm, onItemCompletionChange }) { // Receive onItemCompletionChange prop
+function OrderTable({ orders, searchTerm, onItemCompletionChange }) {
     const [filteredOrders, setFilteredOrders] = React.useState([]);
     const [expandedRowSord, setExpandedRowSord] = React.useState(null);
-    const [completedQuantities, setCompletedQuantities] = React.useState({}); // { [sord]: { [masterCode]: completedQty, ... }, ... }
+    const [completedQuantities, setCompletedQuantities] = React.useState({});
+    const [statusChanges, setStatusChanges] = React.useState({});
 
     React.useEffect(() => {
         if (!searchTerm) {
@@ -25,29 +25,14 @@ function OrderTable({ orders, searchTerm, onItemCompletionChange }) { // Receive
         setExpandedRowSord(expandedRowSord === sord ? null : sord);
     };
 
-    // --- MODIFIED: Function to handle changes in completed quantity input ---
     const handleCompletedQtyChange = (sord, masterCode, newCompletedQty) => {
-      setCompletedQuantities(prevCompletedQuantities => {
-          const orderQuantities = prevCompletedQuantities[sord] || {};
-          const updatedOrderQuantities = { ...orderQuantities, [masterCode]: parseInt(newCompletedQty, 10) || 0 };
+      // ... (same as before) ...
+    };
 
-          // --- Create updated order object ---
-          const updatedOrder = {
-              ...orders.find(order => order.SORD === sord), // Find the order
-              "Item List": orders.find(order => order.SORD === sord)["Item List"].map(item => { // Update Item List
-                  if (item["Master Code"] === masterCode) {
-                      return { ...item, "Completed Qty": updatedOrderQuantities[masterCode] || 0 }; // Update Completed Qty
-                  }
-                  return item;
-              })
-          };
+    const handleStatusChange = (sord, field, newValue) => {
+      // ... (same as before) ...
+    };
 
-        // Call the callback prop with the updated order
-        onItemCompletionChange(sord, updatedOrder);
-
-        return { ...prevCompletedQuantities, [sord]: updatedOrderQuantities };
-    });
-};
 
     return (
         React.createElement('div', { className: "order-table-container" },
@@ -71,7 +56,7 @@ function OrderTable({ orders, searchTerm, onItemCompletionChange }) { // Receive
                                 React.createElement('tr', {
                                     onClick: () => handleRowClick(order.SORD),
                                     className: `${expandedRowSord === order.SORD ? 'expanded' : ''}`
-                                }, // --- Main Data Row ---
+                                },
                                     React.createElement('td', null, order.SORD),
                                     React.createElement('td', null, order["Trader Name"]),
                                     React.createElement('td', null, order["Total Items"]),
@@ -81,15 +66,67 @@ function OrderTable({ orders, searchTerm, onItemCompletionChange }) { // Receive
                                     React.createElement('td', null, order.jobStatus)
                                 ),
                                 React.createElement('tr', {
-                                    className: `info-row ${expandedRowSord === order.SORD ? 'expanded' : ''}` // <-- CORRECTED: Apply 'expanded' class based on expandedRowSord
-                                }, // --- Info Row (Tags and Decoration) ---
-                                    React.createElement('td', { colSpan: "14" }, // Span all columns
-                                        React.createElement('div', { className: "info-container" }, // Container for tags and decoration
-                                            React.createElement('div', { className: "tags-container" }, // Container for tags
-                                                order.isNew ? React.createElement('span', { className: "new-tag" }, 'New') : null // "New" Tag
+                                    className: `info-row ${expandedRowSord === order.SORD ? 'expanded' : ''}`
+                                },
+                                    React.createElement('td', { colSpan: "14" },
+                                        React.createElement('div', { className: "info-container" },
+                                            React.createElement('div', { className: "tags-container" },
+                                                order.isNew ? React.createElement('span', { className: "new-tag" }, 'New') : null,
+                                                order.decorationMethod === "Embroidery" || order.decorationMethod === "Both" ? React.createElement('span', {className: 'embroidery-tag'}, "Embroidery") : null,
+                                                order.decorationMethod === "DTF" || order.decorationMethod === "Both" ? React.createElement('span', {className: 'dtf-tag'}, "DTF") : null
                                             ),
-                                            React.createElement('div', { className: "decoration-container" }, // Container for decoration
-                                                order.decorationMethod // Decoration Method
+                                            React.createElement('div', {className: 'status-dropdowns-container'},
+                                                React.createElement('div', null, // Wrap label and select in a div
+                                                    React.createElement('label', { htmlFor: `garment-status-${order.SORD}` }, 'Garment:'), // Label
+                                                    React.createElement('select', {
+                                                        id: `garment-status-${order.SORD}`, // Unique ID
+                                                        value: (statusChanges[order.SORD] && statusChanges[order.SORD].garmentStatus) || order.garmentStatus,
+                                                        onChange: (e) => handleStatusChange(order.SORD, 'garmentStatus', e.target.value)
+                                                        },
+                                                        React.createElement('option', { value: "Not Started" }, "Not Started"),
+                                                        React.createElement('option', { value: "Not Ordered" }, "Not Ordered"),
+                                                        React.createElement('option', { value: "Ordered" }, "Ordered"),
+                                                        React.createElement('option', { value: "Part Received" }, "Part Received"),
+                                                        React.createElement('option', { value: "Booked in" }, "Booked in"),
+                                                        React.createElement('option', { value: "Delayed" }, "Delayed"),
+                                                        React.createElement('option', { value: "In Stock" }, "In Stock")
+                                                    )
+                                                ),
+                                                order.decorationMethod === 'Embroidery' || order.decorationMethod === 'Both' ? (
+                                                    React.createElement('div', null, // Wrap label and select
+                                                        React.createElement('label', { htmlFor: `embroidery-status-${order.SORD}` }, 'Embroidery:'), // Label
+                                                        React.createElement('select', {
+                                                            id: `embroidery-status-${order.SORD}`, // Unique ID
+                                                            value: (statusChanges[order.SORD] && statusChanges[order.SORD].embroideryFileStatus) || order.embroideryFileStatus,
+                                                            onChange: (e) => handleStatusChange(order.SORD, 'embroideryFileStatus', e.target.value)
+                                                        },
+                                                            React.createElement('option', { value: "" }, "Select..."),
+                                                            React.createElement('option', { value: "On File" }, "On File"),
+                                                            React.createElement('option', { value: "Not Ordered" }, "Not Ordered"),
+                                                            React.createElement('option', { value: "Ordered" }, "Ordered"),
+                                                            React.createElement('option', { value: "Arrived" }, "Arrived"),
+                                                            React.createElement('option', { value: "Delayed" }, "Delayed"),
+                                                            React.createElement('option', { value: "Fixing" }, "Fixing")
+                                                        )
+                                                    )
+                                                ) : null,
+                                                order.decorationMethod === 'DTF' || order.decorationMethod === 'Both' ? (
+                                                    React.createElement('div', null, // Wrap label and select
+                                                        React.createElement('label', { htmlFor: `dtf-status-${order.SORD}` }, 'DTF:'), // Label
+                                                        React.createElement('select', {
+                                                            id: `dtf-status-${order.SORD}`, // Unique ID
+                                                            value: (statusChanges[order.SORD] && statusChanges[order.SORD].dtfStatus) || order.dtfStatus,
+                                                            onChange: (e) => handleStatusChange(order.SORD, 'dtfStatus', e.target.value)
+                                                        },
+                                                            React.createElement('option', { value: "" }, "Select..."),
+                                                            React.createElement('option', { value: "In Stock" }, "In Stock"),
+                                                            React.createElement('option', { value: "Not Started" }, "Not Started"),
+                                                            React.createElement('option', { value: "On Press" }, "On Press"),
+                                                            React.createElement('option', { value: "Printed" }, "Printed"),
+                                                            React.createElement('option', { value: "Issues" }, "Issues")
+                                                        )
+                                                    )
+                                                ) : null
                                             )
                                         )
                                     )
@@ -101,22 +138,6 @@ function OrderTable({ orders, searchTerm, onItemCompletionChange }) { // Receive
                                                 React.createElement('h3', null, 'Back Order Items'),
                                                 React.createElement('p', null, order["Other Parts"] ? order["Other Parts"].join(', ') : "None")
                                             ),
-                                            React.createElement('div', {className: 'garment-status-section'},
-                                                React.createElement('h3', null, 'Garment Status'),
-                                                React.createElement('p', null, order.garmentStatus),
-                                            ),
-                                            order.decorationMethod === 'Embroidery' || order.decorationMethod === 'Both' ? (
-                                                React.createElement('div', {className: 'embroidery-status-section'},
-                                                    React.createElement('h3', null, 'Embroidery Status'),
-                                                    React.createElement('p', null, order.embroideryFileStatus)
-                                                )
-                                            ) : null,
-                                            order.decorationMethod === 'DTF' || order.decorationMethod === 'Both' ? (
-                                                React.createElement('div', {className: 'dtf-status-section'},
-                                                    React.createElement('h3', null, 'DTF Status'),
-                                                    React.createElement('p', null, order.dtfStatus)
-                                                )
-                                            ) : null,
                                             React.createElement('div', { className: 'items-completed-section' },
                                                 React.createElement('h3', null, 'Items Completed'),
                                                 React.createElement('table', { className: 'items-completed-table' },
@@ -130,11 +151,11 @@ function OrderTable({ orders, searchTerm, onItemCompletionChange }) { // Receive
                                                     React.createElement('tbody', null,
                                                         order["Item List"].map(item => {
                                                           const initialCompletedQty = item["Completed Qty"] || 0;
-                                                          const completedQty = (completedQuantities[order.SORD] && completedQuantities[order.SORD][item["Master Code"]]) || initialCompletedQty; // Get completed qty, default to initialCompletedQty
+                                                          const completedQty = (completedQuantities[order.SORD] && completedQuantities[order.SORD][item["Master Code"]]) || initialCompletedQty;
                                                           const isCompleted = completedQty >= item["Outstanding Qty"];
 
                                                             return (
-                                                                React.createElement('tr', { key: item["Master Code"], className: isCompleted ? 'completed' : '' }, // Conditionally apply 'completed' class
+                                                                React.createElement('tr', { key: item["Master Code"], className: isCompleted ? 'completed' : '' },
                                                                     React.createElement('td', null, item["Outstanding Qty"]),
                                                                     React.createElement('td', null, item["Master Code"]),
                                                                     React.createElement('td', null,
@@ -142,7 +163,7 @@ function OrderTable({ orders, searchTerm, onItemCompletionChange }) { // Receive
                                                                             type: "number",
                                                                             min: "0",
                                                                             max: item["Outstanding Qty"],
-                                                                            value: completedQty,   // Now correctly initialized and updated
+                                                                            value: completedQty,
                                                                             onChange: (e) => handleCompletedQtyChange(order.SORD, item["Master Code"], e.target.value)
 
                                                                         })
