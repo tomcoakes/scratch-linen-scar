@@ -1141,7 +1141,39 @@ app.get('/garment-image-proxy', (req, res) => {
 });
 
 
+// --- Helper function to parse DD/MM/YYYY date format ---
+function parseExcelDate(dateString) {
+    if (!dateString) {
+        return null; // Handle empty or null values
+    }
 
+    // Check if the dateString matches the YYYY-MM-DD format using a regular expression
+    const dateRegex = /^\d{4}-\d{2}-\d{2}$/;
+    if (!dateRegex.test(dateString)) {
+      console.warn(`Invalid date format: ${dateString}`);
+      return null; // Handle invalid format
+    }
+
+    const [year, month, day] = dateString.split('-').map(Number);
+
+    // Month is 0-indexed in JavaScript Date
+    const parsedDate = new Date(Date.UTC(year, month - 1, day));
+
+    if (isNaN(parsedDate)) {
+        console.warn(`Invalid date: ${dateString}`);
+        return null;
+    }
+
+    return parsedDate;
+}
+
+function formatDate(date) {
+  const d = new Date(date);
+  const day = String(d.getUTCDate()).padStart(2, '0');
+  const month = String(d.getUTCMonth() + 1).padStart(2, '0'); // Month is 0-indexed
+  const year = d.getUTCFullYear();
+  return `${day}/${month}/${year}`;
+}
 // --- NEW API Endpoint: Handle CSV Upload for Orders ---
 // --- NEW API Endpoint: Handle CSV Upload for Orders (UPDATED for NO DUPLICATES) ---
 // --- NEW API Endpoint: Handle CSV Upload for Orders (UPDATED for NO DUPLICATES and NEW FIELDS) ---
@@ -1384,13 +1416,7 @@ app.get('/api/active-orders', (req, res) => {
         }
     }
 
-function formatDate(date) {
-  const d = new Date(date);
-  const day = String(d.getUTCDate()).padStart(2, '0');
-  const month = String(d.getUTCMonth() + 1).padStart(2, '0'); // Month is 0-indexed
-  const year = d.getUTCFullYear();
-  return `${day}/${month}/${year}`;
-}
+
 
 
 // --- API Endpoint: Delete Order ---
