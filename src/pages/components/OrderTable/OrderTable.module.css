@@ -42,3 +42,17 @@
 #orders-table tbody tr:hover {
     background-color: #f9fafb; /* Light hover background */
 }
+
+/* src/pages/components/OrderTable/OrderTable.module.css */
+
+/* ... (rest of your OrderTable.module.css) ... */
+
+.new-tag {
+    background-color: #f0f0f0; /* Light grey background for tag */
+    color: #333; /* Dark text color */
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 0.85em;
+    font-weight: 500;
+    margin-left: 5px;
+}
