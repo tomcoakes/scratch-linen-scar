@@ -218,18 +218,57 @@ main {
     border: 1px solid #b6effb;
 }
 
-/* Style for the label/select wrapper div */
-.status-dropdowns-container div {
-    margin-right: 15px; /* Add some spacing between dropdowns */
-    display: flex;        /* Use flexbox for layout */
-    align-items: center; /* Vertically center label and select */
-    gap: 5px;             /* Space between label and select */
+
+
+/* Style for each dropdown */
+.status-dropdowns-grid {
+  display: grid;
+  grid-template-columns: 150px 150px 150px; /* Three fixed columns for Garment, Embroidery, DTF */
+  gap: 1rem;
+  /* No centering of the grid container so each cell remains in its fixed position */
 }
 
-/* Style for the labels */
-.status-dropdowns-container label {
-    font-weight: 500; /* Make labels slightly bolder */
-    color: #4a5568;   /* Slightly darker text color */
+/* ---------- Individual Dropdown Styling ---------- */
+.status-dropdown {
+  width: 100%;
+  padding: 0.25rem 0.5rem;
+  font-size: 0.8rem;
+  border: 1px solid rgba(0, 0, 0, 0.3);
+  border-radius: 4px;
+  background-color: #fff;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.status-dropdown:focus {
+  border-color: #4a5568;
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.2);
+  outline: none;
+}
+
+/* ---------- Subtle Individual Colours ---------- */
+.garment-dropdown {
+  background-color: #fdfdfd;
+  border-color: #ccc;
+}
+
+.embroidery-dropdown {
+  background-color: #e7f7ff; /* Light blue tint */
+  border-color: #a3d4f7;
+}
+
+.dtf-dropdown {
+  background-color: #f9f9f9;
+  border-color: #b8b8b8;
+}
+
+/* ---------- Label Styling for Dropdowns ---------- */
+.status-label {
+  font-size: 0.8rem;
+  color: #4a5568;
+  margin-bottom: 0.25rem;
+  display: block;
+  text-align: left;
 }
 
 
