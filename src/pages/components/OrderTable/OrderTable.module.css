@@ -222,23 +222,24 @@ main {
 
 /* Style for each dropdown */
 /* ---------- Fixed Dropdown Positions ---------- */
+/* ---------- Fixed Dropdown Positions (Aligned to the Left) ---------- */
 .status-dropdowns-container {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;  /* Reserve three equal columns */
-  gap: 20px;
-  max-width: 640px; /* Adjust as needed */
-  margin: 20px auto; /* Center the grid container */
+  grid-template-columns: repeat(3, auto);  /* Three columns with auto width */
+  gap: 10px;                              /* Slight gap between dropdowns */
+  margin-left: 15px;                      /* Spacing from the tags container */
 }
 
 /* ---------- Base Styling for Dropdowns ---------- */
 .status-dropdowns-container select {
   width: 100%;
-  padding: 8px 12px;
-  font-size: 14px;
+  /* Increase right padding so the arrow doesn't cover text */
+  padding: 4px 30px 4px 8px;  /* top, right, bottom, left */
+  font-size: 12px;            /* Smaller font size */
   border: 1px solid #ccc;
   border-radius: 6px;
   background-color: #fff;
-  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease, color 0.3s ease;
   appearance: none;
   -webkit-appearance: none;
   -moz-appearance: none;
@@ -262,23 +263,35 @@ main {
 /* ---------- Specific Dropdown Colouring ---------- */
 /* Garment dropdown styling */
 .status-dropdowns-container select[id^="garment-status-"] {
-  background-color: #fafafa;
-  border-color: #b0bec5;
-  color: #333;
+  background-color: #ded1e7;
+  border-color: #d8badb;
+  color: #4f0f51;
+}
+.status-dropdowns-container select[id^="garment-status-"] option:hover {
+  background-color: #b397c8;  /* Darker shade on option hover */
+  color: #fff;
 }
 
 /* Embroidery dropdown styling */
 .status-dropdowns-container select[id^="embroidery-status-"] {
-  background-color: #D1E7DD; /* Light blue tint */
+  background-color: #D1E7DD;
   border-color: #BADBCC;
   color: #0F5132;
+}
+.status-dropdowns-container select[id^="embroidery-status-"] option:hover {
+  background-color: #90c8c0;  /* Darker shade on option hover */
+  color: #fff;
 }
 
 /* DTF dropdown styling */
 .status-dropdowns-container select[id^="dtf-status-"] {
-  background-color: #CFF4FC; /* Light pink tint */
+  background-color: #CFF4FC;
   border-color: #B7F0FB;
   color: #185860;
+}
+.status-dropdowns-container select[id^="dtf-status-"] option:hover {
+  background-color: #a5d7e0;  /* Darker shade on option hover */
+  color: #fff;
 }
 
 /* ---------- Optional: Label Styling ---------- */
@@ -290,6 +303,7 @@ main {
   color: #444;
   text-align: left;
 }
+
 
 /* ---------- Footer ---------- */
 footer {

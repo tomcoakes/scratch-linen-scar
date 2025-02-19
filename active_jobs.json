@@ -5283,7 +5283,7 @@
         "Other Parts Desc": [
           "Russell Nano Padded Bodywarmer - Black - Small"
         ],
-        "Completed Qty": 1
+        "Completed Qty": 0
       }
     ],
     "Ordered Date": "17/02/2025",
@@ -5294,9 +5294,9 @@
     "Rep": "Ricky Neale ",
     "Address": "GATE 2 , Unit 6 Spartan Industrial Estate, West Bromwich, , B70 0DH",
     "isNew": true,
-    "garmentStatus": "Ordered",
+    "garmentStatus": "Part Received",
     "decorationMethod": "Embroidery",
-    "embroideryFileStatus": "On File",
+    "embroideryFileStatus": "Not Ordered",
     "dtfStatus": "",
     "jobStatus": "Not Started"
   },
