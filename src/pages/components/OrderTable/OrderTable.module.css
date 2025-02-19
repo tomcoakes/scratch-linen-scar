@@ -221,53 +221,69 @@ main {
 
 
 /* Style for each dropdown */
-.status-dropdowns-grid {
+.status-dropdowns-container {
   display: grid;
-  grid-template-columns: 150px 150px 150px; /* Three fixed columns for Garment, Embroidery, DTF */
-  gap: 1rem;
-  /* No centering of the grid container so each cell remains in its fixed position */
+  grid-template-columns: 200px 200px 200px;  /* Fixed columns for Garment, Embroidery, DTF */
+  gap: 20px;
+  max-width: 640px;  /* 3 * 200px + 2 * 20px = 640px total */
+  margin: 20px auto;  /* Center the container horizontally */
 }
 
-/* ---------- Individual Dropdown Styling ---------- */
+/* Base styling for all dropdowns */
 .status-dropdown {
   width: 100%;
-  padding: 0.25rem 0.5rem;
-  font-size: 0.8rem;
-  border: 1px solid rgba(0, 0, 0, 0.3);
-  border-radius: 4px;
+  padding: 8px 12px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
   background-color: #fff;
   transition: border-color 0.3s ease, box-shadow 0.3s ease;
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg fill='%23333' height='24' viewBox='0 0 24 24' width='24' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M7 10l5 5 5-5z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+  background-size: 16px;
+  cursor: pointer;
+}
+
+.status-dropdown:hover {
+  border-color: #999;
 }
 
 .status-dropdown:focus {
-  border-color: #4a5568;
+  border-color: #666;
   box-shadow: 0 0 4px rgba(0, 0, 0, 0.2);
   outline: none;
 }
 
-/* ---------- Subtle Individual Colours ---------- */
+/* Specific dropdown colouring for added style */
 .garment-dropdown {
-  background-color: #fdfdfd;
-  border-color: #ccc;
+  background-color: #fafafa;
+  border-color: #b0bec5;
+  color: #333;
 }
 
 .embroidery-dropdown {
-  background-color: #e7f7ff; /* Light blue tint */
-  border-color: #a3d4f7;
+  background-color: #e3f2fd; /* Light blue tint */
+  border-color: #90caf9;
+  color: #333;
 }
 
 .dtf-dropdown {
-  background-color: #f9f9f9;
-  border-color: #b8b8b8;
+  background-color: #fce4ec; /* Light pink tint */
+  border-color: #f48fb1;
+  color: #333;
 }
 
-/* ---------- Label Styling for Dropdowns ---------- */
+/* Optional: Label styling for each dropdown */
 .status-label {
-  font-size: 0.8rem;
-  color: #4a5568;
-  margin-bottom: 0.25rem;
   display: block;
+  margin-bottom: 4px;
+  font-size: 13px;
+  font-weight: 600;
+  color: #444;
   text-align: left;
 }
 
