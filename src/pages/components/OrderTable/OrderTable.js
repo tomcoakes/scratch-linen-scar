@@ -1,8 +1,8 @@
 // src/pages/components/OrderTable/OrderTable.js
 
-import React from 'react';
+// import React from 'react';
 
-// --- OrderTable Component (UPDATED - Full Code with Row Expansion) ---
+// --- OrderTable Component (UPDATED - Full Code with Row Expansion - SYNTAX ERROR FIXED) ---
 function OrderTable({ orders, searchTerm }) {
 
     const filteredOrders = React.useMemo(() => {
@@ -45,7 +45,7 @@ function OrderTable({ orders, searchTerm }) {
                     filteredOrders.length > 0 ? (
                         filteredOrders.map(order => (
                             React.createElement(React.Fragment, { key: order.SORD },
-                                React.createElement('tr', { // --- Main Data Row ---
+                                React.createElement('tr', { 
                                         onClick: () => handleRowClick(order.SORD),
                                         className: "data-row"
                                     },
@@ -69,11 +69,11 @@ function OrderTable({ orders, searchTerm }) {
                                         )
                                     )
                                 ),
-                                expandedRowSORD === order.SORD ? ( // --- Expansion Row ---
+                                expandedRowSORD === order.SORD ? ( 
                                     React.createElement('tr', { className: "expansion-row" },
                                         React.createElement('td', { colSpan: "14" },
                                             React.createElement('div', { className: "expansion-content" },
-                                                'Expansion Content Here for SORD: ', order.SORD // Placeholder text
+                                                'Expansion Content Here for SORD: ', order.SORD
                                             )
                                         )
                                     )
@@ -87,7 +87,8 @@ function OrderTable({ orders, searchTerm }) {
                     )
                 )
             )
-        );
+        )
+);
 }
 
 export default OrderTable;
