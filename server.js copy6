@@ -1183,7 +1183,7 @@ function formatDate(date) {
 }
 // --- NEW API Endpoint: Handle CSV Upload for Orders ---
 // --- NEW API Endpoint: Handle CSV Upload for Orders (UPDATED for NO DUPLICATES) ---
-// --- NEW API Endpoint: Handle CSV Upload for Orders (UPDATED for NO DUPLICATES, NEW FIELDS, and CORRECT TOTAL LOGOS) ---
+// --- NEW API Endpoint: Handle CSV Upload for Orders (UPDATED for NO DUPLICATES and NEW FIELDS) ---
 app.post('/api/upload-orders', express.text({ type: 'text/csv' }), (req, res) => {
     const csvText = req.body;
     const results = [];
@@ -1231,6 +1231,7 @@ app.post('/api/upload-orders', express.text({ type: 'text/csv' }), (req, res) =>
                 console.log('CSV data parsed on server, starting consolidation and update (NEW ORDERS ONLY)...');
 
                 const consolidatedOrders = {}; // Object to hold consolidated orders from CSV
+                const newOrdersToAdd = []; // Array to hold ONLY new orders that will be added
 
                 // Create a Set of existing SORDs for efficient lookup
                 const existingSords = new Set(existingJobsData.map(job => job.SORD));
@@ -1252,7 +1253,7 @@ app.post('/api/upload-orders', express.text({ type: 'text/csv' }), (req, res) =>
                             "Item List": [],
                             "Ordered Date": null,
                             "Due Date": null,
-                            "Total Logos": 0, // Initialize Total Logos (will be calculated correctly later)
+                            "Total Logos": 0,
                             "Reference": row.Reference,
                             "Contact": row.Contact,
                             "Rep": row.Rep,
@@ -1282,7 +1283,7 @@ app.post('/api/upload-orders', express.text({ type: 'text/csv' }), (req, res) =>
                                 "Other Parts": [],
                                 "SWP Parts Desc": [],
                                 "Other Parts Desc": [],
-                                "Completed Qty": 0, // ADD Completed Qty field, initialized to 0
+                                "Completed Qty": 0,
                             };
                             consolidatedOrders[sord]["Item List"].push(existingItem);
                         }
@@ -1302,7 +1303,7 @@ app.post('/api/upload-orders', express.text({ type: 'text/csv' }), (req, res) =>
 
                         existingItem["SWP Parts"].push(...swpParts);
                         existingItem["SWP Parts Desc"].push(...swpPartsDesc);
-                        // REMOVED INCORRECT LOGO COUNT: consolidatedOrders[sord]["Total Logos"] += swpParts.length;
+                        consolidatedOrders[sord]["Total Logos"] += swpParts.length;
 
                         const otherParts = row["Other Parts"] ? row["Other Parts"].split(',').map(part => part.trim()).filter(part => part !== "") : [];
                         const otherPartsDesc = row["Other Parts Desc"] ? row["Other Parts Desc"].split(',').map(desc => desc.trim()).filter(desc => desc !== "") : [];
@@ -1336,18 +1337,6 @@ app.post('/api/upload-orders', express.text({ type: 'text/csv' }), (req, res) =>
                     }
                 });
 
-                // --- Calculate Total Logos for each order (CORRECTED LOGIC) ---
-                for (const sord in consolidatedOrders) {
-                    if (consolidatedOrders.hasOwnProperty(sord)) {
-                        let totalLogos = 0;
-                        consolidatedOrders[sord]["Item List"].forEach(item => {
-                            totalLogos += item["SWP Parts"].length * item["Outstanding Qty"];
-                        });
-                        consolidatedOrders[sord]["Total Logos"] = totalLogos;
-                    }
-                }
-
-
                 // Convert consolidatedOrders object to an array of new orders
                 const newOrdersArray = Object.values(consolidatedOrders);
 
@@ -1360,6 +1349,7 @@ app.post('/api/upload-orders', express.text({ type: 'text/csv' }), (req, res) =>
                 console.log(`CSV data processed. ${trulyNewOrders.length} new orders added, ${results.length - trulyNewOrders.length} existing orders skipped.`);
 
                 updateActiveJobsJSON(updatedJobsArray);
+                // res.json(updatedJobsArray);
                 res.json(trulyNewOrders); // <-- RETURN trulyNewOrders
 
             })
