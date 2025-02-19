@@ -17,7 +17,7 @@ function NewOrderPopup({ newOrders, onOrderUpdates, onClose }) {
         setUpdatedOrders(newUpdatedOrders);
     };
 
-    const handleCheckboxChange = (sord, field, checked) => { // Corrected checkbox handler
+    const handleCheckboxChange = (sord, field, checked) => {
       const newUpdatedOrders = updatedOrders.map(order => {
           if (order.SORD === sord) {
               return { ...order, [field]: checked }; // Directly use 'checked' value
@@ -25,7 +25,7 @@ function NewOrderPopup({ newOrders, onOrderUpdates, onClose }) {
           return order;
       });
       setUpdatedOrders(newUpdatedOrders);
-  };
+    };
 
 
     const handleSubmit = () => {
@@ -57,9 +57,9 @@ function NewOrderPopup({ newOrders, onOrderUpdates, onClose }) {
                                 React.createElement('td', null,
                                     React.createElement('input', {
                                         type: "checkbox",
-                                        checked: !order.isNew,  // Checked if NOT new (i.e., Repeat)
-                                        onChange: (e) => handleCheckboxChange(order.SORD, 'isNew', !e.target.checked)
-                                    })
+                                        checked: order.isNew, // Now, if order.isNew is true, the checkbox is checked.
+                                        onChange: (e) => handleCheckboxChange(order.SORD, 'isNew', e.target.checked)
+                                      })
                                 ),
                                 React.createElement('td', null,
                                     React.createElement('select', {

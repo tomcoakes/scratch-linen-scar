@@ -1491,7 +1491,7 @@ app.put('/api/update-order/:sord', (req, res) => {
 
             // Update the order data.  IMPORTANT: MERGE the data to preserve existing fields
             jobsData[orderIndex] = { ...jobsData[orderIndex], ...updatedOrderData };
-            jobsData[orderIndex].isNew = false; // Clear 'isNew' flag
+            // jobsData[orderIndex].isNew = false; // Clear 'isNew' flag
 
             // Write the updated data back to the file
             fs.writeFile(filePath, JSON.stringify(jobsData, null, 2), 'utf8', (writeErr) => {
