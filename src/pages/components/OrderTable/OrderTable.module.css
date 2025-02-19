@@ -41,11 +41,29 @@
     padding-top: 12px;
     padding-bottom: 12px;
 }
+#orders-table tbody tr {
+  /* Removed border-bottom, added background */
+    background-color: #fff; /* Default background */
+    transition: background-color 0.3s ease; /* Smooth transition for background */
+}
+#orders-table tbody tr.expanded {
+    background-color: #f5f7fa; /* Light grey background when expanded */
+}
+
 
 /* Style for the "info-row" - nested row - BORDER ONLY BELOW INFO ROW */
 #orders-table tbody tr.info-row td {
     padding: 0;
-    border-bottom: 1px solid #e2e8f0; /* ADD border-bottom TO INFO-ROW CELLS */ /* <-- ADDED BORDER-BOTTOM HERE */
+    border-bottom: none; /* ADD border-bottom TO INFO-ROW CELLS */ /* <-- ADDED BORDER-BOTTOM HERE */
+}
+
+#orders-table tbody tr.info-row {
+    background-color: #fff; /* Default background */
+    transition: background-color 0.3s ease; /* Smooth transition for background */
+}
+
+#orders-table tbody tr.info-row.expanded {
+    background-color: #f5f7fa; /* Light grey background when expanded */
 }
 
 /* Container for tags and decoration in info-row */
@@ -65,7 +83,7 @@
 
 /* Container for decoration method (if needed for specific decoration styling later) */
 .decoration-container {
-    /* Add specific styling for decoration-container if needed */
+
 }
 
 
@@ -89,9 +107,9 @@
 
 .expansion-row td {
     padding: 20px 15px; /* Padding for expansion row cells */
-    background-color: #f0f3f4; /* Light background for expansion area */
-    border-bottom: 1px solid #e2e8f0; /* Border at the bottom of expansion area */
-    border-top: none; /* Remove top border to visually attach to main row */
+    background-color: #f5f7fa; /* Same light grey background */
+    border-bottom: 1px solid #e2e8f0; /* Keep bottom border */
+    border-top: none;    /* No top border */
 }
 
 .expansion-content {
