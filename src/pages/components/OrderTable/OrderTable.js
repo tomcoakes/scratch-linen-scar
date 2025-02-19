@@ -1,28 +1,25 @@
-// src/pages/components/OrderTable/OrderTable.js
-
-// import React from 'react';
-
-// --- OrderTable Component (UPDATED - Full Code with Row Expansion - SYNTAX ERROR FIXED) ---
 function OrderTable({ orders, searchTerm }) {
+    const [filteredOrders, setFilteredOrders] = React.useState([]); // <-- REMOVE useMemo
+    const [expandedRowSord, setExpandedRowSord] = React.useState(null); // <-- State for expanded row
 
-    const filteredOrders = React.useMemo(() => {
+    React.useEffect(() => { // <-- useEffect for filtering - REPLACING useMemo
         if (!searchTerm) {
-            return orders;
-        }
-
-        const lowerSearchTerm = searchTerm.toLowerCase();
-        return orders.filter(order => {
-            return Object.values(order).some(value => {
-                if (value === null || value === undefined) return false;
-                return String(value).toLowerCase().includes(lowerSearchTerm);
+            setFilteredOrders(orders); // No search term, show all orders
+        } else {
+            const lowerSearchTerm = searchTerm.toLowerCase();
+            const filtered = orders.filter(order => {
+                return Object.values(order).some(value => {
+                    if (value === null || value === undefined) return false;
+                    return String(value).toLowerCase().includes(lowerSearchTerm);
+                });
             });
-        });
-    }, [orders, searchTerm]);
+            setFilteredOrders(filtered); // Update filteredOrders state
+        }
+    }, [orders, searchTerm]); // Re-filter when orders or searchTerm change
 
-    const [expandedRowSORD, setExpandedRowSORD] = React.useState(null);
 
-    const handleRowClick = (sord) => {
-        setExpandedRowSORD(expandedRowSORD === sord ? null : sord);
+    const handleRowClick = (sord) => { // <-- ADD THIS FUNCTION
+        setExpandedRowSord(expandedRowSord === sord ? null : sord); // Toggle expandedRowSord
     };
 
 
@@ -45,10 +42,7 @@ function OrderTable({ orders, searchTerm }) {
                     filteredOrders.length > 0 ? (
                         filteredOrders.map(order => (
                             React.createElement(React.Fragment, { key: order.SORD },
-                                React.createElement('tr', { 
-                                        onClick: () => handleRowClick(order.SORD),
-                                        className: "data-row"
-                                    },
+                                React.createElement('tr', { onClick: () => handleRowClick(order.SORD) }, // <-- ADD onClick handler
                                     React.createElement('td', null, order.SORD),
                                     React.createElement('td', null, order["Trader Name"]),
                                     React.createElement('td', null, order["Total Items"]),
@@ -56,6 +50,13 @@ function OrderTable({ orders, searchTerm }) {
                                     React.createElement('td', null, order["Due Date"]),
                                     React.createElement('td', null, order["Total Logos"]),
                                     React.createElement('td', null, order.jobStatus)
+                                ),
+                                React.createElement('tr', { className: `expansion-row ${expandedRowSord === order.SORD ? 'expanded' : ''}` }, // <-- Expansion row, conditional 'expanded' class
+                                    React.createElement('td', { colSpan: "14" }, // Span all columns
+                                        React.createElement('div', { className: "expansion-content" }, // Container for expansion content
+                                            React.createElement('p', null, `Expansion content for SORD: ${order.SORD} - PLACEHOLDER`) // Placeholder content
+                                        )
+                                    )
                                 ),
                                 React.createElement('tr', { className: "info-row" },
                                     React.createElement('td', { colSpan: "14" },
@@ -68,16 +69,7 @@ function OrderTable({ orders, searchTerm }) {
                                             )
                                         )
                                     )
-                                ),
-                                expandedRowSORD === order.SORD ? (
-                                    React.createElement('tr', { className: `expansion-row ${expandedRowSORD === order.SORD ? 'expanded' : ''}` }, // <-- Conditional "expanded" class
-                                        React.createElement('td', { colSpan: "14" },
-                                            React.createElement('div', { className: "expansion-content" },
-                                                'Expansion Content Here for SORD: ', order.SORD
-                                            )
-                                        )
-                                    )
-                                ) : null
+                                )
                             )
                         ))
                     ) : (
@@ -88,7 +80,7 @@ function OrderTable({ orders, searchTerm }) {
                 )
             )
         )
-);
-}
+      );
+    }
 
 export default OrderTable;
