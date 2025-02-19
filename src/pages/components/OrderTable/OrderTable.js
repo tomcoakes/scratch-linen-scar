@@ -1,10 +1,9 @@
 // src/pages/components/OrderTable/OrderTable.js
 
-// --- OrderTable Component (UPDATED - Items Completed Table, Input Handling) ---
-function OrderTable({ orders, searchTerm }) {
+// --- OrderTable Component (UPDATED - Callback for Updates) ---
+function OrderTable({ orders, searchTerm, onItemCompletionChange }) { // Receive onItemCompletionChange prop
     const [filteredOrders, setFilteredOrders] = React.useState([]);
     const [expandedRowSord, setExpandedRowSord] = React.useState(null);
-    // Add state to hold COMPLETED QUANTITY CHANGES *locally* before updating server
     const [completedQuantities, setCompletedQuantities] = React.useState({}); // { [sord]: { [masterCode]: completedQty, ... }, ... }
 
     React.useEffect(() => {
@@ -25,21 +24,30 @@ function OrderTable({ orders, searchTerm }) {
     const handleRowClick = (sord) => {
         setExpandedRowSord(expandedRowSord === sord ? null : sord);
     };
-    // --- NEW: Function to handle changes in completed quantity input ---
+
+    // --- MODIFIED: Function to handle changes in completed quantity input ---
     const handleCompletedQtyChange = (sord, masterCode, newCompletedQty) => {
-        setCompletedQuantities(prevCompletedQuantities => {
-            // 1.  Get existing quantities for the order (or create empty object if none)
-            const orderQuantities = prevCompletedQuantities[sord] || {};
+      setCompletedQuantities(prevCompletedQuantities => {
+          const orderQuantities = prevCompletedQuantities[sord] || {};
+          const updatedOrderQuantities = { ...orderQuantities, [masterCode]: parseInt(newCompletedQty, 10) || 0 };
 
-            // 2. Update the quantity for the specific masterCode
-            const updatedOrderQuantities = { ...orderQuantities, [masterCode]: parseInt(newCompletedQty, 10) || 0 }; // Parse to integer, default to 0
+          // --- Create updated order object ---
+          const updatedOrder = {
+              ...orders.find(order => order.SORD === sord), // Find the order
+              "Item List": orders.find(order => order.SORD === sord)["Item List"].map(item => { // Update Item List
+                  if (item["Master Code"] === masterCode) {
+                      return { ...item, "Completed Qty": updatedOrderQuantities[masterCode] || 0 }; // Update Completed Qty
+                  }
+                  return item;
+              })
+          };
 
-            // 3.  Return updated state
-            return { ...prevCompletedQuantities, [sord]: updatedOrderQuantities };
-        });
-    };
+        // Call the callback prop with the updated order
+        onItemCompletionChange(sord, updatedOrder);
 
-
+        return { ...prevCompletedQuantities, [sord]: updatedOrderQuantities };
+    });
+};
 
     return (
         React.createElement('div', { className: "order-table-container" },
@@ -63,7 +71,7 @@ function OrderTable({ orders, searchTerm }) {
                                 React.createElement('tr', {
                                     onClick: () => handleRowClick(order.SORD),
                                     className: `${expandedRowSord === order.SORD ? 'expanded' : ''}`
-                                },
+                                }, // --- Main Data Row ---
                                     React.createElement('td', null, order.SORD),
                                     React.createElement('td', null, order["Trader Name"]),
                                     React.createElement('td', null, order["Total Items"]),
@@ -73,15 +81,15 @@ function OrderTable({ orders, searchTerm }) {
                                     React.createElement('td', null, order.jobStatus)
                                 ),
                                 React.createElement('tr', {
-                                    className: `info-row ${expandedRowSord === order.SORD ? 'expanded' : ''}`
-                                },
-                                    React.createElement('td', { colSpan: "14" },
-                                        React.createElement('div', { className: "info-container" },
-                                            React.createElement('div', { className: "tags-container" },
-                                                order.isNew ? React.createElement('span', { className: "new-tag" }, 'New') : null
+                                    className: `info-row ${expandedRowSord === order.SORD ? 'expanded' : ''}` // <-- CORRECTED: Apply 'expanded' class based on expandedRowSord
+                                }, // --- Info Row (Tags and Decoration) ---
+                                    React.createElement('td', { colSpan: "14" }, // Span all columns
+                                        React.createElement('div', { className: "info-container" }, // Container for tags and decoration
+                                            React.createElement('div', { className: "tags-container" }, // Container for tags
+                                                order.isNew ? React.createElement('span', { className: "new-tag" }, 'New') : null // "New" Tag
                                             ),
-                                            React.createElement('div', { className: "decoration-container" },
-                                                order.decorationMethod
+                                            React.createElement('div', { className: "decoration-container" }, // Container for decoration
+                                                order.decorationMethod // Decoration Method
                                             )
                                         )
                                     )
@@ -111,7 +119,7 @@ function OrderTable({ orders, searchTerm }) {
                                             ) : null,
                                             React.createElement('div', { className: 'items-completed-section' },
                                                 React.createElement('h3', null, 'Items Completed'),
-                                                React.createElement('table', { className: 'items-completed-table' }, // <-- TABLE for Items Completed
+                                                React.createElement('table', { className: 'items-completed-table' },
                                                     React.createElement('thead', null,
                                                         React.createElement('tr', null,
                                                             React.createElement('th', null, 'Qty'),
@@ -131,10 +139,10 @@ function OrderTable({ orders, searchTerm }) {
                                                                     React.createElement('td', null,
                                                                         React.createElement('input', {
                                                                             type: "number",
-                                                                            min: "0",  // Minimum value of 0
-                                                                            max: item["Outstanding Qty"], // Maximum is Outstanding Qty
-                                                                            value: completedQty,   // Controlled component
-                                                                            onChange: (e) => handleCompletedQtyChange(order.SORD, item["Master Code"], e.target.value) // Call handler on change
+                                                                            min: "0",
+                                                                            max: item["Outstanding Qty"],
+                                                                            value: completedQty,
+                                                                            onChange: (e) => handleCompletedQtyChange(order.SORD, item["Master Code"], e.target.value)
 
                                                                         })
                                                                     )

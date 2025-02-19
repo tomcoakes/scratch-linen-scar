@@ -8,39 +8,37 @@ import OrderTable from './components/OrderTable/OrderTable.js';
 import SummaryCards from './components/SummaryCards/SummaryCards.js';
 import NewOrderPopup from './components/NewOrderPopup/NewOrderPopup.js'; // Import the popup component
 
-// --- Main App Component (Now includes popup handling) ---
+// --- Main App Component (Now includes popup handling and item completion handling) ---
 function App() {
     const [orders, setOrders] = React.useState([]);
     const [searchTerm, setSearchTerm] = React.useState('');
     const [appStateReady, setAppStateReady] = React.useState(false);
-    const [showNewOrderPopup, setShowNewOrderPopup] = React.useState(false); // State for popup visibility
-    const [newOrders, setNewOrders] = React.useState([]); // Add state for new orders
-
+    const [showNewOrderPopup, setShowNewOrderPopup] = React.useState(false);
+    const [newOrders, setNewOrders] = React.useState([]);
 
     React.useEffect(() => {
-      // --- Initialize window.appState and set appStateReady to true AFTER initialization ---
-      window.appState = {
-          orders: orders,
-          setOrders: setOrders,
-          searchTerm: searchTerm,
-          setSearchTerm: setSearchTerm,
-          fetchOrderData: fetchOrderData,
-          handleFileUpload: handleFileUpload,
-          handleSearchChange: handleSearchChange,
-          handleClearSearch: handleClearSearch,
-          handleOrderUpdates: handleOrderUpdates, // Add handleOrderUpdates to appState
-      };
-      console.log("window.appState initialized in useEffect (initial):", window.appState);
-      setAppStateReady(true);
+        // --- Initialize window.appState and set appStateReady to true AFTER initialization ---
+        window.appState = {
+            orders: orders,
+            setOrders: setOrders,
+            searchTerm: searchTerm,
+            setSearchTerm: setSearchTerm,
+            fetchOrderData: fetchOrderData,
+            handleFileUpload: handleFileUpload,
+            handleSearchChange: handleSearchChange,
+            handleClearSearch: handleClearSearch,
+            handleOrderUpdates: handleOrderUpdates,
+            handleItemCompletionChange: handleItemCompletionChange, // Add to appState
+        };
+        console.log("window.appState initialized in useEffect (initial):", window.appState);
+        setAppStateReady(true);
 
-      fetchOrderData();
-  }, []);
+        fetchOrderData();
+    }, []);
 
     React.useEffect(() => {
         if (appStateReady) {
-            console.log("appStateReady is true OR orders state updated, re-rendering child components...");
-
-            // --- UPDATE window.appState HERE, to ensure it's synced with the latest state ---
+            console.log("appStateReady is true OR orders/searchTerm state updated, re-rendering child components...");
             window.appState = {
                 ...window.appState,  // Keep existing properties
                 orders: orders,    // Update 'orders'
@@ -54,11 +52,10 @@ function App() {
 
     React.useEffect(() => {
         if (appStateReady) {
-          console.log("appStateReady is true, rendering child components... (initial render)");
-          renderChildComponents(searchTerm);
+            console.log("appStateReady is true, rendering child components... (initial render)");
+            renderChildComponents(searchTerm);
         }
     }, [appStateReady, searchTerm]);
-
 
   async function fetchOrderData() { // Keep fetchOrderData as a function in App
       try {
@@ -76,7 +73,7 @@ function App() {
   }
 
 
-  const handleFileUpload = (newOrdersFromServer) => { // Modified to handle new orders from server
+const handleFileUpload = (newOrdersFromServer) => { // Modified to handle new orders from server
       // No longer necessary to update 'orders' state directly here
       // The fetchOrderData will update 'orders' after the server responds
 
@@ -121,52 +118,88 @@ function App() {
         // alert('Orders updated successfully!'); // Provide feedback to the user
     };
 
-    const handleSearchChange = (newSearchTerm) => { // Keep handleSearchChange in App
+    const handleSearchChange = (newSearchTerm) => {
         setSearchTerm(newSearchTerm);
     };
 
-    const handleClearSearch = () => { // Keep handleClearSearch in App
+    const handleClearSearch = () => {
         setSearchTerm('');
     };
 
+    // --- NEW: Function to handle item completion changes ---
+    const handleItemCompletionChange = async (sord, updatedOrder) => {
+        // 1. Update the local 'orders' state
+        setOrders(prevOrders => {
+            const updatedOrders = prevOrders.map(order => {
+                if (order.SORD === sord) {
+                    return updatedOrder; // Replace the entire order with the updated one
+                }
+                return order;
+            });
+            return updatedOrders;
+        });
 
-    function renderChildComponents(currentSearchTerm) { // Function to RENDER or UPDATE child components - NOW ACCEPTS searchTerm ARGUMENT
-      // --- CORRECT WAY: Use root.render() on EXISTING roots to UPDATE content ---
-      sidebarRoot.render(React.createElement(Sidebar, { onFileUpload: window.appState.handleFileUpload })); // Use root.render()
+        // 2. Send PUT request to server to update JSON data
+        try {
+            const response = await fetch(`/api/update-order/${sord}`, { // Use the correct endpoint
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(updatedOrder), // Send the *entire* updated order
+            });
 
-      searchBarRoot.render(React.createElement(SearchBar, {
-          searchTerm: currentSearchTerm, // Pass currentSearchTerm directly as prop
-          onSearchChange: window.appState.handleSearchChange,
-          onClearSearch: window.appState.handleClearSearch
-      }));
+            if (!response.ok) {
+                const errorText = await response.text();
+                throw new Error(`Server error: ${response.status} - ${errorText}`);
+            }
 
-      summaryCardsRoot.render(React.createElement(SummaryCards, { orders: window.appState.orders })); // Use root.render()
-
-      orderTableRoot.render(React.createElement(OrderTable, { orders: window.appState.orders, searchTerm: currentSearchTerm })); // Pass currentSearchTerm directly as prop
-  }
+            const responseData = await response.json(); // Parse response JSON
+            console.log('Server response (order update):', responseData);
 
 
+        } catch (error) {
+            console.error('Error updating order:', error);
+            alert(`Error updating order: ${error.message}`);
+            // TODO: Consider reverting UI changes on error, or showing an error message.
+        }
+    };
 
-  return (
-    // Conditionally render the popup
-    showNewOrderPopup ? React.createElement(NewOrderPopup, {
-        newOrders: newOrders,
-        onOrderUpdates: handleOrderUpdates, // Pass update function
-        onClose: () => setShowNewOrderPopup(false) // Function to close the popup
-    }) : null
-);
+
+    function renderChildComponents(currentSearchTerm) {
+        sidebarRoot.render(React.createElement(Sidebar, { onFileUpload: window.appState.handleFileUpload }));
+
+        searchBarRoot.render(React.createElement(SearchBar, {
+            searchTerm: currentSearchTerm,
+            onSearchChange: window.appState.handleSearchChange,
+            onClearSearch: window.appState.handleClearSearch
+        }));
+
+        summaryCardsRoot.render(React.createElement(SummaryCards, { orders: window.appState.orders }));
+
+        // --- Pass onItemCompletionChange prop to OrderTable ---
+        orderTableRoot.render(React.createElement(OrderTable, {
+            orders: window.appState.orders,
+            searchTerm: currentSearchTerm,
+            onItemCompletionChange: window.appState.handleItemCompletionChange // Pass the callback prop
+        }));
+    }
+
+    return (
+        // Conditionally render the popup
+        showNewOrderPopup ? React.createElement(NewOrderPopup, {
+            newOrders: newOrders,
+            onOrderUpdates: handleOrderUpdates,
+            onClose: () => setShowNewOrderPopup(false)
+        }) : null
+    );
+
 }
 
-// --- Create ReactDOM Roots ONCE, OUTSIDE App Component ---
-const appRoot = ReactDOM.createRoot(document.getElementById('app-root')); // Mount App to app-root
-const sidebarRoot = ReactDOM.createRoot(document.getElementById('sidebar-root')); // Create root for Sidebar ONCE
-const searchBarRoot = ReactDOM.createRoot(document.getElementById('search-bar-root')); // Create root for SearchBar ONCE
-const summaryCardsRoot = ReactDOM.createRoot(document.getElementById('summary-cards')); // Create root for SummaryCards ONCE
-const orderTableRoot = ReactDOM.createRoot(document.getElementById('order-table-root')); // Create root for OrderTable ONCE
+const appRoot = ReactDOM.createRoot(document.getElementById('app-root'));
+const sidebarRoot = ReactDOM.createRoot(document.getElementById('sidebar-root'));
+const searchBarRoot = ReactDOM.createRoot(document.getElementById('search-bar-root'));
+const summaryCardsRoot = ReactDOM.createRoot(document.getElementById('summary-cards'));
+const orderTableRoot = ReactDOM.createRoot(document.getElementById('order-table-root'));
 
-
-// --- Render the App Component (for state and window.appState initialization) ---
 appRoot.render(React.createElement(App));
-
-// --- Initial rendering of child components will be triggered by useEffect in App component ---
-// --- renderChildComponents() function will be called by useEffect for initial and subsequent renders ---
