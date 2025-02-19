@@ -5299,5 +5299,826 @@
     "embroideryFileStatus": "On File",
     "dtfStatus": "",
     "jobStatus": "Not Started"
+  },
+  {
+    "SORD": "SORD016130875435435",
+    "Trader Code": "FAR001X",
+    "Trader Name": "The Farming Community Network",
+    "Total Items": 235,
+    "Item List": [
+      {
+        "Master Code": "SWPTFCN001-XXL",
+        "Description": "XXL Navy The Farming Community Network Full Zip Fleece UC604",
+        "Ordered Qty": 5,
+        "Outstanding Qty": 5,
+        "SWP Parts": [
+          "SWPEMB-TFCNLB",
+          "SWPEMB-TFCNR"
+        ],
+        "Other Parts": [
+          "UC604.N.2XL"
+        ],
+        "SWP Parts Desc": [
+          "The Farming Community Network LB White/Green Embroidered Logo",
+          "The Farming Community Network Rear White/Green Embroidered Logo"
+        ],
+        "Other Parts Desc": [
+          "Classic Full Zip Micro Fleece Jacket - Navy - 2XLarge"
+        ],
+        "Completed Qty": 0
+      },
+      {
+        "Master Code": "SWPTFCN003-L",
+        "Description": "Large Navy The Farming Community Network Polo Shirt UC101",
+        "Ordered Qty": 15,
+        "Outstanding Qty": 15,
+        "SWP Parts": [
+          "SWPEMB-TFCNLB",
+          "SWPEMB-TFCNR"
+        ],
+        "Other Parts": [
+          "UC101.N.L"
+        ],
+        "SWP Parts Desc": [
+          "The Farming Community Network LB White/Green Embroidered Logo",
+          "The Farming Community Network Rear White/Green Embroidered Logo"
+        ],
+        "Other Parts Desc": [
+          "Uneek Classic Polo Shirt - Navy - Large"
+        ],
+        "Completed Qty": 0
+      },
+      {
+        "Master Code": "SWPTFCN003-M",
+        "Description": "Medium Navy The Farming Community Network Polo Shirt UC101",
+        "Ordered Qty": 15,
+        "Outstanding Qty": 15,
+        "SWP Parts": [
+          "SWPEMB-TFCNLB",
+          "SWPEMB-TFCNR"
+        ],
+        "Other Parts": [
+          "UC101.N.M"
+        ],
+        "SWP Parts Desc": [
+          "The Farming Community Network LB White/Green Embroidered Logo",
+          "The Farming Community Network Rear White/Green Embroidered Logo"
+        ],
+        "Other Parts Desc": [
+          "Uneek Classic Polo Shirt - Navy - Medium"
+        ],
+        "Completed Qty": 0
+      },
+      {
+        "Master Code": "SWPTFCN003-S",
+        "Description": "Small Navy The Farming Community Network Polo Shirt UC101",
+        "Ordered Qty": 10,
+        "Outstanding Qty": 10,
+        "SWP Parts": [
+          "SWPEMB-TFCNLB",
+          "SWPEMB-TFCNR"
+        ],
+        "Other Parts": [
+          "UC101.N.S"
+        ],
+        "SWP Parts Desc": [
+          "The Farming Community Network LB White/Green Embroidered Logo",
+          "The Farming Community Network Rear White/Green Embroidered Logo"
+        ],
+        "Other Parts Desc": [
+          "Uneek Classic Polo Shirt - Navy - Small"
+        ],
+        "Completed Qty": 0
+      },
+      {
+        "Master Code": "SWPTFCN003-XL",
+        "Description": "XL Navy The Farming Community Network Polo Shirt UC101",
+        "Ordered Qty": 10,
+        "Outstanding Qty": 10,
+        "SWP Parts": [
+          "SWPEMB-TFCNLB",
+          "SWPEMB-TFCNR"
+        ],
+        "Other Parts": [
+          "UC101.N.XL"
+        ],
+        "SWP Parts Desc": [
+          "The Farming Community Network LB White/Green Embroidered Logo",
+          "The Farming Community Network Rear White/Green Embroidered Logo"
+        ],
+        "Other Parts Desc": [
+          "Uneek Classic Polo Shirt - Navy - X-Large"
+        ],
+        "Completed Qty": 0
+      },
+      {
+        "Master Code": "SWPTFCN003-XXL",
+        "Description": "XXL Navy The Farming Community Network Polo Shirt UC101",
+        "Ordered Qty": 5,
+        "Outstanding Qty": 5,
+        "SWP Parts": [
+          "SWPEMB-TFCNLB",
+          "SWPEMB-TFCNR"
+        ],
+        "Other Parts": [
+          "UC101.N.2XL"
+        ],
+        "SWP Parts Desc": [
+          "The Farming Community Network LB White/Green Embroidered Logo",
+          "The Farming Community Network Rear White/Green Embroidered Logo"
+        ],
+        "Other Parts Desc": [
+          "Uneek Classic Polo Shirt - Navy - 2X-Large"
+        ],
+        "Completed Qty": 0
+      },
+      {
+        "Master Code": "SWPTFCN005-L",
+        "Description": "Large Navy Mens The Farming Community Network Soft Shell Bodywarmer RS902M",
+        "Ordered Qty": 8,
+        "Outstanding Qty": 8,
+        "SWP Parts": [
+          "SWPEMB-TFCNLB",
+          "SWPEMB-TFCNR"
+        ],
+        "Other Parts": [
+          "RS902M.N.L"
+        ],
+        "SWP Parts Desc": [
+          "The Farming Community Network LB White/Green Embroidered Logo",
+          "The Farming Community Network Rear White/Green Embroidered Logo"
+        ],
+        "Other Parts Desc": [
+          "Large Navy Printable Recycled Softshell Gilet RS902M"
+        ],
+        "Completed Qty": 0
+      },
+      {
+        "Master Code": "SWPTFCN005-M",
+        "Description": "Medium Navy Mens The Farming Community Network Soft Shell Bodywarmer RS902M",
+        "Ordered Qty": 5,
+        "Outstanding Qty": 5,
+        "SWP Parts": [
+          "SWPEMB-TFCNLB",
+          "SWPEMB-TFCNR"
+        ],
+        "Other Parts": [
+          "RS902M.N.M"
+        ],
+        "SWP Parts Desc": [
+          "The Farming Community Network LB White/Green Embroidered Logo",
+          "The Farming Community Network Rear White/Green Embroidered Logo"
+        ],
+        "Other Parts Desc": [
+          "Medium Navy Printable Recycled Softshell Gilet RS902M"
+        ],
+        "Completed Qty": 0
+      },
+      {
+        "Master Code": "SWPTFCN005-XL",
+        "Description": "XL Navy Mens The Farming Community Network Soft Shell Bodywarmer RS902M",
+        "Ordered Qty": 3,
+        "Outstanding Qty": 3,
+        "SWP Parts": [
+          "SWPEMB-TFCNLB",
+          "SWPEMB-TFCNR"
+        ],
+        "Other Parts": [
+          "RS902M.N.XL"
+        ],
+        "SWP Parts Desc": [
+          "The Farming Community Network LB White/Green Embroidered Logo",
+          "The Farming Community Network Rear White/Green Embroidered Logo"
+        ],
+        "Other Parts Desc": [
+          "XL Navy Printable Recycled Softshell Gilet RS902M"
+        ],
+        "Completed Qty": 0
+      },
+      {
+        "Master Code": "SWPTFCN005-XXL",
+        "Description": "XXL Navy Mens The Farming Community Network Soft Shell Bodywarmer RS902M",
+        "Ordered Qty": 4,
+        "Outstanding Qty": 4,
+        "SWP Parts": [
+          "SWPEMB-TFCNLB",
+          "SWPEMB-TFCNR"
+        ],
+        "Other Parts": [
+          "RS902M.N.XXL"
+        ],
+        "SWP Parts Desc": [
+          "The Farming Community Network LB White/Green Embroidered Logo",
+          "The Farming Community Network Rear White/Green Embroidered Logo"
+        ],
+        "Other Parts Desc": [
+          "XXL Navy Printable Recycled Softshell Gilet RS902M"
+        ],
+        "Completed Qty": 0
+      },
+      {
+        "Master Code": "SWPTFCN005-S",
+        "Description": "Small Navy Mens The Farming Community Network Soft Shell Bodywarmer RS902M",
+        "Ordered Qty": 2,
+        "Outstanding Qty": 2,
+        "SWP Parts": [
+          "SWPEMB-TFCNLB",
+          "SWPEMB-TFCNR"
+        ],
+        "Other Parts": [
+          "RS901M.N.S",
+          "RS902M.N.S"
+        ],
+        "SWP Parts Desc": [
+          "The Farming Community Network LB White/Green Embroidered Logo",
+          "The Farming Community Network Rear White/Green Embroidered Logo"
+        ],
+        "Other Parts Desc": [
+          "Result Recycled 2 Layer Soft Shell Jacket - Navy - Small",
+          "Small Navy Printable Recycled Softshell Gilet RS902M"
+        ],
+        "Completed Qty": 0
+      },
+      {
+        "Master Code": "SWPTFCN006-L",
+        "Description": "Large Navy Ladies The Farming Community Network Soft Shell Bodywarmer RS902F",
+        "Ordered Qty": 7,
+        "Outstanding Qty": 7,
+        "SWP Parts": [
+          "SWPEMB-TFCNLB",
+          "SWPEMB-TFCNR"
+        ],
+        "Other Parts": [
+          "RS902F.N.L"
+        ],
+        "SWP Parts Desc": [
+          "The Farming Community Network LB White/Green Embroidered Logo",
+          "The Farming Community Network Rear White/Green Embroidered Logo"
+        ],
+        "Other Parts Desc": [
+          "Large Navy Printable Recycled Softshell Gilet RS902F"
+        ],
+        "Completed Qty": 0
+      },
+      {
+        "Master Code": "SWPTFCN006-M",
+        "Description": "Medium Navy Ladies The Farming Community Network Soft Shell Bodywarmer RS902F",
+        "Ordered Qty": 10,
+        "Outstanding Qty": 10,
+        "SWP Parts": [
+          "SWPEMB-TFCNLB",
+          "SWPEMB-TFCNR"
+        ],
+        "Other Parts": [
+          "RS902F.N.M"
+        ],
+        "SWP Parts Desc": [
+          "The Farming Community Network LB White/Green Embroidered Logo",
+          "The Farming Community Network Rear White/Green Embroidered Logo"
+        ],
+        "Other Parts Desc": [
+          "Medium Navy Printable Recycled Softshell Gilet RS902F"
+        ],
+        "Completed Qty": 0
+      },
+      {
+        "Master Code": "SWPTFCN006-S",
+        "Description": "Small Navy Ladies The Farming Community Network Soft Shell Bodywarmer RS902F",
+        "Ordered Qty": 8,
+        "Outstanding Qty": 8,
+        "SWP Parts": [
+          "SWPEMB-TFCNLB",
+          "SWPEMB-TFCNR"
+        ],
+        "Other Parts": [
+          "RS902F.N.S"
+        ],
+        "SWP Parts Desc": [
+          "The Farming Community Network LB White/Green Embroidered Logo",
+          "The Farming Community Network Rear White/Green Embroidered Logo"
+        ],
+        "Other Parts Desc": [
+          "Small Navy Printable Recycled Softshell Gilet RS902F"
+        ],
+        "Completed Qty": 0
+      },
+      {
+        "Master Code": "SWPTFCN006-XL",
+        "Description": "XL Navy Ladies The Farming Community Network Soft Shell Bodywarmer RS902F",
+        "Ordered Qty": 2,
+        "Outstanding Qty": 2,
+        "SWP Parts": [
+          "SWPEMB-TFCNLB",
+          "SWPEMB-TFCNR"
+        ],
+        "Other Parts": [
+          "RS902F.N.XL"
+        ],
+        "SWP Parts Desc": [
+          "The Farming Community Network LB White/Green Embroidered Logo",
+          "The Farming Community Network Rear White/Green Embroidered Logo"
+        ],
+        "Other Parts Desc": [
+          "XL Navy Printable Recycled Softshell Gilet RS902F"
+        ],
+        "Completed Qty": 0
+      },
+      {
+        "Master Code": "SWPTFCN006-XS",
+        "Description": "XS Navy Ladies The Farming Community Network Soft Shell Bodywarmer RS902F",
+        "Ordered Qty": 5,
+        "Outstanding Qty": 5,
+        "SWP Parts": [
+          "SWPEMB-TFCNLB",
+          "SWPEMB-TFCNR"
+        ],
+        "Other Parts": [
+          "RS902F.N.XS"
+        ],
+        "SWP Parts Desc": [
+          "The Farming Community Network LB White/Green Embroidered Logo",
+          "The Farming Community Network Rear White/Green Embroidered Logo"
+        ],
+        "Other Parts Desc": [
+          "XS Navy Printable Recycled Softshell Gilet RS902F"
+        ],
+        "Completed Qty": 0
+      },
+      {
+        "Master Code": "SWPTFCN006-XXL",
+        "Description": "XXL Navy Ladies The Farming Community Network Soft Shell Bodywarmer RS902F",
+        "Ordered Qty": 1,
+        "Outstanding Qty": 1,
+        "SWP Parts": [
+          "SWPEMB-TFCNLB",
+          "SWPEMB-TFCNR"
+        ],
+        "Other Parts": [
+          "RS902F.N.XXL"
+        ],
+        "SWP Parts Desc": [
+          "The Farming Community Network LB White/Green Embroidered Logo",
+          "The Farming Community Network Rear White/Green Embroidered Logo"
+        ],
+        "Other Parts Desc": [
+          "XXL Navy Printable Recycled Softshell Gilet RS902F"
+        ],
+        "Completed Qty": 0
+      },
+      {
+        "Master Code": "SWPTFCN002-XS",
+        "Description": "XS Navy Ladies The Farming Community Network Full Zip Fleece UC608",
+        "Ordered Qty": 5,
+        "Outstanding Qty": 5,
+        "SWP Parts": [
+          "SWPEMB-TFCNLB",
+          "SWPEMB-TFCNR"
+        ],
+        "Other Parts": [
+          "UC608.N.XS"
+        ],
+        "SWP Parts Desc": [
+          "The Farming Community Network LB White/Green Embroidered Logo",
+          "The Farming Community Network Rear White/Green Embroidered Logo"
+        ],
+        "Other Parts Desc": [
+          "Ladies Classic Full Zip Fleece Jacket - Navy - XS"
+        ],
+        "Completed Qty": 0
+      },
+      {
+        "Master Code": "SWPTFCN008-L",
+        "Description": "Large Navy Mens The Farming Community Network Fleece Gilet KB913",
+        "Ordered Qty": 8,
+        "Outstanding Qty": 8,
+        "SWP Parts": [
+          "SWPEMB-TFCNLB",
+          "SWPEMB-TFCNR"
+        ],
+        "Other Parts": [
+          "KB913.N.L"
+        ],
+        "SWP Parts Desc": [
+          "The Farming Community Network LB White/Green Embroidered Logo",
+          "The Farming Community Network Rear White/Green Embroidered Logo"
+        ],
+        "Other Parts Desc": [
+          "Large Navy Luca men's microfleece gilet"
+        ],
+        "Completed Qty": 0
+      },
+      {
+        "Master Code": "SWPTFCN008-M",
+        "Description": "Medium Navy Mens The Farming Community Network Fleece Gilet KB913",
+        "Ordered Qty": 5,
+        "Outstanding Qty": 5,
+        "SWP Parts": [
+          "SWPEMB-TFCNLB",
+          "SWPEMB-TFCNR"
+        ],
+        "Other Parts": [
+          "KB913.N.M"
+        ],
+        "SWP Parts Desc": [
+          "The Farming Community Network LB White/Green Embroidered Logo",
+          "The Farming Community Network Rear White/Green Embroidered Logo"
+        ],
+        "Other Parts Desc": [
+          "Medium Navy Luca men's microfleece gilet"
+        ],
+        "Completed Qty": 0
+      },
+      {
+        "Master Code": "SWPTFCN008-S",
+        "Description": "Small Navy Mens The Farming Community Network Fleece Gilet KB913",
+        "Ordered Qty": 2,
+        "Outstanding Qty": 2,
+        "SWP Parts": [
+          "SWPEMB-TFCNLB",
+          "SWPEMB-TFCNR"
+        ],
+        "Other Parts": [
+          "KB913.N.S"
+        ],
+        "SWP Parts Desc": [
+          "The Farming Community Network LB White/Green Embroidered Logo",
+          "The Farming Community Network Rear White/Green Embroidered Logo"
+        ],
+        "Other Parts Desc": [
+          "Small Navy Luca men's microfleece gilet"
+        ],
+        "Completed Qty": 0
+      },
+      {
+        "Master Code": "SWPTFCN008-XL",
+        "Description": "XL Navy Mens The Farming Community Network Fleece Gilet KB913",
+        "Ordered Qty": 3,
+        "Outstanding Qty": 3,
+        "SWP Parts": [
+          "SWPEMB-TFCNLB",
+          "SWPEMB-TFCNR"
+        ],
+        "Other Parts": [
+          "KB913.N.XL"
+        ],
+        "SWP Parts Desc": [
+          "The Farming Community Network LB White/Green Embroidered Logo",
+          "The Farming Community Network Rear White/Green Embroidered Logo"
+        ],
+        "Other Parts Desc": [
+          "XL Navy Luca men's microfleece gilet"
+        ],
+        "Completed Qty": 0
+      },
+      {
+        "Master Code": "SWPTFCN008-XXL",
+        "Description": "XXL Navy Mens The Farming Community Network Fleece Gilet KB913",
+        "Ordered Qty": 4,
+        "Outstanding Qty": 4,
+        "SWP Parts": [
+          "SWPEMB-TFCNLB",
+          "SWPEMB-TFCNR"
+        ],
+        "Other Parts": [
+          "KB913.N.XXL"
+        ],
+        "SWP Parts Desc": [
+          "The Farming Community Network LB White/Green Embroidered Logo",
+          "The Farming Community Network Rear White/Green Embroidered Logo"
+        ],
+        "Other Parts Desc": [
+          "XXL Navy Luca men's microfleece gilet"
+        ],
+        "Completed Qty": 0
+      },
+      {
+        "Master Code": "SWPTFCN007-L",
+        "Description": "Large (14) Navy Ladies The Farming Community Network Fleece Gilet RG184",
+        "Ordered Qty": 7,
+        "Outstanding Qty": 7,
+        "SWP Parts": [
+          "SWPEMB-TFCNLB",
+          "SWPEMB-TFCNR"
+        ],
+        "Other Parts": [
+          "RG184.N.14"
+        ],
+        "SWP Parts Desc": [
+          "The Farming Community Network LB White/Green Embroidered Logo",
+          "The Farming Community Network Rear White/Green Embroidered Logo"
+        ],
+        "Other Parts Desc": [
+          "Size 14 Navy Regatta Ladies Haber II Fleece Bodywarmer (TRA793)"
+        ],
+        "Completed Qty": 0
+      },
+      {
+        "Master Code": "SWPTFCN007-XS",
+        "Description": "XS(8) Navy Ladies The Farming Community Network Fleece Gilet RG184",
+        "Ordered Qty": 5,
+        "Outstanding Qty": 5,
+        "SWP Parts": [
+          "SWPEMB-TFCNLB",
+          "SWPEMB-TFCNR"
+        ],
+        "Other Parts": [
+          "RG184.N.8"
+        ],
+        "SWP Parts Desc": [
+          "The Farming Community Network LB White/Green Embroidered Logo",
+          "The Farming Community Network Rear White/Green Embroidered Logo"
+        ],
+        "Other Parts Desc": [
+          "Size 8 Navy Regatta Ladies Haber II Fleece Bodywarmer (TRA793)"
+        ],
+        "Completed Qty": 0
+      },
+      {
+        "Master Code": "SWPTFCN007-XXL",
+        "Description": "XXL (18) Navy Ladies The Farming Community Network Fleece Gilet RG184",
+        "Ordered Qty": 1,
+        "Outstanding Qty": 1,
+        "SWP Parts": [
+          "SWPEMB-TFCNLB",
+          "SWPEMB-TFCNR"
+        ],
+        "Other Parts": [
+          "RG184.N.18"
+        ],
+        "SWP Parts Desc": [
+          "The Farming Community Network LB White/Green Embroidered Logo",
+          "The Farming Community Network Rear White/Green Embroidered Logo"
+        ],
+        "Other Parts Desc": [
+          "Size 18 Navy Regatta Ladies Haber II Fleece Bodywarmer (TRA793)"
+        ],
+        "Completed Qty": 0
+      },
+      {
+        "Master Code": "SWPTFCN002-M",
+        "Description": "Medium Navy Ladies The Farming Community Network Full Zip Fleece UC608",
+        "Ordered Qty": 12,
+        "Outstanding Qty": 12,
+        "SWP Parts": [
+          "SWPEMB-TFCNLB",
+          "SWPEMB-TFCNR"
+        ],
+        "Other Parts": [
+          "UC608.N.M"
+        ],
+        "SWP Parts Desc": [
+          "The Farming Community Network LB White/Green Embroidered Logo",
+          "The Farming Community Network Rear White/Green Embroidered Logo"
+        ],
+        "Other Parts Desc": [
+          "Ladies Classic Full Zip Fleece Jacket - Navy - Medium"
+        ],
+        "Completed Qty": 0
+      },
+      {
+        "Master Code": "SWPTFCN007-M",
+        "Description": "Medium (12) Navy Ladies The Farming Community Network Fleece Gilet RG184",
+        "Ordered Qty": 10,
+        "Outstanding Qty": 10,
+        "SWP Parts": [
+          "SWPEMB-TFCNLB",
+          "SWPEMB-TFCNR"
+        ],
+        "Other Parts": [
+          "RG184.N.12"
+        ],
+        "SWP Parts Desc": [
+          "The Farming Community Network LB White/Green Embroidered Logo",
+          "The Farming Community Network Rear White/Green Embroidered Logo"
+        ],
+        "Other Parts Desc": [
+          "Size 12 Navy Regatta Ladies Haber II Fleece Bodywarmer (TRA793)"
+        ],
+        "Completed Qty": 0
+      },
+      {
+        "Master Code": "SWPTFCN007-S",
+        "Description": "Small (10) Navy Ladies The Farming Community Network Fleece Gilet RG184",
+        "Ordered Qty": 8,
+        "Outstanding Qty": 8,
+        "SWP Parts": [
+          "SWPEMB-TFCNLB",
+          "SWPEMB-TFCNR"
+        ],
+        "Other Parts": [
+          "RG184.N.10"
+        ],
+        "SWP Parts Desc": [
+          "The Farming Community Network LB White/Green Embroidered Logo",
+          "The Farming Community Network Rear White/Green Embroidered Logo"
+        ],
+        "Other Parts Desc": [
+          "Size 10 Navy Regatta Ladies Haber II Fleece Bodywarmer (TRA793)"
+        ],
+        "Completed Qty": 0
+      },
+      {
+        "Master Code": "SWPTFCN007-XL",
+        "Description": "XL (16) Navy Ladies The Farming Community Network Fleece Gilet RG184",
+        "Ordered Qty": 2,
+        "Outstanding Qty": 2,
+        "SWP Parts": [
+          "SWPEMB-TFCNLB",
+          "SWPEMB-TFCNR"
+        ],
+        "Other Parts": [
+          "RG184.N.16"
+        ],
+        "SWP Parts Desc": [
+          "The Farming Community Network LB White/Green Embroidered Logo",
+          "The Farming Community Network Rear White/Green Embroidered Logo"
+        ],
+        "Other Parts Desc": [
+          "Size 16 Navy Regatta Ladies Haber II Fleece Bodywarmer (TRA793)"
+        ],
+        "Completed Qty": 0
+      },
+      {
+        "Master Code": "SWPTFCN002-S",
+        "Description": "Small Navy Ladies The Farming Community Network Full Zip Fleece UC608",
+        "Ordered Qty": 8,
+        "Outstanding Qty": 8,
+        "SWP Parts": [
+          "SWPEMB-TFCNLB",
+          "SWPEMB-TFCNR"
+        ],
+        "Other Parts": [
+          "UC608.N.S"
+        ],
+        "SWP Parts Desc": [
+          "The Farming Community Network LB White/Green Embroidered Logo",
+          "The Farming Community Network Rear White/Green Embroidered Logo"
+        ],
+        "Other Parts Desc": [
+          "Ladies Classic Full Zip Fleece Jacket - Navy - Small"
+        ],
+        "Completed Qty": 0
+      },
+      {
+        "Master Code": "SWPTFCN002-XL",
+        "Description": "XL Navy Ladies The Farming Community Network Full Zip Fleece UC608",
+        "Ordered Qty": 3,
+        "Outstanding Qty": 3,
+        "SWP Parts": [
+          "SWPEMB-TFCNLB",
+          "SWPEMB-TFCNR"
+        ],
+        "Other Parts": [
+          "UC608.N.XL"
+        ],
+        "SWP Parts Desc": [
+          "The Farming Community Network LB White/Green Embroidered Logo",
+          "The Farming Community Network Rear White/Green Embroidered Logo"
+        ],
+        "Other Parts Desc": [
+          "Ladies Classic Full Zip Fleece Jacket - Navy - X-Large"
+        ],
+        "Completed Qty": 0
+      },
+      {
+        "Master Code": "SWPTFCN003-XS",
+        "Description": "XS Navy The Farming Community Network Polo Shirt UC101",
+        "Ordered Qty": 5,
+        "Outstanding Qty": 5,
+        "SWP Parts": [
+          "SWPEMB-TFCNLB",
+          "SWPEMB-TFCNR"
+        ],
+        "Other Parts": [
+          "UC101.N.XS"
+        ],
+        "SWP Parts Desc": [
+          "The Farming Community Network LB White/Green Embroidered Logo",
+          "The Farming Community Network Rear White/Green Embroidered Logo"
+        ],
+        "Other Parts Desc": [
+          "Uneek Classic Polo Shirt - Navy - X/Small"
+        ],
+        "Completed Qty": 0
+      },
+      {
+        "Master Code": "SWPTFCN001-XL",
+        "Description": "XL Navy The Farming Community Network Full Zip Fleece UC604",
+        "Ordered Qty": 7,
+        "Outstanding Qty": 7,
+        "SWP Parts": [
+          "SWPEMB-TFCNLB",
+          "SWPEMB-TFCNR"
+        ],
+        "Other Parts": [
+          "UC604.N.XL"
+        ],
+        "SWP Parts Desc": [
+          "The Farming Community Network LB White/Green Embroidered Logo",
+          "The Farming Community Network Rear White/Green Embroidered Logo"
+        ],
+        "Other Parts Desc": [
+          "Classic Full Zip Micro Fleece Jacket - Navy - XLarge"
+        ],
+        "Completed Qty": 0
+      },
+      {
+        "Master Code": "SWPTFCN001-M",
+        "Description": "Medium Navy The Farming Community Network Full Zip Fleece UC604",
+        "Ordered Qty": 8,
+        "Outstanding Qty": 8,
+        "SWP Parts": [
+          "SWPEMB-TFCNLB",
+          "SWPEMB-TFCNR"
+        ],
+        "Other Parts": [
+          "UC604.N.M"
+        ],
+        "SWP Parts Desc": [
+          "The Farming Community Network LB White/Green Embroidered Logo",
+          "The Farming Community Network Rear White/Green Embroidered Logo"
+        ],
+        "Other Parts Desc": [
+          "Classic Full Zip Micro Fleece Jacket - Navy - Medium"
+        ],
+        "Completed Qty": 0
+      },
+      {
+        "Master Code": "SWPTFCN001-L",
+        "Description": "Large Navy The Farming Community Network Full Zip Fleece UC604",
+        "Ordered Qty": 8,
+        "Outstanding Qty": 8,
+        "SWP Parts": [
+          "SWPEMB-TFCNLB",
+          "SWPEMB-TFCNR"
+        ],
+        "Other Parts": [
+          "UC604.N.L"
+        ],
+        "SWP Parts Desc": [
+          "The Farming Community Network LB White/Green Embroidered Logo",
+          "The Farming Community Network Rear White/Green Embroidered Logo"
+        ],
+        "Other Parts Desc": [
+          "Classic Full Zip Micro Fleece Jacket - Navy - Large"
+        ],
+        "Completed Qty": 0
+      },
+      {
+        "Master Code": "SWPTFCN001-S",
+        "Description": "Small Navy The Farming Community Network Full Zip Fleece UC604",
+        "Ordered Qty": 2,
+        "Outstanding Qty": 2,
+        "SWP Parts": [
+          "SWPEMB-TFCNLB",
+          "SWPEMB-TFCNR"
+        ],
+        "Other Parts": [
+          "UC604.N.S"
+        ],
+        "SWP Parts Desc": [
+          "The Farming Community Network LB White/Green Embroidered Logo",
+          "The Farming Community Network Rear White/Green Embroidered Logo"
+        ],
+        "Other Parts Desc": [
+          "Classic Full Zip Micro Fleece Jacket - Navy - Small"
+        ],
+        "Completed Qty": 0
+      },
+      {
+        "Master Code": "SWPTFCN002-L",
+        "Description": "Large Navy Ladies The Farming Community Network Full Zip Fleece UC608",
+        "Ordered Qty": 7,
+        "Outstanding Qty": 7,
+        "SWP Parts": [
+          "SWPEMB-TFCNLB",
+          "SWPEMB-TFCNR"
+        ],
+        "Other Parts": [
+          "UC608.N.L"
+        ],
+        "SWP Parts Desc": [
+          "The Farming Community Network LB White/Green Embroidered Logo",
+          "The Farming Community Network Rear White/Green Embroidered Logo"
+        ],
+        "Other Parts Desc": [
+          "Ladies Classic Full Zip Fleece Jacket - Navy - Large"
+        ],
+        "Completed Qty": 0
+      }
+    ],
+    "Ordered Date": "07/01/2025",
+    "Due Date": null,
+    "Total Logos": 470,
+    "Reference": "FAR001X",
+    "Contact": "Sandra Caulfield",
+    "Rep": "Phil Murphy",
+    "Address": "Manor Farm, Guilsborough Road, West Haddon, Northampton, NN6 7AQ",
+    "isNew": true,
+    "garmentStatus": "Ordered",
+    "decorationMethod": "Both",
+    "embroideryFileStatus": "On File",
+    "dtfStatus": "In Stock",
+    "jobStatus": "Not Started"
   }
 ]

@@ -1282,7 +1282,7 @@ app.post('/api/upload-orders', express.text({ type: 'text/csv' }), (req, res) =>
                                 "Other Parts": [],
                                 "SWP Parts Desc": [],
                                 "Other Parts Desc": [],
-                                "Completed Qty": 0, // ADD Completed Qty field, initialized to 0
+                                "Completed Qty": 0,
                             };
                             consolidatedOrders[sord]["Item List"].push(existingItem);
                         }
@@ -1302,7 +1302,9 @@ app.post('/api/upload-orders', express.text({ type: 'text/csv' }), (req, res) =>
 
                         existingItem["SWP Parts"].push(...swpParts);
                         existingItem["SWP Parts Desc"].push(...swpPartsDesc);
-                        // REMOVED INCORRECT LOGO COUNT: consolidatedOrders[sord]["Total Logos"] += swpParts.length;
+
+                        // --- CORRECTED Total Logos Calculation ---
+                        consolidatedOrders[sord]["Total Logos"] += swpParts.length * parseInt(row["Outstanding Qty"] || 0, 10); // <-- Multiply by Outstanding Qty
 
                         const otherParts = row["Other Parts"] ? row["Other Parts"].split(',').map(part => part.trim()).filter(part => part !== "") : [];
                         const otherPartsDesc = row["Other Parts Desc"] ? row["Other Parts Desc"].split(',').map(desc => desc.trim()).filter(desc => desc !== "") : [];

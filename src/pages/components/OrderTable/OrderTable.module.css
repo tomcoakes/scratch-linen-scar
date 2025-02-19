@@ -40,16 +40,16 @@
     /* Default row height - adjust as needed */
     padding-top: 12px;
     padding-bottom: 12px;
-  transition: padding-top 0.3s ease, padding-bottom 0.3s ease; 
+/*   transition: padding-top 0.3s ease, padding-bottom 0.3s ease;  */
 }
 #orders-table tbody tr {
   /* Removed border-bottom, added background */
     background-color: #fff; /* Default background */
-    transition: background-color 0.3s ease; /* Smooth transition for background */
+/*     transition: background-color 0.3s ease; /* Smooth transition for background */ */
 }
 #orders-table tbody tr.expanded {
-    background-color: #f5f7fa; /* Light grey background when expanded */
-    transition: background-color 0.3s ease;
+    background-color: #bfe8ae; /* Light grey background when expanded */
+/*     transition: background-color 0.3s ease; */
 }
 
 
@@ -61,11 +61,11 @@
 
 #orders-table tbody tr.info-row {
     background-color: #fff; /* Default background */
-    transition: background-color 0.3s ease; /* Smooth transition for background */
+/*     transition: background-color 0.3s ease; /* Smooth transition for background */ */
 }
 
 #orders-table tbody tr.info-row.expanded {
-    background-color: #f5f7fa; /* Light grey background when expanded */
+    background-color: #bfe8ae; /* Light grey background when expanded */
 }
 
 /* Container for tags and decoration in info-row */
@@ -109,7 +109,7 @@
 
 .expansion-row td {
     padding: 20px 15px; /* Padding for expansion row cells */
-    background-color: #f5f7fa; /* Same light grey background */
+    background-color: #bfe8ae; /* Same light grey background */
     border-bottom: 1px solid #e2e8f0; /* Keep bottom border */
     border-top: none;    /* No top border */
 }
