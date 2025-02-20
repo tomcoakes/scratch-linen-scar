@@ -8,6 +8,7 @@ import SearchBar from './components/SearchBar/SearchBar.js';
 import OrderTable from './components/OrderTable/OrderTable.js';
 import SummaryCards from './components/SummaryCards/SummaryCards.js';
 import NewOrderPopup from './components/NewOrderPopup/NewOrderPopup.js'; // Import the popup component
+import BackOrderPopup from './components/BackOrderPopup/BackOrderPopup.js'; 
 
 // --- Main App Component (Now includes popup handling and item completion handling) ---
 function App() {
