@@ -2,11 +2,10 @@
 // import ReactDOM from 'react-dom/client';
 
 // --- Import Components from their new folders ---
-// --- Import Components from their new folders ---
-// REMOVE: import Sidebar from './components/Sidebar/Sidebar.js'; // No longer needed
+import Sidebar from './components/Sidebar/Sidebar.js';
 import SearchBar from './components/SearchBar/SearchBar.js';
 import OrderTable from './components/OrderTable/OrderTable.js';
-import SummaryCards from './components/SummaryCards/SummaryCards.js'; //Import normally
+import SummaryCards from './components/SummaryCards/SummaryCards.js';
 import NewOrderPopup from './components/NewOrderPopup/NewOrderPopup.js'; // Import the popup component
 
 // --- Main App Component (Now includes popup handling and item completion handling) ---
@@ -74,7 +73,7 @@ function App() {
   }
 
 
-    const handleFileUpload = (newOrdersFromServer) => { // Modified to handle new orders from server
+const handleFileUpload = (newOrdersFromServer) => { // Modified to handle new orders from server
       // No longer necessary to update 'orders' state directly here
       // The fetchOrderData will update 'orders' after the server responds
 
@@ -168,7 +167,7 @@ function App() {
 
 
     function renderChildComponents(currentSearchTerm) {
-        // REMOVE: sidebarRoot.render(...) - No more sidebar
+        sidebarRoot.render(React.createElement(Sidebar, { onFileUpload: window.appState.handleFileUpload }));
 
         searchBarRoot.render(React.createElement(SearchBar, {
             searchTerm: currentSearchTerm,
@@ -176,9 +175,9 @@ function App() {
             onClearSearch: window.appState.handleClearSearch
         }));
 
-        // --- Pass onFileUpload to SummaryCards ---
-        summaryCardsRoot.render(React.createElement(SummaryCards, { orders: window.appState.orders, onFileUpload: window.appState.handleFileUpload }));
+        summaryCardsRoot.render(React.createElement(SummaryCards, { orders: window.appState.orders }));
 
+        // --- Pass onItemCompletionChange prop to OrderTable ---
         orderTableRoot.render(React.createElement(OrderTable, {
             orders: window.appState.orders,
             searchTerm: currentSearchTerm,
@@ -194,10 +193,11 @@ function App() {
             onClose: () => setShowNewOrderPopup(false)
         }) : null
     );
+
 }
 
 const appRoot = ReactDOM.createRoot(document.getElementById('app-root'));
-// REMOVE: const sidebarRoot = ... - No more sidebar
+const sidebarRoot = ReactDOM.createRoot(document.getElementById('sidebar-root'));
 const searchBarRoot = ReactDOM.createRoot(document.getElementById('search-bar-root'));
 const summaryCardsRoot = ReactDOM.createRoot(document.getElementById('summary-cards'));
 const orderTableRoot = ReactDOM.createRoot(document.getElementById('order-table-root'));
