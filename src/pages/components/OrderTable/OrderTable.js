@@ -23,10 +23,13 @@ function OrderTable({ orders, searchTerm, onItemCompletionChange }) { // Receive
         }
     }, [orders, searchTerm]);
 
-    const handleRowClick = (sord) => {
+    const handleRowClick = (sord, event) => { // ADD 'event' PARAMETER
+        // Check if the clicked element is a select dropdown
+        if (event.target.tagName === 'SELECT') {
+            return; // Do nothing if it's a dropdown click, don't expand/collapse row
+        }
         setExpandedRowSord(expandedRowSord === sord ? null : sord);
     };
-
      const handleCompletedQtyChange = (sord, masterCode, newCompletedQty) => {
       setCompletedQuantities(prevCompletedQuantities => {
           const orderQuantities = prevCompletedQuantities[sord] || {};
@@ -89,8 +92,9 @@ function OrderTable({ orders, searchTerm, onItemCompletionChange }) { // Receive
                         filteredOrders.map(order => (
                             React.createElement(React.Fragment, { key: order.SORD },
                                 React.createElement('tr', {
-                                    onClick: () => handleRowClick(order.SORD),
-                                    className: `data-row ${expandedRowSord === order.SORD ? 'expanded' : ''}`
+                                        onClick: (event) => handleRowClick(order.SORD, event), // PASS 'event' HERE
+                                        className: `data-row ${expandedRowSord === order.SORD ? 'expanded' : ''}`
+                                    
                                 }, // --- Main Data Row ---
                                     React.createElement('td', null, order.SORD),
                                     React.createElement('td', null, order["Trader Name"]),
