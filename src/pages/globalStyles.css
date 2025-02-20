@@ -88,7 +88,7 @@ main.main-container-tracker {
 /*     max-width: 1400px; /* Maximum width for main content */ */
     margin: 20px auto; /* Center main content with top/bottom margin */
     padding: 20px;
-    width: 95%; /* Take up 95% of the viewport width */
+    width: 100%; /* Take up 95% of the viewport width */
     background-color: #fff; /* White background for main content area */
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.05); /* Subtle shadow */
     border-radius: 8px; /* Rounded corners */

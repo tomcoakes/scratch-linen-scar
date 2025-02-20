@@ -814,7 +814,7 @@
     "Rep": "Phil Murphy",
     "Address": "Manor Farm, Guilsborough Road, West Haddon, Northampton, NN6 7AQ",
     "isNew": true,
-    "garmentStatus": "Part Received",
+    "garmentStatus": "Not Started",
     "decorationMethod": "",
     "embroideryFileStatus": "",
     "dtfStatus": "",
@@ -1493,7 +1493,7 @@
           "Beeswift Economy Vented Safety Helmet Blue",
           "Beeswift Economy Vented Safety Helmet Blue"
         ],
-        "Completed Qty": 0
+        "Completed Qty": 5
       }
     ],
     "Ordered Date": "28/01/2025",
