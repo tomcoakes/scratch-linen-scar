@@ -118,7 +118,7 @@ function OrderTable({ orders, searchTerm, onItemCompletionChange }) { // Receive
                                                         value: (statusChanges[order.SORD] && statusChanges[order.SORD].garmentStatus) || order.garmentStatus,
                                                         onChange: (e) => handleStatusChange(order.SORD, 'garmentStatus', e.target.value)
                                                         },
-                                                        React.createElement('option', { value: "Not Started" }, "Not Started"),
+                                                        React.createElement('option', { value: "" }, "Select..."),
                                                         React.createElement('option', { value: "Not Ordered" }, "Not Ordered"),
                                                         React.createElement('option', { value: "Ordered" }, "Ordered"),
                                                         React.createElement('option', { value: "Part Received" }, "Part Received"),

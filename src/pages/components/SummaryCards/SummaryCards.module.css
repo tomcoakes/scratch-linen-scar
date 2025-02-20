@@ -1,62 +1,139 @@
-/* src/pages/components/SummaryCards/SummaryCards.module.css */
+/* SummaryCards.module.css */
 
-.summary-cards-container { /* Renamed class to .summary-cards-container */
-    display: flex;
-    gap: 20px;
-    margin-bottom: 25px; /* Add margin below summary cards */
+/* Root variables for easy customization */
+:root {
+  --card-bg: #ffffff;
+  --card-border: #d1d5db;
+  --card-shadow: rgba(0, 0, 0, 0.1);
+  --card-border-radius: 8px;
+  --card-padding: 12px;
+  --card-min-height: 100px;
+  --title-color: #1f2937;
+  --text-color: #374151;
+  --btn-bg: #2563eb;
+  --btn-bg-hover: #1d4ed8;
+  --btn-font-size: 0.95rem;
+  --transition-speed: 0.3s;
 }
 
+/* Container for the summary cards */
+.summary-cards-container {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+  align-items: stretch; /* Ensures that all cards are the same height */
+  flex-wrap: wrap;
+}
+
+/* Base styling for each card */
 .card {
-    background-color: #fff;
-    border-radius: 8px;
-    padding: 20px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.08);
-    border: 1px solid #e2e8f0;
-    flex: 1; /* Distribute space evenly among cards */
-    text-align: center;
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  box-shadow: 0 1px 3px var(--card-shadow);
+  border-radius: var(--card-border-radius);
+  padding: var(--card-padding);
+  flex: 1; /* Allows cards to share available space equally */
+  text-align: center;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: var(--card-min-height);
+  overflow: hidden;
 }
 
+/* Hover effect for cards */
+.card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 3px 6px var(--card-shadow);
+}
+
+/* Card header styling */
 .card h3 {
-    margin-top: 0;
-    margin-bottom: 10px;
-    color: #4a5568;
-    font-size: 1.3rem;
-    font-weight: 500;
+  margin: 0 0 6px 0;
+  color: var(--title-color);
+  font-size: 1.1rem;
+  font-weight: 600;
 }
 
+/* Card paragraph styling */
 .card p {
-    margin: 0;
-    font-size: 1.5rem;
-    color: #2d3748;
-    font-weight: 600;
+  margin: 0;
+  font-size: 1rem;
+  color: var(--text-color);
+  font-weight: 500;
 }
 
-/* src/pages/components/Sidebar/Sidebar.module.css */
-
-
+/* Primary button styling */
 .primaryBtn {
-    background-color: #2563eb;
-    color: #fff;
-    border: none;
-    padding: 12px 25px;
-    border-radius: 8px;
-    cursor: pointer;
-    font-size: 1.1rem;
-    font-weight: 500;
-    transition: background-color 0.3s ease, transform 0.2s ease, padding 0.4s ease-out, font-size 0.4s ease-out; /* Transition for button */
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+  background-color: var(--btn-bg);
+  color: #fff;
+  border: none;
+  padding: 8px 20px;
+  border-radius: var(--card-border-radius);
+  cursor: pointer;
+  font-size: var(--btn-font-size);
+  font-weight: 500;
+  transition: background-color var(--transition-speed) ease, transform 0.2s ease;
+  box-shadow: 0 1px 3px var(--card-shadow);
 }
 
-
-
-
+/* Hover and active states for the primary button */
 .primaryBtn:hover {
-    background-color: #1d4ed8;
-    transform: translateY(-2px);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  background-color: var(--btn-bg-hover);
+  transform: translateY(-1px);
+  box-shadow: 0 2px 5px var(--card-shadow);
 }
 
 .primaryBtn:active {
-    transform: translateY(0);
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+  transform: translateY(0);
+  box-shadow: 0 1px 3px var(--card-shadow);
+}
+
+/* Styles for the drag & drop area within the upload card */
+.drop-area {
+  border: 2px dashed var(--card-border);
+  border-radius: var(--card-border-radius);
+  padding: 10px;
+  margin-top: 8px;
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+/* Change appearance when a file is dragged over the drop area */
+.drop-area.dragover {
+  background-color: #f0f8ff;
+  border-color: var(--btn-bg);
+}
+
+/* Utility: Center content vertically and horizontally */
+.centered {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .summary-cards-container {
+    flex-direction: column;
+  }
+  .card {
+    margin-bottom: 10px;
+  }
+}
+
+/* Additional styling for a polished look */
+.card,
+.primaryBtn,
+.drop-area {
+  /* Adding a subtle rounded effect and soft shadow */
+  border-radius: var(--card-border-radius);
+  box-shadow: 0 1px 3px var(--card-shadow);
+}
+
+/* Optional: Focus states for accessibility */
+.primaryBtn:focus,
+.drop-area:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.5);
 }

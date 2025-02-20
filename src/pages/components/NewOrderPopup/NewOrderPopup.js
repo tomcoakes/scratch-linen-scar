@@ -66,7 +66,7 @@ function NewOrderPopup({ newOrders, onOrderUpdates, onClose }) {
                                         value: order.garmentStatus,
                                         onChange: (e) => handleInputChange(order.SORD, 'garmentStatus', e.target.value)
                                     },
-                                        React.createElement('option', { value: "Not Started" }, "Not Started"),
+                                        React.createElement('option', { value: "" }, "Select..."),
                                         React.createElement('option', { value: "Not Ordered" }, "Not Ordered"),
                                         React.createElement('option', { value: "Ordered" }, "Ordered"),
                                         React.createElement('option', { value: "Part Received" }, "Part Received"),
