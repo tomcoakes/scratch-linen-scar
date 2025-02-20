@@ -896,11 +896,11 @@
     "Rep": "Phil Murphy",
     "Address": "Energy House , Parkengue, Penryn, Cornwall, TR10 9EP",
     "isNew": true,
-    "garmentStatus": "Not Ordered",
+    "garmentStatus": "Ordered",
     "decorationMethod": "Embroidery",
-    "embroideryFileStatus": "On File",
+    "embroideryFileStatus": "Ordered",
     "dtfStatus": "",
-    "jobStatus": "Not Started"
+    "jobStatus": "Part Shipped"
   },
   {
     "SORD": "SORD01620157",
