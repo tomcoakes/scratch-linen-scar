@@ -1,9 +1,8 @@
-
 // src/pages/tracker.js
 // import ReactDOM from 'react-dom/client';
 
 // --- Import Components from their new folders ---
-// REMOVED - import Sidebar from './components/Sidebar/Sidebar.js';
+import Sidebar from './components/Sidebar/Sidebar.js';
 import SearchBar from './components/SearchBar/SearchBar.js';
 import OrderTable from './components/OrderTable/OrderTable.js';
 import SummaryCards from './components/SummaryCards/SummaryCards.js';
@@ -16,7 +15,6 @@ function App() {
     const [appStateReady, setAppStateReady] = React.useState(false);
     const [showNewOrderPopup, setShowNewOrderPopup] = React.useState(false);
     const [newOrders, setNewOrders] = React.useState([]);
-    const [isDragOver, setIsDragOver] = React.useState(false); // ADDED - Drag Over State
 
     React.useEffect(() => {
         // --- Initialize window.appState and set appStateReady to true AFTER initialization ---
@@ -169,7 +167,7 @@ const handleFileUpload = (newOrdersFromServer) => { // Modified to handle new or
 
 
     function renderChildComponents(currentSearchTerm) {
-        // REMOVED sidebarRoot.render(React.createElement(Sidebar, { onFileUpload: window.appState.handleFileUpload })); // REMOVE THIS LINE
+        sidebarRoot.render(React.createElement(Sidebar, { onFileUpload: window.appState.handleFileUpload }));
 
         searchBarRoot.render(React.createElement(SearchBar, {
             searchTerm: currentSearchTerm,
@@ -177,12 +175,7 @@ const handleFileUpload = (newOrdersFromServer) => { // Modified to handle new or
             onClearSearch: window.appState.handleClearSearch
         }));
 
-        summaryCardsRoot.render(React.createElement(SummaryCards, {
-          orders: window.appState.orders,
-          onFileUpload: window.appState.handleFileUpload, // Pass the file upload handler
-          isDragOver: isDragOver,                     // Pass drag state
-          setIsDragOver: setIsDragOver                // Pass state setter
-        }));
+        summaryCardsRoot.render(React.createElement(SummaryCards, { orders: window.appState.orders }));
 
         // --- Pass onItemCompletionChange prop to OrderTable ---
         orderTableRoot.render(React.createElement(OrderTable, {
@@ -204,7 +197,7 @@ const handleFileUpload = (newOrdersFromServer) => { // Modified to handle new or
 }
 
 const appRoot = ReactDOM.createRoot(document.getElementById('app-root'));
-// REMOVED const sidebarRoot = ReactDOM.createRoot(document.getElementById('sidebar-root')); // REMOVE THIS LINE
+const sidebarRoot = ReactDOM.createRoot(document.getElementById('sidebar-root'));
 const searchBarRoot = ReactDOM.createRoot(document.getElementById('search-bar-root'));
 const summaryCardsRoot = ReactDOM.createRoot(document.getElementById('summary-cards'));
 const orderTableRoot = ReactDOM.createRoot(document.getElementById('order-table-root'));
