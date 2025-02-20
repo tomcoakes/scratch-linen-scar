@@ -1,6 +1,6 @@
 // src/pages/components/BackOrderPopup/BackOrderPopup.js
-
-// import styles from './BackOrderPopup.module.css'; // Import CSS module
+import React from 'react';
+import styles from './BackOrderPopup.module.css'; // Import CSS module
 
 function BackOrderPopup({ order, onClose, onSubmit }) { // Receive order, onClose, onSubmit props
 

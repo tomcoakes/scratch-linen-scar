@@ -1,17 +1,16 @@
 // src/pages/components/OrderTable/OrderTable.js
 
 // import React from 'react';
-import BackOrderPopup from '../BackOrderPopup/BackOrderPopup.js'; // Import BackOrderPopup
-
+import BackOrderPopup from '../BackOrderPopup/BackOrderPopup.js';
 // import styles from './OrderTable.module.css';
 
 // --- OrderTable Component (UPDATED - Callback for Updates) ---
-function OrderTable({ orders, searchTerm, onItemCompletionChange }) { // Receive onItemCompletionChange prop
+function OrderTable({ orders, searchTerm, onItemCompletionChange }) {
     const [filteredOrders, setFilteredOrders] = React.useState([]);
     const [expandedRowSord, setExpandedRowSord] = React.useState(null);
     const [completedQuantities, setCompletedQuantities] = React.useState({});
     const [statusChanges, setStatusChanges] = React.useState({});
-    const [showBackOrderPopup, setShowBackOrderPopup] = React.useState(false); // State for popup visibility
+    const [showBackOrderPopup, setShowBackOrderPopup] = React.useState(false);
 
     React.useEffect(() => {
         if (!searchTerm) {
@@ -74,6 +73,12 @@ function OrderTable({ orders, searchTerm, onItemCompletionChange }) { // Receive
 
         // Call the callback prop with the updated order
         onItemCompletionChange(sord, updatedOrder);
+    };
+
+    // --- Placeholder function for Back Order Submit ---
+    const handleBackOrderSubmit = (updatedOrder) => { // Placeholder function for now
+        console.log("Back order submitted!", updatedOrder);
+        setShowBackOrderPopup(false); // Just close the popup for now
     };
 
 
@@ -192,7 +197,7 @@ function OrderTable({ orders, searchTerm, onItemCompletionChange }) { // Receive
                                             React.createElement('div', {className: 'back-order-section'},
                                                 React.createElement('h3', null, 'Back Order Items'),
                                                 React.createElement('p', null, order["Other Parts"] ? order["Other Parts"].join(', ') : "None"),
-                                                React.createElement('button', {  // <-- ADD THIS BUTTON
+                                                React.createElement('button', {
                                                     onClick: () => setShowBackOrderPopup(true) // Show popup on click
                                                 }, "Add Back Order Items")
                                             ),
@@ -232,9 +237,11 @@ function OrderTable({ orders, searchTerm, onItemCompletionChange }) { // Receive
                                                     )
                                                 )
                                             ),
-                                             // --- BackOrderPopup Conditionally Rendered Here ---
+                                            // --- BackOrderPopup Conditionally Rendered Here - PROPS ADDED! ---
                                             showBackOrderPopup ? React.createElement(BackOrderPopup, {
-                                                onClose: () => setShowBackOrderPopup(false) // Pass onClose function
+                                                order: order, // Pass the entire order object as a prop
+                                                onClose: () => setShowBackOrderPopup(false), // Pass onClose function
+                                                onSubmit: handleBackOrderSubmit // Pass onSubmit placeholder function
                                             }) : null
                                         )
                                     )
