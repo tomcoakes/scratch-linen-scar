@@ -50,7 +50,7 @@ main {
 }
 
 #orders-table tbody td {
-  padding: 12px 15px;
+  padding: 4px 15px;
   color: #333;
 }
 
@@ -304,13 +304,13 @@ main {
 
 /* Styling for Status Dropdowns in the Orders Table - NEW STYLES */
 #orders-table tbody td:nth-child(7) select {
-  padding: 8px 12px;
+  padding: 3px 12px;
   border: 1px solid #bbb;
   border-radius: 5px;
   background-color: #f0f0f0;
   color: #444;
   cursor: pointer;
-  font-size: 0.9rem;
+  font-size: 0.8rem;
   appearance: none;
   -webkit-appearance: none;
   -moz-appearance: none;

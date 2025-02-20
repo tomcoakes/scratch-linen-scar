@@ -1187,24 +1187,25 @@ function formatDate(date) {
 app.post('/api/upload-orders', express.text({ type: 'text/csv' }), (req, res) => {
     const csvText = req.body;
     const results = [];
-    const filePath = path.join(__dirname, 'active_jobs.json');
-    let existingJobsData = [];
+    const filePath = path.join(__dirname, 'active_jobs.json'); // Path to active_jobs.json
+    let existingJobsData = []; // To store existing jobs data as array (initially empty)
 
+    // --- Load existing active_jobs.json data FIRST ---
     fs.readFile(filePath, 'utf8', (readErr, existingData) => {
-        if (!readErr) {
+        if (!readErr) { // No error means file exists and was read
             try {
                 existingJobsData = JSON.parse(existingData);
-                if (!Array.isArray(existingJobsData)) {
-                    existingJobsData = [];
+                if (!Array.isArray(existingJobsData)) { // Ensure it's an array
+                    existingJobsData = []; // If not, treat as empty
                 }
                 console.log('Existing active_jobs.json data loaded.');
             } catch (parseError) {
                 console.error('Error parsing existing active_jobs.json:', parseError);
-                existingJobsData = [];
+                existingJobsData = []; // If parsing fails, start with an empty array
             }
         } else if (readErr.code === 'ENOENT') {
-            console.log('active_jobs.json not found, starting fresh.');
-            existingJobsData = [];
+            console.log('active_jobs.json not found, starting fresh with an empty array.');
+            existingJobsData = []; // Start with an empty array if file doesn't exist
         } else {
             console.error('Error reading active_jobs.json:', readErr);
             return res.status(500).json({ error: 'Failed to read existing active order data.' });
@@ -1220,24 +1221,26 @@ app.post('/api/upload-orders', express.text({ type: 'text/csv' }), (req, res) =>
                     "Outstanding Qty", "Total Price", "Total Cost", "Order Date",
                     "Item Due Date", "SWP Parts", "Other Parts", "Reference",
                     "Contact", "Rep", "Address",
-                    "SWP Parts Desc", "Other Parts Desc"
+                    "SWP Parts Desc", "Other Parts Desc" //  NEW HEADERS
                 ]
             }))
             .on('data', (row) => {
                 results.push(row);
             })
             .on('end', () => {
-                console.log('CSV data parsed, consolidating new orders...');
+                console.log('CSV data parsed on server, starting consolidation and update (NEW ORDERS ONLY)...');
 
-                const consolidatedOrders = {};
+                const consolidatedOrders = {}; // Object to hold consolidated orders from CSV
+
+                // Create a Set of existing SORDs for efficient lookup
                 const existingSords = new Set(existingJobsData.map(job => job.SORD));
 
                 results.forEach(row => {
                     const sord = row.OUR_REFERENCE;
 
                     if (existingSords.has(sord)) {
-                        console.log(`SORD ${sord} already exists, skipping.`);
-                        return;
+                        console.log(`SORD ${sord} already exists. Skipping.`);
+                        return; // Skip this order if it already exists
                     }
 
                     if (!consolidatedOrders[sord]) {
@@ -1249,17 +1252,19 @@ app.post('/api/upload-orders', express.text({ type: 'text/csv' }), (req, res) =>
                             "Item List": [],
                             "Ordered Date": null,
                             "Due Date": null,
-                            "Total Logos": 0,
+                            "Total Logos": 0, // Initialize Total Logos (will be calculated correctly later)
                             "Reference": row.Reference,
                             "Contact": row.Contact,
                             "Rep": row.Rep,
                             "Address": row.Address,
-                            isNew: true,
-                            garmentStatus: 'Not Started',
-                            decorationMethod: '',
-                            embroideryFileStatus: '',
-                            dtfStatus: '',
-                            jobStatus: 'Not Started'
+
+                            // --- NEW FIELDS with Default Values ---
+                            isNew: true, // Default to true for new orders
+                            garmentStatus: 'Not Started', // Default garment status
+                            decorationMethod: '', // Default decoration method (empty initially)
+                            embroideryFileStatus: '', // Default embroidery file status
+                            dtfStatus: '', // Default DTF status
+                            jobStatus: 'Not Started' // Default job status
                         };
                     }
 
@@ -1289,7 +1294,7 @@ app.post('/api/upload-orders', express.text({ type: 'text/csv' }), (req, res) =>
                         const swpPartsDesc = row["SWP Parts Desc"] ? row["SWP Parts Desc"].split(',').map(desc => desc.trim()).filter(desc => desc !== "") : [];
 
                         if (swpParts.length !== swpPartsDesc.length) {
-                            console.warn(`Mismatch in SWP Parts/Desc for SORD ${sord}, Master Code ${masterCode}.`);
+                            console.warn(`Mismatch in SWP Parts and Descriptions for SORD ${sord}, Master Code ${masterCode}.`);
                             const maxLength = Math.max(swpParts.length, swpPartsDesc.length);
                             while (swpParts.length < maxLength) swpParts.push("");
                             while (swpPartsDesc.length < maxLength) swpPartsDesc.push("");
@@ -1297,25 +1302,21 @@ app.post('/api/upload-orders', express.text({ type: 'text/csv' }), (req, res) =>
 
                         existingItem["SWP Parts"].push(...swpParts);
                         existingItem["SWP Parts Desc"].push(...swpPartsDesc);
-                        consolidatedOrders[sord]["Total Logos"] += swpParts.length * parseInt(row["Outstanding Qty"] || 0, 10);
+
+                        // --- CORRECTED Total Logos Calculation ---
+                        consolidatedOrders[sord]["Total Logos"] += swpParts.length * parseInt(row["Outstanding Qty"] || 0, 10); // <-- Multiply by Outstanding Qty
 
                         const otherParts = row["Other Parts"] ? row["Other Parts"].split(',').map(part => part.trim()).filter(part => part !== "") : [];
                         const otherPartsDesc = row["Other Parts Desc"] ? row["Other Parts Desc"].split(',').map(desc => desc.trim()).filter(desc => desc !== "") : [];
 
-                        // --- Modified section to create 'Other Parts Details' ---
-                        const otherPartsDetails = [];
-                        const maxLengthOther = Math.max(otherParts.length, otherPartsDesc.length);
-
-                        for (let i = 0; i < maxLengthOther; i++) {
-                            otherPartsDetails.push({
-                                partCode: otherParts[i] || "",
-                                description: otherPartsDesc[i] || "",
-                                backOrderQty: 0 // Initialize backOrderQty
-                            });
+                        if (otherParts.length !== otherPartsDesc.length) {
+                            console.warn(`Mismatch in Other Parts and Descriptions for SORD ${sord}, Master Code ${masterCode}.`);
+                            const maxLength = Math.max(otherParts.length, otherPartsDesc.length);
+                            while (otherParts.length < maxLength) otherParts.push("");
+                            while (otherPartsDesc.length < maxLength) otherPartsDesc.push("");
                         }
-                        existingItem["Other Parts Details"] = otherPartsDetails;
-                        // --- End of modified section ---
-
+                        existingItem["Other Parts"].push(...otherParts);
+                        existingItem["Other Parts Desc"].push(...otherPartsDesc);
 
                         consolidatedOrders[sord]["Total Items"] += parseInt(row["Outstanding Qty"] || 0, 10);
 
@@ -1337,6 +1338,7 @@ app.post('/api/upload-orders', express.text({ type: 'text/csv' }), (req, res) =>
                     }
                 });
 
+                // --- Calculate Total Logos for each order (CORRECTED LOGIC) ---
                 for (const sord in consolidatedOrders) {
                     if (consolidatedOrders.hasOwnProperty(sord)) {
                         let totalLogos = 0;
@@ -1347,19 +1349,25 @@ app.post('/api/upload-orders', express.text({ type: 'text/csv' }), (req, res) =>
                     }
                 }
 
+
+                // Convert consolidatedOrders object to an array of new orders
                 const newOrdersArray = Object.values(consolidatedOrders);
+
+                // Filter out any orders from newOrdersArray that already exist in existingJobsData
                 const trulyNewOrders = newOrdersArray.filter(newOrder => !existingSords.has(newOrder.SORD));
+
+                // Combine existing jobs data with the truly new orders
                 const updatedJobsArray = [...existingJobsData, ...trulyNewOrders];
 
-                console.log(`CSV processed. ${trulyNewOrders.length} new orders added, ${results.length - trulyNewOrders.length} skipped.`);
+                console.log(`CSV data processed. ${trulyNewOrders.length} new orders added, ${results.length - trulyNewOrders.length} existing orders skipped.`);
 
                 updateActiveJobsJSON(updatedJobsArray);
-                res.json(trulyNewOrders);
+                res.json(trulyNewOrders); // <-- RETURN trulyNewOrders
 
             })
             .on('error', (error) => {
-                console.error('CSV parsing error:', error);
-                res.status(500).json({ error: 'Failed to parse CSV data.' });
+                console.error('CSV parsing error on server:', error);
+                res.status(500).json({ error: 'Failed to parse CSV data on server.' });
             });
     });
 });
