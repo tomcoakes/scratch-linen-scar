@@ -1,12 +1,16 @@
 // src/pages/components/OrderTable/OrderTable.js
 
+// import React from 'react';
+import BackOrderPopup from '../pages/BackOrderPopup/BackOrderPopup.js'; // Import BackOrderPopup
+// import styles from './OrderTable.module.css';
+
 // --- OrderTable Component (UPDATED - Callback for Updates) ---
 function OrderTable({ orders, searchTerm, onItemCompletionChange }) { // Receive onItemCompletionChange prop
     const [filteredOrders, setFilteredOrders] = React.useState([]);
     const [expandedRowSord, setExpandedRowSord] = React.useState(null);
-    const [completedQuantities, setCompletedQuantities] = React.useState({}); // { [sord]: { [masterCode]: completedQty, ... }, ... }
-      const [statusChanges, setStatusChanges] = React.useState({}); // Local state for status changes
-
+    const [completedQuantities, setCompletedQuantities] = React.useState({});
+    const [statusChanges, setStatusChanges] = React.useState({});
+    const [showBackOrderPopup, setShowBackOrderPopup] = React.useState(false); // State for popup visibility
 
     React.useEffect(() => {
         if (!searchTerm) {
@@ -23,13 +27,13 @@ function OrderTable({ orders, searchTerm, onItemCompletionChange }) { // Receive
         }
     }, [orders, searchTerm]);
 
-    const handleRowClick = (sord, event) => { // ADD 'event' PARAMETER
-        // Check if the clicked element is a select dropdown
+    const handleRowClick = (sord, event) => {
         if (event.target.tagName === 'SELECT') {
-            return; // Do nothing if it's a dropdown click, don't expand/collapse row
+            return;
         }
         setExpandedRowSord(expandedRowSord === sord ? null : sord);
     };
+
      const handleCompletedQtyChange = (sord, masterCode, newCompletedQty) => {
       setCompletedQuantities(prevCompletedQuantities => {
           const orderQuantities = prevCompletedQuantities[sord] || {};
@@ -92,45 +96,44 @@ function OrderTable({ orders, searchTerm, onItemCompletionChange }) { // Receive
                         filteredOrders.map(order => (
                             React.createElement(React.Fragment, { key: order.SORD },
                                 React.createElement('tr', {
-                                        onClick: (event) => handleRowClick(order.SORD, event), // PASS 'event' HERE
-                                        className: `data-row ${expandedRowSord === order.SORD ? 'expanded' : ''}`
-                                    
-                                }, // --- Main Data Row ---
+                                    onClick: (event) => handleRowClick(order.SORD, event),
+                                    className: `data-row ${expandedRowSord === order.SORD ? 'expanded' : ''}`
+                                },
                                     React.createElement('td', null, order.SORD),
                                     React.createElement('td', null, order["Trader Name"]),
                                     React.createElement('td', null, order["Total Items"]),
                                     React.createElement('td', null, order["Ordered Date"]),
                                     React.createElement('td', null, order["Due Date"]),
                                     React.createElement('td', null, order["Total Logos"]),
-                                    React.createElement('td', null, // New dropdown in place of the static text
-                                    React.createElement('select', {
-                                        value: (statusChanges[order.SORD] && statusChanges[order.SORD].jobStatus) || order.jobStatus, // Control value from state
-                                        onChange: (e) => handleStatusChange(order.SORD, 'jobStatus', e.target.value) // onChange handler
-                                    },
-                                        React.createElement('option', { value: "Not Started" }, "Not Started"),
-                                        React.createElement('option', { value: "Started" }, "Started"),
-                                        React.createElement('option', { value: "On Hold" }, "On Hold"),
-                                        React.createElement('option', { value: "Part Shipped" }, "Part Shipped"),
-                                        React.createElement('option', { value: "Complete" }, "Complete"),
-                                        React.createElement('option', { value: "Sent" }, "Sent")
+                                    React.createElement('td', null,
+                                        React.createElement('select', {
+                                            value: (statusChanges[order.SORD] && statusChanges[order.SORD].jobStatus) || order.jobStatus,
+                                            onChange: (e) => handleStatusChange(order.SORD, 'jobStatus', e.target.value)
+                                        },
+                                            React.createElement('option', { value: "Not Started" }, "Not Started"),
+                                            React.createElement('option', { value: "Started" }, "Started"),
+                                            React.createElement('option', { value: "On Hold" }, "On Hold"),
+                                            React.createElement('option', { value: "Part Shipped" }, "Part Shipped"),
+                                            React.createElement('option', { value: "Complete" }, "Complete"),
+                                            React.createElement('option', { value: "Sent" }, "Sent")
+                                        )
                                     )
-                                )
                                 ),
                                 React.createElement('tr', {
-                                    className: `info-row ${expandedRowSord === order.SORD ? 'expanded' : ''}` // <-- CORRECTED: Apply 'expanded' class based on expandedRowSord
-                                }, // --- Info Row (Tags, Decoration, and Statuses) ---
-                                    React.createElement('td', { colSpan: "14" }, // Span all columns
+                                    className: `info-row ${expandedRowSord === order.SORD ? 'expanded' : ''}`
+                                },
+                                    React.createElement('td', { colSpan: "14" },
                                         React.createElement('div', { className: "info-container" },
                                             React.createElement('div', { className: "tags-container" },
-                                                order.isNew ? React.createElement('span', { className: "new-tag" }, 'New') : null, // "New" Tag
+                                                order.isNew ? React.createElement('span', { className: "new-tag" }, 'New') : null,
                                                 order.decorationMethod === "Embroidery" || order.decorationMethod === "Both" ? React.createElement('span', {className: 'embroidery-tag'}, "Embroidery") : null,
                                                 order.decorationMethod === "DTF" || order.decorationMethod === "Both" ? React.createElement('span', {className: 'dtf-tag'}, "DTF") : null
                                             ),
                                             React.createElement('div', {className: 'status-dropdowns-container'},
-                                                React.createElement('div', null, // Wrap label and select in a div
-                                                    React.createElement('label', { htmlFor: `garment-status-${order.SORD}` }, 'Garment:'), // Label
+                                                React.createElement('div', null,
+                                                    React.createElement('label', { htmlFor: `garment-status-${order.SORD}` }, 'Garment:'),
                                                     React.createElement('select', {
-                                                        id: `garment-status-${order.SORD}`, // Unique ID
+                                                        id: `garment-status-${order.SORD}`,
                                                         value: (statusChanges[order.SORD] && statusChanges[order.SORD].garmentStatus) || order.garmentStatus,
                                                         onChange: (e) => handleStatusChange(order.SORD, 'garmentStatus', e.target.value)
                                                         },
@@ -140,14 +143,14 @@ function OrderTable({ orders, searchTerm, onItemCompletionChange }) { // Receive
                                                         React.createElement('option', { value: "Part Received" }, "Part Received"),
                                                         React.createElement('option', { value: "Booked in" }, "Booked in"),
                                                         React.createElement('option', { value: "Delayed" }, "Delayed"),
-                                                        React.createElement('option', { value: "In Stock" }, "In Stock") // Corrected 'In Stock' option
+                                                        React.createElement('option', { value: "In Stock" }, "In Stock")
                                                     )
                                                 ),
                                                 order.decorationMethod === 'Embroidery' || order.decorationMethod === 'Both' ? (
-                                                    React.createElement('div', null, // Wrap label and select
-                                                        React.createElement('label', { htmlFor: `embroidery-status-${order.SORD}` }, 'Embroidery:'), // Label
+                                                    React.createElement('div', null,
+                                                        React.createElement('label', { htmlFor: `embroidery-status-${order.SORD}` }, 'Embroidery:'),
                                                         React.createElement('select', {
-                                                            id: `embroidery-status-${order.SORD}`, // Unique ID
+                                                            id: `embroidery-status-${order.SORD}`,
                                                             value: (statusChanges[order.SORD] && statusChanges[order.SORD].embroideryFileStatus) || order.embroideryFileStatus,
                                                             onChange: (e) => handleStatusChange(order.SORD, 'embroideryFileStatus', e.target.value)
                                                         },
@@ -162,10 +165,10 @@ function OrderTable({ orders, searchTerm, onItemCompletionChange }) { // Receive
                                                     )
                                                 ) : null,
                                                 order.decorationMethod === 'DTF' || order.decorationMethod === 'Both' ? (
-                                                    React.createElement('div', null, // Wrap label and select
-                                                        React.createElement('label', { htmlFor: `dtf-status-${order.SORD}` }, 'DTF:'), // Label
+                                                    React.createElement('div', null,
+                                                        React.createElement('label', { htmlFor: `dtf-status-${order.SORD}` }, 'DTF:'),
                                                         React.createElement('select', {
-                                                            id: `dtf-status-${order.SORD}`, // Unique ID
+                                                            id: `dtf-status-${order.SORD}`,
                                                             value: (statusChanges[order.SORD] && statusChanges[order.SORD].dtfStatus) || order.dtfStatus,
                                                             onChange: (e) => handleStatusChange(order.SORD, 'dtfStatus', e.target.value)
                                                         },
@@ -187,7 +190,10 @@ function OrderTable({ orders, searchTerm, onItemCompletionChange }) { // Receive
                                         React.createElement('div', { className: "expansion-content" },
                                             React.createElement('div', {className: 'back-order-section'},
                                                 React.createElement('h3', null, 'Back Order Items'),
-                                                React.createElement('p', null, order["Other Parts"] ? order["Other Parts"].join(', ') : "None")
+                                                React.createElement('p', null, order["Other Parts"] ? order["Other Parts"].join(', ') : "None"),
+                                                React.createElement('button', {  // <-- ADD THIS BUTTON
+                                                    onClick: () => setShowBackOrderPopup(true) // Show popup on click
+                                                }, "Add Back Order Items")
                                             ),
                                             React.createElement('div', { className: 'items-completed-section' },
                                                 React.createElement('h3', null, 'Items Completed'),
@@ -224,7 +230,11 @@ function OrderTable({ orders, searchTerm, onItemCompletionChange }) { // Receive
                                                         })
                                                     )
                                                 )
-                                            )
+                                            ),
+                                             // --- BackOrderPopup Conditionally Rendered Here ---
+                                            showBackOrderPopup ? React.createElement(BackOrderPopup, {
+                                                onClose: () => setShowBackOrderPopup(false) // Pass onClose function
+                                            }) : null
                                         )
                                     )
                                 )
