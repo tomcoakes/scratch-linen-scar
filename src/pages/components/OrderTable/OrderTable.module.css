@@ -174,11 +174,14 @@ main {
   border-collapse: collapse;
 }
 
-.items-completed-table th,
-.items-completed-table td {
-  padding: 8px 12px;
+/* Thinner headers and rows for the items completed table 
+   with increased specificity to override inherited styles */
+#orders-table .items-completed-table th,
+#orders-table .items-completed-table td {
+  padding: 4px 8px;      /* Reduced padding for a thinner look */
   text-align: left;
   border-bottom: 1px solid #f0f0f0;
+  line-height: 1.2;
 }
 
 .items-completed-table th {
