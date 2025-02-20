@@ -372,17 +372,7 @@ main {
     border-radius: 4px;
 }
 
-.side-by-side-sections {
-    display: flex;                 /* Enable flexbox layout */
-    flex-direction: row;          /* Arrange sections in a row (horizontally) */
-    gap: 20px;                    /* Spacing between the two sections */
-    align-items: flex-start;      /* Align items to the start of each section */
-}
 
-.side-by-side-sections > div { /* Target direct child divs (back-order-section and items-completed-section) */
-    flex: 1;                     /* Allow each section to take up equal width */
-    min-width: 0;                /* Allow items to shrink below their content size if needed */
-}
 /* ---------- Footer ---------- */
 footer {
   background-color: #182848;
