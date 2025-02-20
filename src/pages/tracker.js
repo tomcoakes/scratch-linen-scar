@@ -1,5 +1,5 @@
 // src/pages/tracker.js
-// import ReactDOM from 'react-dom/client';
+import ReactDOM from '../node_modules/react-dom/index.js';
 
 // --- Import Components from their new folders ---
 import Sidebar from './components/Sidebar/Sidebar.js';
