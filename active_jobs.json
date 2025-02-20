@@ -885,7 +885,7 @@
         "SWP Parts Desc": [
           "Blue Flame Left Breast Embroidery - White"
         ],
-        "Completed Qty": 0
+        "Completed Qty": 1
       }
     ],
     "Ordered Date": "07/01/2025",
@@ -900,7 +900,7 @@
     "decorationMethod": "Embroidery",
     "embroideryFileStatus": "Ordered",
     "dtfStatus": "",
-    "jobStatus": "Part Shipped"
+    "jobStatus": "Complete"
   },
   {
     "SORD": "SORD01620157",
