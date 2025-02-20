@@ -208,7 +208,7 @@ main {
   display: grid;
   grid-template-columns: repeat(3, auto);  /* Three columns with auto width */
   gap: 10px;
-  margin-left: 30px;
+  margin-left: 7px;
   margin-right: auto;
 }
 
@@ -331,6 +331,18 @@ main {
 #orders-table td:nth-child(7) select::-ms-expand {
   display: none;
 }
+
+#orders-table th:nth-child(1),  /* Target the first TH (header cell) */
+#orders-table td:nth-child(1) {  /* Target the first TD (data cell) in each row */
+    width: 200px; /* Set your desired width here!  Adjust as needed */
+    min-width: 200px; /* Optional: Ensure a minimum width */
+    max-width: 200px; /* Optional: Limit to a maximum width */
+    /* Add any other specific styling for the first column here */
+    overflow: hidden;         /* Ensure content doesn't overflow */
+    text-overflow: ellipsis; /* Add ellipsis (...) for overflowing text */
+    white-space: nowrap;    /* Prevent text from wrapping */
+}
+
 
 /* ---------- Footer ---------- */
 footer {
