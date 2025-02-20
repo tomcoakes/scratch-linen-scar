@@ -49,7 +49,6 @@ main {
   border-bottom: 2px solid #e2e8f0;
 }
 
-
 #orders-table tbody td {
   padding: 12px 15px;
   color: #333;
@@ -109,17 +108,17 @@ main {
   font-weight: 500;
 }
 
-/* ---------- Expansion Row with Sliding Effect ---------- */
+/* ---------- Expansion Row with Sliding Effect and Side-by-Side Sections ---------- */
 .expansion-row {
   display: table-row; /* Always render as a table row */
 }
 
 .expansion-row td {
-  /* Remove default cell padding so collapsed row takes no space */
   padding: 0;
   border: none;
 }
 
+/* Default state for expansion-content */
 .expansion-content {
   max-height: 0;
   overflow: hidden;
@@ -128,32 +127,36 @@ main {
   transition: max-height 0.5s ease, opacity 0.5s ease, padding 0.5s ease;
 }
 
-/* When expanded, reveal the content with a refined, cohesive look */
+/* When expanded, reveal the content with a side-by-side layout */
 .expansion-row.expanded .expansion-content {
   max-height: 500px; /* Adjust if needed */
   opacity: 1;
   padding: 20px 15px;
-  background-color: #fff;        /* A more refined, subtle green */
+  background-color: #fff;
   border: 1px solid #d2e8d2;
   border-top: none;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  
+  display: flex;       /* Flex layout to show sections side by side */
+  gap: 20px;           /* Space between sections */
+  flex-wrap: wrap;     /* Wrap on smaller screens */
 }
 
-/* ---------- Sections Within Expansion Content ---------- */
+/* Style each section within the expansion-content */
 .expansion-content > div {
-  padding: 15px;
+  flex: 1 1 45%;       /* Each section takes roughly 45% of the available width */
+  padding: 10px;       /* Reduced padding */
   border: 1px solid #eee;
   border-radius: 6px;
   background-color: #fafafa;
-  margin-bottom: 20px;
+  margin-bottom: 0;    /* Remove bottom margin */
 }
 
+/* Reduce heading sizes within these sections */
 .expansion-content h3 {
+  font-size: 1rem;
   margin-top: 0;
   margin-bottom: 10px;
-  font-size: 1.1rem;
-  color: #4a5568;
-  font-weight: 500;
 }
 
 /* ---------- Items Completed Section ---------- */
@@ -202,14 +205,13 @@ main {
   display: grid;
   grid-template-columns: repeat(3, auto);  /* Three columns with auto width */
   gap: 10px;
-  margin-left: 7px;
+  margin-left: 30px;
   margin-right: auto;
 }
 
 /* Base styling for dropdowns */
 .status-dropdowns-container select {
   width: 100%;
-  /* Increase right padding so the arrow doesn't cover text */
   padding: 4px 30px 4px 8px;  /* top, right, bottom, left */
   font-size: 12px;            /* Smaller font size */
   border: 1px solid #ccc;
@@ -244,7 +246,7 @@ main {
   color: #4f0f51;
 }
 .status-dropdowns-container select[id^="garment-status-"] option:hover {
-  background-color: #b397c8;  /* Darker shade on option hover */
+  background-color: #b397c8;
   color: #fff;
 }
 
@@ -255,7 +257,7 @@ main {
   color: #0F5132;
 }
 .status-dropdowns-container select[id^="embroidery-status-"] option:hover {
-  background-color: #90c8c0;  /* Darker shade on option hover */
+  background-color: #90c8c0;
   color: #fff;
 }
 
@@ -266,7 +268,7 @@ main {
   color: #185860;
 }
 .status-dropdowns-container select[id^="dtf-status-"] option:hover {
-  background-color: #a5d7e0;  /* Darker shade on option hover */
+  background-color: #a5d7e0;
   color: #fff;
 }
 
@@ -281,64 +283,50 @@ main {
 }
 
 .new-tag {
-    background-color: #f0f0f0;
-    color: #333;
+  background-color: #f0f0f0;
+  color: #333;
 }
 
 .embroidery-tag {
-    background-color: #d1e7dd; /* Example: light green */
-    color: #0f5132; /* Example: dark green */
-    border: 1px solid #badbcc;
+  background-color: #d1e7dd;
+  color: #0f5132;
+  border: 1px solid #badbcc;
 }
 
 .dtf-tag {
-    background-color: #cff4fc; /* Example: light blue */
-    color: #055160; /* Example: dark blue */
-    border: 1px solid #b6effb;
+  background-color: #cff4fc;
+  color: #055160;
+  border: 1px solid #b6effb;
 }
 
-/* Styling for Status Dropdowns - NEW STYLES - **UPDATED SELECTOR** */
-#orders-table tbody td:nth-child(7) select { /* Target selects in the 7th TD (Status column) */
-    padding: 8px 12px;         /* More padding for button appearance */
-    border: 1px solid #bbb;    /* Grey border */
-    border-radius: 5px;         /* Rounded corners */
-    background-color: #f0f0f0;   /* Light grey background */
-    color: #444;               /* Darker text color */
-    cursor: pointer;            /* Indicate it's interactive */
-    font-size: 0.9rem;          /* Adjust font size as needed */
-    /* Added appearance reset for better cross-browser consistency */
-    appearance: none;
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    /* Custom dropdown arrow using background image */
-    background-image: url("data:image/svg+xml,%3Csvg fill='%23333' height='24' viewBox='0 0 24 24' width='24' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M7 10l5 5 5-5z'/%3E%3C/svg%3E"); /* Grey arrow */
-    background-repeat: no-repeat;
-    background-position: right 10px center;
-    background-size: 16px;
+/* Styling for Status Dropdowns in the Orders Table - NEW STYLES */
+#orders-table tbody td:nth-child(7) select {
+  padding: 8px 12px;
+  border: 1px solid #bbb;
+  border-radius: 5px;
+  background-color: #f0f0f0;
+  color: #444;
+  cursor: pointer;
+  font-size: 0.9rem;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg fill='%23333' height='24' viewBox='0 0 24 24' width='24' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M7 10l5 5 5-5z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+  background-size: 16px;
 }
 
-#orders-table td:nth-child(7) select:hover, /* Updated selector here too */
+#orders-table td:nth-child(7) select:hover,
 #orders-table td:nth-child(7) select:focus {
-    border-color: #888;        /* Darker border on hover/focus */
-    box-shadow: 0 0 4px rgba(0, 0, 0, 0.2); /* Subtle shadow on hover/focus */
-    outline: none;             /* Remove default focus outline */
-    background-color: #e8e8e8;  /* Slightly darker background on hover/focus */
+  border-color: #888;
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.2);
+  outline: none;
+  background-color: #e8e8e8;
 }
 
-/* Remove default arrow icon in IE 11 (if needed) */
 #orders-table td:nth-child(7) select::-ms-expand {
-    display: none;
-}
-
-#orders-table th:nth-child(1),  /* Target the first TH (header cell) */
-#orders-table td:nth-child(1) {  /* Target the first TD (data cell) in each row */
-    width: 200px; /* Set your desired width here!  Adjust as needed */
-    min-width: 200px; /* Optional: Ensure a minimum width */
-    max-width: 200px; /* Optional: Limit to a maximum width */
-    /* Add any other specific styling for the first column here */
-    overflow: hidden;         /* Ensure content doesn't overflow */
-    text-overflow: ellipsis; /* Add ellipsis (...) for overflowing text */
-    white-space: nowrap;    /* Prevent text from wrapping */
+  display: none;
 }
 
 /* ---------- Footer ---------- */
