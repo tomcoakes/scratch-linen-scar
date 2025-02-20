@@ -98,7 +98,19 @@ function OrderTable({ orders, searchTerm, onItemCompletionChange }) { // Receive
                                     React.createElement('td', null, order["Ordered Date"]),
                                     React.createElement('td', null, order["Due Date"]),
                                     React.createElement('td', null, order["Total Logos"]),
-                                    React.createElement('td', null, order.jobStatus)
+                                    React.createElement('td', null, // New dropdown in place of the static text
+                                    React.createElement('select', {
+                                        value: (statusChanges[order.SORD] && statusChanges[order.SORD].jobStatus) || order.jobStatus, // Control value from state
+                                        onChange: (e) => handleStatusChange(order.SORD, 'jobStatus', e.target.value) // onChange handler
+                                    },
+                                        React.createElement('option', { value: "Not Started" }, "Not Started"),
+                                        React.createElement('option', { value: "Started" }, "Started"),
+                                        React.createElement('option', { value: "On Hold" }, "On Hold"),
+                                        React.createElement('option', { value: "Part Shipped" }, "Part Shipped"),
+                                        React.createElement('option', { value: "Complete" }, "Complete"),
+                                        React.createElement('option', { value: "Sent" }, "Sent")
+                                    )
+                                )
                                 ),
                                 React.createElement('tr', {
                                     className: `info-row ${expandedRowSord === order.SORD ? 'expanded' : ''}` // <-- CORRECTED: Apply 'expanded' class based on expandedRowSord
