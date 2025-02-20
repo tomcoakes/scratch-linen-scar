@@ -6,3 +6,12 @@
   overflow-y: auto;
 }
 
+
+.popupOverlay {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+  max-height: 300px;
+  overflow-y: auto;
+}
+

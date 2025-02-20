@@ -1,16 +1,15 @@
 // src/pages/components/OrderTable/OrderTable.js
 
 // import React from 'react';
-import BackOrderPopup from '../BackOrderPopup/BackOrderPopup.js';
+import BackOrderPopup from '../BackOrderPopup/BackOrderPopup.js'; 
 // import styles from './OrderTable.module.css';
 
-// --- OrderTable Component (UPDATED - Callback for Updates) ---
 function OrderTable({ orders, searchTerm, onItemCompletionChange }) {
     const [filteredOrders, setFilteredOrders] = React.useState([]);
     const [expandedRowSord, setExpandedRowSord] = React.useState(null);
     const [completedQuantities, setCompletedQuantities] = React.useState({});
     const [statusChanges, setStatusChanges] = React.useState({});
-    const [showBackOrderPopup, setShowBackOrderPopup] = React.useState(false);
+    // REMOVE const [showBackOrderPopup, setShowBackOrderPopup] = React.useState(false); // No longer using popup state
 
     React.useEffect(() => {
         if (!searchTerm) {
@@ -78,7 +77,7 @@ function OrderTable({ orders, searchTerm, onItemCompletionChange }) {
     // --- Placeholder function for Back Order Submit ---
     const handleBackOrderSubmit = (updatedOrder) => { // Placeholder function for now
         console.log("Back order submitted!", updatedOrder);
-        setShowBackOrderPopup(false); // Just close the popup for now
+        // setShowBackOrderPopup(false); // REMOVE THIS LINE - No longer closing popup
     };
 
 
@@ -196,10 +195,45 @@ function OrderTable({ orders, searchTerm, onItemCompletionChange }) {
                                         React.createElement('div', { className: "expansion-content" },
                                             React.createElement('div', {className: 'back-order-section'},
                                                 React.createElement('h3', null, 'Back Order Items'),
-                                                React.createElement('p', null, order["Other Parts"] ? order["Other Parts"].join(', ') : "None"),
-                                                React.createElement('button', {
-                                                    onClick: () => setShowBackOrderPopup(true) // Show popup on click
-                                                }, "Add Back Order Items")
+                                                // REMOVE THIS LINE -  React.createElement('p', null, order["Other Parts"] ? order["Other Parts"].join(', ') : "None"),
+                                                // REMOVE THIS LINE - React.createElement('button', {  // <-- ADD THIS BUTTON
+                                                // REMOVE THIS LINE -     onClick: () => setShowBackOrderPopup(true) // Show popup on click
+                                                // REMOVE THIS LINE - }, "Add Back Order Items"),
+
+                                                // --- EMBEDDED TABLE STRUCTURE - REPLACES <p> and <button> ---
+                                                React.createElement('table', { className: styles.backOrderTable }, // You can apply styling here if needed
+                                                    React.createElement('thead', null,
+                                                        React.createElement('tr', null,
+                                                            React.createElement('th', null, "Part Code"),
+                                                            React.createElement('th', null, "Description"),
+                                                            React.createElement('th', null, "Total Qty Needed"),
+                                                            React.createElement('th', null, "Back Order Qty")
+                                                        )
+                                                    ),
+                                                    React.createElement('tbody', null,
+                                                        order["Other Parts Details"] && order["Other Parts Details"].length > 0 ? ( // Check if otherPartsDetails exists and has length
+                                                            order["Other Parts Details"].map((partDetail, index) => (
+                                                                React.createElement('tr', { key: index },
+                                                                    React.createElement('td', null, partDetail.partCode || "N/A"),
+                                                                    React.createElement('td', null, partDetail.description || "N/A"),
+                                                                    React.createElement('td', null, partDetail.totalQuantity), // Display totalQuantity
+                                                                    React.createElement('td', null,
+                                                                        React.createElement('input', {
+                                                                            type: "number",
+                                                                            min: "0",
+                                                                            defaultValue: partDetail.backOrderQty
+                                                                            // onChange handler will be added later if needed
+                                                                        })
+                                                                    )
+                                                                )
+                                                            )) : (
+                                                            React.createElement('tr', null, // Display message if no other parts
+                                                                React.createElement('td', { colSpan: "4", style: { textAlign: 'center' } }, "No Back Order Items")
+                                                            )
+                                                        )
+                                                    )
+                                                )
+                                                // --- END EMBEDDED TABLE STRUCTURE ---
                                             ),
                                             React.createElement('div', { className: 'items-completed-section' },
                                                 React.createElement('h3', null, 'Items Completed'),
@@ -238,11 +272,11 @@ function OrderTable({ orders, searchTerm, onItemCompletionChange }) {
                                                 )
                                             ),
                                             // --- BackOrderPopup Conditionally Rendered Here - PROPS ADDED! ---
-                                            showBackOrderPopup ? React.createElement(BackOrderPopup, {
-                                                order: order, // Pass the entire order object as a prop
-                                                onClose: () => setShowBackOrderPopup(false), // Pass onClose function
-                                                onSubmit: handleBackOrderSubmit // Pass onSubmit placeholder function
-                                            }) : null
+                                            // showBackOrderPopup ? React.createElement(BackOrderPopup, {  // REMOVE THIS LINE - No longer rendering popup
+                                            //     order: order, // Pass the entire order object as a prop // REMOVE THIS LINE
+                                            //     onClose: () => setShowBackOrderPopup(false), // Pass onClose function // REMOVE THIS LINE
+                                            //     onSubmit: handleBackOrderSubmit // Pass onSubmit placeholder function // REMOVE THIS LINE
+                                            // }) : null // REMOVE THIS LINE
                                         )
                                     )
                                 )
