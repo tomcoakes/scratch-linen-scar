@@ -1,6 +1,6 @@
 // src/pages/components/BackOrderPopup/BackOrderPopup.js
-import React from 'react';
-import styles from './BackOrderPopup.module.css'; // Import CSS module
+// import React from 'react';
+// import styles from './BackOrderPopup.module.css'; // Import CSS module
 
 function BackOrderPopup({ order, onClose, onSubmit }) { // Receive order, onClose, onSubmit props
 
@@ -9,8 +9,8 @@ function BackOrderPopup({ order, onClose, onSubmit }) { // Receive order, onClos
 
 
     return (
-        React.createElement('div', { className: "popupOverlay" },
-            React.createElement('div', { className: "popupContent" },
+        React.createElement('div', { className: "popup-Overlay" },
+            React.createElement('div', { className: "popup-Content" },
                 React.createElement('h2', null, "Add Back Order Items"),
                 React.createElement('table', { className: "backOrderTable" }, // Apply CSS module class
                     React.createElement('thead', null,
