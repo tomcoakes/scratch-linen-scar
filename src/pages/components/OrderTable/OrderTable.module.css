@@ -343,7 +343,46 @@ main {
     white-space: nowrap;    /* Prevent text from wrapping */
 }
 
+.backOrderTable {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
 
+.backOrderTable th,
+.backOrderTable td {
+    padding: 10px 15px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+.backOrderTable th {
+    background-color: #f0f3f4;
+    font-weight: 500;
+}
+
+.backOrderTable tbody tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+.backOrderTable input[type="number"] {
+    width: 80px; /* Adjust input width as needed */
+    padding: 6px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.side-by-side-sections {
+    display: flex;                 /* Enable flexbox layout */
+    flex-direction: row;          /* Arrange sections in a row (horizontally) */
+    gap: 20px;                    /* Spacing between the two sections */
+    align-items: flex-start;      /* Align items to the start of each section */
+}
+
+.side-by-side-sections > div { /* Target direct child divs (back-order-section and items-completed-section) */
+    flex: 1;                     /* Allow each section to take up equal width */
+    min-width: 0;                /* Allow items to shrink below their content size if needed */
+}
 /* ---------- Footer ---------- */
 footer {
   background-color: #182848;
