@@ -2,7 +2,7 @@
 // import ReactDOM from 'react-dom/client';
 
 // --- Import Components from their new folders ---
-import Sidebar from './components/Sidebar/Sidebar.js';
+
 import SearchBar from './components/SearchBar/SearchBar.js';
 import OrderTable from './components/OrderTable/OrderTable.js';
 import SummaryCards from './components/SummaryCards/SummaryCards.js';
@@ -167,15 +167,17 @@ const handleFileUpload = (newOrdersFromServer) => { // Modified to handle new or
 
 
     function renderChildComponents(currentSearchTerm) {
-        sidebarRoot.render(React.createElement(Sidebar, { onFileUpload: window.appState.handleFileUpload }));
-
+        // sidebarRoot.render(React.createElement(Sidebar, { onFileUpload: window.appState.handleFileUpload })); // REMOVED
         searchBarRoot.render(React.createElement(SearchBar, {
             searchTerm: currentSearchTerm,
             onSearchChange: window.appState.handleSearchChange,
             onClearSearch: window.appState.handleClearSearch
         }));
 
-        summaryCardsRoot.render(React.createElement(SummaryCards, { orders: window.appState.orders }));
+        summaryCardsRoot.render(React.createElement(SummaryCards, {
+            orders: window.appState.orders,
+            onFileUpload: window.appState.handleFileUpload // Pass handleFileUpload here
+        }));
 
         // --- Pass onItemCompletionChange prop to OrderTable ---
         orderTableRoot.render(React.createElement(OrderTable, {
@@ -186,7 +188,7 @@ const handleFileUpload = (newOrdersFromServer) => { // Modified to handle new or
     }
 
     return (
-        // Conditionally render the popup
+        // Conditionally render the popup (no changes needed here)
         showNewOrderPopup ? React.createElement(NewOrderPopup, {
             newOrders: newOrders,
             onOrderUpdates: handleOrderUpdates,
@@ -197,7 +199,7 @@ const handleFileUpload = (newOrdersFromServer) => { // Modified to handle new or
 }
 
 const appRoot = ReactDOM.createRoot(document.getElementById('app-root'));
-const sidebarRoot = ReactDOM.createRoot(document.getElementById('sidebar-root'));
+// const sidebarRoot = ReactDOM.createRoot(document.getElementById('sidebar-root'));
 const searchBarRoot = ReactDOM.createRoot(document.getElementById('search-bar-root'));
 const summaryCardsRoot = ReactDOM.createRoot(document.getElementById('summary-cards'));
 const orderTableRoot = ReactDOM.createRoot(document.getElementById('order-table-root'));

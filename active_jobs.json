@@ -24,7 +24,7 @@
         "Other Parts Desc": [
           "Classic Full Zip Micro Fleece Jacket - Navy - 2XLarge"
         ],
-        "Completed Qty": 3
+        "Completed Qty": 1
       },
       {
         "Master Code": "SWPTFCN003-L",
@@ -843,7 +843,7 @@
         "Other Parts Desc": [
           "Pro RTX Pro Sweatshirt - Navy - XXLarge"
         ],
-        "Completed Qty": 0
+        "Completed Qty": 1
       }
     ],
     "Ordered Date": "07/01/2025",
@@ -854,7 +854,7 @@
     "Rep": "Phil Murphy",
     "Address": "Energy House , Parkengue, Penryn, Cornwall, TR10 9EP",
     "isNew": true,
-    "garmentStatus": "Ordered",
+    "garmentStatus": "Part Received",
     "decorationMethod": "Embroidery",
     "embroideryFileStatus": "On File",
     "dtfStatus": "",
