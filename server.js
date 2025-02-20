@@ -1184,6 +1184,7 @@ function formatDate(date) {
 // --- NEW API Endpoint: Handle CSV Upload for Orders ---
 // --- NEW API Endpoint: Handle CSV Upload for Orders (UPDATED for NO DUPLICATES) ---
 // --- NEW API Endpoint: Handle CSV Upload for Orders (UPDATED for NO DUPLICATES, NEW FIELDS, and CORRECT TOTAL LOGOS) ---
+// server.js - Corrected /api/upload-orders endpoint (REVISED - REMOVES LEGACY FIELDS)
 app.post('/api/upload-orders', express.text({ type: 'text/csv' }), (req, res) => {
     const csvText = req.body;
     const results = [];
@@ -1274,9 +1275,9 @@ app.post('/api/upload-orders', express.text({ type: 'text/csv' }), (req, res) =>
                                 "Ordered Qty": 0,
                                 "Outstanding Qty": 0,
                                 "SWP Parts": [],
-                                "Other Parts": [],
+                                "Other Parts Details": [], // Initialize 'Other Parts Details' here - CORRECTED
                                 "SWP Parts Desc": [],
-                                "Other Parts Desc": [],
+                                // "Other Parts Desc": [], // We don't need this anymore
                                 "Completed Qty": 0,
                             };
                             consolidatedOrders[sord]["Item List"].push(existingItem);
@@ -1315,6 +1316,10 @@ app.post('/api/upload-orders', express.text({ type: 'text/csv' }), (req, res) =>
                         }
                         existingItem["Other Parts Details"] = otherPartsDetails;
                         // --- End of modified section ---
+
+                        // REMOVE THESE LINES - LEGACY FIELDS
+                        // existingItem["Other Parts"].push(...otherParts); // Legacy field - REMOVE
+                        // existingItem["Other Parts Desc"].push(...otherPartsDesc); // Legacy field - REMOVE
 
 
                         consolidatedOrders[sord]["Total Items"] += parseInt(row["Outstanding Qty"] || 0, 10);
