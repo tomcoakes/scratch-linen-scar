@@ -1,16 +1,14 @@
 // src/pages/components/OrderTable/OrderTable.js
 
 // import React from 'react';
-import BackOrderPopup from '../BackOrderPopup/BackOrderPopup.js';
 // import styles from './OrderTable.module.css';
 
-// --- OrderTable Component (UPDATED - Callback for Updates) ---
+// --- OrderTable Component (UPDATED - No Popup, Embedded Table) ---
 function OrderTable({ orders, searchTerm, onItemCompletionChange }) {
     const [filteredOrders, setFilteredOrders] = React.useState([]);
     const [expandedRowSord, setExpandedRowSord] = React.useState(null);
     const [completedQuantities, setCompletedQuantities] = React.useState({});
     const [statusChanges, setStatusChanges] = React.useState({});
-    const [showBackOrderPopup, setShowBackOrderPopup] = React.useState(false);
 
     React.useEffect(() => {
         if (!searchTerm) {
@@ -73,12 +71,6 @@ function OrderTable({ orders, searchTerm, onItemCompletionChange }) {
 
         // Call the callback prop with the updated order
         onItemCompletionChange(sord, updatedOrder);
-    };
-
-    // --- Placeholder function for Back Order Submit ---
-    const handleBackOrderSubmit = (updatedOrder) => { // Placeholder function for now
-        console.log("Back order submitted!", updatedOrder);
-        setShowBackOrderPopup(false); // Just close the popup for now
     };
 
 
@@ -196,10 +188,45 @@ function OrderTable({ orders, searchTerm, onItemCompletionChange }) {
                                         React.createElement('div', { className: "expansion-content" },
                                             React.createElement('div', {className: 'back-order-section'},
                                                 React.createElement('h3', null, 'Back Order Items'),
-                                                React.createElement('p', null, order["Other Parts"] ? order["Other Parts"].join(', ') : "None"),
-                                                React.createElement('button', {
-                                                    onClick: () => setShowBackOrderPopup(true) // Show popup on click
-                                                }, "Add Back Order Items")
+                                                // --- EMBEDDED BACK ORDER ITEMS TABLE ---
+                                                React.createElement('table', { className: "backOrderTable" }, // Use CSS Module style if you want
+                                                    React.createElement('thead', null,
+                                                        React.createElement('tr', null,
+                                                            React.createElement('th', null, "Part Code"),
+                                                            React.createElement('th', null, "Description"),
+                                                            React.createElement('th', null, "Total Qty Needed"),
+                                                            React.createElement('th', null, "Back Order Qty")
+                                                        )
+                                                    ),
+                                                    React.createElement('tbody', null,
+                                                        order["Item List"].reduce((acc, item) => {
+                                                            if (item["Other Parts Details"] && Array.isArray(item["Other Parts Details"])) {
+                                                                item["Other Parts Details"].forEach((partDetail, index) => {
+                                                                    const totalQuantity = partDetail.partCode ? parseInt(item["Ordered Qty"], 10) : 0;
+                                                                    if (totalQuantity > 0 && partDetail.partCode) {
+                                                                        acc.push(
+                                                                            React.createElement('tr', { key: `${item["Master Code"]}-other-part-${index}` },
+                                                                                React.createElement('td', null, partDetail.partCode || "N/A"),
+                                                                                React.createElement('td', null, partDetail.description || "N/A"),
+                                                                                React.createElement('td', null, partDetail.totalQuantity),
+                                                                                React.createElement('td', null,
+                                                                                    React.createElement('input', {
+                                                                                        type: "number",
+                                                                                        min: "0",
+                                                                                        defaultValue: partDetail.backOrderQty
+                                                                                        // onChange handler will be added later
+                                                                                    })
+                                                                                )
+                                                                            )
+                                                                        );
+                                                                    }
+                                                                });
+                                                            }
+                                                            return acc;
+                                                        }, [])
+                                                    )
+                                                )
+                                                // --- End of Embedded Table ---
                                             ),
                                             React.createElement('div', { className: 'items-completed-section' },
                                                 React.createElement('h3', null, 'Items Completed'),
@@ -212,37 +239,24 @@ function OrderTable({ orders, searchTerm, onItemCompletionChange }) {
                                                         )
                                                     ),
                                                     React.createElement('tbody', null,
-                                                        order["Item List"].map(item => {
-                                                          const initialCompletedQty = item["Completed Qty"] || 0;
-                                                          const completedQty = (completedQuantities[order.SORD] && completedQuantities[order.SORD][item["Master Code"]]) || initialCompletedQty; // Get completed qty, default to initialCompletedQty
-                                                          const isCompleted = completedQty >= item["Outstanding Qty"];
-
-                                                            return (
-                                                                React.createElement('tr', { key: item["Master Code"], className: isCompleted ? 'completed' : '' }, // Conditionally apply 'completed' class
-                                                                    React.createElement('td', null, item["Outstanding Qty"]),
-                                                                    React.createElement('td', null, item["Master Code"]),
-                                                                    React.createElement('td', null,
-                                                                        React.createElement('input', {
-                                                                            type: "number",
-                                                                            min: "0",
-                                                                            max: item["Outstanding Qty"],
-                                                                            value: completedQty,
-                                                                            onChange: (e) => handleCompletedQtyChange(order.SORD, item["Master Code"], e.target.value)
-
-                                                                        })
-                                                                    )
+                                                        order["Item List"].map(item => (
+                                                            React.createElement('tr', { key: item["Master Code"], className: item["Completed Qty"] >= item["Outstanding Qty"] ? 'completed' : '' },
+                                                                React.createElement('td', null, item["Outstanding Qty"]),
+                                                                React.createElement('td', null, item["Master Code"]),
+                                                                React.createElement('td', null,
+                                                                    React.createElement('input', {
+                                                                        type: "number",
+                                                                        min: "0",
+                                                                        max: item["Outstanding Qty"],
+                                                                        value: (completedQuantities[order.SORD] && completedQuantities[order.SORD][item["Master Code"]]) || item["Completed Qty"] || 0,
+                                                                        onChange: (e) => handleCompletedQtyChange(order.SORD, item["Master Code"], e.target.value)
+                                                                    })
                                                                 )
-                                                            );
-                                                        })
+                                                            )
+                                                        ))
                                                     )
                                                 )
-                                            ),
-                                            // --- BackOrderPopup Conditionally Rendered Here - PROPS ADDED! ---
-                                            showBackOrderPopup ? React.createElement(BackOrderPopup, {
-                                                order: order, // Pass the entire order object as a prop
-                                                onClose: () => setShowBackOrderPopup(false), // Pass onClose function
-                                                onSubmit: handleBackOrderSubmit // Pass onSubmit placeholder function
-                                            }) : null
+                                            )
                                         )
                                     )
                                 )
