@@ -175,6 +175,8 @@
   border-collapse: collapse;
 }
 
+
+
 /* Thinner headers and rows for the items completed table 
    with increased specificity to override inherited styles */
 #orders-table .items-completed-table th,

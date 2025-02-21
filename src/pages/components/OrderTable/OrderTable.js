@@ -244,7 +244,7 @@ function OrderTable({ orders, searchTerm, onItemCompletionChange }) {
                                           type: "number",
                                           min: "0",
                                           max: item["Outstanding Qty"],
-                                          placeholder: "Comp. Qty"
+                                          placeholder: "0"
                                         })
                                       )
                                     );
