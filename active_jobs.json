@@ -950,7 +950,7 @@
     "decorationMethod": "DTF",
     "embroideryFileStatus": "",
     "dtfStatus": "In Stock",
-    "jobStatus": "Not Started"
+    "jobStatus": "Complete"
   },
   {
     "SORD": "SORD01620157",
@@ -1717,7 +1717,21 @@
           "Cornish Mutual LB Logo - ALL WHITE",
           "Cornish Mutual Rear Logo - ALL WHITE"
         ],
-        "Completed Qty": 0
+        "Completed Qty": 2,
+        "swpPartCompletions": {
+          "SWPDTF-CORNLB": [
+            {
+              "qty": 2,
+              "timestamp": "2025-02-21T19:01:03.898Z"
+            }
+          ],
+          "SWPDTF-CORNR": [
+            {
+              "qty": 2,
+              "timestamp": "2025-02-21T19:01:05.608Z"
+            }
+          ]
+        }
       }
     ],
     "Ordered Date": "05/02/2025",
