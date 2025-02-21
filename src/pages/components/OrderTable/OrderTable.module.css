@@ -1,12 +1,17 @@
 /* Ensure the swp-parts-row cells match the clickable row styling */
 .swp-parts-row td {
-  padding: 4px 8px;
+  padding: 4px 15px;  /* Updated to match clickable row padding */
   vertical-align: middle;
 }
 
 /* Highlight active (expanded) rows consistently */
 .items-completed-table tr.expanded-active {
   background-color: #e6f7ff; /* Change this color as needed */
+}
+
+/* New rule to ensure SWP parts rows show the expanded background */
+.swp-parts-row.expanded-active td {
+  background-color: #e6f7ff;
 }
 
 /* ---------- Order Table Container ---------- */
@@ -363,10 +368,6 @@
     border: 1px solid #ccc;
     border-radius: 4px;
 }
-
-
-
-
 
 /* ---------- Footer ---------- */
 footer {
