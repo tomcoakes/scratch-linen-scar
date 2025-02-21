@@ -25,7 +25,7 @@
           "The Farming Community Network LB White/Green Embroidered Logo",
           "The Farming Community Network Rear White/Green Embroidered Logo"
         ],
-        "Completed Qty": 0
+        "Completed Qty": 2
       },
       {
         "Master Code": "SWPTFCN003-L",
@@ -47,7 +47,7 @@
           "The Farming Community Network LB White/Green Embroidered Logo",
           "The Farming Community Network Rear White/Green Embroidered Logo"
         ],
-        "Completed Qty": 0
+        "Completed Qty": 3
       },
       {
         "Master Code": "SWPTFCN003-M",
@@ -896,7 +896,7 @@
     "Rep": "Phil Murphy",
     "Address": "Energy House , Parkengue, Penryn, Cornwall, TR10 9EP",
     "isNew": true,
-    "garmentStatus": "Ordered",
+    "garmentStatus": "Booked in",
     "decorationMethod": "Embroidery",
     "embroideryFileStatus": "Ordered",
     "dtfStatus": "",
@@ -1457,7 +1457,7 @@
     "decorationMethod": "Embroidery",
     "embroideryFileStatus": "On File",
     "dtfStatus": "",
-    "jobStatus": "Not Started"
+    "jobStatus": "Started"
   },
   {
     "SORD": "SORD01624940",
@@ -1825,7 +1825,7 @@
           "Cavandish Nuclear Left Breast Logo",
           "Young Professionals Network Right Breast Logo"
         ],
-        "Completed Qty": 0
+        "Completed Qty": 3
       },
       {
         "Master Code": "SWPCAV001-XL",
@@ -1860,7 +1860,7 @@
     "Rep": "Jacqui Alexander",
     "Address": "Thomas Burt, Radar Road, Leicester, Leicestershire, LE3 1UF",
     "isNew": true,
-    "garmentStatus": "Not Ordered",
+    "garmentStatus": "Booked in",
     "decorationMethod": "Embroidery",
     "embroideryFileStatus": "On File",
     "dtfStatus": "",

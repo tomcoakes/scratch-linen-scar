@@ -1,16 +1,16 @@
 // src/pages/components/OrderTable/OrderTable.js
 
-// import React from 'react';  // REMOVE THIS LINE - No longer needed
-// import BackOrderPopup from '../BackOrderPopup/BackOrderPopup.js'; // REMOVE THIS LINE
-// import styles from './OrderTable.module.css'; // REMOVE THIS LINE - Not directly using CSS Modules in this example
+// import React from 'react';
+import BackOrderPopup from '../BackOrderPopup/BackOrderPopup.js';
+// import styles from './OrderTable.module.css';
 
-// --- OrderTable Component (UPDATED - Removed Back Order Features) ---
+// --- OrderTable Component (UPDATED - Callback for Updates) ---
 function OrderTable({ orders, searchTerm, onItemCompletionChange }) {
     const [filteredOrders, setFilteredOrders] = React.useState([]);
     const [expandedRowSord, setExpandedRowSord] = React.useState(null);
     const [completedQuantities, setCompletedQuantities] = React.useState({});
     const [statusChanges, setStatusChanges] = React.useState({});
-    // const [showBackOrderPopup, setShowBackOrderPopup] = React.useState(false); // REMOVE THIS LINE
+    const [showBackOrderPopup, setShowBackOrderPopup] = React.useState(false);
 
     React.useEffect(() => {
         if (!searchTerm) {
@@ -34,7 +34,7 @@ function OrderTable({ orders, searchTerm, onItemCompletionChange }) {
         setExpandedRowSord(expandedRowSord === sord ? null : sord);
     };
 
-    const handleCompletedQtyChange = (sord, masterCode, newCompletedQty) => {
+     const handleCompletedQtyChange = (sord, masterCode, newCompletedQty) => {
       setCompletedQuantities(prevCompletedQuantities => {
           const orderQuantities = prevCompletedQuantities[sord] || {};
           const updatedOrderQuantities = { ...orderQuantities, [masterCode]: parseInt(newCompletedQty, 10) || 0 };
@@ -75,11 +75,11 @@ function OrderTable({ orders, searchTerm, onItemCompletionChange }) {
         onItemCompletionChange(sord, updatedOrder);
     };
 
-    // --- REMOVE THIS FUNCTION COMPLETELY - Placeholder function for Back Order Submit ---
-    // const handleBackOrderSubmit = (updatedOrder) => { // Placeholder function for now
-    //     console.log("Back order submitted!", updatedOrder);
-    //     setShowBackOrderPopup(false); // Just close the popup for now
-    // };
+    // --- Placeholder function for Back Order Submit ---
+    const handleBackOrderSubmit = (updatedOrder) => { // Placeholder function for now
+        console.log("Back order submitted!", updatedOrder);
+        setShowBackOrderPopup(false); // Just close the popup for now
+    };
 
 
     return (
@@ -194,14 +194,13 @@ function OrderTable({ orders, searchTerm, onItemCompletionChange }) {
                                 React.createElement('tr', { className: `expansion-row ${expandedRowSord === order.SORD ? 'expanded' : ''}` },
                                     React.createElement('td', { colSpan: "14" },
                                         React.createElement('div', { className: "expansion-content" },
-                                            // --- REMOVE THIS SECTION COMPLETELY - Back Order Section ---
-                                            // React.createElement('div', {className: 'back-order-section'},
-                                            //     React.createElement('h3', null, 'Back Order Items'),
-                                            //     React.createElement('p', null, order["Other Parts"] ? order["Other Parts"].join(', ') : "None"),
-                                            //     React.createElement('button', {
-                                            //         onClick: () => setShowBackOrderPopup(true) // Show popup on click
-                                            //     }, "Add Back Order Items")
-                                            // ),
+                                            React.createElement('div', {className: 'back-order-section'},
+                                                React.createElement('h3', null, 'Back Order Items'),
+                                                React.createElement('p', null, order["Other Parts"] ? order["Other Parts"].join(', ') : "None"),
+                                                React.createElement('button', {
+                                                    onClick: () => setShowBackOrderPopup(true) // Show popup on click
+                                                }, "Add Back Order Items")
+                                            ),
                                             React.createElement('div', { className: 'items-completed-section' },
                                                 React.createElement('h3', null, 'Items Completed'),
                                                 React.createElement('table', { className: 'items-completed-table' },
@@ -214,9 +213,9 @@ function OrderTable({ orders, searchTerm, onItemCompletionChange }) {
                                                     ),
                                                     React.createElement('tbody', null,
                                                         order["Item List"].map(item => {
-                                                            const initialCompletedQty = item["Completed Qty"] || 0;
-                                                            const completedQty = (completedQuantities[order.SORD] && completedQuantities[order.SORD][item["Master Code"]]) || initialCompletedQty; // Get completed qty, default to initialCompletedQty
-                                                            const isCompleted = completedQty >= item["Outstanding Qty"];
+                                                          const initialCompletedQty = item["Completed Qty"] || 0;
+                                                          const completedQty = (completedQuantities[order.SORD] && completedQuantities[order.SORD][item["Master Code"]]) || initialCompletedQty; // Get completed qty, default to initialCompletedQty
+                                                          const isCompleted = completedQty >= item["Outstanding Qty"];
 
                                                             return (
                                                                 React.createElement('tr', { key: item["Master Code"], className: isCompleted ? 'completed' : '' }, // Conditionally apply 'completed' class
@@ -238,12 +237,12 @@ function OrderTable({ orders, searchTerm, onItemCompletionChange }) {
                                                     )
                                                 )
                                             ),
-                                            // --- REMOVE THIS LINE COMPLETELY - BackOrderPopup Conditionally Rendered Here - PROPS ADDED! ---
-                                            // showBackOrderPopup ? React.createElement(BackOrderPopup, {
-                                            //     order: order, // Pass the entire order object as a prop
-                                            //     onClose: () => setShowBackOrderPopup(false), // Pass onClose function
-                                            //     onSubmit: handleBackOrderSubmit // Pass onSubmit placeholder function
-                                            // }) : null  // REMOVE THIS LINE COMPLETELY
+                                            // --- BackOrderPopup Conditionally Rendered Here - PROPS ADDED! ---
+                                            showBackOrderPopup ? React.createElement(BackOrderPopup, {
+                                                order: order, // Pass the entire order object as a prop
+                                                onClose: () => setShowBackOrderPopup(false), // Pass onClose function
+                                                onSubmit: handleBackOrderSubmit // Pass onSubmit placeholder function
+                                            }) : null
                                         )
                                     )
                                 )
