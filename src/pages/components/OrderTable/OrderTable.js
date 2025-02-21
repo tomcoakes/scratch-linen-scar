@@ -1,9 +1,10 @@
 // src/pages/components/OrderTable/OrderTable.js
+// import React from 'react';
 
 function OrderTable({ orders, searchTerm, onItemCompletionChange }) {
   const [filteredOrders, setFilteredOrders] = React.useState([]);
   const [expandedRowSord, setExpandedRowSord] = React.useState(null);
-  const [completedQuantities, setCompletedQuantities] = React.useState({});
+  const [completedQuantities, setCompletedQuantities] = React.useState({}); // Updated initial state to an empty object
   const [statusChanges, setStatusChanges] = React.useState({});
   // New state for tracking expanded SWP parts per item
   const [expandedSwpParts, setExpandedSwpParts] = React.useState({});
@@ -73,6 +74,24 @@ function OrderTable({ orders, searchTerm, onItemCompletionChange }) {
 
     // Call the callback prop with the updated order
     onItemCompletionChange(sord, updatedOrder);
+  };
+
+  // --- NEW: Function to handle SWP part completed quantity input changes ---
+  const handleSwpQtyInputChange = (sord, masterCode, swpPartCode, newQty) => {
+    setCompletedQuantities(prevCompletedQuantities => {
+      // Initialize structure if it doesn't exist yet
+      const updatedCompletedQuantities = {
+        ...prevCompletedQuantities,
+        [sord]: {
+          ...prevCompletedQuantities[sord],
+          [masterCode]: {
+            ...prevCompletedQuantities[sord]?.[masterCode],
+            [swpPartCode]: parseInt(newQty, 10) || 0 // Store qty for SWP part
+          }
+        }
+      };
+      return updatedCompletedQuantities;
+    });
   };
 
   // Handler to toggle SWP parts expansion for an item
@@ -246,14 +265,14 @@ function OrderTable({ orders, searchTerm, onItemCompletionChange }) {
                                       React.createElement('td', null, swpDescription),
                                       React.createElement('td', null,
                                         React.createElement('span', { className: 'swp-qty-input' },
-
-                                          // React.createElement('span', { className: 'swp-total-qty' }, item["Outstanding Qty"]),
                                           React.createElement('input', {
                                             type: "number",
                                             min: "0",
                                             max: item["Outstanding Qty"],
-                                            placeholder: "0",
-                                            className: 'swp-completed-input'
+                                            placeholder: "Comp. Qty",
+                                            className: 'swp-completed-input',
+                                            value: completedQuantities[order.SORD]?.[item["Master Code"]]?.[swpPart] || 0,
+                                            onChange: (e) => handleSwpQtyInputChange(order.SORD, item["Master Code"], swpPart, e.target.value)
                                           }),
                                           React.createElement('button', {
                                             className: 'log-completion-button',

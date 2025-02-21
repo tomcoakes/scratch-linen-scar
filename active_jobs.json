@@ -857,7 +857,7 @@
     "isNew": true,
     "garmentStatus": "Ordered",
     "decorationMethod": "Embroidery",
-    "embroideryFileStatus": "On File",
+    "embroideryFileStatus": "Arrived",
     "dtfStatus": "",
     "jobStatus": "Started"
   },
