@@ -25,7 +25,21 @@
           "The Farming Community Network LB White/Green Embroidered Logo",
           "The Farming Community Network Rear White/Green Embroidered Logo"
         ],
-        "Completed Qty": 0
+        "Completed Qty": 2,
+        "swpPartCompletions": {
+          "SWPEMB-TFCNR": [
+            {
+              "qty": 2,
+              "timestamp": "2025-02-21T15:22:57.635Z"
+            }
+          ],
+          "SWPEMB-TFCNLB": [
+            {
+              "qty": 2,
+              "timestamp": "2025-02-21T15:22:54.230Z"
+            }
+          ]
+        }
       },
       {
         "Master Code": "SWPTFCN003-L",
@@ -69,7 +83,7 @@
           "The Farming Community Network LB White/Green Embroidered Logo",
           "The Farming Community Network Rear White/Green Embroidered Logo"
         ],
-        "Completed Qty": 3,
+        "Completed Qty": 8,
         "swpPartCompletions": {
           "SWPEMB-TFCNLB": [
             {
@@ -79,8 +93,8 @@
           ],
           "SWPEMB-TFCNR": [
             {
-              "qty": 3,
-              "timestamp": "2025-02-21T14:57:39.406Z"
+              "qty": 8,
+              "timestamp": "2025-02-21T15:23:16.159Z"
             }
           ]
         }
