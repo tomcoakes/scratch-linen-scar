@@ -25,18 +25,18 @@
           "The Farming Community Network LB White/Green Embroidered Logo",
           "The Farming Community Network Rear White/Green Embroidered Logo"
         ],
-        "Completed Qty": 2,
+        "Completed Qty": 5,
         "swpPartCompletions": {
           "SWPEMB-TFCNR": [
             {
-              "qty": 2,
-              "timestamp": "2025-02-21T15:22:57.635Z"
+              "qty": 5,
+              "timestamp": "2025-02-21T15:55:16.246Z"
             }
           ],
           "SWPEMB-TFCNLB": [
             {
-              "qty": 2,
-              "timestamp": "2025-02-21T15:22:54.230Z"
+              "qty": 5,
+              "timestamp": "2025-02-21T15:55:03.331Z"
             }
           ]
         }
@@ -1920,6 +1920,137 @@
     "decorationMethod": "Embroidery",
     "embroideryFileStatus": "On File",
     "dtfStatus": "",
+    "jobStatus": "Not Started"
+  },
+  {
+    "SORD": "SORD016313311",
+    "Trader Code": "LIF100",
+    "Trader Name": "Lifeways Community Care Limited",
+    "Total Items": 2,
+    "Item List": [
+      {
+        "Master Code": "SWPLFW001-XXXL",
+        "Description": "XXXL Navy Lifeways Poloshirt",
+        "Ordered Qty": 2,
+        "Outstanding Qty": 2,
+        "SWP Parts": [
+          "SWPEMB-LIFWLB"
+        ],
+        "Other Parts Details": [
+          {
+            "partCode": "1150.NV.3XL",
+            "description": "Eagle Poloshirt - Navy - 3XL",
+            "backOrderQty": 0
+          }
+        ],
+        "SWP Parts Desc": [
+          "Lifeways Left Breast Embroidery"
+        ],
+        "Completed Qty": 2,
+        "swpPartCompletions": {
+          "SWPEMB-LIFWLB": [
+            {
+              "qty": 2,
+              "timestamp": "2025-02-21T15:53:34.896Z"
+            }
+          ]
+        }
+      }
+    ],
+    "Ordered Date": "06/02/2025",
+    "Due Date": null,
+    "Total Logos": 2,
+    "Reference": "LIF100",
+    "Contact": "Kerry Renwick",
+    "Rep": "Jaime Canosa",
+    "Address": "",
+    "isNew": true,
+    "garmentStatus": "Booked in",
+    "decorationMethod": "Embroidery",
+    "embroideryFileStatus": "On File",
+    "dtfStatus": "",
+    "jobStatus": "Complete"
+  },
+  {
+    "SORD": "SORD016313312",
+    "Trader Code": "LIF100",
+    "Trader Name": "Lifeways Community Care Limited",
+    "Total Items": 2,
+    "Item List": [
+      {
+        "Master Code": "SWPLFW001-XXXL",
+        "Description": "XXXL Navy Lifeways Poloshirt",
+        "Ordered Qty": 2,
+        "Outstanding Qty": 2,
+        "SWP Parts": [
+          "SWPEMB-LIFWLB"
+        ],
+        "Other Parts Details": [
+          {
+            "partCode": "1150.NV.3XL",
+            "description": "Eagle Poloshirt - Navy - 3XL",
+            "backOrderQty": 0
+          }
+        ],
+        "SWP Parts Desc": [
+          "Lifeways Left Breast Embroidery"
+        ],
+        "Completed Qty": 0
+      }
+    ],
+    "Ordered Date": "06/02/2025",
+    "Due Date": null,
+    "Total Logos": 2,
+    "Reference": "LIF100",
+    "Contact": "Kerry Renwick",
+    "Rep": "Jaime Canosa",
+    "Address": "",
+    "isNew": true,
+    "garmentStatus": "Ordered",
+    "decorationMethod": "Embroidery",
+    "embroideryFileStatus": "On File",
+    "dtfStatus": "",
+    "jobStatus": "Not Started"
+  },
+  {
+    "SORD": "SORD016313313",
+    "Trader Code": "LIF100",
+    "Trader Name": "Lifeways Community Care Limited",
+    "Total Items": 2,
+    "Item List": [
+      {
+        "Master Code": "SWPLFW001-XXXL",
+        "Description": "XXXL Navy Lifeways Poloshirt",
+        "Ordered Qty": 2,
+        "Outstanding Qty": 2,
+        "SWP Parts": [
+          "SWPEMB-LIFWLB"
+        ],
+        "Other Parts Details": [
+          {
+            "partCode": "1150.NV.3XL",
+            "description": "Eagle Poloshirt - Navy - 3XL",
+            "backOrderQty": 0
+          }
+        ],
+        "SWP Parts Desc": [
+          "Lifeways Left Breast Embroidery"
+        ],
+        "Completed Qty": 0
+      }
+    ],
+    "Ordered Date": "06/02/2025",
+    "Due Date": null,
+    "Total Logos": 2,
+    "Reference": "LIF100",
+    "Contact": "Kerry Renwick",
+    "Rep": "Jaime Canosa",
+    "Address": "",
+    "isNew": false,
+    "garmentStatus": "Not Ordered",
+    "decorationMethod": "Both",
+    "embroideryFileStatus": "Ordered",
+    "dtfStatus": "On Press",
     "jobStatus": "Not Started"
   }
 ]
