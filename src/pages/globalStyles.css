@@ -94,11 +94,7 @@ main.main-container-tracker {
     border-radius: 8px; /* Rounded corners */
 }
 
-.sidebar-container {
-    width: 280px; /* Fixed width for sidebar */
-    margin-right: 20px; /* Spacing between sidebar and content */
-    flex-shrink: 0; /* Prevent sidebar from shrinking */
-}
+
 
 .content {
     flex-grow: 1; /* Allow content area to take remaining space */
@@ -110,8 +106,3 @@ main.main-container-tracker {
     flex-basis: 0; /* Initial flex-basis - content takes remaining space */ /* ADDED flex-basis: 0; */
 }
 
-/* Expand content when sidebar is collapsed - CORRECTED CSS for FULL WIDTH EXPANSION */
-.main-container-tracker .sidebar-container.collapsed + .content {
-    margin-left: 0;     /* Keep margin-left: 0 for visual shift (optional) */
-    flex-basis: 100%;   /* CORRECTED: flex-basis: 100% for full width expansion */ /* ADDED flex-basis: 100%; */
-}
