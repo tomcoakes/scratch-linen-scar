@@ -180,11 +180,15 @@ function OrderTable({ orders, searchTerm, onItemCompletionChange }) {
             ? filteredOrders.map((order) => {
                 const status = getJobStatus(order);
                 const statusClass = getStatusClass(status);
-                // Compute the master-code completion summary for the info row
-                const totalItems = order["Item List"].length;
-                const completedItems = order["Item List"].filter(
-                  (item) => item["Completed Qty"] >= item["Outstanding Qty"]
-                ).length;
+                // Compute totals based on quantities across master codes
+                const totalQty = order["Item List"].reduce(
+                  (sum, item) => sum + (parseInt(item["Outstanding Qty"], 10) || 0),
+                  0
+                );
+                const completedQty = order["Item List"].reduce(
+                  (sum, item) => sum + (parseInt(item["Completed Qty"], 10) || 0),
+                  0
+                );
 
                 return React.createElement(
                   React.Fragment,
@@ -308,12 +312,12 @@ function OrderTable({ orders, searchTerm, onItemCompletionChange }) {
                               )
                             )
                         ),
-                        // Completion summary is now rendered as a sibling to the status dropdowns container,
-                        // so it appears to the far right of the info-container.
+                        // Completion summary is now rendered outside the status-dropdowns container,
+                        // so it appears at the very end (far right) of the info-container.
                         React.createElement(
                           "div",
                           { className: "completion-summary" },
-                          `${completedItems} of ${totalItems} items completed`
+                          `${completedQty} of ${totalQty} items completed`
                         )
                       )
                     )

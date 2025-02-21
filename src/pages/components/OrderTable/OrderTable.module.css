@@ -289,7 +289,7 @@ tbody.order-group.status-sent:hover tr {
 
 /* Styling for Status Dropdowns in the Orders Table */
 #orders-table tbody td:nth-child(7) select {
-  padding: 3px 12px;
+  padding: 3px 20px 3px 5px;
   border: 1px solid #bbb;
   border-radius: 5px;
   background-color: #f0f0f0;
@@ -301,7 +301,7 @@ tbody.order-group.status-sent:hover tr {
   -moz-appearance: none;
   background-image: url("data:image/svg+xml,%3Csvg fill='%23333' height='24' viewBox='0 0 24 24' width='24' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M7 10l5 5 5-5z'/%3E%3C/svg%3E");
   background-repeat: no-repeat;
-  background-position: right 10px center;
+  background-position: right 1px center;
   background-size: 16px;
 }
 #orders-table td:nth-child(7) select:hover,
