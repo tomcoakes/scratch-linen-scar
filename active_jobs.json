@@ -133,7 +133,7 @@
           "The Farming Community Network LB White/Green Embroidered Logo",
           "The Farming Community Network Rear White/Green Embroidered Logo"
         ],
-        "Completed Qty": 6,
+        "Completed Qty": 8,
         "swpPartCompletions": {
           "SWPEMB-TFCNLB": [
             {
@@ -143,8 +143,8 @@
           ],
           "SWPEMB-TFCNR": [
             {
-              "qty": 6,
-              "timestamp": "2025-02-21T23:05:40.414Z"
+              "qty": 8,
+              "timestamp": "2025-02-21T23:08:37.245Z"
             }
           ]
         }
@@ -1575,7 +1575,27 @@
           "Cavandish Nuclear Left Breast Logo",
           "Young Professionals Network Right Breast Logo"
         ],
-        "Completed Qty": 0
+        "Completed Qty": 10,
+        "swpPartCompletions": {
+          "SWPDTF-BABR": [
+            {
+              "qty": 10,
+              "timestamp": "2025-02-21T23:09:50.838Z"
+            }
+          ],
+          "SWPDTF-CAVLB": [
+            {
+              "qty": 10,
+              "timestamp": "2025-02-21T23:09:51.399Z"
+            }
+          ],
+          "SWPDTF-YPNRB": [
+            {
+              "qty": 10,
+              "timestamp": "2025-02-21T23:09:51.960Z"
+            }
+          ]
+        }
       },
       {
         "Master Code": "SWPCAV001-L",
@@ -1638,7 +1658,7 @@
     "decorationMethod": "Both",
     "embroideryFileStatus": "On File",
     "dtfStatus": "Not Started",
-    "jobStatus": "Not Started"
+    "jobStatus": "On Hold"
   },
   {
     "SORD": "SORD01629164",
