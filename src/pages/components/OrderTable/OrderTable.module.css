@@ -329,6 +329,7 @@ tbody.order-group.status-sent:hover tr {
   background-repeat: no-repeat;
   background-position: right 1px center;
   background-size: 16px;
+  font-size: 10pt;
 }
 #orders-table td:nth-child(7) select:hover,
 #orders-table td:nth-child(7) select:focus {
