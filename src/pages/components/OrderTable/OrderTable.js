@@ -81,6 +81,12 @@ function OrderTable({ orders, searchTerm, onItemCompletionChange }) {
     setExpandedSwpParts(prev => ({ ...prev, [key]: !prev[key] }));
   };
 
+  // New handler for logging SWP completion
+  const handleLogSwpCompletion = (sord, masterCode, swpPart) => {
+    // TODO: implement logic to handle log completion for SWP parts
+    console.log("Log completion clicked", { sord, masterCode, swpPart });
+  };
+
   return (
     React.createElement('div', { className: "order-table-container" },
       React.createElement('h2', null, 'Active Orders (React Component!)'),
@@ -219,7 +225,6 @@ function OrderTable({ orders, searchTerm, onItemCompletionChange }) {
 
                               return (
                                 React.createElement(React.Fragment, { key: item["Master Code"] },
-
                                   React.createElement('tr', {
                                     className: `clickable ${isSwpExpanded ? 'expanded-active' : ''} ${isCompleted ? 'completed' : ''}`,
                                     onClick: () => toggleSwpParts(order.SORD, item["Master Code"])
@@ -240,12 +245,21 @@ function OrderTable({ orders, searchTerm, onItemCompletionChange }) {
                                       React.createElement('td', null, swpPart),
                                       React.createElement('td', null, swpDescription),
                                       React.createElement('td', null,
-                                        React.createElement('input', {
-                                          type: "number",
-                                          min: "0",
-                                          max: item["Outstanding Qty"],
-                                          placeholder: "0"
-                                        })
+                                        React.createElement('span', { className: 'swp-qty-input' },
+
+                                          // React.createElement('span', { className: 'swp-total-qty' }, item["Outstanding Qty"]),
+                                          React.createElement('input', {
+                                            type: "number",
+                                            min: "0",
+                                            max: item["Outstanding Qty"],
+                                            placeholder: "0",
+                                            className: 'swp-completed-input'
+                                          }),
+                                          React.createElement('button', {
+                                            className: 'log-completion-button',
+                                            onClick: () => handleLogSwpCompletion(order.SORD, item["Master Code"], swpPart)
+                                          }, "Log Completion")
+                                        )
                                       )
                                     );
                                   })
