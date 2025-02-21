@@ -1892,7 +1892,21 @@
           "Duright Left Breast Logo",
           "Duright Rear Lower Back Logo"
         ],
-        "Completed Qty": 0
+        "Completed Qty": 50,
+        "swpPartCompletions": {
+          "SWPDTF-DURLB": [
+            {
+              "qty": 50,
+              "timestamp": "2025-02-21T14:50:34.291Z"
+            }
+          ],
+          "SWPDTF-DURR": [
+            {
+              "qty": 50,
+              "timestamp": "2025-02-21T14:50:33.723Z"
+            }
+          ]
+        }
       },
       {
         "Master Code": "SWPDUR001-XXL",
@@ -2127,7 +2141,15 @@
         "SWP Parts Desc": [
           "Lifeways Left Breast Embroidery"
         ],
-        "Completed Qty": 0
+        "Completed Qty": 0,
+        "swpPartCompletions": {
+          "SWPEMB-LIFWLB": [
+            {
+              "qty": 3,
+              "timestamp": "2025-02-21T14:42:08.778Z"
+            }
+          ]
+        }
       },
       {
         "Master Code": "SWPLFW001-XXL",
@@ -2147,7 +2169,15 @@
         "SWP Parts Desc": [
           "Lifeways Left Breast Embroidery"
         ],
-        "Completed Qty": 0
+        "Completed Qty": 0,
+        "swpPartCompletions": {
+          "SWPEMB-LIFWLB": [
+            {
+              "qty": 1,
+              "timestamp": "2025-02-21T14:39:27.301Z"
+            }
+          ]
+        }
       },
       {
         "Master Code": "SWPLFW001-XXXL",
@@ -2167,7 +2197,15 @@
         "SWP Parts Desc": [
           "Lifeways Left Breast Embroidery"
         ],
-        "Completed Qty": 0
+        "Completed Qty": 0,
+        "swpPartCompletions": {
+          "SWPEMB-LIFWLB": [
+            {
+              "qty": 2,
+              "timestamp": "2025-02-21T14:39:28.129Z"
+            }
+          ]
+        }
       }
     ],
     "Ordered Date": "06/02/2025",

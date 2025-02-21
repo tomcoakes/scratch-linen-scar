@@ -1,10 +1,13 @@
+// src/pages/components/OrderTable/OrderTable.js
+
 function OrderTable({ orders, searchTerm, onItemCompletionChange }) {
   const [filteredOrders, setFilteredOrders] = React.useState([]);
   const [expandedRowSord, setExpandedRowSord] = React.useState(null);
   const [completedQuantities, setCompletedQuantities] = React.useState({});
   const [statusChanges, setStatusChanges] = React.useState({});
+  // State for tracking expanded SWP parts per item
   const [expandedSwpParts, setExpandedSwpParts] = React.useState({});
-  // New state for capturing SWP part input values keyed by order+masterCode+swpPart
+  // State for capturing SWP part input values (keyed by sord, masterCode, and swpPart)
   const [swpPartInputs, setSwpPartInputs] = React.useState({});
 
   React.useEffect(() => {
@@ -23,17 +26,20 @@ function OrderTable({ orders, searchTerm, onItemCompletionChange }) {
   }, [orders, searchTerm]);
 
   const handleRowClick = (sord, event) => {
+    // Prevent toggling if clicking on a select element
     if (event.target.tagName === 'SELECT') return;
     setExpandedRowSord(expandedRowSord === sord ? null : sord);
   };
 
   const handleCompletedQtyChange = (sord, masterCode, newCompletedQty) => {
-    setCompletedQuantities(prev => {
-      const orderQuantities = prev[sord] || {};
+    setCompletedQuantities(prevCompletedQuantities => {
+      const orderQuantities = prevCompletedQuantities[sord] || {};
       const updatedOrderQuantities = {
         ...orderQuantities,
         [masterCode]: parseInt(newCompletedQty, 10) || 0
       };
+
+      // Create updated order object
       const updatedOrder = {
         ...orders.find(order => order.SORD === sord),
         "Item List": orders.find(order => order.SORD === sord)["Item List"].map(item => {
@@ -43,17 +49,19 @@ function OrderTable({ orders, searchTerm, onItemCompletionChange }) {
           return item;
         })
       };
+
       onItemCompletionChange(sord, updatedOrder);
-      return { ...prev, [sord]: updatedOrderQuantities };
+      return { ...prevCompletedQuantities, [sord]: updatedOrderQuantities };
     });
   };
 
   const handleStatusChange = (sord, field, newValue) => {
-    setStatusChanges(prev => {
-      const orderStatusChanges = prev[sord] || {};
+    setStatusChanges(prevStatusChanges => {
+      const orderStatusChanges = prevStatusChanges[sord] || {};
       const updatedOrderStatusChanges = { ...orderStatusChanges, [field]: newValue };
-      return { ...prev, [sord]: updatedOrderStatusChanges };
+      return { ...prevStatusChanges, [sord]: updatedOrderStatusChanges };
     });
+
     const updatedOrder = {
       ...orders.find(order => order.SORD === sord),
       [field]: newValue
@@ -66,39 +74,60 @@ function OrderTable({ orders, searchTerm, onItemCompletionChange }) {
     setExpandedSwpParts(prev => ({ ...prev, [key]: !prev[key] }));
   };
 
-  // NEW: Updated handler for logging SWP completion
+  // Handler for logging SWP completion and updating the master "Completed Qty"
   const handleLogSwpCompletion = (sord, masterCode, swpPart) => {
     const inputKey = `${sord}_${masterCode}_${swpPart}`;
     const inputValue = swpPartInputs[inputKey];
-    const qtyToAdd = parseInt(inputValue, 10);
-    if (!qtyToAdd || qtyToAdd <= 0) {
+    const qtyToSet = parseInt(inputValue, 10);
+    if (!qtyToSet || qtyToSet <= 0) {
       alert("Please enter a valid quantity");
       return;
     }
-    
-    // Find the order and update its specific item
+
+    // Find the order to update
     const orderToUpdate = orders.find(order => order.SORD === sord);
     if (!orderToUpdate) return;
-    
+
     const updatedItemList = orderToUpdate["Item List"].map(item => {
       if (item["Master Code"] === masterCode) {
-        // Ensure swpPartCompletions exists
-        const currentLogs = item["swpPartCompletions"] || {};
-        // Clone the array for this SWP part or initialize it
-        const swpLogs = currentLogs[swpPart] ? [...currentLogs[swpPart]] : [];
-        swpLogs.push({ qty: qtyToAdd, timestamp: new Date().toISOString() });
-        return { ...item, swpPartCompletions: { ...currentLogs, [swpPart]: swpLogs } };
+        // Get current logged value for this SWP part (defaulting to 0)
+        const currentLogged =
+          (item["swpPartCompletions"] &&
+            item["swpPartCompletions"][swpPart] &&
+            item["swpPartCompletions"][swpPart][0].qty) || 0;
+        // Ensure we are not reducing the logged value
+        const newQty = qtyToSet < currentLogged ? currentLogged : qtyToSet;
+        // Overwrite any previous log with the new value for this SWP part
+        const updatedSwpPartCompletions = {
+          ...item["swpPartCompletions"],
+          [swpPart]: [{ qty: newQty, timestamp: new Date().toISOString() }]
+        };
+
+        // Compute the new "Completed Qty" as the lowest logged value among all SWP parts
+        const computedQty = item["SWP Parts"].reduce((min, part) => {
+          // For each SWP part, get its logged quantity or default to 0 if not set
+          const logged = (updatedSwpPartCompletions &&
+                          updatedSwpPartCompletions[part] &&
+                          updatedSwpPartCompletions[part][0]?.qty) || 0;
+          return Math.min(min, logged);
+        }, Infinity);
+        const newCompletedQty = computedQty === Infinity ? 0 : computedQty;
+
+        // Update local state so that the master line's Completed Qty reflects this new value
+        setCompletedQuantities(prev => ({
+          ...prev,
+          [sord]: { ...(prev[sord] || {}), [masterCode]: newCompletedQty }
+        }));
+
+        return { ...item, swpPartCompletions: updatedSwpPartCompletions, "Completed Qty": newCompletedQty };
       }
       return item;
     });
-    
+
     const updatedOrder = { ...orderToUpdate, "Item List": updatedItemList };
-
-    // Propagate the updated order back via the callback
     onItemCompletionChange(sord, updatedOrder);
-
-    // Clear the input field after logging
-    setSwpPartInputs(prev => ({ ...prev, [inputKey]: '' }));
+    // Update the input to show the newly logged value immediately
+    setSwpPartInputs(prev => ({ ...prev, [inputKey]: qtyToSet.toString() }));
   };
 
   return (
@@ -245,10 +274,20 @@ function OrderTable({ orders, searchTerm, onItemCompletionChange }) {
                                     React.createElement('td', null, item.Description),
                                     React.createElement('td', null, completedQty)
                                   ),
-                                  // SWP Parts expansion:
+
                                   isSwpExpanded && item["SWP Parts"].map((swpPart, index) => {
                                     const swpDescription = item["SWP Parts Desc"][index] || 'No Description';
                                     const inputKey = `${order.SORD}_${item["Master Code"]}_${swpPart}`;
+                                    // Retrieve the logged quantity for this SWP part (default to 0 if none)
+                                    const loggedValue = (item["swpPartCompletions"] &&
+                                      item["swpPartCompletions"][swpPart] &&
+                                      item["swpPartCompletions"][swpPart][0].qty) || 0;
+                                    // Use the input state if available; otherwise, fallback to the logged value
+                                    const inputValue =
+                                      swpPartInputs[inputKey] !== undefined
+                                        ? swpPartInputs[inputKey]
+                                        : (loggedValue ? loggedValue.toString() : '');
+
                                     return React.createElement('tr', {
                                       key: `${item["Master Code"]}_${swpPart}`,
                                       className: `swp-parts-row ${isSwpExpanded ? 'expanded-active' : ''}`
@@ -260,13 +299,24 @@ function OrderTable({ orders, searchTerm, onItemCompletionChange }) {
                                         React.createElement('span', { className: 'swp-qty-input' },
                                           React.createElement('input', {
                                             type: "number",
-                                            min: "0",
+                                            min: loggedValue,
                                             max: item["Outstanding Qty"],
                                             placeholder: "0",
                                             className: 'swp-completed-input',
-                                            value: swpPartInputs[inputKey] || '',
+                                            value: inputValue,
                                             onChange: (e) => {
-                                              setSwpPartInputs(prev => ({ ...prev, [inputKey]: e.target.value }));
+                                              let newVal = parseInt(e.target.value, 10);
+                                              if (isNaN(newVal)) {
+                                                setSwpPartInputs(prev => ({ ...prev, [inputKey]: '' }));
+                                                return;
+                                              }
+                                              if (newVal < loggedValue) {
+                                                newVal = loggedValue;
+                                              }
+                                              if (newVal > item["Outstanding Qty"]) {
+                                                newVal = item["Outstanding Qty"];
+                                              }
+                                              setSwpPartInputs(prev => ({ ...prev, [inputKey]: newVal.toString() }));
                                             }
                                           }),
                                           React.createElement('button', {
