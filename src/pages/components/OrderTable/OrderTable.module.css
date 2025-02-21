@@ -170,8 +170,32 @@ tbody.order-group.status-sent:hover tr {
   overflow-y: auto;
 }
 .items-completed-table {
+  table-layout: fixed;
   width: 100%;
   border-collapse: collapse;
+}
+/* Column 1: Qty */
+.items-completed-table th:nth-child(1),
+.items-completed-table td:nth-child(1) {
+  width: 60px; /* Adjust as needed */
+}
+
+/* Column 2: Item */
+.items-completed-table th:nth-child(2),
+.items-completed-table td:nth-child(2) {
+  width: 70px; /* Adjust as needed */
+}
+
+/* Column 3: Description */
+.items-completed-table th:nth-child(3),
+.items-completed-table td:nth-child(3) {
+  width: 300px; /* Adjust as needed */
+}
+
+/* Column 4: Completed */
+.items-completed-table th:nth-child(4),
+.items-completed-table td:nth-child(4) {
+  width: 110px; /* Adjust as needed */
 }
 #orders-table .items-completed-table th,
 #orders-table .items-completed-table td {
@@ -317,12 +341,34 @@ tbody.order-group.status-sent:hover tr {
 
 #orders-table th:nth-child(1),
 #orders-table td:nth-child(1) {
-  width: 200px;
+  width: 35px;
   min-width: 200px;
   max-width: 200px;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+}
+.log-completion-button {
+background-color: #4a5568c2;
+    border: none;
+    color: #ffffff;
+    padding: 6px 12px;
+    font-size: 0.85rem;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: background-color 0.3sease, transform 0.2sease;
+    outline: none;
+    margin-left: 20px;
+}
+
+.log-completion-button:hover {
+  background-color: #45a049; /* Slightly darker on hover */
+  transform: scale(1.05);
+}
+
+.log-completion-button:active {
+  background-color: #3e8e41;
+  transform: scale(0.98);
 }
 
 /* ---------- Back Orders Table ---------- */
