@@ -1,38 +1,4 @@
-/* Ensure the swp-parts-row cells match the clickable row styling */
-.swp-parts-row td {
-  padding: 4px 15px;  /* Updated to match clickable row padding */
-  vertical-align: middle;
-}
-
-/* Highlight active (expanded) rows consistently */
-.items-completed-table tr.expanded-active {
-  background-color: #e6f7ff; /* Change this color as needed */
-}
-
-/* New rule to ensure SWP parts rows show the expanded background */
-.swp-parts-row.expanded-active td {
-  background-color: #e6f7ff;
-}
-
-
-/* ---------- Order Table Container ---------- */
-.order-table-container {
-  background-color: #fff;
-  border-radius: 8px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.08);
-  border: 1px solid #e2e8f0;
-  padding: 20px;
-  margin-bottom: 20px; /* space between table & footer */
-}
-
-.order-table-container h2 {
-  margin-top: 0;
-  margin-bottom: 20px;
-  font-size: 1.5rem;
-  color: #34495e;
-}
-
-/* ---------- Orders Table ---------- */
+/* ---------- Base Styles for Orders Table ---------- */
 #orders-table {
   width: 100%;
   border-collapse: collapse;
@@ -52,39 +18,93 @@
   color: #333;
 }
 
-/* Ensure each table row is a proper table row and on top of expansion content */
+/* Remove default background from rows so status classes can apply */
 #orders-table tbody tr {
   display: table-row;
-  background-color: #fff;
   transition: background-color 0.3s ease;
   position: relative;
   z-index: 1;
 }
 
-#orders-table tbody tr:hover {
-  background-color: #f9fafb;
+/* ---------- Status Row Styles ---------- */
+/* These rules apply to any row with the status class, including data, info, and expansion rows */
+.data-row.status-not-started,
+.info-row.status-not-started,
+.expansion-row.status-not-started {
+  background-color: #ffffff;
+}
+.data-row.status-started,
+.info-row.status-started,
+.expansion-row.status-started {
+  background-color: #fff8e1;
+}
+.data-row.status-on-hold,
+.info-row.status-on-hold,
+.expansion-row.status-on-hold {
+  background-color: #ffe0e0;
+}
+.data-row.status-part-shipped,
+.info-row.status-part-shipped,
+.expansion-row.status-part-shipped {
+  background-color: #e0f7fa;
+}
+.data-row.status-complete,
+.info-row.status-complete,
+.expansion-row.status-complete {
+  background-color: #e8f5e9;
+}
+.data-row.status-sent,
+.info-row.status-sent,
+.expansion-row.status-sent {
+  background-color: #e3f2fd;
 }
 
-#orders-table tbody tr.expanded {
-  background-color: #f2f2f2; /* Light green-ish when expanded */
+/* Hover styles: slightly darker versions */
+.data-row.status-not-started:hover,
+.info-row.status-not-started:hover,
+.expansion-row.status-not-started:hover {
+  background-color: #f2f2f2;
+}
+.data-row.status-started:hover,
+.info-row.status-started:hover,
+.expansion-row.status-started:hover {
+  background-color: #fff2c2;
+}
+.data-row.status-on-hold:hover,
+.info-row.status-on-hold:hover,
+.expansion-row.status-on-hold:hover {
+  background-color: #ffdcdc;
+}
+.data-row.status-part-shipped:hover,
+.info-row.status-part-shipped:hover,
+.expansion-row.status-part-shipped:hover {
+  background-color: #cce9f2;
+}
+.data-row.status-complete:hover,
+.info-row.status-complete:hover,
+.expansion-row.status-complete:hover {
+  background-color: #dcebdc;
+}
+.data-row.status-sent:hover,
+.info-row.status-sent:hover,
+.expansion-row.status-sent:hover {
+  background-color: #cce0f9;
 }
 
-/* ---------- Info Row (for tags/decoration) ---------- */
+/* ---------- Info Row ---------- */
 #orders-table tbody tr.info-row td {
   padding: 0;
-  /* Remove cell borders so we can add a row-level separator */
 }
 
 #orders-table tbody tr.info-row {
-  border-bottom: 1px solid #e2e8f0;  /* Separates each entry */
+  border-bottom: 1px solid #e2e8f0;
 }
-
 
 .info-container {
   padding: 6px 15px;
-  display: flex;           /* Use flexbox */
-  align-items: center;     /* Vertically center items */
-  justify-content: space-between; /* Distribute space */
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   gap: 15px;
   font-size: 0.9em;
   color: #555;
@@ -92,43 +112,27 @@
 
 .tags-container {
   display: flex;
-  gap: 10px;             /* Space between tags */
+  gap: 10px;
   align-items: center;
-  flex-wrap: wrap;       /* Allow tags to wrap if needed */
+  flex-wrap: wrap;
   min-width: 180px;
 }
 
-.new-tag,
-.embroidery-tag,
-.dtf-tag {
-  padding: 2px 6px;      /* Smaller padding for tags */
-  border-radius: 4px;
-  font-size: 0.8em;      /* Smaller font size for tags */
-  font-weight: 500;
-}
-
-/* ---------- Expansion Row with Sliding Effect and Side-by-Side Sections ---------- */
-.expansion-row {
-  display: table-row; /* Always render as a table row */
-}
-
+/* ---------- Expansion Row ---------- */
 .expansion-row td {
   padding: 0;
   border: none;
 }
 
-/* Default state for expansion-content */
 .expansion-content {
   max-height: 0;
   overflow: hidden;
   opacity: 0;
-  padding: 0 15px;  /* Keep horizontal padding */
+  padding: 0 15px;
   transition: max-height 0.5s ease, opacity 0.5s ease, padding 0.5s ease;
 }
 
-/* When expanded, reveal the content with a side-by-side layout */
 .expansion-row.expanded .expansion-content {
-/*   max-height: 500px; Adjust if needed */
   min-height: 300px;
   opacity: 1;
   padding: 20px 15px;
@@ -136,24 +140,21 @@
   border: 1px solid #d2e8d2;
   border-top: none;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  
-  display: flex;       /* Flex layout to show sections side by side */
-  gap: 20px;           /* Space between sections */
-  flex-wrap: wrap;     /* Wrap on smaller screens */
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
 }
 
-/* Style each section within the expansion-content */
 .expansion-content > div {
-  flex: 1 1 45%;       /* Each section takes roughly 45% of the available width */
-  padding: 10px;       /* Reduced padding */
+  flex: 1 1 45%;
+  padding: 10px;
   border: 1px solid #eee;
   border-radius: 6px;
   background-color: #fafafa;
-  margin-bottom: 0;    /* Remove bottom margin */
+  margin-bottom: 0;
   min-height: 265px;
 }
 
-/* Reduce heading sizes within these sections */
 .expansion-content h3 {
   font-size: 1rem;
   margin-top: 0;
@@ -166,8 +167,8 @@
   border: 1px solid #eee;
   border-radius: 6px;
   background-color: #fafafa;
-  max-height: 200px;  /* Adjust the height as needed */
-  overflow-y: auto;   /* Enables vertical scrolling */
+  max-height: 200px;
+  overflow-y: auto;
 }
 
 .items-completed-table {
@@ -175,13 +176,9 @@
   border-collapse: collapse;
 }
 
-
-
-/* Thinner headers and rows for the items completed table 
-   with increased specificity to override inherited styles */
 #orders-table .items-completed-table th,
 #orders-table .items-completed-table td {
-  padding: 4px 8px;      /* Reduced padding for a thinner look */
+  padding: 4px 8px;
   text-align: left;
   border-bottom: 1px solid #f0f0f0;
   line-height: 2.2;
@@ -193,9 +190,11 @@
   font-weight: 500;
 }
 
+/* Enhanced completed row style */
 .items-completed-table tr.completed {
   text-decoration: line-through;
-  color: #999;
+  color: #a00;
+  opacity: 0.6;
 }
 
 .items-completed-table input[type="number"] {
@@ -206,20 +205,18 @@
 }
 
 /* ---------- Status Dropdowns ---------- */
-/* Fixed positions for dropdowns (aligned to the left, next to tags) */
 .status-dropdowns-container {
   display: grid;
-  grid-template-columns: repeat(3, auto);  /* Three columns with auto width */
+  grid-template-columns: repeat(3, auto);
   gap: 10px;
   margin-left: 7px;
   margin-right: auto;
 }
 
-/* Base styling for dropdowns */
 .status-dropdowns-container select {
   width: 100%;
-  padding: 4px 30px 4px 8px;  /* top, right, bottom, left */
-  font-size: 12px;            /* Smaller font size */
+  padding: 4px 30px 4px 8px;
+  font-size: 12px;
   border: 1px solid #ccc;
   border-radius: 6px;
   background-color: #fff;
@@ -245,7 +242,6 @@
 }
 
 /* Specific Dropdown Colouring */
-/* Garment dropdown styling */
 .status-dropdowns-container select[id^="garment-status-"] {
   background-color: #ded1e7;
   border-color: #d8badb;
@@ -256,7 +252,6 @@
   color: #fff;
 }
 
-/* Embroidery dropdown styling */
 .status-dropdowns-container select[id^="embroidery-status-"] {
   background-color: #D1E7DD;
   border-color: #BADBCC;
@@ -267,7 +262,6 @@
   color: #fff;
 }
 
-/* DTF dropdown styling */
 .status-dropdowns-container select[id^="dtf-status-"] {
   background-color: #CFF4FC;
   border-color: #B7F0FB;
@@ -278,7 +272,6 @@
   color: #fff;
 }
 
-/* Optional: Label Styling for dropdowns */
 .status-dropdowns-container label {
   display: block;
   margin-bottom: 4px;
@@ -305,7 +298,7 @@
   border: 1px solid #b6effb;
 }
 
-/* Styling for Status Dropdowns in the Orders Table - NEW STYLES */
+/* Styling for Status Dropdowns in the Orders Table */
 #orders-table tbody td:nth-child(7) select {
   padding: 3px 12px;
   border: 1px solid #bbb;
@@ -335,44 +328,44 @@
   display: none;
 }
 
-#orders-table th:nth-child(1),  /* Target the first TH (header cell) */
-#orders-table td:nth-child(1) {  /* Target the first TD (data cell) in each row */
-    width: 200px; /* Set your desired width here!  Adjust as needed */
-    min-width: 200px; /* Optional: Ensure a minimum width */
-    max-width: 200px; /* Optional: Limit to a maximum width */
-    /* Add any other specific styling for the first column here */
-    overflow: hidden;         /* Ensure content doesn't overflow */
-    text-overflow: ellipsis; /* Add ellipsis (...) for overflowing text */
-    white-space: nowrap;    /* Prevent text from wrapping */
+#orders-table th:nth-child(1),
+#orders-table td:nth-child(1) {
+  width: 200px;
+  min-width: 200px;
+  max-width: 200px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
+/* ---------- Back Orders Table ---------- */
 .backOrderTable {
-    width: 100%;
-    border-collapse: collapse;
-    margin-bottom: 20px;
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 20px;
 }
 
 .backOrderTable th,
 .backOrderTable td {
-    padding: 10px 15px;
-    text-align: left;
-    border-bottom: 1px solid #ddd;
+  padding: 10px 15px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
 }
 
 .backOrderTable th {
-    background-color: #f0f3f4;
-    font-weight: 500;
+  background-color: #f0f3f4;
+  font-weight: 500;
 }
 
 .backOrderTable tbody tr:nth-child(even) {
-    background-color: #f9f9f9;
+  background-color: #f9f9f9;
 }
 
 .backOrderTable input[type="number"] {
-    width: 80px; /* Adjust input width as needed */
-    padding: 6px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
+  width: 80px;
+  padding: 6px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
 }
 
 /* ---------- Footer ---------- */
@@ -381,4 +374,17 @@ footer {
   color: #fff;
   text-align: center;
   padding: 15px;
+}
+
+/* Optional: Progress Bar Styles within master-code cells */
+.items-completed-table td.master-code {
+  position: relative;
+}
+.items-completed-table td.master-code .progress-bar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  z-index: -1;
+  background-color: rgba(76, 175, 80, 0.3);
 }

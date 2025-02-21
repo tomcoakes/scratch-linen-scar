@@ -83,18 +83,18 @@
           "The Farming Community Network LB White/Green Embroidered Logo",
           "The Farming Community Network Rear White/Green Embroidered Logo"
         ],
-        "Completed Qty": 8,
+        "Completed Qty": 15,
         "swpPartCompletions": {
           "SWPEMB-TFCNLB": [
             {
-              "qty": 8,
-              "timestamp": "2025-02-21T14:57:35.652Z"
+              "qty": 15,
+              "timestamp": "2025-02-21T15:31:59.100Z"
             }
           ],
           "SWPEMB-TFCNR": [
             {
-              "qty": 8,
-              "timestamp": "2025-02-21T15:23:16.159Z"
+              "qty": 15,
+              "timestamp": "2025-02-21T15:32:02.039Z"
             }
           ]
         }
@@ -885,9 +885,9 @@
     "isNew": true,
     "garmentStatus": "Part Received",
     "decorationMethod": "Embroidery",
-    "embroideryFileStatus": "On File",
+    "embroideryFileStatus": "Not Ordered",
     "dtfStatus": "",
-    "jobStatus": "Part Shipped"
+    "jobStatus": "Not Started"
   },
   {
     "SORD": "SORD01613529",
@@ -1601,7 +1601,7 @@
     "garmentStatus": "Ordered",
     "decorationMethod": "Both",
     "embroideryFileStatus": "On File",
-    "dtfStatus": "In Stock",
+    "dtfStatus": "Not Started",
     "jobStatus": "Not Started"
   },
   {
