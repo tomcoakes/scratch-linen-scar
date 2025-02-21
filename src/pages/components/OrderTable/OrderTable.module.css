@@ -197,12 +197,14 @@ tbody.order-group.status-sent:hover tr {
 .items-completed-table td:nth-child(4) {
   width: 110px; /* Adjust as needed */
 }
+
 #orders-table .items-completed-table th,
 #orders-table .items-completed-table td {
   padding: 4px 8px;
   text-align: left;
   border-bottom: 1px solid #f0f0f0;
   line-height: 2.2;
+  font-size: smaller;
 }
 .items-completed-table th {
   background-color: #f9fafb;
