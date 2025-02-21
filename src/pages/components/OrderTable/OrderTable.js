@@ -1,12 +1,11 @@
-// src/pages/components/OrderTable/OrderTable.js
-
 function OrderTable({ orders, searchTerm, onItemCompletionChange }) {
   const [filteredOrders, setFilteredOrders] = React.useState([]);
   const [expandedRowSord, setExpandedRowSord] = React.useState(null);
   const [completedQuantities, setCompletedQuantities] = React.useState({});
   const [statusChanges, setStatusChanges] = React.useState({});
-  // New state for tracking expanded SWP parts per item
   const [expandedSwpParts, setExpandedSwpParts] = React.useState({});
+  // New state for capturing SWP part input values keyed by order+masterCode+swpPart
+  const [swpPartInputs, setSwpPartInputs] = React.useState({});
 
   React.useEffect(() => {
     if (!searchTerm) {
@@ -24,22 +23,17 @@ function OrderTable({ orders, searchTerm, onItemCompletionChange }) {
   }, [orders, searchTerm]);
 
   const handleRowClick = (sord, event) => {
-    // Prevent toggling if clicking on a select element
-    if (event.target.tagName === 'SELECT') {
-      return;
-    }
+    if (event.target.tagName === 'SELECT') return;
     setExpandedRowSord(expandedRowSord === sord ? null : sord);
   };
 
   const handleCompletedQtyChange = (sord, masterCode, newCompletedQty) => {
-    setCompletedQuantities(prevCompletedQuantities => {
-      const orderQuantities = prevCompletedQuantities[sord] || {};
+    setCompletedQuantities(prev => {
+      const orderQuantities = prev[sord] || {};
       const updatedOrderQuantities = {
         ...orderQuantities,
         [masterCode]: parseInt(newCompletedQty, 10) || 0
       };
-
-      // Create updated order object
       const updatedOrder = {
         ...orders.find(order => order.SORD === sord),
         "Item List": orders.find(order => order.SORD === sord)["Item List"].map(item => {
@@ -49,42 +43,62 @@ function OrderTable({ orders, searchTerm, onItemCompletionChange }) {
           return item;
         })
       };
-
-      // Call the callback prop with the updated order
       onItemCompletionChange(sord, updatedOrder);
-
-      return { ...prevCompletedQuantities, [sord]: updatedOrderQuantities };
+      return { ...prev, [sord]: updatedOrderQuantities };
     });
   };
 
-  // Function to handle status changes
   const handleStatusChange = (sord, field, newValue) => {
-    setStatusChanges(prevStatusChanges => {
-      const orderStatusChanges = prevStatusChanges[sord] || {};
+    setStatusChanges(prev => {
+      const orderStatusChanges = prev[sord] || {};
       const updatedOrderStatusChanges = { ...orderStatusChanges, [field]: newValue };
-      return { ...prevStatusChanges, [sord]: updatedOrderStatusChanges };
+      return { ...prev, [sord]: updatedOrderStatusChanges };
     });
-
-    // Create updated order object
     const updatedOrder = {
       ...orders.find(order => order.SORD === sord),
       [field]: newValue
     };
-
-    // Call the callback prop with the updated order
     onItemCompletionChange(sord, updatedOrder);
   };
 
-  // Handler to toggle SWP parts expansion for an item
   const toggleSwpParts = (orderId, masterCode) => {
     const key = `${orderId}_${masterCode}`;
     setExpandedSwpParts(prev => ({ ...prev, [key]: !prev[key] }));
   };
 
-  // New handler for logging SWP completion
+  // NEW: Updated handler for logging SWP completion
   const handleLogSwpCompletion = (sord, masterCode, swpPart) => {
-    // TODO: implement logic to handle log completion for SWP parts
-    console.log("Log completion clicked", { sord, masterCode, swpPart });
+    const inputKey = `${sord}_${masterCode}_${swpPart}`;
+    const inputValue = swpPartInputs[inputKey];
+    const qtyToAdd = parseInt(inputValue, 10);
+    if (!qtyToAdd || qtyToAdd <= 0) {
+      alert("Please enter a valid quantity");
+      return;
+    }
+    
+    // Find the order and update its specific item
+    const orderToUpdate = orders.find(order => order.SORD === sord);
+    if (!orderToUpdate) return;
+    
+    const updatedItemList = orderToUpdate["Item List"].map(item => {
+      if (item["Master Code"] === masterCode) {
+        // Ensure swpPartCompletions exists
+        const currentLogs = item["swpPartCompletions"] || {};
+        // Clone the array for this SWP part or initialize it
+        const swpLogs = currentLogs[swpPart] ? [...currentLogs[swpPart]] : [];
+        swpLogs.push({ qty: qtyToAdd, timestamp: new Date().toISOString() });
+        return { ...item, swpPartCompletions: { ...currentLogs, [swpPart]: swpLogs } };
+      }
+      return item;
+    });
+    
+    const updatedOrder = { ...orderToUpdate, "Item List": updatedItemList };
+
+    // Propagate the updated order back via the callback
+    onItemCompletionChange(sord, updatedOrder);
+
+    // Clear the input field after logging
+    setSwpPartInputs(prev => ({ ...prev, [inputKey]: '' }));
   };
 
   return (
@@ -106,7 +120,6 @@ function OrderTable({ orders, searchTerm, onItemCompletionChange }) {
           filteredOrders.length > 0 ? (
             filteredOrders.map(order => (
               React.createElement(React.Fragment, { key: order.SORD },
-
                 React.createElement('tr', {
                   onClick: (event) => handleRowClick(order.SORD, event),
                   className: `data-row ${expandedRowSord === order.SORD ? 'expanded' : ''}`
@@ -131,7 +144,6 @@ function OrderTable({ orders, searchTerm, onItemCompletionChange }) {
                     )
                   )
                 ),
-
                 React.createElement('tr', {
                   className: `info-row ${expandedRowSord === order.SORD ? 'expanded' : ''}`
                 },
@@ -197,7 +209,6 @@ function OrderTable({ orders, searchTerm, onItemCompletionChange }) {
                     )
                   )
                 ),
-
                 React.createElement('tr', { className: `expansion-row ${expandedRowSord === order.SORD ? 'expanded' : ''}` },
                   React.createElement('td', { colSpan: "14" },
                     React.createElement('div', { className: "expansion-content" },
@@ -234,9 +245,10 @@ function OrderTable({ orders, searchTerm, onItemCompletionChange }) {
                                     React.createElement('td', null, item.Description),
                                     React.createElement('td', null, completedQty)
                                   ),
-
+                                  // SWP Parts expansion:
                                   isSwpExpanded && item["SWP Parts"].map((swpPart, index) => {
                                     const swpDescription = item["SWP Parts Desc"][index] || 'No Description';
+                                    const inputKey = `${order.SORD}_${item["Master Code"]}_${swpPart}`;
                                     return React.createElement('tr', {
                                       key: `${item["Master Code"]}_${swpPart}`,
                                       className: `swp-parts-row ${isSwpExpanded ? 'expanded-active' : ''}`
@@ -246,14 +258,16 @@ function OrderTable({ orders, searchTerm, onItemCompletionChange }) {
                                       React.createElement('td', null, swpDescription),
                                       React.createElement('td', null,
                                         React.createElement('span', { className: 'swp-qty-input' },
-
-                                          // React.createElement('span', { className: 'swp-total-qty' }, item["Outstanding Qty"]),
                                           React.createElement('input', {
                                             type: "number",
                                             min: "0",
                                             max: item["Outstanding Qty"],
                                             placeholder: "0",
-                                            className: 'swp-completed-input'
+                                            className: 'swp-completed-input',
+                                            value: swpPartInputs[inputKey] || '',
+                                            onChange: (e) => {
+                                              setSwpPartInputs(prev => ({ ...prev, [inputKey]: e.target.value }));
+                                            }
                                           }),
                                           React.createElement('button', {
                                             className: 'log-completion-button',

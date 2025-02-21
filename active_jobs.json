@@ -2044,7 +2044,15 @@
         "SWP Parts Desc": [
           "Lifeways Left Breast Embroidery"
         ],
-        "Completed Qty": 0
+        "Completed Qty": 0,
+        "swpPartCompletions": {
+          "SWPEMB-LIFWLB": [
+            {
+              "qty": 1,
+              "timestamp": "2025-02-21T14:29:45.340Z"
+            }
+          ]
+        }
       },
       {
         "Master Code": "SWPLFW001-M",
