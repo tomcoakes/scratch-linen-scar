@@ -61,18 +61,18 @@
           "The Farming Community Network LB White/Green Embroidered Logo",
           "The Farming Community Network Rear White/Green Embroidered Logo"
         ],
-        "Completed Qty": 6,
+        "Completed Qty": 15,
         "swpPartCompletions": {
           "SWPEMB-TFCNLB": [
             {
-              "qty": 8,
-              "timestamp": "2025-02-21T16:49:54.033Z"
+              "qty": 15,
+              "timestamp": "2025-02-21T23:01:37.380Z"
             }
           ],
           "SWPEMB-TFCNR": [
             {
-              "qty": 6,
-              "timestamp": "2025-02-21T16:49:54.726Z"
+              "qty": 15,
+              "timestamp": "2025-02-21T23:01:34.741Z"
             }
           ]
         }
@@ -133,7 +133,21 @@
           "The Farming Community Network LB White/Green Embroidered Logo",
           "The Farming Community Network Rear White/Green Embroidered Logo"
         ],
-        "Completed Qty": 0
+        "Completed Qty": 6,
+        "swpPartCompletions": {
+          "SWPEMB-TFCNLB": [
+            {
+              "qty": 8,
+              "timestamp": "2025-02-21T23:07:21.231Z"
+            }
+          ],
+          "SWPEMB-TFCNR": [
+            {
+              "qty": 6,
+              "timestamp": "2025-02-21T23:05:40.414Z"
+            }
+          ]
+        }
       },
       {
         "Master Code": "SWPTFCN003-XL",
@@ -2104,7 +2118,15 @@
         "SWP Parts Desc": [
           "Lifeways Left Breast Embroidery"
         ],
-        "Completed Qty": 0
+        "Completed Qty": 2,
+        "swpPartCompletions": {
+          "SWPEMB-LIFWLB": [
+            {
+              "qty": 2,
+              "timestamp": "2025-02-21T23:02:15.509Z"
+            }
+          ]
+        }
       }
     ],
     "Ordered Date": "06/02/2025",
@@ -2115,10 +2137,10 @@
     "Rep": "Jaime Canosa",
     "Address": "",
     "isNew": false,
-    "garmentStatus": "Not Ordered",
+    "garmentStatus": "Booked in",
     "decorationMethod": "Both",
-    "embroideryFileStatus": "Ordered",
-    "dtfStatus": "On Press",
-    "jobStatus": "Not Started"
+    "embroideryFileStatus": "Arrived",
+    "dtfStatus": "In Stock",
+    "jobStatus": "Complete"
   }
 ]
