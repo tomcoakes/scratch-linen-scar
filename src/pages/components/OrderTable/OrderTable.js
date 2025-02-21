@@ -306,13 +306,14 @@ function OrderTable({ orders, searchTerm, onItemCompletionChange }) {
                                 React.createElement("option", { value: "Printed" }, "Printed"),
                                 React.createElement("option", { value: "Issues" }, "Issues")
                               )
-                            ),
-                          // Completion summary now renders last (all the way right)
-                          React.createElement(
-                            "div",
-                            { className: "completion-summary" },
-                            `${completedItems} of ${totalItems} items completed`
-                          )
+                            )
+                        ),
+                        // Completion summary is now rendered as a sibling to the status dropdowns container,
+                        // so it appears to the far right of the info-container.
+                        React.createElement(
+                          "div",
+                          { className: "completion-summary" },
+                          `${completedItems} of ${totalItems} items completed`
                         )
                       )
                     )
