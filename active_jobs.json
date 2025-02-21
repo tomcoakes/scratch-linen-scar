@@ -855,9 +855,9 @@
     "Rep": "Phil Murphy",
     "Address": "Manor Farm, Guilsborough Road, West Haddon, Northampton, NN6 7AQ",
     "isNew": true,
-    "garmentStatus": "Not Ordered",
+    "garmentStatus": "Ordered",
     "decorationMethod": "Embroidery",
-    "embroideryFileStatus": "Ordered",
+    "embroideryFileStatus": "On File",
     "dtfStatus": "",
     "jobStatus": "Started"
   },
