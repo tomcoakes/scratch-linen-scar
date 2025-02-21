@@ -14,6 +14,7 @@
   background-color: #e6f7ff;
 }
 
+
 /* ---------- Order Table Container ---------- */
 .order-table-container {
   background-color: #fff;
@@ -78,6 +79,7 @@
   border-bottom: 1px solid #e2e8f0;  /* Separates each entry */
 }
 
+
 .info-container {
   padding: 6px 15px;
   display: flex;           /* Use flexbox */
@@ -126,7 +128,8 @@
 
 /* When expanded, reveal the content with a side-by-side layout */
 .expansion-row.expanded .expansion-content {
-  max-height: 500px; /* Adjust if needed */
+/*   max-height: 500px; Adjust if needed */
+  min-height: 300px;
   opacity: 1;
   padding: 20px 15px;
   background-color: #fff;
@@ -147,6 +150,7 @@
   border-radius: 6px;
   background-color: #fafafa;
   margin-bottom: 0;    /* Remove bottom margin */
+  min-height: 265px;
 }
 
 /* Reduce heading sizes within these sections */
