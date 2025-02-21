@@ -2172,7 +2172,7 @@
     "isNew": true,
     "garmentStatus": "Not Ordered",
     "decorationMethod": "Embroidery",
-    "embroideryFileStatus": "On File",
+    "embroideryFileStatus": "Delayed",
     "dtfStatus": "",
     "jobStatus": "Started"
   }

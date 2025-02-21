@@ -1,21 +1,4 @@
-/* ---------- Global Layout (for sticky footer) ---------- */
-html, body {
-  height: 100%;
-  margin: 0;
-}
 
-body {
-  display: flex;
-  flex-direction: column;
-  font-family: 'Poppins', sans-serif;
-  background-color: #f7f7f7;
-  color: #333;
-}
-
-/* Ensure main content grows */
-main {
-  flex: 1;
-}
 
 /* ---------- Order Table Container ---------- */
 .order-table-container {

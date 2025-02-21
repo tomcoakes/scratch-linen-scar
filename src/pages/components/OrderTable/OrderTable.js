@@ -1,16 +1,11 @@
 // src/pages/components/OrderTable/OrderTable.js
 
-// import React from 'react';  // REMOVE THIS LINE - No longer needed
-// import BackOrderPopup from '../BackOrderPopup/BackOrderPopup.js'; // REMOVE THIS LINE
-// import styles from './OrderTable.module.css'; // REMOVE THIS LINE - Not directly using CSS Modules in this example
-
-// --- OrderTable Component (UPDATED - Removed Back Order Features) ---
+// --- OrderTable Component ---
 function OrderTable({ orders, searchTerm, onItemCompletionChange }) {
     const [filteredOrders, setFilteredOrders] = React.useState([]);
     const [expandedRowSord, setExpandedRowSord] = React.useState(null);
     const [completedQuantities, setCompletedQuantities] = React.useState({});
     const [statusChanges, setStatusChanges] = React.useState({});
-    // const [showBackOrderPopup, setShowBackOrderPopup] = React.useState(false); // REMOVE THIS LINE
 
     React.useEffect(() => {
         if (!searchTerm) {
@@ -74,12 +69,6 @@ function OrderTable({ orders, searchTerm, onItemCompletionChange }) {
         // Call the callback prop with the updated order
         onItemCompletionChange(sord, updatedOrder);
     };
-
-    // --- REMOVE THIS FUNCTION COMPLETELY - Placeholder function for Back Order Submit ---
-    // const handleBackOrderSubmit = (updatedOrder) => { // Placeholder function for now
-    //     console.log("Back order submitted!", updatedOrder);
-    //     setShowBackOrderPopup(false); // Just close the popup for now
-    // };
 
 
     return (
@@ -194,14 +183,6 @@ function OrderTable({ orders, searchTerm, onItemCompletionChange }) {
                                 React.createElement('tr', { className: `expansion-row ${expandedRowSord === order.SORD ? 'expanded' : ''}` },
                                     React.createElement('td', { colSpan: "14" },
                                         React.createElement('div', { className: "expansion-content" },
-                                            // --- REMOVE THIS SECTION COMPLETELY - Back Order Section ---
-                                            // React.createElement('div', {className: 'back-order-section'},
-                                            //     React.createElement('h3', null, 'Back Order Items'),
-                                            //     React.createElement('p', null, order["Other Parts"] ? order["Other Parts"].join(', ') : "None"),
-                                            //     React.createElement('button', {
-                                            //         onClick: () => setShowBackOrderPopup(true) // Show popup on click
-                                            //     }, "Add Back Order Items")
-                                            // ),
                                             React.createElement('div', { className: 'items-completed-section' },
                                                 React.createElement('h3', null, 'Items Completed'),
                                                 React.createElement('table', { className: 'items-completed-table' },
@@ -238,12 +219,6 @@ function OrderTable({ orders, searchTerm, onItemCompletionChange }) {
                                                     )
                                                 )
                                             ),
-                                            // --- REMOVE THIS LINE COMPLETELY - BackOrderPopup Conditionally Rendered Here - PROPS ADDED! ---
-                                            // showBackOrderPopup ? React.createElement(BackOrderPopup, {
-                                            //     order: order, // Pass the entire order object as a prop
-                                            //     onClose: () => setShowBackOrderPopup(false), // Pass onClose function
-                                            //     onSubmit: handleBackOrderSubmit // Pass onSubmit placeholder function
-                                            // }) : null  // REMOVE THIS LINE COMPLETELY
                                         )
                                     )
                                 )
