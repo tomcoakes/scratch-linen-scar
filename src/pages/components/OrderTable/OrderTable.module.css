@@ -1,63 +1,35 @@
-/* Radically Different, Stylish CSS */
-
-/* CSS Variables for a modern dark theme */
-:root {
-  --primary-bg: #1e1e2f;
-  --secondary-bg: #28293d;
-  --accent-color: #ff79c6;
-  --text-color: #f8f8f2;
-  --header-color: #bd93f9;
-  --border-color: #44475a;
-  --hover-bg: #3a3b4c;
-  --expanded-bg: #3f404f;
-  --card-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-}
-
-/* Global Reset and Base Styling */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  color: var(--text-color);
-  background-color: var(--primary-bg);
-}
-
-/* ---------- Table Row & Cell Styles ---------- */
-
 /* Ensure the swp-parts-row cells match the clickable row styling */
 .swp-parts-row td {
-  padding: 10px 20px;
+  padding: 4px 15px;  /* Updated to match clickable row padding */
   vertical-align: middle;
-  border-bottom: 1px solid var(--border-color);
 }
 
 /* Highlight active (expanded) rows consistently */
 .items-completed-table tr.expanded-active {
-  background-color: var(--expanded-bg);
+  background-color: #e6f7ff; /* Change this color as needed */
 }
 
-/* Ensure SWP parts rows show the expanded background when active */
+/* New rule to ensure SWP parts rows show the expanded background */
 .swp-parts-row.expanded-active td {
-  background-color: var(--expanded-bg);
+  background-color: #e6f7ff;
 }
+
 
 /* ---------- Order Table Container ---------- */
 .order-table-container {
-  background: linear-gradient(135deg, var(--secondary-bg), var(--primary-bg));
-  border-radius: 12px;
-  box-shadow: var(--card-shadow);
-  border: 1px solid var(--border-color);
-  padding: 25px;
-  margin-bottom: 30px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.08);
+  border: 1px solid #e2e8f0;
+  padding: 20px;
+  margin-bottom: 20px; /* space between table & footer */
 }
 
 .order-table-container h2 {
+  margin-top: 0;
   margin-bottom: 20px;
-  font-size: 1.75rem;
-  color: var(--header-color);
-  text-transform: uppercase;
-  letter-spacing: 1px;
+  font-size: 1.5rem;
+  color: #34495e;
 }
 
 /* ---------- Orders Table ---------- */
@@ -67,76 +39,77 @@
 }
 
 #orders-table thead th {
-  background-color: var(--secondary-bg);
-  color: var(--header-color);
-  font-weight: bold;
-  padding: 15px 20px;
+  background-color: #f0f3f4;
+  color: #4a5568;
+  font-weight: 500;
+  padding: 12px 15px;
   text-align: left;
-  border-bottom: 2px solid var(--border-color);
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
+  border-bottom: 2px solid #e2e8f0;
 }
 
 #orders-table tbody td {
-  padding: 10px 20px;
-  border-bottom: 1px solid var(--border-color);
+  padding: 4px 15px;
+  color: #333;
 }
 
-/* Each row appears as a distinct element with subtle transitions */
+/* Ensure each table row is a proper table row and on top of expansion content */
 #orders-table tbody tr {
-  background-color: var(--primary-bg);
+  display: table-row;
+  background-color: #fff;
   transition: background-color 0.3s ease;
   position: relative;
   z-index: 1;
 }
 
 #orders-table tbody tr:hover {
-  background-color: var(--hover-bg);
+  background-color: #f9fafb;
 }
 
 #orders-table tbody tr.expanded {
-  background-color: var(--secondary-bg);
+  background-color: #f2f2f2; /* Light green-ish when expanded */
 }
 
-/* ---------- Info Row for Tags/Decoration ---------- */
+/* ---------- Info Row (for tags/decoration) ---------- */
 #orders-table tbody tr.info-row td {
   padding: 0;
+  /* Remove cell borders so we can add a row-level separator */
 }
 
 #orders-table tbody tr.info-row {
-  border-bottom: 1px dashed var(--border-color);
+  border-bottom: 1px solid #e2e8f0;  /* Separates each entry */
 }
 
+
 .info-container {
-  padding: 8px 20px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 20px;
-  font-size: 0.95em;
+  padding: 6px 15px;
+  display: flex;           /* Use flexbox */
+  align-items: center;     /* Vertically center items */
+  justify-content: space-between; /* Distribute space */
+  gap: 15px;
+  font-size: 0.9em;
+  color: #555;
 }
 
 .tags-container {
   display: flex;
-  gap: 12px;
+  gap: 10px;             /* Space between tags */
   align-items: center;
-  flex-wrap: wrap;
-  min-width: 200px;
+  flex-wrap: wrap;       /* Allow tags to wrap if needed */
+  min-width: 180px;
 }
 
 .new-tag,
 .embroidery-tag,
 .dtf-tag {
-  padding: 4px 8px;
-  border-radius: 6px;
-  font-size: 0.85em;
-  font-weight: 600;
-  text-transform: uppercase;
+  padding: 2px 6px;      /* Smaller padding for tags */
+  border-radius: 4px;
+  font-size: 0.8em;      /* Smaller font size for tags */
+  font-weight: 500;
 }
 
-/* ---------- Expansion Row with Sliding Effect ---------- */
+/* ---------- Expansion Row with Sliding Effect and Side-by-Side Sections ---------- */
 .expansion-row {
-  display: table-row;
+  display: table-row; /* Always render as a table row */
 }
 
 .expansion-row td {
@@ -144,52 +117,57 @@
   border: none;
 }
 
-/* Default state for hidden expansion-content */
+/* Default state for expansion-content */
 .expansion-content {
   max-height: 0;
   overflow: hidden;
   opacity: 0;
-  padding: 0 20px;
-  transition: max-height 0.6s ease, opacity 0.6s ease, padding 0.6s ease;
+  padding: 0 15px;  /* Keep horizontal padding */
+  transition: max-height 0.5s ease, opacity 0.5s ease, padding 0.5s ease;
 }
 
-/* Revealed state for expansion-content with a flex layout */
+/* When expanded, reveal the content with a side-by-side layout */
 .expansion-row.expanded .expansion-content {
-  min-height: 320px;
+/*   max-height: 500px; Adjust if needed */
+  min-height: 300px;
   opacity: 1;
-  padding: 25px 20px;
-  background-color: var(--primary-bg);
-  border: 1px solid var(--border-color);
+  padding: 20px 15px;
+  background-color: #fff;
+  border: 1px solid #d2e8d2;
   border-top: none;
-  box-shadow: var(--card-shadow);
-  display: flex;
-  gap: 25px;
-  flex-wrap: wrap;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  
+  display: flex;       /* Flex layout to show sections side by side */
+  gap: 20px;           /* Space between sections */
+  flex-wrap: wrap;     /* Wrap on smaller screens */
 }
 
+/* Style each section within the expansion-content */
 .expansion-content > div {
-  flex: 1 1 45%;
-  padding: 15px;
-  border: 1px solid var(--border-color);
-  border-radius: 8px;
-  background-color: var(--secondary-bg);
-  min-height: 280px;
+  flex: 1 1 45%;       /* Each section takes roughly 45% of the available width */
+  padding: 10px;       /* Reduced padding */
+  border: 1px solid #eee;
+  border-radius: 6px;
+  background-color: #fafafa;
+  margin-bottom: 0;    /* Remove bottom margin */
+  min-height: 265px;
 }
 
+/* Reduce heading sizes within these sections */
 .expansion-content h3 {
-  font-size: 1.1rem;
-  margin-bottom: 12px;
-  color: var(--header-color);
+  font-size: 1rem;
+  margin-top: 0;
+  margin-bottom: 10px;
 }
 
 /* ---------- Items Completed Section ---------- */
 .items-completed-section {
-  padding: 20px;
-  border: 1px solid var(--border-color);
-  border-radius: 8px;
-  background-color: var(--secondary-bg);
-  max-height: 220px;
-  overflow-y: auto;
+  padding: 15px;
+  border: 1px solid #eee;
+  border-radius: 6px;
+  background-color: #fafafa;
+  max-height: 200px;  /* Adjust the height as needed */
+  overflow-y: auto;   /* Enables vertical scrolling */
 }
 
 .items-completed-table {
@@ -197,207 +175,210 @@
   border-collapse: collapse;
 }
 
+
+
+/* Thinner headers and rows for the items completed table 
+   with increased specificity to override inherited styles */
 #orders-table .items-completed-table th,
 #orders-table .items-completed-table td {
-  padding: 6px 10px;
+  padding: 4px 8px;      /* Reduced padding for a thinner look */
   text-align: left;
-  border-bottom: 1px solid var(--border-color);
+  border-bottom: 1px solid #f0f0f0;
   line-height: 2.2;
 }
 
 .items-completed-table th {
-  background-color: var(--primary-bg);
-  color: var(--header-color);
-  font-weight: bold;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
+  background-color: #f9fafb;
+  color: #666;
+  font-weight: 500;
 }
 
 .items-completed-table tr.completed {
   text-decoration: line-through;
-  color: #888;
+  color: #999;
 }
 
 .items-completed-table input[type="number"] {
-  width: 50px;
-  padding: 6px;
-  border: 1px solid var(--border-color);
-  border-radius: 6px;
-  background-color: var(--secondary-bg);
-  color: var(--text-color);
+  width: 43px;
+  padding: 4px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
 }
 
 /* ---------- Status Dropdowns ---------- */
+/* Fixed positions for dropdowns (aligned to the left, next to tags) */
 .status-dropdowns-container {
   display: grid;
-  grid-template-columns: repeat(3, auto);
-  gap: 12px;
-  margin-left: 10px;
+  grid-template-columns: repeat(3, auto);  /* Three columns with auto width */
+  gap: 10px;
+  margin-left: 7px;
   margin-right: auto;
 }
 
+/* Base styling for dropdowns */
 .status-dropdowns-container select {
   width: 100%;
-  padding: 6px 32px 6px 12px;
-  font-size: 13px;
-  border: 1px solid var(--border-color);
-  border-radius: 8px;
-  background-color: var(--secondary-bg);
-  color: var(--text-color);
-  transition: border-color 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+  padding: 4px 30px 4px 8px;  /* top, right, bottom, left */
+  font-size: 12px;            /* Smaller font size */
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  background-color: #fff;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease, color 0.3s ease;
   appearance: none;
   -webkit-appearance: none;
   -moz-appearance: none;
-  background-image: url("data:image/svg+xml,%3Csvg fill='%23f8f8f2' height='24' viewBox='0 0 24 24' width='24' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M7 10l5 5 5-5z'/%3E%3C/svg%3E");
+  background-image: url("data:image/svg+xml,%3Csvg fill='%23333' height='24' viewBox='0 0 24 24' width='24' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M7 10l5 5 5-5z'/%3E%3C/svg%3E");
   background-repeat: no-repeat;
-  background-position: right 12px center;
+  background-position: right 10px center;
   background-size: 16px;
   cursor: pointer;
 }
 
 .status-dropdowns-container select:hover {
-  border-color: var(--accent-color);
+  border-color: #999;
 }
 
 .status-dropdowns-container select:focus {
-  border-color: var(--header-color);
-  box-shadow: 0 0 6px var(--accent-color);
+  border-color: #666;
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.2);
   outline: none;
 }
 
 /* Specific Dropdown Colouring */
 /* Garment dropdown styling */
 .status-dropdowns-container select[id^="garment-status-"] {
-  background-color: #6a0dad;
-  border-color: #8e44ad;
-  color: #f8f8f2;
+  background-color: #ded1e7;
+  border-color: #d8badb;
+  color: #4f0f51;
 }
 .status-dropdowns-container select[id^="garment-status-"] option:hover {
-  background-color: #9b59b6;
+  background-color: #b397c8;
   color: #fff;
 }
 
 /* Embroidery dropdown styling */
 .status-dropdowns-container select[id^="embroidery-status-"] {
-  background-color: #27ae60;
-  border-color: #2ecc71;
-  color: #f8f8f2;
+  background-color: #D1E7DD;
+  border-color: #BADBCC;
+  color: #0F5132;
 }
 .status-dropdowns-container select[id^="embroidery-status-"] option:hover {
-  background-color: #2ecc71;
+  background-color: #90c8c0;
   color: #fff;
 }
 
 /* DTF dropdown styling */
 .status-dropdowns-container select[id^="dtf-status-"] {
-  background-color: #2980b9;
-  border-color: #3498db;
-  color: #f8f8f2;
+  background-color: #CFF4FC;
+  border-color: #B7F0FB;
+  color: #185860;
 }
 .status-dropdowns-container select[id^="dtf-status-"] option:hover {
-  background-color: #3498db;
+  background-color: #a5d7e0;
   color: #fff;
 }
 
 /* Optional: Label Styling for dropdowns */
 .status-dropdowns-container label {
   display: block;
-  margin-bottom: 6px;
-  font-size: 14px;
-  font-weight: bold;
+  margin-bottom: 4px;
+  font-size: 13px;
+  font-weight: 600;
+  color: #444;
+  text-align: left;
 }
 
-/* Tag styles */
 .new-tag {
-  background-color: #44475a;
-}
-.embroidery-tag {
-  background-color: #2ecc71;
-  border: 1px solid #27ae60;
-}
-.dtf-tag {
-  background-color: #3498db;
-  border: 1px solid #2980b9;
+  background-color: #f0f0f0;
+  color: #333;
 }
 
-/* Status Dropdowns in the Orders Table */
+.embroidery-tag {
+  background-color: #d1e7dd;
+  color: #0f5132;
+  border: 1px solid #badbcc;
+}
+
+.dtf-tag {
+  background-color: #cff4fc;
+  color: #055160;
+  border: 1px solid #b6effb;
+}
+
+/* Styling for Status Dropdowns in the Orders Table - NEW STYLES */
 #orders-table tbody td:nth-child(7) select {
-  padding: 5px 15px;
-  border: 1px solid var(--border-color);
-  border-radius: 6px;
-  background-color: var(--secondary-bg);
-  color: var(--text-color);
-  font-size: 0.85rem;
+  padding: 3px 12px;
+  border: 1px solid #bbb;
+  border-radius: 5px;
+  background-color: #f0f0f0;
+  color: #444;
+  cursor: pointer;
+  font-size: 0.8rem;
   appearance: none;
   -webkit-appearance: none;
   -moz-appearance: none;
-  background-image: url("data:image/svg+xml,%3Csvg fill='%23f8f8f2' height='24' viewBox='0 0 24 24' width='24' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M7 10l5 5 5-5z'/%3E%3C/svg%3E");
+  background-image: url("data:image/svg+xml,%3Csvg fill='%23333' height='24' viewBox='0 0 24 24' width='24' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M7 10l5 5 5-5z'/%3E%3C/svg%3E");
   background-repeat: no-repeat;
-  background-position: right 12px center;
+  background-position: right 10px center;
   background-size: 16px;
 }
 
 #orders-table td:nth-child(7) select:hover,
 #orders-table td:nth-child(7) select:focus {
-  border-color: var(--accent-color);
-  box-shadow: 0 0 6px var(--accent-color);
-  background-color: var(--hover-bg);
+  border-color: #888;
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.2);
   outline: none;
+  background-color: #e8e8e8;
 }
 
 #orders-table td:nth-child(7) select::-ms-expand {
   display: none;
 }
 
-/* First column styling */
-#orders-table th:nth-child(1),
-#orders-table td:nth-child(1) {
-  width: 220px;
-  min-width: 220px;
-  max-width: 220px;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
+#orders-table th:nth-child(1),  /* Target the first TH (header cell) */
+#orders-table td:nth-child(1) {  /* Target the first TD (data cell) in each row */
+    width: 200px; /* Set your desired width here!  Adjust as needed */
+    min-width: 200px; /* Optional: Ensure a minimum width */
+    max-width: 200px; /* Optional: Limit to a maximum width */
+    /* Add any other specific styling for the first column here */
+    overflow: hidden;         /* Ensure content doesn't overflow */
+    text-overflow: ellipsis; /* Add ellipsis (...) for overflowing text */
+    white-space: nowrap;    /* Prevent text from wrapping */
 }
 
-/* ---------- Back Order Table ---------- */
 .backOrderTable {
-  width: 100%;
-  border-collapse: collapse;
-  margin-bottom: 30px;
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
 }
 
 .backOrderTable th,
 .backOrderTable td {
-  padding: 12px 20px;
-  text-align: left;
-  border-bottom: 1px solid var(--border-color);
+    padding: 10px 15px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
 }
 
 .backOrderTable th {
-  background-color: var(--secondary-bg);
-  font-weight: bold;
-  text-transform: uppercase;
+    background-color: #f0f3f4;
+    font-weight: 500;
 }
 
 .backOrderTable tbody tr:nth-child(even) {
-  background-color: var(--primary-bg);
+    background-color: #f9f9f9;
 }
 
 .backOrderTable input[type="number"] {
-  width: 60px;
-  padding: 8px;
-  border: 1px solid var(--border-color);
-  border-radius: 6px;
-  background-color: var(--secondary-bg);
-  color: var(--text-color);
+    width: 80px; /* Adjust input width as needed */
+    padding: 6px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
 }
 
 /* ---------- Footer ---------- */
 footer {
-  background: linear-gradient(135deg, #000428, #004e92);
-  color: var(--text-color);
+  background-color: #182848;
+  color: #fff;
   text-align: center;
-  padding: 20px;
-  font-size: 1rem;
+  padding: 15px;
 }
