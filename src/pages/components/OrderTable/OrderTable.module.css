@@ -182,7 +182,7 @@
   padding: 4px 8px;      /* Reduced padding for a thinner look */
   text-align: left;
   border-bottom: 1px solid #f0f0f0;
-  line-height: 1.2;
+  line-height: 2.2;
 }
 
 .items-completed-table th {
