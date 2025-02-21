@@ -1,10 +1,10 @@
 // src/pages/components/OrderTable/OrderTable.js
 
-// import React from 'react';  // REMOVE THIS LINE - No longer needed
+// import React from 'react'; // REMOVE THIS LINE - No longer needed
 // import BackOrderPopup from '../BackOrderPopup/BackOrderPopup.js'; // REMOVE THIS LINE
-// import styles from './BackOrderPopup.module.css'; // REMOVE THIS LINE - Not directly using CSS Modules in this example
+// import styles from './OrderTable.module.css'; // REMOVE THIS LINE - Not directly using CSS Modules in this example
 
-// --- OrderTable Component (UPDATED - Removed Back Order Features) ---
+// --- OrderTable Component (UPDATED - SWP Parts Display) ---
 function OrderTable({ orders, searchTerm, onItemCompletionChange }) {
     const [filteredOrders, setFilteredOrders] = React.useState([]);
     const [expandedRowSord, setExpandedRowSord] = React.useState(null);
@@ -35,27 +35,27 @@ function OrderTable({ orders, searchTerm, onItemCompletionChange }) {
     };
 
     const handleCompletedQtyChange = (sord, masterCode, newCompletedQty) => {
-      setCompletedQuantities(prevCompletedQuantities => {
-          const orderQuantities = prevCompletedQuantities[sord] || {};
-          const updatedOrderQuantities = { ...orderQuantities, [masterCode]: parseInt(newCompletedQty, 10) || 0 };
+        setCompletedQuantities(prevCompletedQuantities => {
+            const orderQuantities = prevCompletedQuantities[sord] || {};
+            const updatedOrderQuantities = { ...orderQuantities, [masterCode]: parseInt(newCompletedQty, 10) || 0 };
 
-          // --- Create updated order object ---
-          const updatedOrder = {
-              ...orders.find(order => order.SORD === sord), // Find the order
-              "Item List": orders.find(order => order.SORD === sord)["Item List"].map(item => { // Update Item List
-                  if (item["Master Code"] === masterCode) {
-                      return { ...item, "Completed Qty": updatedOrderQuantities[masterCode] || 0 }; // Update Completed Qty
-                  }
-                  return item;
-              })
-          };
+            // --- Create updated order object ---
+            const updatedOrder = {
+                ...orders.find(order => order.SORD === sord), // Find the order
+                "Item List": orders.find(order => order.SORD === sord)["Item List"].map(item => { // Update Item List
+                    if (item["Master Code"] === masterCode) {
+                        return { ...item, "Completed Qty": updatedOrderQuantities[masterCode] || 0 }; // Update Completed Qty
+                    }
+                    return item;
+                })
+            };
 
-        // Call the callback prop with the updated order
-        onItemCompletionChange(sord, updatedOrder);
+            // Call the callback prop with the updated order
+            onItemCompletionChange(sord, updatedOrder);
 
-        return { ...prevCompletedQuantities, [sord]: updatedOrderQuantities };
-    });
-};
+            return { ...prevCompletedQuantities, [sord]: updatedOrderQuantities };
+        });
+    };
 
     // --- NEW: Function to handle status changes ---
     const handleStatusChange = (sord, field, newValue) => {
@@ -69,17 +69,11 @@ function OrderTable({ orders, searchTerm, onItemCompletionChange }) {
         const updatedOrder = {
             ...orders.find(order => order.SORD === sord), // Find the order
             [field]: newValue
-          };
+        };
 
         // Call the callback prop with the updated order
         onItemCompletionChange(sord, updatedOrder);
     };
-
-    // --- REMOVE THIS FUNCTION COMPLETELY - Placeholder function for Back Order Submit ---
-    // const handleBackOrderSubmit = (updatedOrder) => { // Placeholder function for now
-    //     console.log("Back order submitted!", updatedOrder);
-    //     setShowBackOrderPopup(false); // Just close the popup for now
-    // };
 
 
     return (
@@ -212,19 +206,35 @@ function OrderTable({ orders, searchTerm, onItemCompletionChange }) {
                                                             const isCompleted = completedQty >= item["Outstanding Qty"];
 
                                                             return (
-                                                                React.createElement('tr', { key: item["Master Code"], className: isCompleted ? 'completed' : '' }, // Conditionally apply 'completed' class
-                                                                    React.createElement('td', null, item["Outstanding Qty"]),
-                                                                    React.createElement('td', null, item["Master Code"]),
-                                                                    React.createElement('td', null, item.Description),
-                                                                    React.createElement('td', null,
-                                                                        React.createElement('input', {
-                                                                            type: "number",
-                                                                            min: "0",
-                                                                            max: item["Outstanding Qty"],
-                                                                            value: completedQty,
-                                                                            onChange: (e) => handleCompletedQtyChange(order.SORD, item["Master Code"], e.target.value)
-
-                                                                        })
+                                                                React.createElement(React.Fragment, { key: item["Master Code"] }, // Use Fragment to return multiple rows
+                                                                    React.createElement('tr', { className: isCompleted ? 'completed' : '' }, // Master Code Row
+                                                                        React.createElement('td', null, item["Outstanding Qty"]),
+                                                                        React.createElement('td', null, item["Master Code"]),
+                                                                        React.createElement('td', null, item.Description), // ADDED: Description Cell
+                                                                        React.createElement('td', null,  completedQty  ) // REMOVED INPUT and display COMPLETED QTY
+                                                                    ),
+                                                                    React.createElement('tr', { className: 'swp-parts-row' }, // SWP Parts Row - NEW ROW
+                                                                        React.createElement('td', { colSpan: "14" }, // Span all columns of the table
+                                                                            React.createElement('ul', {className: 'swp-parts-list'},  // NEW UL for SWP Parts
+                                                                                item["SWP Parts"].map((swpPart, index) => {
+                                                                                    const swpDescription = item["SWP Parts Desc"][index] || 'No Description'; // Get description or default
+                                                                                    return React.createElement('li', { key: swpPart, className: 'swp-part-item' }, // SWP Part List Item
+                                                                                        React.createElement('span', {className: 'swp-code'}, `${swpPart}`),  // SWP Part Code
+                                                                                        React.createElement('span', {className: 'swp-description'}, `: ${swpDescription}`), // SWP Part Description
+                                                                                        React.createElement('span', {className: 'swp-qty-input'},  // Container for input and total qty
+                                                                                            " / ", React.createElement('span', {className: 'swp-total-qty'}, item["Outstanding Qty"]),  // Total Qty from Master Item
+                                                                                            React.createElement('input', { // NEW INPUT for SWP Completed Qty
+                                                                                                type: "number",
+                                                                                                min: "0",
+                                                                                                max: item["Outstanding Qty"],
+                                                                                                // value: 0,  // Placeholder for now, will manage state later
+                                                                                                placeholder: "Comp. Qty" // Placeholder text
+                                                                                            })
+                                                                                        )
+                                                                                    );
+                                                                                })
+                                                                            )
+                                                                        )
                                                                     )
                                                                 )
                                                             );
