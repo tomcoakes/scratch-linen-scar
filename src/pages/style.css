@@ -1279,3 +1279,32 @@ nav ul.nav-links li a.active {
     border-radius: 6px;
 }
 
+
+/* ============================================
+    tracker
+   ============================================ */
+
+
+main.main-container-tracker {
+    display: flex; /* Make main a flex container */
+    flex: 1; /* Allow main to grow and take remaining space */
+/*     max-width: 1400px; /* Maximum width for main content */ */
+    margin: 20px auto; /* Center main content with top/bottom margin */
+    padding: 20px;
+    width: 100%; /* Take up 95% of the viewport width */
+    background-color: #fff; /* White background for main content area */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.05); /* Subtle shadow */
+    border-radius: 8px; /* Rounded corners */
+}
+
+
+
+.content {
+    flex-grow: 1; /* Allow content area to take remaining space */
+    padding: 20px;
+    border-radius: 8px;
+    background-color: #f9f9f9; /* Slightly lighter background for content area */
+    transition: flex-basis 0.4s ease-out, margin-left 0.4s ease-out; /* Transition for flex-basis and margin-left */
+    margin-left: 20px; /* Initial left margin */
+    flex-basis: 0; /* Initial flex-basis - content takes remaining space */ /* ADDED flex-basis: 0; */
+}

@@ -5,7 +5,7 @@
 // --- Import Components from their new folders ---
 // REMOVED - import Sidebar from './components/Sidebar/Sidebar.js';
 import SearchBar from './components/SearchBar/SearchBar.js';
-import OrderTable from './components/OrderTable/OrderTable.js';
+import OrderTable from './components/OrderTable/OrderTable.jsx';
 import SummaryCards from './components/SummaryCards/SummaryCards.js';
 import NewOrderPopup from './components/NewOrderPopup/NewOrderPopup.js'; // Import the popup component
  
