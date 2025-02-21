@@ -25,7 +25,7 @@
           "The Farming Community Network LB White/Green Embroidered Logo",
           "The Farming Community Network Rear White/Green Embroidered Logo"
         ],
-        "Completed Qty": 5
+        "Completed Qty": 0
       },
       {
         "Master Code": "SWPTFCN003-L",
@@ -47,7 +47,7 @@
           "The Farming Community Network LB White/Green Embroidered Logo",
           "The Farming Community Network Rear White/Green Embroidered Logo"
         ],
-        "Completed Qty": 3
+        "Completed Qty": 0
       },
       {
         "Master Code": "SWPTFCN003-M",
@@ -69,7 +69,21 @@
           "The Farming Community Network LB White/Green Embroidered Logo",
           "The Farming Community Network Rear White/Green Embroidered Logo"
         ],
-        "Completed Qty": 0
+        "Completed Qty": 3,
+        "swpPartCompletions": {
+          "SWPEMB-TFCNLB": [
+            {
+              "qty": 8,
+              "timestamp": "2025-02-21T14:57:35.652Z"
+            }
+          ],
+          "SWPEMB-TFCNR": [
+            {
+              "qty": 3,
+              "timestamp": "2025-02-21T14:57:39.406Z"
+            }
+          ]
+        }
       },
       {
         "Master Code": "SWPTFCN003-S",
@@ -855,11 +869,11 @@
     "Rep": "Phil Murphy",
     "Address": "Manor Farm, Guilsborough Road, West Haddon, Northampton, NN6 7AQ",
     "isNew": true,
-    "garmentStatus": "Ordered",
+    "garmentStatus": "Part Received",
     "decorationMethod": "Embroidery",
-    "embroideryFileStatus": "Arrived",
+    "embroideryFileStatus": "On File",
     "dtfStatus": "",
-    "jobStatus": "Started"
+    "jobStatus": "Part Shipped"
   },
   {
     "SORD": "SORD01613529",
@@ -885,7 +899,7 @@
         "SWP Parts Desc": [
           "Blue Flame Left Breast Embroidery - White"
         ],
-        "Completed Qty": 1
+        "Completed Qty": 0
       }
     ],
     "Ordered Date": "07/01/2025",
@@ -896,11 +910,11 @@
     "Rep": "Phil Murphy",
     "Address": "Energy House , Parkengue, Penryn, Cornwall, TR10 9EP",
     "isNew": true,
-    "garmentStatus": "Booked in",
-    "decorationMethod": "Embroidery",
-    "embroideryFileStatus": "Ordered",
-    "dtfStatus": "",
-    "jobStatus": "Complete"
+    "garmentStatus": "Ordered",
+    "decorationMethod": "DTF",
+    "embroideryFileStatus": "",
+    "dtfStatus": "In Stock",
+    "jobStatus": "Not Started"
   },
   {
     "SORD": "SORD01620157",
@@ -1457,296 +1471,6 @@
     "decorationMethod": "Embroidery",
     "embroideryFileStatus": "On File",
     "dtfStatus": "",
-    "jobStatus": "Started"
-  },
-  {
-    "SORD": "SORD01624940",
-    "Trader Code": "MBP/JSL",
-    "Trader Name": "MBP Door Solutions - Southwest & Wales",
-    "Total Items": 6,
-    "Item List": [
-      {
-        "Master Code": "SWPMID0021-2XL",
-        "Description": "2XL Black MBP Full Zip Fleece UC604",
-        "Ordered Qty": 1,
-        "Outstanding Qty": 1,
-        "SWP Parts": [
-          "SWPEMB-MBP004"
-        ],
-        "Other Parts Details": [
-          {
-            "partCode": "UC604.BK.2XL",
-            "description": "Classic Full Zip Micro Fleece Jacket - Black - 2XLarge",
-            "backOrderQty": 0
-          }
-        ],
-        "SWP Parts Desc": [
-          "MBP Centre Cap Embroidery Logo - White/Orange"
-        ],
-        "Completed Qty": 0
-      },
-      {
-        "Master Code": "SWPMID0021-XL",
-        "Description": "XL Black MBP Full Zip Fleece UC604",
-        "Ordered Qty": 8,
-        "Outstanding Qty": 3,
-        "SWP Parts": [
-          "SWPEMB-MBP004"
-        ],
-        "Other Parts Details": [
-          {
-            "partCode": "UC604.BK.XL",
-            "description": "Classic Full Zip Micro Fleece Jacket - Black - XLarge",
-            "backOrderQty": 0
-          }
-        ],
-        "SWP Parts Desc": [
-          "MBP Centre Cap Embroidery Logo - White/Orange"
-        ],
-        "Completed Qty": 0
-      },
-      {
-        "Master Code": "SWPMID0021-M",
-        "Description": "Medium Black MBP Full Zip Fleece UC604",
-        "Ordered Qty": 2,
-        "Outstanding Qty": 2,
-        "SWP Parts": [
-          "SWPEMB-MBP004"
-        ],
-        "Other Parts Details": [
-          {
-            "partCode": "UC604.BK.M",
-            "description": "Classic Full Zip Micro Fleece Jacket - Black - Medium",
-            "backOrderQty": 0
-          }
-        ],
-        "SWP Parts Desc": [
-          "MBP Centre Cap Embroidery Logo - White/Orange"
-        ],
-        "Completed Qty": 0
-      }
-    ],
-    "Ordered Date": "27/01/2025",
-    "Due Date": null,
-    "Total Logos": 6,
-    "Reference": "MBP/JSL",
-    "Contact": "Kathryn Fitter",
-    "Rep": "Ricky Neale ",
-    "Address": "Joinery Specialists Ltd T/A MBP, Unit 43 Llantarnam Park, Cwmbran, Torfaen, NP44 3AW",
-    "isNew": true,
-    "garmentStatus": "Not Ordered",
-    "decorationMethod": "Embroidery",
-    "embroideryFileStatus": "On File",
-    "dtfStatus": "",
-    "jobStatus": "Not Started"
-  },
-  {
-    "SORD": "SORD01625270",
-    "Trader Code": "DDS100C",
-    "Trader Name": "DDI Projects Limited",
-    "Total Items": 30,
-    "Item List": [
-      {
-        "Master Code": "SWPDDS0011",
-        "Description": "Blue DDI Projects Safety Helmet",
-        "Ordered Qty": 30,
-        "Outstanding Qty": 30,
-        "SWP Parts": [
-          "SWPDDI-H"
-        ],
-        "Other Parts Details": [
-          {
-            "partCode": "5.03057E+12",
-            "description": "Beeswift Economy Vented Safety Helmet Blue",
-            "backOrderQty": 0
-          },
-          {
-            "partCode": "BBEVSHB",
-            "description": "Beeswift Economy Vented Safety Helmet Blue",
-            "backOrderQty": 0
-          }
-        ],
-        "SWP Parts Desc": [
-          "DDI Projects Black Helmet Transfer"
-        ],
-        "Completed Qty": 0
-      }
-    ],
-    "Ordered Date": "28/01/2025",
-    "Due Date": "18/02/2025",
-    "Total Logos": 30,
-    "Reference": "DDS100C",
-    "Contact": "Joy",
-    "Rep": "Lorraine Rogers",
-    "Address": "23 Haviland Road , Ferndown Industrial Estate, Wimborne, Dorset, BH21 7SA",
-    "isNew": true,
-    "garmentStatus": "Not Ordered",
-    "decorationMethod": "Embroidery",
-    "embroideryFileStatus": "On File",
-    "dtfStatus": "",
-    "jobStatus": "Not Started"
-  },
-  {
-    "SORD": "SORD01626476",
-    "Trader Code": "YMC001I",
-    "Trader Name": "Ymca Community Projects",
-    "Total Items": 10,
-    "Item List": [
-      {
-        "Master Code": "SWPYMCA003-XXL",
-        "Description": "XXL Deep Navy Blue YMCA Lighthouse T-Shirt - SS12",
-        "Ordered Qty": 2,
-        "Outstanding Qty": 2,
-        "SWP Parts": [
-          "SWPEMB-AMBRB",
-          "SWPEMB-LIGHT",
-          "SWPEMB-YMCALB"
-        ],
-        "Other Parts Details": [
-          {
-            "partCode": "SS12.DN-XXL",
-            "description": "XXL Deep Navy Fruit of the Loom Original T-Shirt",
-            "backOrderQty": 0
-          }
-        ],
-        "SWP Parts Desc": [
-          "Ambassador Right Breast Embroidery (White)",
-          "The Light Shines Embroidery Bottom",
-          "YMCA Lighthouse Left Breast Embroidery"
-        ],
-        "Completed Qty": 0
-      },
-      {
-        "Master Code": "SWPYMCA002-XL",
-        "Description": "XL Deep Sea Blue YMCA Lighthouse Hoodie - JH001",
-        "Ordered Qty": 2,
-        "Outstanding Qty": 2,
-        "SWP Parts": [
-          "SWPEMB-AMBRB",
-          "SWPEMB-LIGHT",
-          "SWPEMB-YMCALB"
-        ],
-        "Other Parts Details": [
-          {
-            "partCode": "JH001.DB.XL",
-            "description": "XL Deep Blue AWDis College Hoodie",
-            "backOrderQty": 0
-          }
-        ],
-        "SWP Parts Desc": [
-          "Ambassador Right Breast Embroidery (White)",
-          "The Light Shines Embroidery Bottom",
-          "YMCA Lighthouse Left Breast Embroidery"
-        ],
-        "Completed Qty": 0
-      },
-      {
-        "Master Code": "SWPYMCA002-XXL",
-        "Description": "XXL Deep Sea Blue YMCA Lighthouse Hoodie - JH001",
-        "Ordered Qty": 1,
-        "Outstanding Qty": 1,
-        "SWP Parts": [
-          "SWPEMB-AMBRB",
-          "SWPEMB-LIGHT",
-          "SWPEMB-YMCALB"
-        ],
-        "Other Parts Details": [
-          {
-            "partCode": "JH001.DB.XXL",
-            "description": "XXL Deep Blue AWDis College Hoodie",
-            "backOrderQty": 0
-          }
-        ],
-        "SWP Parts Desc": [
-          "Ambassador Right Breast Embroidery (White)",
-          "The Light Shines Embroidery Bottom",
-          "YMCA Lighthouse Left Breast Embroidery"
-        ],
-        "Completed Qty": 0
-      },
-      {
-        "Master Code": "SWPYMCA003-XL",
-        "Description": "XL Deep Navy Blue YMCA Lighthouse T-Shirt - SS12",
-        "Ordered Qty": 2,
-        "Outstanding Qty": 2,
-        "SWP Parts": [
-          "SWPEMB-AMBRB",
-          "SWPEMB-LIGHT",
-          "SWPEMB-YMCALB"
-        ],
-        "Other Parts Details": [
-          {
-            "partCode": "SS12.DN-XL",
-            "description": "XL Deep Navy Fruit of the Loom Original T-Shirt",
-            "backOrderQty": 0
-          }
-        ],
-        "SWP Parts Desc": [
-          "Ambassador Right Breast Embroidery (White)",
-          "The Light Shines Embroidery Bottom",
-          "YMCA Lighthouse Left Breast Embroidery"
-        ],
-        "Completed Qty": 0
-      },
-      {
-        "Master Code": "SWPYMCA004-XL",
-        "Description": "XL Deep Navy Blue YMCA Lighthouse Polo - SS229",
-        "Ordered Qty": 2,
-        "Outstanding Qty": 2,
-        "SWP Parts": [
-          "SWPEMB-AMBRB",
-          "SWPEMB-LIGHT",
-          "SWPEMB-YMCALB"
-        ],
-        "Other Parts Details": [
-          {
-            "partCode": "SS229.DN-XL",
-            "description": "XL Dark Navy Fruit of the Loom Original Piqu� Polo Shirt",
-            "backOrderQty": 0
-          }
-        ],
-        "SWP Parts Desc": [
-          "Ambassador Right Breast Embroidery (White)",
-          "The Light Shines Embroidery Bottom",
-          "YMCA Lighthouse Left Breast Embroidery"
-        ],
-        "Completed Qty": 0
-      },
-      {
-        "Master Code": "SWPYMCA001",
-        "Description": "Graphite YMCA Lighthouse / The Light Shines Cap - BB10",
-        "Ordered Qty": 1,
-        "Outstanding Qty": 1,
-        "SWP Parts": [
-          "SWPEMB-LIGHTH",
-          "SWPEMB-YMCAH"
-        ],
-        "Other Parts Details": [
-          {
-            "partCode": "BB10.GR",
-            "description": "Beechfield Original 5 Panel Cap - Graphite- One Size",
-            "backOrderQty": 0
-          }
-        ],
-        "SWP Parts Desc": [
-          "The Light Shines Hat Embroidery",
-          "YMCA Lighthouse Hat Embroidery"
-        ],
-        "Completed Qty": 0
-      }
-    ],
-    "Ordered Date": "29/01/2025",
-    "Due Date": null,
-    "Total Logos": 29,
-    "Reference": "YMC001I",
-    "Contact": "Fen Yee Teng",
-    "Rep": "Adrian Walker",
-    "Address": "39 - 41 St Davids Hill , , Exeter, Devon, EX4 4DA   ",
-    "isNew": true,
-    "garmentStatus": "Not Ordered",
-    "decorationMethod": "Embroidery",
-    "embroideryFileStatus": "On File",
-    "dtfStatus": "",
     "jobStatus": "Not Started"
   },
   {
@@ -1825,7 +1549,7 @@
           "Cavandish Nuclear Left Breast Logo",
           "Young Professionals Network Right Breast Logo"
         ],
-        "Completed Qty": 3
+        "Completed Qty": 0
       },
       {
         "Master Code": "SWPCAV001-XL",
@@ -1860,10 +1584,10 @@
     "Rep": "Jacqui Alexander",
     "Address": "Thomas Burt, Radar Road, Leicester, Leicestershire, LE3 1UF",
     "isNew": true,
-    "garmentStatus": "Booked in",
-    "decorationMethod": "Embroidery",
+    "garmentStatus": "Ordered",
+    "decorationMethod": "Both",
     "embroideryFileStatus": "On File",
-    "dtfStatus": "",
+    "dtfStatus": "In Stock",
     "jobStatus": "Not Started"
   },
   {
@@ -1892,21 +1616,7 @@
           "Duright Left Breast Logo",
           "Duright Rear Lower Back Logo"
         ],
-        "Completed Qty": 50,
-        "swpPartCompletions": {
-          "SWPDTF-DURLB": [
-            {
-              "qty": 50,
-              "timestamp": "2025-02-21T14:50:34.291Z"
-            }
-          ],
-          "SWPDTF-DURR": [
-            {
-              "qty": 50,
-              "timestamp": "2025-02-21T14:50:33.723Z"
-            }
-          ]
-        }
+        "Completed Qty": 0
       },
       {
         "Master Code": "SWPDUR001-XXL",
@@ -1939,10 +1649,10 @@
     "Rep": "Ricky Neale ",
     "Address": "Portway Road, , Wednesbury, West Midlands, WS10 7DZ    ",
     "isNew": true,
-    "garmentStatus": "Not Ordered",
-    "decorationMethod": "Embroidery",
-    "embroideryFileStatus": "On File",
-    "dtfStatus": "",
+    "garmentStatus": "Part Received",
+    "decorationMethod": "DTF",
+    "embroideryFileStatus": "",
+    "dtfStatus": "In Stock",
     "jobStatus": "Not Started"
   },
   {
@@ -1982,7 +1692,7 @@
     "Rep": "Phil Murphy",
     "Address": "CMA House, Newham Industrial Estate, Truro, Cornwall, TR1 2SU",
     "isNew": true,
-    "garmentStatus": "Not Ordered",
+    "garmentStatus": "Booked in",
     "decorationMethod": "Embroidery",
     "embroideryFileStatus": "On File",
     "dtfStatus": "",
@@ -2023,7 +1733,7 @@
     "Rep": "Ricky Neale ",
     "Address": "Manchester Doors & Cubicles Ltd T/A MBP, Units 3-5 Shield Drive, Manchester , Greater Manchester, M28 2QB",
     "isNew": true,
-    "garmentStatus": "Not Ordered",
+    "garmentStatus": "Booked in",
     "decorationMethod": "Embroidery",
     "embroideryFileStatus": "On File",
     "dtfStatus": "",
@@ -2058,15 +1768,7 @@
         "SWP Parts Desc": [
           "Lifeways Left Breast Embroidery"
         ],
-        "Completed Qty": 0,
-        "swpPartCompletions": {
-          "SWPEMB-LIFWLB": [
-            {
-              "qty": 1,
-              "timestamp": "2025-02-21T14:29:45.340Z"
-            }
-          ]
-        }
+        "Completed Qty": 0
       },
       {
         "Master Code": "SWPLFW001-M",
@@ -2141,15 +1843,7 @@
         "SWP Parts Desc": [
           "Lifeways Left Breast Embroidery"
         ],
-        "Completed Qty": 0,
-        "swpPartCompletions": {
-          "SWPEMB-LIFWLB": [
-            {
-              "qty": 3,
-              "timestamp": "2025-02-21T14:42:08.778Z"
-            }
-          ]
-        }
+        "Completed Qty": 0
       },
       {
         "Master Code": "SWPLFW001-XXL",
@@ -2169,15 +1863,7 @@
         "SWP Parts Desc": [
           "Lifeways Left Breast Embroidery"
         ],
-        "Completed Qty": 0,
-        "swpPartCompletions": {
-          "SWPEMB-LIFWLB": [
-            {
-              "qty": 1,
-              "timestamp": "2025-02-21T14:39:27.301Z"
-            }
-          ]
-        }
+        "Completed Qty": 0
       },
       {
         "Master Code": "SWPLFW001-XXXL",
@@ -2197,12 +1883,12 @@
         "SWP Parts Desc": [
           "Lifeways Left Breast Embroidery"
         ],
-        "Completed Qty": 0,
+        "Completed Qty": 2,
         "swpPartCompletions": {
           "SWPEMB-LIFWLB": [
             {
               "qty": 2,
-              "timestamp": "2025-02-21T14:39:28.129Z"
+              "timestamp": "2025-02-21T14:59:45.479Z"
             }
           ]
         }
@@ -2216,10 +1902,10 @@
     "Rep": "Jaime Canosa",
     "Address": "",
     "isNew": true,
-    "garmentStatus": "Not Ordered",
+    "garmentStatus": "Booked in",
     "decorationMethod": "Embroidery",
-    "embroideryFileStatus": "Delayed",
+    "embroideryFileStatus": "On File",
     "dtfStatus": "",
-    "jobStatus": "Started"
+    "jobStatus": "Not Started"
   }
 ]

@@ -1,44 +1,5 @@
 [
   {
-    "SORD": "SORD01611929",
-    "Trader Code": "BIR003X",
-    "Trader Name": "Birmingham Stopper",
-    "Total Items": 3,
-    "Item List": [
-      {
-        "Master Code": "SWPBIRSTOP003-M",
-        "Description": "Medium Black Birmingham Stopper UX Fleece - UX5",
-        "Ordered Qty": 3,
-        "Outstanding Qty": 3,
-        "SWP Parts": [
-          "SWPEMB-BIR001"
-        ],
-        "Other Parts": [
-          "UX5.B.M"
-        ],
-        "SWP Parts Desc": [
-          "Birmingham Stopper Left Breast Embroidery - Maroon/White"
-        ],
-        "Other Parts Desc": [
-          "Full Zip Fleece - Black - M"
-        ]
-      }
-    ],
-    "Ordered Date": "06/01/2025",
-    "Due Date": "10/02/2025",
-    "Total Logos": 1,
-    "Reference": "BIR003X",
-    "Contact": "",
-    "Rep": "Tammy Harris",
-    "Address": "DELIVER TO RECEPTION NOT STORES, 235 Icknield St, Birmingham , , B18 6QU",
-    "isNew": true,
-    "garmentStatus": "Not Started",
-    "decorationMethod": "",
-    "embroideryFileStatus": "",
-    "dtfStatus": "",
-    "jobStatus": "Not Started"
-  },
-  {
     "SORD": "SORD01613087",
     "Trader Code": "FAR001X",
     "Trader Name": "The Farming Community Network",
@@ -53,16 +14,18 @@
           "SWPEMB-TFCNLB",
           "SWPEMB-TFCNR"
         ],
-        "Other Parts": [
-          "UC604.N.2XL"
+        "Other Parts Details": [
+          {
+            "partCode": "UC604.N.2XL",
+            "description": "Classic Full Zip Micro Fleece Jacket - Navy - 2XLarge",
+            "backOrderQty": 0
+          }
         ],
         "SWP Parts Desc": [
           "The Farming Community Network LB White/Green Embroidered Logo",
           "The Farming Community Network Rear White/Green Embroidered Logo"
         ],
-        "Other Parts Desc": [
-          "Classic Full Zip Micro Fleece Jacket - Navy - 2XLarge"
-        ]
+        "Completed Qty": 5
       },
       {
         "Master Code": "SWPTFCN003-L",
@@ -73,16 +36,18 @@
           "SWPEMB-TFCNLB",
           "SWPEMB-TFCNR"
         ],
-        "Other Parts": [
-          "UC101.N.L"
+        "Other Parts Details": [
+          {
+            "partCode": "UC101.N.L",
+            "description": "Uneek Classic Polo Shirt - Navy - Large",
+            "backOrderQty": 0
+          }
         ],
         "SWP Parts Desc": [
           "The Farming Community Network LB White/Green Embroidered Logo",
           "The Farming Community Network Rear White/Green Embroidered Logo"
         ],
-        "Other Parts Desc": [
-          "Uneek Classic Polo Shirt - Navy - Large"
-        ]
+        "Completed Qty": 3
       },
       {
         "Master Code": "SWPTFCN003-M",
@@ -93,16 +58,18 @@
           "SWPEMB-TFCNLB",
           "SWPEMB-TFCNR"
         ],
-        "Other Parts": [
-          "UC101.N.M"
+        "Other Parts Details": [
+          {
+            "partCode": "UC101.N.M",
+            "description": "Uneek Classic Polo Shirt - Navy - Medium",
+            "backOrderQty": 0
+          }
         ],
         "SWP Parts Desc": [
           "The Farming Community Network LB White/Green Embroidered Logo",
           "The Farming Community Network Rear White/Green Embroidered Logo"
         ],
-        "Other Parts Desc": [
-          "Uneek Classic Polo Shirt - Navy - Medium"
-        ]
+        "Completed Qty": 0
       },
       {
         "Master Code": "SWPTFCN003-S",
@@ -113,16 +80,18 @@
           "SWPEMB-TFCNLB",
           "SWPEMB-TFCNR"
         ],
-        "Other Parts": [
-          "UC101.N.S"
+        "Other Parts Details": [
+          {
+            "partCode": "UC101.N.S",
+            "description": "Uneek Classic Polo Shirt - Navy - Small",
+            "backOrderQty": 0
+          }
         ],
         "SWP Parts Desc": [
           "The Farming Community Network LB White/Green Embroidered Logo",
           "The Farming Community Network Rear White/Green Embroidered Logo"
         ],
-        "Other Parts Desc": [
-          "Uneek Classic Polo Shirt - Navy - Small"
-        ]
+        "Completed Qty": 0
       },
       {
         "Master Code": "SWPTFCN003-XL",
@@ -133,16 +102,18 @@
           "SWPEMB-TFCNLB",
           "SWPEMB-TFCNR"
         ],
-        "Other Parts": [
-          "UC101.N.XL"
+        "Other Parts Details": [
+          {
+            "partCode": "UC101.N.XL",
+            "description": "Uneek Classic Polo Shirt - Navy - X-Large",
+            "backOrderQty": 0
+          }
         ],
         "SWP Parts Desc": [
           "The Farming Community Network LB White/Green Embroidered Logo",
           "The Farming Community Network Rear White/Green Embroidered Logo"
         ],
-        "Other Parts Desc": [
-          "Uneek Classic Polo Shirt - Navy - X-Large"
-        ]
+        "Completed Qty": 0
       },
       {
         "Master Code": "SWPTFCN003-XXL",
@@ -153,16 +124,18 @@
           "SWPEMB-TFCNLB",
           "SWPEMB-TFCNR"
         ],
-        "Other Parts": [
-          "UC101.N.2XL"
+        "Other Parts Details": [
+          {
+            "partCode": "UC101.N.2XL",
+            "description": "Uneek Classic Polo Shirt - Navy - 2X-Large",
+            "backOrderQty": 0
+          }
         ],
         "SWP Parts Desc": [
           "The Farming Community Network LB White/Green Embroidered Logo",
           "The Farming Community Network Rear White/Green Embroidered Logo"
         ],
-        "Other Parts Desc": [
-          "Uneek Classic Polo Shirt - Navy - 2X-Large"
-        ]
+        "Completed Qty": 0
       },
       {
         "Master Code": "SWPTFCN005-L",
@@ -173,16 +146,18 @@
           "SWPEMB-TFCNLB",
           "SWPEMB-TFCNR"
         ],
-        "Other Parts": [
-          "RS902M.N.L"
+        "Other Parts Details": [
+          {
+            "partCode": "RS902M.N.L",
+            "description": "Large Navy Printable Recycled Softshell Gilet RS902M",
+            "backOrderQty": 0
+          }
         ],
         "SWP Parts Desc": [
           "The Farming Community Network LB White/Green Embroidered Logo",
           "The Farming Community Network Rear White/Green Embroidered Logo"
         ],
-        "Other Parts Desc": [
-          "Large Navy Printable Recycled Softshell Gilet RS902M"
-        ]
+        "Completed Qty": 0
       },
       {
         "Master Code": "SWPTFCN005-M",
@@ -193,16 +168,18 @@
           "SWPEMB-TFCNLB",
           "SWPEMB-TFCNR"
         ],
-        "Other Parts": [
-          "RS902M.N.M"
+        "Other Parts Details": [
+          {
+            "partCode": "RS902M.N.M",
+            "description": "Medium Navy Printable Recycled Softshell Gilet RS902M",
+            "backOrderQty": 0
+          }
         ],
         "SWP Parts Desc": [
           "The Farming Community Network LB White/Green Embroidered Logo",
           "The Farming Community Network Rear White/Green Embroidered Logo"
         ],
-        "Other Parts Desc": [
-          "Medium Navy Printable Recycled Softshell Gilet RS902M"
-        ]
+        "Completed Qty": 0
       },
       {
         "Master Code": "SWPTFCN005-XL",
@@ -213,16 +190,18 @@
           "SWPEMB-TFCNLB",
           "SWPEMB-TFCNR"
         ],
-        "Other Parts": [
-          "RS902M.N.XL"
+        "Other Parts Details": [
+          {
+            "partCode": "RS902M.N.XL",
+            "description": "XL Navy Printable Recycled Softshell Gilet RS902M",
+            "backOrderQty": 0
+          }
         ],
         "SWP Parts Desc": [
           "The Farming Community Network LB White/Green Embroidered Logo",
           "The Farming Community Network Rear White/Green Embroidered Logo"
         ],
-        "Other Parts Desc": [
-          "XL Navy Printable Recycled Softshell Gilet RS902M"
-        ]
+        "Completed Qty": 0
       },
       {
         "Master Code": "SWPTFCN005-XXL",
@@ -233,16 +212,18 @@
           "SWPEMB-TFCNLB",
           "SWPEMB-TFCNR"
         ],
-        "Other Parts": [
-          "RS902M.N.XXL"
+        "Other Parts Details": [
+          {
+            "partCode": "RS902M.N.XXL",
+            "description": "XXL Navy Printable Recycled Softshell Gilet RS902M",
+            "backOrderQty": 0
+          }
         ],
         "SWP Parts Desc": [
           "The Farming Community Network LB White/Green Embroidered Logo",
           "The Farming Community Network Rear White/Green Embroidered Logo"
         ],
-        "Other Parts Desc": [
-          "XXL Navy Printable Recycled Softshell Gilet RS902M"
-        ]
+        "Completed Qty": 0
       },
       {
         "Master Code": "SWPTFCN005-S",
@@ -253,18 +234,23 @@
           "SWPEMB-TFCNLB",
           "SWPEMB-TFCNR"
         ],
-        "Other Parts": [
-          "RS901M.N.S",
-          "RS902M.N.S"
+        "Other Parts Details": [
+          {
+            "partCode": "RS901M.N.S",
+            "description": "Result Recycled 2 Layer Soft Shell Jacket - Navy - Small",
+            "backOrderQty": 0
+          },
+          {
+            "partCode": "RS902M.N.S",
+            "description": "Small Navy Printable Recycled Softshell Gilet RS902M",
+            "backOrderQty": 0
+          }
         ],
         "SWP Parts Desc": [
           "The Farming Community Network LB White/Green Embroidered Logo",
           "The Farming Community Network Rear White/Green Embroidered Logo"
         ],
-        "Other Parts Desc": [
-          "Result Recycled 2 Layer Soft Shell Jacket - Navy - Small",
-          "Small Navy Printable Recycled Softshell Gilet RS902M"
-        ]
+        "Completed Qty": 0
       },
       {
         "Master Code": "SWPTFCN006-L",
@@ -275,16 +261,18 @@
           "SWPEMB-TFCNLB",
           "SWPEMB-TFCNR"
         ],
-        "Other Parts": [
-          "RS902F.N.L"
+        "Other Parts Details": [
+          {
+            "partCode": "RS902F.N.L",
+            "description": "Large Navy Printable Recycled Softshell Gilet RS902F",
+            "backOrderQty": 0
+          }
         ],
         "SWP Parts Desc": [
           "The Farming Community Network LB White/Green Embroidered Logo",
           "The Farming Community Network Rear White/Green Embroidered Logo"
         ],
-        "Other Parts Desc": [
-          "Large Navy Printable Recycled Softshell Gilet RS902F"
-        ]
+        "Completed Qty": 0
       },
       {
         "Master Code": "SWPTFCN006-M",
@@ -295,16 +283,18 @@
           "SWPEMB-TFCNLB",
           "SWPEMB-TFCNR"
         ],
-        "Other Parts": [
-          "RS902F.N.M"
+        "Other Parts Details": [
+          {
+            "partCode": "RS902F.N.M",
+            "description": "Medium Navy Printable Recycled Softshell Gilet RS902F",
+            "backOrderQty": 0
+          }
         ],
         "SWP Parts Desc": [
           "The Farming Community Network LB White/Green Embroidered Logo",
           "The Farming Community Network Rear White/Green Embroidered Logo"
         ],
-        "Other Parts Desc": [
-          "Medium Navy Printable Recycled Softshell Gilet RS902F"
-        ]
+        "Completed Qty": 0
       },
       {
         "Master Code": "SWPTFCN006-S",
@@ -315,16 +305,18 @@
           "SWPEMB-TFCNLB",
           "SWPEMB-TFCNR"
         ],
-        "Other Parts": [
-          "RS902F.N.S"
+        "Other Parts Details": [
+          {
+            "partCode": "RS902F.N.S",
+            "description": "Small Navy Printable Recycled Softshell Gilet RS902F",
+            "backOrderQty": 0
+          }
         ],
         "SWP Parts Desc": [
           "The Farming Community Network LB White/Green Embroidered Logo",
           "The Farming Community Network Rear White/Green Embroidered Logo"
         ],
-        "Other Parts Desc": [
-          "Small Navy Printable Recycled Softshell Gilet RS902F"
-        ]
+        "Completed Qty": 0
       },
       {
         "Master Code": "SWPTFCN006-XL",
@@ -335,16 +327,18 @@
           "SWPEMB-TFCNLB",
           "SWPEMB-TFCNR"
         ],
-        "Other Parts": [
-          "RS902F.N.XL"
+        "Other Parts Details": [
+          {
+            "partCode": "RS902F.N.XL",
+            "description": "XL Navy Printable Recycled Softshell Gilet RS902F",
+            "backOrderQty": 0
+          }
         ],
         "SWP Parts Desc": [
           "The Farming Community Network LB White/Green Embroidered Logo",
           "The Farming Community Network Rear White/Green Embroidered Logo"
         ],
-        "Other Parts Desc": [
-          "XL Navy Printable Recycled Softshell Gilet RS902F"
-        ]
+        "Completed Qty": 0
       },
       {
         "Master Code": "SWPTFCN006-XS",
@@ -355,16 +349,18 @@
           "SWPEMB-TFCNLB",
           "SWPEMB-TFCNR"
         ],
-        "Other Parts": [
-          "RS902F.N.XS"
+        "Other Parts Details": [
+          {
+            "partCode": "RS902F.N.XS",
+            "description": "XS Navy Printable Recycled Softshell Gilet RS902F",
+            "backOrderQty": 0
+          }
         ],
         "SWP Parts Desc": [
           "The Farming Community Network LB White/Green Embroidered Logo",
           "The Farming Community Network Rear White/Green Embroidered Logo"
         ],
-        "Other Parts Desc": [
-          "XS Navy Printable Recycled Softshell Gilet RS902F"
-        ]
+        "Completed Qty": 0
       },
       {
         "Master Code": "SWPTFCN006-XXL",
@@ -375,16 +371,18 @@
           "SWPEMB-TFCNLB",
           "SWPEMB-TFCNR"
         ],
-        "Other Parts": [
-          "RS902F.N.XXL"
+        "Other Parts Details": [
+          {
+            "partCode": "RS902F.N.XXL",
+            "description": "XXL Navy Printable Recycled Softshell Gilet RS902F",
+            "backOrderQty": 0
+          }
         ],
         "SWP Parts Desc": [
           "The Farming Community Network LB White/Green Embroidered Logo",
           "The Farming Community Network Rear White/Green Embroidered Logo"
         ],
-        "Other Parts Desc": [
-          "XXL Navy Printable Recycled Softshell Gilet RS902F"
-        ]
+        "Completed Qty": 0
       },
       {
         "Master Code": "SWPTFCN002-XS",
@@ -395,16 +393,18 @@
           "SWPEMB-TFCNLB",
           "SWPEMB-TFCNR"
         ],
-        "Other Parts": [
-          "UC608.N.XS"
+        "Other Parts Details": [
+          {
+            "partCode": "UC608.N.XS",
+            "description": "Ladies Classic Full Zip Fleece Jacket - Navy - XS",
+            "backOrderQty": 0
+          }
         ],
         "SWP Parts Desc": [
           "The Farming Community Network LB White/Green Embroidered Logo",
           "The Farming Community Network Rear White/Green Embroidered Logo"
         ],
-        "Other Parts Desc": [
-          "Ladies Classic Full Zip Fleece Jacket - Navy - XS"
-        ]
+        "Completed Qty": 0
       },
       {
         "Master Code": "SWPTFCN008-L",
@@ -415,16 +415,18 @@
           "SWPEMB-TFCNLB",
           "SWPEMB-TFCNR"
         ],
-        "Other Parts": [
-          "KB913.N.L"
+        "Other Parts Details": [
+          {
+            "partCode": "KB913.N.L",
+            "description": "Large Navy Luca men's microfleece gilet",
+            "backOrderQty": 0
+          }
         ],
         "SWP Parts Desc": [
           "The Farming Community Network LB White/Green Embroidered Logo",
           "The Farming Community Network Rear White/Green Embroidered Logo"
         ],
-        "Other Parts Desc": [
-          "Large Navy Luca men's microfleece gilet"
-        ]
+        "Completed Qty": 0
       },
       {
         "Master Code": "SWPTFCN008-M",
@@ -435,16 +437,18 @@
           "SWPEMB-TFCNLB",
           "SWPEMB-TFCNR"
         ],
-        "Other Parts": [
-          "KB913.N.M"
+        "Other Parts Details": [
+          {
+            "partCode": "KB913.N.M",
+            "description": "Medium Navy Luca men's microfleece gilet",
+            "backOrderQty": 0
+          }
         ],
         "SWP Parts Desc": [
           "The Farming Community Network LB White/Green Embroidered Logo",
           "The Farming Community Network Rear White/Green Embroidered Logo"
         ],
-        "Other Parts Desc": [
-          "Medium Navy Luca men's microfleece gilet"
-        ]
+        "Completed Qty": 0
       },
       {
         "Master Code": "SWPTFCN008-S",
@@ -455,16 +459,18 @@
           "SWPEMB-TFCNLB",
           "SWPEMB-TFCNR"
         ],
-        "Other Parts": [
-          "KB913.N.S"
+        "Other Parts Details": [
+          {
+            "partCode": "KB913.N.S",
+            "description": "Small Navy Luca men's microfleece gilet",
+            "backOrderQty": 0
+          }
         ],
         "SWP Parts Desc": [
           "The Farming Community Network LB White/Green Embroidered Logo",
           "The Farming Community Network Rear White/Green Embroidered Logo"
         ],
-        "Other Parts Desc": [
-          "Small Navy Luca men's microfleece gilet"
-        ]
+        "Completed Qty": 0
       },
       {
         "Master Code": "SWPTFCN008-XL",
@@ -475,16 +481,18 @@
           "SWPEMB-TFCNLB",
           "SWPEMB-TFCNR"
         ],
-        "Other Parts": [
-          "KB913.N.XL"
+        "Other Parts Details": [
+          {
+            "partCode": "KB913.N.XL",
+            "description": "XL Navy Luca men's microfleece gilet",
+            "backOrderQty": 0
+          }
         ],
         "SWP Parts Desc": [
           "The Farming Community Network LB White/Green Embroidered Logo",
           "The Farming Community Network Rear White/Green Embroidered Logo"
         ],
-        "Other Parts Desc": [
-          "XL Navy Luca men's microfleece gilet"
-        ]
+        "Completed Qty": 0
       },
       {
         "Master Code": "SWPTFCN008-XXL",
@@ -495,16 +503,18 @@
           "SWPEMB-TFCNLB",
           "SWPEMB-TFCNR"
         ],
-        "Other Parts": [
-          "KB913.N.XXL"
+        "Other Parts Details": [
+          {
+            "partCode": "KB913.N.XXL",
+            "description": "XXL Navy Luca men's microfleece gilet",
+            "backOrderQty": 0
+          }
         ],
         "SWP Parts Desc": [
           "The Farming Community Network LB White/Green Embroidered Logo",
           "The Farming Community Network Rear White/Green Embroidered Logo"
         ],
-        "Other Parts Desc": [
-          "XXL Navy Luca men's microfleece gilet"
-        ]
+        "Completed Qty": 0
       },
       {
         "Master Code": "SWPTFCN007-L",
@@ -515,16 +525,18 @@
           "SWPEMB-TFCNLB",
           "SWPEMB-TFCNR"
         ],
-        "Other Parts": [
-          "RG184.N.14"
+        "Other Parts Details": [
+          {
+            "partCode": "RG184.N.14",
+            "description": "Size 14 Navy Regatta Ladies Haber II Fleece Bodywarmer (TRA793)",
+            "backOrderQty": 0
+          }
         ],
         "SWP Parts Desc": [
           "The Farming Community Network LB White/Green Embroidered Logo",
           "The Farming Community Network Rear White/Green Embroidered Logo"
         ],
-        "Other Parts Desc": [
-          "Size 14 Navy Regatta Ladies Haber II Fleece Bodywarmer (TRA793)"
-        ]
+        "Completed Qty": 0
       },
       {
         "Master Code": "SWPTFCN007-XS",
@@ -535,16 +547,18 @@
           "SWPEMB-TFCNLB",
           "SWPEMB-TFCNR"
         ],
-        "Other Parts": [
-          "RG184.N.8"
+        "Other Parts Details": [
+          {
+            "partCode": "RG184.N.8",
+            "description": "Size 8 Navy Regatta Ladies Haber II Fleece Bodywarmer (TRA793)",
+            "backOrderQty": 0
+          }
         ],
         "SWP Parts Desc": [
           "The Farming Community Network LB White/Green Embroidered Logo",
           "The Farming Community Network Rear White/Green Embroidered Logo"
         ],
-        "Other Parts Desc": [
-          "Size 8 Navy Regatta Ladies Haber II Fleece Bodywarmer (TRA793)"
-        ]
+        "Completed Qty": 0
       },
       {
         "Master Code": "SWPTFCN007-XXL",
@@ -555,16 +569,18 @@
           "SWPEMB-TFCNLB",
           "SWPEMB-TFCNR"
         ],
-        "Other Parts": [
-          "RG184.N.18"
+        "Other Parts Details": [
+          {
+            "partCode": "RG184.N.18",
+            "description": "Size 18 Navy Regatta Ladies Haber II Fleece Bodywarmer (TRA793)",
+            "backOrderQty": 0
+          }
         ],
         "SWP Parts Desc": [
           "The Farming Community Network LB White/Green Embroidered Logo",
           "The Farming Community Network Rear White/Green Embroidered Logo"
         ],
-        "Other Parts Desc": [
-          "Size 18 Navy Regatta Ladies Haber II Fleece Bodywarmer (TRA793)"
-        ]
+        "Completed Qty": 0
       },
       {
         "Master Code": "SWPTFCN002-M",
@@ -575,16 +591,18 @@
           "SWPEMB-TFCNLB",
           "SWPEMB-TFCNR"
         ],
-        "Other Parts": [
-          "UC608.N.M"
+        "Other Parts Details": [
+          {
+            "partCode": "UC608.N.M",
+            "description": "Ladies Classic Full Zip Fleece Jacket - Navy - Medium",
+            "backOrderQty": 0
+          }
         ],
         "SWP Parts Desc": [
           "The Farming Community Network LB White/Green Embroidered Logo",
           "The Farming Community Network Rear White/Green Embroidered Logo"
         ],
-        "Other Parts Desc": [
-          "Ladies Classic Full Zip Fleece Jacket - Navy - Medium"
-        ]
+        "Completed Qty": 0
       },
       {
         "Master Code": "SWPTFCN007-M",
@@ -595,16 +613,18 @@
           "SWPEMB-TFCNLB",
           "SWPEMB-TFCNR"
         ],
-        "Other Parts": [
-          "RG184.N.12"
+        "Other Parts Details": [
+          {
+            "partCode": "RG184.N.12",
+            "description": "Size 12 Navy Regatta Ladies Haber II Fleece Bodywarmer (TRA793)",
+            "backOrderQty": 0
+          }
         ],
         "SWP Parts Desc": [
           "The Farming Community Network LB White/Green Embroidered Logo",
           "The Farming Community Network Rear White/Green Embroidered Logo"
         ],
-        "Other Parts Desc": [
-          "Size 12 Navy Regatta Ladies Haber II Fleece Bodywarmer (TRA793)"
-        ]
+        "Completed Qty": 0
       },
       {
         "Master Code": "SWPTFCN007-S",
@@ -615,16 +635,18 @@
           "SWPEMB-TFCNLB",
           "SWPEMB-TFCNR"
         ],
-        "Other Parts": [
-          "RG184.N.10"
+        "Other Parts Details": [
+          {
+            "partCode": "RG184.N.10",
+            "description": "Size 10 Navy Regatta Ladies Haber II Fleece Bodywarmer (TRA793)",
+            "backOrderQty": 0
+          }
         ],
         "SWP Parts Desc": [
           "The Farming Community Network LB White/Green Embroidered Logo",
           "The Farming Community Network Rear White/Green Embroidered Logo"
         ],
-        "Other Parts Desc": [
-          "Size 10 Navy Regatta Ladies Haber II Fleece Bodywarmer (TRA793)"
-        ]
+        "Completed Qty": 0
       },
       {
         "Master Code": "SWPTFCN007-XL",
@@ -635,16 +657,18 @@
           "SWPEMB-TFCNLB",
           "SWPEMB-TFCNR"
         ],
-        "Other Parts": [
-          "RG184.N.16"
+        "Other Parts Details": [
+          {
+            "partCode": "RG184.N.16",
+            "description": "Size 16 Navy Regatta Ladies Haber II Fleece Bodywarmer (TRA793)",
+            "backOrderQty": 0
+          }
         ],
         "SWP Parts Desc": [
           "The Farming Community Network LB White/Green Embroidered Logo",
           "The Farming Community Network Rear White/Green Embroidered Logo"
         ],
-        "Other Parts Desc": [
-          "Size 16 Navy Regatta Ladies Haber II Fleece Bodywarmer (TRA793)"
-        ]
+        "Completed Qty": 0
       },
       {
         "Master Code": "SWPTFCN002-S",
@@ -655,16 +679,18 @@
           "SWPEMB-TFCNLB",
           "SWPEMB-TFCNR"
         ],
-        "Other Parts": [
-          "UC608.N.S"
+        "Other Parts Details": [
+          {
+            "partCode": "UC608.N.S",
+            "description": "Ladies Classic Full Zip Fleece Jacket - Navy - Small",
+            "backOrderQty": 0
+          }
         ],
         "SWP Parts Desc": [
           "The Farming Community Network LB White/Green Embroidered Logo",
           "The Farming Community Network Rear White/Green Embroidered Logo"
         ],
-        "Other Parts Desc": [
-          "Ladies Classic Full Zip Fleece Jacket - Navy - Small"
-        ]
+        "Completed Qty": 0
       },
       {
         "Master Code": "SWPTFCN002-XL",
@@ -675,16 +701,18 @@
           "SWPEMB-TFCNLB",
           "SWPEMB-TFCNR"
         ],
-        "Other Parts": [
-          "UC608.N.XL"
+        "Other Parts Details": [
+          {
+            "partCode": "UC608.N.XL",
+            "description": "Ladies Classic Full Zip Fleece Jacket - Navy - X-Large",
+            "backOrderQty": 0
+          }
         ],
         "SWP Parts Desc": [
           "The Farming Community Network LB White/Green Embroidered Logo",
           "The Farming Community Network Rear White/Green Embroidered Logo"
         ],
-        "Other Parts Desc": [
-          "Ladies Classic Full Zip Fleece Jacket - Navy - X-Large"
-        ]
+        "Completed Qty": 0
       },
       {
         "Master Code": "SWPTFCN003-XS",
@@ -695,16 +723,18 @@
           "SWPEMB-TFCNLB",
           "SWPEMB-TFCNR"
         ],
-        "Other Parts": [
-          "UC101.N.XS"
+        "Other Parts Details": [
+          {
+            "partCode": "UC101.N.XS",
+            "description": "Uneek Classic Polo Shirt - Navy - X/Small",
+            "backOrderQty": 0
+          }
         ],
         "SWP Parts Desc": [
           "The Farming Community Network LB White/Green Embroidered Logo",
           "The Farming Community Network Rear White/Green Embroidered Logo"
         ],
-        "Other Parts Desc": [
-          "Uneek Classic Polo Shirt - Navy - X/Small"
-        ]
+        "Completed Qty": 0
       },
       {
         "Master Code": "SWPTFCN001-XL",
@@ -715,16 +745,18 @@
           "SWPEMB-TFCNLB",
           "SWPEMB-TFCNR"
         ],
-        "Other Parts": [
-          "UC604.N.XL"
+        "Other Parts Details": [
+          {
+            "partCode": "UC604.N.XL",
+            "description": "Classic Full Zip Micro Fleece Jacket - Navy - XLarge",
+            "backOrderQty": 0
+          }
         ],
         "SWP Parts Desc": [
           "The Farming Community Network LB White/Green Embroidered Logo",
           "The Farming Community Network Rear White/Green Embroidered Logo"
         ],
-        "Other Parts Desc": [
-          "Classic Full Zip Micro Fleece Jacket - Navy - XLarge"
-        ]
+        "Completed Qty": 0
       },
       {
         "Master Code": "SWPTFCN001-M",
@@ -735,16 +767,18 @@
           "SWPEMB-TFCNLB",
           "SWPEMB-TFCNR"
         ],
-        "Other Parts": [
-          "UC604.N.M"
+        "Other Parts Details": [
+          {
+            "partCode": "UC604.N.M",
+            "description": "Classic Full Zip Micro Fleece Jacket - Navy - Medium",
+            "backOrderQty": 0
+          }
         ],
         "SWP Parts Desc": [
           "The Farming Community Network LB White/Green Embroidered Logo",
           "The Farming Community Network Rear White/Green Embroidered Logo"
         ],
-        "Other Parts Desc": [
-          "Classic Full Zip Micro Fleece Jacket - Navy - Medium"
-        ]
+        "Completed Qty": 0
       },
       {
         "Master Code": "SWPTFCN001-L",
@@ -755,16 +789,18 @@
           "SWPEMB-TFCNLB",
           "SWPEMB-TFCNR"
         ],
-        "Other Parts": [
-          "UC604.N.L"
+        "Other Parts Details": [
+          {
+            "partCode": "UC604.N.L",
+            "description": "Classic Full Zip Micro Fleece Jacket - Navy - Large",
+            "backOrderQty": 0
+          }
         ],
         "SWP Parts Desc": [
           "The Farming Community Network LB White/Green Embroidered Logo",
           "The Farming Community Network Rear White/Green Embroidered Logo"
         ],
-        "Other Parts Desc": [
-          "Classic Full Zip Micro Fleece Jacket - Navy - Large"
-        ]
+        "Completed Qty": 0
       },
       {
         "Master Code": "SWPTFCN001-S",
@@ -775,16 +811,18 @@
           "SWPEMB-TFCNLB",
           "SWPEMB-TFCNR"
         ],
-        "Other Parts": [
-          "UC604.N.S"
+        "Other Parts Details": [
+          {
+            "partCode": "UC604.N.S",
+            "description": "Classic Full Zip Micro Fleece Jacket - Navy - Small",
+            "backOrderQty": 0
+          }
         ],
         "SWP Parts Desc": [
           "The Farming Community Network LB White/Green Embroidered Logo",
           "The Farming Community Network Rear White/Green Embroidered Logo"
         ],
-        "Other Parts Desc": [
-          "Classic Full Zip Micro Fleece Jacket - Navy - Small"
-        ]
+        "Completed Qty": 0
       },
       {
         "Master Code": "SWPTFCN002-L",
@@ -795,31 +833,33 @@
           "SWPEMB-TFCNLB",
           "SWPEMB-TFCNR"
         ],
-        "Other Parts": [
-          "UC608.N.L"
+        "Other Parts Details": [
+          {
+            "partCode": "UC608.N.L",
+            "description": "Ladies Classic Full Zip Fleece Jacket - Navy - Large",
+            "backOrderQty": 0
+          }
         ],
         "SWP Parts Desc": [
           "The Farming Community Network LB White/Green Embroidered Logo",
           "The Farming Community Network Rear White/Green Embroidered Logo"
         ],
-        "Other Parts Desc": [
-          "Ladies Classic Full Zip Fleece Jacket - Navy - Large"
-        ]
+        "Completed Qty": 0
       }
     ],
     "Ordered Date": "07/01/2025",
     "Due Date": null,
-    "Total Logos": 76,
+    "Total Logos": 470,
     "Reference": "FAR001X",
     "Contact": "Sandra Caulfield",
     "Rep": "Phil Murphy",
     "Address": "Manor Farm, Guilsborough Road, West Haddon, Northampton, NN6 7AQ",
     "isNew": true,
-    "garmentStatus": "Not Started",
-    "decorationMethod": "",
-    "embroideryFileStatus": "",
+    "garmentStatus": "Ordered",
+    "decorationMethod": "Embroidery",
+    "embroideryFileStatus": "Arrived",
     "dtfStatus": "",
-    "jobStatus": "Not Started"
+    "jobStatus": "Started"
   },
   {
     "SORD": "SORD01613529",
@@ -835,15 +875,17 @@
         "SWP Parts": [
           "SWPEMB-BLUEF001"
         ],
-        "Other Parts": [
-          "RX301.N.XXL"
+        "Other Parts Details": [
+          {
+            "partCode": "RX301.N.XXL",
+            "description": "Pro RTX Pro Sweatshirt - Navy - XXLarge",
+            "backOrderQty": 0
+          }
         ],
         "SWP Parts Desc": [
           "Blue Flame Left Breast Embroidery - White"
         ],
-        "Other Parts Desc": [
-          "Pro RTX Pro Sweatshirt - Navy - XXLarge"
-        ]
+        "Completed Qty": 1
       }
     ],
     "Ordered Date": "07/01/2025",
@@ -854,11 +896,11 @@
     "Rep": "Phil Murphy",
     "Address": "Energy House , Parkengue, Penryn, Cornwall, TR10 9EP",
     "isNew": true,
-    "garmentStatus": "Not Started",
-    "decorationMethod": "",
-    "embroideryFileStatus": "",
+    "garmentStatus": "Booked in",
+    "decorationMethod": "Embroidery",
+    "embroideryFileStatus": "Ordered",
     "dtfStatus": "",
-    "jobStatus": "Not Started"
+    "jobStatus": "Complete"
   },
   {
     "SORD": "SORD01620157",
@@ -874,15 +916,17 @@
         "SWP Parts": [
           "SWPEMB-EUCLB"
         ],
-        "Other Parts": [
-          "UC620N.3XL"
+        "Other Parts Details": [
+          {
+            "partCode": "UC620N.3XL",
+            "description": "Premium Outdoor Jacket Navy 3X Large",
+            "backOrderQty": 0
+          }
         ],
         "SWP Parts Desc": [
           "EUC Eucalypus Left Breast Embroidery (White)"
         ],
-        "Other Parts Desc": [
-          "Premium Outdoor Jacket Navy 3X Large"
-        ]
+        "Completed Qty": 0
       },
       {
         "Master Code": "SWPEUC001-L",
@@ -892,15 +936,17 @@
         "SWP Parts": [
           "SWPEMB-EUCLB"
         ],
-        "Other Parts": [
-          "UC620N.L"
+        "Other Parts Details": [
+          {
+            "partCode": "UC620N.L",
+            "description": "Premium Outdoor Jacket Navy Large",
+            "backOrderQty": 0
+          }
         ],
         "SWP Parts Desc": [
           "EUC Eucalypus Left Breast Embroidery (White)"
         ],
-        "Other Parts Desc": [
-          "Premium Outdoor Jacket Navy Large"
-        ]
+        "Completed Qty": 0
       },
       {
         "Master Code": "SWPEUC001-M",
@@ -910,15 +956,17 @@
         "SWP Parts": [
           "SWPEMB-EUCLB"
         ],
-        "Other Parts": [
-          "UC620N.M"
+        "Other Parts Details": [
+          {
+            "partCode": "UC620N.M",
+            "description": "Premium Outdoor Jacket Navy Medium",
+            "backOrderQty": 0
+          }
         ],
         "SWP Parts Desc": [
           "EUC Eucalypus Left Breast Embroidery (White)"
         ],
-        "Other Parts Desc": [
-          "Premium Outdoor Jacket Navy Medium"
-        ]
+        "Completed Qty": 0
       },
       {
         "Master Code": "SWPEUC001-S",
@@ -928,15 +976,17 @@
         "SWP Parts": [
           "SWPEMB-EUCLB"
         ],
-        "Other Parts": [
-          "UC620N.S"
+        "Other Parts Details": [
+          {
+            "partCode": "UC620N.S",
+            "description": "Premium Outdoor Jacket Navy Small",
+            "backOrderQty": 0
+          }
         ],
         "SWP Parts Desc": [
           "EUC Eucalypus Left Breast Embroidery (White)"
         ],
-        "Other Parts Desc": [
-          "Premium Outdoor Jacket Navy Small"
-        ]
+        "Completed Qty": 0
       },
       {
         "Master Code": "SWPEUC001-XL",
@@ -946,15 +996,17 @@
         "SWP Parts": [
           "SWPEMB-EUCLB"
         ],
-        "Other Parts": [
-          "UC620N.XL"
+        "Other Parts Details": [
+          {
+            "partCode": "UC620N.XL",
+            "description": "Premium Outdoor Jacket Navy X-Large",
+            "backOrderQty": 0
+          }
         ],
         "SWP Parts Desc": [
           "EUC Eucalypus Left Breast Embroidery (White)"
         ],
-        "Other Parts Desc": [
-          "Premium Outdoor Jacket Navy X-Large"
-        ]
+        "Completed Qty": 0
       },
       {
         "Master Code": "SWPEUC001-XXL",
@@ -964,15 +1016,17 @@
         "SWP Parts": [
           "SWPEMB-EUCLB"
         ],
-        "Other Parts": [
-          "UC620N.2XL"
+        "Other Parts Details": [
+          {
+            "partCode": "UC620N.2XL",
+            "description": "Premium Outdoor Jacket Navy 2X Large",
+            "backOrderQty": 0
+          }
         ],
         "SWP Parts Desc": [
           "EUC Eucalypus Left Breast Embroidery (White)"
         ],
-        "Other Parts Desc": [
-          "Premium Outdoor Jacket Navy 2X Large"
-        ]
+        "Completed Qty": 0
       },
       {
         "Master Code": "SWPEUC002-3XL",
@@ -982,15 +1036,17 @@
         "SWP Parts": [
           "SWPEMB-EUCLB"
         ],
-        "Other Parts": [
-          "UC301N.3XL"
+        "Other Parts Details": [
+          {
+            "partCode": "UC301N.3XL",
+            "description": "T-Shirt Navy 3X Large",
+            "backOrderQty": 0
+          }
         ],
         "SWP Parts Desc": [
           "EUC Eucalypus Left Breast Embroidery (White)"
         ],
-        "Other Parts Desc": [
-          "T-Shirt Navy 3X Large"
-        ]
+        "Completed Qty": 0
       },
       {
         "Master Code": "SWPEUC002-L",
@@ -1000,15 +1056,17 @@
         "SWP Parts": [
           "SWPEMB-EUCLB"
         ],
-        "Other Parts": [
-          "UC301N.L"
+        "Other Parts Details": [
+          {
+            "partCode": "UC301N.L",
+            "description": "T-Shirt Navy Large",
+            "backOrderQty": 0
+          }
         ],
         "SWP Parts Desc": [
           "EUC Eucalypus Left Breast Embroidery (White)"
         ],
-        "Other Parts Desc": [
-          "T-Shirt Navy Large"
-        ]
+        "Completed Qty": 0
       },
       {
         "Master Code": "SWPEUC002-M",
@@ -1018,15 +1076,17 @@
         "SWP Parts": [
           "SWPEMB-EUCLB"
         ],
-        "Other Parts": [
-          "UC301N.M"
+        "Other Parts Details": [
+          {
+            "partCode": "UC301N.M",
+            "description": "T-Shirt Navy Medium",
+            "backOrderQty": 0
+          }
         ],
         "SWP Parts Desc": [
           "EUC Eucalypus Left Breast Embroidery (White)"
         ],
-        "Other Parts Desc": [
-          "T-Shirt Navy Medium"
-        ]
+        "Completed Qty": 0
       },
       {
         "Master Code": "SWPEUC002-S",
@@ -1036,15 +1096,17 @@
         "SWP Parts": [
           "SWPEMB-EUCLB"
         ],
-        "Other Parts": [
-          "UC301N.S"
+        "Other Parts Details": [
+          {
+            "partCode": "UC301N.S",
+            "description": "T-Shirt Navy Small",
+            "backOrderQty": 0
+          }
         ],
         "SWP Parts Desc": [
           "EUC Eucalypus Left Breast Embroidery (White)"
         ],
-        "Other Parts Desc": [
-          "T-Shirt Navy Small"
-        ]
+        "Completed Qty": 0
       },
       {
         "Master Code": "SWPEUC002-XL",
@@ -1054,15 +1116,17 @@
         "SWP Parts": [
           "SWPEMB-EUCLB"
         ],
-        "Other Parts": [
-          "UC301N.XL"
+        "Other Parts Details": [
+          {
+            "partCode": "UC301N.XL",
+            "description": "T-Shirt Navy X Large",
+            "backOrderQty": 0
+          }
         ],
         "SWP Parts Desc": [
           "EUC Eucalypus Left Breast Embroidery (White)"
         ],
-        "Other Parts Desc": [
-          "T-Shirt Navy X Large"
-        ]
+        "Completed Qty": 0
       },
       {
         "Master Code": "SWPEUC002-XXL",
@@ -1072,15 +1136,17 @@
         "SWP Parts": [
           "SWPEMB-EUCLB"
         ],
-        "Other Parts": [
-          "UC301N.2XL"
+        "Other Parts Details": [
+          {
+            "partCode": "UC301N.2XL",
+            "description": "T-Shirt Navy 2X Large",
+            "backOrderQty": 0
+          }
         ],
         "SWP Parts Desc": [
           "EUC Eucalypus Left Breast Embroidery (White)"
         ],
-        "Other Parts Desc": [
-          "T-Shirt Navy 2X Large"
-        ]
+        "Completed Qty": 0
       },
       {
         "Master Code": "SWPEUC003-3XL",
@@ -1090,15 +1156,17 @@
         "SWP Parts": [
           "SWPEMB-EUCLB2"
         ],
-        "Other Parts": [
-          "UC301B.3XL"
+        "Other Parts Details": [
+          {
+            "partCode": "UC301B.3XL",
+            "description": "T-Shirt Beige 3XLarge",
+            "backOrderQty": 0
+          }
         ],
         "SWP Parts Desc": [
           "EUC Eucalypus Left Breast Embroidery (Cream)"
         ],
-        "Other Parts Desc": [
-          "T-Shirt Beige 3XLarge"
-        ]
+        "Completed Qty": 0
       },
       {
         "Master Code": "SWPEUC003-L",
@@ -1108,15 +1176,17 @@
         "SWP Parts": [
           "SWPEMB-EUCLB2"
         ],
-        "Other Parts": [
-          "UC301B.L"
+        "Other Parts Details": [
+          {
+            "partCode": "UC301B.L",
+            "description": "T-Shirt Beige Large",
+            "backOrderQty": 0
+          }
         ],
         "SWP Parts Desc": [
           "EUC Eucalypus Left Breast Embroidery (Cream)"
         ],
-        "Other Parts Desc": [
-          "T-Shirt Beige Large"
-        ]
+        "Completed Qty": 0
       },
       {
         "Master Code": "SWPEUC003-M",
@@ -1126,15 +1196,17 @@
         "SWP Parts": [
           "SWPEMB-EUCLB2"
         ],
-        "Other Parts": [
-          "UC301B.M"
+        "Other Parts Details": [
+          {
+            "partCode": "UC301B.M",
+            "description": "T-Shirt Beige Medium",
+            "backOrderQty": 0
+          }
         ],
         "SWP Parts Desc": [
           "EUC Eucalypus Left Breast Embroidery (Cream)"
         ],
-        "Other Parts Desc": [
-          "T-Shirt Beige Medium"
-        ]
+        "Completed Qty": 0
       },
       {
         "Master Code": "SWPEUC003-S",
@@ -1144,15 +1216,17 @@
         "SWP Parts": [
           "SWPEMB-EUCLB2"
         ],
-        "Other Parts": [
-          "UC301B.S"
+        "Other Parts Details": [
+          {
+            "partCode": "UC301B.S",
+            "description": "T-Shirt Beige Small",
+            "backOrderQty": 0
+          }
         ],
         "SWP Parts Desc": [
           "EUC Eucalypus Left Breast Embroidery (Cream)"
         ],
-        "Other Parts Desc": [
-          "T-Shirt Beige Small"
-        ]
+        "Completed Qty": 0
       },
       {
         "Master Code": "SWPEUC003-XL",
@@ -1162,15 +1236,17 @@
         "SWP Parts": [
           "SWPEMB-EUCLB2"
         ],
-        "Other Parts": [
-          "UC301B.XL"
+        "Other Parts Details": [
+          {
+            "partCode": "UC301B.XL",
+            "description": "T-Shirt Beige Xlarge",
+            "backOrderQty": 0
+          }
         ],
         "SWP Parts Desc": [
           "EUC Eucalypus Left Breast Embroidery (Cream)"
         ],
-        "Other Parts Desc": [
-          "T-Shirt Beige Xlarge"
-        ]
+        "Completed Qty": 0
       },
       {
         "Master Code": "SWPEUC003-XXL",
@@ -1180,15 +1256,17 @@
         "SWP Parts": [
           "SWPEMB-EUCLB2"
         ],
-        "Other Parts": [
-          "UC301B.2XL"
+        "Other Parts Details": [
+          {
+            "partCode": "UC301B.2XL",
+            "description": "T-Shirt Beige 2XLarge",
+            "backOrderQty": 0
+          }
         ],
         "SWP Parts Desc": [
           "EUC Eucalypus Left Breast Embroidery (Cream)"
         ],
-        "Other Parts Desc": [
-          "T-Shirt Beige 2XLarge"
-        ]
+        "Completed Qty": 0
       },
       {
         "Master Code": "SWPEUC004-3XL",
@@ -1198,15 +1276,17 @@
         "SWP Parts": [
           "SWPEMB-EUCLB"
         ],
-        "Other Parts": [
-          "UC502N.3XL"
+        "Other Parts Details": [
+          {
+            "partCode": "UC502N.3XL",
+            "description": "Classic Hooded Sweatshirt Navy 3 X Large",
+            "backOrderQty": 0
+          }
         ],
         "SWP Parts Desc": [
           "EUC Eucalypus Left Breast Embroidery (White)"
         ],
-        "Other Parts Desc": [
-          "Classic Hooded Sweatshirt Navy 3 X Large"
-        ]
+        "Completed Qty": 0
       },
       {
         "Master Code": "SWPEUC004-L",
@@ -1216,15 +1296,17 @@
         "SWP Parts": [
           "SWPEMB-EUCLB"
         ],
-        "Other Parts": [
-          "UC502N.L"
+        "Other Parts Details": [
+          {
+            "partCode": "UC502N.L",
+            "description": "Classic Hooded Sweatshirt Navy Large",
+            "backOrderQty": 0
+          }
         ],
         "SWP Parts Desc": [
           "EUC Eucalypus Left Breast Embroidery (White)"
         ],
-        "Other Parts Desc": [
-          "Classic Hooded Sweatshirt Navy Large"
-        ]
+        "Completed Qty": 0
       },
       {
         "Master Code": "SWPEUC004-M",
@@ -1234,15 +1316,17 @@
         "SWP Parts": [
           "SWPEMB-EUCLB"
         ],
-        "Other Parts": [
-          "UC502N.M"
+        "Other Parts Details": [
+          {
+            "partCode": "UC502N.M",
+            "description": "Classic Hooded Sweatshirt Navy Medium",
+            "backOrderQty": 0
+          }
         ],
         "SWP Parts Desc": [
           "EUC Eucalypus Left Breast Embroidery (White)"
         ],
-        "Other Parts Desc": [
-          "Classic Hooded Sweatshirt Navy Medium"
-        ]
+        "Completed Qty": 0
       },
       {
         "Master Code": "SWPEUC004-S",
@@ -1252,15 +1336,17 @@
         "SWP Parts": [
           "SWPEMB-EUCLB"
         ],
-        "Other Parts": [
-          "UC502N.S"
+        "Other Parts Details": [
+          {
+            "partCode": "UC502N.S",
+            "description": "Classic Hooded Sweatshirt Navy Small",
+            "backOrderQty": 0
+          }
         ],
         "SWP Parts Desc": [
           "EUC Eucalypus Left Breast Embroidery (White)"
         ],
-        "Other Parts Desc": [
-          "Classic Hooded Sweatshirt Navy Small"
-        ]
+        "Completed Qty": 0
       },
       {
         "Master Code": "SWPEUC004-XL",
@@ -1270,15 +1356,17 @@
         "SWP Parts": [
           "SWPEMB-EUCLB"
         ],
-        "Other Parts": [
-          "UC502N.XL"
+        "Other Parts Details": [
+          {
+            "partCode": "UC502N.XL",
+            "description": "Classic Hooded Sweatshirt Navy X Large",
+            "backOrderQty": 0
+          }
         ],
         "SWP Parts Desc": [
           "EUC Eucalypus Left Breast Embroidery (White)"
         ],
-        "Other Parts Desc": [
-          "Classic Hooded Sweatshirt Navy X Large"
-        ]
+        "Completed Qty": 0
       },
       {
         "Master Code": "SWPEUC004-XXL",
@@ -1288,15 +1376,17 @@
         "SWP Parts": [
           "SWPEMB-EUCLB"
         ],
-        "Other Parts": [
-          "UC502N.2XL"
+        "Other Parts Details": [
+          {
+            "partCode": "UC502N.2XL",
+            "description": "Classic Hooded Sweatshirt Navy 2 X Large",
+            "backOrderQty": 0
+          }
         ],
         "SWP Parts Desc": [
           "EUC Eucalypus Left Breast Embroidery (White)"
         ],
-        "Other Parts Desc": [
-          "Classic Hooded Sweatshirt Navy 2 X Large"
-        ]
+        "Completed Qty": 0
       },
       {
         "Master Code": "SWPEUC005-M",
@@ -1306,15 +1396,17 @@
         "SWP Parts": [
           "SWPEMB-EUCLB"
         ],
-        "Other Parts": [
-          "UC203.N.M"
+        "Other Parts Details": [
+          {
+            "partCode": "UC203.N.M",
+            "description": "Classic Sweatshirt - Navy - Medium",
+            "backOrderQty": 0
+          }
         ],
         "SWP Parts Desc": [
           "EUC Eucalypus Left Breast Embroidery (White)"
         ],
-        "Other Parts Desc": [
-          "Classic Sweatshirt - Navy - Medium"
-        ]
+        "Completed Qty": 0
       },
       {
         "Master Code": "SWPEUC006",
@@ -1322,13 +1414,15 @@
         "Ordered Qty": 7,
         "Outstanding Qty": 7,
         "SWP Parts": [],
-        "Other Parts": [
-          "UC410.N.OS"
+        "Other Parts Details": [
+          {
+            "partCode": "UC410.N.OS",
+            "description": "Heavweight Cuffed Beanies - Navy - One Size",
+            "backOrderQty": 0
+          }
         ],
         "SWP Parts Desc": [],
-        "Other Parts Desc": [
-          "Heavweight Cuffed Beanies - Navy - One Size"
-        ]
+        "Completed Qty": 0
       },
       {
         "Master Code": "SWPEUC007",
@@ -1338,30 +1432,32 @@
         "SWP Parts": [
           "SWPEMB-EUCH"
         ],
-        "Other Parts": [
-          "BB10.NV"
+        "Other Parts Details": [
+          {
+            "partCode": "BB10.NV",
+            "description": "Beechfield Original 5 Panel Cap - Navy - One Size",
+            "backOrderQty": 0
+          }
         ],
         "SWP Parts Desc": [
           "EUC Eucalypus Hat Embroidery (White)"
         ],
-        "Other Parts Desc": [
-          "Beechfield Original 5 Panel Cap - Navy - One Size"
-        ]
+        "Completed Qty": 0
       }
     ],
     "Ordered Date": "17/01/2025",
     "Due Date": null,
-    "Total Logos": 26,
+    "Total Logos": 48,
     "Reference": "FIL100X",
     "Contact": "Kevin Clapham ",
     "Rep": "Vicky Gill",
     "Address": "unit 17 union way, Aston , Birmingham, Wset Midlands , B6 7FH",
     "isNew": true,
-    "garmentStatus": "Not Started",
-    "decorationMethod": "",
-    "embroideryFileStatus": "",
+    "garmentStatus": "Not Ordered",
+    "decorationMethod": "Embroidery",
+    "embroideryFileStatus": "On File",
     "dtfStatus": "",
-    "jobStatus": "Not Started"
+    "jobStatus": "Started"
   },
   {
     "SORD": "SORD01624940",
@@ -1377,15 +1473,17 @@
         "SWP Parts": [
           "SWPEMB-MBP004"
         ],
-        "Other Parts": [
-          "UC604.BK.2XL"
+        "Other Parts Details": [
+          {
+            "partCode": "UC604.BK.2XL",
+            "description": "Classic Full Zip Micro Fleece Jacket - Black - 2XLarge",
+            "backOrderQty": 0
+          }
         ],
         "SWP Parts Desc": [
           "MBP Centre Cap Embroidery Logo - White/Orange"
         ],
-        "Other Parts Desc": [
-          "Classic Full Zip Micro Fleece Jacket - Black - 2XLarge"
-        ]
+        "Completed Qty": 0
       },
       {
         "Master Code": "SWPMID0021-XL",
@@ -1395,15 +1493,17 @@
         "SWP Parts": [
           "SWPEMB-MBP004"
         ],
-        "Other Parts": [
-          "UC604.BK.XL"
+        "Other Parts Details": [
+          {
+            "partCode": "UC604.BK.XL",
+            "description": "Classic Full Zip Micro Fleece Jacket - Black - XLarge",
+            "backOrderQty": 0
+          }
         ],
         "SWP Parts Desc": [
           "MBP Centre Cap Embroidery Logo - White/Orange"
         ],
-        "Other Parts Desc": [
-          "Classic Full Zip Micro Fleece Jacket - Black - XLarge"
-        ]
+        "Completed Qty": 0
       },
       {
         "Master Code": "SWPMID0021-M",
@@ -1413,28 +1513,30 @@
         "SWP Parts": [
           "SWPEMB-MBP004"
         ],
-        "Other Parts": [
-          "UC604.BK.M"
+        "Other Parts Details": [
+          {
+            "partCode": "UC604.BK.M",
+            "description": "Classic Full Zip Micro Fleece Jacket - Black - Medium",
+            "backOrderQty": 0
+          }
         ],
         "SWP Parts Desc": [
           "MBP Centre Cap Embroidery Logo - White/Orange"
         ],
-        "Other Parts Desc": [
-          "Classic Full Zip Micro Fleece Jacket - Black - Medium"
-        ]
+        "Completed Qty": 0
       }
     ],
     "Ordered Date": "27/01/2025",
     "Due Date": null,
-    "Total Logos": 3,
+    "Total Logos": 6,
     "Reference": "MBP/JSL",
     "Contact": "Kathryn Fitter",
     "Rep": "Ricky Neale ",
     "Address": "Joinery Specialists Ltd T/A MBP, Unit 43 Llantarnam Park, Cwmbran, Torfaen, NP44 3AW",
     "isNew": true,
-    "garmentStatus": "Not Started",
-    "decorationMethod": "",
-    "embroideryFileStatus": "",
+    "garmentStatus": "Not Ordered",
+    "decorationMethod": "Embroidery",
+    "embroideryFileStatus": "On File",
     "dtfStatus": "",
     "jobStatus": "Not Started"
   },
@@ -1452,30 +1554,35 @@
         "SWP Parts": [
           "SWPDDI-H"
         ],
-        "Other Parts": [
-          "5.03057E+12",
-          "BBEVSHB"
+        "Other Parts Details": [
+          {
+            "partCode": "5.03057E+12",
+            "description": "Beeswift Economy Vented Safety Helmet Blue",
+            "backOrderQty": 0
+          },
+          {
+            "partCode": "BBEVSHB",
+            "description": "Beeswift Economy Vented Safety Helmet Blue",
+            "backOrderQty": 0
+          }
         ],
         "SWP Parts Desc": [
           "DDI Projects Black Helmet Transfer"
         ],
-        "Other Parts Desc": [
-          "Beeswift Economy Vented Safety Helmet Blue",
-          "Beeswift Economy Vented Safety Helmet Blue"
-        ]
+        "Completed Qty": 0
       }
     ],
     "Ordered Date": "28/01/2025",
     "Due Date": "18/02/2025",
-    "Total Logos": 1,
+    "Total Logos": 30,
     "Reference": "DDS100C",
     "Contact": "Joy",
     "Rep": "Lorraine Rogers",
     "Address": "23 Haviland Road , Ferndown Industrial Estate, Wimborne, Dorset, BH21 7SA",
     "isNew": true,
-    "garmentStatus": "Not Started",
-    "decorationMethod": "",
-    "embroideryFileStatus": "",
+    "garmentStatus": "Not Ordered",
+    "decorationMethod": "Embroidery",
+    "embroideryFileStatus": "On File",
     "dtfStatus": "",
     "jobStatus": "Not Started"
   },
@@ -1495,17 +1602,19 @@
           "SWPEMB-LIGHT",
           "SWPEMB-YMCALB"
         ],
-        "Other Parts": [
-          "SS12.DN-XXL"
+        "Other Parts Details": [
+          {
+            "partCode": "SS12.DN-XXL",
+            "description": "XXL Deep Navy Fruit of the Loom Original T-Shirt",
+            "backOrderQty": 0
+          }
         ],
         "SWP Parts Desc": [
           "Ambassador Right Breast Embroidery (White)",
           "The Light Shines Embroidery Bottom",
           "YMCA Lighthouse Left Breast Embroidery"
         ],
-        "Other Parts Desc": [
-          "XXL Deep Navy Fruit of the Loom Original T-Shirt"
-        ]
+        "Completed Qty": 0
       },
       {
         "Master Code": "SWPYMCA002-XL",
@@ -1517,17 +1626,19 @@
           "SWPEMB-LIGHT",
           "SWPEMB-YMCALB"
         ],
-        "Other Parts": [
-          "JH001.DB.XL"
+        "Other Parts Details": [
+          {
+            "partCode": "JH001.DB.XL",
+            "description": "XL Deep Blue AWDis College Hoodie",
+            "backOrderQty": 0
+          }
         ],
         "SWP Parts Desc": [
           "Ambassador Right Breast Embroidery (White)",
           "The Light Shines Embroidery Bottom",
           "YMCA Lighthouse Left Breast Embroidery"
         ],
-        "Other Parts Desc": [
-          "XL Deep Blue AWDis College Hoodie"
-        ]
+        "Completed Qty": 0
       },
       {
         "Master Code": "SWPYMCA002-XXL",
@@ -1539,17 +1650,19 @@
           "SWPEMB-LIGHT",
           "SWPEMB-YMCALB"
         ],
-        "Other Parts": [
-          "JH001.DB.XXL"
+        "Other Parts Details": [
+          {
+            "partCode": "JH001.DB.XXL",
+            "description": "XXL Deep Blue AWDis College Hoodie",
+            "backOrderQty": 0
+          }
         ],
         "SWP Parts Desc": [
           "Ambassador Right Breast Embroidery (White)",
           "The Light Shines Embroidery Bottom",
           "YMCA Lighthouse Left Breast Embroidery"
         ],
-        "Other Parts Desc": [
-          "XXL Deep Blue AWDis College Hoodie"
-        ]
+        "Completed Qty": 0
       },
       {
         "Master Code": "SWPYMCA003-XL",
@@ -1561,17 +1674,19 @@
           "SWPEMB-LIGHT",
           "SWPEMB-YMCALB"
         ],
-        "Other Parts": [
-          "SS12.DN-XL"
+        "Other Parts Details": [
+          {
+            "partCode": "SS12.DN-XL",
+            "description": "XL Deep Navy Fruit of the Loom Original T-Shirt",
+            "backOrderQty": 0
+          }
         ],
         "SWP Parts Desc": [
           "Ambassador Right Breast Embroidery (White)",
           "The Light Shines Embroidery Bottom",
           "YMCA Lighthouse Left Breast Embroidery"
         ],
-        "Other Parts Desc": [
-          "XL Deep Navy Fruit of the Loom Original T-Shirt"
-        ]
+        "Completed Qty": 0
       },
       {
         "Master Code": "SWPYMCA004-XL",
@@ -1583,17 +1698,19 @@
           "SWPEMB-LIGHT",
           "SWPEMB-YMCALB"
         ],
-        "Other Parts": [
-          "SS229.DN-XL"
+        "Other Parts Details": [
+          {
+            "partCode": "SS229.DN-XL",
+            "description": "XL Dark Navy Fruit of the Loom Original Piqu� Polo Shirt",
+            "backOrderQty": 0
+          }
         ],
         "SWP Parts Desc": [
           "Ambassador Right Breast Embroidery (White)",
           "The Light Shines Embroidery Bottom",
           "YMCA Lighthouse Left Breast Embroidery"
         ],
-        "Other Parts Desc": [
-          "XL Dark Navy Fruit of the Loom Original Piqu� Polo Shirt"
-        ]
+        "Completed Qty": 0
       },
       {
         "Master Code": "SWPYMCA001",
@@ -1604,29 +1721,31 @@
           "SWPEMB-LIGHTH",
           "SWPEMB-YMCAH"
         ],
-        "Other Parts": [
-          "BB10.GR"
+        "Other Parts Details": [
+          {
+            "partCode": "BB10.GR",
+            "description": "Beechfield Original 5 Panel Cap - Graphite- One Size",
+            "backOrderQty": 0
+          }
         ],
         "SWP Parts Desc": [
           "The Light Shines Hat Embroidery",
           "YMCA Lighthouse Hat Embroidery"
         ],
-        "Other Parts Desc": [
-          "Beechfield Original 5 Panel Cap - Graphite- One Size"
-        ]
+        "Completed Qty": 0
       }
     ],
     "Ordered Date": "29/01/2025",
     "Due Date": null,
-    "Total Logos": 17,
+    "Total Logos": 29,
     "Reference": "YMC001I",
     "Contact": "Fen Yee Teng",
     "Rep": "Adrian Walker",
     "Address": "39 - 41 St Davids Hill , , Exeter, Devon, EX4 4DA   ",
     "isNew": true,
-    "garmentStatus": "Not Started",
-    "decorationMethod": "",
-    "embroideryFileStatus": "",
+    "garmentStatus": "Not Ordered",
+    "decorationMethod": "Embroidery",
+    "embroideryFileStatus": "On File",
     "dtfStatus": "",
     "jobStatus": "Not Started"
   },
@@ -1646,17 +1765,19 @@
           "SWPDTF-CAVLB",
           "SWPDTF-YPNRB"
         ],
-        "Other Parts": [
-          "UC502.B.S"
+        "Other Parts Details": [
+          {
+            "partCode": "UC502.B.S",
+            "description": "Small Hooded Sweatshirt - Black",
+            "backOrderQty": 0
+          }
         ],
         "SWP Parts Desc": [
           "Babcock YPN Rear Logo",
           "Cavandish Nuclear Left Breast Logo",
           "Young Professionals Network Right Breast Logo"
         ],
-        "Other Parts Desc": [
-          "Small Hooded Sweatshirt - Black"
-        ]
+        "Completed Qty": 0
       },
       {
         "Master Code": "SWPCAV001-M",
@@ -1668,17 +1789,19 @@
           "SWPDTF-CAVLB",
           "SWPDTF-YPNRB"
         ],
-        "Other Parts": [
-          "UC502.B.M"
+        "Other Parts Details": [
+          {
+            "partCode": "UC502.B.M",
+            "description": "Hooded Sweatshirt - Black - M",
+            "backOrderQty": 0
+          }
         ],
         "SWP Parts Desc": [
           "Babcock YPN Rear Logo",
           "Cavandish Nuclear Left Breast Logo",
           "Young Professionals Network Right Breast Logo"
         ],
-        "Other Parts Desc": [
-          "Hooded Sweatshirt - Black - M"
-        ]
+        "Completed Qty": 0
       },
       {
         "Master Code": "SWPCAV001-L",
@@ -1690,17 +1813,19 @@
           "SWPDTF-CAVLB",
           "SWPDTF-YPNRB"
         ],
-        "Other Parts": [
-          "UC502.B.L"
+        "Other Parts Details": [
+          {
+            "partCode": "UC502.B.L",
+            "description": "Hooded Sweatshirt - Black - L",
+            "backOrderQty": 0
+          }
         ],
         "SWP Parts Desc": [
           "Babcock YPN Rear Logo",
           "Cavandish Nuclear Left Breast Logo",
           "Young Professionals Network Right Breast Logo"
         ],
-        "Other Parts Desc": [
-          "Hooded Sweatshirt - Black - L"
-        ]
+        "Completed Qty": 3
       },
       {
         "Master Code": "SWPCAV001-XL",
@@ -1712,30 +1837,32 @@
           "SWPDTF-CAVLB",
           "SWPDTF-YPNRB"
         ],
-        "Other Parts": [
-          "UC502.B.XL"
+        "Other Parts Details": [
+          {
+            "partCode": "UC502.B.XL",
+            "description": "XL Hooded Sweatshirt - Black",
+            "backOrderQty": 0
+          }
         ],
         "SWP Parts Desc": [
           "Babcock YPN Rear Logo",
           "Cavandish Nuclear Left Breast Logo",
           "Young Professionals Network Right Breast Logo"
         ],
-        "Other Parts Desc": [
-          "XL Hooded Sweatshirt - Black"
-        ]
+        "Completed Qty": 0
       }
     ],
     "Ordered Date": "29/01/2025",
     "Due Date": null,
-    "Total Logos": 12,
+    "Total Logos": 240,
     "Reference": "BABNUCC",
     "Contact": "",
     "Rep": "Jacqui Alexander",
     "Address": "Thomas Burt, Radar Road, Leicester, Leicestershire, LE3 1UF",
     "isNew": true,
-    "garmentStatus": "Not Started",
-    "decorationMethod": "",
-    "embroideryFileStatus": "",
+    "garmentStatus": "Booked in",
+    "decorationMethod": "Embroidery",
+    "embroideryFileStatus": "On File",
     "dtfStatus": "",
     "jobStatus": "Not Started"
   },
@@ -1754,16 +1881,32 @@
           "SWPDTF-DURLB",
           "SWPDTF-DURR"
         ],
-        "Other Parts": [
-          "HV/TWCO1Y-M"
+        "Other Parts Details": [
+          {
+            "partCode": "HV/TWCO1Y-M",
+            "description": "Medium UCI TWC01 Hi Viz Waistcoat",
+            "backOrderQty": 0
+          }
         ],
         "SWP Parts Desc": [
           "Duright Left Breast Logo",
           "Duright Rear Lower Back Logo"
         ],
-        "Other Parts Desc": [
-          "Medium UCI TWC01 Hi Viz Waistcoat"
-        ]
+        "Completed Qty": 0,
+        "swpPartCompletions": {
+          "SWPDTF-DURLB": [
+            {
+              "qty": 45,
+              "timestamp": "2025-02-21T14:42:48.153Z"
+            }
+          ],
+          "SWPDTF-DURR": [
+            {
+              "qty": 45,
+              "timestamp": "2025-02-21T14:44:36.709Z"
+            }
+          ]
+        }
       },
       {
         "Master Code": "SWPDUR001-XXL",
@@ -1774,29 +1917,31 @@
           "SWPDTF-DURLB",
           "SWPDTF-DURR"
         ],
-        "Other Parts": [
-          "HV/TWCO1Y-XXL"
+        "Other Parts Details": [
+          {
+            "partCode": "HV/TWCO1Y-XXL",
+            "description": "XXL UCI TWC01 Hi Viz Waistcoat",
+            "backOrderQty": 0
+          }
         ],
         "SWP Parts Desc": [
           "Duright Left Breast Logo",
           "Duright Rear Lower Back Logo"
         ],
-        "Other Parts Desc": [
-          "XXL UCI TWC01 Hi Viz Waistcoat"
-        ]
+        "Completed Qty": 0
       }
     ],
     "Ordered Date": "03/02/2025",
     "Due Date": null,
-    "Total Logos": 4,
+    "Total Logos": 160,
     "Reference": "DUR003",
     "Contact": "Sophie ",
     "Rep": "Ricky Neale ",
     "Address": "Portway Road, , Wednesbury, West Midlands, WS10 7DZ    ",
     "isNew": true,
-    "garmentStatus": "Not Started",
-    "decorationMethod": "",
-    "embroideryFileStatus": "",
+    "garmentStatus": "Not Ordered",
+    "decorationMethod": "Embroidery",
+    "embroideryFileStatus": "On File",
     "dtfStatus": "",
     "jobStatus": "Not Started"
   },
@@ -1815,29 +1960,31 @@
           "SWPDTF-CORNLB",
           "SWPDTF-CORNR"
         ],
-        "Other Parts": [
-          "RG244RED-36"
+        "Other Parts Details": [
+          {
+            "partCode": "RG244RED-36",
+            "description": "36\" Red Regatta kids Dover Jacket RG244",
+            "backOrderQty": 0
+          }
         ],
         "SWP Parts Desc": [
           "Cornish Mutual LB Logo - ALL WHITE",
           "Cornish Mutual Rear Logo - ALL WHITE"
         ],
-        "Other Parts Desc": [
-          "36\" Red Regatta kids Dover Jacket RG244"
-        ]
+        "Completed Qty": 0
       }
     ],
     "Ordered Date": "05/02/2025",
     "Due Date": null,
-    "Total Logos": 2,
+    "Total Logos": 6,
     "Reference": "COR025",
     "Contact": "Tara Easterling",
     "Rep": "Phil Murphy",
     "Address": "CMA House, Newham Industrial Estate, Truro, Cornwall, TR1 2SU",
     "isNew": true,
-    "garmentStatus": "Not Started",
-    "decorationMethod": "",
-    "embroideryFileStatus": "",
+    "garmentStatus": "Not Ordered",
+    "decorationMethod": "Embroidery",
+    "embroideryFileStatus": "On File",
     "dtfStatus": "",
     "jobStatus": "Not Started"
   },
@@ -1855,28 +2002,30 @@
         "SWP Parts": [
           "SWPEMB-MBP004"
         ],
-        "Other Parts": [
-          "441M.BK.M"
+        "Other Parts Details": [
+          {
+            "partCode": "441M.BK.M",
+            "description": "Russell Nano Padded Bodywarmer - Black - Medium",
+            "backOrderQty": 0
+          }
         ],
         "SWP Parts Desc": [
           "MBP Centre Cap Embroidery Logo - White/Orange"
         ],
-        "Other Parts Desc": [
-          "Russell Nano Padded Bodywarmer - Black - Medium"
-        ]
+        "Completed Qty": 0
       }
     ],
     "Ordered Date": "06/02/2025",
     "Due Date": null,
-    "Total Logos": 1,
+    "Total Logos": 7,
     "Reference": "MBP/MDC",
     "Contact": "Nigel Finney",
     "Rep": "Ricky Neale ",
     "Address": "Manchester Doors & Cubicles Ltd T/A MBP, Units 3-5 Shield Drive, Manchester , Greater Manchester, M28 2QB",
     "isNew": true,
-    "garmentStatus": "Not Started",
-    "decorationMethod": "",
-    "embroideryFileStatus": "",
+    "garmentStatus": "Not Ordered",
+    "decorationMethod": "Embroidery",
+    "embroideryFileStatus": "On File",
     "dtfStatus": "",
     "jobStatus": "Not Started"
   },
@@ -1894,17 +2043,30 @@
         "SWP Parts": [
           "SWPEMB-LIFWLB"
         ],
-        "Other Parts": [
-          "1150.N.L",
-          "1150.NV.L"
+        "Other Parts Details": [
+          {
+            "partCode": "1150.N.L",
+            "description": "Eagle Premium Poloshirt - Navy - Large",
+            "backOrderQty": 0
+          },
+          {
+            "partCode": "1150.NV.L",
+            "description": "Eagle Poloshirt - Navy - L",
+            "backOrderQty": 0
+          }
         ],
         "SWP Parts Desc": [
           "Lifeways Left Breast Embroidery"
         ],
-        "Other Parts Desc": [
-          "Eagle Premium Poloshirt - Navy - Large",
-          "Eagle Poloshirt - Navy - L"
-        ]
+        "Completed Qty": 0,
+        "swpPartCompletions": {
+          "SWPEMB-LIFWLB": [
+            {
+              "qty": 1,
+              "timestamp": "2025-02-21T14:29:45.340Z"
+            }
+          ]
+        }
       },
       {
         "Master Code": "SWPLFW001-M",
@@ -1914,17 +2076,22 @@
         "SWP Parts": [
           "SWPEMB-LIFWLB"
         ],
-        "Other Parts": [
-          "1150.N.M",
-          "1150.NV.M"
+        "Other Parts Details": [
+          {
+            "partCode": "1150.N.M",
+            "description": "Eagle Premium Poloshirt - Navy - Medium",
+            "backOrderQty": 0
+          },
+          {
+            "partCode": "1150.NV.M",
+            "description": "Eagle Poloshirt - Navy - M",
+            "backOrderQty": 0
+          }
         ],
         "SWP Parts Desc": [
           "Lifeways Left Breast Embroidery"
         ],
-        "Other Parts Desc": [
-          "Eagle Premium Poloshirt - Navy - Medium",
-          "Eagle Poloshirt - Navy - M"
-        ]
+        "Completed Qty": 0
       },
       {
         "Master Code": "SWPLFW001-S",
@@ -1934,17 +2101,22 @@
         "SWP Parts": [
           "SWPEMB-LIFWLB"
         ],
-        "Other Parts": [
-          "1150.N.S",
-          "1150.NV.S"
+        "Other Parts Details": [
+          {
+            "partCode": "1150.N.S",
+            "description": "Eagle Premium Poloshirt - Navy - Small",
+            "backOrderQty": 0
+          },
+          {
+            "partCode": "1150.NV.S",
+            "description": "Eagle Poloshirt - Navy - S",
+            "backOrderQty": 0
+          }
         ],
         "SWP Parts Desc": [
           "Lifeways Left Breast Embroidery"
         ],
-        "Other Parts Desc": [
-          "Eagle Premium Poloshirt - Navy - Small",
-          "Eagle Poloshirt - Navy - S"
-        ]
+        "Completed Qty": 0
       },
       {
         "Master Code": "SWPLFW001-XL",
@@ -1954,17 +2126,30 @@
         "SWP Parts": [
           "SWPEMB-LIFWLB"
         ],
-        "Other Parts": [
-          "1150.N.XL",
-          "1150.NV.XL"
+        "Other Parts Details": [
+          {
+            "partCode": "1150.N.XL",
+            "description": "Eagle Premium Poloshirt - Navy - X-Large",
+            "backOrderQty": 0
+          },
+          {
+            "partCode": "1150.NV.XL",
+            "description": "Eagle Poloshirt - Navy - XL",
+            "backOrderQty": 0
+          }
         ],
         "SWP Parts Desc": [
           "Lifeways Left Breast Embroidery"
         ],
-        "Other Parts Desc": [
-          "Eagle Premium Poloshirt - Navy - X-Large",
-          "Eagle Poloshirt - Navy - XL"
-        ]
+        "Completed Qty": 0,
+        "swpPartCompletions": {
+          "SWPEMB-LIFWLB": [
+            {
+              "qty": 3,
+              "timestamp": "2025-02-21T14:42:08.778Z"
+            }
+          ]
+        }
       },
       {
         "Master Code": "SWPLFW001-XXL",
@@ -1974,15 +2159,25 @@
         "SWP Parts": [
           "SWPEMB-LIFWLB"
         ],
-        "Other Parts": [
-          "1150.NV.2XL"
+        "Other Parts Details": [
+          {
+            "partCode": "1150.NV.2XL",
+            "description": "Eagle Poloshirt - Navy - 2XL",
+            "backOrderQty": 0
+          }
         ],
         "SWP Parts Desc": [
           "Lifeways Left Breast Embroidery"
         ],
-        "Other Parts Desc": [
-          "Eagle Poloshirt - Navy - 2XL"
-        ]
+        "Completed Qty": 0,
+        "swpPartCompletions": {
+          "SWPEMB-LIFWLB": [
+            {
+              "qty": 1,
+              "timestamp": "2025-02-21T14:39:27.301Z"
+            }
+          ]
+        }
       },
       {
         "Master Code": "SWPLFW001-XXXL",
@@ -1992,4133 +2187,39 @@
         "SWP Parts": [
           "SWPEMB-LIFWLB"
         ],
-        "Other Parts": [
-          "1150.NV.3XL"
+        "Other Parts Details": [
+          {
+            "partCode": "1150.NV.3XL",
+            "description": "Eagle Poloshirt - Navy - 3XL",
+            "backOrderQty": 0
+          }
         ],
         "SWP Parts Desc": [
           "Lifeways Left Breast Embroidery"
         ],
-        "Other Parts Desc": [
-          "Eagle Poloshirt - Navy - 3XL"
-        ]
+        "Completed Qty": 0,
+        "swpPartCompletions": {
+          "SWPEMB-LIFWLB": [
+            {
+              "qty": 2,
+              "timestamp": "2025-02-21T14:39:28.129Z"
+            }
+          ]
+        }
       }
     ],
     "Ordered Date": "06/02/2025",
     "Due Date": null,
-    "Total Logos": 6,
+    "Total Logos": 15,
     "Reference": "LIF100",
     "Contact": "Kerry Renwick",
     "Rep": "Jaime Canosa",
     "Address": "",
     "isNew": true,
-    "garmentStatus": "Not Started",
-    "decorationMethod": "",
-    "embroideryFileStatus": "",
-    "dtfStatus": "",
-    "jobStatus": "Not Started"
-  },
-  {
-    "SORD": "SORD01631591",
-    "Trader Code": "CHESTAO",
-    "Trader Name": "Chelmsford Star Co-Op Soc",
-    "Total Items": 3,
-    "Item List": [
-      {
-        "Master Code": "COOPLANYARD",
-        "Description": "Co-op Lanyard + Holder",
-        "Ordered Qty": 3,
-        "Outstanding Qty": 3,
-        "SWP Parts": [],
-        "Other Parts": [],
-        "SWP Parts Desc": [],
-        "Other Parts Desc": []
-      }
-    ],
-    "Ordered Date": "06/02/2025",
-    "Due Date": null,
-    "Total Logos": 0,
-    "Reference": "CHESTAO",
-    "Contact": "Tom Killworth",
-    "Rep": "Fiona Swannell",
-    "Address": "3-5 Spreadeagle Place, , Ingatestone, Essex, CM4 9EA",
-    "isNew": true,
-    "garmentStatus": "Not Started",
-    "decorationMethod": "",
-    "embroideryFileStatus": "",
-    "dtfStatus": "",
-    "jobStatus": "Not Started"
-  },
-  {
-    "SORD": "SORD01631885",
-    "Trader Code": "CHESTAO",
-    "Trader Name": "Chelmsford Star Co-Op Soc",
-    "Total Items": 2,
-    "Item List": [
-      {
-        "Master Code": "COOPLANYARD",
-        "Description": "Co-op Lanyard + Holder",
-        "Ordered Qty": 2,
-        "Outstanding Qty": 2,
-        "SWP Parts": [],
-        "Other Parts": [],
-        "SWP Parts Desc": [],
-        "Other Parts Desc": []
-      }
-    ],
-    "Ordered Date": "07/02/2025",
-    "Due Date": null,
-    "Total Logos": 0,
-    "Reference": "CHESTAO",
-    "Contact": "Tom Killworth",
-    "Rep": "Fiona Swannell",
-    "Address": "62 Beehive Lane, Westbourne Grove, Chelmsford, Essex, CM2 9RP",
-    "isNew": true,
-    "garmentStatus": "Not Started",
-    "decorationMethod": "",
-    "embroideryFileStatus": "",
-    "dtfStatus": "",
-    "jobStatus": "Not Started"
-  },
-  {
-    "SORD": "SORD01632013",
-    "Trader Code": "CHESTAO",
-    "Trader Name": "Chelmsford Star Co-Op Soc",
-    "Total Items": 1,
-    "Item List": [
-      {
-        "Master Code": "COOPLANYARD",
-        "Description": "Co-op Lanyard + Holder",
-        "Ordered Qty": 1,
-        "Outstanding Qty": 1,
-        "SWP Parts": [],
-        "Other Parts": [],
-        "SWP Parts Desc": [],
-        "Other Parts Desc": []
-      }
-    ],
-    "Ordered Date": "07/02/2025",
-    "Due Date": null,
-    "Total Logos": 0,
-    "Reference": "CHESTAO",
-    "Contact": "Tom Killworth",
-    "Rep": "Fiona Swannell",
-    "Address": "115-117 Ferry Road, , Hullbridge, Essex, SS5 6ET",
-    "isNew": true,
-    "garmentStatus": "Not Started",
-    "decorationMethod": "",
-    "embroideryFileStatus": "",
-    "dtfStatus": "",
-    "jobStatus": "Not Started"
-  },
-  {
-    "SORD": "SORD01632059",
-    "Trader Code": "CHESTAO",
-    "Trader Name": "Chelmsford Star Co-Op Soc",
-    "Total Items": 1,
-    "Item List": [
-      {
-        "Master Code": "COOPLANYARD",
-        "Description": "Co-op Lanyard + Holder",
-        "Ordered Qty": 1,
-        "Outstanding Qty": 1,
-        "SWP Parts": [],
-        "Other Parts": [],
-        "SWP Parts Desc": [],
-        "Other Parts Desc": []
-      }
-    ],
-    "Ordered Date": "07/02/2025",
-    "Due Date": null,
-    "Total Logos": 0,
-    "Reference": "CHESTAO",
-    "Contact": "Tom Killworth",
-    "Rep": "Fiona Swannell",
-    "Address": "105- 105C Mungo Park, , Rainham, Essex, RM13 7PP",
-    "isNew": true,
-    "garmentStatus": "Not Started",
-    "decorationMethod": "",
-    "embroideryFileStatus": "",
-    "dtfStatus": "",
-    "jobStatus": "Not Started"
-  },
-  {
-    "SORD": "SORD01632480",
-    "Trader Code": "DHA001",
-    "Trader Name": "David Hart Aerospace Pipes Limited",
-    "Total Items": 1,
-    "Item List": [
-      {
-        "Master Code": "SWPDHA0013.NV.L",
-        "Description": "Large Navy L/Sleeve Polo Shirt + Leggett White Emb Logo - LB (RX102)",
-        "Ordered Qty": 1,
-        "Outstanding Qty": 1,
-        "SWP Parts": [
-          "SWPEMB-DHA001"
-        ],
-        "Other Parts": [
-          "RX102.N.L"
-        ],
-        "SWP Parts Desc": [
-          "Leggett & Platt (David Hart) - White Logo - Embroidered LB"
-        ],
-        "Other Parts Desc": [
-          "Large Navy L/Sleeve Poloshirt RX102"
-        ]
-      }
-    ],
-    "Ordered Date": "10/02/2025",
-    "Due Date": null,
-    "Total Logos": 1,
-    "Reference": "DHA001",
-    "Contact": "Gemma Regan",
-    "Rep": "Lorraine Rogers",
-    "Address": "Long Close, Downton, Salisbury, Wiltshire, SP5 3HG",
-    "isNew": true,
-    "garmentStatus": "Not Started",
-    "decorationMethod": "",
-    "embroideryFileStatus": "",
-    "dtfStatus": "",
-    "jobStatus": "Not Started"
-  },
-  {
-    "SORD": "SORD01633351",
-    "Trader Code": "DIV001C",
-    "Trader Name": "Diversified Communications Limited",
-    "Total Items": 32,
-    "Item List": [
-      {
-        "Master Code": "SWPDIVE001-L",
-        "Description": "Large Black Diversified Communications Classic Poloshirt UC101",
-        "Ordered Qty": 2,
-        "Outstanding Qty": 2,
-        "SWP Parts": [
-          "SWPDTF-EVER",
-          "SWPEMB-LUNLB",
-          "SWPEMB-NRBRB"
-        ],
-        "Other Parts": [
-          "UC101.B.L"
-        ],
-        "SWP Parts Desc": [
-          "Event Team Happy To Help Rear Heat Seal  (For Diversified Comm)",
-          "Lunch! North Manchester Central Left Breast Embroidery (For Diversified Comm)",
-          "Right Breast NRB Embroidered Logo (For Diversified Comm)"
-        ],
-        "Other Parts Desc": [
-          "Uneek Classic Polo Shirt - Black - Large"
-        ]
-      },
-      {
-        "Master Code": "SWPDIVE001-M",
-        "Description": "Medium Black Diversified Communications Classic Poloshirt UC101",
-        "Ordered Qty": 4,
-        "Outstanding Qty": 4,
-        "SWP Parts": [
-          "SWPDTF-EVER",
-          "SWPEMB-LUNLB",
-          "SWPEMB-NRBRB"
-        ],
-        "Other Parts": [
-          "UC101.B.M"
-        ],
-        "SWP Parts Desc": [
-          "Event Team Happy To Help Rear Heat Seal  (For Diversified Comm)",
-          "Lunch! North Manchester Central Left Breast Embroidery (For Diversified Comm)",
-          "Right Breast NRB Embroidered Logo (For Diversified Comm)"
-        ],
-        "Other Parts Desc": [
-          "Uneek Classic Polo Shirt - Black - Medium"
-        ]
-      },
-      {
-        "Master Code": "SWPDIVE001-S",
-        "Description": "Small Black Diversified Communications Classic Poloshirt UC101",
-        "Ordered Qty": 2,
-        "Outstanding Qty": 2,
-        "SWP Parts": [
-          "SWPDTF-EVER",
-          "SWPEMB-LUNLB",
-          "SWPEMB-NRBRB"
-        ],
-        "Other Parts": [
-          "UC101.B.S"
-        ],
-        "SWP Parts Desc": [
-          "Event Team Happy To Help Rear Heat Seal  (For Diversified Comm)",
-          "Lunch! North Manchester Central Left Breast Embroidery (For Diversified Comm)",
-          "Right Breast NRB Embroidered Logo (For Diversified Comm)"
-        ],
-        "Other Parts Desc": [
-          "Uneek Classic Polo Shirt - Black - Small"
-        ]
-      },
-      {
-        "Master Code": "SWPDIVE001-XL",
-        "Description": "XL Black Diversified Communications Classic Poloshirt UC101",
-        "Ordered Qty": 8,
-        "Outstanding Qty": 8,
-        "SWP Parts": [
-          "SWPDTF-EVER",
-          "SWPEMB-LUNLB",
-          "SWPEMB-NRBRB"
-        ],
-        "Other Parts": [
-          "UC101.B.XL"
-        ],
-        "SWP Parts Desc": [
-          "Event Team Happy To Help Rear Heat Seal  (For Diversified Comm)",
-          "Lunch! North Manchester Central Left Breast Embroidery (For Diversified Comm)",
-          "Right Breast NRB Embroidered Logo (For Diversified Comm)"
-        ],
-        "Other Parts Desc": [
-          "Uneek Classic Polo Shirt - Black - XLarge"
-        ]
-      },
-      {
-        "Master Code": "SWPDIVE002-L",
-        "Description": "Large Black Diversified Communications Classic Sweatshirt UC203",
-        "Ordered Qty": 2,
-        "Outstanding Qty": 2,
-        "SWP Parts": [
-          "SWPDTF-EVER",
-          "SWPEMB-LUNLB",
-          "SWPEMB-NRBRB"
-        ],
-        "Other Parts": [
-          "UC203.B.L"
-        ],
-        "SWP Parts Desc": [
-          "Event Team Happy To Help Rear Heat Seal  (For Diversified Comm)",
-          "Lunch! North Manchester Central Left Breast Embroidery (For Diversified Comm)",
-          "Right Breast NRB Embroidered Logo (For Diversified Comm)"
-        ],
-        "Other Parts Desc": [
-          "Classic Sweatshirt - Black - L"
-        ]
-      },
-      {
-        "Master Code": "SWPDIVE002-M",
-        "Description": "Medium Black Diversified Communications Sweatshirt UC203",
-        "Ordered Qty": 3,
-        "Outstanding Qty": 3,
-        "SWP Parts": [
-          "SWPDTF-EVER",
-          "SWPEMB-LUNLB",
-          "SWPEMB-NRBRB"
-        ],
-        "Other Parts": [
-          "UC203.B.M"
-        ],
-        "SWP Parts Desc": [
-          "Event Team Happy To Help Rear Heat Seal  (For Diversified Comm)",
-          "Lunch! North Manchester Central Left Breast Embroidery (For Diversified Comm)",
-          "Right Breast NRB Embroidered Logo (For Diversified Comm)"
-        ],
-        "Other Parts Desc": [
-          "Classic Sweatshirt - Black - M"
-        ]
-      },
-      {
-        "Master Code": "SWPDIVE002-S",
-        "Description": "Small Black Diversified Communications Sweatshirt UC203",
-        "Ordered Qty": 2,
-        "Outstanding Qty": 2,
-        "SWP Parts": [
-          "SWPDTF-EVER",
-          "SWPEMB-LUNLB",
-          "SWPEMB-NRBRB"
-        ],
-        "Other Parts": [
-          "UC203.B.S"
-        ],
-        "SWP Parts Desc": [
-          "Event Team Happy To Help Rear Heat Seal  (For Diversified Comm)",
-          "Lunch! North Manchester Central Left Breast Embroidery (For Diversified Comm)",
-          "Right Breast NRB Embroidered Logo (For Diversified Comm)"
-        ],
-        "Other Parts Desc": [
-          "Classic Sweatshirt - Black - S"
-        ]
-      },
-      {
-        "Master Code": "SWPDIVE002-XL",
-        "Description": "XL Black Diversified Communications Sweatshirt UC203",
-        "Ordered Qty": 3,
-        "Outstanding Qty": 3,
-        "SWP Parts": [
-          "SWPDTF-EVER",
-          "SWPEMB-LUNLB",
-          "SWPEMB-NRBRB"
-        ],
-        "Other Parts": [
-          "UC203.B.XL"
-        ],
-        "SWP Parts Desc": [
-          "Event Team Happy To Help Rear Heat Seal  (For Diversified Comm)",
-          "Lunch! North Manchester Central Left Breast Embroidery (For Diversified Comm)",
-          "Right Breast NRB Embroidered Logo (For Diversified Comm)"
-        ],
-        "Other Parts Desc": [
-          "Classic Sweatshirt - Black - XL"
-        ]
-      },
-      {
-        "Master Code": "SWPDIVE003-M",
-        "Description": "Medium Black Diversified Communications T-Shirt UC301",
-        "Ordered Qty": 3,
-        "Outstanding Qty": 3,
-        "SWP Parts": [
-          "SWPDTF-EVER",
-          "SWPEMB-LUNLB",
-          "SWPEMB-NRBRB"
-        ],
-        "Other Parts": [
-          "UC301.B.M"
-        ],
-        "SWP Parts Desc": [
-          "Event Team Happy To Help Rear Heat Seal  (For Diversified Comm)",
-          "Lunch! North Manchester Central Left Breast Embroidery (For Diversified Comm)",
-          "Right Breast NRB Embroidered Logo (For Diversified Comm)"
-        ],
-        "Other Parts Desc": [
-          "Classic Crew Neck T-Shirt - Black - M"
-        ]
-      },
-      {
-        "Master Code": "SWPDIVE003-S",
-        "Description": "Small Black Diversified Communications T-Shirt UC301",
-        "Ordered Qty": 2,
-        "Outstanding Qty": 2,
-        "SWP Parts": [
-          "SWPDTF-EVER",
-          "SWPEMB-LUNLB",
-          "SWPEMB-NRBRB"
-        ],
-        "Other Parts": [
-          "UC301.B.S"
-        ],
-        "SWP Parts Desc": [
-          "Event Team Happy To Help Rear Heat Seal  (For Diversified Comm)",
-          "Lunch! North Manchester Central Left Breast Embroidery (For Diversified Comm)",
-          "Right Breast NRB Embroidered Logo (For Diversified Comm)"
-        ],
-        "Other Parts Desc": [
-          "Classic Crew Neck T-Shirt - Black - S"
-        ]
-      },
-      {
-        "Master Code": "EMBSETUP",
-        "Description": "Embroidery - Set Up Charge",
-        "Ordered Qty": 1,
-        "Outstanding Qty": 1,
-        "SWP Parts": [],
-        "Other Parts": [],
-        "SWP Parts Desc": [],
-        "Other Parts Desc": []
-      }
-    ],
-    "Ordered Date": "11/02/2025",
-    "Due Date": null,
-    "Total Logos": 30,
-    "Reference": "DIV001C",
-    "Contact": "Polly Connolly",
-    "Rep": "Josh Moore",
-    "Address": "The Brinell Building , Ground Floor, Brighton, East Sussex, BN1 4RB",
-    "isNew": true,
-    "garmentStatus": "Not Started",
-    "decorationMethod": "",
-    "embroideryFileStatus": "",
-    "dtfStatus": "",
-    "jobStatus": "Not Started"
-  },
-  {
-    "SORD": "SORD01633364",
-    "Trader Code": "DIV001C",
-    "Trader Name": "Diversified Communications Limited",
-    "Total Items": 20,
-    "Item List": [
-      {
-        "Master Code": "SWPDIVE011-M",
-        "Description": "Medium Navy Diversified Communications Classic Poloshirt UC101",
-        "Ordered Qty": 5,
-        "Outstanding Qty": 5,
-        "SWP Parts": [
-          "SWPDTF-HAPR",
-          "SWPEMB-DIVLB"
-        ],
-        "Other Parts": [
-          "UC101.N.M"
-        ],
-        "SWP Parts Desc": [
-          "Happy To Help Rear Heat Seal  (For Diversified Comm)",
-          "Diversified Left Breast Embroidery - White with 2 dots (Blue/Orange)"
-        ],
-        "Other Parts Desc": [
-          "Uneek Classic Polo Shirt - Navy - Medium"
-        ]
-      },
-      {
-        "Master Code": "SWPDIVE012-M",
-        "Description": "Medium Navy Diversified Communications Sweatshirt UC203",
-        "Ordered Qty": 3,
-        "Outstanding Qty": 3,
-        "SWP Parts": [
-          "SWPDTF-HAPR",
-          "SWPEMB-DIVLB"
-        ],
-        "Other Parts": [
-          "UC203.N.M"
-        ],
-        "SWP Parts Desc": [
-          "Happy To Help Rear Heat Seal  (For Diversified Comm)",
-          "Diversified Left Breast Embroidery - White with 2 dots (Blue/Orange)"
-        ],
-        "Other Parts Desc": [
-          "Classic Sweatshirt - Navy - Medium"
-        ]
-      },
-      {
-        "Master Code": "SWPDIVE013-M",
-        "Description": "Medium Navy Diversified Communications T-Shirt UC301",
-        "Ordered Qty": 7,
-        "Outstanding Qty": 7,
-        "SWP Parts": [
-          "SWPDTF-HAPR",
-          "SWPEMB-DIVLB"
-        ],
-        "Other Parts": [
-          "UC301.N.M"
-        ],
-        "SWP Parts Desc": [
-          "Happy To Help Rear Heat Seal  (For Diversified Comm)",
-          "Diversified Left Breast Embroidery - White with 2 dots (Blue/Orange)"
-        ],
-        "Other Parts Desc": [
-          "Classic Crew Neck T-Shirt - Navy - M"
-        ]
-      },
-      {
-        "Master Code": "SWPDIVE013-S",
-        "Description": "Small Navy Diversified Communications T-Shirt UC301",
-        "Ordered Qty": 2,
-        "Outstanding Qty": 2,
-        "SWP Parts": [
-          "SWPDTF-HAPR",
-          "SWPEMB-DIVLB"
-        ],
-        "Other Parts": [
-          "UC301.N.S"
-        ],
-        "SWP Parts Desc": [
-          "Happy To Help Rear Heat Seal  (For Diversified Comm)",
-          "Diversified Left Breast Embroidery - White with 2 dots (Blue/Orange)"
-        ],
-        "Other Parts Desc": [
-          "Classic Crew Neck T-Shirt - Navy - S"
-        ]
-      },
-      {
-        "Master Code": "SWPDIVE014-M",
-        "Description": "Medium Navy Diversified Communications Hooded Sweatshirt UC502",
-        "Ordered Qty": 3,
-        "Outstanding Qty": 3,
-        "SWP Parts": [
-          "SWPDTF-HAPR",
-          "SWPEMB-DIVLB"
-        ],
-        "Other Parts": [
-          "UC502.N.M"
-        ],
-        "SWP Parts Desc": [
-          "Happy To Help Rear Heat Seal  (For Diversified Comm)",
-          "Diversified Left Breast Embroidery - White with 2 dots (Blue/Orange)"
-        ],
-        "Other Parts Desc": [
-          "Hooded Sweatshirt - Navy - M"
-        ]
-      }
-    ],
-    "Ordered Date": "11/02/2025",
-    "Due Date": null,
-    "Total Logos": 10,
-    "Reference": "DIV001C",
-    "Contact": "Polly Connolly",
-    "Rep": "Josh Moore",
-    "Address": "The Brinell Building , Ground Floor, Brighton, East Sussex, BN1 4RB",
-    "isNew": true,
-    "garmentStatus": "Not Started",
-    "decorationMethod": "",
-    "embroideryFileStatus": "",
-    "dtfStatus": "",
-    "jobStatus": "Not Started"
-  },
-  {
-    "SORD": "SORD01633466",
-    "Trader Code": "PRS113C",
-    "Trader Name": "Proplastix Ltd",
-    "Total Items": 15,
-    "Item List": [
-      {
-        "Master Code": "SWPPRS0007.BK.OS",
-        "Description": "Beechfield Original Cuffed Beanie - Black - One Size + Proplastix logo Centre",
-        "Ordered Qty": 1,
-        "Outstanding Qty": 1,
-        "SWP Parts": [
-          "SWPEMB-PRS001",
-          "SWPEMB-PRS004"
-        ],
-        "Other Parts": [
-          "BB45.BK"
-        ],
-        "SWP Parts Desc": [
-          "Proplastix Left Breast Embroidery - Green/White",
-          "Proplastix Hat Centre Embroidery - Green/White"
-        ],
-        "Other Parts Desc": [
-          "Beechfield Original Cuffed Beanie - Black - One Size"
-        ]
-      },
-      {
-        "Master Code": "SWPPRS0008.DG/B.L",
-        "Description": "Premium Outdoor Jacket - Deep Grey/Black - Large ",
-        "Ordered Qty": 1,
-        "Outstanding Qty": 1,
-        "SWP Parts": [
-          "SWPDTF-PRS",
-          "SWPEMB-PRS001"
-        ],
-        "Other Parts": [
-          "UC620DGB.L"
-        ],
-        "SWP Parts Desc": [
-          "Proplastix.co.uk logo Rear",
-          "Proplastix Left Breast Embroidery - Green/White"
-        ],
-        "Other Parts Desc": [
-          "Premium Outdoor Jacket Deep Grey Black Large"
-        ]
-      },
-      {
-        "Master Code": "SWPPRS0009.BK.L",
-        "Description": "Classic Poloshirt - Black - Large ",
-        "Ordered Qty": 5,
-        "Outstanding Qty": 5,
-        "SWP Parts": [
-          "SWPDTF-PRS",
-          "SWPEMB-PRS001"
-        ],
-        "Other Parts": [
-          "UC101.B.L"
-        ],
-        "SWP Parts Desc": [
-          "Proplastix.co.uk logo Rear",
-          "Proplastix Left Breast Embroidery - Green/White"
-        ],
-        "Other Parts Desc": [
-          "Uneek Classic Polo Shirt - Black - Large"
-        ]
-      },
-      {
-        "Master Code": "SWPPRS0010.C.L",
-        "Description": "Classic Sweatshirt - Charcoal - Large ",
-        "Ordered Qty": 2,
-        "Outstanding Qty": 2,
-        "SWP Parts": [
-          "SWPEMB-PRS001",
-          "SWPEMB-PRS002"
-        ],
-        "Other Parts": [
-          "UC203.B.L"
-        ],
-        "SWP Parts Desc": [
-          "Proplastix Left Breast Embroidery - Green/White",
-          "Proplastix Logo Embroidery Rear - Green/White"
-        ],
-        "Other Parts Desc": [
-          "Classic Sweatshirt - Black - L"
-        ]
-      },
-      {
-        "Master Code": "SWPPRS0011.C.L",
-        "Description": "AWDis Street Hoodie - Charcoal - Large ",
-        "Ordered Qty": 2,
-        "Outstanding Qty": 2,
-        "SWP Parts": [
-          "SWPDTF-PRS",
-          "SWPEMB-PRS001"
-        ],
-        "Other Parts": [
-          "JH020.C.L"
-        ],
-        "SWP Parts Desc": [
-          "Proplastix.co.uk logo Rear",
-          "Proplastix Left Breast Embroidery - Green/White"
-        ],
-        "Other Parts Desc": [
-          "AWDis Street Hoodie - Charcoal - Black"
-        ]
-      },
-      {
-        "Master Code": "SWPPRS0012.SB.16.5",
-        "Description": "Brook Taverner Pisa Long Sleeve Slim Fit Shirt - Sky Blue - 16.5\"",
-        "Ordered Qty": 2,
-        "Outstanding Qty": 2,
-        "SWP Parts": [
-          "SWPEMB-PRS003"
-        ],
-        "Other Parts": [
-          "BK130.SB.16.5"
-        ],
-        "SWP Parts Desc": [
-          "Proplastix Left Breast Embroidery - Green/Black"
-        ],
-        "Other Parts Desc": [
-          "Brook Taverner Pisa Long Sleeve Slim Fit Shirt - Sky Blue - 16.5\""
-        ]
-      },
-      {
-        "Master Code": "SWPPRS0013.C.L",
-        "Description": "AWDis Sophomore Zip Neck Sweatshirt - Charcoal - Large",
-        "Ordered Qty": 2,
-        "Outstanding Qty": 2,
-        "SWP Parts": [
-          "SWPEMB-PRS001",
-          "SWPEMB-PRS002"
-        ],
-        "Other Parts": [
-          "JH046.C.L"
-        ],
-        "SWP Parts Desc": [
-          "Proplastix Left Breast Embroidery - Green/White",
-          "Proplastix Logo Embroidery Rear - Green/White"
-        ],
-        "Other Parts Desc": [
-          "AWDis Sophomore Zip Neck Sweatshirt - Charcoal - Large"
-        ]
-      }
-    ],
-    "Ordered Date": "11/02/2025",
-    "Due Date": null,
-    "Total Logos": 13,
-    "Reference": "PRS113C",
-    "Contact": "Tom Boreham",
-    "Rep": "Steve Payne",
-    "Address": "The Old Cart Shed, Court Lane, Christchurch, Dorset, BH23 7BN",
-    "isNew": true,
-    "garmentStatus": "Not Started",
-    "decorationMethod": "",
-    "embroideryFileStatus": "",
-    "dtfStatus": "",
-    "jobStatus": "Not Started"
-  },
-  {
-    "SORD": "SORD01633746",
-    "Trader Code": "CHESTAO",
-    "Trader Name": "Chelmsford Star Co-Op Soc",
-    "Total Items": 1,
-    "Item List": [
-      {
-        "Master Code": "COOPLANYARD",
-        "Description": "Co-op Lanyard + Holder",
-        "Ordered Qty": 1,
-        "Outstanding Qty": 1,
-        "SWP Parts": [],
-        "Other Parts": [],
-        "SWP Parts Desc": [],
-        "Other Parts Desc": []
-      }
-    ],
-    "Ordered Date": "11/02/2025",
-    "Due Date": null,
-    "Total Logos": 0,
-    "Reference": "CHESTAO",
-    "Contact": "Tom Killworth",
-    "Rep": "Fiona Swannell",
-    "Address": "14-16 Calcutta Road, , Tilbury, Essex, RM18 7QU",
-    "isNew": true,
-    "garmentStatus": "Not Started",
-    "decorationMethod": "",
-    "embroideryFileStatus": "",
-    "dtfStatus": "",
-    "jobStatus": "Not Started"
-  },
-  {
-    "SORD": "SORD01633750",
-    "Trader Code": "CHESTAO",
-    "Trader Name": "Chelmsford Star Co-Op Soc",
-    "Total Items": 2,
-    "Item List": [
-      {
-        "Master Code": "COOPLANYARD",
-        "Description": "Co-op Lanyard + Holder",
-        "Ordered Qty": 2,
-        "Outstanding Qty": 2,
-        "SWP Parts": [],
-        "Other Parts": [],
-        "SWP Parts Desc": [],
-        "Other Parts Desc": []
-      }
-    ],
-    "Ordered Date": "11/02/2025",
-    "Due Date": null,
-    "Total Logos": 0,
-    "Reference": "CHESTAO",
-    "Contact": "Tom Killworth",
-    "Rep": "Fiona Swannell",
-    "Address": "Post Office, 1 Fingrith Hall Lane, Ingatestone, Essex, CM4 0RU",
-    "isNew": true,
-    "garmentStatus": "Not Started",
-    "decorationMethod": "",
-    "embroideryFileStatus": "",
-    "dtfStatus": "",
-    "jobStatus": "Not Started"
-  },
-  {
-    "SORD": "SORD01633755",
-    "Trader Code": "CHESTAO",
-    "Trader Name": "Chelmsford Star Co-Op Soc",
-    "Total Items": 2,
-    "Item List": [
-      {
-        "Master Code": "COOPLANYARD",
-        "Description": "Co-op Lanyard + Holder",
-        "Ordered Qty": 2,
-        "Outstanding Qty": 2,
-        "SWP Parts": [],
-        "Other Parts": [],
-        "SWP Parts Desc": [],
-        "Other Parts Desc": []
-      }
-    ],
-    "Ordered Date": "11/02/2025",
-    "Due Date": null,
-    "Total Logos": 0,
-    "Reference": "CHESTAO",
-    "Contact": "Tom Killworth",
-    "Rep": "Fiona Swannell",
-    "Address": "83 Barnard Road, Galleywood, Chelmsford, Essex, CM2 8RS",
-    "isNew": true,
-    "garmentStatus": "Not Started",
-    "decorationMethod": "",
-    "embroideryFileStatus": "",
-    "dtfStatus": "",
-    "jobStatus": "Not Started"
-  },
-  {
-    "SORD": "SORD01633760",
-    "Trader Code": "CHESTAO",
-    "Trader Name": "Chelmsford Star Co-Op Soc",
-    "Total Items": 3,
-    "Item List": [
-      {
-        "Master Code": "COOPLANYARD",
-        "Description": "Co-op Lanyard + Holder",
-        "Ordered Qty": 3,
-        "Outstanding Qty": 3,
-        "SWP Parts": [],
-        "Other Parts": [],
-        "SWP Parts Desc": [],
-        "Other Parts Desc": []
-      }
-    ],
-    "Ordered Date": "11/02/2025",
-    "Due Date": null,
-    "Total Logos": 0,
-    "Reference": "CHESTAO",
-    "Contact": "Tom Killworth",
-    "Rep": "Fiona Swannell",
-    "Address": "The Sorrells, , Stanford Le Hope, Essex, SS17 7DZ",
-    "isNew": true,
-    "garmentStatus": "Not Started",
-    "decorationMethod": "",
-    "embroideryFileStatus": "",
-    "dtfStatus": "",
-    "jobStatus": "Not Started"
-  },
-  {
-    "SORD": "SORD01633763",
-    "Trader Code": "CHESTAO",
-    "Trader Name": "Chelmsford Star Co-Op Soc",
-    "Total Items": 1,
-    "Item List": [
-      {
-        "Master Code": "COOPLANYARD",
-        "Description": "Co-op Lanyard + Holder",
-        "Ordered Qty": 1,
-        "Outstanding Qty": 1,
-        "SWP Parts": [],
-        "Other Parts": [],
-        "SWP Parts Desc": [],
-        "Other Parts Desc": []
-      }
-    ],
-    "Ordered Date": "11/02/2025",
-    "Due Date": null,
-    "Total Logos": 0,
-    "Reference": "CHESTAO",
-    "Contact": "Tom Killworth",
-    "Rep": "Fiona Swannell",
-    "Address": "62-64 Woodland Avenue, Hutton, Brentwood, Essex, CM13 1HH",
-    "isNew": true,
-    "garmentStatus": "Not Started",
-    "decorationMethod": "",
-    "embroideryFileStatus": "",
-    "dtfStatus": "",
-    "jobStatus": "Not Started"
-  },
-  {
-    "SORD": "SORD01633768",
-    "Trader Code": "CHESTAO",
-    "Trader Name": "Chelmsford Star Co-Op Soc",
-    "Total Items": 1,
-    "Item List": [
-      {
-        "Master Code": "COOPLANYARD",
-        "Description": "Co-op Lanyard + Holder",
-        "Ordered Qty": 1,
-        "Outstanding Qty": 1,
-        "SWP Parts": [],
-        "Other Parts": [],
-        "SWP Parts Desc": [],
-        "Other Parts Desc": []
-      }
-    ],
-    "Ordered Date": "11/02/2025",
-    "Due Date": null,
-    "Total Logos": 0,
-    "Reference": "CHESTAO",
-    "Contact": "Tom Killworth",
-    "Rep": "Fiona Swannell",
-    "Address": "62 Church Street, Bocking, Braintree, Essex, CM7 5JY",
-    "isNew": true,
-    "garmentStatus": "Not Started",
-    "decorationMethod": "",
-    "embroideryFileStatus": "",
-    "dtfStatus": "",
-    "jobStatus": "Not Started"
-  },
-  {
-    "SORD": "SORD01633769",
-    "Trader Code": "CHESTAO",
-    "Trader Name": "Chelmsford Star Co-Op Soc",
-    "Total Items": 1,
-    "Item List": [
-      {
-        "Master Code": "COOPLANYARD",
-        "Description": "Co-op Lanyard + Holder",
-        "Ordered Qty": 1,
-        "Outstanding Qty": 1,
-        "SWP Parts": [],
-        "Other Parts": [],
-        "SWP Parts Desc": [],
-        "Other Parts Desc": []
-      }
-    ],
-    "Ordered Date": "11/02/2025",
-    "Due Date": null,
-    "Total Logos": 0,
-    "Reference": "CHESTAO",
-    "Contact": "Tom Killworth",
-    "Rep": "Fiona Swannell",
-    "Address": "83 Barnard Road, Galleywood, Chelmsford, Essex, CM2 8RS",
-    "isNew": true,
-    "garmentStatus": "Not Started",
-    "decorationMethod": "",
-    "embroideryFileStatus": "",
-    "dtfStatus": "",
-    "jobStatus": "Not Started"
-  },
-  {
-    "SORD": "SORD01633772",
-    "Trader Code": "CHESTAO",
-    "Trader Name": "Chelmsford Star Co-Op Soc",
-    "Total Items": 1,
-    "Item List": [
-      {
-        "Master Code": "COOPLANYARD",
-        "Description": "Co-op Lanyard + Holder",
-        "Ordered Qty": 1,
-        "Outstanding Qty": 1,
-        "SWP Parts": [],
-        "Other Parts": [],
-        "SWP Parts Desc": [],
-        "Other Parts Desc": []
-      }
-    ],
-    "Ordered Date": "11/02/2025",
-    "Due Date": null,
-    "Total Logos": 0,
-    "Reference": "CHESTAO",
-    "Contact": "Tom Killworth",
-    "Rep": "Fiona Swannell",
-    "Address": "109 Snakes Lane West, , Woodford Green, Essex, IG8 0DY",
-    "isNew": true,
-    "garmentStatus": "Not Started",
-    "decorationMethod": "",
-    "embroideryFileStatus": "",
-    "dtfStatus": "",
-    "jobStatus": "Not Started"
-  },
-  {
-    "SORD": "SORD01633775",
-    "Trader Code": "CHESTAO",
-    "Trader Name": "Chelmsford Star Co-Op Soc",
-    "Total Items": 1,
-    "Item List": [
-      {
-        "Master Code": "COOPLANYARD",
-        "Description": "Co-op Lanyard + Holder",
-        "Ordered Qty": 1,
-        "Outstanding Qty": 1,
-        "SWP Parts": [],
-        "Other Parts": [],
-        "SWP Parts Desc": [],
-        "Other Parts Desc": []
-      }
-    ],
-    "Ordered Date": "11/02/2025",
-    "Due Date": null,
-    "Total Logos": 0,
-    "Reference": "CHESTAO",
-    "Contact": "Tom Killworth",
-    "Rep": "Fiona Swannell",
-    "Address": "Moulsham Lodge, 156 Gloucester Avenue, Chelmsford, Essex, CM2 9LG",
-    "isNew": true,
-    "garmentStatus": "Not Started",
-    "decorationMethod": "",
-    "embroideryFileStatus": "",
-    "dtfStatus": "",
-    "jobStatus": "Not Started"
-  },
-  {
-    "SORD": "SORD01634158",
-    "Trader Code": "GB_301599_00362742",
-    "Trader Name": "Babcock",
-    "Total Items": 301,
-    "Item List": [
-      {
-        "Master Code": "SWPCAV021-S",
-        "Description": "Small French Navy Cavandish 10 Years T-Shirt [JC001]",
-        "Ordered Qty": 10,
-        "Outstanding Qty": 10,
-        "SWP Parts": [
-          "SWPDTF-CAV10FC"
-        ],
-        "Other Parts": [
-          "JC001.FN.S"
-        ],
-        "SWP Parts Desc": [
-          "Cavandish Nuclear 10 Years LTA Free Front Centre (White)"
-        ],
-        "Other Parts Desc": [
-          "Small French Navy AWD Cool T Shirt"
-        ]
-      },
-      {
-        "Master Code": "SWPCAV021-M",
-        "Description": "Medium French Navy Cavandish 10 Years T-Shirt [JC001]",
-        "Ordered Qty": 55,
-        "Outstanding Qty": 55,
-        "SWP Parts": [
-          "SWPDTF-CAV10FC"
-        ],
-        "Other Parts": [
-          "JC001.FN.M"
-        ],
-        "SWP Parts Desc": [
-          "Cavandish Nuclear 10 Years LTA Free Front Centre (White)"
-        ],
-        "Other Parts Desc": [
-          "Medium French Navy AWD Cool T Shirt"
-        ]
-      },
-      {
-        "Master Code": "SWPCAV021-L",
-        "Description": "Large French Navy Cavandish 10 Years T-Shirt [JC001]",
-        "Ordered Qty": 85,
-        "Outstanding Qty": 85,
-        "SWP Parts": [
-          "SWPDTF-CAV10FC"
-        ],
-        "Other Parts": [
-          "JC001.FN.L"
-        ],
-        "SWP Parts Desc": [
-          "Cavandish Nuclear 10 Years LTA Free Front Centre (White)"
-        ],
-        "Other Parts Desc": [
-          "Large French Navy AWD Cool T Shirt"
-        ]
-      },
-      {
-        "Master Code": "SWPCAV021-XL",
-        "Description": "XL French Navy Cavandish 10 Years T-Shirt [JC001]",
-        "Ordered Qty": 85,
-        "Outstanding Qty": 85,
-        "SWP Parts": [
-          "SWPDTF-CAV10FC"
-        ],
-        "Other Parts": [
-          "JC001.FN.XL"
-        ],
-        "SWP Parts Desc": [
-          "Cavandish Nuclear 10 Years LTA Free Front Centre (White)"
-        ],
-        "Other Parts Desc": [
-          "XL French Navy AWD Cool T Shirt"
-        ]
-      },
-      {
-        "Master Code": "SWPCAV021-XXL",
-        "Description": "XXL French Navy Cavandish 10 Years T-Shirt [JC001]",
-        "Ordered Qty": 55,
-        "Outstanding Qty": 55,
-        "SWP Parts": [
-          "SWPDTF-CAV10FC"
-        ],
-        "Other Parts": [
-          "JC001.FN.XXL"
-        ],
-        "SWP Parts Desc": [
-          "Cavandish Nuclear 10 Years LTA Free Front Centre (White)"
-        ],
-        "Other Parts Desc": [
-          "XXL French Navy AWD Cool T Shirt"
-        ]
-      },
-      {
-        "Master Code": "SWPCAV021-XXXL",
-        "Description": "XXXL French Navy Cavandish 10 Years T-Shirt [JC001]",
-        "Ordered Qty": 10,
-        "Outstanding Qty": 10,
-        "SWP Parts": [
-          "SWPDTF-CAV10FC"
-        ],
-        "Other Parts": [
-          "JC001.FN.3XL"
-        ],
-        "SWP Parts Desc": [
-          "Cavandish Nuclear 10 Years LTA Free Front Centre (White)"
-        ],
-        "Other Parts Desc": [
-          "3XL French Navy AWD Cool T Shirt"
-        ]
-      },
-      {
-        "Master Code": "EMBSETUP",
-        "Description": "Embroidery - Set Up Charge",
-        "Ordered Qty": 1,
-        "Outstanding Qty": 1,
-        "SWP Parts": [],
-        "Other Parts": [],
-        "SWP Parts Desc": [],
-        "Other Parts Desc": []
-      }
-    ],
-    "Ordered Date": "12/02/2025",
-    "Due Date": null,
-    "Total Logos": 6,
-    "Reference": "GB_301599_00362742",
-    "Contact": "Thomas Burt",
-    "Rep": "Jacqui Alexander",
-    "Address": "Radar Road                              , , Leicester, , LE3 1UF   ",
-    "isNew": true,
-    "garmentStatus": "Not Started",
-    "decorationMethod": "",
-    "embroideryFileStatus": "",
-    "dtfStatus": "",
-    "jobStatus": "Not Started"
-  },
-  {
-    "SORD": "SORD01634205",
-    "Trader Code": "INDAVEO",
-    "Trader Name": "Indaver Rivenhall Limited",
-    "Total Items": 30,
-    "Item List": [
-      {
-        "Master Code": "SWPIND001",
-        "Description": "Bottle Green Indaver Beanie Hat - RC029",
-        "Ordered Qty": 30,
-        "Outstanding Qty": 30,
-        "SWP Parts": [
-          "SWPEMB-INDAVHAT"
-        ],
-        "Other Parts": [
-          "RC029.BOT"
-        ],
-        "SWP Parts Desc": [
-          "Indaver Hat Centre Embroidery"
-        ],
-        "Other Parts Desc": [
-          "Result Wooly Ski Hat - Bottle Green - One Size"
-        ]
-      }
-    ],
-    "Ordered Date": "12/02/2025",
-    "Due Date": null,
-    "Total Logos": 1,
-    "Reference": "INDAVEO",
-    "Contact": "Donna Benerayan",
-    "Rep": "Teresa Williams",
-    "Address": "Woodhouse farm, Woodhouse lane, Kelvedon, Essex, CO5 9DF",
-    "isNew": true,
-    "garmentStatus": "Not Started",
-    "decorationMethod": "",
-    "embroideryFileStatus": "",
-    "dtfStatus": "",
-    "jobStatus": "Not Started"
-  },
-  {
-    "SORD": "SORD01634283",
-    "Trader Code": "RAY004C",
-    "Trader Name": "Raystede Centre for Animal Welfare Limited",
-    "Total Items": 32,
-    "Item List": [
-      {
-        "Master Code": "SWPRAYST003-XXL",
-        "Description": "XXL Burgundy Raystede Sol Sweatshirt - 13250",
-        "Ordered Qty": 8,
-        "Outstanding Qty": 8,
-        "SWP Parts": [
-          "SWPDTF-RAYSTLB",
-          "SWPDTF-RAYSTR"
-        ],
-        "Other Parts": [
-          "13250BUR-XXL"
-        ],
-        "SWP Parts Desc": [
-          "Raystede Left Breast Logo - White",
-          "Raystede Rear Logo - White"
-        ],
-        "Other Parts Desc": [
-          "XXL Burgundy Sol Supreme Sweatshirt"
-        ]
-      },
-      {
-        "Master Code": "SWPRAYST010-L",
-        "Description": "Large Black Raystede Sol Poloshirt 11342",
-        "Ordered Qty": 8,
-        "Outstanding Qty": 8,
-        "SWP Parts": [
-          "SWPDTF-RAYSTLB",
-          "SWPDTF-RAYSTR"
-        ],
-        "Other Parts": [
-          "11342.BK.L"
-        ],
-        "SWP Parts Desc": [
-          "Raystede Left Breast Logo - White",
-          "Raystede Rear Logo - White"
-        ],
-        "Other Parts Desc": [
-          "Large Black SOL'S Summer II Cotton Piqu� Polo Shirt"
-        ]
-      },
-      {
-        "Master Code": "SWPRAYST010-M",
-        "Description": "Medium Black Raystede Sol Poloshirt",
-        "Ordered Qty": 8,
-        "Outstanding Qty": 8,
-        "SWP Parts": [
-          "SWPDTF-RAYSTLB",
-          "SWPDTF-RAYSTRR"
-        ],
-        "Other Parts": [
-          "11342.BK.M"
-        ],
-        "SWP Parts Desc": [
-          "Raystede Left Breast Logo - White",
-          "Raystede Rear Logo - Black"
-        ],
-        "Other Parts Desc": [
-          "Medium Black SOL'S Summer II Cotton Piqu� Polo Shirt"
-        ]
-      },
-      {
-        "Master Code": "SWPRAYST010-XL",
-        "Description": "XL Black Raystede Sol Poloshirt 11342",
-        "Ordered Qty": 8,
-        "Outstanding Qty": 8,
-        "SWP Parts": [
-          "SWPDTF-RAYSTLB",
-          "SWPDTF-RAYSTR"
-        ],
-        "Other Parts": [
-          "11342.BK.XL"
-        ],
-        "SWP Parts Desc": [
-          "Raystede Left Breast Logo - White",
-          "Raystede Rear Logo - White"
-        ],
-        "Other Parts Desc": [
-          "XL Black SOL'S Summer II Cotton Piqu� Polo Shirt"
-        ]
-      }
-    ],
-    "Ordered Date": "12/02/2025",
-    "Due Date": null,
-    "Total Logos": 8,
-    "Reference": "RAY004C",
-    "Contact": "",
-    "Rep": "James Hardinge",
-    "Address": "The Broyle, Customer Services area , Ringmer, East Sussex, BN8 5AJ",
-    "isNew": true,
-    "garmentStatus": "Not Started",
-    "decorationMethod": "",
-    "embroideryFileStatus": "",
-    "dtfStatus": "",
-    "jobStatus": "Not Started"
-  },
-  {
-    "SORD": "SORD01634580",
-    "Trader Code": "BES013C",
-    "Trader Name": "Beagle Technology Group Ltd",
-    "Total Items": 4,
-    "Item List": [
-      {
-        "Master Code": "SWPBEA001-20",
-        "Description": "Size 20 Pink Beagle Ladies Long Sleeve Shirt [PR300]",
-        "Ordered Qty": 4,
-        "Outstanding Qty": 4,
-        "SWP Parts": [
-          "SWPEMB-BES001",
-          "SWPEMB-BESLC",
-          "SWPEMB-BESRC"
-        ],
-        "Other Parts": [
-          "PR300.PK.20"
-        ],
-        "SWP Parts Desc": [
-          "Beagle Aircraft Left Breast Embroidery - Multicolour & White Text",
-          "Beagle Aircraft Left Collar Embroidery - Black",
-          "Beagle Aircraft Right Collar Embroidery - Black"
-        ],
-        "Other Parts Desc": [
-          "Size 20 Pink Women's poplin long sleeve blouse"
-        ]
-      }
-    ],
-    "Ordered Date": "12/02/2025",
-    "Due Date": null,
-    "Total Logos": 3,
-    "Reference": "BES013C",
-    "Contact": "Gary Maslen",
-    "Rep": "Lorraine Rogers",
-    "Address": "Stony Lane, , Christchurch, Dorset, BH23 1EX",
-    "isNew": true,
-    "garmentStatus": "Not Started",
-    "decorationMethod": "",
-    "embroideryFileStatus": "",
-    "dtfStatus": "",
-    "jobStatus": "Not Started"
-  },
-  {
-    "SORD": "SORD01634949",
-    "Trader Code": "MBP/RAP",
-    "Trader Name": "MBP Doorset Solutions (Rapid-Fit)",
-    "Total Items": 1,
-    "Item List": [
-      {
-        "Master Code": "SWPMID0021-XL",
-        "Description": "XL Black MBP Full Zip Fleece UC604",
-        "Ordered Qty": 1,
-        "Outstanding Qty": 1,
-        "SWP Parts": [
-          "SWPEMB-MBP004"
-        ],
-        "Other Parts": [
-          "UC604.BK.XL"
-        ],
-        "SWP Parts Desc": [
-          "MBP Centre Cap Embroidery Logo - White/Orange"
-        ],
-        "Other Parts Desc": [
-          "Classic Full Zip Micro Fleece Jacket - Black - XLarge"
-        ]
-      }
-    ],
-    "Ordered Date": "13/02/2025",
-    "Due Date": null,
-    "Total Logos": 1,
-    "Reference": "MBP/RAP",
-    "Contact": "Victor Monteiro",
-    "Rep": "Ricky Neale ",
-    "Address": "Midland Buildng Products Ltd T/A MBP, Gate 4, Spectrum House 0121 289 5113, West Bromwich, West Midlands, B70 0DH",
-    "isNew": true,
-    "garmentStatus": "Not Started",
-    "decorationMethod": "",
-    "embroideryFileStatus": "",
-    "dtfStatus": "",
-    "jobStatus": "Not Started"
-  },
-  {
-    "SORD": "SORD01634967",
-    "Trader Code": "MAM001",
-    "Trader Name": "Mama Bear's Day Nursery",
-    "Total Items": 40,
-    "Item List": [
-      {
-        "Master Code": "SWPMAMA001-3-4",
-        "Description": "Age 3-4 Yellow Mama Bears Polo - UC103",
-        "Ordered Qty": 10,
-        "Outstanding Qty": 10,
-        "SWP Parts": [
-          "SWPEMB-MAMA1LB"
-        ],
-        "Other Parts": [
-          "UC103Y-3"
-        ],
-        "SWP Parts Desc": [
-          "Mama Bears + Preschool  Left Breast Embroidered Logo"
-        ],
-        "Other Parts Desc": [
-          "Age 3-4  Yellow Childrens Poloshirt (UC103)"
-        ]
-      },
-      {
-        "Master Code": "SWPMAMA001-5-6",
-        "Description": "Age 5-6 Yellow Mama Bears Polo - UC103",
-        "Ordered Qty": 10,
-        "Outstanding Qty": 10,
-        "SWP Parts": [
-          "SWPEMB-MAMA1LB"
-        ],
-        "Other Parts": [
-          "UC103Y-5"
-        ],
-        "SWP Parts Desc": [
-          "Mama Bears + Preschool  Left Breast Embroidered Logo"
-        ],
-        "Other Parts Desc": [
-          "Age 5-6  Yellow Childrens Poloshirt (UC103)"
-        ]
-      },
-      {
-        "Master Code": "SWPMAMA003-3-4",
-        "Description": "Age 3-4 Purple Mama Bears Sweatshirt - UC202",
-        "Ordered Qty": 10,
-        "Outstanding Qty": 10,
-        "SWP Parts": [
-          "SWPEMB-MAMALB"
-        ],
-        "Other Parts": [
-          "UC202P-3-4"
-        ],
-        "SWP Parts Desc": [
-          "Mama Bears Left Breast Embroidered Logo"
-        ],
-        "Other Parts Desc": [
-          "Age 3-4 Purple Classic Sweatshirt Kids"
-        ]
-      },
-      {
-        "Master Code": "SWPMAMA003-5-6",
-        "Description": "Age 5-6 Purple Mama Bears Sweatshirt -UC202",
-        "Ordered Qty": 10,
-        "Outstanding Qty": 10,
-        "SWP Parts": [
-          "SWPEMB-MAMALB"
-        ],
-        "Other Parts": [
-          "UC202P-5-6"
-        ],
-        "SWP Parts Desc": [
-          "Mama Bears Left Breast Embroidered Logo"
-        ],
-        "Other Parts Desc": [
-          "Age 5-6 Purple Classic Sweatshirt Kids"
-        ]
-      }
-    ],
-    "Ordered Date": "13/02/2025",
-    "Due Date": null,
-    "Total Logos": 4,
-    "Reference": "MAM001",
-    "Contact": "",
-    "Rep": "Phil Murphy",
-    "Address": "",
-    "isNew": true,
-    "garmentStatus": "Not Started",
-    "decorationMethod": "",
-    "embroideryFileStatus": "",
-    "dtfStatus": "",
-    "jobStatus": "Not Started"
-  },
-  {
-    "SORD": "SORD01635033",
-    "Trader Code": "DDS100C",
-    "Trader Name": "DDI Projects Limited",
-    "Total Items": 1,
-    "Item List": [
-      {
-        "Master Code": "SWPDDS0009-XL",
-        "Description": "XL Navy DDI Projects Softshell Jacket - 040M",
-        "Ordered Qty": 1,
-        "Outstanding Qty": 1,
-        "SWP Parts": [
-          "SWPEMB-DDILB"
-        ],
-        "Other Parts": [
-          "040M.FN.XL"
-        ],
-        "SWP Parts Desc": [
-          "DDI Projects Left Breast Embroidery - White"
-        ],
-        "Other Parts Desc": [
-          "Russell Smart Soft Shell Jacket - Navy - XL"
-        ]
-      }
-    ],
-    "Ordered Date": "13/02/2025",
-    "Due Date": null,
-    "Total Logos": 1,
-    "Reference": "DDS100C",
-    "Contact": "Joy",
-    "Rep": "Lorraine Rogers",
-    "Address": "23 Haviland Road , Ferndown Industrial Estate, Wimborne, Dorset, BH21 7SA",
-    "isNew": true,
-    "garmentStatus": "Not Started",
-    "decorationMethod": "",
-    "embroideryFileStatus": "",
-    "dtfStatus": "",
-    "jobStatus": "Not Started"
-  },
-  {
-    "SORD": "SORD01635260",
-    "Trader Code": "CHESTAO",
-    "Trader Name": "Chelmsford Star Co-Op Soc",
-    "Total Items": 6,
-    "Item List": [
-      {
-        "Master Code": "SWPCOP001-M",
-        "Description": "Medium Co-op Solid Grey Poloshirt",
-        "Ordered Qty": 2,
-        "Outstanding Qty": 2,
-        "SWP Parts": [
-          "SWPEMB-COOPLB"
-        ],
-        "Other Parts": [
-          "RX101.SG.M"
-        ],
-        "SWP Parts Desc": [
-          "Co-op Left Breast Logo"
-        ],
-        "Other Parts Desc": [
-          "Pro RTX Pro Piqu� Polo Shirt - Solid Grey - Medium"
-        ]
-      },
-      {
-        "Master Code": "SWPCOP003-M",
-        "Description": "Medium Co-op Black Ablaze Soft-Shell Jacket",
-        "Ordered Qty": 2,
-        "Outstanding Qty": 2,
-        "SWP Parts": [
-          "SWPEMB-COOPLB"
-        ],
-        "Other Parts": [
-          "RG627.B.M"
-        ],
-        "SWP Parts Desc": [
-          "Co-op Left Breast Logo"
-        ],
-        "Other Parts Desc": [
-          "Regatta Ablaze Soft Shell Jacket - Black/Black - Medium"
-        ]
-      },
-      {
-        "Master Code": "COOPLANYARD",
-        "Description": "Co-op Lanyard + Holder",
-        "Ordered Qty": 2,
-        "Outstanding Qty": 2,
-        "SWP Parts": [],
-        "Other Parts": [],
-        "SWP Parts Desc": [],
-        "Other Parts Desc": []
-      }
-    ],
-    "Ordered Date": "13/02/2025",
-    "Due Date": null,
-    "Total Logos": 2,
-    "Reference": "CHESTAO",
-    "Contact": "Tom Killworth",
-    "Rep": "Fiona Swannell",
-    "Address": "83 Barnard Road, Galleywood, Chelmsford, Essex, CM2 8RS",
-    "isNew": true,
-    "garmentStatus": "Not Started",
-    "decorationMethod": "",
-    "embroideryFileStatus": "",
-    "dtfStatus": "",
-    "jobStatus": "Not Started"
-  },
-  {
-    "SORD": "SORD01635264",
-    "Trader Code": "CHESTAO",
-    "Trader Name": "Chelmsford Star Co-Op Soc",
-    "Total Items": 4,
-    "Item List": [
-      {
-        "Master Code": "SWPCOP002-M",
-        "Description": "Medium Co-op Solid Grey Ladies Poloshirt",
-        "Ordered Qty": 2,
-        "Outstanding Qty": 2,
-        "SWP Parts": [
-          "SWPEMB-COOPLB"
-        ],
-        "Other Parts": [
-          "RX101F.SG.M"
-        ],
-        "SWP Parts Desc": [
-          "Co-op Left Breast Logo"
-        ],
-        "Other Parts Desc": [
-          "Pro RTX Ladies Pro Piqu� Polo Shirt - Solid Grey - Medium"
-        ]
-      },
-      {
-        "Master Code": "SWPCOP004-12",
-        "Description": "Sz 12(M) Co-op Black Ablaze Ladies Soft-Shell Jacket",
-        "Ordered Qty": 1,
-        "Outstanding Qty": 1,
-        "SWP Parts": [
-          "SWPEMB-COOPLB"
-        ],
-        "Other Parts": [
-          "RG628.BLK-12"
-        ],
-        "SWP Parts Desc": [
-          "Co-op Left Breast Logo"
-        ],
-        "Other Parts Desc": [
-          "Sz 12 Black Regatta Ladies Ablaze Printable Soft Shell Jacket"
-        ]
-      },
-      {
-        "Master Code": "COOPLANYARD",
-        "Description": "Co-op Lanyard + Holder",
-        "Ordered Qty": 1,
-        "Outstanding Qty": 1,
-        "SWP Parts": [],
-        "Other Parts": [],
-        "SWP Parts Desc": [],
-        "Other Parts Desc": []
-      }
-    ],
-    "Ordered Date": "13/02/2025",
-    "Due Date": null,
-    "Total Logos": 2,
-    "Reference": "CHESTAO",
-    "Contact": "Tom Killworth",
-    "Rep": "Fiona Swannell",
-    "Address": "7-8 St Peters Terrace, , Wickford, Essex, SS12 0AP",
-    "isNew": true,
-    "garmentStatus": "Not Started",
-    "decorationMethod": "",
-    "embroideryFileStatus": "",
-    "dtfStatus": "",
-    "jobStatus": "Not Started"
-  },
-  {
-    "SORD": "SORD01635287",
-    "Trader Code": "CHESTAO",
-    "Trader Name": "Chelmsford Star Co-Op Soc",
-    "Total Items": 4,
-    "Item List": [
-      {
-        "Master Code": "SWPCOP001-S",
-        "Description": "Small Co-op Solid Grey Poloshirt",
-        "Ordered Qty": 2,
-        "Outstanding Qty": 2,
-        "SWP Parts": [
-          "SWPEMB-COOPLB"
-        ],
-        "Other Parts": [
-          "RX101.SG.S"
-        ],
-        "SWP Parts Desc": [
-          "Co-op Left Breast Logo"
-        ],
-        "Other Parts Desc": [
-          "Pro RTX Pro Piqu� Polo Shirt - Solid Grey - Small"
-        ]
-      },
-      {
-        "Master Code": "SWPCOP003-M",
-        "Description": "Medium Co-op Black Ablaze Soft-Shell Jacket",
-        "Ordered Qty": 1,
-        "Outstanding Qty": 1,
-        "SWP Parts": [
-          "SWPEMB-COOPLB"
-        ],
-        "Other Parts": [
-          "RG627.B.M"
-        ],
-        "SWP Parts Desc": [
-          "Co-op Left Breast Logo"
-        ],
-        "Other Parts Desc": [
-          "Regatta Ablaze Soft Shell Jacket - Black/Black - Medium"
-        ]
-      },
-      {
-        "Master Code": "COOPLANYARD",
-        "Description": "Co-op Lanyard + Holder",
-        "Ordered Qty": 1,
-        "Outstanding Qty": 1,
-        "SWP Parts": [],
-        "Other Parts": [],
-        "SWP Parts Desc": [],
-        "Other Parts Desc": []
-      }
-    ],
-    "Ordered Date": "13/02/2025",
-    "Due Date": null,
-    "Total Logos": 2,
-    "Reference": "CHESTAO",
-    "Contact": "Tom Killworth",
-    "Rep": "Fiona Swannell",
-    "Address": "157 159 Nevendon Road, , Wickford, Essex, SS12 0NY",
-    "isNew": true,
-    "garmentStatus": "Not Started",
-    "decorationMethod": "",
-    "embroideryFileStatus": "",
-    "dtfStatus": "",
-    "jobStatus": "Not Started"
-  },
-  {
-    "SORD": "SORD01635291",
-    "Trader Code": "CHESTAO",
-    "Trader Name": "Chelmsford Star Co-Op Soc",
-    "Total Items": 4,
-    "Item List": [
-      {
-        "Master Code": "SWPCOP001-M",
-        "Description": "Medium Co-op Solid Grey Poloshirt",
-        "Ordered Qty": 2,
-        "Outstanding Qty": 2,
-        "SWP Parts": [
-          "SWPEMB-COOPLB"
-        ],
-        "Other Parts": [
-          "RX101.SG.M"
-        ],
-        "SWP Parts Desc": [
-          "Co-op Left Breast Logo"
-        ],
-        "Other Parts Desc": [
-          "Pro RTX Pro Piqu� Polo Shirt - Solid Grey - Medium"
-        ]
-      },
-      {
-        "Master Code": "SWPCOP003-M",
-        "Description": "Medium Co-op Black Ablaze Soft-Shell Jacket",
-        "Ordered Qty": 1,
-        "Outstanding Qty": 1,
-        "SWP Parts": [
-          "SWPEMB-COOPLB"
-        ],
-        "Other Parts": [
-          "RG627.B.M"
-        ],
-        "SWP Parts Desc": [
-          "Co-op Left Breast Logo"
-        ],
-        "Other Parts Desc": [
-          "Regatta Ablaze Soft Shell Jacket - Black/Black - Medium"
-        ]
-      },
-      {
-        "Master Code": "COOPLANYARD",
-        "Description": "Co-op Lanyard + Holder",
-        "Ordered Qty": 1,
-        "Outstanding Qty": 1,
-        "SWP Parts": [],
-        "Other Parts": [],
-        "SWP Parts Desc": [],
-        "Other Parts Desc": []
-      }
-    ],
-    "Ordered Date": "13/02/2025",
-    "Due Date": null,
-    "Total Logos": 2,
-    "Reference": "CHESTAO",
-    "Contact": "Tom Killworth",
-    "Rep": "Fiona Swannell",
-    "Address": "15 Havengore Road, Springfield, Chelmsford, Essex, CM1 6JP",
-    "isNew": true,
-    "garmentStatus": "Not Started",
-    "decorationMethod": "",
-    "embroideryFileStatus": "",
-    "dtfStatus": "",
-    "jobStatus": "Not Started"
-  },
-  {
-    "SORD": "SORD01635296",
-    "Trader Code": "CHESTAO",
-    "Trader Name": "Chelmsford Star Co-Op Soc",
-    "Total Items": 4,
-    "Item List": [
-      {
-        "Master Code": "SWPCOP002-M",
-        "Description": "Medium Co-op Solid Grey Ladies Poloshirt",
-        "Ordered Qty": 2,
-        "Outstanding Qty": 2,
-        "SWP Parts": [
-          "SWPEMB-COOPLB"
-        ],
-        "Other Parts": [
-          "RX101F.SG.M"
-        ],
-        "SWP Parts Desc": [
-          "Co-op Left Breast Logo"
-        ],
-        "Other Parts Desc": [
-          "Pro RTX Ladies Pro Piqu� Polo Shirt - Solid Grey - Medium"
-        ]
-      },
-      {
-        "Master Code": "SWPCOP004-12",
-        "Description": "Sz 12(M) Co-op Black Ablaze Ladies Soft-Shell Jacket",
-        "Ordered Qty": 1,
-        "Outstanding Qty": 1,
-        "SWP Parts": [
-          "SWPEMB-COOPLB"
-        ],
-        "Other Parts": [
-          "RG628.BLK-12"
-        ],
-        "SWP Parts Desc": [
-          "Co-op Left Breast Logo"
-        ],
-        "Other Parts Desc": [
-          "Sz 12 Black Regatta Ladies Ablaze Printable Soft Shell Jacket"
-        ]
-      },
-      {
-        "Master Code": "COOPLANYARD",
-        "Description": "Co-op Lanyard + Holder",
-        "Ordered Qty": 1,
-        "Outstanding Qty": 1,
-        "SWP Parts": [],
-        "Other Parts": [],
-        "SWP Parts Desc": [],
-        "Other Parts Desc": []
-      }
-    ],
-    "Ordered Date": "13/02/2025",
-    "Due Date": null,
-    "Total Logos": 2,
-    "Reference": "CHESTAO",
-    "Contact": "Tom Killworth",
-    "Rep": "Fiona Swannell",
-    "Address": "Unit 1 Panners Parade, Bridge End Lane, Braintree, Essex, CM77 7AE",
-    "isNew": true,
-    "garmentStatus": "Not Started",
-    "decorationMethod": "",
-    "embroideryFileStatus": "",
-    "dtfStatus": "",
-    "jobStatus": "Not Started"
-  },
-  {
-    "SORD": "SORD01635299",
-    "Trader Code": "CHESTAO",
-    "Trader Name": "Chelmsford Star Co-Op Soc",
-    "Total Items": 3,
-    "Item List": [
-      {
-        "Master Code": "SWPCOP002-L",
-        "Description": "Large Co-op Solid Grey Ladies Poloshirt",
-        "Ordered Qty": 1,
-        "Outstanding Qty": 1,
-        "SWP Parts": [
-          "SWPEMB-COOPLB"
-        ],
-        "Other Parts": [
-          "RX101F.SG.L"
-        ],
-        "SWP Parts Desc": [
-          "Co-op Left Breast Logo"
-        ],
-        "Other Parts Desc": [
-          "Pro RTX Ladies Pro Piqu� Polo Shirt - Solid Grey - Large"
-        ]
-      },
-      {
-        "Master Code": "SWPCOP004-16",
-        "Description": "Sz 16(XL) Co-op Black Ablaze Ladies Soft-Shell Jacket",
-        "Ordered Qty": 1,
-        "Outstanding Qty": 1,
-        "SWP Parts": [
-          "SWPEMB-COOPLB"
-        ],
-        "Other Parts": [
-          "RG628.BLK-16"
-        ],
-        "SWP Parts Desc": [
-          "Co-op Left Breast Logo"
-        ],
-        "Other Parts Desc": [
-          "Sz 16 Black Regatta Ladies Ablaze Printable Soft Shell Jacket"
-        ]
-      },
-      {
-        "Master Code": "COOPLANYARD",
-        "Description": "Co-op Lanyard + Holder",
-        "Ordered Qty": 1,
-        "Outstanding Qty": 1,
-        "SWP Parts": [],
-        "Other Parts": [],
-        "SWP Parts Desc": [],
-        "Other Parts Desc": []
-      }
-    ],
-    "Ordered Date": "13/02/2025",
-    "Due Date": null,
-    "Total Logos": 2,
-    "Reference": "CHESTAO",
-    "Contact": "Tom Killworth",
-    "Rep": "Fiona Swannell",
-    "Address": "12 Stanford House, Princes Margaret Road, East Tilbury, Essex, RM18 8YP",
-    "isNew": true,
-    "garmentStatus": "Not Started",
-    "decorationMethod": "",
-    "embroideryFileStatus": "",
-    "dtfStatus": "",
-    "jobStatus": "Not Started"
-  },
-  {
-    "SORD": "SORD01635309",
-    "Trader Code": "CHESTAO",
-    "Trader Name": "Chelmsford Star Co-Op Soc",
-    "Total Items": 8,
-    "Item List": [
-      {
-        "Master Code": "SWPCOP001-L",
-        "Description": "Large Co-op Solid Grey Poloshirt",
-        "Ordered Qty": 4,
-        "Outstanding Qty": 4,
-        "SWP Parts": [
-          "SWPEMB-COOPLB"
-        ],
-        "Other Parts": [
-          "RX101.SG.L"
-        ],
-        "SWP Parts Desc": [
-          "Co-op Left Breast Logo"
-        ],
-        "Other Parts Desc": [
-          "Pro RTX Pro Piqu� Polo Shirt - Solid Grey - Large"
-        ]
-      },
-      {
-        "Master Code": "SWPCOP003-L",
-        "Description": "Large Co-op Black Ablaze Soft-Shell Jacket",
-        "Ordered Qty": 1,
-        "Outstanding Qty": 1,
-        "SWP Parts": [
-          "SWPEMB-COOPLB"
-        ],
-        "Other Parts": [
-          "RG627.B.L"
-        ],
-        "SWP Parts Desc": [
-          "Co-op Left Breast Logo"
-        ],
-        "Other Parts Desc": [
-          "Regatta Ablaze Soft Shell Jacket - Black/Black - Large"
-        ]
-      },
-      {
-        "Master Code": "SWPCOP005",
-        "Description": "Black Co-op Bib Apron with Pocket",
-        "Ordered Qty": 1,
-        "Outstanding Qty": 1,
-        "SWP Parts": [
-          "SWPEMB-COOPC"
-        ],
-        "Other Parts": [
-          "UC940BLK"
-        ],
-        "SWP Parts Desc": [
-          "Co-op Central Apron Logo"
-        ],
-        "Other Parts Desc": [
-          "Black Bib Apron with Pocket"
-        ]
-      },
-      {
-        "Master Code": "COOPLANYARD",
-        "Description": "Co-op Lanyard + Holder",
-        "Ordered Qty": 2,
-        "Outstanding Qty": 2,
-        "SWP Parts": [],
-        "Other Parts": [],
-        "SWP Parts Desc": [],
-        "Other Parts Desc": []
-      }
-    ],
-    "Ordered Date": "13/02/2025",
-    "Due Date": null,
-    "Total Logos": 3,
-    "Reference": "CHESTAO",
-    "Contact": "Tom Killworth",
-    "Rep": "Fiona Swannell",
-    "Address": "159 Church Road, , Benfleet, Essex, SS7 4EN",
-    "isNew": true,
-    "garmentStatus": "Not Started",
-    "decorationMethod": "",
-    "embroideryFileStatus": "",
-    "dtfStatus": "",
-    "jobStatus": "Not Started"
-  },
-  {
-    "SORD": "SORD01635318",
-    "Trader Code": "CHESTAO",
-    "Trader Name": "Chelmsford Star Co-Op Soc",
-    "Total Items": 9,
-    "Item List": [
-      {
-        "Master Code": "SWPCOP001-L",
-        "Description": "Large Co-op Solid Grey Poloshirt",
-        "Ordered Qty": 4,
-        "Outstanding Qty": 4,
-        "SWP Parts": [
-          "SWPEMB-COOPLB"
-        ],
-        "Other Parts": [
-          "RX101.SG.L"
-        ],
-        "SWP Parts Desc": [
-          "Co-op Left Breast Logo"
-        ],
-        "Other Parts Desc": [
-          "Pro RTX Pro Piqu� Polo Shirt - Solid Grey - Large"
-        ]
-      },
-      {
-        "Master Code": "SWPCOP003-L",
-        "Description": "Large Co-op Black Ablaze Soft-Shell Jacket",
-        "Ordered Qty": 2,
-        "Outstanding Qty": 2,
-        "SWP Parts": [
-          "SWPEMB-COOPLB"
-        ],
-        "Other Parts": [
-          "RG627.B.L"
-        ],
-        "SWP Parts Desc": [
-          "Co-op Left Breast Logo"
-        ],
-        "Other Parts Desc": [
-          "Regatta Ablaze Soft Shell Jacket - Black/Black - Large"
-        ]
-      },
-      {
-        "Master Code": "SWPCOP005",
-        "Description": "Black Co-op Bib Apron with Pocket",
-        "Ordered Qty": 1,
-        "Outstanding Qty": 1,
-        "SWP Parts": [
-          "SWPEMB-COOPC"
-        ],
-        "Other Parts": [
-          "UC940BLK"
-        ],
-        "SWP Parts Desc": [
-          "Co-op Central Apron Logo"
-        ],
-        "Other Parts Desc": [
-          "Black Bib Apron with Pocket"
-        ]
-      },
-      {
-        "Master Code": "COOPLANYARD",
-        "Description": "Co-op Lanyard + Holder",
-        "Ordered Qty": 2,
-        "Outstanding Qty": 2,
-        "SWP Parts": [],
-        "Other Parts": [],
-        "SWP Parts Desc": [],
-        "Other Parts Desc": []
-      }
-    ],
-    "Ordered Date": "13/02/2025",
-    "Due Date": null,
-    "Total Logos": 3,
-    "Reference": "CHESTAO",
-    "Contact": "Tom Killworth",
-    "Rep": "Fiona Swannell",
-    "Address": "159 Church Road, , Benfleet, Essex, SS7 4EN",
-    "isNew": true,
-    "garmentStatus": "Not Started",
-    "decorationMethod": "",
-    "embroideryFileStatus": "",
-    "dtfStatus": "",
-    "jobStatus": "Not Started"
-  },
-  {
-    "SORD": "SORD01635387",
-    "Trader Code": "BES013C",
-    "Trader Name": "Beagle Technology Group Ltd",
-    "Total Items": 6,
-    "Item List": [
-      {
-        "Master Code": "SWPBES0002.N.L",
-        "Description": "Large Navy Beagle Classic Full Zip Flleece Jacket (UC604",
-        "Ordered Qty": 2,
-        "Outstanding Qty": 2,
-        "SWP Parts": [
-          "SWPEMB-BES001"
-        ],
-        "Other Parts": [
-          "UC604.N.L"
-        ],
-        "SWP Parts Desc": [
-          "Beagle Aircraft Left Breast Embroidery - Multicolour & White Text"
-        ],
-        "Other Parts Desc": [
-          "Classic Full Zip Micro Fleece Jacket - Navy - Large"
-        ]
-      },
-      {
-        "Master Code": "SWPBES0013.FN.L",
-        "Description": "Large F/Navy Beagle Classic Poloshirt (UC101)",
-        "Ordered Qty": 4,
-        "Outstanding Qty": 4,
-        "SWP Parts": [
-          "SWPEMB-BES001"
-        ],
-        "Other Parts": [
-          "UC101.FN.L"
-        ],
-        "SWP Parts Desc": [
-          "Beagle Aircraft Left Breast Embroidery - Multicolour & White Text"
-        ],
-        "Other Parts Desc": [
-          "Classic Pique Poloshirt - French Navy - Large"
-        ]
-      }
-    ],
-    "Ordered Date": "13/02/2025",
-    "Due Date": null,
-    "Total Logos": 2,
-    "Reference": "BES013C",
-    "Contact": "Gary Maslen",
-    "Rep": "Lorraine Rogers",
-    "Address": "Stony Lane, , Christchurch, Dorset, BH23 1EX",
-    "isNew": true,
-    "garmentStatus": "Not Started",
-    "decorationMethod": "",
-    "embroideryFileStatus": "",
-    "dtfStatus": "",
-    "jobStatus": "Not Started"
-  },
-  {
-    "SORD": "SORD01635481",
-    "Trader Code": "CHESTAO",
-    "Trader Name": "Chelmsford Star Co-Op Soc",
-    "Total Items": 4,
-    "Item List": [
-      {
-        "Master Code": "SWPCOP002-M",
-        "Description": "Medium Co-op Solid Grey Ladies Poloshirt",
-        "Ordered Qty": 2,
-        "Outstanding Qty": 2,
-        "SWP Parts": [
-          "SWPEMB-COOPLB"
-        ],
-        "Other Parts": [
-          "RX101F.SG.M"
-        ],
-        "SWP Parts Desc": [
-          "Co-op Left Breast Logo"
-        ],
-        "Other Parts Desc": [
-          "Pro RTX Ladies Pro Piqu� Polo Shirt - Solid Grey - Medium"
-        ]
-      },
-      {
-        "Master Code": "SWPCOP004-16",
-        "Description": "Sz 16(XL) Co-op Black Ablaze Ladies Soft-Shell Jacket",
-        "Ordered Qty": 1,
-        "Outstanding Qty": 1,
-        "SWP Parts": [
-          "SWPEMB-COOPLB"
-        ],
-        "Other Parts": [
-          "RG628.BLK-16"
-        ],
-        "SWP Parts Desc": [
-          "Co-op Left Breast Logo"
-        ],
-        "Other Parts Desc": [
-          "Sz 16 Black Regatta Ladies Ablaze Printable Soft Shell Jacket"
-        ]
-      },
-      {
-        "Master Code": "COOPLANYARD",
-        "Description": "Co-op Lanyard + Holder",
-        "Ordered Qty": 1,
-        "Outstanding Qty": 1,
-        "SWP Parts": [],
-        "Other Parts": [],
-        "SWP Parts Desc": [],
-        "Other Parts Desc": []
-      }
-    ],
-    "Ordered Date": "13/02/2025",
-    "Due Date": null,
-    "Total Logos": 2,
-    "Reference": "CHESTAO",
-    "Contact": "Tom Killworth",
-    "Rep": "Fiona Swannell",
-    "Address": "62 Beehive Lane, Westbourne Grove, Chelmsford, Essex, CM2 9RP",
-    "isNew": true,
-    "garmentStatus": "Not Started",
-    "decorationMethod": "",
-    "embroideryFileStatus": "",
-    "dtfStatus": "",
-    "jobStatus": "Not Started"
-  },
-  {
-    "SORD": "SORD01635651",
-    "Trader Code": "GMT001X",
-    "Trader Name": "GM Treble",
-    "Total Items": 4,
-    "Item List": [
-      {
-        "Master Code": "SWPGMT00001",
-        "Description": "Full Zip Fleece - Black - L - GM Treble Emb Logo LB",
-        "Ordered Qty": 2,
-        "Outstanding Qty": 2,
-        "SWP Parts": [
-          "SWPEMB-GMTRELB"
-        ],
-        "Other Parts": [
-          "UC604.BK.L",
-          "UX5.B.L"
-        ],
-        "SWP Parts Desc": [
-          "G M Treble Left Breast Embroidery - White"
-        ],
-        "Other Parts Desc": [
-          "Classic Full Zip Micro Fleece Jacket - Black - Large",
-          "Full Zip Fleece - Black- L"
-        ]
-      },
-      {
-        "Master Code": "SWPGMT019-L",
-        "Description": "Large Black L/Sleeved GM Treble Sweatshirt RX301",
-        "Ordered Qty": 2,
-        "Outstanding Qty": 2,
-        "SWP Parts": [
-          "SWPEMB-GMTRELB"
-        ],
-        "Other Parts": [
-          "RX301.B.L"
-        ],
-        "SWP Parts Desc": [
-          "G M Treble Left Breast Embroidery - White"
-        ],
-        "Other Parts Desc": [
-          "Pro RTX Pro Sweatshirt - Black - Large"
-        ]
-      }
-    ],
-    "Ordered Date": "13/02/2025",
-    "Due Date": null,
-    "Total Logos": 2,
-    "Reference": "GMT001X",
-    "Contact": "",
-    "Rep": "Tammy Harris",
-    "Address": "New Street, Parkfields, , Wolverhampton, WV4 6AN",
-    "isNew": true,
-    "garmentStatus": "Not Started",
-    "decorationMethod": "",
-    "embroideryFileStatus": "",
-    "dtfStatus": "",
-    "jobStatus": "Not Started"
-  },
-  {
-    "SORD": "SORD01635668",
-    "Trader Code": "CHESTAO",
-    "Trader Name": "Chelmsford Star Co-Op Soc",
-    "Total Items": 3,
-    "Item List": [
-      {
-        "Master Code": "SWPCOP002-XS",
-        "Description": "X/Small Co-op Solid Grey Ladies Poloshirt",
-        "Ordered Qty": 1,
-        "Outstanding Qty": 1,
-        "SWP Parts": [
-          "SWPEMB-COOPLB",
-          "SWPEMB-COOPLBSM"
-        ],
-        "Other Parts": [
-          "RX101F.SG.XS"
-        ],
-        "SWP Parts Desc": [
-          "Co-op Left Breast Logo",
-          "Co-Op Left Breast Logo For Ladies XS/Small"
-        ],
-        "Other Parts Desc": [
-          "Pro RTX Ladies Pro Piqu� Polo Shirt - Solid Grey - XS"
-        ]
-      },
-      {
-        "Master Code": "SWPCOP004-10",
-        "Description": "Sz 10(S) Co-op Black Ablaze Ladies Soft-Shell Jacket",
-        "Ordered Qty": 1,
-        "Outstanding Qty": 1,
-        "SWP Parts": [
-          "SWPEMB-COOPLB"
-        ],
-        "Other Parts": [
-          "RG628.BLK-10"
-        ],
-        "SWP Parts Desc": [
-          "Co-op Left Breast Logo"
-        ],
-        "Other Parts Desc": [
-          "Sz 10 Black Regatta Ladies Ablaze Printable Soft Shell Jacket"
-        ]
-      },
-      {
-        "Master Code": "COOPLANYARD",
-        "Description": "Co-op Lanyard + Holder",
-        "Ordered Qty": 1,
-        "Outstanding Qty": 1,
-        "SWP Parts": [],
-        "Other Parts": [],
-        "SWP Parts Desc": [],
-        "Other Parts Desc": []
-      }
-    ],
-    "Ordered Date": "13/02/2025",
-    "Due Date": null,
-    "Total Logos": 3,
-    "Reference": "CHESTAO",
-    "Contact": "Tom Killworth",
-    "Rep": "Fiona Swannell",
-    "Address": "1663-1669 London Road, , Leigh On Sea, Essex, SS9 2SH",
-    "isNew": true,
-    "garmentStatus": "Not Started",
-    "decorationMethod": "",
-    "embroideryFileStatus": "",
-    "dtfStatus": "",
-    "jobStatus": "Not Started"
-  },
-  {
-    "SORD": "SORD01636086",
-    "Trader Code": "BES013C",
-    "Trader Name": "Beagle Technology Group Ltd",
-    "Total Items": 76,
-    "Item List": [
-      {
-        "Master Code": "SWPBES0001",
-        "Description": "Beagle Navy Beanie Hat (RC029)",
-        "Ordered Qty": 75,
-        "Outstanding Qty": 75,
-        "SWP Parts": [
-          "SWPEMB-BES001"
-        ],
-        "Other Parts": [
-          "RC029.NV"
-        ],
-        "SWP Parts Desc": [
-          "Beagle Aircraft Left Breast Embroidery - Multicolour & White Text"
-        ],
-        "Other Parts Desc": [
-          "Result Wooly Ski Hat - Navy - One Size"
-        ]
-      },
-      {
-        "Master Code": "SWPBES0006.N.XL",
-        "Description": "XL Beagle Navy Kariban Lightweight Padded Bodywarmer (KB6113)",
-        "Ordered Qty": 1,
-        "Outstanding Qty": 1,
-        "SWP Parts": [
-          "SWPEMB-BES001"
-        ],
-        "Other Parts": [
-          "KB6113.N.XL"
-        ],
-        "SWP Parts Desc": [
-          "Beagle Aircraft Left Breast Embroidery - Multicolour & White Text"
-        ],
-        "Other Parts Desc": [
-          "Kariban Lightweight Padded Bodywarmer - Navy - X-Large"
-        ]
-      }
-    ],
-    "Ordered Date": "14/02/2025",
-    "Due Date": null,
-    "Total Logos": 2,
-    "Reference": "BES013C",
-    "Contact": "Gary Maslen",
-    "Rep": "Lorraine Rogers",
-    "Address": "Stony Lane, , Christchurch, Dorset, BH23 1EX",
-    "isNew": true,
-    "garmentStatus": "Not Started",
-    "decorationMethod": "",
-    "embroideryFileStatus": "",
-    "dtfStatus": "",
-    "jobStatus": "Not Started"
-  },
-  {
-    "SORD": "SORD01636334",
-    "Trader Code": "MBP/RAP",
-    "Trader Name": "MBP Doorset Solutions (Rapid-Fit)",
-    "Total Items": 30,
-    "Item List": [
-      {
-        "Master Code": "SWPMID0005-M",
-        "Description": "Medium Yellow MBP Hi-Viz Vest - UC801",
-        "Ordered Qty": 15,
-        "Outstanding Qty": 15,
-        "SWP Parts": [
-          "SWPDTF-MBPLB1"
-        ],
-        "Other Parts": [
-          "UC801.Y.M"
-        ],
-        "SWP Parts Desc": [
-          "MBP Left Breast Heat Seal Logo - Black/Orange Logo"
-        ],
-        "Other Parts Desc": [
-          "Hi-Vis Safety Waistcoat/Vest - Yellow - M"
-        ]
-      },
-      {
-        "Master Code": "SWPMID0005-L",
-        "Description": "Large Yellow MBP Hi-Viz Vest - UC801",
-        "Ordered Qty": 15,
-        "Outstanding Qty": 12,
-        "SWP Parts": [
-          "SWPDTF-MBPLB1"
-        ],
-        "Other Parts": [
-          "UC801.Y.L"
-        ],
-        "SWP Parts Desc": [
-          "MBP Left Breast Heat Seal Logo - Black/Orange Logo"
-        ],
-        "Other Parts Desc": [
-          "Hi-Vis Safety Waistcoat/Vest - Yellow - L"
-        ]
-      },
-      {
-        "Master Code": "SWPMID0011-XXL",
-        "Description": "XXL Yellow MBP Executive Hi-Viz Vest - YK103",
-        "Ordered Qty": 1,
-        "Outstanding Qty": 1,
-        "SWP Parts": [
-          "SWPEMB-MBP002"
-        ],
-        "Other Parts": [
-          "YK103.Y.XXL"
-        ],
-        "SWP Parts Desc": [
-          "MBP Left Breast Embroidery - Black/Orange"
-        ],
-        "Other Parts Desc": [
-          "Hi-Vis Executive Waistcoat - Yellow - XXL"
-        ]
-      },
-      {
-        "Master Code": "SWPMID0007-M",
-        "Description": "Medium Yellow MBP Hi-Viz Reversible Bodywarmer - YK061",
-        "Ordered Qty": 2,
-        "Outstanding Qty": 2,
-        "SWP Parts": [
-          "SWPDTF-MBPLB1",
-          "SWPDTF-MBPLB1"
-        ],
-        "Other Parts": [
-          "YK061.Y.M",
-          "YK061.Y.M"
-        ],
-        "SWP Parts Desc": [
-          "MBP Left Breast Heat Seal Logo - Black/Orange Logo",
-          "MBP Left Breast Heat Seal Logo - Black/Orange Logo"
-        ],
-        "Other Parts Desc": [
-          "Hi-Vis Reversible Fleece Bodywarmer - Yellow - M",
-          "Hi-Vis Reversible Fleece Bodywarmer - Yellow - M"
-        ]
-      }
-    ],
-    "Ordered Date": "17/02/2025",
-    "Due Date": null,
-    "Total Logos": 5,
-    "Reference": "MBP/RAP",
-    "Contact": "Katie Noone",
-    "Rep": "Ricky Neale ",
-    "Address": "Midland Buildng Products Ltd T/A MBP, Gate 4, Spectrum House 0121 289 5113, West Bromwich, West Midlands, B70 0DH",
-    "isNew": true,
-    "garmentStatus": "Not Started",
-    "decorationMethod": "",
-    "embroideryFileStatus": "",
-    "dtfStatus": "",
-    "jobStatus": "Not Started"
-  },
-  {
-    "SORD": "SORD01636476",
-    "Trader Code": "PML001",
-    "Trader Name": "PML Applications Limited",
-    "Total Items": 3,
-    "Item List": [
-      {
-        "Master Code": "SWPPLY001-S",
-        "Description": "Small Navy Plymouth Marine Laboratory Boilersuit 2802",
-        "Ordered Qty": 1,
-        "Outstanding Qty": 1,
-        "SWP Parts": [
-          "SWPEMB-PML001"
-        ],
-        "Other Parts": [
-          "2802NARS",
-          ""
-        ],
-        "SWP Parts Desc": [
-          "PML/Plymouth Marine Laboratories Left Breast Embroidery - White"
-        ],
-        "Other Parts Desc": [
-          "2802 - Standard Coverall - Navy - Small",
-          "Standard Coverall Size S Fit R Navy"
-        ]
-      },
-      {
-        "Master Code": "SWPPLY001-M",
-        "Description": "Medium Navy Plymouth Marine Laboratory Boilersuit 2802",
-        "Ordered Qty": 1,
-        "Outstanding Qty": 1,
-        "SWP Parts": [
-          "SWPEMB-PML001"
-        ],
-        "Other Parts": [
-          "2802NARM",
-          ""
-        ],
-        "SWP Parts Desc": [
-          "PML/Plymouth Marine Laboratories Left Breast Embroidery - White"
-        ],
-        "Other Parts Desc": [
-          "2802NA Standard Coverall - Navy - Medium",
-          "Standard Coverall Size M Fit R Navy"
-        ]
-      },
-      {
-        "Master Code": "SWPPLY015-M",
-        "Description": "Medium White Plymouth Marine Laboratory Standard Coat C851 - Teal Emb",
-        "Ordered Qty": 1,
-        "Outstanding Qty": 1,
-        "SWP Parts": [
-          "SWPEMB-PML003"
-        ],
-        "Other Parts": [
-          "C851WHRM"
-        ],
-        "SWP Parts Desc": [
-          "PML/Plymouth Marine Laboratories Left Breast Embroidery - Teal"
-        ],
-        "Other Parts Desc": [
-          "Standard Cotton Coat Size M Fit R White"
-        ]
-      }
-    ],
-    "Ordered Date": "17/02/2025",
-    "Due Date": null,
-    "Total Logos": 3,
-    "Reference": "PML001",
-    "Contact": "",
-    "Rep": "Rebecca Matthewman ",
-    "Address": "Prospect Place, The Hoe, Plymouth, Devon, PL1 3DH",
-    "isNew": true,
-    "garmentStatus": "Not Started",
-    "decorationMethod": "",
-    "embroideryFileStatus": "",
-    "dtfStatus": "",
-    "jobStatus": "Not Started"
-  },
-  {
-    "SORD": "SORD01636595",
-    "Trader Code": "ARQ002D",
-    "Trader Name": "Arque Ltd",
-    "Total Items": 37,
-    "Item List": [
-      {
-        "Master Code": "SWPARQ002-L",
-        "Description": "Large Yellow Hi Vis Arque Traffic Jacket S460",
-        "Ordered Qty": 14,
-        "Outstanding Qty": 14,
-        "SWP Parts": [
-          "SWPDTF-ARQLB",
-          "SWPDTF-ARQR"
-        ],
-        "Other Parts": [
-          "S460YERL"
-        ],
-        "SWP Parts Desc": [
-          "Arque Left Breast Heat Seal",
-          "Arque Rear Heat Seal"
-        ],
-        "Other Parts Desc": [
-          "Hi-Vis Winter Traffic Jacket  Size L Fit R Yellow"
-        ]
-      },
-      {
-        "Master Code": "SWPARQ002-M",
-        "Description": "Medium Yellow Hi Vis Arque Traffic Jacket S460",
-        "Ordered Qty": 14,
-        "Outstanding Qty": 14,
-        "SWP Parts": [
-          "SWPDTF-ARQLB",
-          "SWPDTF-ARQR"
-        ],
-        "Other Parts": [
-          "S460YERM",
-          ""
-        ],
-        "SWP Parts Desc": [
-          "Arque Left Breast Heat Seal",
-          "Arque Rear Heat Seal"
-        ],
-        "Other Parts Desc": [
-          "Hi-Vis Winter Traffic Jacket",
-          "Yellow - Medium"
-        ]
-      },
-      {
-        "Master Code": "SWPARQ002-XL",
-        "Description": "XL Yellow Hi Vis Arque Traffic Jacket S460",
-        "Ordered Qty": 4,
-        "Outstanding Qty": 4,
-        "SWP Parts": [
-          "SWPDTF-ARQLB",
-          "SWPDTF-ARQR"
-        ],
-        "Other Parts": [
-          "S460YERXL"
-        ],
-        "SWP Parts Desc": [
-          "Arque Left Breast Heat Seal",
-          "Arque Rear Heat Seal"
-        ],
-        "Other Parts Desc": [
-          "Hi-Vis Winter Traffic Jacket  Size XL Fit R Yellow"
-        ]
-      },
-      {
-        "Master Code": "SWPARQ003-L",
-        "Description": "Large Yellow Hi Vis Arque Waistcoat UC801",
-        "Ordered Qty": 5,
-        "Outstanding Qty": 5,
-        "SWP Parts": [
-          "SWPDTF-ARQLB",
-          "SWPDTF-ARQR"
-        ],
-        "Other Parts": [
-          "UC801.Y.L"
-        ],
-        "SWP Parts Desc": [
-          "Arque Left Breast Heat Seal",
-          "Arque Rear Heat Seal"
-        ],
-        "Other Parts Desc": [
-          "Hi-Vis Safety Waistcoat/Vest - Yellow - L"
-        ]
-      }
-    ],
-    "Ordered Date": "17/02/2025",
-    "Due Date": null,
-    "Total Logos": 8,
-    "Reference": "ARQ002D",
-    "Contact": "",
-    "Rep": "Darren McKenna",
-    "Address": "Marsh Road, Lords Meadow Int Est, Crediton, Devon, EX17 1EU",
-    "isNew": true,
-    "garmentStatus": "Not Started",
-    "decorationMethod": "",
-    "embroideryFileStatus": "",
-    "dtfStatus": "",
-    "jobStatus": "Not Started"
-  },
-  {
-    "SORD": "SORD01636644",
-    "Trader Code": "SMU001",
-    "Trader Name": "Smurfit Westrock UK Ltd",
-    "Total Items": 10,
-    "Item List": [
-      {
-        "Master Code": "SWPSMUW001",
-        "Description": "Black/Grey Smurfit Westrock Backpack ",
-        "Ordered Qty": 10,
-        "Outstanding Qty": 10,
-        "SWP Parts": [
-          "SWPEMB-SMUWB"
-        ],
-        "Other Parts": [
-          "CMT3.GB.OS"
-        ],
-        "SWP Parts Desc": [
-          "Smurfit Westrock Bag Centre Front Embroidery - White/Blue"
-        ],
-        "Other Parts Desc": [
-          "Stormtech Road Warrior Computer Pack - Graphite / Black - One Size"
-        ]
-      }
-    ],
-    "Ordered Date": "17/02/2025",
-    "Due Date": null,
-    "Total Logos": 1,
-    "Reference": "SMU001",
-    "Contact": "accounts payable - vendor  176834",
-    "Rep": "Paul Boneham",
-    "Address": "UK CENTRAL SERVICES  VENDOR NO 176834, Cunard Building, Liverpool, , L3 1SF",
-    "isNew": true,
-    "garmentStatus": "Not Started",
-    "decorationMethod": "",
-    "embroideryFileStatus": "",
-    "dtfStatus": "",
-    "jobStatus": "Not Started"
-  },
-  {
-    "SORD": "SORD01636688",
-    "Trader Code": "DAT006S",
-    "Trader Name": "Data-Path Ltd",
-    "Total Items": 21,
-    "Item List": [
-      {
-        "Master Code": "SWPDAT001-M",
-        "Description": "Medium Black Data Path Sweatshirt UC203",
-        "Ordered Qty": 5,
-        "Outstanding Qty": 5,
-        "SWP Parts": [
-          "SWPEMB-DATLB",
-          "SWPEMB-DATR"
-        ],
-        "Other Parts": [
-          "UC203.B.M"
-        ],
-        "SWP Parts Desc": [
-          "Data Path Left Breast Embroidery - Silver / Blue",
-          "Data Path Rear Embroidery - Silver / Blue"
-        ],
-        "Other Parts Desc": [
-          "Classic Sweatshirt - Black - M"
-        ]
-      },
-      {
-        "Master Code": "SWPDAT001-XL",
-        "Description": "XL Black Data Path Sweatshirt UC203",
-        "Ordered Qty": 5,
-        "Outstanding Qty": 5,
-        "SWP Parts": [
-          "SWPEMB-DATLB",
-          "SWPEMB-DATR"
-        ],
-        "Other Parts": [
-          "UC203.B.XL"
-        ],
-        "SWP Parts Desc": [
-          "Data Path Left Breast Embroidery - Silver / Blue",
-          "Data Path Rear Embroidery - Silver / Blue"
-        ],
-        "Other Parts Desc": [
-          "Classic Sweatshirt - Black - XL"
-        ]
-      },
-      {
-        "Master Code": "SWPDAT002-M",
-        "Description": "Medium Black Data Path T-Shirt UC301",
-        "Ordered Qty": 10,
-        "Outstanding Qty": 10,
-        "SWP Parts": [
-          "SWPDTF-DATLB",
-          "SWPDTF-DATR"
-        ],
-        "Other Parts": [
-          "UC301.B.M"
-        ],
-        "SWP Parts Desc": [
-          "Data Path Left Breast Heat Seal - Silver / Blue",
-          "Data Path Rear Heat Seal - Silver / Blue"
-        ],
-        "Other Parts Desc": [
-          "Classic Crew Neck T-Shirt - Black - M"
-        ]
-      },
-      {
-        "Master Code": "EMBSETUP",
-        "Description": "Embroidery - Set Up Charge",
-        "Ordered Qty": 1,
-        "Outstanding Qty": 1,
-        "SWP Parts": [],
-        "Other Parts": [],
-        "SWP Parts Desc": [],
-        "Other Parts Desc": []
-      }
-    ],
-    "Ordered Date": "17/02/2025",
-    "Due Date": null,
-    "Total Logos": 6,
-    "Reference": "DAT006S",
-    "Contact": "",
-    "Rep": "Darren McKenna",
-    "Address": "Unit 5, Crewkerne Business Park, Crewkerne, Somerset, TA18 7HJ",
-    "isNew": true,
-    "garmentStatus": "Not Started",
-    "decorationMethod": "",
-    "embroideryFileStatus": "",
-    "dtfStatus": "",
-    "jobStatus": "Not Started"
-  },
-  {
-    "SORD": "SORD01636766",
-    "Trader Code": "OLI001X",
-    "Trader Name": "Oliver Ashworth*",
-    "Total Items": 10,
-    "Item List": [
-      {
-        "Master Code": "SWPOLI0082.BK.L",
-        "Description": "Large Black Oliver Ashworth RTX Pro Piqu� Polo Shirt [RX101]",
-        "Ordered Qty": 3,
-        "Outstanding Qty": 3,
-        "SWP Parts": [
-          "SWPEMB-OLI001"
-        ],
-        "Other Parts": [
-          "RX101.BK.L"
-        ],
-        "SWP Parts Desc": [
-          "Oliver Ashworth Left Breast Embroidery - Orange/Black/White"
-        ],
-        "Other Parts Desc": [
-          "Pro RTX Pro Piqu� Polo Shirt - Black - Large"
-        ]
-      },
-      {
-        "Master Code": "SWPOLI0054-L",
-        "Description": "Large Black Oliver Ashworth UX Hoodie",
-        "Ordered Qty": 2,
-        "Outstanding Qty": 2,
-        "SWP Parts": [
-          "SWPEMB-OLI001"
-        ],
-        "Other Parts": [
-          "UX4.B.L"
-        ],
-        "SWP Parts Desc": [
-          "Oliver Ashworth Left Breast Embroidery - Orange/Black/White"
-        ],
-        "Other Parts Desc": [
-          "The UX Hoodie Black Large"
-        ]
-      },
-      {
-        "Master Code": "SWPOLI0074.B/O.L",
-        "Description": "Large Oliver Ashworth Black/Orange Result Thermoquilt Gilet RS239]",
-        "Ordered Qty": 2,
-        "Outstanding Qty": 2,
-        "SWP Parts": [
-          "SWPEMB-OLI001",
-          "SWPEMB-OLI001"
-        ],
-        "Other Parts": [
-          "RS239.B/O.L",
-          "RS239.B/O.L"
-        ],
-        "SWP Parts Desc": [
-          "Oliver Ashworth Left Breast Embroidery - Orange/Black/White",
-          "Oliver Ashworth Left Breast Embroidery - Orange/Black/White"
-        ],
-        "Other Parts Desc": [
-          "Result Genuine Recycled Thermoquilt Gilet - Black / Orange - Large",
-          "Result Genuine Recycled Thermoquilt Gilet - Black / Orange - Large"
-        ]
-      },
-      {
-        "Master Code": "SWPOLI0071-L",
-        "Description": "Large Black Oliver Ashworth Hooded Sweatshirt [UC502]",
-        "Ordered Qty": 2,
-        "Outstanding Qty": 2,
-        "SWP Parts": [
-          "SWPEMB-OLI001"
-        ],
-        "Other Parts": [
-          "UC502BK.L"
-        ],
-        "SWP Parts Desc": [
-          "Oliver Ashworth Left Breast Embroidery - Orange/Black/White"
-        ],
-        "Other Parts Desc": [
-          "Classic Hooded Sweatshirt Black Large"
-        ]
-      },
-      {
-        "Master Code": "SWPOLI0004-L",
-        "Description": "Large Yellow Oliver Ashworth Hi Viz Waistcoat UC801 (x2 Logos)",
-        "Ordered Qty": 1,
-        "Outstanding Qty": 1,
-        "SWP Parts": [
-          "SWPDTF-OLILB",
-          "SWPDTF-OLIR"
-        ],
-        "Other Parts": [
-          "UC801.Y.L"
-        ],
-        "SWP Parts Desc": [
-          "Oliver Ashworth Left Breast Heat Seal Logo - Black/Orange",
-          "Oliver Ashworth Rear Heat Seal Logo"
-        ],
-        "Other Parts Desc": [
-          "Hi-Vis Safety Waistcoat/Vest - Yellow - L"
-        ]
-      }
-    ],
-    "Ordered Date": "17/02/2025",
-    "Due Date": null,
-    "Total Logos": 7,
-    "Reference": "OLI001X",
-    "Contact": "",
-    "Rep": "Rebecca Matthewman ",
-    "Address": "Units 3 - 5, Hulbert Drive , Grazebrook Industrial Park, Dudley, West Midlands, DY2 0XW",
-    "isNew": true,
-    "garmentStatus": "Not Started",
-    "decorationMethod": "",
-    "embroideryFileStatus": "",
-    "dtfStatus": "",
-    "jobStatus": "Not Started"
-  },
-  {
-    "SORD": "SORD01636797",
-    "Trader Code": "FIR015",
-    "Trader Name": "First Circle Packaging Limited",
-    "Total Items": 3,
-    "Item List": [
-      {
-        "Master Code": "SWPFIRC010-L",
-        "Description": "Large Grey First Circle Regatta Fleece TRF532",
-        "Ordered Qty": 2,
-        "Outstanding Qty": 2,
-        "SWP Parts": [
-          "SWPEMB-FCLB",
-          "SWPEMB-FCR"
-        ],
-        "Other Parts": [
-          "TRF532.SG-L"
-        ],
-        "SWP Parts Desc": [
-          "First Circle LB Green Logo",
-          "First Circle Rear Green Logo"
-        ],
-        "Other Parts Desc": [
-          "Large Seal Grey Regatta Thor III Men's Interactive Fleece TRF532"
-        ]
-      },
-      {
-        "Master Code": "SWPFIRC010-M",
-        "Description": "Medium Grey First Circle Regatta Fleece TRF532",
-        "Ordered Qty": 1,
-        "Outstanding Qty": 1,
-        "SWP Parts": [
-          "SWPEMB-FCLB",
-          "SWPEMB-FCR"
-        ],
-        "Other Parts": [
-          "TRF532.SG-M"
-        ],
-        "SWP Parts Desc": [
-          "First Circle LB Green Logo",
-          "First Circle Rear Green Logo"
-        ],
-        "Other Parts Desc": [
-          "Medium Seal Grey Regatta Thor III Men's Interactive Fleece TRF532"
-        ]
-      }
-    ],
-    "Ordered Date": "17/02/2025",
-    "Due Date": null,
-    "Total Logos": 4,
-    "Reference": "FIR015",
-    "Contact": "Alvaro Silva",
-    "Rep": "Chris Sayles",
-    "Address": "1 & 2 Frraser Road, Kirkton Campus, Livingston, , EH54 7BU",
-    "isNew": true,
-    "garmentStatus": "Not Started",
-    "decorationMethod": "",
-    "embroideryFileStatus": "",
-    "dtfStatus": "",
-    "jobStatus": "Not Started"
-  },
-  {
-    "SORD": "SORD01636929",
-    "Trader Code": "MBP/MID",
-    "Trader Name": "MBP Door Solutions - Midlands",
-    "Total Items": 3,
-    "Item List": [
-      {
-        "Master Code": "SWPMID0021-S",
-        "Description": "Small Black MBP Full Zip Fleece UC604",
-        "Ordered Qty": 1,
-        "Outstanding Qty": 1,
-        "SWP Parts": [
-          "SWPEMB-MBP004"
-        ],
-        "Other Parts": [
-          "UC604.BK.S"
-        ],
-        "SWP Parts Desc": [
-          "MBP Centre Cap Embroidery Logo - White/Orange"
-        ],
-        "Other Parts Desc": [
-          "Classic Full Zip Micro Fleece Jacket - Black - Small"
-        ]
-      },
-      {
-        "Master Code": "SWPMID0021-XL",
-        "Description": "XL Black MBP Full Zip Fleece UC604",
-        "Ordered Qty": 1,
-        "Outstanding Qty": 1,
-        "SWP Parts": [
-          "SWPEMB-MBP004"
-        ],
-        "Other Parts": [
-          "UC604.BK.XL"
-        ],
-        "SWP Parts Desc": [
-          "MBP Centre Cap Embroidery Logo - White/Orange"
-        ],
-        "Other Parts Desc": [
-          "Classic Full Zip Micro Fleece Jacket - Black - XLarge"
-        ]
-      },
-      {
-        "Master Code": "SWPMID0047.B.S",
-        "Description": "Russell Nano Padded Bodywarmer - Black - Small with MBP Logo",
-        "Ordered Qty": 1,
-        "Outstanding Qty": 1,
-        "SWP Parts": [
-          "SWPEMB-MBP004"
-        ],
-        "Other Parts": [
-          "441M.BK.S"
-        ],
-        "SWP Parts Desc": [
-          "MBP Centre Cap Embroidery Logo - White/Orange"
-        ],
-        "Other Parts Desc": [
-          "Russell Nano Padded Bodywarmer - Black - Small"
-        ]
-      }
-    ],
-    "Ordered Date": "17/02/2025",
-    "Due Date": null,
-    "Total Logos": 3,
-    "Reference": "MBP/MID",
-    "Contact": "Mariclaire Reynolds",
-    "Rep": "Ricky Neale ",
-    "Address": "GATE 2 , Unit 6 Spartan Industrial Estate, West Bromwich, , B70 0DH",
-    "isNew": true,
-    "garmentStatus": "Not Started",
-    "decorationMethod": "",
-    "embroideryFileStatus": "",
-    "dtfStatus": "",
-    "jobStatus": "Not Started"
-  },
-  {
-    "SORD": "SORD016369291",
-    "Trader Code": "MBP/MID",
-    "Trader Name": "MBP Door Solutions - Midlands",
-    "Total Items": 1,
-    "Item List": [
-      {
-        "Master Code": "SWPMID0047.B.S",
-        "Description": "Russell Nano Padded Bodywarmer - Black - Small with MBP Logo",
-        "Ordered Qty": 1,
-        "Outstanding Qty": 1,
-        "SWP Parts": [
-          "SWPEMB-MBP004"
-        ],
-        "Other Parts": [
-          "441M.BK.S"
-        ],
-        "SWP Parts Desc": [
-          "MBP Centre Cap Embroidery Logo - White/Orange"
-        ],
-        "Other Parts Desc": [
-          "Russell Nano Padded Bodywarmer - Black - Small"
-        ]
-      }
-    ],
-    "Ordered Date": "17/02/2025",
-    "Due Date": null,
-    "Total Logos": 1,
-    "Reference": "MBP/MID",
-    "Contact": "Mariclaire Reynolds",
-    "Rep": "Ricky Neale ",
-    "Address": "GATE 2 , Unit 6 Spartan Industrial Estate, West Bromwich, , B70 0DH",
-    "isNew": false,
     "garmentStatus": "Not Ordered",
     "decorationMethod": "Embroidery",
-    "embroideryFileStatus": "On File",
+    "embroideryFileStatus": "Delayed",
     "dtfStatus": "",
-    "jobStatus": "Not Started"
-  },
-  {
-    "SORD": "SORD0163692912",
-    "Trader Code": "MBP/MID",
-    "Trader Name": "MBP Door Solutions - Midlands",
-    "Total Items": 1,
-    "Item List": [
-      {
-        "Master Code": "SWPMID0047.B.S",
-        "Description": "Russell Nano Padded Bodywarmer - Black - Small with MBP Logo",
-        "Ordered Qty": 1,
-        "Outstanding Qty": 1,
-        "SWP Parts": [
-          "SWPEMB-MBP004"
-        ],
-        "Other Parts": [
-          "441M.BK.S"
-        ],
-        "SWP Parts Desc": [
-          "MBP Centre Cap Embroidery Logo - White/Orange"
-        ],
-        "Other Parts Desc": [
-          "Russell Nano Padded Bodywarmer - Black - Small"
-        ]
-      }
-    ],
-    "Ordered Date": "17/02/2025",
-    "Due Date": null,
-    "Total Logos": 1,
-    "Reference": "MBP/MID",
-    "Contact": "Mariclaire Reynolds",
-    "Rep": "Ricky Neale ",
-    "Address": "GATE 2 , Unit 6 Spartan Industrial Estate, West Bromwich, , B70 0DH",
-    "isNew": false,
-    "garmentStatus": "Ordered",
-    "decorationMethod": "Embroidery",
-    "embroideryFileStatus": "On File",
-    "dtfStatus": "",
-    "jobStatus": "Not Started"
-  },
-  {
-    "SORD": "SORD01636929123",
-    "Trader Code": "MBP/MID",
-    "Trader Name": "MBP Door Solutions - Midlands",
-    "Total Items": 1,
-    "Item List": [
-      {
-        "Master Code": "SWPMID0047.B.S",
-        "Description": "Russell Nano Padded Bodywarmer - Black - Small with MBP Logo",
-        "Ordered Qty": 1,
-        "Outstanding Qty": 1,
-        "SWP Parts": [
-          "SWPEMB-MBP004"
-        ],
-        "Other Parts": [
-          "441M.BK.S"
-        ],
-        "SWP Parts Desc": [
-          "MBP Centre Cap Embroidery Logo - White/Orange"
-        ],
-        "Other Parts Desc": [
-          "Russell Nano Padded Bodywarmer - Black - Small"
-        ]
-      }
-    ],
-    "Ordered Date": "17/02/2025",
-    "Due Date": null,
-    "Total Logos": 1,
-    "Reference": "MBP/MID",
-    "Contact": "Mariclaire Reynolds",
-    "Rep": "Ricky Neale ",
-    "Address": "GATE 2 , Unit 6 Spartan Industrial Estate, West Bromwich, , B70 0DH",
-    "isNew": true,
-    "garmentStatus": "Ordered",
-    "decorationMethod": "DTF",
-    "embroideryFileStatus": "",
-    "dtfStatus": "Not Started",
-    "jobStatus": "Not Started"
-  },
-  {
-    "SORD": "SORD016369291234",
-    "Trader Code": "MBP/MID",
-    "Trader Name": "MBP Door Solutions - Midlands",
-    "Total Items": 1,
-    "Item List": [
-      {
-        "Master Code": "SWPMID0047.B.S",
-        "Description": "Russell Nano Padded Bodywarmer - Black - Small with MBP Logo",
-        "Ordered Qty": 1,
-        "Outstanding Qty": 1,
-        "SWP Parts": [
-          "SWPEMB-MBP004"
-        ],
-        "Other Parts": [
-          "441M.BK.S"
-        ],
-        "SWP Parts Desc": [
-          "MBP Centre Cap Embroidery Logo - White/Orange"
-        ],
-        "Other Parts Desc": [
-          "Russell Nano Padded Bodywarmer - Black - Small"
-        ]
-      }
-    ],
-    "Ordered Date": "17/02/2025",
-    "Due Date": null,
-    "Total Logos": 1,
-    "Reference": "MBP/MID",
-    "Contact": "Mariclaire Reynolds",
-    "Rep": "Ricky Neale ",
-    "Address": "GATE 2 , Unit 6 Spartan Industrial Estate, West Bromwich, , B70 0DH",
-    "isNew": true,
-    "garmentStatus": "Ordered",
-    "decorationMethod": "DTF",
-    "embroideryFileStatus": "",
-    "dtfStatus": "In Stock",
-    "jobStatus": "Not Started"
-  },
-  {
-    "SORD": "SORD0163692912345",
-    "Trader Code": "MBP/MID",
-    "Trader Name": "MBP Door Solutions - Midlands",
-    "Total Items": 1,
-    "Item List": [
-      {
-        "Master Code": "SWPMID0047.B.S",
-        "Description": "Russell Nano Padded Bodywarmer - Black - Small with MBP Logo",
-        "Ordered Qty": 1,
-        "Outstanding Qty": 1,
-        "SWP Parts": [
-          "SWPEMB-MBP004"
-        ],
-        "Other Parts": [
-          "441M.BK.S"
-        ],
-        "SWP Parts Desc": [
-          "MBP Centre Cap Embroidery Logo - White/Orange"
-        ],
-        "Other Parts Desc": [
-          "Russell Nano Padded Bodywarmer - Black - Small"
-        ]
-      }
-    ],
-    "Ordered Date": "17/02/2025",
-    "Due Date": null,
-    "Total Logos": 1,
-    "Reference": "MBP/MID",
-    "Contact": "Mariclaire Reynolds",
-    "Rep": "Ricky Neale ",
-    "Address": "GATE 2 , Unit 6 Spartan Industrial Estate, West Bromwich, , B70 0DH",
-    "isNew": false,
-    "garmentStatus": "Ordered",
-    "decorationMethod": "DTF",
-    "embroideryFileStatus": "",
-    "dtfStatus": "Not Started",
-    "jobStatus": "Not Started"
-  },
-  {
-    "SORD": "SORD016369200",
-    "Trader Code": "MBP/MID",
-    "Trader Name": "MBP Door Solutions - Midlands",
-    "Total Items": 1,
-    "Item List": [
-      {
-        "Master Code": "SWPMID0047.B.S",
-        "Description": "Russell Nano Padded Bodywarmer - Black - Small with MBP Logo",
-        "Ordered Qty": 1,
-        "Outstanding Qty": 1,
-        "SWP Parts": [
-          "SWPEMB-MBP004"
-        ],
-        "Other Parts": [
-          "441M.BK.S"
-        ],
-        "SWP Parts Desc": [
-          "MBP Centre Cap Embroidery Logo - White/Orange"
-        ],
-        "Other Parts Desc": [
-          "Russell Nano Padded Bodywarmer - Black - Small"
-        ]
-      }
-    ],
-    "Ordered Date": "17/02/2025",
-    "Due Date": null,
-    "Total Logos": 1,
-    "Reference": "MBP/MID",
-    "Contact": "Mariclaire Reynolds",
-    "Rep": "Ricky Neale ",
-    "Address": "GATE 2 , Unit 6 Spartan Industrial Estate, West Bromwich, , B70 0DH",
-    "isNew": true,
-    "garmentStatus": "Not Started",
-    "decorationMethod": "Both",
-    "embroideryFileStatus": "Not Ordered",
-    "dtfStatus": "On Press",
-    "jobStatus": "Not Started"
-  },
-  {
-    "SORD": "SORD01636920099",
-    "Trader Code": "MBP/MID",
-    "Trader Name": "MBP Door Solutions - Midlands",
-    "Total Items": 1,
-    "Item List": [
-      {
-        "Master Code": "SWPMID0047.B.S",
-        "Description": "Russell Nano Padded Bodywarmer - Black - Small with MBP Logo",
-        "Ordered Qty": 1,
-        "Outstanding Qty": 1,
-        "SWP Parts": [
-          "SWPEMB-MBP004"
-        ],
-        "Other Parts": [
-          "441M.BK.S"
-        ],
-        "SWP Parts Desc": [
-          "MBP Centre Cap Embroidery Logo - White/Orange"
-        ],
-        "Other Parts Desc": [
-          "Russell Nano Padded Bodywarmer - Black - Small"
-        ],
-        "Completed Qty": 1
-      }
-    ],
-    "Ordered Date": "17/02/2025",
-    "Due Date": null,
-    "Total Logos": 1,
-    "Reference": "MBP/MID",
-    "Contact": "Mariclaire Reynolds",
-    "Rep": "Ricky Neale ",
-    "Address": "GATE 2 , Unit 6 Spartan Industrial Estate, West Bromwich, , B70 0DH",
-    "isNew": true,
-    "garmentStatus": "Ordered",
-    "decorationMethod": "Embroidery",
-    "embroideryFileStatus": "On File",
-    "dtfStatus": "",
-    "jobStatus": "Not Started"
-  },
-  {
-    "SORD": "SORD016130875435435",
-    "Trader Code": "FAR001X",
-    "Trader Name": "The Farming Community Network",
-    "Total Items": 235,
-    "Item List": [
-      {
-        "Master Code": "SWPTFCN001-XXL",
-        "Description": "XXL Navy The Farming Community Network Full Zip Fleece UC604",
-        "Ordered Qty": 5,
-        "Outstanding Qty": 5,
-        "SWP Parts": [
-          "SWPEMB-TFCNLB",
-          "SWPEMB-TFCNR"
-        ],
-        "Other Parts": [
-          "UC604.N.2XL"
-        ],
-        "SWP Parts Desc": [
-          "The Farming Community Network LB White/Green Embroidered Logo",
-          "The Farming Community Network Rear White/Green Embroidered Logo"
-        ],
-        "Other Parts Desc": [
-          "Classic Full Zip Micro Fleece Jacket - Navy - 2XLarge"
-        ],
-        "Completed Qty": 2
-      },
-      {
-        "Master Code": "SWPTFCN003-L",
-        "Description": "Large Navy The Farming Community Network Polo Shirt UC101",
-        "Ordered Qty": 15,
-        "Outstanding Qty": 15,
-        "SWP Parts": [
-          "SWPEMB-TFCNLB",
-          "SWPEMB-TFCNR"
-        ],
-        "Other Parts": [
-          "UC101.N.L"
-        ],
-        "SWP Parts Desc": [
-          "The Farming Community Network LB White/Green Embroidered Logo",
-          "The Farming Community Network Rear White/Green Embroidered Logo"
-        ],
-        "Other Parts Desc": [
-          "Uneek Classic Polo Shirt - Navy - Large"
-        ],
-        "Completed Qty": 4
-      },
-      {
-        "Master Code": "SWPTFCN003-M",
-        "Description": "Medium Navy The Farming Community Network Polo Shirt UC101",
-        "Ordered Qty": 15,
-        "Outstanding Qty": 15,
-        "SWP Parts": [
-          "SWPEMB-TFCNLB",
-          "SWPEMB-TFCNR"
-        ],
-        "Other Parts": [
-          "UC101.N.M"
-        ],
-        "SWP Parts Desc": [
-          "The Farming Community Network LB White/Green Embroidered Logo",
-          "The Farming Community Network Rear White/Green Embroidered Logo"
-        ],
-        "Other Parts Desc": [
-          "Uneek Classic Polo Shirt - Navy - Medium"
-        ],
-        "Completed Qty": 3
-      },
-      {
-        "Master Code": "SWPTFCN003-S",
-        "Description": "Small Navy The Farming Community Network Polo Shirt UC101",
-        "Ordered Qty": 10,
-        "Outstanding Qty": 10,
-        "SWP Parts": [
-          "SWPEMB-TFCNLB",
-          "SWPEMB-TFCNR"
-        ],
-        "Other Parts": [
-          "UC101.N.S"
-        ],
-        "SWP Parts Desc": [
-          "The Farming Community Network LB White/Green Embroidered Logo",
-          "The Farming Community Network Rear White/Green Embroidered Logo"
-        ],
-        "Other Parts Desc": [
-          "Uneek Classic Polo Shirt - Navy - Small"
-        ],
-        "Completed Qty": 0
-      },
-      {
-        "Master Code": "SWPTFCN003-XL",
-        "Description": "XL Navy The Farming Community Network Polo Shirt UC101",
-        "Ordered Qty": 10,
-        "Outstanding Qty": 10,
-        "SWP Parts": [
-          "SWPEMB-TFCNLB",
-          "SWPEMB-TFCNR"
-        ],
-        "Other Parts": [
-          "UC101.N.XL"
-        ],
-        "SWP Parts Desc": [
-          "The Farming Community Network LB White/Green Embroidered Logo",
-          "The Farming Community Network Rear White/Green Embroidered Logo"
-        ],
-        "Other Parts Desc": [
-          "Uneek Classic Polo Shirt - Navy - X-Large"
-        ],
-        "Completed Qty": 0
-      },
-      {
-        "Master Code": "SWPTFCN003-XXL",
-        "Description": "XXL Navy The Farming Community Network Polo Shirt UC101",
-        "Ordered Qty": 5,
-        "Outstanding Qty": 5,
-        "SWP Parts": [
-          "SWPEMB-TFCNLB",
-          "SWPEMB-TFCNR"
-        ],
-        "Other Parts": [
-          "UC101.N.2XL"
-        ],
-        "SWP Parts Desc": [
-          "The Farming Community Network LB White/Green Embroidered Logo",
-          "The Farming Community Network Rear White/Green Embroidered Logo"
-        ],
-        "Other Parts Desc": [
-          "Uneek Classic Polo Shirt - Navy - 2X-Large"
-        ],
-        "Completed Qty": 0
-      },
-      {
-        "Master Code": "SWPTFCN005-L",
-        "Description": "Large Navy Mens The Farming Community Network Soft Shell Bodywarmer RS902M",
-        "Ordered Qty": 8,
-        "Outstanding Qty": 8,
-        "SWP Parts": [
-          "SWPEMB-TFCNLB",
-          "SWPEMB-TFCNR"
-        ],
-        "Other Parts": [
-          "RS902M.N.L"
-        ],
-        "SWP Parts Desc": [
-          "The Farming Community Network LB White/Green Embroidered Logo",
-          "The Farming Community Network Rear White/Green Embroidered Logo"
-        ],
-        "Other Parts Desc": [
-          "Large Navy Printable Recycled Softshell Gilet RS902M"
-        ],
-        "Completed Qty": 0
-      },
-      {
-        "Master Code": "SWPTFCN005-M",
-        "Description": "Medium Navy Mens The Farming Community Network Soft Shell Bodywarmer RS902M",
-        "Ordered Qty": 5,
-        "Outstanding Qty": 5,
-        "SWP Parts": [
-          "SWPEMB-TFCNLB",
-          "SWPEMB-TFCNR"
-        ],
-        "Other Parts": [
-          "RS902M.N.M"
-        ],
-        "SWP Parts Desc": [
-          "The Farming Community Network LB White/Green Embroidered Logo",
-          "The Farming Community Network Rear White/Green Embroidered Logo"
-        ],
-        "Other Parts Desc": [
-          "Medium Navy Printable Recycled Softshell Gilet RS902M"
-        ],
-        "Completed Qty": 0
-      },
-      {
-        "Master Code": "SWPTFCN005-XL",
-        "Description": "XL Navy Mens The Farming Community Network Soft Shell Bodywarmer RS902M",
-        "Ordered Qty": 3,
-        "Outstanding Qty": 3,
-        "SWP Parts": [
-          "SWPEMB-TFCNLB",
-          "SWPEMB-TFCNR"
-        ],
-        "Other Parts": [
-          "RS902M.N.XL"
-        ],
-        "SWP Parts Desc": [
-          "The Farming Community Network LB White/Green Embroidered Logo",
-          "The Farming Community Network Rear White/Green Embroidered Logo"
-        ],
-        "Other Parts Desc": [
-          "XL Navy Printable Recycled Softshell Gilet RS902M"
-        ],
-        "Completed Qty": 0
-      },
-      {
-        "Master Code": "SWPTFCN005-XXL",
-        "Description": "XXL Navy Mens The Farming Community Network Soft Shell Bodywarmer RS902M",
-        "Ordered Qty": 4,
-        "Outstanding Qty": 4,
-        "SWP Parts": [
-          "SWPEMB-TFCNLB",
-          "SWPEMB-TFCNR"
-        ],
-        "Other Parts": [
-          "RS902M.N.XXL"
-        ],
-        "SWP Parts Desc": [
-          "The Farming Community Network LB White/Green Embroidered Logo",
-          "The Farming Community Network Rear White/Green Embroidered Logo"
-        ],
-        "Other Parts Desc": [
-          "XXL Navy Printable Recycled Softshell Gilet RS902M"
-        ],
-        "Completed Qty": 0
-      },
-      {
-        "Master Code": "SWPTFCN005-S",
-        "Description": "Small Navy Mens The Farming Community Network Soft Shell Bodywarmer RS902M",
-        "Ordered Qty": 2,
-        "Outstanding Qty": 2,
-        "SWP Parts": [
-          "SWPEMB-TFCNLB",
-          "SWPEMB-TFCNR"
-        ],
-        "Other Parts": [
-          "RS901M.N.S",
-          "RS902M.N.S"
-        ],
-        "SWP Parts Desc": [
-          "The Farming Community Network LB White/Green Embroidered Logo",
-          "The Farming Community Network Rear White/Green Embroidered Logo"
-        ],
-        "Other Parts Desc": [
-          "Result Recycled 2 Layer Soft Shell Jacket - Navy - Small",
-          "Small Navy Printable Recycled Softshell Gilet RS902M"
-        ],
-        "Completed Qty": 0
-      },
-      {
-        "Master Code": "SWPTFCN006-L",
-        "Description": "Large Navy Ladies The Farming Community Network Soft Shell Bodywarmer RS902F",
-        "Ordered Qty": 7,
-        "Outstanding Qty": 7,
-        "SWP Parts": [
-          "SWPEMB-TFCNLB",
-          "SWPEMB-TFCNR"
-        ],
-        "Other Parts": [
-          "RS902F.N.L"
-        ],
-        "SWP Parts Desc": [
-          "The Farming Community Network LB White/Green Embroidered Logo",
-          "The Farming Community Network Rear White/Green Embroidered Logo"
-        ],
-        "Other Parts Desc": [
-          "Large Navy Printable Recycled Softshell Gilet RS902F"
-        ],
-        "Completed Qty": 0
-      },
-      {
-        "Master Code": "SWPTFCN006-M",
-        "Description": "Medium Navy Ladies The Farming Community Network Soft Shell Bodywarmer RS902F",
-        "Ordered Qty": 10,
-        "Outstanding Qty": 10,
-        "SWP Parts": [
-          "SWPEMB-TFCNLB",
-          "SWPEMB-TFCNR"
-        ],
-        "Other Parts": [
-          "RS902F.N.M"
-        ],
-        "SWP Parts Desc": [
-          "The Farming Community Network LB White/Green Embroidered Logo",
-          "The Farming Community Network Rear White/Green Embroidered Logo"
-        ],
-        "Other Parts Desc": [
-          "Medium Navy Printable Recycled Softshell Gilet RS902F"
-        ],
-        "Completed Qty": 0
-      },
-      {
-        "Master Code": "SWPTFCN006-S",
-        "Description": "Small Navy Ladies The Farming Community Network Soft Shell Bodywarmer RS902F",
-        "Ordered Qty": 8,
-        "Outstanding Qty": 8,
-        "SWP Parts": [
-          "SWPEMB-TFCNLB",
-          "SWPEMB-TFCNR"
-        ],
-        "Other Parts": [
-          "RS902F.N.S"
-        ],
-        "SWP Parts Desc": [
-          "The Farming Community Network LB White/Green Embroidered Logo",
-          "The Farming Community Network Rear White/Green Embroidered Logo"
-        ],
-        "Other Parts Desc": [
-          "Small Navy Printable Recycled Softshell Gilet RS902F"
-        ],
-        "Completed Qty": 0
-      },
-      {
-        "Master Code": "SWPTFCN006-XL",
-        "Description": "XL Navy Ladies The Farming Community Network Soft Shell Bodywarmer RS902F",
-        "Ordered Qty": 2,
-        "Outstanding Qty": 2,
-        "SWP Parts": [
-          "SWPEMB-TFCNLB",
-          "SWPEMB-TFCNR"
-        ],
-        "Other Parts": [
-          "RS902F.N.XL"
-        ],
-        "SWP Parts Desc": [
-          "The Farming Community Network LB White/Green Embroidered Logo",
-          "The Farming Community Network Rear White/Green Embroidered Logo"
-        ],
-        "Other Parts Desc": [
-          "XL Navy Printable Recycled Softshell Gilet RS902F"
-        ],
-        "Completed Qty": 0
-      },
-      {
-        "Master Code": "SWPTFCN006-XS",
-        "Description": "XS Navy Ladies The Farming Community Network Soft Shell Bodywarmer RS902F",
-        "Ordered Qty": 5,
-        "Outstanding Qty": 5,
-        "SWP Parts": [
-          "SWPEMB-TFCNLB",
-          "SWPEMB-TFCNR"
-        ],
-        "Other Parts": [
-          "RS902F.N.XS"
-        ],
-        "SWP Parts Desc": [
-          "The Farming Community Network LB White/Green Embroidered Logo",
-          "The Farming Community Network Rear White/Green Embroidered Logo"
-        ],
-        "Other Parts Desc": [
-          "XS Navy Printable Recycled Softshell Gilet RS902F"
-        ],
-        "Completed Qty": 0
-      },
-      {
-        "Master Code": "SWPTFCN006-XXL",
-        "Description": "XXL Navy Ladies The Farming Community Network Soft Shell Bodywarmer RS902F",
-        "Ordered Qty": 1,
-        "Outstanding Qty": 1,
-        "SWP Parts": [
-          "SWPEMB-TFCNLB",
-          "SWPEMB-TFCNR"
-        ],
-        "Other Parts": [
-          "RS902F.N.XXL"
-        ],
-        "SWP Parts Desc": [
-          "The Farming Community Network LB White/Green Embroidered Logo",
-          "The Farming Community Network Rear White/Green Embroidered Logo"
-        ],
-        "Other Parts Desc": [
-          "XXL Navy Printable Recycled Softshell Gilet RS902F"
-        ],
-        "Completed Qty": 0
-      },
-      {
-        "Master Code": "SWPTFCN002-XS",
-        "Description": "XS Navy Ladies The Farming Community Network Full Zip Fleece UC608",
-        "Ordered Qty": 5,
-        "Outstanding Qty": 5,
-        "SWP Parts": [
-          "SWPEMB-TFCNLB",
-          "SWPEMB-TFCNR"
-        ],
-        "Other Parts": [
-          "UC608.N.XS"
-        ],
-        "SWP Parts Desc": [
-          "The Farming Community Network LB White/Green Embroidered Logo",
-          "The Farming Community Network Rear White/Green Embroidered Logo"
-        ],
-        "Other Parts Desc": [
-          "Ladies Classic Full Zip Fleece Jacket - Navy - XS"
-        ],
-        "Completed Qty": 0
-      },
-      {
-        "Master Code": "SWPTFCN008-L",
-        "Description": "Large Navy Mens The Farming Community Network Fleece Gilet KB913",
-        "Ordered Qty": 8,
-        "Outstanding Qty": 8,
-        "SWP Parts": [
-          "SWPEMB-TFCNLB",
-          "SWPEMB-TFCNR"
-        ],
-        "Other Parts": [
-          "KB913.N.L"
-        ],
-        "SWP Parts Desc": [
-          "The Farming Community Network LB White/Green Embroidered Logo",
-          "The Farming Community Network Rear White/Green Embroidered Logo"
-        ],
-        "Other Parts Desc": [
-          "Large Navy Luca men's microfleece gilet"
-        ],
-        "Completed Qty": 0
-      },
-      {
-        "Master Code": "SWPTFCN008-M",
-        "Description": "Medium Navy Mens The Farming Community Network Fleece Gilet KB913",
-        "Ordered Qty": 5,
-        "Outstanding Qty": 5,
-        "SWP Parts": [
-          "SWPEMB-TFCNLB",
-          "SWPEMB-TFCNR"
-        ],
-        "Other Parts": [
-          "KB913.N.M"
-        ],
-        "SWP Parts Desc": [
-          "The Farming Community Network LB White/Green Embroidered Logo",
-          "The Farming Community Network Rear White/Green Embroidered Logo"
-        ],
-        "Other Parts Desc": [
-          "Medium Navy Luca men's microfleece gilet"
-        ],
-        "Completed Qty": 0
-      },
-      {
-        "Master Code": "SWPTFCN008-S",
-        "Description": "Small Navy Mens The Farming Community Network Fleece Gilet KB913",
-        "Ordered Qty": 2,
-        "Outstanding Qty": 2,
-        "SWP Parts": [
-          "SWPEMB-TFCNLB",
-          "SWPEMB-TFCNR"
-        ],
-        "Other Parts": [
-          "KB913.N.S"
-        ],
-        "SWP Parts Desc": [
-          "The Farming Community Network LB White/Green Embroidered Logo",
-          "The Farming Community Network Rear White/Green Embroidered Logo"
-        ],
-        "Other Parts Desc": [
-          "Small Navy Luca men's microfleece gilet"
-        ],
-        "Completed Qty": 0
-      },
-      {
-        "Master Code": "SWPTFCN008-XL",
-        "Description": "XL Navy Mens The Farming Community Network Fleece Gilet KB913",
-        "Ordered Qty": 3,
-        "Outstanding Qty": 3,
-        "SWP Parts": [
-          "SWPEMB-TFCNLB",
-          "SWPEMB-TFCNR"
-        ],
-        "Other Parts": [
-          "KB913.N.XL"
-        ],
-        "SWP Parts Desc": [
-          "The Farming Community Network LB White/Green Embroidered Logo",
-          "The Farming Community Network Rear White/Green Embroidered Logo"
-        ],
-        "Other Parts Desc": [
-          "XL Navy Luca men's microfleece gilet"
-        ],
-        "Completed Qty": 0
-      },
-      {
-        "Master Code": "SWPTFCN008-XXL",
-        "Description": "XXL Navy Mens The Farming Community Network Fleece Gilet KB913",
-        "Ordered Qty": 4,
-        "Outstanding Qty": 4,
-        "SWP Parts": [
-          "SWPEMB-TFCNLB",
-          "SWPEMB-TFCNR"
-        ],
-        "Other Parts": [
-          "KB913.N.XXL"
-        ],
-        "SWP Parts Desc": [
-          "The Farming Community Network LB White/Green Embroidered Logo",
-          "The Farming Community Network Rear White/Green Embroidered Logo"
-        ],
-        "Other Parts Desc": [
-          "XXL Navy Luca men's microfleece gilet"
-        ],
-        "Completed Qty": 0
-      },
-      {
-        "Master Code": "SWPTFCN007-L",
-        "Description": "Large (14) Navy Ladies The Farming Community Network Fleece Gilet RG184",
-        "Ordered Qty": 7,
-        "Outstanding Qty": 7,
-        "SWP Parts": [
-          "SWPEMB-TFCNLB",
-          "SWPEMB-TFCNR"
-        ],
-        "Other Parts": [
-          "RG184.N.14"
-        ],
-        "SWP Parts Desc": [
-          "The Farming Community Network LB White/Green Embroidered Logo",
-          "The Farming Community Network Rear White/Green Embroidered Logo"
-        ],
-        "Other Parts Desc": [
-          "Size 14 Navy Regatta Ladies Haber II Fleece Bodywarmer (TRA793)"
-        ],
-        "Completed Qty": 0
-      },
-      {
-        "Master Code": "SWPTFCN007-XS",
-        "Description": "XS(8) Navy Ladies The Farming Community Network Fleece Gilet RG184",
-        "Ordered Qty": 5,
-        "Outstanding Qty": 5,
-        "SWP Parts": [
-          "SWPEMB-TFCNLB",
-          "SWPEMB-TFCNR"
-        ],
-        "Other Parts": [
-          "RG184.N.8"
-        ],
-        "SWP Parts Desc": [
-          "The Farming Community Network LB White/Green Embroidered Logo",
-          "The Farming Community Network Rear White/Green Embroidered Logo"
-        ],
-        "Other Parts Desc": [
-          "Size 8 Navy Regatta Ladies Haber II Fleece Bodywarmer (TRA793)"
-        ],
-        "Completed Qty": 0
-      },
-      {
-        "Master Code": "SWPTFCN007-XXL",
-        "Description": "XXL (18) Navy Ladies The Farming Community Network Fleece Gilet RG184",
-        "Ordered Qty": 1,
-        "Outstanding Qty": 1,
-        "SWP Parts": [
-          "SWPEMB-TFCNLB",
-          "SWPEMB-TFCNR"
-        ],
-        "Other Parts": [
-          "RG184.N.18"
-        ],
-        "SWP Parts Desc": [
-          "The Farming Community Network LB White/Green Embroidered Logo",
-          "The Farming Community Network Rear White/Green Embroidered Logo"
-        ],
-        "Other Parts Desc": [
-          "Size 18 Navy Regatta Ladies Haber II Fleece Bodywarmer (TRA793)"
-        ],
-        "Completed Qty": 0
-      },
-      {
-        "Master Code": "SWPTFCN002-M",
-        "Description": "Medium Navy Ladies The Farming Community Network Full Zip Fleece UC608",
-        "Ordered Qty": 12,
-        "Outstanding Qty": 12,
-        "SWP Parts": [
-          "SWPEMB-TFCNLB",
-          "SWPEMB-TFCNR"
-        ],
-        "Other Parts": [
-          "UC608.N.M"
-        ],
-        "SWP Parts Desc": [
-          "The Farming Community Network LB White/Green Embroidered Logo",
-          "The Farming Community Network Rear White/Green Embroidered Logo"
-        ],
-        "Other Parts Desc": [
-          "Ladies Classic Full Zip Fleece Jacket - Navy - Medium"
-        ],
-        "Completed Qty": 0
-      },
-      {
-        "Master Code": "SWPTFCN007-M",
-        "Description": "Medium (12) Navy Ladies The Farming Community Network Fleece Gilet RG184",
-        "Ordered Qty": 10,
-        "Outstanding Qty": 10,
-        "SWP Parts": [
-          "SWPEMB-TFCNLB",
-          "SWPEMB-TFCNR"
-        ],
-        "Other Parts": [
-          "RG184.N.12"
-        ],
-        "SWP Parts Desc": [
-          "The Farming Community Network LB White/Green Embroidered Logo",
-          "The Farming Community Network Rear White/Green Embroidered Logo"
-        ],
-        "Other Parts Desc": [
-          "Size 12 Navy Regatta Ladies Haber II Fleece Bodywarmer (TRA793)"
-        ],
-        "Completed Qty": 0
-      },
-      {
-        "Master Code": "SWPTFCN007-S",
-        "Description": "Small (10) Navy Ladies The Farming Community Network Fleece Gilet RG184",
-        "Ordered Qty": 8,
-        "Outstanding Qty": 8,
-        "SWP Parts": [
-          "SWPEMB-TFCNLB",
-          "SWPEMB-TFCNR"
-        ],
-        "Other Parts": [
-          "RG184.N.10"
-        ],
-        "SWP Parts Desc": [
-          "The Farming Community Network LB White/Green Embroidered Logo",
-          "The Farming Community Network Rear White/Green Embroidered Logo"
-        ],
-        "Other Parts Desc": [
-          "Size 10 Navy Regatta Ladies Haber II Fleece Bodywarmer (TRA793)"
-        ],
-        "Completed Qty": 0
-      },
-      {
-        "Master Code": "SWPTFCN007-XL",
-        "Description": "XL (16) Navy Ladies The Farming Community Network Fleece Gilet RG184",
-        "Ordered Qty": 2,
-        "Outstanding Qty": 2,
-        "SWP Parts": [
-          "SWPEMB-TFCNLB",
-          "SWPEMB-TFCNR"
-        ],
-        "Other Parts": [
-          "RG184.N.16"
-        ],
-        "SWP Parts Desc": [
-          "The Farming Community Network LB White/Green Embroidered Logo",
-          "The Farming Community Network Rear White/Green Embroidered Logo"
-        ],
-        "Other Parts Desc": [
-          "Size 16 Navy Regatta Ladies Haber II Fleece Bodywarmer (TRA793)"
-        ],
-        "Completed Qty": 0
-      },
-      {
-        "Master Code": "SWPTFCN002-S",
-        "Description": "Small Navy Ladies The Farming Community Network Full Zip Fleece UC608",
-        "Ordered Qty": 8,
-        "Outstanding Qty": 8,
-        "SWP Parts": [
-          "SWPEMB-TFCNLB",
-          "SWPEMB-TFCNR"
-        ],
-        "Other Parts": [
-          "UC608.N.S"
-        ],
-        "SWP Parts Desc": [
-          "The Farming Community Network LB White/Green Embroidered Logo",
-          "The Farming Community Network Rear White/Green Embroidered Logo"
-        ],
-        "Other Parts Desc": [
-          "Ladies Classic Full Zip Fleece Jacket - Navy - Small"
-        ],
-        "Completed Qty": 0
-      },
-      {
-        "Master Code": "SWPTFCN002-XL",
-        "Description": "XL Navy Ladies The Farming Community Network Full Zip Fleece UC608",
-        "Ordered Qty": 3,
-        "Outstanding Qty": 3,
-        "SWP Parts": [
-          "SWPEMB-TFCNLB",
-          "SWPEMB-TFCNR"
-        ],
-        "Other Parts": [
-          "UC608.N.XL"
-        ],
-        "SWP Parts Desc": [
-          "The Farming Community Network LB White/Green Embroidered Logo",
-          "The Farming Community Network Rear White/Green Embroidered Logo"
-        ],
-        "Other Parts Desc": [
-          "Ladies Classic Full Zip Fleece Jacket - Navy - X-Large"
-        ],
-        "Completed Qty": 0
-      },
-      {
-        "Master Code": "SWPTFCN003-XS",
-        "Description": "XS Navy The Farming Community Network Polo Shirt UC101",
-        "Ordered Qty": 5,
-        "Outstanding Qty": 5,
-        "SWP Parts": [
-          "SWPEMB-TFCNLB",
-          "SWPEMB-TFCNR"
-        ],
-        "Other Parts": [
-          "UC101.N.XS"
-        ],
-        "SWP Parts Desc": [
-          "The Farming Community Network LB White/Green Embroidered Logo",
-          "The Farming Community Network Rear White/Green Embroidered Logo"
-        ],
-        "Other Parts Desc": [
-          "Uneek Classic Polo Shirt - Navy - X/Small"
-        ],
-        "Completed Qty": 0
-      },
-      {
-        "Master Code": "SWPTFCN001-XL",
-        "Description": "XL Navy The Farming Community Network Full Zip Fleece UC604",
-        "Ordered Qty": 7,
-        "Outstanding Qty": 7,
-        "SWP Parts": [
-          "SWPEMB-TFCNLB",
-          "SWPEMB-TFCNR"
-        ],
-        "Other Parts": [
-          "UC604.N.XL"
-        ],
-        "SWP Parts Desc": [
-          "The Farming Community Network LB White/Green Embroidered Logo",
-          "The Farming Community Network Rear White/Green Embroidered Logo"
-        ],
-        "Other Parts Desc": [
-          "Classic Full Zip Micro Fleece Jacket - Navy - XLarge"
-        ],
-        "Completed Qty": 0
-      },
-      {
-        "Master Code": "SWPTFCN001-M",
-        "Description": "Medium Navy The Farming Community Network Full Zip Fleece UC604",
-        "Ordered Qty": 8,
-        "Outstanding Qty": 8,
-        "SWP Parts": [
-          "SWPEMB-TFCNLB",
-          "SWPEMB-TFCNR"
-        ],
-        "Other Parts": [
-          "UC604.N.M"
-        ],
-        "SWP Parts Desc": [
-          "The Farming Community Network LB White/Green Embroidered Logo",
-          "The Farming Community Network Rear White/Green Embroidered Logo"
-        ],
-        "Other Parts Desc": [
-          "Classic Full Zip Micro Fleece Jacket - Navy - Medium"
-        ],
-        "Completed Qty": 0
-      },
-      {
-        "Master Code": "SWPTFCN001-L",
-        "Description": "Large Navy The Farming Community Network Full Zip Fleece UC604",
-        "Ordered Qty": 8,
-        "Outstanding Qty": 8,
-        "SWP Parts": [
-          "SWPEMB-TFCNLB",
-          "SWPEMB-TFCNR"
-        ],
-        "Other Parts": [
-          "UC604.N.L"
-        ],
-        "SWP Parts Desc": [
-          "The Farming Community Network LB White/Green Embroidered Logo",
-          "The Farming Community Network Rear White/Green Embroidered Logo"
-        ],
-        "Other Parts Desc": [
-          "Classic Full Zip Micro Fleece Jacket - Navy - Large"
-        ],
-        "Completed Qty": 0
-      },
-      {
-        "Master Code": "SWPTFCN001-S",
-        "Description": "Small Navy The Farming Community Network Full Zip Fleece UC604",
-        "Ordered Qty": 2,
-        "Outstanding Qty": 2,
-        "SWP Parts": [
-          "SWPEMB-TFCNLB",
-          "SWPEMB-TFCNR"
-        ],
-        "Other Parts": [
-          "UC604.N.S"
-        ],
-        "SWP Parts Desc": [
-          "The Farming Community Network LB White/Green Embroidered Logo",
-          "The Farming Community Network Rear White/Green Embroidered Logo"
-        ],
-        "Other Parts Desc": [
-          "Classic Full Zip Micro Fleece Jacket - Navy - Small"
-        ],
-        "Completed Qty": 0
-      },
-      {
-        "Master Code": "SWPTFCN002-L",
-        "Description": "Large Navy Ladies The Farming Community Network Full Zip Fleece UC608",
-        "Ordered Qty": 7,
-        "Outstanding Qty": 7,
-        "SWP Parts": [
-          "SWPEMB-TFCNLB",
-          "SWPEMB-TFCNR"
-        ],
-        "Other Parts": [
-          "UC608.N.L"
-        ],
-        "SWP Parts Desc": [
-          "The Farming Community Network LB White/Green Embroidered Logo",
-          "The Farming Community Network Rear White/Green Embroidered Logo"
-        ],
-        "Other Parts Desc": [
-          "Ladies Classic Full Zip Fleece Jacket - Navy - Large"
-        ],
-        "Completed Qty": 4
-      }
-    ],
-    "Ordered Date": "07/01/2025",
-    "Due Date": null,
-    "Total Logos": 470,
-    "Reference": "FAR001X",
-    "Contact": "Sandra Caulfield",
-    "Rep": "Phil Murphy",
-    "Address": "Manor Farm, Guilsborough Road, West Haddon, Northampton, NN6 7AQ",
-    "isNew": true,
-    "garmentStatus": "Not Ordered",
-    "decorationMethod": "Both",
-    "embroideryFileStatus": "Not Ordered",
-    "dtfStatus": "Not Started",
-    "jobStatus": "Not Started"
+    "jobStatus": "Started"
   }
 ]
