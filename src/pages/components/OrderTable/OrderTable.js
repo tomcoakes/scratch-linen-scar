@@ -1,11 +1,16 @@
 // src/pages/components/OrderTable/OrderTable.js
 
-// --- OrderTable Component ---
+// import React from 'react';  // REMOVE THIS LINE - No longer needed
+// import BackOrderPopup from '../BackOrderPopup/BackOrderPopup.js'; // REMOVE THIS LINE
+// import styles from './BackOrderPopup.module.css'; // REMOVE THIS LINE - Not directly using CSS Modules in this example
+
+// --- OrderTable Component (UPDATED - Removed Back Order Features) ---
 function OrderTable({ orders, searchTerm, onItemCompletionChange }) {
     const [filteredOrders, setFilteredOrders] = React.useState([]);
     const [expandedRowSord, setExpandedRowSord] = React.useState(null);
     const [completedQuantities, setCompletedQuantities] = React.useState({});
     const [statusChanges, setStatusChanges] = React.useState({});
+    // const [showBackOrderPopup, setShowBackOrderPopup] = React.useState(false); // REMOVE THIS LINE
 
     React.useEffect(() => {
         if (!searchTerm) {
@@ -69,6 +74,12 @@ function OrderTable({ orders, searchTerm, onItemCompletionChange }) {
         // Call the callback prop with the updated order
         onItemCompletionChange(sord, updatedOrder);
     };
+
+    // --- REMOVE THIS FUNCTION COMPLETELY - Placeholder function for Back Order Submit ---
+    // const handleBackOrderSubmit = (updatedOrder) => { // Placeholder function for now
+    //     console.log("Back order submitted!", updatedOrder);
+    //     setShowBackOrderPopup(false); // Just close the popup for now
+    // };
 
 
     return (
@@ -190,6 +201,7 @@ function OrderTable({ orders, searchTerm, onItemCompletionChange }) {
                                                         React.createElement('tr', null,
                                                             React.createElement('th', null, 'Qty'),
                                                             React.createElement('th', null, 'Item'),
+                                                            React.createElement('th', null, 'Description'),
                                                             React.createElement('th', null, 'Completed')
                                                         )
                                                     ),
@@ -203,6 +215,7 @@ function OrderTable({ orders, searchTerm, onItemCompletionChange }) {
                                                                 React.createElement('tr', { key: item["Master Code"], className: isCompleted ? 'completed' : '' }, // Conditionally apply 'completed' class
                                                                     React.createElement('td', null, item["Outstanding Qty"]),
                                                                     React.createElement('td', null, item["Master Code"]),
+                                                                    React.createElement('td', null, item.Description),
                                                                     React.createElement('td', null,
                                                                         React.createElement('input', {
                                                                             type: "number",
