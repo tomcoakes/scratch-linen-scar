@@ -1,4 +1,13 @@
+/* Ensure the swp-parts-row cells match the clickable row styling */
+.swp-parts-row td {
+  padding: 4px 8px;
+  vertical-align: middle;
+}
 
+/* Highlight active (expanded) rows consistently */
+.items-completed-table tr.expanded-active {
+  background-color: #e6f7ff; /* Change this color as needed */
+}
 
 /* ---------- Order Table Container ---------- */
 .order-table-container {
@@ -354,6 +363,9 @@
     border: 1px solid #ccc;
     border-radius: 4px;
 }
+
+
+
 
 
 /* ---------- Footer ---------- */

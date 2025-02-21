@@ -42,17 +42,12 @@ function OrderTable({ orders, searchTerm, onItemCompletionChange }) {
       // Create updated order object
       const updatedOrder = {
         ...orders.find(order => order.SORD === sord),
-        "Item List": orders
-          .find(order => order.SORD === sord)["Item List"]
-          .map(item => {
-            if (item["Master Code"] === masterCode) {
-              return {
-                ...item,
-                "Completed Qty": updatedOrderQuantities[masterCode] || 0
-              };
-            }
-            return item;
-          })
+        "Item List": orders.find(order => order.SORD === sord)["Item List"].map(item => {
+          if (item["Master Code"] === masterCode) {
+            return { ...item, "Completed Qty": updatedOrderQuantities[masterCode] || 0 };
+          }
+          return item;
+        })
       };
 
       // Call the callback prop with the updated order
@@ -80,7 +75,7 @@ function OrderTable({ orders, searchTerm, onItemCompletionChange }) {
     onItemCompletionChange(sord, updatedOrder);
   };
 
-  // New handler to toggle SWP parts expansion for an item
+  // Handler to toggle SWP parts expansion for an item
   const toggleSwpParts = (orderId, masterCode) => {
     const key = `${orderId}_${masterCode}`;
     setExpandedSwpParts(prev => ({ ...prev, [key]: !prev[key] }));
@@ -105,7 +100,7 @@ function OrderTable({ orders, searchTerm, onItemCompletionChange }) {
           filteredOrders.length > 0 ? (
             filteredOrders.map(order => (
               React.createElement(React.Fragment, { key: order.SORD },
-                // Outer row with order overview (click toggles overall expansion)
+
                 React.createElement('tr', {
                   onClick: (event) => handleRowClick(order.SORD, event),
                   className: `data-row ${expandedRowSord === order.SORD ? 'expanded' : ''}`
@@ -130,7 +125,7 @@ function OrderTable({ orders, searchTerm, onItemCompletionChange }) {
                     )
                   )
                 ),
-                // Info row with tags and status dropdowns
+
                 React.createElement('tr', {
                   className: `info-row ${expandedRowSord === order.SORD ? 'expanded' : ''}`
                 },
@@ -196,7 +191,7 @@ function OrderTable({ orders, searchTerm, onItemCompletionChange }) {
                     )
                   )
                 ),
-                // Expansion row for Items Completed and SWP Parts details
+
                 React.createElement('tr', { className: `expansion-row ${expandedRowSord === order.SORD ? 'expanded' : ''}` },
                   React.createElement('td', { colSpan: "14" },
                     React.createElement('div', { className: "expansion-content" },
@@ -224,9 +219,9 @@ function OrderTable({ orders, searchTerm, onItemCompletionChange }) {
 
                               return (
                                 React.createElement(React.Fragment, { key: item["Master Code"] },
-                                  // Completed item row – clicking toggles SWP parts expansion for that item
+
                                   React.createElement('tr', {
-                                    className: (isCompleted ? 'completed ' : '') + 'clickable',
+                                    className: `clickable ${isSwpExpanded ? 'expanded-active' : ''} ${isCompleted ? 'completed' : ''}`,
                                     onClick: () => toggleSwpParts(order.SORD, item["Master Code"])
                                   },
                                     React.createElement('td', null, item["Outstanding Qty"]),
@@ -234,12 +229,12 @@ function OrderTable({ orders, searchTerm, onItemCompletionChange }) {
                                     React.createElement('td', null, item.Description),
                                     React.createElement('td', null, completedQty)
                                   ),
-                                  // Render SWP Parts rows (one row per SWP part) if expanded
+
                                   isSwpExpanded && item["SWP Parts"].map((swpPart, index) => {
                                     const swpDescription = item["SWP Parts Desc"][index] || 'No Description';
                                     return React.createElement('tr', {
                                       key: `${item["Master Code"]}_${swpPart}`,
-                                      className: 'swp-parts-row'
+                                      className: `swp-parts-row ${isSwpExpanded ? 'expanded-active' : ''}`
                                     },
                                       React.createElement('td', null, item["Outstanding Qty"]),
                                       React.createElement('td', null, swpPart),
