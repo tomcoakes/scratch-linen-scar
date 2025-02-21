@@ -887,7 +887,7 @@
     "decorationMethod": "Embroidery",
     "embroideryFileStatus": "Not Ordered",
     "dtfStatus": "",
-    "jobStatus": "Not Started"
+    "jobStatus": "Started"
   },
   {
     "SORD": "SORD01613529",
@@ -928,7 +928,7 @@
     "decorationMethod": "DTF",
     "embroideryFileStatus": "",
     "dtfStatus": "In Stock",
-    "jobStatus": "Not Started"
+    "jobStatus": "Part Shipped"
   },
   {
     "SORD": "SORD01620157",
@@ -1782,7 +1782,15 @@
         "SWP Parts Desc": [
           "Lifeways Left Breast Embroidery"
         ],
-        "Completed Qty": 0
+        "Completed Qty": 1,
+        "swpPartCompletions": {
+          "SWPEMB-LIFWLB": [
+            {
+              "qty": 1,
+              "timestamp": "2025-02-21T16:05:09.582Z"
+            }
+          ]
+        }
       },
       {
         "Master Code": "SWPLFW001-M",
@@ -1807,7 +1815,15 @@
         "SWP Parts Desc": [
           "Lifeways Left Breast Embroidery"
         ],
-        "Completed Qty": 0
+        "Completed Qty": 5,
+        "swpPartCompletions": {
+          "SWPEMB-LIFWLB": [
+            {
+              "qty": 5,
+              "timestamp": "2025-02-21T16:05:18.156Z"
+            }
+          ]
+        }
       },
       {
         "Master Code": "SWPLFW001-S",
@@ -1832,7 +1848,15 @@
         "SWP Parts Desc": [
           "Lifeways Left Breast Embroidery"
         ],
-        "Completed Qty": 0
+        "Completed Qty": 3,
+        "swpPartCompletions": {
+          "SWPEMB-LIFWLB": [
+            {
+              "qty": 3,
+              "timestamp": "2025-02-21T16:05:24.789Z"
+            }
+          ]
+        }
       },
       {
         "Master Code": "SWPLFW001-XL",
@@ -1857,7 +1881,15 @@
         "SWP Parts Desc": [
           "Lifeways Left Breast Embroidery"
         ],
-        "Completed Qty": 0
+        "Completed Qty": 3,
+        "swpPartCompletions": {
+          "SWPEMB-LIFWLB": [
+            {
+              "qty": 3,
+              "timestamp": "2025-02-21T16:05:30.478Z"
+            }
+          ]
+        }
       },
       {
         "Master Code": "SWPLFW001-XXL",
