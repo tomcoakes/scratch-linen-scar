@@ -147,7 +147,6 @@ function OrderTable({ orders, searchTerm, onItemCompletionChange }) {
 
     const updatedOrder = { ...orderToUpdate, "Item List": updatedItemList };
     onItemCompletionChange(sord, updatedOrder);
-    // Update input to show new logged value immediately
     setSwpPartInputs((prev) => ({ ...prev, [inputKey]: qtyToSet.toString() }));
   };
 
@@ -181,6 +180,12 @@ function OrderTable({ orders, searchTerm, onItemCompletionChange }) {
             ? filteredOrders.map((order) => {
                 const status = getJobStatus(order);
                 const statusClass = getStatusClass(status);
+                // Compute the master-code completion summary for the info row
+                const totalItems = order["Item List"].length;
+                const completedItems = order["Item List"].filter(
+                  (item) => item["Completed Qty"] >= item["Outstanding Qty"]
+                ).length;
+
                 return React.createElement(
                   React.Fragment,
                   { key: order.SORD },
@@ -214,7 +219,6 @@ function OrderTable({ orders, searchTerm, onItemCompletionChange }) {
                       )
                     )
                   ),
-                  // Apply status class to info row
                   React.createElement(
                     "tr",
                     { className: `info-row ${expandedRowSord === order.SORD ? "expanded" : ""} ${statusClass}` },
@@ -244,7 +248,9 @@ function OrderTable({ orders, searchTerm, onItemCompletionChange }) {
                               "select",
                               {
                                 id: `garment-status-${order.SORD}`,
-                                value: (statusChanges[order.SORD] && statusChanges[order.SORD].garmentStatus) || order.garmentStatus,
+                                value:
+                                  (statusChanges[order.SORD] && statusChanges[order.SORD].garmentStatus) ||
+                                  order.garmentStatus,
                                 onChange: (e) => handleStatusChange(order.SORD, "garmentStatus", e.target.value),
                               },
                               React.createElement("option", { value: "" }, "Select..."),
@@ -264,8 +270,11 @@ function OrderTable({ orders, searchTerm, onItemCompletionChange }) {
                                 "select",
                                 {
                                   id: `embroidery-status-${order.SORD}`,
-                                  value: (statusChanges[order.SORD] && statusChanges[order.SORD].embroideryFileStatus) || order.embroideryFileStatus,
-                                  onChange: (e) => handleStatusChange(order.SORD, "embroideryFileStatus", e.target.value),
+                                  value:
+                                    (statusChanges[order.SORD] && statusChanges[order.SORD].embroideryFileStatus) ||
+                                    order.embroideryFileStatus,
+                                  onChange: (e) =>
+                                    handleStatusChange(order.SORD, "embroideryFileStatus", e.target.value),
                                 },
                                 React.createElement("option", { value: "" }, "Select..."),
                                 React.createElement("option", { value: "On File" }, "On File"),
@@ -285,7 +294,9 @@ function OrderTable({ orders, searchTerm, onItemCompletionChange }) {
                                 "select",
                                 {
                                   id: `dtf-status-${order.SORD}`,
-                                  value: (statusChanges[order.SORD] && statusChanges[order.SORD].dtfStatus) || order.dtfStatus,
+                                  value:
+                                    (statusChanges[order.SORD] && statusChanges[order.SORD].dtfStatus) ||
+                                    order.dtfStatus,
                                   onChange: (e) => handleStatusChange(order.SORD, "dtfStatus", e.target.value),
                                 },
                                 React.createElement("option", { value: "" }, "Select..."),
@@ -295,12 +306,17 @@ function OrderTable({ orders, searchTerm, onItemCompletionChange }) {
                                 React.createElement("option", { value: "Printed" }, "Printed"),
                                 React.createElement("option", { value: "Issues" }, "Issues")
                               )
-                            )
+                            ),
+                          // Completion summary now renders last (all the way right)
+                          React.createElement(
+                            "div",
+                            { className: "completion-summary" },
+                            `${completedItems} of ${totalItems} items completed`
+                          )
                         )
                       )
                     )
                   ),
-                  // Apply status class to expansion row as well
                   React.createElement(
                     "tr",
                     { className: `expansion-row ${expandedRowSord === order.SORD ? "expanded" : ""} ${statusClass}` },

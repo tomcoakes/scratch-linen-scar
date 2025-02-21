@@ -18,7 +18,7 @@
   color: #333;
 }
 
-/* Remove default background from rows so status classes can apply */
+/* Remove fixed background on rows so status classes apply */
 #orders-table tbody tr {
   display: table-row;
   transition: background-color 0.3s ease;
@@ -26,8 +26,7 @@
   z-index: 1;
 }
 
-/* ---------- Status Row Styles ---------- */
-/* These rules apply to any row with the status class, including data, info, and expansion rows */
+/* ---------- Status Row Styles for All Rows ---------- */
 .data-row.status-not-started,
 .info-row.status-not-started,
 .expansion-row.status-not-started {
@@ -95,21 +94,16 @@
 #orders-table tbody tr.info-row td {
   padding: 0;
 }
-
 #orders-table tbody tr.info-row {
   border-bottom: 1px solid #e2e8f0;
 }
-
 .info-container {
   padding: 6px 15px;
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  gap: 15px;
-  font-size: 0.9em;
-  color: #555;
+  /* We'll let the individual children manage spacing */
+  flex-wrap: wrap;
 }
-
 .tags-container {
   display: flex;
   gap: 10px;
@@ -118,12 +112,20 @@
   min-width: 180px;
 }
 
+/* Completion summary: now aligned to the right */
+.completion-summary {
+  margin-left: auto;
+  font-size: 0.9rem;
+  font-weight: bold;
+  color: #555;
+  text-align: right;
+}
+
 /* ---------- Expansion Row ---------- */
 .expansion-row td {
   padding: 0;
   border: none;
 }
-
 .expansion-content {
   max-height: 0;
   overflow: hidden;
@@ -131,7 +133,6 @@
   padding: 0 15px;
   transition: max-height 0.5s ease, opacity 0.5s ease, padding 0.5s ease;
 }
-
 .expansion-row.expanded .expansion-content {
   min-height: 300px;
   opacity: 1;
@@ -144,7 +145,6 @@
   gap: 20px;
   flex-wrap: wrap;
 }
-
 .expansion-content > div {
   flex: 1 1 45%;
   padding: 10px;
@@ -154,7 +154,6 @@
   margin-bottom: 0;
   min-height: 265px;
 }
-
 .expansion-content h3 {
   font-size: 1rem;
   margin-top: 0;
@@ -170,12 +169,10 @@
   max-height: 200px;
   overflow-y: auto;
 }
-
 .items-completed-table {
   width: 100%;
   border-collapse: collapse;
 }
-
 #orders-table .items-completed-table th,
 #orders-table .items-completed-table td {
   padding: 4px 8px;
@@ -183,25 +180,28 @@
   border-bottom: 1px solid #f0f0f0;
   line-height: 2.2;
 }
-
 .items-completed-table th {
   background-color: #f9fafb;
   color: #666;
   font-weight: 500;
 }
-
-/* Enhanced completed row style */
 .items-completed-table tr.completed {
   text-decoration: line-through;
   color: #a00;
   opacity: 0.6;
 }
-
 .items-completed-table input[type="number"] {
   width: 43px;
   padding: 4px;
   border: 1px solid #ccc;
   border-radius: 4px;
+}
+
+/* ---------- SWP Parts Row: Always Light Blue ---------- */
+.swp-parts-row td {
+  padding: 4px 15px;
+  vertical-align: middle;
+  background-color: #e6f7ff;
 }
 
 /* ---------- Status Dropdowns ---------- */
@@ -212,7 +212,6 @@
   margin-left: 7px;
   margin-right: auto;
 }
-
 .status-dropdowns-container select {
   width: 100%;
   padding: 4px 30px 4px 8px;
@@ -230,18 +229,14 @@
   background-size: 16px;
   cursor: pointer;
 }
-
 .status-dropdowns-container select:hover {
   border-color: #999;
 }
-
 .status-dropdowns-container select:focus {
   border-color: #666;
   box-shadow: 0 0 4px rgba(0, 0, 0, 0.2);
   outline: none;
 }
-
-/* Specific Dropdown Colouring */
 .status-dropdowns-container select[id^="garment-status-"] {
   background-color: #ded1e7;
   border-color: #d8badb;
@@ -251,7 +246,6 @@
   background-color: #b397c8;
   color: #fff;
 }
-
 .status-dropdowns-container select[id^="embroidery-status-"] {
   background-color: #D1E7DD;
   border-color: #BADBCC;
@@ -261,7 +255,6 @@
   background-color: #90c8c0;
   color: #fff;
 }
-
 .status-dropdowns-container select[id^="dtf-status-"] {
   background-color: #CFF4FC;
   border-color: #B7F0FB;
@@ -271,7 +264,6 @@
   background-color: #a5d7e0;
   color: #fff;
 }
-
 .status-dropdowns-container label {
   display: block;
   margin-bottom: 4px;
@@ -280,18 +272,23 @@
   color: #444;
   text-align: left;
 }
-
+.new-tag,
+.embroidery-tag,
+.dtf-tag {
+  padding: 2px 6px;      /* Smaller padding for tags */
+  border-radius: 4px;
+  font-size: 0.8em;      /* Smaller font size for tags */
+  font-weight: 500;
+}
 .new-tag {
   background-color: #f0f0f0;
   color: #333;
 }
-
 .embroidery-tag {
   background-color: #d1e7dd;
   color: #0f5132;
   border: 1px solid #badbcc;
 }
-
 .dtf-tag {
   background-color: #cff4fc;
   color: #055160;
@@ -315,7 +312,6 @@
   background-position: right 10px center;
   background-size: 16px;
 }
-
 #orders-table td:nth-child(7) select:hover,
 #orders-table td:nth-child(7) select:focus {
   border-color: #888;
@@ -323,7 +319,6 @@
   outline: none;
   background-color: #e8e8e8;
 }
-
 #orders-table td:nth-child(7) select::-ms-expand {
   display: none;
 }
@@ -344,23 +339,19 @@
   border-collapse: collapse;
   margin-bottom: 20px;
 }
-
 .backOrderTable th,
 .backOrderTable td {
   padding: 10px 15px;
   text-align: left;
   border-bottom: 1px solid #ddd;
 }
-
 .backOrderTable th {
   background-color: #f0f3f4;
   font-weight: 500;
 }
-
 .backOrderTable tbody tr:nth-child(even) {
   background-color: #f9f9f9;
 }
-
 .backOrderTable input[type="number"] {
   width: 80px;
   padding: 6px;
