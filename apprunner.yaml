@@ -1,0 +1,23 @@
+# Add this file to your repository root
+version: 1.0
+runtime: nodejs18
+build:
+  commands:
+    # Install system dependencies first
+    - apt-get update
+    - apt-get install -y --no-install-recommends build-essential libcairo2-dev libpango1.0-dev libjpeg-dev libgif-dev librsvg2-dev pkg-config chromium chromium-sandbox
+    - apt-get clean
+    - rm -rf /var/lib/apt/lists/*
+    # Install npm dependencies with same settings as Dockerfile
+    - npm install --network-timeout=300000 --legacy-peer-deps
+run:
+  command: npm start
+  network:
+    port: 3000
+  env:
+    - name: PORT
+      value: 3000
+    - name: PUPPETEER_SKIP_CHROMIUM_DOWNLOAD
+      value: "true"
+    - name: PUPPETEER_EXECUTABLE_PATH
+      value: "/usr/bin/chromium" 
