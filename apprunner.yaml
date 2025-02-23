@@ -1,12 +1,12 @@
 version: 1.0
 runtime: nodejs18
 build:
-  commands:
-    - apt-get update
-    - apt-get install -y --no-install-recommends build-essential libcairo2-dev libpango1.0-dev libjpeg-dev libgif-dev librsvg2-dev pkg-config chromium chromium-sandbox
-    - apt-get clean
-    - rm -rf /var/lib/apt/lists/*
-    - npm install --network-timeout=300000 --legacy-peer-deps
+  commands: |
+    apt-get update &&
+    apt-get install -y --no-install-recommends build-essential libcairo2-dev libpango1.0-dev libjpeg-dev libgif-dev librsvg2-dev pkg-config chromium chromium-sandbox &&
+    apt-get clean &&
+    rm -rf /var/lib/apt/lists/* &&
+    npm install --network-timeout=300000 --legacy-peer-deps
 run:
   command: npm start
   network:
