@@ -5,7 +5,7 @@ build:
     pre-build:
       - apt-get update && apt-get install -y --no-install-recommends build-essential libcairo2-dev libpango1.0-dev libjpeg-dev libgif-dev librsvg2-dev pkg-config chromium chromium-sandbox && apt-get clean && rm -rf /var/lib/apt/lists/*
     build:
-      - npm install --network-timeout=300000 --legacy-peer-deps
+      - npm install --verbose
 run:
   command: npm start
   network:
